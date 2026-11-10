@@ -11,4 +11,6 @@
 |---|---|
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 브랜치·커밋·PR·충돌 방지 규칙, 폴더 구조 |
 | [Docs/README.md](./Docs/README.md) | 기획 문서 분류·네이밍·상태 관리 규칙 |
-| [Notion 팀보드](https://app.notion.com/p/414b0aca11af819dbde8ccd9be3a65a2) | 작업 카드(칸반 / 타임라인 / 담당자별), 3인 팀 운영 규칙 |
+| [팀 보드 (웹)](https://claude.ai/artifact/Apsp44mxNMroEmtNF8EksE) | **원본**: 결재함 · 작업판(할 일/진행/완료) · 메모 · 내 상태(모자) · 조직도 |
+| [Docs/decisions.md](./Docs/decisions.md) | 결정 기록 · ★ 지금 상태 |
+| [Notion 팀보드](https://app.notion.com/p/414b0aca11af819dbde8ccd9be3a65a2) | 보관용 (초기 작업 카드) |
