@@ -13,4 +13,4 @@
 | [Docs/README.md](./Docs/README.md) | 기획 문서 분류·네이밍·상태 관리 규칙 |
 | [팀 보드 (웹)](https://claude.ai/artifact/Apsp44mxNMroEmtNF8EksE) | **원본**: 결재함 · 작업판(할 일/진행/완료) · 메모 · 내 상태(모자) · 조직도 |
 | [Docs/decisions.md](./Docs/decisions.md) | 결정 기록 · ★ 지금 상태 |
-| [Notion 팀보드](https://app.notion.com/p/414b0aca11af819dbde8ccd9be3a65a2) | 보관용 (초기 작업 카드) |
+| [Notion 위키](https://app.notion.com/p/414b0aca11af819dbde8ccd9be3a65a2) | 게임 개요 · 팀 · 온보딩 · 로드맵 · 회의록 · 문서 목차 · 아트 레퍼런스 · 용어집 |
