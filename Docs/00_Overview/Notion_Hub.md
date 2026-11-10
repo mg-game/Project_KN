@@ -1,6 +1,6 @@
 # Notion 허브 구성 명세
 
-> 대상 위치: https://app.notion.com/p/ChaJuSeong-636e3ad80922410cb3ffc5e560d2bd42 (이 페이지 아래에 만든다)
+> 대상 위치: https://app.notion.com/p/Notion-414d6b1add7d80c09efde5e9939e4d27 (이 페이지 아래에 만든다)
 > 역할(D-7): Notion = 위키 허브. 작업은 웹 팀 보드, 문서 원본은 Git. Notion에 작업 카드나 문서 사본을 만들지 않는다.
 > 웹 팀 보드: https://claude.ai/artifact/Apsp44mxNMroEmtNF8EksE
 
