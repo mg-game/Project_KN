@@ -1,0 +1,402 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62909f0e106308a46817213910f85765, type: 3}
+  m_Name: BattleConfig
+  m_EditorClassIdentifier: IdleGame::IdleGame.BattleConfig
+  enemies:
+  - id: enemy_dust
+    name: "\uBA3C\uC9C0\uBB49\uCE58"
+    description: "\uC624\uB798 \uC4F0\uC9C0 \uC54A\uC740 \uBB3C\uAC74 \uC704\uC5D0
+      \uB0B4\uB824\uC549\uC740 \uBA3C\uC9C0\uAC00 \uBB49\uCCD0 \uAD74\uB7EC\uB2E4\uB2CC\uB2E4.
+      \uC57D\uD558\uC9C0\uB9CC \uB298 \uBB34\uB9AC \uC9C0\uC5B4 \uBAB0\uB824\uC624\uACE0,
+      \uBA3C\uC9C0 \uD3ED\uD48D\uC774 \uBD80\uB294 \uBC24\uC5D4 \uB05D\uC5C6\uC774
+      \uC3DF\uC544\uC9C4\uB2E4."
+    sprite: {fileID: 21300000, guid: 0efe65784ba84d74fa29205ff31cff92, type: 3}
+    hp: 34
+    speed: 0.3
+    damage: 4.4
+    isBoss: 0
+    minStage: 1
+    spawnWeight: 5
+    echoDamageMultiplier: 1
+    strikeInterval: 1
+    gimmicks: 0
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_moth
+    name: "\uC880\uB098\uBC29"
+    description: "\uC637\uC7A5 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uB0A0\uC544\uC628
+      \uC880\uB098\uBC29. \uBE60\uB974\uAC8C \uB0A0\uC544\uB4E4\uC5B4 \uCC9C\uC744
+      \uAC09\uC544\uBA39\uB294\uB2E4. \uCC9C\uC73C\uB85C \uB41C \uCE5C\uAD6C\uB4E4\uC740
+      \uAC00\uAE4C\uC774 \uBD99\uC73C\uBA74 \uD798\uC774 \uBE60\uC9C0\uACE0, \uCC9C
+      \uC794\uD5A5\uC774\uB294 \uB354 \uC544\uD504\uAC8C \uBB3C\uB9B0\uB2E4."
+    sprite: {fileID: 21300000, guid: 45d1f73b2ffe5734f8545f267de97e73, type: 3}
+    hp: 21
+    speed: 0.48
+    damage: 3.3
+    isBoss: 0
+    minStage: 2
+    spawnWeight: 3
+    echoDamageMultiplier: 2
+    strikeInterval: 0.6
+    gimmicks: 8
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_tangle
+    name: "\uC5C9\uD0A8 \uC2E4\uBB49\uCE58"
+    description: "\uD480\uC9C0 \uBABB\uD55C \uCC44 \uBC84\uB824\uC9C4 \uC2E4\uC774
+      \uC5C9\uCF1C \uAD74\uB7EC\uC628\uB2E4. \uC4F0\uB7EC\uB728\uB9AC\uBA74 \uC5C9\uD0A8
+      \uC2E4\uC774 \uD480\uB9AC\uBA70 \uC791\uC740 \uC2E4\uBB49\uCE58 \uB458\uB85C
+      \uB098\uB258\uC5B4 \uB2E4\uC2DC \uAD74\uB7EC\uC628\uB2E4."
+    sprite: {fileID: 21300000, guid: b28069db2d232ea49899ad5e2fe3add2, type: 3}
+    hp: 47
+    speed: 0.3
+    damage: 5.5
+    isBoss: 0
+    minStage: 3
+    spawnWeight: 3
+    echoDamageMultiplier: 1
+    strikeInterval: 0.9
+    gimmicks: 2
+    shieldAmount: 0
+    splitInto: enemy_tangle
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_rust
+    name: "\uB179\uC5BC\uB8E9"
+    description: "\uBE44\uB97C \uB9DE\uACE0 \uC78A\uD78C \uC1E0\uBD99\uC774\uC5D0\uC11C
+      \uBC88\uC9C4 \uC5BC\uB8E9. \uB290\uB9BF\uB290\uB9BF \uB2E4\uAC00\uC624\uC9C0\uB9CC
+      \uC544\uC8FC \uB2E8\uB2E8\uD558\uACE0 \uC544\uD504\uB2E4. \uACC1\uC5D0 \uC788\uB294
+      \uAE08\uC18D \uCE5C\uAD6C\uB4E4\uC740 \uB179\uC774 \uC2AC\uC5B4 \uC190\uC774
+      \uAD7C\uB5A0\uC9C4\uB2E4."
+    sprite: {fileID: 21300000, guid: 16add2b9f0118f643bfd8de34eeb94bd, type: 3}
+    hp: 98
+    speed: 0.19
+    damage: 8.8
+    isBoss: 0
+    minStage: 4
+    spawnWeight: 2
+    echoDamageMultiplier: 1
+    strikeInterval: 1.4
+    gimmicks: 16
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.55
+    auraValue: 30
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_thimble
+    name: "\uACE8\uBB34 \uAECD\uB370\uAE30"
+    description: "\uBC14\uB290\uC9C8 \uC0C1\uC790\uC5D0\uC11C \uB5A8\uC5B4\uC838
+      \uB098\uC628 \uB0A1\uC740 \uACE8\uBB34. \uB2E8\uB2E8\uD55C \uAE08\uC18D \uAECD\uB370\uAE30\uAC00
+      \uACF5\uACA9\uC744 \uBA3C\uC800 \uBC1B\uC544 \uB0B4\uBBC0\uB85C, \uAECD\uB370\uAE30\uB97C
+      \uAE68\uC57C \uC18D\uAE4C\uC9C0 \uB2FF\uB294\uB2E4."
+    sprite: {fileID: 21300000, guid: 14241da83594c064ab89537c530c1352, type: 3}
+    hp: 44
+    speed: 0.22
+    damage: 6.6
+    isBoss: 0
+    minStage: 5
+    spawnWeight: 2
+    echoDamageMultiplier: 1
+    strikeInterval: 1.2
+    gimmicks: 1
+    shieldAmount: 30
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_wisp
+    name: "\uB9DD\uAC01\uC758 \uADF8\uB9BC\uC790"
+    description: "\uC544\uBB34\uB3C4 \uC774\uB984\uC744 \uBD88\uB7EC \uC8FC\uC9C0
+      \uC54A\uC740 \uAE30\uC5B5\uC774 \uADF8\uB9BC\uC790\uAC00 \uB418\uC5B4 \uC2A4\uBA70\uB4E0\uB2E4.
+      \uD3C9\uC18C\uC5D4 \uBCF4\uC774\uC9C0 \uC54A\uC544\uC11C \uBE5B\uC744 \uAC00\uC9C4
+      \uCE5C\uAD6C\uB098 \uC218\uC120\uC810 \uBD88\uBE5B \uAC00\uAE4C\uC774\uC5D0\uC11C\uB9CC
+      \uBD99\uC7A1\uC744 \uC218 \uC788\uB2E4."
+    sprite: {fileID: 21300000, guid: 695729edd4bb0294fb7b8563d0a426bb, type: 3}
+    hp: 39
+    speed: 0.38
+    damage: 6.6
+    isBoss: 0
+    minStage: 6
+    spawnWeight: 2
+    echoDamageMultiplier: 1
+    strikeInterval: 0.8
+    gimmicks: 4
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: enemy_windup
+    name: "\uD0DC\uC5FD\uC950"
+    description: "\uD0DC\uC5FD\uC774 \uB2E4 \uD480\uB9B0 \uC7A5\uB09C\uAC10 \uC950.
+      \uBB34\uB9AC \uB4A4\uC5D0\uC11C \uC878\uC878 \uB530\uB77C\uC624\uBA70 \uACC1\uC758
+      \uC801\uB4E4 \uD0DC\uC5FD\uC744 \uAC10\uC544 \uB354 \uBE68\uB9AC \uB2EC\uB9AC\uAC8C
+      \uD558\uACE0, \uD574\uC9C4 \uACF3\uC744 \uC870\uAE08\uC529 \uACE0\uCCD0 \uC900\uB2E4.
+      \uBA3C\uC800 \uC4F0\uB7EC\uB728\uB9AC\uC790."
+    sprite: {fileID: 21300000, guid: ed0306392c3257b4c881e9c8f442c742, type: 3}
+    hp: 39
+    speed: 0.24
+    damage: 4.4
+    isBoss: 0
+    minStage: 8
+    spawnWeight: 1.5
+    echoDamageMultiplier: 1
+    strikeInterval: 1
+    gimmicks: 96
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.6
+    auraValue: 25
+    auraHealPercent: 3
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: boss_shadow
+    name: "\uB9DD\uAC01\uC758 \uD070\uADF8\uB9BC\uC790"
+    description: "\uC78A\uD78C \uAC83\uB4E4\uC758 \uADF8\uB9BC\uC790\uAC00 \uD55C\uB370
+      \uBAA8\uC5EC \uC0DD\uAE34 \uAC70\uB300\uD55C \uC5B4\uB460. \uC218\uC120\uC810
+      \uAC00\uAE4C\uC774 \uB4E4\uB7EC\uBD99\uC5B4 \uBD88\uBE5B\uC744 \uBE68\uC544\uB4E4\uC774\uACE0,
+      \uC0C1\uCC98 \uC785\uC73C\uBA74 \uB354\uC6B1 \uC0AC\uB098\uC6CC\uC9C4\uB2E4."
+    sprite: {fileID: 21300000, guid: 21d49b849ff50a8408ed6bf2fdac2bc4, type: 3}
+    hp: 416
+    speed: 0.16
+    damage: 11
+    isBoss: 1
+    minStage: 1
+    spawnWeight: 1
+    echoDamageMultiplier: 1
+    strikeInterval: 2
+    gimmicks: 384
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: 
+    minionInterval: 6
+    minionCount: 2
+  - id: boss_mothqueen
+    name: "\uC880\uB098\uBC29 \uC5EC\uC655"
+    description: "\uBC84\uB824\uC9C4 \uC637\uC7A5\uC758 \uC8FC\uC778. \uB0A0\uAC2F\uC9D3\uD560
+      \uB54C\uB9C8\uB2E4 \uC880\uB098\uBC29 \uB5BC\uB97C \uBD88\uB7EC\uB0B4\uACE0,
+      \uD654\uAC00 \uB098\uBA74 \uB354 \uC790\uC8FC \uBD88\uB7EC\uB0B8\uB2E4. \uCC9C\uC73C\uB85C
+      \uB41C \uCE5C\uAD6C\uB4E4\uC744 \uD2B9\uD788 \uAD34\uB86D\uD78C\uB2E4."
+    sprite: {fileID: 21300000, guid: d5a5a192ea0d91a46aea48ea07737c16, type: 3}
+    hp: 364
+    speed: 0.2
+    damage: 9.9
+    isBoss: 1
+    minStage: 3
+    spawnWeight: 1
+    echoDamageMultiplier: 1
+    strikeInterval: 2
+    gimmicks: 136
+    shieldAmount: 0
+    splitInto: 
+    splitCount: 2
+    auraRadius: 0.5
+    auraValue: 20
+    auraHealPercent: 0
+    minionId: enemy_moth
+    minionInterval: 6
+    minionCount: 2
+  killsToBossBase: 15
+  killsToBossPerStage: 0.6
+  killsToBossMax: 40
+  stageHpGrowth: 1.11
+  stageDamageGrowth: 1.08
+  stageGrowthTaperStage: 30
+  stageHpGrowthLate: 1.07
+  stageDamageGrowthLate: 1.05
+  stageGrowthTaperStage2: 151
+  stageHpGrowthLate2: 1.02
+  stageDamageGrowthLate2: 1.015
+  stageSpeedGrowth: 0.01
+  maxSpeedMultiplier: 1.35
+  firstWaveDelay: 1.5
+  waveSizeBase: 5
+  waveSizePerStage: 0.25
+  waveSizeMax: 14
+  spawnIntervalBase: 1.1
+  spawnIntervalPerStage: 0.02
+  spawnIntervalMin: 0.45
+  waveRestBase: 3.5
+  waveRestMin: 2
+  pressureBias: 0.7
+  twoPressureChance: 0.4
+  laneJitterDegrees: 20
+  maxEnemies: 40
+  bossPhaseSpawnScale: 0.5
+  shopGuardRadius: 0.7
+  bossSiegeInterval: 2
+  bossSiegeWindupSeconds: 0.35
+  dangerReferenceRatio: 0.12
+  defenseSlowFactor: 0.55
+  assaultDamageScale: 1.6
+  assaultRangeScale: 0.8
+  captureDamageScale: 0.85
+  captureStunSeconds: 0.6
+  bossStunScale: 0.3
+  snipeDamageScale: 1.7
+  snipeRangeScale: 1.35
+  snipeIntervalScale: 1.5
+  supportDamageScale: 0.6
+  supportInterval: 4
+  supportHealScale: 1.5
+  supportBuffPercent: 15
+  supportBuffSeconds: 4.5
+  supportEchoBuffRadius: 0.8
+  supportMarkPercent: 10
+  supportMarkSeconds: 2.5
+  healDamageScale: 0.5
+  healInterval: 3.5
+  healShopScale: 2
+  healEchoScale: 1.5
+  healEchoRadius: 0.8
+  startResonance: 10
+  dungeonStartResonance: 30
+  resonanceRegen: 1
+  maxResonance: 99
+  resonanceKillGain: 1
+  resonanceBossKillGain: 10
+  summonCooldown: 2.5
+  maxEchoes: 12
+  echoRefundRate: 0.3
+  echoHpScale: 1
+  echoRangeScale: 0.2
+  echoRangeMin: 0.22
+  echoRangeMax: 0.9
+  echoSnipeRangeScale: 2.2
+  echoAggroRadius: 0.9
+  echoPatrolRadius: 1.45
+  echoBlockRadius: 0.3
+  enemyEchoDps: 0.8
+  enemyStrikeInterval: 0.5
+  echoSupportHealScale: 0.6
+  autoSummonInterval: 0.5
+  autoSummonDanger: 0.05
+  autoLampMinEnemies: 5
+  lampPerKill: 0.05
+  lampPerEchoDissolve: 0.05
+  lampDamageRatio: 1
+  lampBossDamageRatio: 0.12
+  baseCritChance: 5
+  baseCritDamage: 50
+  defaultShieldSeconds: 8
+  shopShieldCapRatio: 0.5
+  tokenDefaultLifetime: 8
+  maxTokens: 6
+  tokenLampScale: 0.4
+  bossKnockbackScale: 0.35
+  bossSlowScale: 0.6
+  maxSlow: 0.8
+  cooldownReductionCap: 50
+  damageReductionCap: 60
+  lampRevealSeconds: 3
+  splitHpScale: 0.4
+  splitSpeedScale: 1.2
+  splitDamageScale: 0.5
+  splitSpreadDegrees: 14
+  phasingRevealRadius: 0.85
+  lightRevealRadius: 0.55
+  lightHitRevealSeconds: 1.5
+  enrageThreshold: 0.5
+  enrageSpeedScale: 1.3
+  enrageDamageScale: 1.4
+  enrageMinionIntervalScale: 0.6
+  lampDrainOnHit: 0.15
+  lampDrainInterval: 3
+  lampDrainPerTick: 0.04
+  lampDrainRadius: 1.3
+  fabricEaterEchoScale: 1.5
+  fabricEaterAttackDownPercent: 20
+  fabricEaterRadius: 0.4
+  debuffLingerSeconds: 1
+  bossMendScale: 0.3
+  firstChapterModifiers: 00000000000000000000000001000000040000000000000002000000050000000300000006000000
+  modifierCycle: 0100000004000000020000000500000003000000
+  rainEnemySpeedScale: 0.85
+  rainTraitBonusPercent: 25
+  rainLightPenaltyPercent: 10
+  blackoutRevealRadius: 0.6
+  blackoutPhasingWeightScale: 2.5
+  blackoutLightBonusPercent: 30
+  fullMoonLampGainPercent: 30
+  fullMoonEchoLifetimePercent: 25
+  fullMoonNightBonusPercent: 20
+  windEnemySpeedScale: 1.2
+  windEchoSpeedPercent: 30
+  dustStormEnemyId: enemy_dust
+  dustStormWeightScale: 3
+  dustStormWaveSizeScale: 1.3
+  dustStormRangePenaltyPercent: 15
+  dustStormFabricBonusPercent: 20
+  festivalGoldPercent: 50
+  festivalTraitBonusPercent: 15
+  dungeonHpBase: 0.8
+  dungeonHpGrowth: 1.18
+  dungeonDamageGrowth: 1.1
+  dungeonKillsBase: 12
+  dungeonKillsPerFloor: 1
+  dungeonStagePerFloor: 2
+  dungeonTimeLimit: 120
+  dungeonDailyTickets: 3
+  stageGoldBase: 60
+  stageGoldGrowth: 1.13
+  stageCandy: 3
+  stageCandyMilestone: 10
+  stageCandyMilestoneInterval: 10
+  stageClothChance: 0.35
+  stageRibbonChance: 0.25
+  failGoldRatio: 0.3
+  clearAffinity: 1
+  stageEndPause: 1.5
+  dungeonGoldBase: 150
+  dungeonGoldGrowth: 1.15
+  dungeonThreadFloor: 3
+  dungeonSpringFloor: 5
+  dungeonMoonlightFloor: 10
+  dungeonMoonlightChance: 0.12

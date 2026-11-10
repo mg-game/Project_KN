@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50a0ed8dda57b54483c25d8615645ce, type: 3}
+  m_Name: CharacterIcons
+  m_EditorClassIdentifier: IdleGame::IdleGame.UI.CharacterIconLibrary
+  _vfxKeys:
+  - vfx_thread_stitch
+  - vfx_patch_heal
+  - vfx_button_shield
+  - vfx_spin_button
+  - vfx_keyhole_lock
+  - vfx_key_beam
+  - vfx_candle_burst
+  - vfx_wax_drip
+  - vfx_firefly
+  - vfx_lantern_beam
+  - vfx_umbrella_shield
+  - vfx_raindrops
+  - vfx_storm_swirl
+  - vfx_lipstick_heart
+  - vfx_kiss_burst
+  - vfx_gloss_shine
+  - vfx_music_notes
+  - vfx_sound_ring
+  - vfx_waltz_ribbon
+  - vfx_star_burst
+  - vfx_moon_glow
+  - vfx_heart_heal
+  - vfx_buff_crown
+  - vfx_debuff_mark
+  - vfx_stun_stars
+  - vfx_slow_yarn
+  - vfx_summon_circle
+  - vfx_shield_bubble
+  - vfx_cleanse_sparkle
+  - vfx_dust_poof
+  - vfx_shadow_burst
+  - vfx_split_yarn
+  - vfx_reveal_light
+  _vfxSprites:
+  - {fileID: 21300000, guid: efd546edca6d63549be6074ff2b6d261, type: 3}
+  - {fileID: 21300000, guid: 89de80e63f19b7c42bdb9b0c6f866117, type: 3}
+  - {fileID: 21300000, guid: a9b924943d3cdb04a81cf0ac484de6e1, type: 3}
+  - {fileID: 21300000, guid: cd386919e8fc4974fb85ea304e207897, type: 3}
+  - {fileID: 21300000, guid: d6e3d523383488d41933ce30442a36a1, type: 3}
+  - {fileID: 21300000, guid: 4addc1f43627f92429f6575b6b563cd1, type: 3}
+  - {fileID: 21300000, guid: ae7080c4e2d21014bb9824cc18a787e0, type: 3}
+  - {fileID: 21300000, guid: 4e35898f36a927f4292d30c9ec72cbc7, type: 3}
+  - {fileID: 21300000, guid: 2bb3ae47df31fd84a8f501891f4a1c4a, type: 3}
+  - {fileID: 21300000, guid: 619cb6a95a744d444a32d417b89f7f80, type: 3}
+  - {fileID: 21300000, guid: f69f2c0c510b8c944a8d1e22b179d666, type: 3}
+  - {fileID: 21300000, guid: 5a1faf0a9319da3429b3b762557c045b, type: 3}
+  - {fileID: 21300000, guid: ca52432fa3136254590b10429768ffc5, type: 3}
+  - {fileID: 21300000, guid: 4d4457520f8f6ec4b99266939ceb41bc, type: 3}
+  - {fileID: 21300000, guid: ef96786a8adbee04490391496914ebd7, type: 3}
+  - {fileID: 21300000, guid: 3d41e13a147aee94989030a0b10bbd20, type: 3}
+  - {fileID: 21300000, guid: a5e4fdef3bb97224095d448cbfe05506, type: 3}
+  - {fileID: 21300000, guid: c864e90a3bc8c724ebab79f678b8580e, type: 3}
+  - {fileID: 21300000, guid: 9993cd152ae365d448c7eb979a127f8d, type: 3}
+  - {fileID: 21300000, guid: 0e6c09ed781c4184da97f81db469fc7a, type: 3}
+  - {fileID: 21300000, guid: fdf754bb8e78300478b4cb829287db1c, type: 3}
+  - {fileID: 21300000, guid: 0d24d917c099c864db72850b65359b1e, type: 3}
+  - {fileID: 21300000, guid: f8fb92caeada73440b11f83cd3574e84, type: 3}
+  - {fileID: 21300000, guid: 07db0e271b02a684c80a061b05a5a693, type: 3}
+  - {fileID: 21300000, guid: b3a3d009b2af580488ab00a21ce2f160, type: 3}
+  - {fileID: 21300000, guid: 557bb6ccbd6effa4ab8d1edc9b30906f, type: 3}
+  - {fileID: 21300000, guid: 8b9980414ddcb6347b7d71139df6a3e6, type: 3}
+  - {fileID: 21300000, guid: 6e3faf00ed08dbc4c9e4138a0d374f46, type: 3}
+  - {fileID: 21300000, guid: b44a56b3ffecb49458d5a6d226e426a7, type: 3}
+  - {fileID: 21300000, guid: 04e8c24152a0ba840998c42cd489e1c0, type: 3}
+  - {fileID: 21300000, guid: cf049c614465f3944a3b7467b6ba4782, type: 3}
+  - {fileID: 21300000, guid: 86bd1831e0c2f1040981ce79dc54d219, type: 3}
+  - {fileID: 21300000, guid: 5610b07f62b02d347948335df2bc93d1, type: 3}
+  _traitIcons:
+  - {fileID: 21300000, guid: d6240e92f898aa641b272a157b7196a3, type: 3}
+  - {fileID: 21300000, guid: f5e4ce1407a73ec4bb05254cfee422e2, type: 3}
+  - {fileID: 21300000, guid: 92080ac79ff6fe94a823e293957e6ee5, type: 3}
+  - {fileID: 21300000, guid: 32e175b27c580c242a607f0dc697a377, type: 3}
+  - {fileID: 21300000, guid: 8232a434af5977748bb0c06219d5a450, type: 3}
+  - {fileID: 21300000, guid: 0691d028520ad85448d70bb0b0f0efb1, type: 3}
+  - {fileID: 21300000, guid: 51638535ff4c67848a6fbb6a9fcb9cad, type: 3}
+  _styleIcons:
+  - {fileID: 21300000, guid: a93c186791f3ae34eb6be7b1e4eaa50c, type: 3}
+  - {fileID: 21300000, guid: 681e0e6880d6ae94bb7c3f8007321ef8, type: 3}
+  - {fileID: 21300000, guid: 915d6fa506ff49d48879ec2783a3a161, type: 3}
+  - {fileID: 21300000, guid: 30a0162c29fdfc342acbf1ed13d9e87b, type: 3}
+  - {fileID: 21300000, guid: 5556e1fdfb8c6e745aa4ca3abd232243, type: 3}
+  - {fileID: 21300000, guid: 5f5b6c26dcca2a340ab45ed2be0899d0, type: 3}
+  _synergyIds:
+  - combo_mending_duo
+  - combo_rainy_lantern
+  - combo_locked_musicbox
+  - combo_vanity_secret
+  - combo_night_walk
+  - combo_parade
+  - combo_key_and_lock
+  - combo_shop_family
+  - combo_clear_sky
+  - combo_last_song
+  - combo_waiting_end
+  - combo_seven_lights
+  _synergySprites:
+  - {fileID: 21300000, guid: cc6e683dcc56201408efbed4e9e5411c, type: 3}
+  - {fileID: 21300000, guid: 374e9344ee5875e4c839ac632caf9436, type: 3}
+  - {fileID: 21300000, guid: d508f08de94544b4a8501a4869a6dcf5, type: 3}
+  - {fileID: 21300000, guid: c3843867c40892840bb83d8a3b7a61c7, type: 3}
+  - {fileID: 21300000, guid: 5d5e1e3af9b46664a8fe9db44c1d06e4, type: 3}
+  - {fileID: 21300000, guid: a05acd55451c8a34092cfcfd79b35b25, type: 3}
+  - {fileID: 21300000, guid: f89ae4d5356ae9f408a43c9f53b4852b, type: 3}
+  - {fileID: 21300000, guid: 5bcf48a78934cdf458b5139816937aeb, type: 3}
+  - {fileID: 21300000, guid: 5448235fbdce1d14a9f14d6f7eb8e477, type: 3}
+  - {fileID: 21300000, guid: 7a052d8ae3a71734c80c2abdb44de6d7, type: 3}
+  - {fileID: 21300000, guid: 7ee1473a9dba3514f9aaae2f8c94155b, type: 3}
+  - {fileID: 21300000, guid: 039cacd8faac7b044921a8ffa8884080, type: 3}
+  _guardianIcon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  _echoIcon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}

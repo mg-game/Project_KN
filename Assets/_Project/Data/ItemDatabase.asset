@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0985128474909df4b9414e2c7549b4c9, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: IdleGame::IdleGame.ItemDatabase
+  items:
+  - id: mat_cloth
+    name: "\uC218\uC120 \uCC9C"
+    grade: 0
+    category: 0
+    description: "\uC218\uC120\uC810 \uBC14\uAD6C\uB2C8\uC5D0 \uCC28\uACE1\uCC28\uACE1
+      \uAC1C\uCF1C \uB454 \uCC9C \uC870\uAC01. \uD574\uC9C4 \uACF3\uC744 \uB367\uB300\uACE0
+      \uD130\uC9C4 \uACF3\uC744 \uAC10\uC2F8\uB294, \uBAA8\uB4E0 \uC218\uC120\uC758
+      \uC2DC\uC791\uC774\uC5D0\uC694.\n\uBCC4\uBE5B \uC138\uD0C1\uC18C\uC5D0\uC11C
+      \uAC13 \uAC77\uC5B4 \uC628 \uCC9C\uC5D0\uC11C\uB294 \uC544\uC9C1 \uD587\uC0B4
+      \uB0C4\uC0C8\uAC00 \uB098\uC694."
+    icon: {fileID: 21300000, guid: 260b76a9b32f15d4aaabed0c6379eaf5, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+    - type: 1
+      targetId: exp_1_4
+      label: "\uC6D0\uC815 1-4"
+    - type: 1
+      targetId: exp_1_1
+      label: "\uC6D0\uC815 1-1"
+    - type: 1
+      targetId: exp_2_4
+      label: "\uC6D0\uC815 2-4"
+    - type: 0
+      targetId: 
+      label: "\uC2A4\uD14C\uC774\uC9C0 \uBCF4\uC0C1"
+  - id: mat_ribbon
+    name: "\uB9AC\uBCF8 \uC870\uAC01"
+    grade: 0
+    category: 0
+    description: "\uC120\uBB3C \uC0C1\uC790\uC5D0\uC11C \uD480\uB824\uB098 \uACE8\uBAA9
+      \uC5B4\uADC0\uB97C \uB5A0\uB3CC\uB358 \uB9AC\uBCF8 \uB044\uD2B8\uBA38\uB9AC.\n\uB204\uAD70\uAC00\uC758
+      \uCD95\uD558\uB97C \uD55C \uBC88 \uBB36\uC5B4 \uBCF8 \uC801\uC774 \uC788\uC5B4\uC11C,
+      \uC544\uC9C1 \uBB34\uC5B8\uAC00\uB97C \uAF2D \uBB36\uC5B4 \uB450\uB294 \uD798\uC774
+      \uB0A8\uC544 \uC788\uC5B4\uC694."
+    icon: {fileID: 21300000, guid: 185b2e86ba92abf4cbd818f493d612f1, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+    - type: 1
+      targetId: exp_1_1
+      label: "\uC6D0\uC815 1-1"
+    - type: 1
+      targetId: exp_1_4
+      label: "\uC6D0\uC815 1-4"
+    - type: 1
+      targetId: exp_1_2
+      label: "\uC6D0\uC815 1-2"
+    - type: 0
+      targetId: 
+      label: "\uC2A4\uD14C\uC774\uC9C0 \uBCF4\uC0C1"
+  - id: mat_wax
+    name: "\uCD1B\uB18D \uBC29\uC6B8"
+    grade: 0
+    category: 0
+    description: "\uAEBC\uC9C4 \uAC00\uB85C\uB4F1 \uC544\uB798\uC5D0 \uB3D9\uADF8\uB797\uAC8C
+      \uAD73\uC5B4 \uC788\uB358 \uCD1B\uB18D. \uC190\uBC14\uB2E5\uC5D0 \uC62C\uB824
+      \uB450\uBA74 \uC544\uC9C1 \uBBF8\uC9C0\uADFC\uD55C \uC628\uAE30\uAC00 \uB290\uAEF4\uC838\uC694.\n\uB204\uAD70\uAC00\uB97C
+      \uB05D\uAE4C\uC9C0 \uBC1D\uD600 \uC900 \uCD1B\uBD88\uC774 \uB0A8\uAE30\uACE0
+      \uAC04 \uB9C8\uC9C0\uB9C9 \uCCB4\uC628\uC774\uC5D0\uC694."
+    icon: {fileID: 21300000, guid: 00f788cbdcd9cc840815910b3420abdb, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+    - type: 1
+      targetId: exp_1_3
+      label: "\uC6D0\uC815 1-3"
+  - id: mat_thread
+    name: "\uAE30\uC5B5\uC758 \uC2E4"
+    grade: 1
+    category: 0
+    description: "\uC794\uD5A5\uC774\uAC00 \uBE5B\uC73C\uB85C \uD480\uB824 \uC0AC\uB77C\uC9C8
+      \uB54C \uB0A8\uAE30\uACE0 \uAC04 \uAC00\uB290\uB2E4\uB780 \uC2E4. \uC78A\uD78C
+      \uBB3C\uAC74\uC758 \uAE30\uC5B5\uC774 \uD55C \uC62C \uD55C \uC62C \uAF2C\uC5EC
+      \uC788\uC5B4\uC694.\n\uD615\uD0DC\uB97C \uC0C8\uB85C \uC5EE\uC5B4 \uB0B4\uB294
+      \uC9C4\uD654 \uC81C\uC791\uC5D0 \uAF2D \uD544\uC694\uD574\uC694."
+    icon: {fileID: 21300000, guid: fa85f139ff00b4f44a4c9d164fdf842d, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 2
+      targetId: 3
+      label: "\uC794\uD5A5\uC774 \uB358\uC804 3\uCE35"
+    - type: 1
+      targetId: exp_2_3
+      label: "\uC6D0\uC815 2-3"
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+  - id: mat_lace
+    name: "\uB808\uC774\uC2A4 \uC870\uAC01"
+    grade: 1
+    category: 0
+    description: "\uC816\uC740 \uBC84\uC2A4 \uC815\uB958\uC7A5 \uBCA4\uCE58\uC5D0
+      \uAC78\uB9B0 \uCC44 \uC8FC\uC778\uC744 \uAE30\uB2E4\uB9AC\uB358 \uB808\uC774\uC2A4.\n\uBE57\uBB3C\uC5D0
+      \uD760\uBED1 \uC816\uC5B4\uB3C4 \uBB34\uB2AC\uAC00 \uD750\uD2B8\uB7EC\uC9C0\uC9C0
+      \uC54A\uB294, \uC12C\uC138\uD558\uACE0 \uC9C8\uAE34 \uCC9C\uC774\uC5D0\uC694."
+    icon: {fileID: 21300000, guid: f6c3e56eb7245fe4dab3276a2337b994, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 1
+      targetId: exp_1_2
+      label: "\uC6D0\uC815 1-2"
+    - type: 1
+      targetId: exp_2_2
+      label: "\uC6D0\uC815 2-2"
+    - type: 1
+      targetId: exp_1_3
+      label: "\uC6D0\uC815 1-3"
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+  - id: mat_rib
+    name: "\uC6B0\uC0B0\uC0B4"
+    grade: 1
+    category: 0
+    description: "\uBE44 \uC624\uB294 \uAD11\uC7A5\uC5D0 \uBC84\uB824\uC9C4 \uC6B0\uC0B0\uC5D0\uC11C
+      \uBE60\uC838\uB098\uC628 \uAC00\uB294 \uAE08\uC18D \uC0B4.\n\uD718\uC5B4\uC838\uB3C4
+      \uB2E4\uC2DC \uACE7\uAC8C \uD3B4\uC9C0\uB294 \uD0C4\uC131\uC774 \uC788\uC5B4,
+      \uBAB8\uC758 \uBF08\uB300\uC640 \uD2C0\uC744 \uC138\uC6B0\uB294 \uB370 \uC4F0\uC5EC\uC694."
+    icon: {fileID: 21300000, guid: f11b0b40d71aee14098b9c3fef9d3844, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 1
+      targetId: exp_2_1
+      label: "\uC6D0\uC815 2-1"
+    - type: 3
+      targetId: shop_normal
+      label: "\uC218\uC120\uC810 \uC0C1\uC810"
+  - id: mat_suitcase
+    name: "\uC5EC\uD589 \uAC00\uBC29 \uC870\uAC01"
+    grade: 2
+    category: 0
+    description: "\uB05D\uB0B4 \uB5A0\uB098\uC9C0 \uBABB\uD55C \uC5EC\uD589 \uAC00\uBC29\uC5D0\uC11C
+      \uB5BC\uC5B4 \uB0B8 \uAC00\uC8FD \uC870\uAC01. \uBAA8\uC11C\uB9AC\uC758 \uB0A1\uC740
+      \uC2A4\uD2F0\uCEE4\uC5D0 \uAC00 \uBCF4\uC9C0 \uBABB\uD55C \uB3C4\uC2DC\uB4E4\uC758
+      \uC774\uB984\uC774 \uB0A8\uC544 \uC788\uC5B4\uC694.\n'\uBCC4\uC774 \uBA38\uBB38
+      \uBC24 \uC0B0\uCC45' \uC774\uBCA4\uD2B8 \uC0C1\uC810\uC5D0\uC11C \uAD6C\uD560
+      \uC218 \uC788\uC5B4\uC694."
+    icon: {fileID: 21300000, guid: b4f2d0647d639624db7bf5a8c7136047, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 3
+      targetId: shop_event
+      label: "\uC774\uBCA4\uD2B8 \uC0C1\uC810"
+  - id: mat_spring
+    name: "\uC624\uB974\uACE8 \uD0DC\uC5FD"
+    grade: 2
+    category: 0
+    description: "\uBA48\uCDB0 \uBC84\uB9B0 \uC624\uB974\uACE8 \uC18D\uC5D0\uC11C
+      \uAEBC\uB0B8 \uC791\uC740 \uD0DC\uC5FD.\n\uADC0\uC5D0 \uAC00\uAE4C\uC774 \uB300\uBA74,
+      \uB05D\uAE4C\uC9C0 \uC5F0\uC8FC\uB418\uC9C0 \uBABB\uD55C \uB178\uB798\uC758
+      \uD55C \uC18C\uC808\uC774 \uC544\uC8FC \uC791\uAC8C \uB4E4\uB824\uC694."
+    icon: {fileID: 21300000, guid: a9db56a95b0e2014895e64d2210415a4, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 2
+      targetId: 5
+      label: "\uC794\uD5A5\uC774 \uB358\uC804 5\uCE35"
+    - type: 1
+      targetId: exp_2_2
+      label: "\uC6D0\uC815 2-2"
+  - id: mat_moonlight
+    name: "\uB2EC\uBE5B \uC870\uAC01"
+    grade: 3
+    category: 0
+    description: "\uC794\uD5A5\uC774 \uB358\uC804 \uAC00\uC7A5 \uAE4A\uC740 \uACF3\uC5D0
+      \uACE0\uC5EC \uC788\uB358 \uB2EC\uBE5B\uC774 \uB2E8\uB2E8\uD558\uAC8C \uAD73\uC740
+      \uC870\uAC01. \uBC24\uC9C0\uAE30\uC758 \uBAA8\uC790\uC5D0 \uAFF0\uB9E4\uC5B4\uC9C4
+      \uAC83\uACFC \uAC19\uC740 \uBE5B\uC774\uC5D0\uC694.\n2\uCC28 \uC9C4\uD654\uC758
+      \uB9C8\uC9C0\uB9C9 \uD55C \uB540\uC5D0 \uC4F0\uC5EC\uC694."
+    icon: {fileID: 21300000, guid: 7123af65831e2074fb4885e4fde68e0c, type: 3}
+    goldBonusPercent: 0
+    sources:
+    - type: 2
+      targetId: 10
+      label: "\uC794\uD5A5\uC774 \uB358\uC804 10\uCE35"
+    - type: 3
+      targetId: shop_event
+      label: "\uC774\uBCA4\uD2B8 \uC0C1\uC810"

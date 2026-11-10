@@ -1,0 +1,20 @@
+{
+    "name": "IdleGame.Editor",
+    "rootNamespace": "IdleGame.EditorTools",
+    "references": [
+        "IdleGame",
+        "Unity.TextMeshPro",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,5507 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68be652b1f5d37c4ebd48dcaf858bae1, type: 3}
+  m_Name: MetaDatabase
+  m_EditorClassIdentifier: IdleGame::IdleGame.MetaDatabase
+  features:
+  - feature: 0
+    name: "\uC804\uD22C"
+    conditions: []
+    alsoRequire: []
+    lockedHint: 
+    lockedToast: 
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: 
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 1
+    name: "\uC218\uC120\uC810 \uAC15\uD654"
+    conditions: []
+    alsoRequire: []
+    lockedHint: 
+    lockedToast: 
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: 
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 2
+    name: "\uCE5C\uAD6C\uB4E4"
+    conditions: []
+    alsoRequire: []
+    lockedHint: 
+    lockedToast: 
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: 
+    icon: {fileID: 21300000, guid: ea7c0eaae1ea0c04bb66c5c566279c30, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 4
+    name: "\uCE5C\uAD6C \uAC15\uD654"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 1
+    alsoRequire: []
+    lockedHint: 1-1
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-1\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uCE5C\uAD6C \uB808\uBCA8\uC744 \uC62C\uB9AC\uBA74 \uBAA8\uB4E0 \uD615\uD0DC\uAC00
+      \uD568\uAED8 \uAC15\uD574\uC838\uC694"
+    icon: {fileID: 21300000, guid: 48e819af0b50dba4d911448d50ed9fc5, type: 3}
+    illustration: {fileID: 21300000, guid: 81096192671e81544b2c449ec621207d, type: 3}
+    rewards: []
+  - feature: 5
+    name: "\uC790\uB3D9 \uC804\uD22C"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 2
+    alsoRequire: []
+    lockedHint: 1-2
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-2\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC774\uC81C \uCE5C\uAD6C\uB4E4\uC774 \uC54C\uC544\uC11C \uC794\uD5A5\uC774\uB97C
+      \uBD80\uB974\uACE0 \uBD88\uC744 \uBC1D\uD600\uC694"
+    icon: {fileID: 21300000, guid: 0dbb90e4304530b4b8422a58b0f0c083, type: 3}
+    illustration: {fileID: 21300000, guid: c394b83be2ef5b943ac223d814cd03a2, type: 3}
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+  - feature: 6
+    name: "\uC218\uC120 \uBC14\uAD6C\uB2C8"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 2
+    alsoRequire: []
+    lockedHint: 1-2
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-2\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC790\uB9AC\uB97C \uBE44\uC6CC\uB3C4 \uBC14\uAD6C\uB2C8\uC5D0 \uC120\uBB3C\uC774
+      \uC313\uC5EC\uC694"
+    icon: {fileID: 21300000, guid: e0f2ad22cfffc1944afb61dc916e01be, type: 3}
+    illustration: {fileID: 21300000, guid: d22e0d956dafc974496086f49f3ed302, type: 3}
+    rewards: []
+  - feature: 7
+    name: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 3
+    alsoRequire: []
+    lockedHint: 1-3
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-3\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C\uB97C \uCC3E\uC544 \uC218\uC120\uC810\uC73C\uB85C
+      \uB370\uB824\uC640\uC694"
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+    illustration: {fileID: 21300000, guid: 24d1dc9929b219e48bf3fb1b0bc89ce2, type: 3}
+    rewards: []
+  - feature: 3
+    name: "\uD3B8\uC131"
+    conditions:
+    - type: 17
+      counter: 0
+      targetId: 
+      target: 11
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 3
+    alsoRequire: []
+    lockedHint: 1-3
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-3\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uCE5C\uAD6C\uB97C \uB04C\uC5B4 \uB2E4\uB978 \uBC29\uC704\uC5D0 \uC138\uC6CC
+      \uBCF4\uC138\uC694"
+    icon: {fileID: 21300000, guid: 29a3311ce4a0f7f4c805997b5b541850, type: 3}
+    illustration: {fileID: 21300000, guid: 063828d56adec8c41b5336b824347128, type: 3}
+    rewards: []
+  - feature: 17
+    name: "\uC2DC\uB108\uC9C0"
+    conditions:
+    - type: 17
+      counter: 0
+      targetId: 
+      target: 11
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 3
+    alsoRequire: []
+    lockedHint: 1-3
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-3\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uD568\uAED8 \uC11C\uBA74 \uB354 \uBC18\uC9DD\uC774\uB294 \uCE5C\uAD6C\uB4E4\uC774
+      \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 8
+    name: "\uC6D0\uC815"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 4
+    alsoRequire: []
+    lockedHint: 1-4
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-4\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uCE5C\uAD6C\uB4E4\uC744 \uBC14\uAE65\uC73C\uB85C \uBCF4\uB0B4 \uC7AC\uB8CC\uB97C
+      \uBAA8\uC544 \uC640\uC694"
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+    illustration: {fileID: 21300000, guid: f041e625b34cf7c4ba94322d4100e9ae, type: 3}
+    rewards: []
+  - feature: 9
+    name: "\uBE60\uB978 \uC218\uC120"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 5
+    alsoRequire: []
+    lockedHint: 1-5
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-5\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uBC14\uAD6C\uB2C8\uB97C \uBC14\uB85C \uCC44\uC6B8 \uC218 \uC788\uC5B4\uC694
+      (\uD558\uB8E8 1\uBC88 \uBB34\uB8CC)"
+    icon: {fileID: 21300000, guid: 74a1143c2efc81344823bc784d585526, type: 3}
+    illustration: {fileID: 21300000, guid: 27fcda21352a4ec4e9b58071071813aa, type: 3}
+    rewards: []
+  - feature: 10
+    name: "\uC218\uC120\uC810 \uCD9C\uC11D\uBD80"
+    conditions:
+    - type: 18
+      counter: 0
+      targetId: 
+      target: 1
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 5
+    alsoRequire: []
+    lockedHint: 1-5
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-5\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uB9E4\uC77C \uB4E4\uB974\uBA74 \uCD9C\uC11D\uBD80\uC5D0 \uB2E8\uCD94
+      \uB3C4\uC7A5\uC774 \uD558\uB098\uC529 \uC313\uC5EC\uC694"
+    icon: {fileID: 21300000, guid: e9b70dd725e3e3947952f6add456cac8, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 11
+    name: "2\uBC30\uC18D"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 6
+    alsoRequire: []
+    lockedHint: 1-6
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-6\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC804\uD22C\uB97C \uB450 \uBC30 \uBE60\uB974\uAC8C \uBCFC \uC218
+      \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 1f480f3c00d43464197a42cbb008564c, type: 3}
+    illustration: {fileID: 21300000, guid: 9b13a8f3fb26d374da038b89ed05b9b9, type: 3}
+    rewards: []
+  - feature: 22
+    name: "\uBD88 \uBC1D\uD788\uAE30 \uBC29\uC2DD"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 6
+    alsoRequire: []
+    lockedHint: 1-6
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-6\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uBD88 \uBC1D\uD788\uAE30 \uBC84\uD2BC\uC744 \uAE38\uAC8C \uB204\uB974\uBA74
+      \uC4F0\uB294 \uBC29\uC2DD\uC744 \uACE0\uB97C \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+    illustration: {fileID: 21300000, guid: 3e9dd54d1b9f19442b101c160544819c, type: 3}
+    rewards: []
+  - feature: 12
+    name: "\uC218\uC120 \uC77C\uC9C0"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 7
+    alsoRequire: []
+    lockedHint: 1-7
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-7\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uB9E4\uC77C \uC218\uC120 \uC77C\uC9C0\uB97C \uCC44\uC6B0\uBA74 \uC120\uBB3C
+      \uC0C1\uC790\uB97C \uC5F4 \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+    illustration: {fileID: 21300000, guid: 9acddd74c8f01674581216c0d584e98f, type: 3}
+    rewards: []
+  - feature: 26
+    name: "\uC804\uD22C \uAE30\uB85D"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 7
+    alsoRequire: []
+    lockedHint: 1-7
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-7\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: 
+    icon: {fileID: 21300000, guid: 26554a25256bb7448ab5016d6514f364, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 13
+    name: "\uC218\uC120\uC810 \uC0C1\uC810"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 8
+    alsoRequire: []
+    lockedHint: 1-8
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-8\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC0C1\uC810 \uBB38\uC774 \uC5F4\uB838\uC5B4\uC694. \uB9E4\uC77C \uC0C8
+      \uC7AC\uB8CC\uAC00 \uB4E4\uC5B4\uC640\uC694"
+    icon: {fileID: 21300000, guid: 4099c4305cfb2134a9f1ae6ecaf997d1, type: 3}
+    illustration: {fileID: 21300000, guid: 806ce75038885aa4b8c357888cd2bc5c, type: 3}
+    rewards: []
+  - feature: 14
+    name: "\uC794\uD5A5\uC774 \uB358\uC804"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 10
+    alsoRequire: []
+    lockedHint: 1-10
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-10\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC794\uD5A5\uC774\uB9CC \uB4E4\uC5B4\uAC00\uB294 \uB358\uC804\uC5D0\uC11C
+      \uADC0\uD55C \uC7AC\uB8CC\uB97C \uCC3E\uC544\uC694"
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+    illustration: {fileID: 21300000, guid: ea6ff92ca90ed464792b7653a7703d43, type: 3}
+    rewards: []
+  - feature: 15
+    name: "\uC9C4\uD654 \uC81C\uC791"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 10
+    alsoRequire: []
+    lockedHint: 1-10
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-10\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uB2E8\uC11C\uC640 \uC7AC\uB8CC\uB97C \uBAA8\uC73C\uBA74 \uCE5C\uAD6C\uC758
+      \uC0C8 \uBAA8\uC2B5\uC744 \uC9C0\uC744 \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+    illustration: {fileID: 21300000, guid: 72e75d4f5f8c09b4ca7af9ae975babd7, type: 3}
+    rewards: []
+  - feature: 16
+    name: "\uB3C4\uAC10 \uBCF4\uC0C1"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 10
+    alsoRequire: []
+    lockedHint: 1-10
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 1-10\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uCC3E\uC740 \uCE5C\uAD6C\uC640 \uD615\uD0DC\uB97C \uB3C4\uAC10\uC5D0
+      \uBAA8\uC73C\uBA74 \uC120\uBB3C\uC774 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: fec73c5ac35129945823c931b2a62df7, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 23
+    name: "\uC790\uB3D9 \uBCF4\uC2A4 \uB3C4\uC804"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 11
+    alsoRequire: []
+    lockedHint: 2-1
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 2-1\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC774\uC81C \uBCF4\uC2A4 \uB3C4\uC804\uACFC \uC6D0\uC815 \uB2E4\uC2DC
+      \uBCF4\uB0B4\uAE30\uB97C \uCE5C\uAD6C\uB4E4\uC774 \uC54C\uC544\uC11C \uD574\uC694"
+    icon: {fileID: 21300000, guid: 22bbe538645c16e4da5328ba83e05ac4, type: 3}
+    illustration: {fileID: 21300000, guid: 0e924de857f83ce4a9101f392fae2d44, type: 3}
+    rewards: []
+  - feature: 24
+    name: "\uC6D0\uC815 \uD55C \uBC88\uC5D0 \uBCF4\uB0B4\uAE30"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 11
+    alsoRequire: []
+    lockedHint: 2-1
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 2-1\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC774\uC81C \uC6D0\uC815\uC744 \uD55C \uBC88\uC5D0 \uB2E4\uC2DC \uBCF4\uB0BC
+      \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 2511095214c922b47a7a94afb802f8f1, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 18
+    name: "\uC218\uC120\uC810 \uAE30\uB85D"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 13
+    alsoRequire: []
+    lockedHint: 2-3
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 2-3\uC744 \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC218\uC120\uC810\uC5D0 \uC313\uC778 \uC774\uC57C\uAE30\uB97C \uAE30\uB85D\uD558\uACE0
+      \uC120\uBB3C\uC744 \uBC1B\uC544\uC694"
+    icon: {fileID: 21300000, guid: 1c4b14a9d014ba347816bff98ae6e4bc, type: 3}
+    illustration: {fileID: 21300000, guid: 19cd25407939849499ffc28a9af0ab3f, type: 3}
+    rewards: []
+  - feature: 19
+    name: "\uC758\uC0C1"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 15
+    alsoRequire: []
+    lockedHint: 2-5
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 2-5\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 1
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC9DD\uC9DD\uC774\uC5D0\uAC8C \uC774\uC57C\uAE30\uAC00 \uB2F4\uAE34
+      \uC0C8 \uC637\uC744 \uC785\uD600 \uC904 \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 1da29e265724bfc4292c87cdfa618bfc, type: 3}
+    illustration: {fileID: 21300000, guid: 806d77ab68d030245b44bdee4f53629f, type: 3}
+    rewards: []
+  - feature: 20
+    name: "\uC794\uD5A5\uC774 \uC5EC\uC12F\uC9F8 \uCE78"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 19
+    alsoRequire: []
+    lockedHint: 2-9
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 2-9\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC794\uD5A5\uC774 \uB371\uC5D0 \uC5EC\uC12F\uC9F8 \uCE78\uC774 \uC0DD\uACBC\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+    illustration: {fileID: 0}
+    rewards: []
+  - feature: 21
+    name: "\uC774\uBCA4\uD2B8"
+    conditions:
+    - type: 4
+      counter: 0
+      targetId: 
+      target: 21
+    - type: 19
+      counter: 0
+      targetId: 
+      target: 3
+    alsoRequire: []
+    lockedHint: 3-1
+    lockedToast: "\uC2A4\uD14C\uC774\uC9C0 3-1\uC744 \uD074\uB9AC\uC5B4\uD558\uAC70\uB098
+      \uC218\uC120\uC810\uC5D0 3\uC77C\uC9F8 \uB4E4\uB974\uBA74 \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45 \uAC19\uC740 \uC791\uC740
+      \uCD95\uC81C\uAC00 \uC5F4\uB824\uC694"
+    icon: {fileID: 21300000, guid: f167832d37b44144095d8d777660971a, type: 3}
+    illustration: {fileID: 21300000, guid: a251035aba4030147b26fd6bad51ceff, type: 3}
+    rewards: []
+  - feature: 25
+    name: "\uB358\uC804 \uC785\uC7A5\uAD8C \uD55C \uBC88\uC5D0 \uC4F0\uAE30"
+    conditions:
+    - type: 14
+      counter: 0
+      targetId: 
+      target: 5
+    alsoRequire: []
+    lockedHint: "\uB358\uC804 5\uCE35"
+    lockedToast: "\uC794\uD5A5\uC774 \uB358\uC804 5\uCE35\uC744 \uB3CC\uD30C\uD558\uBA74
+      \uC5F4\uB824\uC694"
+    showCard: 0
+    cardTitle: "\uC0C8 \uAE30\uB2A5\uC774 \uC5F4\uB838\uC5B4\uC694!"
+    cardText: "\uC774\uC81C \uB358\uC804 \uC785\uC7A5\uAD8C\uC744 \uD55C \uBC88\uC5D0
+      \uBAA8\uB450 \uC4F8 \uC218 \uC788\uC5B4\uC694"
+    icon: {fileID: 21300000, guid: a5189aa4b28901b4590a9d83b66dc4f9, type: 3}
+    illustration: {fileID: 21300000, guid: 770b4ae8a3882bb40a834697c3d9fc30, type: 3}
+    rewards: []
+  guideQuests:
+  - id: gq_01
+    text: "\uC794\uD5A5\uC774\uB97C \uBD88\uB7EC \uBCF4\uC138\uC694"
+    condition:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: gq_02
+    text: "\uC218\uC120\uC810\uC5D0 \uBD88\uC744 \uBC1D\uD600\uC694"
+    condition:
+      type: 1
+      counter: 6
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 200
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/LampButton
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  - id: gq_03
+    text: "\uC2A4\uD14C\uC774\uC9C0 1-1 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 300
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_04
+    text: "\uC218\uC120\uC810 \uAC15\uD654 3\uD68C"
+    condition:
+      type: 1
+      counter: 7
+      targetId: 
+      target: 3
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: gq_05
+    text: "\uC9DD\uC9DD\uC774 \uB808\uBCA8 5 \uB2EC\uC131"
+    condition:
+      type: 6
+      counter: 0
+      targetId: jjakjjak
+      target: 5
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 5
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: 4c424f5eaecfa194fb4d835df27e8e3d, type: 3}
+  - id: gq_06
+    text: "\uC2A4\uD14C\uC774\uC9C0 1-2 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 2
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 500
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_07
+    text: "\uC218\uC120 \uBC14\uAD6C\uB2C8 \uBC1B\uAE30"
+    condition:
+      type: 1
+      counter: 20
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    navFeature: 6
+    focusTarget: Popups/IdleChestPopup/Window/Body/ClaimButton
+    icon: {fileID: 21300000, guid: d7c75998416ea6c408f257a033c15ac8, type: 3}
+  - id: gq_08
+    text: "\uC2A4\uD14C\uC774\uC9C0 1-3 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 3
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 800
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_09
+    text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 1\uD68C"
+    condition:
+      type: 1
+      counter: 9
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: gq_10
+    text: "\uC0C8 \uCE5C\uAD6C\uB97C \uC9C0\uD0B4\uC774\uB85C \uC138\uC6B0\uAE30"
+    condition:
+      type: 10
+      counter: 0
+      targetId: 
+      target: 4
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/CardList
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  - id: gq_11
+    text: "\uAE30\uB2E4\uB9BC\uC758 \uB05D \uCF1C\uAE30"
+    condition:
+      type: 13
+      counter: 0
+      targetId: combo_waiting_end
+      target: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_ribbon
+      amount: 5
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: 7ee1473a9dba3514f9aaae2f8c94155b, type: 3}
+  - id: gq_12
+    text: "\uC2A4\uD14C\uC774\uC9C0 1-4 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 4
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 1200
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_13
+    text: "\uC6D0\uC815 1\uBC88 \uBCF4\uB0B4\uAE30"
+    condition:
+      type: 1
+      counter: 10
+      targetId: 
+      target: 1
+    rewards:
+    - type: 3
+      currency: 0
+      itemId: 
+      amount: 1
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: gq_14
+    text: "\uC6D0\uC815 \uBCF4\uC0C1 \uBC1B\uAE30"
+    condition:
+      type: 1
+      counter: 11
+      targetId: 
+      target: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_lace
+      amount: 3
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: gq_15
+    text: "\uBE60\uB978 \uC218\uC120 1\uD68C"
+    condition:
+      type: 1
+      counter: 21
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    navFeature: 9
+    focusTarget: Popups/IdleChestPopup/Window/Body/QuickSection/QuickButton
+    icon: {fileID: 21300000, guid: d7c75998416ea6c408f257a033c15ac8, type: 3}
+  - id: gq_16
+    text: "\uC794\uD5A5\uC774 30\uBC88 \uBD80\uB974\uAE30"
+    condition:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 30
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 2000
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: gq_17
+    text: "\uC2A4\uD14C\uC774\uC9C0 1-7 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_18
+    text: "\uC218\uC120 \uC77C\uC9C0 \uBBF8\uC158 2\uAC1C \uBC1B\uAE30"
+    condition:
+      type: 1
+      counter: 25
+      targetId: 
+      target: 2
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    navFeature: 12
+    focusTarget: Popups/JournalPopup/Window/Body/ClaimAllButton
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+  - id: gq_19
+    text: "\uC218\uC120\uC810 Lv.15 \uB2EC\uC131"
+    condition:
+      type: 5
+      counter: 0
+      targetId: 
+      target: 15
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 5
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: gq_20
+    text: "\uC0C1\uC810\uC5D0\uC11C 1\uBC88 \uC0AC\uAE30"
+    condition:
+      type: 1
+      counter: 19
+      targetId: 
+      target: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_wax
+      amount: 3
+    navFeature: 13
+    focusTarget: SafeArea/ContentArea/ShopPanel/ProductList
+    icon: {fileID: 21300000, guid: 4099c4305cfb2134a9f1ae6ecaf997d1, type: 3}
+  - id: gq_21
+    text: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 40"
+    condition:
+      type: 7
+      counter: 0
+      targetId: 
+      target: 40
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: fec73c5ac35129945823c931b2a62df7, type: 3}
+  - id: gq_22
+    text: "\uCCAB \uCC55\uD130 \uBCF4\uC2A4 1-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: fd0e7fb9bf9483f40a9d94f50a9cdcb1, type: 3}
+  - id: gq_23
+    text: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4 \uC5F4\uC5B4 \uBCF4\uAE30"
+    condition:
+      type: 16
+      counter: 0
+      targetId: meta.evolution_tree_viewed
+      target: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 2
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 6b7abcf2e87313a449ec0e8eb1d345e2, type: 3}
+  - id: gq_24
+    text: "\uC794\uD5A5\uC774 \uB358\uC804 1\uCE35 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 14
+      counter: 0
+      targetId: 
+      target: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 3
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: gq_25
+    text: "\uC6D0\uC815 5\uBC88 \uBCF4\uB0B4\uAE30"
+    condition:
+      type: 1
+      counter: 10
+      targetId: 
+      target: 5
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 10
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: gq_26
+    text: "\uC9DD\uC9DD\uC774 \uB808\uBCA8 20 \uB2EC\uC131"
+    condition:
+      type: 6
+      counter: 0
+      targetId: jjakjjak
+      target: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: 4c424f5eaecfa194fb4d835df27e8e3d, type: 3}
+  - id: gq_27
+    text: "\uC2A4\uD14C\uC774\uC9C0 2-5 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 15
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: b1cbbfdf9c872ab49acdeed718153bd5, type: 3}
+  - id: gq_28
+    text: "\uC544\uBB34 \uC9C4\uD654 1\uD68C \uC81C\uC791"
+    condition:
+      type: 1
+      counter: 15
+      targetId: 
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: gq_29
+    text: "\uACC4\uBCF4 \uACF5\uBA85 1\uD68C"
+    condition:
+      type: 1
+      counter: 16
+      targetId: 
+      target: 1
+    rewards:
+    - type: 5
+      currency: 0
+      itemId: 
+      amount: 10
+    navFeature: 2
+    focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+  - id: gq_30
+    text: "\uC5F4\uC1E0\uC640 \uC790\uBB3C\uC1E0 \uCF1C\uAE30"
+    condition:
+      type: 13
+      counter: 0
+      targetId: combo_key_and_lock
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: f89ae4d5356ae9f408a43c9f53b4852b, type: 3}
+  guideRepeat:
+    enabled: 1
+    stageInterval: 2
+    shopLevelStep: 10
+    lineageLevelStep: 5
+    goldMinutes: 5
+    gem: 20
+    icon: {fileID: 21300000, guid: e130dfea80e1ab14aaeaadcea2062618, type: 3}
+  guideVisible:
+    type: 17
+    counter: 0
+    targetId: 
+    target: 6
+  missions:
+  - id: md_login
+    period: 0
+    text: "\uC218\uC120\uC810 \uB4E4\uB974\uAE30"
+    counter: 0
+    target: 1
+    points: 10
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: efc054847a139e6498fcc3f9ed836490, type: 3}
+  - id: md_chest
+    period: 0
+    text: "\uC218\uC120 \uBC14\uAD6C\uB2C8 2\uBC88 \uBC1B\uAE30"
+    counter: 20
+    target: 2
+    points: 10
+    rewards: []
+    requiredFeature: 6
+    navFeature: 6
+    focusTarget: Popups/IdleChestPopup/Window/Body/ClaimButton
+    icon: {fileID: 21300000, guid: d7c75998416ea6c408f257a033c15ac8, type: 3}
+  - id: md_echo
+    period: 0
+    text: "\uC794\uD5A5\uC774 30\uBC88 \uBD80\uB974\uAE30"
+    counter: 5
+    target: 30
+    points: 20
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: md_lamp
+    period: 0
+    text: "\uBD88 \uBC1D\uD788\uAE30 5\uBC88"
+    counter: 6
+    target: 5
+    points: 20
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/LampButton
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  - id: md_kill
+    period: 0
+    text: "\uC801 300\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    counter: 4
+    target: 300
+    points: 20
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 861719afaeade544d939b7bf76b6dd43, type: 3}
+  - id: md_expedition
+    period: 0
+    text: "\uC6D0\uC815 2\uBC88 \uBCF4\uB0B4\uAE30"
+    counter: 10
+    target: 2
+    points: 20
+    rewards: []
+    requiredFeature: 8
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: md_dungeon
+    period: 0
+    text: "\uC794\uD5A5\uC774 \uB358\uC804 1\uBC88 (\uB3C4\uC804 \uB610\uB294 \uC18C\uD0D5)"
+    counter: 30
+    target: 1
+    points: 20
+    rewards: []
+    requiredFeature: 14
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: md_upgrade
+    period: 0
+    text: "\uCE5C\uAD6C\xB7\uC218\uC120\uC810 \uAC15\uD654 5\uBC88"
+    counter: 28
+    target: 5
+    points: 10
+    rewards: []
+    requiredFeature: 0
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: md_gacha
+    period: 0
+    text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 1\uBC88"
+    counter: 9
+    target: 1
+    points: 10
+    rewards: []
+    requiredFeature: 7
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: md_shop
+    period: 0
+    text: "\uC0C1\uC810\uC5D0\uC11C 1\uBC88 \uC0AC\uAE30"
+    counter: 19
+    target: 1
+    points: 10
+    rewards: []
+    requiredFeature: 13
+    navFeature: 13
+    focusTarget: SafeArea/ContentArea/ShopPanel/ProductList
+    icon: {fileID: 21300000, guid: 4099c4305cfb2134a9f1ae6ecaf997d1, type: 3}
+  - id: md_quick_idle
+    period: 0
+    text: "\uBE60\uB978 \uC218\uC120 1\uBC88"
+    counter: 21
+    target: 1
+    points: 20
+    rewards: []
+    requiredFeature: 9
+    navFeature: 9
+    focusTarget: Popups/IdleChestPopup/Window/Body/QuickSection/QuickButton
+    icon: {fileID: 21300000, guid: 74a1143c2efc81344823bc784d585526, type: 3}
+  - id: mw_journal
+    period: 1
+    text: "\uC218\uC120 \uC77C\uC9C0 100\uC810 5\uC77C"
+    counter: 26
+    target: 5
+    points: 30
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+  - id: mw_attendance
+    period: 1
+    text: "\uCD9C\uC11D \uB3C4\uC7A5 5\uC77C"
+    counter: 27
+    target: 5
+    points: 20
+    rewards: []
+    requiredFeature: 10
+    navFeature: 10
+    focusTarget: 
+    icon: {fileID: 21300000, guid: e9b70dd725e3e3947952f6add456cac8, type: 3}
+  - id: mw_boss
+    period: 1
+    text: "\uBCF4\uC2A4 15\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    counter: 3
+    target: 15
+    points: 20
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: fd0e7fb9bf9483f40a9d94f50a9cdcb1, type: 3}
+  - id: mw_expedition
+    period: 1
+    text: "\uC6D0\uC815 12\uBC88 \uBCF4\uB0B4\uAE30"
+    counter: 10
+    target: 12
+    points: 20
+    rewards: []
+    requiredFeature: 8
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: mw_dungeon
+    period: 1
+    text: "\uC794\uD5A5\uC774 \uB358\uC804 10\uBC88"
+    counter: 30
+    target: 10
+    points: 20
+    rewards: []
+    requiredFeature: 14
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: mw_gacha
+    period: 1
+    text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 10\uBC88"
+    counter: 9
+    target: 10
+    points: 10
+    rewards: []
+    requiredFeature: 7
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: mw_growth
+    period: 1
+    text: "\uC9C4\uD654\xB7\uACF5\uBA85\xB7\uC758\uC0C1 \uC911 1\uBC88"
+    counter: 29
+    target: 1
+    points: 10
+    rewards: []
+    requiredFeature: 0
+    navFeature: 2
+    focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: mw_lamp
+    period: 1
+    text: "\uBD88 \uBC1D\uD788\uAE30 50\uBC88"
+    counter: 6
+    target: 50
+    points: 10
+    rewards: []
+    requiredFeature: 0
+    navFeature: 0
+    focusTarget: SafeArea/StageArea/Battle/Strip/LampButton
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  missionChests:
+  - period: 0
+    points: 20
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 30
+  - period: 0
+    points: 40
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+  - period: 0
+    points: 60
+    rewards:
+    - type: 3
+      currency: 0
+      itemId: 
+      amount: 1
+  - period: 0
+    points: 80
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 5
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 1
+  - period: 0
+    points: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 70
+  - period: 1
+    points: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  - period: 1
+    points: 40
+    rewards:
+    - type: 3
+      currency: 0
+      itemId: 
+      amount: 2
+    - type: 4
+      currency: 0
+      itemId: 
+      amount: 1
+  - period: 1
+    points: 60
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_moonlight
+      amount: 1
+  - period: 1
+    points: 80
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 150
+  - period: 1
+    points: 100
+    rewards:
+    - type: 5
+      currency: 0
+      itemId: 
+      amount: 20
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+  attendance:
+  - track: 0
+    day: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 300
+    highlight: 0
+    label: 
+  - track: 0
+    day: 2
+    rewards:
+    - type: 3
+      currency: 0
+      itemId: 
+      amount: 3
+    highlight: 0
+    label: 
+  - track: 0
+    day: 3
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 15
+    - type: 1
+      currency: 0
+      itemId: mat_ribbon
+      amount: 10
+    highlight: 0
+    label: 
+  - track: 0
+    day: 4
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 300
+    highlight: 0
+    label: 
+  - track: 0
+    day: 5
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 5
+    highlight: 0
+    label: 
+  - track: 0
+    day: 6
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 400
+    highlight: 0
+    label: 
+  - track: 0
+    day: 7
+    rewards:
+    - type: 6
+      currency: 0
+      itemId: rouge
+      amount: 1
+    highlight: 1
+    label: "\uB8E8\uC988\uB9AC \uD655\uC815!"
+  - track: 1
+    day: 1
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 60
+    highlight: 0
+    label: 
+  - track: 1
+    day: 2
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 10
+    highlight: 0
+    label: 
+  - track: 1
+    day: 3
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 4
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 120
+    highlight: 0
+    label: 
+  - track: 1
+    day: 5
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_lace
+      amount: 5
+    highlight: 0
+    label: 
+  - track: 1
+    day: 6
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 200
+    highlight: 1
+    label: 
+  - track: 1
+    day: 8
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 120
+    highlight: 0
+    label: 
+  - track: 1
+    day: 9
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_ribbon
+      amount: 15
+    highlight: 0
+    label: 
+  - track: 1
+    day: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 11
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 180
+    highlight: 0
+    label: 
+  - track: 1
+    day: 12
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_wax
+      amount: 10
+    highlight: 0
+    label: 
+  - track: 1
+    day: 13
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 14
+    rewards:
+    - type: 5
+      currency: 0
+      itemId: 
+      amount: 30
+    highlight: 1
+    label: 
+  - track: 1
+    day: 15
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 120
+    highlight: 0
+    label: 
+  - track: 1
+    day: 16
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 3
+    highlight: 0
+    label: 
+  - track: 1
+    day: 17
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 18
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 180
+    highlight: 0
+    label: 
+  - track: 1
+    day: 19
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_rib
+      amount: 5
+    highlight: 0
+    label: 
+  - track: 1
+    day: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 21
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_moonlight
+      amount: 2
+    highlight: 1
+    label: 
+  - track: 1
+    day: 22
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 180
+    highlight: 0
+    label: 
+  - track: 1
+    day: 23
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 20
+    highlight: 0
+    label: 
+  - track: 1
+    day: 24
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 25
+    rewards:
+    - type: 2
+      currency: 0
+      itemId: 
+      amount: 240
+    highlight: 0
+    label: 
+  - track: 1
+    day: 26
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_thread
+      amount: 5
+    highlight: 0
+    label: 
+  - track: 1
+    day: 27
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    highlight: 0
+    label: 
+  - track: 1
+    day: 28
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 500
+    - type: 1
+      currency: 0
+      itemId: mat_spring
+      amount: 2
+    highlight: 1
+    label: "\uD55C \uBC14\uD034 \uC644\uC131!"
+  idleChest:
+    baseCapHours: 8
+    capSteps:
+    - stageCleared: 11
+      shopLevel: 0
+      capHours: 12
+    - stageCleared: 11
+      shopLevel: 200
+      capHours: 16
+    lines:
+    - reward:
+        type: 0
+        currency: 1
+        itemId: 
+        amount: 3
+      minStage: 1
+      eventOnly: 0
+      maxStageMultiplier: 1.5
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_ribbon
+        amount: 2
+      minStage: 1
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 1.5
+      minStage: 1
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_lace
+        amount: 1
+      minStage: 3
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_wax
+        amount: 1
+      minStage: 5
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 0.15
+      minStage: 10
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_rib
+        amount: 0.5
+      minStage: 11
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 0.05
+      minStage: 25
+      eventOnly: 0
+      maxStageMultiplier: 0
+    - reward:
+        type: 0
+        currency: 2
+        itemId: 
+        amount: 2
+      minStage: 1
+      eventOnly: 1
+      maxStageMultiplier: 0
+    stageGrowth: 1.0025
+    offlineGoldRate: 0.5
+    minClaimSeconds: 60
+    artStageThresholds:
+    - 0.25
+    - 0.6
+    - 1
+    redDotHours: 1
+    quickIdleHours: 2
+    quickIdleGemCosts: 000000003200000064000000
+    maxQuickIdleTickets: 20
+    returnPopupMinSeconds: 600
+    freeDoublePerDay: 1
+    doubleExcludesGem: 1
+  returnLines:
+  - lineageId: jjakjjak
+    lines:
+    - "\uBB38 \uC55E \uC591\uB9D0 \uCE5C\uAD6C\uB4E4\uC744 \uBAA8\uB450 \uAC00\uC871\uC774\uB77C
+      \uBD88\uB800\uC5B4\uC694"
+    - "\uBE68\uB798 \uBC14\uAD6C\uB2C8 \uC18D \uB0AF\uC120 \uC591\uB9D0\uACFC \uD558\uB8FB\uBC24
+      \uCE5C\uAD6C\uAC00 \uB410\uC5B4\uC694"
+    - "\uD63C\uC790 \uB0A8\uC740 \uC7A5\uAC11 \uD55C \uC9DD \uACC1\uC744 \uBC24\uC0C8
+      \uC9C0\uCF1C \uC92C\uC5B4\uC694"
+    - "\uAE30\uB2E4\uB9AC\uB294 \uB3D9\uC548 \uC9DD\uAFCD \uC790\uB9AC\uB97C \uAE68\uB057\uC774
+      \uBE44\uC6CC \uB480\uC5B4\uC694"
+    - "\uBCC4\uC744 \uC138\uB2E4\uAC00 \uC9DD\uC218\uAC00 \uB098\uC624\uBA74 \uAD1C\uD788
+      \uAE30\uBED0\uD588\uC5B4\uC694"
+    - "\uB3CC\uC544\uC624\uC2DC\uBA74 \uBA3C\uC800 \uC190\uC744 \uD754\uB4E4\uB824\uACE0
+      \uBB38 \uC55E\uC5D0 \uC788\uC5C8\uC5B4\uC694"
+    - "\uBC14\uB298\uB540 \uB208\uC73C\uB85C \uC719\uD06C \uC5F0\uC2B5\uC744 \uBC31
+      \uBC88 \uD588\uC5B4\uC694"
+  - lineageId: ttokdan
+    lines:
+    - "\uD754\uB4E4\uB9AC\uB294 \uBB38\uACE0\uB9AC\uB97C \uBC24\uC0C8 \uAF2D \uBD99\uC7A1\uACE0
+      \uC788\uC5C8\uC5B4\uC694"
+    - "\uB0A0\uC544\uAC00\uB824\uB358 \uCABD\uC9C0\uB97C \uB124 \uAD6C\uBA4D\uC73C\uB85C
+      \uAF49 \uBD99\uB4E4\uC5C8\uC5B4\uC694"
+    - "\uB5A8\uC5B4\uC9C4 \uB2E8\uCD94 \uB3D9\uC0DD\uB4E4\uC744 \uD55C \uC904\uB85C
+      \uAFF0\uC5B4 \uB370\uB824\uC654\uC5B4\uC694"
+    - "\uBC14\uB78C\uC774 \uC138\uAC8C \uBD88\uC5B4\uB3C4 \uC218\uC120\uC810 \uAC04\uD310\uC744
+      \uB193\uC9C0 \uC54A\uC558\uC5B4\uC694"
+    - "\uC678\uD22C \uC8FC\uBA38\uB2C8 \uC18D \uBE44\uBC00\uC744 \uD558\uB098\uB3C4
+      \uD758\uB9AC\uC9C0 \uC54A\uC558\uC5B4\uC694"
+    - "\uC878\uB2E4\uAC00\uB3C4 \uC190\uC5D0 \uC954 \uC2E4\uB9CC\uC740 \uB193\uC9C0
+      \uC54A\uC558\uB300\uC694"
+    - "\uB3CC\uC544\uC624\uC2E4 \uC790\uB9AC\uB97C \uAFB9 \uB20C\uB7EC \uB9E1\uC544
+      \uB480\uC5B4\uC694"
+  - lineageId: chalkak
+    lines:
+    - "\uACE8\uBAA9 \uBB38 \uC11C\uB978 \uAC1C\uB97C \uB450\uB4DC\uB824 \uBD24\uC9C0\uB9CC
+      \uC544\uC9C1 \uBABB \uCC3E\uC558\uC5B4\uC694"
+    - "\uC5F4\uC1E0 \uAD6C\uBA4D\uB9C8\uB2E4 \uAF2C\uBC15\uAF2C\uBC15 \uC778\uC0AC\uB97C
+      \uD558\uACE0 \uB2E4\uB154\uC5B4\uC694"
+    - "\uB2E4\uB77D\uBC29 \uBB38\uC774 \uC5F4\uB9B4 \uBED4\uD588\uB2E4\uBA70 \uAF2C\uB9AC\uB97C
+      \uD754\uB4E4\uC5B4\uC694"
+    - "\uC78A\uD78C \uC790\uBB3C\uC1E0\uC758 \uC624\uB798\uB41C \uC774\uC57C\uAE30\uB97C
+      \uB4E4\uC5B4 \uC92C\uC5B4\uC694"
+    - "\uC794\uD5A5\uC774\uAC00 \uC228\uC5B4 \uC788\uB358 \uC791\uC740 \uD2C8\uC744
+      \uBA3C\uC800 \uCC3E\uC544\uB0C8\uC5B4\uC694"
+    - "\"\uC774\uBC88\uC5D4 \uC5F4\uB9B4\uC9C0\uB3C4 \uBAB0\uB77C!\" \uD558\uACE0
+      \uB610 \uAE38\uC744 \uB098\uC130\uC5B4\uC694"
+    - "\uC218\uC120\uC810 \uBB38\uB2E8\uC18D\uC740 \uAC71\uC815 \uB9C8\uC2DC\uB798\uC694"
+  - lineageId: mongdang
+    lines:
+    - "\uCD1B\uB18D\uC774 \uC870\uAE08 \uD758\uB800\uC9C0\uB9CC \uB05D\uAE4C\uC9C0
+      \uCC3D\uAC00\uB97C \uBC1D\uD614\uC5B4\uC694"
+    - "\uBC14\uB78C \uC18C\uB9AC\uC5D0 \uC6C0\uCE20\uB838\uB2E4\uAC00 \uB2E4\uC2DC
+      \uBD88\uAF43\uC744 \uD0A4\uC6E0\uC5B4\uC694"
+    - "\uAE38 \uC783\uC740 \uBC18\uB527\uBD88\uC774\uC5D0\uAC8C \uC9D1 \uAC00\uB294
+      \uAE38\uC744 \uBE44\uCDB0 \uC92C\uC5B4\uC694"
+    - "\uC5B4\uB450\uC6B4 \uACE8\uBAA9 \uB05D\uC5D0 \uC791\uC740 \uBD88\uBE5B\uC744
+      \uB0A8\uACA8 \uB450\uC5C8\uC5B4\uC694"
+    - "\"\uAD1C\uCC2E\uC544, \uC544\uC9C1 \uC2EC\uC9C0\uAC00 \uB0A8\uC558\uB294\uAC78\"
+      \uD558\uACE0 \uC6C3\uC5C8\uC5B4\uC694"
+    - "\uD0A4\uB294 \uD55C \uBF18 \uC904\uC5C8\uC9C0\uB9CC \uB9C8\uC74C\uC740 \uD55C
+      \uBF18 \uC790\uB790\uB300\uC694"
+    - "\uB3CC\uC544\uC624\uC2DC\uB294 \uAE38\uC774 \uC5B4\uB461\uC9C0 \uC54A\uAC8C
+      \uAE30\uB2E4\uB838\uC5B4\uC694"
+  - lineageId: udukeoni
+    lines:
+    - "\uBE44\uAC00 \uC548 \uC640\uC11C \uC870\uAE08 \uC2DC\uBB34\uB8E9\uD588\uC5B4\uC694"
+    - "\uC6B0\uC0B0\uAF42\uC774\uC5D0 \uC11C\uC11C \uD558\uB298\uB9CC \uC62C\uB824\uB2E4\uBD24\uC5B4\uC694"
+    - "\uCCAB \uBE57\uBC29\uC6B8\uC5D0 \uB204\uAD6C\uBCF4\uB2E4 \uBA3C\uC800 \uC0B4\uC744
+      \uD3BC\uCCE4\uC5B4\uC694"
+    - "\uAE30\uB2E4\uB9AC\uB294 \uAC74 \uC775\uC219\uD558\uB2E4\uBA70 \uC790\uB9AC\uB97C
+      \uC9C0\uCF30\uC5B4\uC694"
+    - "\uCC98\uB9C8 \uBC11 \uAE38\uACE0\uC591\uC774\uC5D0\uAC8C \uADF8\uB298\uC744
+      \uBE4C\uB824 \uC92C\uC5B4\uC694"
+    - "\uD750\uB9B0 \uAD6C\uB984\uC774 \uC624\uB098 \uBC24\uC0C8 \uC9C0\uCF1C\uBD24\uC5B4\uC694"
+    - "\uB3CC\uC544\uC624\uC2E4 \uB54C\uAE4C\uC9C0 \uC811\uC9C0 \uC54A\uACE0 \uC11C
+      \uC788\uC5C8\uC5B4\uC694"
+  - lineageId: rouge
+    lines:
+    - "\uAC70\uC6B8 \uC55E\uC5D0\uC11C \uB2F9\uB2F9\uD55C \uD45C\uC815\uC744 \uC5F0\uC2B5\uD588\uC5B4\uC694"
+    - "\uCE6D\uCC2C\uC744 \uB4E3\uACE0 \uB69C\uAED1 \uC18D\uC73C\uB85C \uC3D9 \uC228\uC5B4
+      \uBC84\uB838\uC5B4\uC694"
+    - "\uC218\uC120\uC810 \uCC3D\uBB38\uC5D0 \uBC18\uC9DD\uC774\uB294 \uC785\uC220
+      \uC790\uAD6D\uC744 \uB0A8\uACBC\uC5B4\uC694"
+    - "\uD654\uC7A5\uB300 \uC11C\uB78D \uCE5C\uAD6C\uB4E4\uC758 \uC548\uBD80\uB97C
+      \uBB3B\uACE0 \uC654\uC5B4\uC694"
+    - "\uBB34\uB300\uC5D0 \uC11C\uB294 \uAFC8\uC744 \uAFB8\uBA70 \uC0B4\uC9DD \uB3CC\uB824
+      \uC62C\uB77C\uC654\uC5B4\uC694"
+    - "\uC794\uD5A5\uC774\uB4E4\uC5D0\uAC8C \uBC18\uC9DD\uC774 \uC778\uC0AC\uBC95\uC744
+      \uAC00\uB974\uCCE4\uC5B4\uC694"
+    - "\uB3CC\uC544\uC624\uC2DC\uBA74 \uBCF4\uC5EC \uC904 \uC0C8 \uBE5B\uAE54\uC744
+      \uACE8\uB77C \uB480\uC5B4\uC694"
+  - lineageId: lalabell
+    lines:
+    - "\uB9C8\uC9C0\uB9C9 \uC74C \uC55E\uC5D0\uC11C \uB610 \uC228\uC744 \uACE8\uB790\uC5B4\uC694"
+    - "\uC7A0\uB4E0 \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C \uB05D\uB098\uC9C0 \uC54A\uB294
+      \uC648\uCE20\uB97C \uB4E4\uB824\uC92C\uC5B4\uC694"
+    - "\uD0DC\uC5FD\uC744 \uAC10\uC73C\uBA70 \uB3CC\uC544\uC624\uC2E4 \uC2DC\uAC04\uC744
+      \uC14C\uC5B4\uC694"
+    - "\uBCC4\uBE5B\uC5D0 \uB9DE\uCDB0 \uC870\uC6A9\uD788 \uD55C \uBC14\uD034 \uB3CC\uC558\uC5B4\uC694"
+    - "\uC5EC\uC6B4\uC774 \uAE38\uC5B4\uC11C \uC544\uC9C1\uB3C4 \uB178\uB798\uAC00
+      \uB9F4\uB3CC\uC544\uC694"
+    - "\uC5B8\uC820\uAC00 \uB9C8\uC9C0\uB9C9 \uC74C\uC744 \uAF2D \uB4E4\uB824\uB4DC\uB9AC\uACE0
+      \uC2F6\uB300\uC694"
+    - "\uC218\uC120\uC810\uC758 \uBC24\uC744 \uC790\uC7A5\uAC00\uB85C \uAC10\uC2F8
+      \uC92C\uC5B4\uC694"
+  ftueSteps:
+  - id: ftue_intro
+    trigger: 0
+    triggerArg: 
+    coachTarget: 
+    text: "\uC78A\uD78C \uBB3C\uAC74\uB4E4\uC774 \uAE38\uC744 \uC783\uB294 \uBC24\uC774
+      \uC788\uC5B4\uC694\n\uADF8\uB7F0 \uBC24\uC774\uBA74 \uACE8\uBAA9 \uB05D \uC791\uC740
+      \uC218\uC120\uC810\uC5D0 \uBD88\uC774 \uCF1C\uC838\uC694\n\"\uC5B4\uC11C \uC640\uC694!
+      \uC624\uB298 \uBC24 \uC218\uC120\uC810\uC744 \uD568\uAED8 \uC9C0\uCF1C \uC904\uB798\uC694?\""
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 16
+      counter: 0
+      targetId: meta.intro_seen
+      target: 1
+    action: 1
+    actionArg: 
+    rewards: []
+  - id: ftue_first_battle
+    trigger: 0
+    triggerArg: 
+    coachTarget: 
+    text: "\uC9C0\uD0B4\uC774\uB85C \uBC29\uD5A5\uC744 \uC9C0\uD0A4\uACE0, \uC794\uD5A5\uC774\uB85C
+      \uC704\uAE30\uB97C \uB9C9\uC544\n\uC218\uC120\uC810\uC744 \uBC1D\uD600 \uC8FC\uC138\uC694!"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 4
+      targetId: 
+      target: 3
+    action: 8
+    actionArg: 
+    rewards: []
+  - id: ftue_first_summon
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    text: "\uC794\uD5A5\uC744 \uC368\uC11C \uC794\uD5A5\uC774\uB97C \uBD88\uB7EC\uC694\n\uB371\uC758
+      \uCCAB \uCE78\uC744 \uD1A1 \uB20C\uB7EC \uBCF4\uC138\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 1
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_drag_summon
+    trigger: 3
+    triggerArg: 2
+    coachTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    text: "\uCE78\uC744 \uAFB9 \uB204\uB978 \uCC44 \uB04C\uBA74 \uC6D0\uD558\uB294
+      \uBC29\uD5A5\uC73C\uB85C \uBCF4\uB0BC \uC218 \uC788\uC5B4\uC694"
+    blockInput: 0
+    hintOnly: 1
+    complete:
+      type: 0
+      counter: 0
+      targetId: 
+      target: 0
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_first_lamp
+    trigger: 3
+    triggerArg: 5
+    coachTarget: SafeArea/StageArea/Battle/Strip/LampButton
+    text: "\uBD88\uBE5B \uAC8C\uC774\uC9C0\uAC00 \uCC28\uBA74 \uBC84\uD2BC\uC774
+      \uBC18\uC9DD\uC5EC\uC694\n\uC218\uC120\uC810\uC5D0 \uBD88\uC744 \uBC1D\uD600\uC694!"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 6
+      targetId: 
+      target: 1
+    action: 2
+    actionArg: 
+    rewards: []
+  - id: ftue_first_boss
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/StageArea/Battle/Hud/StagePanel
+    text: "\uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uB2E4\uC74C \uC2A4\uD14C\uC774\uC9C0\uB85C
+      \uAC00\uC694!"
+    blockInput: 0
+    hintOnly: 1
+    complete:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 1
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_shop_upgrade
+    trigger: 3
+    triggerArg: 1.5
+    coachTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    text: "\uAC15\uD654 \uD0ED\uC5D0\uC11C \uB2E8\uCD94\uB85C \uC218\uC120\uC810\uC744
+      \uAC15\uD654\uD574\uC694\n\uAC15\uD654 x1\uC744 3\uBC88 \uB20C\uB7EC \uBCF4\uC138\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 7
+      targetId: 
+      target: 3
+    action: 0
+    actionArg: 
+    rewards:
+    - type: 0
+      currency: 0
+      itemId: 
+      amount: 250
+  - id: ftue_friend_level
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    text: "\uC120\uBB3C \uBC1B\uC740 \uB2E8\uCD94\uB85C \uC9DD\uC9DD\uC774\uB97C
+      \uB808\uBCA8 5\uAE4C\uC9C0 \uC62C\uB824 \uBCF4\uC138\uC694\n\uB808\uBCA8\uC740
+      \uC9DD\uC9DD\uC774\uC758 \uBAA8\uB4E0 \uD615\uD0DC\uAC00 \uD568\uAED8 \uB098\uB220\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 6
+      counter: 0
+      targetId: jjakjjak
+      target: 5
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_auto_battle
+    trigger: 2
+    triggerArg: AutoBattle
+    coachTarget: SafeArea/StageArea/Battle/Hud/AutoButton
+    text: "AUTO\uAC00 \uCF1C\uC84C\uC5B4\uC694! \uC774\uC81C \uCE5C\uAD6C\uB4E4\uC774
+      \uC54C\uC544\uC11C \uC2F8\uC6CC\uC694"
+    blockInput: 0
+    hintOnly: 1
+    complete:
+      type: 0
+      counter: 0
+      targetId: 
+      target: 0
+    action: 3
+    actionArg: 
+    rewards: []
+  - id: ftue_idle_chest
+    trigger: 2
+    triggerArg: IdleChest
+    coachTarget: SafeArea/StageArea/Battle/MetaHud/IdleChestWidget
+    text: "\uCE5C\uAD6C\uB4E4\uC774 \uBAA8\uC544 \uB454 \uC120\uBB3C\uC774 \uBC14\uAD6C\uB2C8\uC5D0
+      \uB2F4\uACBC\uC5B4\uC694\n\uBC14\uAD6C\uB2C8\uB97C \uB20C\uB7EC \uBC1B\uC544
+      \uBCF4\uC138\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 20
+      targetId: 
+      target: 1
+    action: 4
+    actionArg: 2
+    rewards: []
+  - id: ftue_first_meeting
+    trigger: 2
+    triggerArg: Gacha
+    coachTarget: SafeArea/TabBar/Tab_GachaPanel
+    text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uAC00 \uC5F4\uB838\uC5B4\uC694!\n\uCCAB
+      \uB9CC\uB0A8\uC740 \uBB34\uB8CC\uC608\uC694. \uB204\uAC00 \uCC3E\uC544\uC654\uC744\uAE4C\uC694?"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 16
+      counter: 0
+      targetId: meta.first_meeting_summoned
+      target: 1
+    action: 5
+    actionArg: udukeoni
+    rewards: []
+  - id: ftue_formation
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/TabBar/Tab_FormationPanel
+    text: "\uC0C8 \uCE5C\uAD6C \uC6B0\uB450\uCEE4\uB2C8\uB97C \uC9C0\uD0B4\uC774\uB85C
+      \uC138\uC6CC \uBD10\uC694\n\uD3B8\uC131\uC5D0\uC11C \uCE5C\uAD6C\uB97C \uB04C\uC5B4
+      \uBE48 \uBC29\uC704\uC5D0 \uB193\uC544\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 10
+      counter: 0
+      targetId: 
+      target: 4
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_synergy
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    text: "\uD568\uAED8 \uC11C\uBA74 \uD798\uC774 \uB098\uB294 \uCE5C\uAD6C\uB4E4\uC774
+      \uC788\uC5B4\uC694\n\uC2DC\uB108\uC9C0\uB97C \uB20C\uB7EC \uC790\uC138\uD788
+      \uC0B4\uD3B4\uBD10\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 16
+      counter: 0
+      targetId: meta.synergy_detail_viewed
+      target: 1
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_expedition
+    trigger: 2
+    triggerArg: Expedition
+    coachTarget: SafeArea/TabBar/Tab_ExpeditionPanel
+    text: "\uCE5C\uAD6C\uB4E4\uC744 \uC6D0\uC815\uC5D0 \uBCF4\uB0B4 \uBCF4\uC138\uC694\n\uB3CC\uC544\uC62C
+      \uB54C \uC7AC\uB8CC\uB97C \uD55C\uAC00\uB4DD \uB4E4\uACE0 \uC640\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 16
+      counter: 0
+      targetId: meta.short_first_expedition_used
+      target: 1
+    action: 6
+    actionArg: 1
+    rewards: []
+  - id: ftue_expedition_claim
+    trigger: 0
+    triggerArg: 
+    coachTarget: SafeArea/TabBar/Tab_ExpeditionPanel
+    text: "\uC6D0\uC815\uC774 \uB05D\uB098\uBA74 \uC6D0\uC815 \uD0ED\uC5D0 \uC810\uC774
+      \uB5A0\uC694. \uBC1B\uC544 \uC8FC\uC138\uC694!"
+    blockInput: 0
+    hintOnly: 1
+    complete:
+      type: 1
+      counter: 11
+      targetId: 
+      target: 1
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_quick_idle
+    trigger: 2
+    triggerArg: QuickIdle
+    coachTarget: SafeArea/StageArea/Battle/MetaHud/IdleChestWidget
+    text: "\uBE60\uB978 \uC218\uC120\uC774 \uC5F4\uB838\uC5B4\uC694! \uC624\uB298\uC740
+      \uBB34\uB8CC\uC608\uC694\n\uBC14\uAD6C\uB2C8\uC5D0\uC11C 2\uC2DC\uAC04\uCE58
+      \uC120\uBB3C\uC744 \uBC14\uB85C \uBC1B\uC544\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 1
+      counter: 21
+      targetId: 
+      target: 1
+    action: 0
+    actionArg: 
+    rewards: []
+  - id: ftue_graduation
+    trigger: 1
+    triggerArg: 
+    coachTarget: 
+    text: "\uC774\uC81C \uC218\uC120\uC810 \uC8FC\uC778\uC774\uC5D0\uC694!\n\uCE5C\uAD6C\uB4E4\uACFC
+      \uD568\uAED8 \uBC24\uC744 \uC9C0\uCF1C \uC8FC\uC138\uC694"
+    blockInput: 0
+    hintOnly: 0
+    complete:
+      type: 0
+      counter: 0
+      targetId: 
+      target: 0
+    action: 7
+    actionArg: 
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 300
+  power:
+    guardianWeight: 1
+    echoWeight: 0.6
+    shopHpWeight: 0.3
+    recommendedBase: 277.18399999999997
+    recommendedGrowth: 1.1043
+    comfortableRatio: 1
+    challengeRatio: 0.8
+    recommendedTaperStage: 30
+    recommendedGrowthLate: 1.0553
+    recommendedTaperStage2: 151
+    recommendedGrowthLate2: 1.0228
+    shopShareCap: 1
+    dungeonRecommendedBase: 83.7
+    dungeonRecommendedGrowth: 1.177
+  achievements:
+  - id: ach_stage_1
+    lineId: ach_stage
+    tier: 1
+    category: 0
+    title: "\uC2A4\uD14C\uC774\uC9C0 1-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 64418c73811c89b41acad06ac7d71d14, type: 3}
+  - id: ach_stage_2
+    lineId: ach_stage
+    tier: 2
+    category: 0
+    title: "\uC2A4\uD14C\uC774\uC9C0 2-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 40
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 64418c73811c89b41acad06ac7d71d14, type: 3}
+  - id: ach_stage_3
+    lineId: ach_stage
+    tier: 3
+    category: 0
+    title: "\uC2A4\uD14C\uC774\uC9C0 3-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 30
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 64418c73811c89b41acad06ac7d71d14, type: 3}
+  - id: ach_stage_4
+    lineId: ach_stage
+    tier: 4
+    category: 0
+    title: "\uC2A4\uD14C\uC774\uC9C0 5-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 50
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 80
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 64418c73811c89b41acad06ac7d71d14, type: 3}
+  - id: ach_stage_5
+    lineId: ach_stage
+    tier: 5
+    category: 0
+    title: "\uC2A4\uD14C\uC774\uC9C0 10-10 \uD074\uB9AC\uC5B4"
+    condition:
+      type: 4
+      counter: 0
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 64418c73811c89b41acad06ac7d71d14, type: 3}
+  - id: ach_kill_1
+    lineId: ach_kill
+    tier: 1
+    category: 1
+    title: "\uC801 100\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    condition:
+      type: 1
+      counter: 4
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 10
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 0efe65784ba84d74fa29205ff31cff92, type: 3}
+  - id: ach_kill_2
+    lineId: ach_kill
+    tier: 2
+    category: 1
+    title: "\uC801 1,000\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    condition:
+      type: 1
+      counter: 4
+      targetId: 
+      target: 1000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 0efe65784ba84d74fa29205ff31cff92, type: 3}
+  - id: ach_kill_3
+    lineId: ach_kill
+    tier: 3
+    category: 1
+    title: "\uC801 10,000\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    condition:
+      type: 1
+      counter: 4
+      targetId: 
+      target: 10000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 0efe65784ba84d74fa29205ff31cff92, type: 3}
+  - id: ach_kill_4
+    lineId: ach_kill
+    tier: 4
+    category: 1
+    title: "\uC801 100,000\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+    condition:
+      type: 1
+      counter: 4
+      targetId: 
+      target: 100000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 0efe65784ba84d74fa29205ff31cff92, type: 3}
+  - id: ach_lamp_1
+    lineId: ach_lamp
+    tier: 1
+    category: 2
+    title: "\uBD88 \uBC1D\uD788\uAE30 10\uBC88"
+    condition:
+      type: 1
+      counter: 6
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  - id: ach_lamp_2
+    lineId: ach_lamp
+    tier: 2
+    category: 2
+    title: "\uBD88 \uBC1D\uD788\uAE30 100\uBC88"
+    condition:
+      type: 1
+      counter: 6
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  - id: ach_lamp_3
+    lineId: ach_lamp
+    tier: 3
+    category: 2
+    title: "\uBD88 \uBC1D\uD788\uAE30 1,000\uBC88"
+    condition:
+      type: 1
+      counter: 6
+      targetId: 
+      target: 1000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: d18baa2dc749a064397ec4e6826671ff, type: 3}
+  - id: ach_echo_1
+    lineId: ach_echo
+    tier: 1
+    category: 3
+    title: "\uC794\uD5A5\uC774 100\uBC88 \uBD80\uB974\uAE30"
+    condition:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_echo_2
+    lineId: ach_echo
+    tier: 2
+    category: 3
+    title: "\uC794\uD5A5\uC774 1,000\uBC88 \uBD80\uB974\uAE30"
+    condition:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 1000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_echo_3
+    lineId: ach_echo
+    tier: 3
+    category: 3
+    title: "\uC794\uD5A5\uC774 10,000\uBC88 \uBD80\uB974\uAE30"
+    condition:
+      type: 1
+      counter: 5
+      targetId: 
+      target: 10000
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_friend_1
+    lineId: ach_friend
+    tier: 1
+    category: 4
+    title: "\uCE5C\uAD6C 4\uBA85 \uB9CC\uB098\uAE30"
+    condition:
+      type: 8
+      counter: 0
+      targetId: 
+      target: 4
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 10
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  - id: ach_friend_2
+    lineId: ach_friend
+    tier: 2
+    category: 4
+    title: "\uCE5C\uAD6C 5\uBA85 \uB9CC\uB098\uAE30"
+    condition:
+      type: 8
+      counter: 0
+      targetId: 
+      target: 5
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  - id: ach_friend_3
+    lineId: ach_friend
+    tier: 3
+    category: 4
+    title: "\uCE5C\uAD6C 6\uBA85 \uB9CC\uB098\uAE30"
+    condition:
+      type: 8
+      counter: 0
+      targetId: 
+      target: 6
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  - id: ach_friend_4
+    lineId: ach_friend
+    tier: 4
+    category: 4
+    title: "\uCE5C\uAD6C 7\uBA85 \uB9CC\uB098\uAE30"
+    condition:
+      type: 8
+      counter: 0
+      targetId: 
+      target: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 8841fad24534a6143953d5685f2bdcf8, type: 3}
+  - id: ach_form_1
+    lineId: ach_form
+    tier: 1
+    category: 5
+    title: "\uD615\uD0DC 5\uC885 \uD574\uAE08"
+    condition:
+      type: 9
+      counter: 0
+      targetId: 
+      target: 5
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: ach_form_2
+    lineId: ach_form
+    tier: 2
+    category: 5
+    title: "\uD615\uD0DC 10\uC885 \uD574\uAE08"
+    condition:
+      type: 9
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 40
+    hidden: 0
+    hint: 
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: ach_form_3
+    lineId: ach_form
+    tier: 3
+    category: 5
+    title: "\uD615\uD0DC 20\uC885 \uD574\uAE08"
+    condition:
+      type: 9
+      counter: 0
+      targetId: 
+      target: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 70
+    hidden: 0
+    hint: 
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: ach_form_4
+    lineId: ach_form
+    tier: 4
+    category: 5
+    title: "\uD615\uD0DC 29\uC885 \uD574\uAE08"
+    condition:
+      type: 9
+      counter: 0
+      targetId: 
+      target: 29
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 15
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}
+  - id: ach_expedition_1
+    lineId: ach_expedition
+    tier: 1
+    category: 6
+    title: "\uC6D0\uC815 10\uBC88 \uB2E4\uB140\uC624\uAE30"
+    condition:
+      type: 1
+      counter: 11
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: ach_expedition_2
+    lineId: ach_expedition
+    tier: 2
+    category: 6
+    title: "\uC6D0\uC815 50\uBC88 \uB2E4\uB140\uC624\uAE30"
+    condition:
+      type: 1
+      counter: 11
+      targetId: 
+      target: 50
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: ach_expedition_3
+    lineId: ach_expedition
+    tier: 3
+    category: 6
+    title: "\uC6D0\uC815 200\uBC88 \uB2E4\uB140\uC624\uAE30"
+    condition:
+      type: 1
+      counter: 11
+      targetId: 
+      target: 200
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 8
+    focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: ach_dungeon_1
+    lineId: ach_dungeon
+    tier: 1
+    category: 7
+    title: "\uC794\uD5A5\uC774 \uB358\uC804 5\uCE35 \uB3CC\uD30C"
+    condition:
+      type: 14
+      counter: 0
+      targetId: 
+      target: 5
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_dungeon_2
+    lineId: ach_dungeon
+    tier: 2
+    category: 7
+    title: "\uC794\uD5A5\uC774 \uB358\uC804 10\uCE35 \uB3CC\uD30C"
+    condition:
+      type: 14
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 40
+    hidden: 0
+    hint: 
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_dungeon_3
+    lineId: ach_dungeon
+    tier: 3
+    category: 7
+    title: "\uC794\uD5A5\uC774 \uB358\uC804 20\uCE35 \uB3CC\uD30C"
+    condition:
+      type: 14
+      counter: 0
+      targetId: 
+      target: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 70
+    hidden: 0
+    hint: 
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_dungeon_4
+    lineId: ach_dungeon
+    tier: 4
+    category: 7
+    title: "\uC794\uD5A5\uC774 \uB358\uC804 30\uCE35 \uB3CC\uD30C"
+    condition:
+      type: 14
+      counter: 0
+      targetId: 
+      target: 30
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 14
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: ach_gacha_1
+    lineId: ach_gacha
+    tier: 1
+    category: 8
+    title: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C 10\uBC88 \uCC3E\uAE30"
+    condition:
+      type: 1
+      counter: 9
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 10
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: ach_gacha_2
+    lineId: ach_gacha
+    tier: 2
+    category: 8
+    title: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C 50\uBC88 \uCC3E\uAE30"
+    condition:
+      type: 1
+      counter: 9
+      targetId: 
+      target: 50
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: ach_gacha_3
+    lineId: ach_gacha
+    tier: 3
+    category: 8
+    title: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C 100\uBC88 \uCC3E\uAE30"
+    condition:
+      type: 1
+      counter: 9
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: ach_gacha_4
+    lineId: ach_gacha
+    tier: 4
+    category: 8
+    title: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C 300\uBC88 \uCC3E\uAE30"
+    condition:
+      type: 1
+      counter: 9
+      targetId: 
+      target: 300
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 7
+    focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    icon: {fileID: 21300000, guid: 63fef44f0fe8f4045aa926d417c09eaa, type: 3}
+  - id: ach_synergy_1
+    lineId: ach_synergy
+    tier: 1
+    category: 9
+    title: "\uC2DC\uB108\uC9C0 5\uC885 \uCF1C \uBCF4\uAE30"
+    condition:
+      type: 23
+      counter: 0
+      targetId: 
+      target: 5
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 10
+    hidden: 0
+    hint: 
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+  - id: ach_synergy_2
+    lineId: ach_synergy
+    tier: 2
+    category: 9
+    title: "\uC2DC\uB108\uC9C0 10\uC885 \uCF1C \uBCF4\uAE30"
+    condition:
+      type: 23
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+  - id: ach_synergy_3
+    lineId: ach_synergy
+    tier: 3
+    category: 9
+    title: "\uC2DC\uB108\uC9C0 20\uC885 \uCF1C \uBCF4\uAE30"
+    condition:
+      type: 23
+      counter: 0
+      targetId: 
+      target: 20
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 70
+    hidden: 0
+    hint: 
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+  - id: ach_synergy_4
+    lineId: ach_synergy
+    tier: 4
+    category: 9
+    title: "\uC2DC\uB108\uC9C0 25\uC885 \uCF1C \uBCF4\uAE30"
+    condition:
+      type: 23
+      counter: 0
+      targetId: 
+      target: 25
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 3
+    focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    icon: {fileID: 21300000, guid: 9084c0d21db9eca43a230a1073f0e057, type: 3}
+  - id: ach_shop_1
+    lineId: ach_shop
+    tier: 1
+    category: 10
+    title: "\uC218\uC120\uC810 Lv.10"
+    condition:
+      type: 5
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 10
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: ach_shop_2
+    lineId: ach_shop
+    tier: 2
+    category: 10
+    title: "\uC218\uC120\uC810 Lv.50"
+    condition:
+      type: 5
+      counter: 0
+      targetId: 
+      target: 50
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: ach_shop_3
+    lineId: ach_shop
+    tier: 3
+    category: 10
+    title: "\uC218\uC120\uC810 Lv.100"
+    condition:
+      type: 5
+      counter: 0
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: ach_shop_4
+    lineId: ach_shop
+    tier: 4
+    category: 10
+    title: "\uC218\uC120\uC810 Lv.200"
+    condition:
+      type: 5
+      counter: 0
+      targetId: 
+      target: 200
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    icon: {fileID: 21300000, guid: 0659acb1d749f704096cb89bd2f21132, type: 3}
+  - id: ach_levelsum_1
+    lineId: ach_levelsum
+    tier: 1
+    category: 11
+    title: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 50"
+    condition:
+      type: 7
+      counter: 0
+      targetId: 
+      target: 50
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: fec73c5ac35129945823c931b2a62df7, type: 3}
+  - id: ach_levelsum_2
+    lineId: ach_levelsum
+    tier: 2
+    category: 11
+    title: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 200"
+    condition:
+      type: 7
+      counter: 0
+      targetId: 
+      target: 200
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: fec73c5ac35129945823c931b2a62df7, type: 3}
+  - id: ach_levelsum_3
+    lineId: ach_levelsum
+    tier: 3
+    category: 11
+    title: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 500"
+    condition:
+      type: 7
+      counter: 0
+      targetId: 
+      target: 500
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 1
+    focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    icon: {fileID: 21300000, guid: fec73c5ac35129945823c931b2a62df7, type: 3}
+  - id: ach_journal_1
+    lineId: ach_journal
+    tier: 1
+    category: 12
+    title: "\uC218\uC120 \uC77C\uC9C0 100\uC810 7\uC77C"
+    condition:
+      type: 1
+      counter: 26
+      targetId: 
+      target: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+  - id: ach_journal_2
+    lineId: ach_journal
+    tier: 2
+    category: 12
+    title: "\uC218\uC120 \uC77C\uC9C0 100\uC810 30\uC77C"
+    condition:
+      type: 1
+      counter: 26
+      targetId: 
+      target: 30
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+  - id: ach_journal_3
+    lineId: ach_journal
+    tier: 3
+    category: 12
+    title: "\uC218\uC120 \uC77C\uC9C0 100\uC810 100\uC77C"
+    condition:
+      type: 1
+      counter: 26
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 57834cf422097ff41bf47a41ad33a03e, type: 3}
+  - id: ach_attend_1
+    lineId: ach_attend
+    tier: 1
+    category: 13
+    title: "\uCD9C\uC11D \uB3C4\uC7A5 7\uC77C"
+    condition:
+      type: 1
+      counter: 27
+      targetId: 
+      target: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 10
+    focusTarget: 
+    icon: {fileID: 21300000, guid: e9b70dd725e3e3947952f6add456cac8, type: 3}
+  - id: ach_attend_2
+    lineId: ach_attend
+    tier: 2
+    category: 13
+    title: "\uCD9C\uC11D \uB3C4\uC7A5 28\uC77C"
+    condition:
+      type: 1
+      counter: 27
+      targetId: 
+      target: 28
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 10
+    focusTarget: 
+    icon: {fileID: 21300000, guid: e9b70dd725e3e3947952f6add456cac8, type: 3}
+  - id: ach_attend_3
+    lineId: ach_attend
+    tier: 3
+    category: 13
+    title: "\uCD9C\uC11D \uB3C4\uC7A5 100\uC77C"
+    condition:
+      type: 1
+      counter: 27
+      targetId: 
+      target: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 10
+    focusTarget: 
+    icon: {fileID: 21300000, guid: e9b70dd725e3e3947952f6add456cac8, type: 3}
+  - id: ach_costume_1
+    lineId: ach_costume
+    tier: 1
+    category: 14
+    title: "\uC758\uC0C1 3\uBC8C \uBAA8\uC73C\uAE30"
+    condition:
+      type: 24
+      counter: 0
+      targetId: 
+      target: 3
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+    hidden: 0
+    hint: 
+    navFeature: 19
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 1da29e265724bfc4292c87cdfa618bfc, type: 3}
+  - id: ach_costume_2
+    lineId: ach_costume
+    tier: 2
+    category: 14
+    title: "\uC758\uC0C1 6\uBC8C \uBAA8\uC73C\uAE30"
+    condition:
+      type: 24
+      counter: 0
+      targetId: 
+      target: 6
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 0
+    hint: 
+    navFeature: 19
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 1da29e265724bfc4292c87cdfa618bfc, type: 3}
+  - id: ach_costume_3
+    lineId: ach_costume
+    tier: 3
+    category: 14
+    title: "\uC758\uC0C1 10\uBC8C \uBAA8\uC73C\uAE30"
+    condition:
+      type: 24
+      counter: 0
+      targetId: 
+      target: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 19
+    focusTarget: 
+    icon: {fileID: 21300000, guid: 1da29e265724bfc4292c87cdfa618bfc, type: 3}
+  - id: ach_affinity_1
+    lineId: ach_affinity
+    tier: 1
+    category: 15
+    title: "\uD638\uAC10\uB3C4 Lv.10 \uCE5C\uAD6C 1\uBA85"
+    condition:
+      type: 22
+      counter: 0
+      targetId: 10
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 30
+    hidden: 0
+    hint: 
+    navFeature: 2
+    focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    icon: {fileID: 21300000, guid: c9e3ebcb3bf391c498836efc852cfc38, type: 3}
+  - id: ach_affinity_2
+    lineId: ach_affinity
+    tier: 2
+    category: 15
+    title: "\uD638\uAC10\uB3C4 Lv.10 \uCE5C\uAD6C 3\uBA85"
+    condition:
+      type: 22
+      counter: 0
+      targetId: 10
+      target: 3
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 60
+    hidden: 0
+    hint: 
+    navFeature: 2
+    focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    icon: {fileID: 21300000, guid: c9e3ebcb3bf391c498836efc852cfc38, type: 3}
+  - id: ach_affinity_3
+    lineId: ach_affinity
+    tier: 3
+    category: 15
+    title: "\uD638\uAC10\uB3C4 Lv.10 \uCE5C\uAD6C 7\uBA85"
+    condition:
+      type: 22
+      counter: 0
+      targetId: 10
+      target: 7
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+    hidden: 0
+    hint: 
+    navFeature: 2
+    focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    icon: {fileID: 21300000, guid: c9e3ebcb3bf391c498836efc852cfc38, type: 3}
+  - id: ach_hidden_1
+    lineId: ach_hidden
+    tier: 1
+    category: 16
+    title: "\uBE44 \uC624\uB294 \uB0A0\uC758 \uC4F8\uBAA8"
+    condition:
+      type: 16
+      counter: 0
+      targetId: ach.hidden.rain_udu
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 1
+    hint: "\uBE44 \uC624\uB294 \uB0A0, \uB204\uAD70\uAC00 \uC4F8\uBAA8\uB97C \uCC3E\uC744\uC9C0\uB3C4
+      \uBAB0\uB77C\uC694"
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: ce2a0a76a34b6c442ba06ddd8de257dc, type: 3}
+  - id: ach_hidden_2
+    lineId: ach_hidden
+    tier: 2
+    category: 16
+    title: "\uBB34\uC0AC\uD55C \uBC24"
+    condition:
+      type: 16
+      counter: 0
+      targetId: ach.hidden.clean_boss
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 1
+    hint: "\uBCF4\uC2A4\uAC00 \uBB38 \uC55E\uAE4C\uC9C0 \uC624\uC9C0 \uBABB\uD558\uAC8C
+      \uC9C0\uCF1C \uBD10\uC694"
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: ce2a0a76a34b6c442ba06ddd8de257dc, type: 3}
+  - id: ach_hidden_3
+    lineId: ach_hidden
+    tier: 3
+    category: 16
+    title: "\uBD88\uBE5B \uC138 \uBC88"
+    condition:
+      type: 16
+      counter: 0
+      targetId: ach.hidden.three_lamps
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 1
+    hint: "\uD55C \uD310\uC5D0 \uBD88\uC744 \uC5EC\uB7EC \uBC88 \uBC1D\uD600 \uBCFC\uAE4C\uC694?"
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: ce2a0a76a34b6c442ba06ddd8de257dc, type: 3}
+  - id: ach_hidden_4
+    lineId: ach_hidden
+    tier: 4
+    category: 16
+    title: "\uD55C \uC9DD\uC744 \uCC3E\uC544\uC11C"
+    condition:
+      type: 16
+      counter: 0
+      targetId: ach.hidden.all_socks
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 1
+    hint: "\uC9DD\uC9DD\uC774\uC758 \uBAA8\uB4E0 \uBAA8\uC2B5\uC744 \uB9CC\uB098
+      \uBD10\uC694"
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: ce2a0a76a34b6c442ba06ddd8de257dc, type: 3}
+  - id: ach_hidden_5
+    lineId: ach_hidden
+    tier: 5
+    category: 16
+    title: "\uB2A6\uC740 \uBC24\uC758 \uC190\uB2D8"
+    condition:
+      type: 16
+      counter: 0
+      targetId: ach.hidden.midnight
+      target: 1
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    hidden: 1
+    hint: "\uBAA8\uB450\uAC00 \uC7A0\uB4E0 \uC2DC\uAC04\uC5D0 \uB4E4\uB7EC \uBCFC\uAE4C\uC694?"
+    navFeature: 0
+    focusTarget: 
+    icon: {fileID: 21300000, guid: ce2a0a76a34b6c442ba06ddd8de257dc, type: 3}
+  codex:
+    formBaseGem: 20
+    formTier1Gem: 30
+    formTier2Gem: 50
+    costumeGem: 30
+    enemyGem: 10
+    synergyFirstGem: 20
+    synergyMaxGem: 30
+    materialGem: 5
+    formTiers:
+    - count: 5
+      percent: 1
+    - count: 10
+      percent: 3
+    - count: 15
+      percent: 5
+    - count: 20
+      percent: 7
+    - count: 25
+      percent: 8
+    - count: 29
+      percent: 10
+    allEnemiesShopHpPercent: 5
+    synergyTiers:
+    - count: 10
+      percent: 5
+    - count: 20
+      percent: 10
+    - count: 25
+      percent: 15
+    hints:
+    - key: form:jjak_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:jjak_caravan
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_marcher
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_acrobat
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_postman
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_medic
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_signal
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_rider
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_sniper
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_artisan
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:jjak_alchemist
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: costume:jjak_nightkeeper
+      hint: "\uC218\uC120\uC9D1 \uC57C\uAC04 \uBC29\uBB38(\uBC24 8\uC2DC ~ \uC0C8\uBCBD
+        6\uC2DC \uC811\uC18D)\uC73C\uB85C \uB9CC\uB098 \uBCF4\uC138\uC694!"
+    - key: costume:jjak_cheer
+      hint: "\uC2A4\uD14C\uC774\uC9C0 2-4\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74 \uBC1B\uC744
+        \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_mail
+      hint: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4\uB85C \uC6D0\uC815\uC744 5\uD68C \uC644\uB8CC\uD558\uBA74
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_traveler
+      hint: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4\uB85C \uC6D0\uC815\uC744 15\uD68C \uC644\uB8CC\uD558\uBA74
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_festival
+      hint: "'\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45' \uC774\uBCA4\uD2B8 \uC0C1\uC810\uC5D0\uC11C
+        \uBCC4\uBE5B \uC0AC\uD0D5 300\uAC1C\uB85C \uAD50\uD658\uD560 \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_caterpillar
+      hint: "\uC9C4\uD654\uD615 '\uC591\uB9D0 \uCE74\uB77C\uBC18' \uD574\uAE08 \uC2DC
+        \uD568\uAED8 \uC5F4\uB824\uC694."
+    - key: costume:jjak_plush
+      hint: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4 \uACF5\uBA85 Lv.3 \uB2EC\uC131 \uC2DC
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_puppet
+      hint: "\uC2A4\uD14C\uC774\uC9C0 3-9\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74 \uBC1B\uC744
+        \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_sleepcap
+      hint: "'\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45' \uC774\uBCA4\uD2B8 \uC0C1\uC810\uC5D0\uC11C
+        \uBCC4\uBE5B \uC0AC\uD0D5 150\uAC1C\uB85C \uAD50\uD658\uD560 \uC218 \uC788\uC5B4\uC694."
+    - key: costume:jjak_threadweb
+      hint: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4 \uACF5\uBA85 Lv.5 \uB2EC\uC131 \uC2DC
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+    - key: form:ttok_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:ttok_shield
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:ttok_spinner
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:chal_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:chal_master
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:chal_lock
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:mong_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:mong_lantern
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:mong_firefly
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:udu_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:udu_storm
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:udu_parasol
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:rouge_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:rouge_velvet
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:rouge_gloss
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:lala_base
+      hint: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30\uC5D0\uC11C \uB9CC\uB0A0
+        \uC218 \uC788\uC5B4\uC694"
+    - key: form:lala_waltz
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: form:lala_finale
+      hint: "\uC9C4\uD654 \uAE30\uC5B5\uB3C4\uC5D0\uC11C \uB2E8\uC11C\uB97C \uCC3E\uC544\uC694"
+    - key: enemy:enemy_dust
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-1\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_moth
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-2\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_tangle
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-3\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_rust
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-4\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_thimble
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-5\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_wisp
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-6\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:enemy_windup
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-8\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:boss_shadow
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-1\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: enemy:boss_mothqueen
+      hint: "\uC2A4\uD14C\uC774\uC9C0 1-3\uBD80\uD130 \uB098\uD0C0\uB098\uC694"
+    - key: synergy:trait_fabric
+      hint: "\uCC9C \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_metal
+      hint: "\uAE08\uC18D \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_light
+      hint: "\uBE5B \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_sound
+      hint: "\uC18C\uB9AC \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_night
+      hint: "\uBC24 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_rain
+      hint: "\uBE44 \uCE5C\uAD6C 1\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:trait_charm
+      hint: "\uCE58\uC7A5 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_defense
+      hint: "\uBC29\uC5B4 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_heal
+      hint: "\uD790 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_support
+      hint: "\uC9C0\uC6D0 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_assault
+      hint: "\uB3CC\uACA9 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_capture
+      hint: "\uD3EC\uD68D \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:style_snipe
+      hint: "\uC800\uACA9 \uCE5C\uAD6C 2\uBA85\uC774 \uD568\uAED8 \uC11C\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:combo_mending_duo
+      hint: "\uC9DD\uC9DD\uC774\xB7\uB611\uB2E8\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_rainy_lantern
+      hint: "\uC6B0\uB450\uCEE4\uB2C8\xB7\uBABD\uB2F9\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_locked_musicbox
+      hint: "\uCC30\uCE75\uC774\xB7\uB77C\uB77C\uBCA8 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_vanity_secret
+      hint: "\uB8E8\uC988\uB9AC\xB7\uB611\uB2E8\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_night_walk
+      hint: "\uC9DD\uC9DD\uC774\xB7\uBABD\uB2F9\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_parade
+      hint: "\uC9DD\uC9DD\uC774\xB7\uB77C\uB77C\uBCA8\xB7\uB8E8\uC988\uB9AC \uD568\uAED8
+        \uC138\uC6B0\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:combo_key_and_lock
+      hint: "\uCC30\uCE75\uC774\xB7\uB8E8\uC988\uB9AC \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_shop_family
+      hint: "\uC9DD\uC9DD\uC774\xB7\uB611\uB2E8\uC774\xB7\uCC30\uCE75\uC774\xB7\uBABD\uB2F9\uC774
+        \uD568\uAED8 \uC138\uC6B0\uBA74 \uCF1C\uC838\uC694"
+    - key: synergy:combo_clear_sky
+      hint: "\uC6B0\uB450\uCEE4\uB2C8\xB7\uB77C\uB77C\uBCA8 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_last_song
+      hint: "\uB77C\uB77C\uBCA8\xB7\uBABD\uB2F9\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_waiting_end
+      hint: "\uC6B0\uB450\uCEE4\uB2C8\xB7\uC9DD\uC9DD\uC774 \uD568\uAED8 \uC138\uC6B0\uBA74
+        \uCF1C\uC838\uC694"
+    - key: synergy:combo_seven_lights
+      hint: "\uC77C\uACF1 \uACC4\uBCF4 \uD568\uAED8 \uC138\uC6B0\uBA74 \uCF1C\uC838\uC694"
+    - key: material:mat_cloth
+      hint: "\uC218\uC120\uC810 \uC0C1\uC810\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_ribbon
+      hint: "\uC218\uC120\uC810 \uC0C1\uC810\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_wax
+      hint: "\uC218\uC120\uC810 \uC0C1\uC810\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_thread
+      hint: "\uC794\uD5A5\uC774 \uB358\uC804 3\uCE35\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_lace
+      hint: "\uC6D0\uC815 1-2\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_rib
+      hint: "\uC6D0\uC815 2-1\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_suitcase
+      hint: "\uC774\uBCA4\uD2B8 \uC0C1\uC810\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_spring
+      hint: "\uC794\uD5A5\uC774 \uB358\uC804 5\uCE35\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: material:mat_moonlight
+      hint: "\uC794\uD5A5\uC774 \uB358\uC804 10\uCE35\uC5D0\uC11C \uBAA8\uC544\uC694"
+    - key: story:1
+      hint: "1\uC7A5 \uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uC5F4\uB824\uC694"
+    - key: story:2
+      hint: "2\uC7A5 \uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uC5F4\uB824\uC694"
+    - key: story:3
+      hint: "3\uC7A5 \uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uC5F4\uB824\uC694"
+    - key: story:4
+      hint: "4\uC7A5 \uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uC5F4\uB824\uC694"
+    - key: story:5
+      hint: "5\uC7A5 \uBCF4\uC2A4\uB97C \uBB3C\uB9AC\uCE58\uBA74 \uC5F4\uB824\uC694"
+    enemyTexts:
+    - enemyId: enemy_dust
+      text: "\uC78A\uD78C \uBC29\uAD6C\uC11D\uC5D0\uC11C \uBB49\uCE5C \uBA3C\uC9C0\uC608\uC694.
+        \uC218\uAC00 \uB9CE\uC9C0\uB9CC \uC57D\uD574\uC694."
+    - enemyId: enemy_moth
+      text: "\uCC9C\uC744 \uAC09\uC544 \uBA39\uC5B4\uC694. \uCC9C\uC73C\uB85C \uB41C
+        \uCE5C\uAD6C\uAC00 \uB9DE\uC73C\uBA74 \uC544\uD30C\uC694."
+    - enemyId: enemy_tangle
+      text: "\uC4F0\uB7EC\uC9C0\uBA74 \uC791\uC740 \uC2E4\uBB49\uCE58 \uB458\uB85C
+        \uAC08\uB77C\uC838\uC694."
+    - enemyId: enemy_rust
+      text: "\uB290\uB9AC\uC9C0\uB9CC \uB2E8\uB2E8\uD574\uC694. \uB9DE\uC73C\uBA74
+        \uB179\uC774 \uBB3B\uC5B4 \uC57D\uD574\uC838\uC694."
+    - enemyId: enemy_thimble
+      text: "\uBCF4\uD638\uB9C9\uC744 \uB450\uB974\uACE0 \uC640\uC694. \uC800\uACA9\uC73C\uB85C
+        \uBA3C\uC800 \uAE68 \uC8FC\uC138\uC694."
+    - enemyId: enemy_wisp
+      text: "\uBCF4\uC774\uC9C0 \uC54A\uB2E4\uAC00 \uBE5B\uC5D0 \uB4DC\uB7EC\uB098\uC694."
+    - enemyId: enemy_windup
+      text: "\uB4A4\uC5D0\uC11C \uB2E4\uB978 \uC801\uC758 \uD0DC\uC5FD\uC744 \uAC10\uC544
+        \uBE60\uB974\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+    - enemyId: boss_shadow
+      text: "\uD654\uAC00 \uB098\uBA74 \uBE68\uB77C\uC9C0\uACE0 \uBD88\uBE5B\uC744
+        \uBE7C\uC557\uC544\uC694."
+    - enemyId: boss_mothqueen
+      text: "\uC880\uB098\uBC29\uC744 \uBD88\uB7EC\uB0B4\uC694. \uD654\uAC00 \uB098\uBA74
+        \uB354 \uC0AC\uB098\uC6CC\uC838\uC694."
+  gachaMilestones:
+  - pulls: 10
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 100
+  - pulls: 30
+    rewards:
+    - type: 5
+      currency: 0
+      itemId: 
+      amount: 20
+  - pulls: 50
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_moonlight
+      amount: 2
+  - pulls: 100
+    rewards:
+    - type: 8
+      currency: 0
+      itemId: Legendary
+      amount: 1
+  - pulls: 200
+    rewards:
+    - type: 5
+      currency: 0
+      itemId: 
+      amount: 40
+  gachaRepeat:
+    interval: 100
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 300
+  events:
+  - id: evt_weekend_expedition
+    name: "\uC8FC\uB9D0 \uC6D0\uC815 \uCD95\uC81C"
+    shortDesc: "\uD1A0\xB7\uC77C\uC694\uC77C\uC5D0\uB294 \uC6D0\uC815\uC5D0\uC11C
+      \uC7AC\uB8CC\uB97C \uB450 \uBC30\uB85C \uAC00\uC838\uC640\uC694"
+    kind: 0
+    scheduleType: 0
+    weekdayMask: 96
+    fromDay: 0
+    toDay: 0
+    fromMonth: 0
+    toMonth: 0
+    fromHour: 0
+    toHour: 0
+    multiplier: 2
+    bonus: 0
+    missions: []
+    stamps: []
+    startCard: 1
+    banner: {fileID: 21300000, guid: 68497da58cc6a944c96ff84bec67cd4e, type: 3}
+    icon: {fileID: 21300000, guid: 5cf2386350f80894fbb65d1e521cb8c5, type: 3}
+  - id: evt_wednesday_dungeon
+    name: "\uC218\uC694 \uB358\uC804 \uB370\uC774"
+    shortDesc: "\uC218\uC694\uC77C\uC5D0\uB294 \uC794\uD5A5\uC774 \uB358\uC804 \uC785\uC7A5\uAD8C\uC774
+      2\uC7A5 \uB354 \uC0DD\uACA8\uC694"
+    kind: 1
+    scheduleType: 0
+    weekdayMask: 4
+    fromDay: 0
+    toDay: 0
+    fromMonth: 0
+    toMonth: 0
+    fromHour: 0
+    toHour: 0
+    multiplier: 1
+    bonus: 2
+    missions: []
+    stamps: []
+    startCard: 0
+    banner: {fileID: 21300000, guid: ea6ff92ca90ed464792b7653a7703d43, type: 3}
+    icon: {fileID: 21300000, guid: 98b844cd32ed48040ac43b9ff8a2345a, type: 3}
+  - id: evt_starlit_walk
+    name: "\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45"
+    shortDesc: "\uB9E4\uB2EC 1\uC77C\uBD80\uD130 14\uC77C\uAE4C\uC9C0, \uBCC4\uBE5B
+      \uC0AC\uD0D5\uC774 \uB450 \uBC30\uB85C \uC3DF\uC544\uC838\uC694"
+    kind: 2
+    scheduleType: 1
+    weekdayMask: 0
+    fromDay: 1
+    toDay: 14
+    fromMonth: 0
+    toMonth: 0
+    fromHour: 0
+    toHour: 0
+    multiplier: 2
+    bonus: 0
+    missions:
+    - id: sw_stage
+      text: "\uC2A4\uD14C\uC774\uC9C0 50\uBC88 \uD074\uB9AC\uC5B4"
+      counter: 1
+      target: 50
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 60
+      isBonus: 0
+    - id: sw_lamp
+      text: "\uBD88 \uBC1D\uD788\uAE30 30\uBC88"
+      counter: 6
+      target: 30
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 40
+      isBonus: 0
+    - id: sw_expedition
+      text: "\uC6D0\uC815 6\uBC88 \uBCF4\uB0B4\uAE30"
+      counter: 10
+      target: 6
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 40
+      isBonus: 0
+    - id: sw_dungeon
+      text: "\uC794\uD5A5\uC774 \uB358\uC804 3\uBC88"
+      counter: 30
+      target: 3
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 40
+      isBonus: 0
+    - id: sw_gacha
+      text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 5\uBC88"
+      counter: 9
+      target: 5
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 50
+      isBonus: 0
+    - id: sw_basket
+      text: "\uC218\uC120 \uBC14\uAD6C\uB2C8 5\uBC88 \uBC1B\uAE30"
+      counter: 20
+      target: 5
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 40
+      isBonus: 0
+    - id: sw_bonus
+      text: "\uBBF8\uC158 6\uAC1C \uBAA8\uB450 \uBC1B\uAE30"
+      counter: 35
+      target: 6
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 100
+      isBonus: 1
+    stamps:
+    - day: 1
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 30
+      highlight: 0
+    - day: 2
+      rewards:
+      - type: 3
+        currency: 0
+        itemId: 
+        amount: 1
+      highlight: 0
+    - day: 3
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 50
+      highlight: 0
+    - day: 4
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_ribbon
+        amount: 15
+      highlight: 0
+    - day: 5
+      rewards:
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 70
+      highlight: 0
+    - day: 6
+      rewards:
+      - type: 4
+        currency: 0
+        itemId: 
+        amount: 1
+      highlight: 0
+    - day: 7
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 150
+      - type: 0
+        currency: 2
+        itemId: 
+        amount: 100
+      highlight: 1
+    startCard: 1
+    banner: {fileID: 21300000, guid: a251035aba4030147b26fd6bad51ceff, type: 3}
+    icon: {fileID: 21300000, guid: f167832d37b44144095d8d777660971a, type: 3}
+  - id: evt_night_shop
+    name: "\uBC24\uC758 \uC218\uC120\uC810"
+    shortDesc: "\uBC24\uC5D0\uB294 \uBC14\uAD6C\uB2C8\uC5D0 \uC120\uBB3C\uC774 \uC870\uAE08
+      \uB354 \uC313\uC5EC\uC694"
+    kind: 3
+    scheduleType: 2
+    weekdayMask: 0
+    fromDay: 0
+    toDay: 0
+    fromMonth: 0
+    toMonth: 0
+    fromHour: 21
+    toHour: 2
+    multiplier: 1.2
+    bonus: 0
+    missions: []
+    stamps: []
+    startCard: 0
+    banner: {fileID: 21300000, guid: 9a474a67f034b57499e9b7f8cf61c7c8, type: 3}
+    icon: {fileID: 21300000, guid: 25230c6b7c2bffe4b933286e35336548, type: 3}
+  season:
+    name: "\uBCC4\uBE5B \uC0B0\uCC45 \uC218\uCCA9"
+    days: 28
+    xpPerTier: 90
+    tiers: []
+    banner: {fileID: 21300000, guid: a251035aba4030147b26fd6bad51ceff, type: 3}
+  comeback:
+    minAwaySeconds: 259200
+    cooldownDays: 14
+    lifetimeMax: 6
+    bonusCapHours: 24
+    days:
+    - day: 1
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 300
+      - type: 3
+        currency: 0
+        itemId: 
+        amount: 2
+    - day: 2
+      rewards:
+      - type: 4
+        currency: 0
+        itemId: 
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 10
+    - day: 3
+      rewards:
+      - type: 5
+        currency: 0
+        itemId: 
+        amount: 20
+  affinity:
+    thresholds: 0000000000000000320000000000000096000000000000005e01000000000000bc02000000000000b004000000000000d007000000000000800c000000000000c012000000000000581b000000000000
+    gemPerLevel: 10
+    petAmount: 5
+    petsPerDay: 3
+    frameLevel: 5
+    poseLevel: 10
+    lineages:
+    - lineageId: jjakjjak
+      story:
+      - "\uC138\uD0C1\uAE30 \uC18D\uC5D0\uC11C \uC9DD\uC744 \uB193\uCE5C \uB0A0\uC744
+        \uC544\uC9C1 \uAE30\uC5B5\uD574\uC694."
+      - "\uADF8 \uB4A4\uB85C \uB9CC\uB098\uB294 \uC591\uB9D0\uB9C8\uB2E4 '\uAC00\uC871'\uC774\uB77C\uACE0
+        \uBD88\uB800\uB300\uC694."
+      - "\uC218\uC120\uC810 \uBC14\uAD6C\uB2C8\uC5D0\uC11C \uCC98\uC74C\uC73C\uB85C
+        \uD479 \uC7A0\uB4E4\uC5C8\uC5B4\uC694."
+      - "\uC783\uC5B4\uBC84\uB9B0 \uC9DD\uB3C4 \uB204\uAD70\uAC00\uC758 \uAC00\uC871\uC774
+        \uB418\uC5C8\uAE38 \uBC14\uB77C\uC694."
+      - "\uC774\uC81C \uC9DD\uC9DD\uC774\uC5D0\uAC8C \uD55C \uC9DD\uC740 \uC678\uB85C\uC6B4
+        \uC22B\uC790\uAC00 \uC544\uB2C8\uC5D0\uC694."
+      pet:
+      - "\uC624\uB298\uB3C4 \uAC00\uC871\uC774 \uB298\uC5C8\uC5B4!"
+      - "\uB0B4 \uC9DD\uC740 \uC5B4\uB514 \uC788\uC744\uAE4C?"
+      - "\uAC04\uC9C0\uB7EC\uC6CC, \uD788\uD788!"
+      - "\uC218\uC120\uC810\uC740 \uB0B4\uAC00 \uC9C0\uD0AC\uAC8C!"
+      - "\uD55C \uC9DD\uC774\uC5B4\uB3C4 \uAD1C\uCC2E\uC544."
+      - "\uC2E4\uBC25\uC774 \uD480\uB838\uB098? \uACE0\uB9C8\uC6CC!"
+      - "\uB2E4 \uAC19\uC774 \uC788\uC73C\uB2C8 \uC88B\uB2E4~"
+    - lineageId: ttokdan
+      story:
+      - "\uC678\uD22C\uC5D0\uC11C \uB5A8\uC5B4\uC9C0\uB358 \uB0A0, \uB05D\uAE4C\uC9C0
+        \uC2E4 \uD55C \uC62C\uC744 \uBD99\uC7A1\uC558\uC5B4\uC694."
+      - "\uADF8\uB798\uC11C \uC9C0\uAE08\uB3C4 \uBB34\uC5C7\uC774\uB4E0 \uAF2D \uBD99\uC7A1\uACE0
+        \uB193\uC9C0 \uC54A\uC544\uC694."
+      - "\uC218\uC120\uC810 \uBB38\uACE0\uB9AC\uB97C \uBD99\uC7A1\uACE0 \uBC24\uC0C8
+        \uBB38\uC744 \uC9C0\uD0A8 \uC801\uB3C4 \uC788\uC5B4\uC694."
+      - "\uBD99\uC7A1\uB294 \uAC74 \uB193\uCE58\uAE30 \uC2EB\uC740 \uB9C8\uC74C\uC774\uB77C\uB294
+        \uAC78 \uC54C\uAC8C \uB410\uC5B4\uC694."
+      - "\uC774\uC81C\uB294 \uCE5C\uAD6C\uB4E4 \uC190\uC744 \uAF2D \uBD99\uC7A1\uB294
+        \uB2E8\uCD94\uAC00 \uB418\uC5C8\uC5B4\uC694."
+      pet:
+      - "\uAF2D \uBD99\uC7A1\uACE0 \uC788\uC744\uAC8C!"
+      - "\uB193\uCE58\uC9C0 \uC54A\uC544!"
+      - "\uB2E8\uB2E8\uD788 \uB9E4\uB2EC\uB838\uC9C0?"
+      - "\uC5EC\uAE30\uAC00 \uB0B4 \uC790\uB9AC\uC57C!"
+      - "\uB5A8\uC5B4\uC9C0\uBA74 \uC548 \uB3FC\u2026"
+      - "\uB538\uAE4D! \uACE0\uB9C8\uC6CC."
+      - "\uAF49 \uC7A1\uC544 \uC904\uAC8C!"
+    - lineageId: chalkak
+      story:
+      - "\uB9DE\uB294 \uBB38\uC744 \uCC3E\uC544 \uACE8\uBAA9\uC758 \uBB38\uC744 \uC804\uBD80
+        \uB450\uB4DC\uB824 \uBD24\uC5B4\uC694."
+      - "\uC5B4\uB290 \uBB38\uB3C4 \uC5F4\uB9AC\uC9C0 \uC54A\uC558\uC9C0\uB9CC \uD3EC\uAE30\uD558\uC9C0
+        \uC54A\uC558\uC5B4\uC694."
+      - "\uC218\uC120\uC810 \uBB38\uC740 \uB450\uB4DC\uB9AC\uAE30\uB3C4 \uC804\uC5D0
+        \uBA3C\uC800 \uC5F4\uB838\uC5B4\uC694."
+      - "\uB9DE\uB294 \uC790\uBB3C\uC1E0\uBCF4\uB2E4 \uBC18\uACA8 \uC8FC\uB294 \uBB38\uC774
+        \uB354 \uC88B\uB2E4\uB294 \uAC78 \uC54C\uC558\uC5B4\uC694."
+      - "\uCC30\uCE75\uC774\uB294 \uC774\uC81C \uCE5C\uAD6C\uB4E4\uC758 \uB9C8\uC74C\uC744
+        \uC5EC\uB294 \uC5F4\uC1E0\uC608\uC694."
+      pet:
+      - "\uC774 \uBB38\uC740 \uB9DE\uC744\uAE4C?"
+      - "\uCC30\uCE75! \uC544\uB2C8\uB124\u2026"
+      - "\uC5B8\uC820\uAC00 \uB9DE\uB294 \uBB38\uC774 \uC788\uACA0\uC9C0?"
+      - "\uB611\uB611, \uB204\uAD6C\uC138\uC694?"
+      - "\uC5B4\uB514\uB4E0 \uC5F4\uC5B4 \uC904\uAC8C!"
+      - "\uB531 \uB9DE\uB294 \uC9DD\uC744 \uCC3E\uB294 \uC911!"
+      - "\uC5F4\uC1E0 \uAD6C\uBA4D \uAC19\uC740 \uB208\uC774\uB124?"
+    - lineageId: mongdang
+      story:
+      - "\uC0DD\uC77C \uCF00\uC774\uD06C \uC704\uC5D0\uC11C \uB9C8\uC9C0\uB9C9\uAE4C\uC9C0
+        \uD0C0\uC624\uB978 \uCD08\uC600\uC5B4\uC694."
+      - "\uB179\uC744\uC218\uB85D \uC791\uC544\uC84C\uC9C0\uB9CC \uBE5B\uC740 \uC904\uC9C0
+        \uC54A\uC558\uC5B4\uC694."
+      - "\uC5B4\uB450\uC6B4 \uC815\uB958\uC7A5\uC5D0\uC11C \uAE38 \uC783\uC740 \uCE5C\uAD6C\uB97C
+        \uBC1D\uD600 \uC900 \uC801\uC774 \uC788\uC5B4\uC694."
+      - "\uC791\uC544\uC9C0\uB294 \uAC8C \uBB34\uC12D\uC9C0 \uC54A\uB2E4\uACE0, \uC870\uC6A9\uD788
+        \uC6C3\uC5B4\uC694."
+      - "\uBABD\uB2F9\uC774\uC758 \uBD88\uC528\uB294 \uC774\uC81C \uC218\uC120\uC810
+        \uBAA8\uB450\uC758 \uB4F1\uBD88\uC774\uC5D0\uC694."
+      pet:
+      - "\uC870\uAE08 \uC791\uC544\uC84C\uC9C0\uB9CC \uAD1C\uCC2E\uC544."
+      - "\uB05D\uAE4C\uC9C0 \uBC1D\uD600 \uC904\uAC8C."
+      - "\uB530\uB73B\uD558\uC9C0?"
+      - "\uBD88\uC528 \uD558\uB098 \uB098\uB220 \uC904\uAE4C?"
+      - "\uB179\uC544\uB3C4 \uBB34\uC12D\uC9C0 \uC54A\uC544."
+      - "\uC5B4\uB460\uC740 \uB0B4\uAC00 \uB9E1\uC744\uAC8C!"
+      - "\uD638~ \uBD88\uC9C0\uB294 \uB9C8!"
+    - lineageId: udukeoni
+      story:
+      - "\uC8FC\uC778\uC774 '\uAE08\uBC29 \uC62C\uAC8C' \uD558\uACE0 \uB450\uACE0
+        \uAC04 \uC6B0\uC0B0\uC774\uC5C8\uC5B4\uC694."
+      - "\uB9D1\uC740 \uB0A0\uC774\uBA74 \uC790\uAE30\uAC00 \uC4F8\uBAA8\uC5C6\uB2E4\uACE0
+        \uC2DC\uBB34\uB8E9\uD574\uD588\uC5B4\uC694."
+      - "\uBE44 \uC624\uB294 \uBC24, \uCE5C\uAD6C\uB4E4\uC744 \uC9C0\uD0A4\uBA70
+        \uCC98\uC74C \uC6C3\uC5C8\uC5B4\uC694."
+      - "\uAE30\uB2E4\uB9BC\uB3C4 \uB204\uAD70\uAC00\uB97C \uC9C0\uD0A4\uB294 \uC77C\uC774\uB77C\uB294
+        \uAC78 \uBC30\uC6E0\uC5B4\uC694."
+      - "\uC774\uC81C \uC6B0\uB450\uCEE4\uB2C8\uB294 \uB9D1\uC740 \uB0A0\uC5D0\uB3C4
+        \uC218\uC120\uC810\uC744 \uC9C0\uCF1C\uC694."
+      pet:
+      - "\uBE44\uAC00 \uC624\uBA74 \uC88B\uACA0\uB2E4\u2026"
+      - "\uC624\uB298\uC740 \uB9D1\uB124. \uC2DC\uBB34\uB8E9\u2026"
+      - "\uAE30\uB2E4\uB9AC\uB294 \uAC74 \uC790\uC2E0 \uC788\uC5B4."
+      - "\uC6B0\uC0B0 \uC544\uB798\uB85C \uC640!"
+      - "\uC4F8\uBAA8 \uC788\uB294 \uB0A0\uC774 \uC62C \uAC70\uC57C."
+      - "\uBE57\uC18C\uB9AC\uAC00 \uADF8\uB9AC\uC6CC."
+      - "\uC8FC\uC778\uC740 \uC5B8\uC81C \uC62C\uAE4C?"
+    - lineageId: rouge
+      story:
+      - "\uC11C\uB78D \uC18D\uC5D0 \uC78A\uD78C \uCC44 \uC624\uB798 \uB69C\uAED1\uC744
+        \uB2EB\uACE0 \uC788\uC5C8\uC5B4\uC694."
+      - "\uB204\uAD70\uAC00 \uB3CC\uB824 \uC62C\uB824 \uC8FC\uC790 \uCC98\uC74C\uC73C\uB85C
+        \uB2F9\uB2F9\uD574\uC84C\uC5B4\uC694."
+      - "\uCE5C\uAD6C\uB4E4 \uBCFC\uC5D0 \uD558\uD2B8\uB97C \uADF8\uB824 \uC8FC\uB294
+        \uAC8C \uCDE8\uBBF8\uAC00 \uB410\uC5B4\uC694."
+      - "\uC218\uC90D\uC740 \uB0A0\uB3C4, \uB2F9\uB2F9\uD55C \uB0A0\uB3C4 \uBAA8\uB450
+        \uC790\uAE30 \uBAA8\uC2B5\uC774\uB798\uC694."
+      - "\uB8E8\uC988\uB9AC\uC758 \uC0C9\uC740 \uC774\uC81C \uC218\uC120\uC810\uC758
+        \uC6C3\uC74C\uC774\uC5D0\uC694."
+      pet:
+      - "\uAE84, \uBD80\uB044\uB7EC\uC6CC!"
+      - "\uB3CC\uB824 \uC62C\uB9AC\uBA74 \uB2F9\uB2F9\uD574\uC838!"
+      - "\uC624\uB298 \uC0C9 \uC5B4\uB54C?"
+      - "\uCABD! \uACE0\uB9C8\uC6CC."
+      - "\uB69C\uAED1\uC740 \uB2EB\uC9C0 \uB9C8~"
+      - "\uBC18\uC9DD\uBC18\uC9DD \uBE5B\uB098 \uBCFC\uAE4C?"
+      - "\uB0B4\uAC00 \uC81C\uC77C \uC608\uC058\uC9C0?"
+    - lineageId: lalabell
+      story:
+      - "\uB9C8\uC9C0\uB9C9 \uC74C\uC744 \uCE58\uBA74 \uB178\uB798\uAC00 \uB05D\uB0A0\uAE4C
+        \uBD10 \uBB34\uC11C\uC6E0\uC5B4\uC694."
+      - "\uADF8\uB798\uC11C \uB298 \uB05D \uC74C \uC55E\uC5D0\uC11C \uBA48\uCDC4\uB300\uC694."
+      - "\uCE5C\uAD6C\uB4E4\uC774 \uB2E4\uC74C \uB178\uB798\uB97C \uC774\uC5B4 \uC8FC\uACA0\uB2E4\uACE0
+        \uC57D\uC18D\uD588\uC5B4\uC694."
+      - "\uCC98\uC74C\uC73C\uB85C \uB9C8\uC9C0\uB9C9 \uC74C\uC744 \uC544\uC8FC \uC791\uAC8C
+        \uCCD0 \uBD24\uC5B4\uC694."
+      - "\uB05D\uC740 \uB610 \uB2E4\uB978 \uB178\uB798\uC758 \uC2DC\uC791\uC774\uB77C\uB294
+        \uAC78 \uC54C\uC558\uC5B4\uC694."
+      pet:
+      - "\uB9C8\uC9C0\uB9C9 \uC74C\uC740\u2026 \uC544\uC9C1\uC774\uC57C."
+      - "\uB3C4, \uB808, \uBBF8\u2026 \uC27F."
+      - "\uC790\uC7A5\uAC00 \uB4E4\uB824\uC904\uAE4C?"
+      - "\uD0DC\uC5FD\uC744 \uAC10\uC544 \uC904\uB798?"
+      - "\uB178\uB798\uAC00 \uB05D\uB098\uB294 \uAC8C \uBB34\uC11C\uC6CC."
+      - "\uD568\uAED8\uB77C\uBA74 \uB05D\uAE4C\uC9C0 \uCE60 \uC218 \uC788\uC744\uAE4C?"
+      - "\uB775~ \uACE0\uB9C8\uC6CC."
+  storyChapters:
+  - chapter: 1
+    title: "\uBD88\uC774 \uCF1C\uC9C4 \uACE8\uBAA9"
+    place: "\uC783\uC5B4\uBC84\uB9B0 \uACE8\uBAA9"
+    panels:
+    - art: {fileID: 21300000, guid: cd7abff1033149942b32f46513a4c1a0, type: 3}
+      text: "\uC78A\uD78C \uBB3C\uAC74\uB4E4\uC774 \uAD74\uB7EC\uB4DC\uB294 \uACE8\uBAA9
+        \uB05D, \uC791\uC740 \uC218\uC120\uC810\uC5D0 \uBD88\uC774 \uCF1C\uC84C\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: e3df79b6b4370934ba483d784d000344, type: 3}
+      text: "\uC9DD\uC744 \uC783\uC740 \uC591\uB9D0\uC774 \uBB38\uC744 \uB450\uB4DC\uB838\uC5B4\uC694.
+        \"\uC5EC\uAE30, \uAC00\uC871\uC774 \uC788\uB098\uC694?\""
+    - art: {fileID: 21300000, guid: 2ca23a474410a2148bc91088b4ee08f2, type: 3}
+      text: "\uD070\uADF8\uB9BC\uC790\uAC00 \uBB3C\uB7EC\uAC04 \uBC24, \uACE8\uBAA9\uC758
+        \uAC00\uB85C\uB4F1\uC774 \uD558\uB098\uB458 \uB2E4\uC2DC \uCF1C\uC84C\uC5B4\uC694."
+    firstReadRewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  - chapter: 2
+    title: "\uBE44 \uC624\uB294 \uAD11\uC7A5\uC758 \uC6B0\uC0B0"
+    place: "\uBE44 \uC624\uB294 \uAD11\uC7A5"
+    panels:
+    - art: {fileID: 21300000, guid: 00d50a09d555df24d8698ea08f0d7fcd, type: 3}
+      text: "\uBE44 \uC624\uB294 \uAD11\uC7A5 \uD55C\uAC00\uC6B4\uB370, \uD3BC\uCCD0\uC9C4
+        \uC6B0\uC0B0 \uD558\uB098\uAC00 \uC8FC\uC778\uC744 \uAE30\uB2E4\uB838\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: 574f8549e72b3bf4fb8140b39e5284fb, type: 3}
+      text: "\"\uBE44\uAC00 \uADF8\uCE58\uBA74 \uB098\uB294 \uC4F8\uBAA8\uC5C6\uC5B4\uC9C8\uAE4C?\"
+        \uC6B0\uC0B0\uC774 \uC791\uAC8C \uC911\uC5BC\uAC70\uB838\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: f88893cae1c488743a047c79589eee56, type: 3}
+      text: "\uC218\uC120\uC810 \uC2DD\uAD6C\uB4E4\uC774 \uC6B0\uC0B0 \uC544\uB798
+        \uBAA8\uC5EC \uC549\uC790, \uBE57\uC18C\uB9AC\uAC00 \uB178\uB798\uCC98\uB7FC
+        \uB4E4\uB838\uC5B4\uC694."
+    firstReadRewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  - chapter: 3
+    title: "\uB9C8\uC9C0\uB9C9 \uC74C"
+    place: "\uBA3C\uC9C0 \uC313\uC778 \uB2E4\uB77D\uBC29"
+    panels:
+    - art: {fileID: 21300000, guid: 5141fea41af7711449acea6ce2639360, type: 3}
+      text: "\uB2E4\uB77D\uBC29 \uC0C1\uC790 \uC18D\uC5D0\uC11C \uB9C8\uC9C0\uB9C9
+        \uC74C\uC774 \uACE0\uC7A5 \uB09C \uC624\uB974\uACE8\uC774 \uAE68\uC5B4\uB0AC\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: 43907698def8e4649896658498b0a8a9, type: 3}
+      text: "\uD0DC\uC5FD\uC744 \uAC10\uC744 \uB54C\uB9C8\uB2E4 \uC624\uB974\uACE8\uC740
+        \uB05D \uC74C \uC55E\uC5D0\uC11C \uBA48\uCE6B\uD588\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: 6f3c0383ddc5a0048807d6ff4fd5d7ec, type: 3}
+      text: "\"\uB05D\uB098\uB3C4 \uAD1C\uCC2E\uC544. \uC6B0\uB9AC\uAC00 \uB2E4\uC74C
+        \uB178\uB798\uB97C \uC774\uC5B4 \uC904\uAC8C.\""
+    firstReadRewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  - chapter: 4
+    title: "\uC11C\uB78D \uC18D \uC0C9"
+    place: "\uBD84\uC2E4\uBB3C \uBCF4\uAD00\uC18C"
+    panels:
+    - art: {fileID: 21300000, guid: d70242cb27fce5b43b4984a0e5f80ca1, type: 3}
+      text: "\uC120\uBC18\uB9C8\uB2E4 \uC774\uB984\uD45C \uC5C6\uB294 \uBB3C\uAC74\uB4E4\uC774
+        \uBE7C\uACE1\uD55C \uBD84\uC2E4\uBB3C \uBCF4\uAD00\uC18C\uC608\uC694."
+    - art: {fileID: 21300000, guid: f369e2606bb6a4547a0c85a4d0890c8a, type: 3}
+      text: "\uC11C\uB78D \uC18D \uB9BD\uC2A4\uD2F1\uC774 \uB69C\uAED1\uC744 \uC0B4\uC9DD
+        \uC5F4\uACE0 \uBC14\uAE65\uC744 \uC5FF\uBCF4\uC558\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: 1e9bd67707a6e7a44b13576b163ac8a7, type: 3}
+      text: "\uB3CC\uB824 \uC62C\uB9B0 \uB9BD\uC2A4\uD2F1\uC774 \uBC18\uC9DD \uC6C3\uC790,
+        \uBCF4\uAD00\uC18C\uC5D0 \uB2E4\uC815\uD55C \uC0C9\uC774 \uBC88\uC84C\uC5B4\uC694."
+    firstReadRewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  - chapter: 5
+    title: "\uBCC4\uBE5B \uC138\uD0C1\uC18C"
+    place: "\uBCC4\uBE5B \uC138\uD0C1\uC18C"
+    panels:
+    - art: {fileID: 21300000, guid: 3a79bebbf930d5b42893e48740422f51, type: 3}
+      text: "\uBC24\uC5D0\uB9CC \uBB38\uC744 \uC5EC\uB294 \uC138\uD0C1\uC18C\uC5D0\uC11C
+        \uBCC4\uBE5B\uC5D0 \uB9C8\uB978 \uCC9C \uB0C4\uC0C8\uAC00 \uB0AC\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: 1a795a7d07c487a48a886b077401fe94, type: 3}
+      text: "\uBABD\uB2F9\uCD08\uB294 \uB179\uC544 \uC791\uC544\uC838\uB3C4 \uC138\uD0C1\uC18C
+        \uAD6C\uC11D\uC744 \uB05D\uAE4C\uC9C0 \uBC1D\uD614\uC5B4\uC694."
+    - art: {fileID: 21300000, guid: b6184c24b7e5e394a96411ec24496825, type: 3}
+      text: "\uC218\uC120\uC810\uC5D0 \uB3CC\uC544\uC628 \uCE5C\uAD6C\uB4E4\uC774
+        \uB9D0\uD588\uC5B4\uC694. \"\uC78A\uD600\uB3C4, \uC6B0\uB9AC\uB294 \uC5EC\uAE30
+        \uC788\uC5B4.\""
+    firstReadRewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+  lostChest:
+    dropChance: 0
+    tables:
+    - fromStage: 1
+      toStage: 10
+      entries:
+      - itemId: mat_cloth
+        min: 1
+        max: 2
+        weight: 40
+      - itemId: mat_ribbon
+        min: 1
+        max: 2
+        weight: 35
+      - itemId: mat_wax
+        min: 1
+        max: 1
+        weight: 15
+      - itemId: mat_lace
+        min: 1
+        max: 1
+        weight: 10
+    - fromStage: 11
+      toStage: 20
+      entries:
+      - itemId: mat_cloth
+        min: 1
+        max: 2
+        weight: 30
+      - itemId: mat_ribbon
+        min: 1
+        max: 2
+        weight: 20
+      - itemId: mat_wax
+        min: 1
+        max: 2
+        weight: 15
+      - itemId: mat_lace
+        min: 1
+        max: 1
+        weight: 15
+      - itemId: mat_rib
+        min: 1
+        max: 1
+        weight: 15
+      - itemId: mat_thread
+        min: 1
+        max: 1
+        weight: 5
+    - fromStage: 21
+      toStage: 2147483647
+      entries:
+      - itemId: mat_cloth
+        min: 2
+        max: 3
+        weight: 25
+      - itemId: mat_lace
+        min: 1
+        max: 2
+        weight: 20
+      - itemId: mat_rib
+        min: 1
+        max: 2
+        weight: 20
+      - itemId: mat_wax
+        min: 1
+        max: 2
+        weight: 15
+      - itemId: mat_thread
+        min: 1
+        max: 1
+        weight: 15
+      - itemId: mat_spring
+        min: 1
+        max: 1
+        weight: 5
+    chapterChests:
+    - chapter: 1
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 10
+      - type: 1
+        currency: 0
+        itemId: mat_ribbon
+        amount: 10
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 2
+    - chapter: 2
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_rib
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_lace
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 3
+    - chapter: 3
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 120
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 4
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 4
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 120
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 5
+      - type: 1
+        currency: 0
+        itemId: mat_lace
+        amount: 10
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 5
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 150
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 3
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 10
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 15
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 20
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 25
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 30
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 35
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 40
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 45
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 50
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 55
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 60
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 65
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 70
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 75
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 80
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 85
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 90
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 95
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 100
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 105
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 110
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 115
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 120
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 125
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 130
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 135
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 140
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 145
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 150
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 155
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 160
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 165
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 170
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 175
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 180
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 185
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 190
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 195
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 200
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+    - chapter: 0
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 6
+      - type: 1
+        currency: 0
+        itemId: mat_spring
+        amount: 2
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+  coupons:
+  - hash: 079b54ee7b6bf1ab499e33c3ef37fe3f48e8514ed7897b4c71047be2c4731f1e
+    validFromDayKey: 
+    validToDayKey: 
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 50
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 10
+    mailTitle: "\uCFE0\uD3F0 \uC120\uBB3C\uC774 \uB3C4\uCC29\uD588\uC5B4\uC694"
+    mailBody: "\uCFE0\uD3F0\uC73C\uB85C \uBC1B\uC740 \uC791\uC740 \uC120\uBB3C\uC774\uC5D0\uC694.
+      \uC218\uC120\uC810\uC744 \uC544\uAEF4 \uC918\uC11C \uACE0\uB9C8\uC6CC\uC694!"
+  couponSalt: d6088fa07d59a187721cb4b5
+  blessings: []
+  starterWeek:
+    windowDays: 14
+    maxInstallDays: 7
+    tasks:
+    - id: fw_d1_stage
+      day: 1
+      text: "\uC2A4\uD14C\uC774\uC9C0 1-10 \uD074\uB9AC\uC5B4"
+      condition:
+        type: 4
+        counter: 0
+        targetId: 
+        target: 10
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: 
+    - id: fw_d1_echo
+      day: 1
+      text: "\uC794\uD5A5\uC774 50\uBC88 \uBD80\uB974\uAE30"
+      condition:
+        type: 1
+        counter: 5
+        targetId: 
+        target: 50
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: SafeArea/StageArea/Battle/Strip/DeckPanel/Card0
+    - id: fw_d1_shop
+      day: 1
+      text: "\uC218\uC120\uC810 Lv.20"
+      condition:
+        type: 5
+        counter: 0
+        targetId: 
+        target: 20
+      points: 5
+      requiredFeature: 0
+      navFeature: 1
+      focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    - id: fw_d1_journal
+      day: 1
+      text: "\uC624\uB298 \uC218\uC120 \uC77C\uC9C0 40\uC810"
+      condition:
+        type: 15
+        counter: 0
+        targetId: 
+        target: 40
+      points: 5
+      requiredFeature: 12
+      navFeature: 12
+      focusTarget: 
+    - id: fw_d2_gacha
+      day: 2
+      text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 10\uBC88"
+      condition:
+        type: 1
+        counter: 9
+        targetId: 
+        target: 10
+      points: 5
+      requiredFeature: 7
+      navFeature: 7
+      focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    - id: fw_d2_expedition
+      day: 2
+      text: "\uC6D0\uC815 3\uBC88 \uBCF4\uB0B4\uAE30"
+      condition:
+        type: 1
+        counter: 10
+        targetId: 
+        target: 3
+      points: 5
+      requiredFeature: 8
+      navFeature: 8
+      focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    - id: fw_d2_levelsum
+      day: 2
+      text: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 60"
+      condition:
+        type: 7
+        counter: 0
+        targetId: 
+        target: 60
+      points: 5
+      requiredFeature: 0
+      navFeature: 1
+      focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    - id: fw_d2_basket
+      day: 2
+      text: "\uC218\uC120 \uBC14\uAD6C\uB2C8 3\uBC88 \uBC1B\uAE30"
+      condition:
+        type: 1
+        counter: 20
+        targetId: 
+        target: 3
+      points: 5
+      requiredFeature: 6
+      navFeature: 6
+      focusTarget: Popups/IdleChestPopup/Window/Body/ClaimButton
+    - id: fw_d3_stage
+      day: 3
+      text: "\uC2A4\uD14C\uC774\uC9C0 2-5 \uD074\uB9AC\uC5B4"
+      condition:
+        type: 4
+        counter: 0
+        targetId: 
+        target: 15
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: 
+    - id: fw_d3_dungeon
+      day: 3
+      text: "\uC794\uD5A5\uC774 \uB358\uC804 3\uCE35 \uB3CC\uD30C"
+      condition:
+        type: 14
+        counter: 0
+        targetId: 
+        target: 3
+      points: 5
+      requiredFeature: 14
+      navFeature: 14
+      focusTarget: 
+    - id: fw_d3_lamp
+      day: 3
+      text: "\uBD88 \uBC1D\uD788\uAE30 30\uBC88"
+      condition:
+        type: 1
+        counter: 6
+        targetId: 
+        target: 30
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: SafeArea/StageArea/Battle/Strip/LampButton
+    - id: fw_d3_quick
+      day: 3
+      text: "\uBE60\uB978 \uC218\uC120 3\uBC88"
+      condition:
+        type: 1
+        counter: 21
+        targetId: 
+        target: 3
+      points: 5
+      requiredFeature: 9
+      navFeature: 9
+      focusTarget: Popups/IdleChestPopup/Window/Body/QuickSection/QuickButton
+    - id: fw_d4_evolution
+      day: 4
+      text: "\uC9C4\uD654 1\uBC88 \uB9CC\uB4E4\uAE30"
+      condition:
+        type: 1
+        counter: 15
+        targetId: 
+        target: 1
+      points: 5
+      requiredFeature: 15
+      navFeature: 15
+      focusTarget: 
+    - id: fw_d4_synergy
+      day: 4
+      text: "\uC2DC\uB108\uC9C0 3\uAC1C \uCF1C\uAE30"
+      condition:
+        type: 12
+        counter: 0
+        targetId: 
+        target: 3
+      points: 5
+      requiredFeature: 3
+      navFeature: 3
+      focusTarget: SafeArea/ContentArea/FormationPanel/TeamSynergy
+    - id: fw_d4_buy
+      day: 4
+      text: "\uC0C1\uC810\uC5D0\uC11C 2\uBC88 \uC0AC\uAE30"
+      condition:
+        type: 1
+        counter: 19
+        targetId: 
+        target: 2
+      points: 5
+      requiredFeature: 13
+      navFeature: 13
+      focusTarget: SafeArea/ContentArea/ShopPanel/ProductList
+    - id: fw_d4_shop
+      day: 4
+      text: "\uC218\uC120\uC810 Lv.40"
+      condition:
+        type: 5
+        counter: 0
+        targetId: 
+        target: 40
+      points: 5
+      requiredFeature: 0
+      navFeature: 1
+      focusTarget: SafeArea/ContentArea/GrowthPanel/Buttons/LevelUp1Button
+    - id: fw_d5_stage
+      day: 5
+      text: "\uC2A4\uD14C\uC774\uC9C0 2-10 \uD074\uB9AC\uC5B4"
+      condition:
+        type: 4
+        counter: 0
+        targetId: 
+        target: 20
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: 
+    - id: fw_d5_expedition
+      day: 5
+      text: "\uC6D0\uC815 10\uBC88 \uBC1B\uAE30"
+      condition:
+        type: 1
+        counter: 11
+        targetId: 
+        target: 10
+      points: 5
+      requiredFeature: 8
+      navFeature: 8
+      focusTarget: SafeArea/ContentArea/ExpeditionPanel/ZoneList
+    - id: fw_d5_kill
+      day: 5
+      text: "\uC801 3,000\uB9C8\uB9AC \uBB3C\uB9AC\uCE58\uAE30"
+      condition:
+        type: 1
+        counter: 4
+        targetId: 
+        target: 3000
+      points: 5
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: 
+    - id: fw_d5_attendance
+      day: 5
+      text: "\uCD9C\uC11D \uB3C4\uC7A5 5\uC77C"
+      condition:
+        type: 1
+        counter: 27
+        targetId: 
+        target: 5
+      points: 5
+      requiredFeature: 10
+      navFeature: 10
+      focusTarget: 
+    - id: fw_d6_resonance
+      day: 6
+      text: "\uACC4\uBCF4 \uACF5\uBA85 1\uBC88"
+      condition:
+        type: 1
+        counter: 16
+        targetId: 
+        target: 1
+      points: 5
+      requiredFeature: 0
+      navFeature: 2
+      focusTarget: SafeArea/ContentArea/CharacterPanel/Grid
+    - id: fw_d6_costume
+      day: 6
+      text: "\uC758\uC0C1 1\uBC88 \uC785\uD788\uAE30"
+      condition:
+        type: 1
+        counter: 18
+        targetId: 
+        target: 1
+      points: 5
+      requiredFeature: 19
+      navFeature: 19
+      focusTarget: 
+    - id: fw_d6_levelsum
+      day: 6
+      text: "\uCE5C\uAD6C \uB808\uBCA8 \uD569\uACC4 120"
+      condition:
+        type: 7
+        counter: 0
+        targetId: 
+        target: 120
+      points: 5
+      requiredFeature: 0
+      navFeature: 1
+      focusTarget: SafeArea/ContentArea/GrowthPanel/LineageList
+    - id: fw_d6_dungeon
+      day: 6
+      text: "\uC794\uD5A5\uC774 \uB358\uC804 5\uCE35 \uB3CC\uD30C"
+      condition:
+        type: 14
+        counter: 0
+        targetId: 
+        target: 5
+      points: 5
+      requiredFeature: 14
+      navFeature: 14
+      focusTarget: 
+    - id: fw_d7_stage
+      day: 7
+      text: "\uC2A4\uD14C\uC774\uC9C0 3-5 \uD074\uB9AC\uC5B4"
+      condition:
+        type: 4
+        counter: 0
+        targetId: 
+        target: 25
+      points: 15
+      requiredFeature: 0
+      navFeature: 0
+      focusTarget: 
+    - id: fw_d7_journal
+      day: 7
+      text: "\uC218\uC120 \uC77C\uC9C0 100\uC810 3\uC77C"
+      condition:
+        type: 1
+        counter: 26
+        targetId: 
+        target: 3
+      points: 15
+      requiredFeature: 12
+      navFeature: 12
+      focusTarget: 
+    - id: fw_d7_gacha
+      day: 7
+      text: "\uC783\uC5B4\uBC84\uB9B0 \uCE5C\uAD6C \uCC3E\uAE30 30\uBC88"
+      condition:
+        type: 1
+        counter: 9
+        targetId: 
+        target: 30
+      points: 15
+      requiredFeature: 7
+      navFeature: 7
+      focusTarget: SafeArea/ContentArea/GachaPanel/Buttons/Pull1Button
+    - id: fw_d7_forms
+      day: 7
+      text: "\uD615\uD0DC 10\uC885 \uD574\uAE08"
+      condition:
+        type: 9
+        counter: 0
+        targetId: 
+        target: 10
+      points: 15
+      requiredFeature: 15
+      navFeature: 15
+      focusTarget: 
+    chests:
+    - points: 30
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 50
+      - type: 3
+        currency: 0
+        itemId: 
+        amount: 1
+      highlight: 0
+    - points: 60
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_ribbon
+        amount: 15
+      - type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 15
+      highlight: 0
+    - points: 90
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 100
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 3
+      highlight: 0
+    - points: 120
+      rewards:
+      - type: 5
+        currency: 0
+        itemId: 
+        amount: 20
+      - type: 4
+        currency: 0
+        itemId: 
+        amount: 1
+      highlight: 0
+    - points: 150
+      rewards:
+      - type: 0
+        currency: 1
+        itemId: 
+        amount: 150
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 2
+      - type: 5
+        currency: 0
+        itemId: 
+        amount: 20
+      highlight: 1
+  dailyGifts:
+  - weekday: 0
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_cloth
+      amount: 5
+  - weekday: 1
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_ribbon
+      amount: 5
+  - weekday: 2
+    rewards:
+    - type: 3
+      currency: 0
+      itemId: 
+      amount: 1
+  - weekday: 3
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_wax
+      amount: 3
+  - weekday: 4
+    rewards:
+    - type: 0
+      currency: 1
+      itemId: 
+      amount: 20
+  - weekday: 5
+    rewards:
+    - type: 1
+      currency: 0
+      itemId: mat_lace
+      amount: 3
+  - weekday: 6
+    rewards:
+    - type: 4
+      currency: 0
+      itemId: 
+      amount: 1
+  firefly:
+    minInterval: 360
+    maxInterval: 720
+    lifeSeconds: 8
+    perDay: 0
+    rewards:
+    - reward:
+        type: 2
+        currency: 0
+        itemId: 
+        amount: 10
+      fromLostChestTable: 0
+      weight: 55
+    - reward:
+        type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 1
+      fromLostChestTable: 1
+      weight: 35
+    - reward:
+        type: 0
+        currency: 1
+        itemId: 
+        amount: 10
+      fromLostChestTable: 0
+      weight: 10
+  cheer:
+    attackPercent: 20
+    durationSeconds: 600
+  bossHints:
+  - enemyId: boss_shadow
+    hint: "\uD654\uAC00 \uB098\uBA74 \uBE68\uB77C\uC9C0\uACE0 \uBD88\uBE5B\uC744
+      \uBE7C\uC557\uC544\uC694. \uBD88 \uBC1D\uD788\uAE30\uB294 \uBD84\uB178\uD558\uAE30
+      \uC804\uC5D0 \uC368 \uBD10\uC694"
+  - enemyId: boss_mothqueen
+    hint: "\uC880\uB098\uBC29\uC744 \uBD88\uB7EC\uB0B4\uC694. \uBC94\uC704 \uACF5\uACA9
+      \uCE5C\uAD6C\uC640 \uBC29\uC5B4 \uC9C0\uD0B4\uC774\uAC00 \uB9C9\uC544 \uC918\uC694"
+  dungeonTicketBankCap: 0
+  backupReminder:
+    days: 14
+    mailTitle: "\uC138\uC774\uBE0C \uCF54\uB4DC\uB97C \uD55C \uBC88 \uCC59\uACA8
+      \uB458\uAE4C\uC694?"
+    mailBody: "\uC138\uC774\uBE0C \uCF54\uB4DC\uB97C \uC800\uC7A5\uD55C \uC9C0 14\uC77C\uC774
+      \uC9C0\uB0AC\uC5B4\uC694.\n\uC124\uC815 \u203A \uACC4\uC815\xB7\uB370\uC774\uD130\uC5D0\uC11C
+      \uC138\uC774\uBE0C \uCF54\uB4DC\uB97C \uBCF5\uC0AC\uD574 \uB450\uBA74, \uAE30\uAE30\uB97C
+      \uBC14\uAFD4\uB3C4 \uC218\uC120\uC810\uC744 \uADF8\uB300\uB85C \uC774\uC5B4
+      \uAC08 \uC218 \uC788\uC5B4\uC694."

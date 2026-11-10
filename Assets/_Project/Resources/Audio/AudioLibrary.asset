@@ -1,0 +1,6481 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fc89b6a5f66744e9b941936bb8c4f1, type: 3}
+  m_Name: AudioLibrary
+  m_EditorClassIdentifier: IdleGame::IdleGame.AudioLibrary
+  catalogVersion: 2
+  entries:
+  - key: ui_tap
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 82dd87e711ce7b9409f05b97d682c496, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 399b1c75076fddc4196d9296621ff742, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0a8d0aa2f927e314998afff878e6f79d, type: 3}
+      number: 9
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f213b5bb34f2f374fbc9b3f12d1f5963, type: 3}
+      number: 11
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_tab
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a0901e7021b1be54eb8a20b56ea34b58, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d8f3ca2ec2692a1489874e5822d6c692, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2c89b8127223c2a4e8ed190048a9d876, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_popup_open
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d2ddcb24ea730f54c97ddd9528f7d13a, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 6e225eb00d6052d4e9862474fe4860c3, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_popup_close
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ef8c45555872178449268ce24d1a5b52, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: cb7354419cf50de4e93e2ae7480fbdc8, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_deny
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e5e42420bac35df45aa79c131be95412, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 76262c73726ed6546a4dbef2b347e69d, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_coin_land
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3384fdfd205c68c4590074fd7e658e09, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1deb1c6d79b753445b149544f78ddf5b, type: 3}
+      number: 6
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e28d2ad02dab96045b047628e2ef4ba1, type: 3}
+      number: 8
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 411ca3ac9b2569a4a9464d51eca636f9, type: 3}
+      number: 9
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gem_land
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 53614b5212616614f821a38aaae00203, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a31406bfbedd5154c9ecc64a4f141580, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: eacdc48eaa25f314d9ee8dcecd160b7a, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_level_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bc93db03f6f8dd34a9ab6f05f34fa945, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f741ca7b744ace844863a250a532eadd, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d019e5db75415484c85154648f8dbfa8, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_stamp
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b7071c7b99866ed4f9b7b77b0c4c799d, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 44f62d2c30ca31b449464faf1e102998, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_claim
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 84cbd121087c11a4da2178f85f8f0693, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f25cd22e054fe4d45ba60e44cd6990de, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 69029895a6c93824da1289d12ced6c29, type: 3}
+      number: 8
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_flip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4130cf9e80f21aa4c8aa6e547cf4cd7f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8a90208a2b314f64fac3a5ff5b849554, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: afe57a6b8928ecb478a73a212a16c417, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_rare
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: fd1a53b77558e5a48a4d5c11a7f5a631, type: 3}
+      number: 6
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: da7c2e105f6191040a1f580b18346375, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_sheet_open
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 59b00a69de6cd4a4b8517b511c06f3ee, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b09c6b4105dd79a429bd60ad9cac4c9c, type: 3}
+      number: 8
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_sheet_close
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b5a86aa739f9b9d4486708a85c5ccf3b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 467e3ed71c946ed4f9b293d07bbdaf6a, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_main_button
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4145cb3d007fdcd4eb448c69df1a7eee, type: 3}
+      number: 6
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 84a513d69bc6e924cb461b572d073af2, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_confirm
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a97522bb8bcb3c7439fe3cd493545bc0, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 80328f41e2000554c848c7f718262715, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_spend
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e9d0422d9046da54ab8b808f7ec7c395, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8ec3fd116384d5341a91d11115e14663, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8959b3856bb0e344a8340b48fb6e400b, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_toast
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4e8632cf0e43c6840a5452bea708fd5f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ce70c2262be2a3e4fb7d750d92eeeadc, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_red_dot
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 270a71dc7bee1b645a8e59012aaa8682, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7e61628aacc32eb48b09e9a5f4670a68, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_quest_complete
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 42c9beb325473444c8ba4e45f781823b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 3b53bdf250cb3f148b5ce4b24c6d98c3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: chest_open
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b4563348496f3764a9bd30f81dd393ca, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 700d5f58513f0d447bc4dea3e38549de, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_stamp_special
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c15cfe9a21e23a2498e0befbb9929b82, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: basket_claim
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 59788aebb27248942ba406558e442d99, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 62b169d806317ce47946487754991725, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: quick_idle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: be4eacbb5d57a114884b1584ea5850ad, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7f1f29efca0af2b42b4cacd4af593aae, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_count_tick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b9d1db9831d9e904db690f44a2ff67b5, type: 3}
+      number: 1
+      rootHz: 1396.914
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e53f6d0df4ef1bc4ca3062f506620ed7, type: 3}
+      number: 4
+      rootHz: 1396.912
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_count_finish
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8f139d0808c244a4b8fbcf14d5f57d65, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c612a0a450342a34a94cdb6775077c73, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_reward_double
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a824edd22a7a8444788955d3a652d709, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_power_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5bee755a0bc28644d89bb71f1365ca97, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e3b4e94efbaa29049bd0c4a83ac3ebb5, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_level_milestone
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5b5d531bf7f1847438d56a2467b98637, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 75086408c848dc644bcdad11fadbbc33, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_friend_level_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 95b42c9e1cc79a54fb689cdaf2c4ee3d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 76916685b346c004198734b7515f401e, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_resonance_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 289427df48308a742a8d0dbda83c0696, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 780e194a35e6d1e4aba43a51504c87d1, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_evolve_charge
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 87d7da43dcd7a294d968388ae713e164, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_evolve_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 91401b58f1de5a5458a0b3c2c50e521c, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a7bc1f6eab495044e9f7d2bf5c96950a, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_costume_equip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 21f48d32a1832f547952994f17b068e2, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ca813ce417262e44d895c0ae3c4c9f04, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 971987aa993536240a5edb1291cc529c, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_costume_unlock
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 739090a4aeee0304ebbf72fe3fd009b7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 34d151b244af71f4bbd0c774deb7125e, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: gacha_bundle_drop
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 46cac1bc5c5602f4c8e6a3686e7afbad, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e0ac3fb694e1bac4da67f40b55f252f5, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: gacha_bundle_open
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e95c7a984734c2e4cb06a92afa958119, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7010c8930d4f627439d7332e4a82a652, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_card
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f53938ab8972d5b46af20d575c713c91, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 71ad245c2c4e3d74686397ae012805cd, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 30322ac4304b93047b1abb2dca82afe8, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_anticipate
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4009538ec83a9ee41a285f3243339ee7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 271193ed23d98b24282dc1ea681c0880, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_reveal_common
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3c51e08088e89ba4f8275ea8aafb28d2, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 34c2163f18e14624db47fe03c60ed1b7, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_reveal_rare
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 08e50f43e7c34e544b7eb0592c42f01f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 862fa43018b5acc4f9ea932e6b9aeb47, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_reveal_epic
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3ae7896200ed6e84e9a5dc540726b7f6, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 33b763e88a62b4c4f86259a9e482e916, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_reveal_mythic
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3f72696ccc72f3540872ad337a992cf1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_dup_melt
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ca742721ddc669a489cd79a4bae9ed48, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8b646e7e6734a0e41812b54601870955, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_gacha_skip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a30caa889845391449c0454976ec20cc, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e1bda711f857d5a4182b318fa1c37c76, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_drag_pick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1711aae78921ed744891acc0bba4d007, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c58b43f1ef2141a47a30f9acce5dbd91, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_drag_drop
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 426d31b8ccc8a3a4db2996c19ae8eeb9, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: fcbef4d94c747884dbf8847e8791c713, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a47fa03dd3407a8468e200d79f1660be, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_drag_swap
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 066706634d7591848ac65d01b47e780c, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4276f5ba2cbc8d9459496bc7cc4264a8, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_toggle_on
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c704f69099cb08244bf1a478a1219b37, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_toggle_off
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 33eccd47761898a4a9396ec47f8a7434, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_slider_tick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 0958911edc006994fa8bcc47430b1cc1, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0088d2aafcb406c43b66d7b7da1eb107, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_expedition_depart
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e1f36f319b524aa4e9cfdbedf5b4774e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b5e80897dc9267342ae8c789194afbb4, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_expedition_return
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5d99e3108dd52a24c8f129a21f3b86a5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 01040fed665417c4aa641a51b3971f9c, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_dungeon_sweep
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d7b26e6bcbfbd9a41af662987a95ba77, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7a35b16c83645354eb38218cb56691cc, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_mail_claim
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 527d4b60a31e9fd478061689436bb98a, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 18f73fbdb61d7df448ce8b90bae73faa, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_purchase
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cbea105e514ec1b4f9930053b3d69567, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c228c2aab7433c847a461ddd2fdd2cbe, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_coach_pop
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 6d1be401e3dfd8a4d85b038a093144b3, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 21348d1a39737124cb5029502c50872e, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_tutorial_step
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 02a4b6e9e0f10f041893bc2147df24c6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0eba7126f3bb3e44cbd999fdf1ee1f7a, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_story_page
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 434bc79f70c3482489710d4313903a64, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1bf341974d0013b4cbe1d2e8700e5d99, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 87fa21d2cb2cdc04aab4ee501ef2744d, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_sleep_enter
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c68e5b0c85dc6e24791f07170c695a37, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_sleep_wake
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 21d893359c9bff646a2675189ebd3b04, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_speed_toggle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cebc6feeebe8d574490b68fd98d3dccb, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2671e8646d684654d9177a0141751143, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_auto_toggle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9f2167975e416ed49b9618b18b7df4af, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ef0268df2411b3e40a4292edbb65957e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_boss_challenge
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 561cc06cbe3fa954c86ba6c36b5e5f1f, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: achievement_claim
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a38507422df0eda4f9d1f69142f7d49d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 220c50940aba8cd47a9ca26c3c9fbe50, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_codex_discover
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f7eea4786f5eb6d41ab0247ea8c63766, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 13bb7f3b5ede41845991f59ed34f27b1, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_affinity_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 39d149504c6104e4ba5d8dbe8ce55d05, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 13a80e0cf1f911143868fa0673d9aa99, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: pet_squeak
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 160d74116dd2d39498045e45078a6e99, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: edca6ad1e9bd5d8468ea9d1cac5659a5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 9c7cf560f23c2b347a8b74851a97fff0, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0728b0b729621ac4386ae7919afcd503, type: 3}
+      number: 7
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_map_node
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 03d6a7a3e60da8448a01436e56407b7f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2ad9fddc4b1d38c438ae91cd53566bbd, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_tier_up
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ab3473f3bae266d4fb9d0238e2c3f72b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 328bee247ccc17747b55928274e0a770, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_blessing_pick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4adf1a1d8e195fc4d9226ab831e3436c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e0e0f6130389d8c4e836263f8ad92c80, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_reward_big
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f20f6b5f968cfe24aa34d4bda14bc344, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1e6075fd72613444a8cca3b4b2e28871, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_countdown
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d3860260d9a7d154988e1088307fac9c, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 3ac30fd785f09df4eb7556bd23031444, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_progress_fill
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 022ed692ee4f00b4bbcf5aad170d239d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 9149350f1b778c345a1018d7fbdc10e0, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_defeat_advice
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9e1d12d7e9737ed41908fbf60877ca2c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_needle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e0503caa1061e4442ab61c202ae42d8f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 67d56fa01bba8a64a937fca314c8bdaf, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 1f65c74c542412341aaa33a7d5aabf00, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 42dc0979466053d4f8e6bce693dff7ae, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_needle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d652a9c0bf289a74bbb3ca06d67e7c57, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: eb1f710d78f3e504cb3d77f445c9a88b, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9966c91549b4187459cde813dd2262ee, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e750b853dba6a05468db40b01d205f54, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: fa0106824f2a3f94a88417fe8297f91d, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_needle_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 479596fefa51d1f408e29a4424a29a4d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 89ec1cba548b37044a12ba2573858787, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5a6fda45b08a03d44b133acffef19797, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_button
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9ccc5d42f0499c141ac7fb36d5c072e4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 82d6c821ac4d93240810e2066b3dcbd9, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 074795b6286fb4f4baa2ad080871d410, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 884303ae1f1950241888e08886940514, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_button
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: def4006fdd99116428cbc5a038e84ab8, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0ac3bf4b09e3bfd49bceef56218d31ea, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 66dcef302c9fc974da4ce8f03462f979, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d25e3fa4fa7694547bb23aa6c587a02e, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: fee4913ee77cf8146a9dbc51f53b52e9, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_button_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9f683bd1c05861e4a82f74f62ca8a862, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2f7c4845663bb294382b877a8c694733, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c6647512d063bc3449a1b07bf83a231e, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_button_bounce
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1f5c01ab04108fd4083ee643b11bed3c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7d9750d20f98b854385dbad8ae5fefce, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b0de5c62a3f8b7f489067ba8f14fbd6c, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_key
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 50fe2e6e3ab73064f9ebe70d7997e945, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e095ac21b0da6fe4596e7939585f9b5a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e8545a076b02327478e7459a27157b31, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 6e363fd06743c9b4aacdad69ad0f45b8, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_key
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cd7d0c74aba1dee49bd7c40d9c515656, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: daf4507bf138dac46853facf56e55996, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2ea6eb59aefaade49aa3ac814cca7dc3, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f6f5c62280d58b64aa556297ef28a943, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1e51b2349ae524241bd521c24e912d65, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_key_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 270569986c0ea224ea023414457d76a3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7e721a38edbf8d54e90fec4f4edc18d3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: aaecdf408a465c543baa1caa477c15a9, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_candle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 729239809b375f94bad58033d8d6fa80, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 67241e8518a1ce7408323b111bf04e17, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 1c587f5cb7bb88b43bc895ad56f8c8fa, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 59e8e74541ca4064093dc7f5095b0c00, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_candle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9c5a62a4591c0394fb2cf5ea28ec850b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4c2eaa9774e0b5649b086e9f5d44fbc6, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: efb58c5e1cee4754285df4f20aa35a80, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c06c39460cf37174bbefb55ffc875c37, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2aaaf78952c2ef845b81407f2d26b5bf, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_candle_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7c00629b2b21aaf43ad19822de014a7b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f5209670c66dd5a46918ba7acd812058, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 9dbe9ff66da5c36408498c2425ba6646, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_candle_drip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e7353e2ba40f0b44294307b19b1e46d7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8050b1eceaf0ca84dbe78f0a0d1dda74, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f0fe42b0d02abb84ab30cdbd2409cbff, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 50175648b1860384fbe54489b91b6dda, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b3eac1e1a9c9cad41b4a392f1d1340c4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e495edde6bcb28a45800ee8b2e6dc5b4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c048e6b0f8f409340bab33d9cd37ed2d, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b5676bfde95065e418b551e0b82b26df, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8a6d2ea633cfcb448ab607d696943e4d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: b343019b452f71b45adff1ac36a3e1c5, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: cf69210f565bff341a2e7eede69b4596, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 653f81e1a558877479dbe0a6e3c18f11, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_rain_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7e2ec3cd5e0908148b2ce4bba1dc7834, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: b902519e1ceb3774d99c7a220ff0745a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 55238d0da8161634e961762abf493066, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_rain_big
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a09dc1c2302d4e348a1e0bc175ba7242, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 75016a3145945e24395cdbb123b24523, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 43fff727a19276f48aa2aa9798ea2090, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_kiss
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e5dc53593a8f9114aa12bdd195eb4084, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 448a70be4d36f8c41a190d1ab948665a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 6b325cc70246312499d99a184e3d1206, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 66af1295b0ff5c1499bfb5fd120dc321, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_kiss
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 06a08217496a82a4dac59ce4ef19f785, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 6dbe3e06211e54145851fc4c608f3046, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 67d0147248449aa4b90fe0d017f38ef2, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 171b3290da49ece4da9205448aeb6e36, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ef9a0501eab234c4ebef5246e94b946e, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_kiss_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 57358aa102a79e447a4e03de2a22ba65, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0c9a4958283ed3f4b82cae80a6e4ab44, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: fe19b1f228d023f4b8244c5a2180be01, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_musicbox
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 25f57e90205f53b4498aab17c07f2058, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: af9ef12490122e34d975a32f4f78da66, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: aa40696da35887f488ca05fd738ef5de, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_musicbox
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: de440eed2d45c4841a22a576e79985fb, type: 3}
+      number: 1
+      rootHz: 880.054
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 18c3a915eac3d51468c2abf2d5b3f495, type: 3}
+      number: 2
+      rootHz: 880.066
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_musicbox_ring
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cad982e53e140c44b936b330db981aed, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: fe806fd93e261fa478acfeead537a87d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ed8cd799638e7604791031cf77d02d54, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_musicbox_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 54491102ca4361a4d9143b8ef662a8d2, type: 3}
+      number: 1
+      rootHz: 698.21
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 850e115d00632f34098164c864f709a4, type: 3}
+      number: 2
+      rootHz: 698.361
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_musicbox_finale
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 51e3ca92787eaa9469d0dd3e0ad7a2ed, type: 3}
+      number: 1
+      rootHz: 698.542
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: a2ed8f0a5a8c29847adcae528e5a8ebe, type: 3}
+      number: 2
+      rootHz: 698.761
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_generic
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5d91b7d42ed9ffb4c87eaa6a2ee2906b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b67462380cb7e9547a639a0bcd283061, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d8fe9ccabe56e67459ca9a95ff8dd1d4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: fire_generic
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ec928ccac16f5a4429f015abf47853f7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 782814714400e7344b198d74f7aa4457, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 80ec8e74692d5ce40b4cfe6d09e70516, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hit_crit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f0bb3a79818f05b4c80110cb4e16afc8, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5a142185fec6b6e4c824957a8b58765b, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e72ed01c26c84f445879879320e19893, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_layer_slash
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 891e9a84ac106f446ac776ca3ce903e7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 11ceaa1963e10f5478bfeadc979c8fce, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e97703046d7cb444db8a04084c16ef08, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_layer_snipe
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 6647d95a139626d489e9a4986cc7ed94, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 87dd2fb31e594fd4da103c15aacf594a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 4b4b9e81a40982f43b50fd70161438db, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_layer_thread
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3659e86d9860e69408f3eafe1709070c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1483fc878c2ecce4997d61ebdefd6f94, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 743ba7b4eb5b6f346b6a60a5c1e320b1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_layer_heavy
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1a7587e177666ab44895339dc8d314bc, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 01bc2d61a74ce184f82f0916a3b61c60, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0dc44b946bf64b24bbee2a9e9dacf486, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: atk_layer_gold
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: add7676d805aa4547902d9edf9464a6d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 515cee152414ac843877b7502e523199, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8ad5da03bb18f8f49a5ef9060f06bbc9, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_slash
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 10677e20339f0fa468d06b6ae3920b79, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 213572ba5c4c0e445abafd59e2d655e8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ed6a1c85eba97834b8ee14b0cd165ea4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4c7c3818871637548bc526aef83d6ec7, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_token_pop
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: af76c2572a7fed546ae8f575f6ae79ee, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 9f40fdf72264d3143873bf4e0acb9c9a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 41d30317f37f96b47b7de35cf6e8e674, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hit_multi
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 75ceef5c4ffd4f849b430eb24b144be0, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b2920816b4c97f641b6da0e26e9c4cb1, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 47a6af825f14d9b4caec4386a56d0bc3, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hit_skill
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1a2e4129f8d42874b9cbfd79e6c8b053, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c09b911de56091b4aabd30cfa5ead258, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4178abcb68f4eab449b3a77f819abb22, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 91b6b02767af64b4cae6eb5170d59df2, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hit_dot
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 77d7a18b41159ac4ba1314417187c948, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 78fb64f1550bfd74f80b85c24fac972f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d04bc5032eb52e54d951574235ab122b, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: dd9bb5ecf269e2844b517dff6b00adde, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hit_lamp
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 829f6baac359f7142a4d8bc7bf61f27f, type: 3}
+      number: 1
+      rootHz: 698.241
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 04aab9601ab5da142ad7a8588920a595, type: 3}
+      number: 2
+      rootHz: 698.24
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: a452c484aeab6d34eba1e93cade5a988, type: 3}
+      number: 3
+      rootHz: 1396.789
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 341fd06ed183d2140b110cc1b72de238, type: 3}
+      number: 4
+      rootHz: 1396.789
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shield_block
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 538752abb35d3ed428a2f042ea4cbffb, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 593f11ca887bfb24db199a1676d6b4b9, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 32474f323f10e644db0a4dd5b21f5399, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hurt_dust
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 275d2e6d0eac2ee4381eae7c9c9ea3cc, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 11dae039777530445a80a2d8e463bc6f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e312d3a50de7bc740a94f8ff3d165891, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: acbd9b2396413ce438aca9615173bba8, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hurt_moth
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 55795fbfb7fb9754eb7b6a2522c541b3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c6c854c8ab4957742bd664cc53d7139a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4768beefc7570a74f864e2cbf56abddb, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 3a8d09afb6de07f4a8cf89ed6e8347f2, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hurt_metal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c1c56cb9dcd5a6b43b7bf0a7219d6812, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7417cfd91e0be6642a28473d14aff6bd, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f775287395ee62b408438d048ce25576, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2fc369766b381654ebb7bd749120d44d, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: hurt_shadow
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 30a1a8ac9034d4e4e8e8f6ab5700b321, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: bb90b6b4b9be55845b86cf623ec2a59f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: f5694c874c50a27428708008d1037c9c, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7b2d4b0a9fdc8184885693d325e80a31, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_dust
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5b0dd6899b583a44495499336409b2ce, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 87a9db5f5910d264fa296d7b30df94b9, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5eeee253e32608d42bb7effcae5e0b64, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: def35b817c3e70743bae4601e3c71892, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_moth
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 84f8d86d8a31cf34fab7ca0e9ee3eb4a, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 066f6d9da96a9ab4a9ab4c6893130583, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: dc4037c3a066a2d4db4046a914ff42f4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_metal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 85b9ba1219e574041b1d38703bd9e8f2, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 270a3078315f8c846b1697a72f1f3c5e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a4ace4303b132e149a634c2c583d6da8, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b0cf9a4580382b947affb6c6ad7f9fbf, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_shadow
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3633ce36bf983fd4d997ceb6e45b0cd4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 49b7bbf5bb3f48041aea803275c2d21f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 61624fe1516a7b647b69207cc291c408, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_tangle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c40a0da7f83700d4ba84ff1da639132e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 51296a95ce0412048a2b8134991b952d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ea3db43171d0f6e418ce116f76a18b4a, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_windup
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 49da510cd6168574899b1d0d22151c0b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 0a7532a4071467d4f97859221728c96f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 74318c178334c3b458096a9484b324f4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_puff
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5faecee612926b143a9c0e668b20cd44, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e81a73a7b75c9c74081073adb5f61125, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4e3b54a7ee6e7fe4cbaadbcb5bbc6925, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 43d37f2db96a6aa47b7e9e9f130b616b, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_flutter
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ad301e905ae32f847a9af7091f90dbef, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d66a3ad6c3ed1204cba13ddbbcf3f000, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 06d84a73118989a44a204aef0ff9079c, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c9c2b8fdc4d4b854cb3309050a784676, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_splat
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7cbe3723da29e774790a3603b134d2db, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e3506b1ca7cb17f4a978abce477133fc, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b77314a67a1b454449374c39ce53a523, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: bf90fe360b43f984ca6df47c498e2b78, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_whip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5c446190a5e6f234a85d4fc2680be803, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 53e062b6e09216449bf9e164cb7fb38e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0816dfaffd32a9341a8168f2208cc614, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ec2a24ea927c6b446a6e1808521bc269, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_scratch
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f56ed9d59b6c3174db93c3ecddf05ff1, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: af38f21ee39de204a8ac881ec4922c46, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 821f4503d57df5d43beb5b88f6603a03, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 7893916010da60b4dac3fb4a439a3d14, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_clang
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 6157c3e1e1e8bfe4187c4af8819a084c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e4f6ea7a48ca1ec45bc0687feb137ff3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b8fbdbb24fd72664887f5c2e2c7defc1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5d8e2cd5b0f4ddf4fa07a55b7b2fca22, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_boing
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e3c35b19c4ba0454494911233206d1c6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7b1d3a85397b7d646a75430d77f11cf3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: b8489a9269421e84bafc92c006daf60d, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 624b66b6aeb9ecb4bb3ecc2883b49582, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_wave
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 86dc736881a92a940865d331877be764, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 124d69bcc83cab34e805038d308ef479, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_vortex
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 288738a1f522c0642a06c926cd78e625, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5b0f22c2e25df76438d01f86808b2942, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_spawn
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: fdae53289e27e8c41ad59b953c8ad71b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 737f6d6863678f947902549c1026cffc, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 7f497d54808af484092531a82370f13e, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 38a908db1b5b6044f91ac101608c0e8a, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_split
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 15048cf36b9356842bad55b213509679, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: aeb2c649b919ea14e931b9ca9ad2cfaf, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e3d999422066cb34c82803f4d753d823, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_reveal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: db07b9901fbc693428ac05c8d58274d6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 5d1796e285c3d394bb1a6da166144993, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.02
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_enrage
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7cc0fe5ea1ddcd14d9a675c5a9f8dd41, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 69f39bfa06de5ce4b98bb2fb5021e7c5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_gnaw
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9fb9d22312a5eb44eb943df735cacf83, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 5e32096ef953ddf42b1c60793206b5b2, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e8114c12334144b4daba307714f7dfcc, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_rust
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f25bd69e4d81506419dfb63176f1b67c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: df178d60e17e43345b95c760eeac3af6, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9fb4f6ff438c799409d11aeaedd75d14, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: enemy_mend
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7e086e9eb9cb4d24b9c03986ca69c484, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: c0823ed60e27d1740b84d4231ea46db3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_appear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9642f7318dec2514496efe998bdf16e6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: f81839e7c350e314ab0966a9aa3e5005, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_windup
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c575fb2872590c1488d00558b0460429, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_siege_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3a0b07a913f641a41a15450e34e68ff3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0b2d56be6553a9d49b04c7d6184b6259, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_enrage
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 27317a9f3a89d3249a8c06cdd7c0795e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_summon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e1652ec5b2ba72c499e0436ec9af2d82, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 21e5c4c45f1efe04095b9263802dee5f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.03
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_lamp_drain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 122dcf81c52a319448fd49d63309e4b9, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 1ef3a7d64e2a5df4fb8d02eddf8ff83d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_death
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8c712e3af1c3cc143a576e82adc485ae, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ee3850454eac7a1469ac202500095f12, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_kill_impact
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f3867d60038e4a047abe5f004f0bc30c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 84fb67624e2cc7749951701ddbc8de3e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 261e0c3ecd247024a853c6c2bfb191fb, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 3ef1db409bcf70741aae55364d449ae3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a44164896057ff34fbb08729b51a8fa9, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 6c4952313d3e8e84c94d52f3311f1a60, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_hit_boss
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c894ec16fb3e20b4fb5fd00786c779f3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: ffbaed3e543cf4b498600c5c904b9d99, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_shield_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 55e905f069afe254aa7aab9d19b08478, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2b687aa9ae4b27b48b9a590c15cba507, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c7165d3f27903034393b5e6580bada36, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_heal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 39c6c9dbb6b22504ca5092747eee1211, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 07348dff88fa95a48ab91fe4388433f4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_low_enter
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 86f946c2efc3bef4380801fb935c9c91, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shop_heartbeat
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cf1c93ac58275f24c8027393ab927b2d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shield_gain_button
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 2c60ed20cfe621843aeac502d336b4ef, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 3932608496b484c44a20cb69d75b7ef7, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shield_gain_umbrella
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9883c4befdf2a554784e5dfe43c78276, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 3451d2cd622e19645998e38513979617, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shield_gain_bubble
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f76bbd07bd9337042a9c48add62604dd, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8dbdd7d9955fe05428ecd523a1aecaee, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: shield_break
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a252576958d66ae46bb00ff2e865360f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 26ed262b52ded0249ba04927f3fd41d6, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4005d7ec39ebf824c8cdf61b271f12d1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: pulse_support
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a7af2c06af8fe2c4db7bcc57cfaebc0f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: c12de200ed113f94d8f180627b557b5e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: pulse_heal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 0a107e0fa00d9cd40888f7d59ce14a47, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f25b27721a0581d45a42bfa0d2dc2d2f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: heal_tick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: db9c595061326e4498287195b0c4fcba, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7f7a9111ba3aab04a8d616cf6b2c5f6e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 98e4c8dd6c925714fb652a4ba5cdde36, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_summon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 770b39664502ea947ac4b0d652f1907a, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 575b83c20b90b0d4eb4dedba5306cd57, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8286cffaa7a1413469ebc664e67e1fbb, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_dissolve
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7b43e8164f1efb7459021e410ee2bcf1, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e65606fb587498c449b23de8147e9439, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 2fa21f54978d31c44a62526d45c816b3, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_hurt
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 13d55b8683c278e4da6e9c7477e210c7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 55901dce9e96b4f4c9c2c46d41a400c4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4fef60eed4d205f46bd6928f6a409aa3, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4793ec4308155f841b6f1c16b82a0d58, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: token_summon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c07a5c2d1c6a801499f93c95dc3e01e0, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 19430cb2569daf74fa282956de8a205c, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: echo_refund
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bacedee10c65492418b855d821ef1672, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: daa13d6d57956e5438ce47c135f5aba4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.02
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: lamp_tick
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 35b14fe79fa3a504297a83ccdcdb4044, type: 3}
+      number: 1
+      rootHz: 880.028
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 22ff7d8a19c0bcc44b7291abb024b0fb, type: 3}
+      number: 2
+      rootHz: 880.033
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: lamp_full
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c34c481bfbe62d24d884ee7a8dc09240, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 3f10aee38f7e51349af2967503d95e57, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: lamp_lit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bfb193d603f1edd41bdd9e6d6d7d0b82, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 24c20e7a45340754ba45f950f1cea11d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: lamp_wave
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 6fb9d52d0d4401147910a4c421f034cc, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 23ad1dbca804beb4f92b571294554a26, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_charge
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b491a12446551f245b3ebc57997c8ee5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 65132565764357445a60a906884044ae, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c76612d14578ea942b73c78975a5ee6b, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_cast
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a2efc337f38d0b34ab60f2d5d63a3884, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: abf563b1468c60c46b6dafc88df216c8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: cec6e8ded0e457b4c97ea68d5ae89573, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_big
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: da60b12e0d6e93e42a3ee650ba9410ab, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 6c8559b4579cbaa40b523cb0061a8f1d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_gift
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 768f01bf1dadad74caf15d228483ab7a, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8019a20335f5fb946bc9c54dfe2ad988, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 34f87a0110fa75846bb81bc4a142dfa1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_fizzle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8c109ab0acfb48c45960c5c80e2cab92, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ef00ba78d57a83c4bb76871171ee3c92, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_projectile
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 894c35c1ee6810c4d8ef1e7a9774927e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: d932a47017073524195c78639f0789f3, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_beam
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 06fdadbbf1c88fb4fa6bf21a178209eb, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 1856335751affb846a261419065de1e8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 0dc7b1dcac499974e9a6a81a75c134b3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 16d9f9878462a1647a218c06dc4eccaa, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_ring
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e4e0cc2752f76d346ad13e325868881c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9363df9f7714adf4d823221f38c1eb81, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_ground
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f3d3773bffbe7ad45a0b2a7fc20f98d1, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 73623349ee15fd44db1cd8ff03c832f1, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_dome
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c2d7d12f8dde9424b97ab58d04209575, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8ebebfc9cff01304f8bfb4dc8955f0f2, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_rise
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 82825ee407d62434894ef138d47ac6e4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: fe1c4c8296176e34cb887b61691fffa1, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_overhead
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 06f0cf2d89b50204b863ddbd6acc1407, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 8e5a03e94927e694ebfe6aaaa1910073, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_orbit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e966b1e62ad30d24094097f324791e31, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a803ff9a020b9464391f6b0879b123de, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_style_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ca0af70dccc96bc41aa5c311e47dfbb6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8fd4356c948ffbd4585a16e2b3ea63ff, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.04
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_thread_stitch
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 0fef1d2ea801b1a46a663d1599962671, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: a56643f985f98e84fb0bbd3fb6e76ea8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_patch_heal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b67436754dccb82468670fd696b5a15d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: da49581577922d349b9bde19d287bb36, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_button_shield
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3913d9452062e804180524493c409b4d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5a0ddd87ccc42e540b7da503e45ee538, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_spin_button
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 403769c544992a34ea3103c5d73a4bbe, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 2317b040d35fc8f458b887f058cc59aa, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_keyhole_lock
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7e49be850acd642438c6027cf733b238, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e61ce3b8ed808b248a20687375940767, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_key_beam
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ef963310889289843a5c0e8ed0953d28, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 2729c10076f64c94985540ddaddf9581, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_candle_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c7831dc0172939c4aa03ae21af1336c3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: a4130ec7beda6ae4d9121984c44d71f2, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_wax_drip
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3fc9d30049f2f3a49ac6ecd152ae2d5e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 3e86737a375cbaf44aaad8b9496a948c, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_firefly
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cbfa65334dbf39d40b69096f6566abd5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 373bf8868ef2d88438c2737a8112c311, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_lantern_beam
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 176a9168c162fea4d85d323252d9760b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: a6608d061ba1e6143aef9779444e838e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_umbrella_shield
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5abedf41c1e72704dacb605837583326, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 2707ec5fc57215444ab8b78cb380614b, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_raindrops
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 318082c164622c5448a3720f5a1b4599, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e5a7017a69b1fe245b0a5999f50288f8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_storm_swirl
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d11c732c4f930c54e94dfb0cc6f7c060, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a9cb4b8206fb4ce4dba233742613f83d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_lipstick_heart
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9eb4304219340284ea2e01f07c3375aa, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 96b1dd56ef1d23d4d950a9df9126143c, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_kiss_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9bfe86b68ab45c04296e3b168e9325f6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e03dff14cb034394c88660b1a5d34aee, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_gloss_shine
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 79db9e3ffe3d16240a62f0e09537f0ea, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 940afd5afec04fe4c80b7410b20200af, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_music_notes
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 75afd1e9baf518048918a768884967d9, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 4ddf3044790e98948a470939d7beb701, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_sound_ring
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e140503250e71f2469e488e252e2d0a4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: c60dccfffc4cf374781848fec7d2b13f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_waltz_ribbon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 352d7a441f135824abde6a246df0b84b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4e7980e5dc0dc4c40b80347f33ef4e70, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_star_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 3bcc2a0ce3bb330458bf07708273cabb, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1360d677b78646e49a76e0de6fe86493, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_moon_glow
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d051c33b405188a418fa1ddca2b5e0e7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 0e1406ed0c7e4904f9cbb6f3990ce365, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_heart_heal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9cf5f8ba213ea8745b65fc9b902bbd32, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 53a49f58619f8d142b8530efa5947130, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_buff_crown
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: d50a375cb79723a4f8982fdd48e1c4d4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: e832034b531b389408f370b7eda118a0, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_debuff_mark
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 40cf1ce127137b94fab36ea05094a862, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 221d7195d427a914ab834a0c67c36cf2, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_stun_stars
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b4eac7b8b0c81224283b38b313bae2df, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8bcf07b86570a4c419de442ab58b3c8f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_slow_yarn
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8be8b3dc509adc7478bd6a71d86980ed, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ba10fce3a635cdf4b88a633599dae961, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_summon_circle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 180b68144d3f9b5468c3e41e7c11243b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 694e9a0e9a79d914db761b85cc7bda99, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_shield_bubble
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 50df2ccd2c5a50f409bf333f83fed47d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9991c53927f6c494c95b56404335fdd5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_cleanse_sparkle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 2f435c6c7585a1a49ab5b61de5dde9bd, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ee9843875cd577f45b82988a8dcdfae8, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_dust_poof
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 733eb99d4e854874b9d58f14971d5e46, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7df0877f2d431c243a1022b5d858b037, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_shadow_burst
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c3c8e83a9c0cd8548aa9b832fb678610, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 6ea597eedb465f9439d5f3a4892ec275, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_split_yarn
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 588b5dae5ed090d43b4d5e24d2352956, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: fa7a7811712793d48a40062319933d85, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_reveal_light
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ae0f1c28a440cd843860ada7749b75a7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: af913cc5ce30db0439dd9d9d5e138573, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_thread_stitch_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5a52ef3e454c4de44b7f9b9d0d0eaf97, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a62d487569b52e34fbb238b139c8b1a7, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_key_beam_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bfbdece2d67f70c40aa3752638780688, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a4c6b325c47dde749b8a4f18e61433bb, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: skill_lantern_beam_hit
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7fe00048b6237a843b8379ec3f0d7cda, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5a4492bcb6d054542925d0e1e29bcf76, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_burn
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 67fef8423ca73364fac825f343888c84, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 7b9f3e94339c43c48847368c7c320a3a, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_slow
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bb617e9627b28db44b9697f2bdeb1322, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8bf35d6a8a421ef419ebb58c39c56865, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_stun
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: dad472f95a71eb348885ecd28cfecbf1, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ffb4c4800f4a09f49b7267e3723e10e5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_mark
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e3383a787bf02974f801c84f21f072db, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 2a7c1169c2f8c3d498cc606d9824bc85, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_knockback
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 2e972c622f383a943a390567708872ed, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: dd2cf4809ddfe1342a2dbf908676fdc9, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_pull
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 2885f96de4db72546b1f2c6b8bc6d94f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9d45dc820c339024ab95927a69831c9d, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_buff
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c40306218be968f47b21ea4ccd4cb2f4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 7f066b7031870cf4eb2d47b501133cce, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_debuff
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 47a73ecc3860cf34a9e7199a39da9d8d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 2fa55c0663b7ce8468663cac66054e22, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_cleanse
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 16aa6f0b13f11cd4f86b3b3adf620e82, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 1590e316d5aa92145a872e49e935cc60, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_resonance
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 900fb0d8cf6668f4284e764200f00d59, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 8270083510dc1f542ac0bfdfa6c560c0, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_lamp_gain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 079f70d0385249d498fe70b34532a985, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 00096928aa19f7e49a47c29c70faffbe, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_chain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4f9123f630626f74a81762e6f066ee8c, type: 3}
+      number: 1
+      rootHz: 1396.966
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 19d100bddae93ec458b7dfdc7fa441c7, type: 3}
+      number: 2
+      rootHz: 1396.968
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: battle_stage_start
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bbb1ae78c845b694f8f232c40040277c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 4708a657ce1429945b66b3723d91beb5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: battle_wave
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 005fcbcc443d7c648b32edea1a798216, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 614a9607680eaa4438e31c7ce05dee42, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: battle_synergy
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c9657a7516bbb6b4092b7f9168b0bca0, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 091052ffcb2d0c84f8dd388fc59435a2, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: battle_step_back
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 87a60546a224f1b4c9e92df604100828, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: kill_chain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 28b27546552a11d46ab5990741e4bb51, type: 3}
+      number: 1
+      rootHz: 697.987
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 28f290e80ae1ea34299da433a547ffcd, type: 3}
+      number: 2
+      rootHz: 697.964
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 0e58eed8c3d90b643a24678472fdb009, type: 3}
+      number: 3
+      rootHz: 1174.912
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 4e3d0134de00aa14b8ceec4fd6e825eb, type: 3}
+      number: 4
+      rootHz: 1174.912
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: kill_multi
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e56261aaeb938ea4cb1752e14b748535, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 624f212d549c28540bd41d4467d2d275, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: coin_pop
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e8e3be850a90a4c43b0fd1517411db18, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 05f2990e4c101a24aa33176359d5c1a4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e135fe554787203479844942161e90ab, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: twinkle
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e55c3d9a059277c47a85a4047072474e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 9123bf698e83e3740a01eb03af638823, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 4befc993fe0087044bdf169d636c391e, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8e53bcb578f41a74087e5c8598ae8c95, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_wind
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 2cd8946ea2ed8b1498ebcd52ef0a162f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_blackout
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: de377d11745d7ef469d773d6cef61db8, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_fullmoon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e6aeeddc036f0ad4b812cbdd9d131f0d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_dust
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: dfcd12393400e1c4d98f8555cc33a75e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: mod_festival
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1f2a98c87548eb5409fc6f914e3d2218, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_night
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e9c2f0945cb3a2843bb7933f1f33d1bc, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 0be2df86244748647939456f713babd8, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_wind
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5acc307849ee7694f90b9801bc3347d9, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_dust
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 48521b36a6edbb844a4b812cf5502251, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_blackout
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9e93ff83d5655fc43a32d986233376e5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_fullmoon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 01746f2a0250fda44a892f9ce984ce9b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_festival
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e37434bbf53217a4a9b0c0a05d460d3c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_sleep
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 190af49b13f3f9a448b5e2794b5669d4, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_dungeon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 7912cdef34828e34a8f216d3ae9fd4e2, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_boss
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c198e7d0eac59b841a7bc97fc82c4a95, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_emit_night
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 99bd97a43243e6144b388f47367d7b5c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: cbe7795aa84b23e49aa8ac745fa2e743, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: d5b1ea1b4832e3a4d91b8ff02942d8d1, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 1a82ece938e56544fa41795635fbb03c, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f7fb8e2715d008f449e35df81973ecba, type: 3}
+      number: 5
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c24a4dead28a35440b09c9c533d46704, type: 3}
+      number: 6
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_emit_rain
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bc8b98d16ec2c0140b4882543c483168, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e431b6f4f220d2242b012de843f72d93, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5d0702f33add1184ba6c9ddcb168026f, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7f9f1fe0e16b4894bbbf913b6bf79a6d, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_emit_wind
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8240fa61c9e4aa4468f08314ac50f78b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: a8cd3d94ce088784ea52446bdc57aabb, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: bfc63466983985540a5fbb14903f3196, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: f758f8c1ab354f747b8bc8e663cfb281, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: amb_emit_festival
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8b8009412586f2642b371b9b4c9db661, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 7eea8a88cce97b44da9b4d3b12e16278, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 84ac5cd8c7b07984b8f4e270b1ca7bea, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 73051dab82559d14885ba9c53fbc0b18, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: bgm_battle_night
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b2e3a881e2baee74db6b965d271aa898, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 974289625ba0299448f4703cac796aa5, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 5fe3e8f52cfaccc4f852a18da11f57c6, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 92
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -18
+    takeMusic:
+    - bpm: 92
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -18
+    - bpm: 132
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 48
+      transposeSemitones: 0
+      loudnessLufs: -18
+    - bpm: 100
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -18
+  - key: bgm_boss
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 588b31fd89ece1e4a8d83aeeb7b4e6be, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 116
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 24
+      transposeSemitones: 0
+      loudnessLufs: -18
+    takeMusic:
+    - bpm: 116
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 24
+      transposeSemitones: 0
+      loudnessLufs: -18
+  - key: bgm_dungeon
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 015474080c467c649b8a166997282a55, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 100
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -18
+    takeMusic:
+    - bpm: 100
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -18
+  - key: bgm_gacha
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 32eb1e30054d7a24abb94dec8f972678, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 84
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 16
+      transposeSemitones: 0
+      loudnessLufs: -16.01
+    takeMusic:
+    - bpm: 84
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 16
+      transposeSemitones: 0
+      loudnessLufs: -16.01
+  - key: bgm_gacha_intro
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: b40d18af22fad50449ee07627c40ba8f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 84
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 2
+      transposeSemitones: 0
+      loudnessLufs: -17.5
+    takeMusic:
+    - bpm: 84
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 2
+      transposeSemitones: 0
+      loudnessLufs: -17.5
+  - key: bgm_story
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9fe5fbf2a5272354c9514f5d9e7ea4ea, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 72
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 24
+      transposeSemitones: 0
+      loudnessLufs: -16
+    takeMusic:
+    - bpm: 72
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 24
+      transposeSemitones: 0
+      loudnessLufs: -16
+  - key: bgm_event
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 78f28a0fadf0aad45b6bb73107969b92, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 104
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -16
+    takeMusic:
+    - bpm: 104
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -16
+  - key: bgm_sleep
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8ae12a7362242ba48b6ca943f4603f8f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 60
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -22
+    takeMusic:
+    - bpm: 60
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 32
+      transposeSemitones: 0
+      loudnessLufs: -22
+  - key: jingle_stage_clear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 875722f6c4e73cd41b09348142a1201b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.11
+    takeMusic:
+    - bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.11
+  - key: jingle_stage_fail
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c15a83761f157844880796dd3fb5f0e3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 80
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.55
+    takeMusic:
+    - bpm: 80
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.55
+  - key: jingle_boss_appear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 4ede1e9f69c805d4fa7d8a1e5b45f54d, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 60
+      beatsPerBar: 2
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.16
+    takeMusic:
+    - bpm: 60
+      beatsPerBar: 2
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.16
+  - key: jingle_boss_defeated
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: f466303e5a67ad04cb7f18b71f296f26, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 112
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.13
+    takeMusic:
+    - bpm: 112
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.13
+  - key: jingle_chapter_clear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: ff6b34d1c0a37dc49bb39885e12a2669, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 104
+      beatsPerBar: 6
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -13.57
+    takeMusic:
+    - bpm: 104
+      beatsPerBar: 6
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -13.57
+  - key: jingle_new_feature
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: afc48e6a512b5de45af014905b37ff6f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -9.93
+    takeMusic:
+    - bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -9.93
+  - key: jingle_evolution
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 76af46be73a42814d9f70ac104455f2f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 100
+      beatsPerBar: 5
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.61
+    takeMusic:
+    - bpm: 100
+      beatsPerBar: 5
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.61
+  - key: jingle_new_friend
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bd5fabf6af1a4fb418454f1eddc75bca, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 132
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.85
+    takeMusic:
+    - bpm: 132
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.85
+  - key: jingle_gacha_legend
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: dbf4ca66ebb478546904c57bf0f99e1e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 96
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.81
+    takeMusic:
+    - bpm: 96
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.81
+  - key: jingle_gacha_mythic
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e38de042c205c0d4d9fa1388e1ac0a2c, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 80
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.48
+    takeMusic:
+    - bpm: 80
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.48
+  - key: jingle_first_meeting
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 9af3f91e867fa024da94836fd71783a9, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 100
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.43
+    takeMusic:
+    - bpm: 100
+      beatsPerBar: 3
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -11.43
+  - key: jingle_graduation
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 445f5a369197b2f4ab576ce67e132cd6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 116
+      beatsPerBar: 5
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.49
+    takeMusic:
+    - bpm: 116
+      beatsPerBar: 5
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -12.49
+  - key: jingle_dungeon_clear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 1ff7e6048f2553a44ae15a02a4a05db5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 108
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.93
+    takeMusic:
+    - bpm: 108
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.93
+  - key: jingle_event_open
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 913ba86a5d646e84480d9d3b11cdf3a7, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.22
+    takeMusic:
+    - bpm: 120
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: -10.22
+  - key: vox_jjakjjak_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_jjakjjak_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_jjakjjak_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_ttokdan_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_ttokdan_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_ttokdan_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_chalkak_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_chalkak_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_chalkak_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_mongdang_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_mongdang_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_mongdang_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_udukeoni_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_udukeoni_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_udukeoni_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_rouge_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_rouge_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_rouge_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_lalabell_hello
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_lalabell_cheer
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: vox_lalabell_pet
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: kill_mote
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: bacedee10c65492418b855d821ef1672, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: daa13d6d57956e5438ce47c135f5aba4, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.02
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_error
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: e5e42420bac35df45aa79c131be95412, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: 76262c73726ed6546a4dbef2b347e69d, type: 3}
+      number: 4
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: status_reveal
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: db07b9901fbc693428ac05c8d58274d6, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 5d1796e285c3d394bb1a6da166144993, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.02
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: unlock_card
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: afc48e6a512b5de45af014905b37ff6f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: jingle_gacha_high
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: dbf4ca66ebb478546904c57bf0f99e1e, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: stage_clear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 875722f6c4e73cd41b09348142a1201b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: stage_fail
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: c15a83761f157844880796dd3fb5f0e3, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: guardian_pulse
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: a7af2c06af8fe2c4db7bcc57cfaebc0f, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: c12de200ed113f94d8f180627b557b5e, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: bgm_tower
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: bgm_worldboss
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: jingle_tower_floor
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_equip
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_relic_up
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_set_complete
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: ui_decor_place
+    trimDb: 0
+    takes: []
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: boss_defeat
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8c712e3af1c3cc143a576e82adc485ae, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: ee3850454eac7a1469ac202500095f12, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: death_spring
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 49da510cd6168574899b1d0d22151c0b, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 0a7532a4071467d4f97859221728c96f, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 74318c178334c3b458096a9484b324f4, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: firefly_appear
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: cbfa65334dbf39d40b69096f6566abd5, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 373bf8868ef2d88438c2737a8112c311, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: firefly_catch
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 079f70d0385249d498fe70b34532a985, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: -0.01
+    - clip: {fileID: 8300000, guid: 00096928aa19f7e49a47c29c70faffbe, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: -0.01
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: cheer_start
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 5bee755a0bc28644d89bb71f1365ca97, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: e3b4e94efbaa29049bd0c4a83ac3ebb5, type: 3}
+      number: 3
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
+  - key: lamp_sum
+    trimDb: 0
+    takes:
+    - clip: {fileID: 8300000, guid: 8f139d0808c244a4b8fbcf14d5f57d65, type: 3}
+      number: 1
+      rootHz: 0
+      gainDb: 0
+    - clip: {fileID: 8300000, guid: c612a0a450342a34a94cdb6775077c73, type: 3}
+      number: 2
+      rootHz: 0
+      gainDb: 0
+    music:
+      bpm: 0
+      beatsPerBar: 4
+      beatOffset: 0
+      bars: 0
+      transposeSemitones: 0
+      loudnessLufs: 0
+    takeMusic: []
