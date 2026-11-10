@@ -1,6 +1,9 @@
 # Notion 허브 구성 명세
 
 > 대상 위치: https://app.notion.com/p/Notion-414d6b1add7d80c09efde5e9939e4d27 (이 페이지 아래에 만든다)
+> ⚠️ 2026-11-10 현재 이 명세로 만든 허브가 2개 있다. 하나만 남기고 정리할 것.
+> - A: https://www.notion.so/567b16697889485da7efa9f42adbf745 (다른 세션 생성 · README · D-7이 가리키는 곳)
+> - B: https://app.notion.com/p/414b5060717d8102ae49d77f5effd4f8 (ChaJuSeong 페이지 아래 · 백승천 반영됨)
 > 역할(D-7): Notion = 위키 허브. 작업은 웹 팀 보드, 문서 원본은 Git. Notion에 작업 카드나 문서 사본을 만들지 않는다.
 > 웹 팀 보드: https://claude.ai/artifact/Apsp44mxNMroEmtNF8EksE
 
@@ -15,7 +18,7 @@
   3. 3단 컬럼
      - 🧭 바로가기: 웹 팀 보드 · GitHub 저장소 · decisions.md · CONTRIBUTING
      - 📍 지금: M0 세팅 11/10~11/16 · 목표 · 다음 M1 프로토 11/17~12/26
-     - 🧢 팀: 대표 · 김용기 · 팀원 C(미정) · DD → 기개발 · 로컬 개발 · AI 아트
+     - 🧢 팀: 대표 · 김용기 · 백승천 · DD → 기개발 · 로컬 개발 · AI 아트
   4. `📚 위키`: 하위 페이지 3개(§2)
   5. `🗺️ 로드맵`: 로드맵 · 마일스톤 DB
   6. `🗣️ 회의 · 결정`: 회의록 DB
