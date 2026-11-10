@@ -1,6 +1,20 @@
 # Project_KN
 2D 방치형 RPG 게임 (Unity)
 
+## mg-game 10계명
+1. 우리는 모두 기획자이자 개발자이자 아티스트다
+2. 빠르게 만들고, 빠르게 내놓는다
+3. 초반이 재미없으면 후반은 없다
+4. 내 방향대로 가되, 공통 룰 안에서 간다
+5. 남의 작업도 내 작업이다
+6. 불만은 그 자리에서, 뒤끝은 없이
+7. 꼬이면 그때 모이고, 모르면 추천대로 간다
+8. 아트는 한 사람이 그린 것처럼
+9. QA와 기획은 늘 곁에 있다
+10. AI와 자동화로 시간을 사고, 돈은 아낀다
+
+→ 실행 기준과 실제 장치: [Docs/00_Overview/Principles.md](./Docs/00_Overview/Principles.md)
+
 ## 빠른 시작
 1. `git lfs install` → `git clone` → `git lfs pull`
 2. UnityYAMLMerge 등록 ([CONTRIBUTING.md §1-1](./CONTRIBUTING.md))
