@@ -2,7 +2,7 @@
 
 > 대상 위치: https://app.notion.com/p/Notion-414d6b1add7d80c09efde5e9939e4d27 (이 페이지 아래에 만든다)
 > **정식 허브: https://www.notion.so/567b16697889485da7efa9f42adbf745** (2026-11-10 대표 확정)
-> ChaJuSeong 페이지 아래에 중복으로 만든 허브(414b5060…)는 폐기 대상.
+> ChaJuSeong 페이지 아래에 중복으로 만든 허브(414b5060…)는 2026-11-10 휴지통으로 이동.
 > 역할(D-7): Notion = 위키 허브. 작업은 웹 팀 보드, 문서 원본은 Git. Notion에 작업 카드나 문서 사본을 만들지 않는다.
 > 웹 팀 보드: https://claude.ai/artifact/Apsp44mxNMroEmtNF8EksE
 
