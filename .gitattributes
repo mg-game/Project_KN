@@ -88,3 +88,9 @@
 *.pptx  filter=lfs diff=lfs merge=lfs -text
 *.docx  filter=lfs diff=lfs merge=lfs -text
 *.pdf   filter=lfs diff=lfs merge=lfs -text
+
+# ---- 빌더 생성 결과물: 병합하지 말고 다시 생성 (H-2) ----
+# Editor/Builders 코드가 통째로 다시 만드는 파일이라 줄 단위 · Smart Merge 결과를 믿을 수 없다.
+# 충돌이 나면 자기 쪽 파일을 그대로 두고 충돌로 표시된다 → 빌더 코드를 병합한 뒤 메뉴 IdleGame/Setup/0 으로 다시 생성해 커밋한다.
+Assets/_Project/Scenes/Main.unity  -merge
+Assets/_Project/Prefabs/UI/**      -merge
