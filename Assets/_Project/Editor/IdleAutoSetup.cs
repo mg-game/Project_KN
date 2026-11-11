@@ -12,6 +12,10 @@ namespace IdleGame.EditorTools
     /// - 컴파일이 끝날 때마다 Play 버튼이 어느 씬에서든 Main 씬부터 시작하도록 playModeStartScene을 지정한다.
     /// - SceneVersion이 마지막으로 만든 버전과 다르면(빌더/데이터 코드가 바뀜) 아트 임포트를 마무리하고
     ///   데이터 + UI + 메인 씬을 다시 만든 뒤 Main 씬을 연다.
+    /// - 저장소에 커밋된 결과물이 이미 SceneVersion이면(RepoStampPath) 다시 만들지 않는다. 새로 클론한 컴퓨터마다
+    ///   Main 씬 · UI 프리팹 · ProjectSettings가 통째로 다시 써져 병합할 수 없는 변경이 생기던 문제를 막는다 (H-2).
+    ///   SceneVersion을 올린 사람은 다시 만든 결과물과 RepoStampPath를 함께 커밋한다. 커밋하지 않았으면 다른 컴퓨터는
+    ///   예전처럼 각자 다시 만든다 (그 변경은 커밋하지 않는다).
     /// 배치 모드(검증용 복사본)에서는 아무것도 하지 않는다 — 배치는 IdleProjectSetup.BatchBuildAll을 직접 부른다.
     /// </summary>
     [InitializeOnLoad]
@@ -25,6 +29,10 @@ namespace IdleGame.EditorTools
 
         /// <summary>마지막으로 자동 생성에 성공한 버전 (이 컴퓨터의 프로젝트별, 버전 관리 밖)</summary>
         const string StampPath = "Library/IdleGameAutoSetup.txt";
+        /// <summary>저장소에 커밋된 생성 결과물(Main 씬 · UI 프리팹 · 데이터)의 버전 (버전 관리 안, 다시 만든 사람이 결과물과 함께 커밋)</summary>
+        const string RepoStampPath = IdleProjectSetup.Root + "/Generated/AutoSetupVersion.txt";
+        /// <summary>메뉴 "지금 실행": 저장소 결과물이 최신이어도 이번에는 다시 만든다 (성공하거나 사용자가 취소하면 지운다)</summary>
+        const string ForceKey = "IdleGame.AutoSetup.Force";
         /// <summary>이번 에디터 세션에서 이미 시도한 버전 (취소 뒤 같은 세션에서 반복하지 않게 — 실패하면 지우고 다음 컴파일 뒤 다시 시도)</summary>
         const string TriedKey = "IdleGame.AutoSetup.Tried";
         /// <summary>
@@ -46,6 +54,7 @@ namespace IdleGame.EditorTools
         [MenuItem("IdleGame/Setup/0. 자동 세팅 지금 실행", priority = 0)]
         static void RunNow()
         {
+            SessionState.SetBool(ForceKey, true);
             SessionState.EraseInt(TriedKey);
             if (File.Exists(StampPath)) File.Delete(StampPath);
             EditorApplication.update -= OnUpdate;
@@ -62,7 +71,8 @@ namespace IdleGame.EditorTools
             EditorApplication.update -= OnUpdate;
             PointPlayButtonAtMain();
 
-            if (ReadStamp() == SceneVersion || SessionState.GetInt(TriedKey, 0) == SceneVersion) return;
+            if (SessionState.GetInt(TriedKey, 0) == SceneVersion) return;
+            if (!SessionState.GetBool(ForceKey, false) && (ReadStamp(StampPath) == SceneVersion || ReadStamp(RepoStampPath) == SceneVersion)) return;
             if (File.Exists(HoldPath))
             {
                 // 다음 컴파일(도메인 리로드) 때 다시 확인한다. 같은 세션에서는 한 번만 알린다
@@ -96,6 +106,7 @@ namespace IdleGame.EditorTools
             }
             if (HasDirtyScene() && !EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
+                SessionState.EraseBool(ForceKey);
                 Debug.Log("[IdleGame] 자동 세팅을 취소했어요. 메뉴 IdleGame/Setup/0 으로 다시 실행할 수 있어요.");
                 return;
             }
@@ -113,6 +124,9 @@ namespace IdleGame.EditorTools
                 PointPlayButtonAtMain();
 
                 File.WriteAllText(StampPath, SceneVersion.ToString());
+                // 저장소 표식은 값이 바뀔 때만 쓴다 (같은 버전을 다시 만들어도 이 파일은 변경으로 잡히지 않게)
+                if (ReadStamp(RepoStampPath) != SceneVersion) File.WriteAllText(RepoStampPath, SceneVersion + "\n");
+                SessionState.EraseBool(ForceKey);
                 Debug.Log($"[IdleGame] 자동 세팅 완료 (v{SceneVersion}). Play를 누르면 Main 씬부터 시작해요.");
             }
             catch (Exception e)
@@ -146,11 +160,11 @@ namespace IdleGame.EditorTools
             return false;
         }
 
-        static int ReadStamp()
+        static int ReadStamp(string path)
         {
             try
             {
-                return File.Exists(StampPath) && int.TryParse(File.ReadAllText(StampPath).Trim(), out int version) ? version : 0;
+                return File.Exists(path) && int.TryParse(File.ReadAllText(path).Trim(), out int version) ? version : 0;
             }
             catch (IOException)
             {
