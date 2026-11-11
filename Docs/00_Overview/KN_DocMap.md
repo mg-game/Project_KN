@@ -65,7 +65,7 @@
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
-| `CNT_Boss` | 🟡 | **P0** | Review — 1장 보스 2종 + 1-10 변형(페이즈 · 360°) · ③ 5건 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
+| `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
 
@@ -92,9 +92,9 @@
 | 문서 | 상태 | 진행 | 메모 |
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
-| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 12건 (P0 8) — D-38 A1 |
+| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
-| `ART_BattleSpriteSpec` | 🟡 | Review | 전투 스프라이트 규격 — L&L 58장 실측 · 캔버스 · 기준선 · 가독성 · ③ 5건 (A-03) |
+| `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
 ---
