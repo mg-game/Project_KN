@@ -7,7 +7,7 @@
 | 최종 수정 | 2026-11-11 |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) · [`ART_StyleGuide`](../07_Art/ART_StyleGuide.md) |
-| 첨부 | [지킴이/잔향이 레벨업 와이어프레임](./images/UI_InGame_GrowthLevelup_Wireframe.png) · 변환 전 원본 [`UI_InGame_v0.1.docx`](../99_Archive/Source/UI_InGame_v0.1.docx) (참고용, 정본은 이 md) — ⏳ 두 파일은 LFS 업로드 대기 (클라우드에서 LFS 업로드 불가, PC에서 올림) |
+| 첨부 | [지킴이/잔향이 레벨업 와이어프레임](./images/UI_InGame_GrowthLevelup_Wireframe.png) · 변환 전 원본 [`UI_InGame_v0.1.docx`](../99_Archive/Source/UI_InGame_v0.1.docx) (참고용, 정본은 이 md) |
 
 > 버전: v0.1 | 작성일: 2026-07-24  
 > 원본: `Lost_Lovely_인게임_UI_기획서_v0.1.docx` (md 변환 + 정본 정합 교정판)  
