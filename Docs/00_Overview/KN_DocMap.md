@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-11 (PR #14~#19 반영) |
 | 관련 테이블 | - |
 | 관련 문서 | [`decisions.md`](../decisions.md) D-25 · D-26 · [`KN_Glossary`](./KN_Glossary.md) · [`_Template_System`](../_Template_System.md) |
 
@@ -28,8 +28,8 @@
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
 | `KN_ConceptNarrative` | 🟡 | P1 | Approved (v0.2) | 시스템 v1.0이 예고한 v0.3 개정 항목 반영 필요 |
-| `KN_Glossary` | 🔴 | **P0** | Review | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
-| `KN_DocMap` | 🔴 | **P0** | Review | 이 문서 |
+| `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
+| `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
 | `KN_Overview` | 🔴 | **P0** | 대기 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
 | `KN_Roadmap` | 🟡 | P1 | 대기 | L&L PHASE4-ROADMAP(I-4 이관) + 팀 마일스톤 통합 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
@@ -38,11 +38,11 @@
 
 | 문서 | 상태 | 우선 | 진행 | 근거 코드 (PR #2) |
 |---|---|---|---|---|
-| `SYS_InGameBattle` | 🟡 | **P0** | ③ 차이 초안 (이 PR) · ① 대기 | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
-| `SYS_Growth` | 🔴 | **P0** | 대기 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
-| `SYS_Economy` | 🔴 | **P0** | 대기 | CurrencySystem · InventorySystem |
-| `SYS_IdleReward` | 🔴 | **P0** | 대기 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
-| `SYS_FTUE` | 🔴 | **P0** | 대기 | TutorialSystem · FeatureGateSystem |
+| `SYS_InGameBattle` | 🟡 | **P0** | ① 완료(§17) · ③ 12건 (D-27로 6건 확정, 6건 결정 대기) | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
+| `SYS_Growth` | 🟡 | **P0** | ① 완료 · ②③ 대기 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
+| `SYS_Economy` | 🟡 | **P0** | ① 완료 · ②③ 대기 | CurrencySystem · InventorySystem |
+| `SYS_IdleReward` | 🟡 | **P0** | ① 완료 · ②③ 대기 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
+| `SYS_FTUE` | 🟡 | **P0** | ① 완료 · ②③ 대기 | TutorialSystem · FeatureGateSystem |
 | `SYS_Evolution` | 🔴 | P1 | 대기 | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
@@ -62,7 +62,7 @@
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
-| `CNT_Stage_Chapter1` | 🔴 | **P0** | 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Stage_Chapter1` | 🟡 | **P0** | ① 완료 · ②③ 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔴 | P1 | 대기 | 망각체 목록 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
@@ -71,7 +71,7 @@
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
-| `UI_InGame` | 🟡 | P1 | Review (PR #8) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
+| `UI_InGame` | 🟡 | P1 | Approved (v0.1) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
 | `UI_Battle` | 🔴 | **P0** | 대기 | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
 | `UI_Formation` | 🔴 | **P0** | 대기 | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔴 | **P0** | 대기 | 레벨업 와이어프레임 5화면 |
