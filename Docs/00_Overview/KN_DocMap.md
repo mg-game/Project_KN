@@ -39,8 +39,8 @@
 | 문서 | 상태 | 우선 | 진행 | 근거 코드 (PR #2) |
 |---|---|---|---|---|
 | `SYS_InGameBattle` | 🟡 | **P0** | ① 완료(§17) · ③ 12건 중 11건 확정(D-27 · D-28), #4 I-7 대기 | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
-| `SYS_Growth` | 🟡 | **P0** | ①②③ 작성 · ③ 7건 결정 대기 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
-| `SYS_Economy` | 🟡 | **P0** | ① 완료 · ②③ 대기 | CurrencySystem · InventorySystem |
+| `SYS_Growth` | 🔵 | **P0** | ①②③ 완료 · D-29 확정 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
+| `SYS_Economy` | 🟡 | **P0** | ①②③ 작성 · ③ 7건 결정 대기 | CurrencySystem · InventorySystem |
 | `SYS_IdleReward` | 🟡 | **P0** | ① 완료 · ②③ 대기 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
 | `SYS_FTUE` | 🟡 | **P0** | ① 완료 · ②③ 대기 | TutorialSystem · FeatureGateSystem |
 | `SYS_Evolution` | 🔴 | P1 | 대기 | EvolutionSystem |
