@@ -26,6 +26,10 @@
 # Recordings can get excessive in size
 /[Rr]ecordings/
 
+# 빌더 생성물 (D-15): 원본은 Assets/_Project/Editor/Builders 코드
+/[Aa]ssets/_Project/Scenes/Main.unity
+/[Aa]ssets/_Project/Scenes/Main.unity.meta
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 
