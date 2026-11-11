@@ -4,10 +4,11 @@
 | 항목 | 값 |
 |---|---|
 | 상태 | Draft |
-| 작성자 | 대표 |
+| 작성자 | 대표 · §17 ① 구현: 기개발 |
 | 최종 수정 | 2026-11-11 |
 | 관련 테이블 | - |
 | 관련 문서 | 상위 [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) · [`UI_InGame`](../03_UI_UX/UI_InGame.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) |
+| 근거 | §17: 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`, PR #2) |
 
 > 버전: v1.0
 > 상위 문서: 『LOST & LOVELY 콘셉트 및 내러티브 가이드 v0.2』 (v0.3 개정 예정 항목 포함)
@@ -433,4 +434,619 @@ CLEAR > FAIL① > FAIL② (유저 유리 판정 원칙 / 평가 순서: 정화 �
 
 ---
 
-*개정 이력: v1.0 — 최초 통합 정리 (컨셉 가이드 v0.2 반영, 코어=움직이는 수선점 확정 기준)*
+# 17. 현재 구현 (As-built) — 기개발
+
+> 작성: 기개발 (지시 I-9-1, 2026-11-11). **근거: `feature/lost-and-lovely-import` @ `4b73a5a`** (PR #2 최신 커밋).
+> 코드가 실제로 하는 일만 적었다. 해석 · 제안 · 기획과의 비교 판단은 넣지 않았다 (② · ③은 DD).
+> 수치 출처: 런타임에 쓰이는 `Assets/_Project/Data/BattleConfig.asset`은 코드 기본값(`BattleConfig.cs`)과 **154개 필드가 모두 같다** (기개발 대조). 그래서 수치 위치는 코드 줄로 적는다. `GameConfig.asset`에는 일부 필드(`attackPerLevelPercent` 등)가 없어 그 필드는 코드 기본값이 쓰인다.
+> 코드의 "Resonance"는 두 가지다: 전투 소환 재화 **잔향**(`_resonance`)과 **계보 공명 레벨**(`LineageSave.resonance`). 아래에서는 둘을 나눠 쓴다.
+
+**파일 약칭** (모두 `Assets/_Project/` 아래)
+
+| 약칭 | 경로 |
+|---|---|
+| `BS` | `Scripts/Systems/Battle/BattleSystem.cs` |
+| `SIM` | `Scripts/Systems/Battle/BattleSimulator.cs` |
+| `SK` · `ST` · `GM` | `Scripts/Systems/Battle/BattleSimulator.Skills.cs` · `.Status.cs` · `.Gimmicks.cs` |
+| `BT` | `Scripts/Systems/Battle/BattleTypes.cs` |
+| `FORM` | `Scripts/Systems/Battle/FormationSystem.cs` |
+| `DUN` | `Scripts/Systems/Battle/DungeonSystem.cs` |
+| `BC` | `Scripts/Data/BattleConfig.cs` |
+| `GC` | `Scripts/Data/GameConfig.cs` |
+| `CDB` | `Scripts/Data/CharacterDatabase.cs` |
+| `SD` | `Scripts/Data/SkillDefs.cs` |
+| `GE` | `Scripts/Core/GameEnums.cs` |
+| `SAVE` | `Scripts/Core/SaveData.Battle.cs` |
+| `GROW` | `Scripts/Systems/GrowthSystem.cs` |
+| `CS` | `Scripts/Systems/Characters/CharacterSystem.cs` |
+| `MS` | `Scripts/Systems/Meta/MetaSession.cs` |
+| `META` | `Data/MetaDatabase.asset` |
+
+## 17.0 §16 표 항목의 현재 값
+
+| §16 # | 항목 | 현재 구현 | 이 절 위치 |
+|---|---|---|---|
+| 1 | 적 방향 · 지킴이 칸 | 방향 5개(`BT:13`). 지킴이 칸 5개, 각도 = 90° + 72° × 칸 번호 고정 | 17.1-F · G |
+| 2 | 클리어 조건 | 처치 수 ≥ `killsToBoss` → 보스 등장 → 보스 처치 = 클리어. 일반 스테이지 제한시간 없음, 던전만 120초 | 17.1-B · D · K |
+| 3 | 불 밝히기 | 게이지 0~1. 일반 처치 · 잔향이 풀림으로 +0.05씩. 가득 차면 살아 있는 망각체 전체에 최대 체력 비례 피해 | 17.1-I |
+| 4 | 배타 · 공명 | 같은 형태는 양쪽 불가, 한쪽 안에서 계보 1종. 같은 계보의 다른 형태가 양쪽에 있으면 계보 공명 (공격력 +4 + 2 × 공명 레벨 %) | 17.1-F · J |
+| 5 | 파견 중 캐릭터 | 원정(`ExpeditionSystem`) 중인 계보도 편성 · 참전 가능 | 17.1-F |
+| 6 | 행동 성향 · 성격 | 해당 코드 없음. 공격 방식은 전투 성향 `CombatStyle` 6종이 정함 | 17.1-G · L |
+| 7 | 재집결 | 해당 코드 없음. 편성을 바꾸면 그 스테이지를 처음부터 다시 시작 | 17.1-B |
+| 8 | 소환 상한 | 덱 잔향이 동시 **12**(`maxEchoes`), 스킬 토큰 별도 **6**(`maxTokens`), 동시 망각체 **40**(`maxEnemies`) | 17.1-H · 17.3 |
+
+## 17.1 규칙
+
+**A. 스테이지 · 챕터 표기**
+```
+스테이지 = BattleSave.stage (1 이상)
+챕터 = (스테이지 − 1) / 10 + 1, 번호 = (스테이지 − 1) % 10 + 1 → "챕터-번호" (예: 13 → "2-3")      BS:130-131
+IF 전투 시작 → highestStage = max(highestStage, 스테이지), 새 난수 시드로 시뮬 시작
+스테이지 상한: BS · BC 안에는 없음
+```
+
+**B. 전투 시작**
+```
+IF 전투 시작
+  → 처치 수 0, 보스 없음, 불 밝히기 게이지(`LampGauge`) 0, 잔향 = 10 (던전 30) + 보너스, 0~99로 제한     SIM:497, 507-509
+  → 수선점 내구(`ShopHp`) = 최대 내구
+     최대 내구 = 300 × 1.04^(수선점 레벨 − 1) × max(0.1, 1 + 시너지 ShopMaxHpPercent / 100)          GROW:79-80
+IF 지킴이(`GuardianUnit`) 0명 AND 잔향이(`EchoUnit`) 덱 0칸 → 망각체를 만들지 않고 대기 (결과 없음)
+ELSE → 1.5초 뒤 첫 웨이브
+IF 전투 중 편성 변경(TryPlace 성공 등) → 다음 Tick에 같은 스테이지를 처음부터 다시 시작 (연속 실패 수는 유지)
+IF 전투 중 캐릭터 능력치만 변경 → 지킴이 수치만 바로 갱신. 이미 소환된 잔향이는 소환 당시 수치 유지
+```
+
+**C. 망각체 생성 (웨이브)**
+```
+등장 후보 = 적 목록 중 minStage ≤ 스테이지 (던전은 ceil(층 × 2) 기준)
+  일반 적 가중치 = spawnWeight × 스테이지 기믹 배율 (17.1-M), 보스는 isBoss
+IF 웨이브 남은 수 = 0 → 휴식 타이머 감소, 0 이하면 새 웨이브 (남은 수 = 웨이브 크기)
+   IF 일반 후보 없음 AND 보스 미등장 → 즉시 보스 등장
+IF 생성 타이머 ≤ 0 → 타이머 = 생성 간격
+   IF 살아 있는 망각체 ≥ 40 → 이번 생성 건너뜀 (웨이브 남은 수는 줄지 않음)
+   ELSE → 가중치 무작위 1마리, 방향 = 레인 각도 ± 최대 20°, 수선점 중심에서 반경 2.5에 등장
+IF 웨이브 마지막 적까지 생성 → 휴식 시작, 다음 웨이브의 압박 방향을 다시 뽑음
+압박 방향: 웨이브마다 5방향 중 1곳, 40% 확률로 1곳 추가
+레인 선택: 70% = 압박 방향 (2곳이면 반반), 30% = 5방향 균등
+웨이브 수 상한 없음 → 보스 처치나 실패 전까지 계속 나옴
+```
+
+**D. 망각체 이동 · 수선점 피해 · 보스**
+```
+망각체 → 수선점 중심으로 직진 (반경 2.5 → 0.32)
+IF 근접 잔향이가 0.3 안에서 앞을 막음 (보이는 적만) → 멈춰서 그 잔향이를 공격 (보스 포함)
+IF 일반 망각체가 반경 0.32에 닿음 → 수선점에 피해를 주고 사라짐. 처치로 세지 않음                         SIM:1084-1087
+IF 보스가 닿음 → 붙어 있음. 처음 닿을 때 1회, 이후 2초마다 피해. 기절 중엔 멈춤
+수선점 피해 = 적 피해 × (분노 1.4) × (1 − 시너지 피해 감소) → 수선점 보호막이 먼저 흡수 → 내구
+
+IF 망각체 처치 (불 밝히기 · 분열체 · 부하 처치 포함) → 처치 수 +1
+IF 보스 미등장 AND 처치 수 ≥ killsToBoss → 보스 등장 (시간 조건 없음)
+   killsToBoss = clamp(15 + floor((스테이지 − 1) × 0.6), 1, 40)                                      BC:422-423
+보스 = 보스 후보[(스테이지 − 1) % 후보 수] (후보 = 적 목록 순서)                                     SIM:971
+   기본 목록: 1~2스테이지 = 망각의 큰그림자. 3스테이지부터 홀수 = 큰그림자, 짝수 = 좀나방 여왕
+보스 위치 = 현재 압박 방향 ± 최대 10°
+IF 보스 후보 없음 → 처치 목표만 채워도 클리어
+보스 등장 뒤 → 일반 웨이브의 휴식 · 생성 타이머가 0.5배 속도로 흐름
+IF 보스 체력 ≤ 50% (Enrage 기믹, 기본 보스 둘 다) → 분노: 이동 ×1.3, 피해 ×1.4, 공성 타이머 ×1.3 빠르게,
+   부하 소환 간격 ×0.6. 해제 없음
+IF 보스에 부하 설정 (좀나방 여왕 = 좀나방) → 등장 6초 뒤부터 6초마다 2마리 (동시 적 < 40일 때)
+```
+
+**E. 승패 판정**
+```
+IF 보스 처치 → 클리어(Cleared)
+IF ShopHp ≤ 0 → 실패(Failed). 실패를 정하는 곳은 이 한 곳 → 일반 스테이지에 제한시간 없음
+IF 튜토리얼 보호 (스테이지 ≤ 3 AND 튜토리얼이 보호를 원함) → 새로 나오는 적 최대 체력 × 0.6,
+   내구는 1 아래로 내려가지 않음 → 실패하지 않음                                                    BT:88, MS:70
+```
+
+**F. 편성**
+```
+지킴이 칸 5개 (방위 슬롯 0~4), 잔향이 덱 6칸 중 처음 열린 칸 5개                                SAVE:10-11, FORM:20
+IF highestStage ≥ 20 (UI 표기 "2-9 클리어") → 덱 6번째 칸 열림                                      FORM:22, 50, 59
+IF 잠긴 덱 칸에 형태가 남아 있음 → 규칙 검사 · 전투 · 공명에서 모두 무시
+IF 형태의 recommendedRole과 놓는 쪽이 다름 → 제한 없음 (자동 편성 순서에만 씀)
+CanPlace(쪽, 칸, 형태 `FormId`) 검사 순서 — 처음 걸린 결과를 돌려줌                                FORM:88-111
+  쪽이 지킴이/잔향이가 아님 OR 칸 번호 범위 밖                  → InvalidSlot
+  잔향이 칸이 잠김                                             → SlotLocked
+  형태 ID가 비었음 OR 계보(`Lineage`)를 보유하지 않음          → NotOwned
+  형태가 해금되지 않음                                         → FormLocked
+  같은 형태가 반대쪽 열린 칸에 있음                            → OnOtherSide
+  같은 쪽 다른 열린 칸에 같은 계보의 다른 형태가 있음           → LineageLimit
+  그 밖                                                        → Ok
+IF 같은 쪽 안에서 옮김 → 두 칸 맞바꿈 (빈칸이면 이동)
+IF 배치가 실제로 바뀜 → placementsDone +1 → 다음 Tick에 스테이지 재시작
+IF 계보가 원정(파견) 중 → 편성 · 참전 가능. PlaceResult.Dispatched는 반환하는 곳이 없음
+IF 자동 편성 → 해금된 형태를 Power 내림차순(같으면 형태 ID 순)으로 ① 추천 쪽 ② 지킴이 ③ 잔향이 순서로 채움.
+   형태는 한 번만, 한쪽에 계보 1종. 지킴이 칸 순서 0 → 2 → 3 → 1 → 4. placementsDone은 세지 않음     FORM:292-342
+   Power = attack / max(0.1, attackInterval) × 10 + hp
+편성 탭 기능 개방 = FtueStep ≥ 11 또는 1-3 클리어 (META). FormationSystem 자체는 개방을 검사하지 않음
+```
+
+**G. 지킴이 (전투)**
+```
+IF 스테이지 시작 → 칸마다 1명 생성. 위치 = 수선점 중심에서 반지름 1, 각도 90° + 72° × 칸
+   (0 = 90°, 1 = 162°, 2 = 234°, 3 = 306°, 4 = 18°)                                                 BT:19
+지킴이는 체력이 없음: IsAlive가 항상 true이고, 망각체가 지킴이를 공격하는 코드가 없음 → 피격 · 사망 · 부활 없음   SIM:219
+IF 공격 대기 ≤ 0 → 표적 탐색: (a) 수선점 중심 0.7 안의 적 (방향 무관, 모든 지킴이)
+   또는 (b) 사거리 안이면서 자기 부채꼴(arc/2) 안의 적. 보이는 적만
+   표적 = 점수가 가장 낮은 적. 점수 = 수선점까지 거리 (저격: 보스 −10, 포획: 기절한 적 +5)
+IF 공격 → 피해 = 공격력 × 성향 배율 × AttackFactor, 다음 대기 = 공격 간격 / SpeedFactor
+성향(`CombatStyle`)별 지킴이 보정
+   돌격 피해 ×1.6, 사거리 ×0.8 / 포획 피해 ×0.85, 기본 공격 기절 0.6초 / 저격 피해 ×1.7, 사거리 ×1.35, 간격 ×1.5
+   지원 피해 ×0.6, 기본 공격 표식 +10% 2.5초 / 힐 피해 ×0.5 / 방어 피해 ×1
+   방어 = 매 진행 부채꼴 안 적 전원 감속 0.45 (0.1초씩 갱신)
+   지원 · 힐 = 시작 0.5초 뒤 첫 맥박, 이후 4초 / 3.5초마다
+사거리 하한 = 0.8 (shopGuardRadius 0.7 + 0.1), 공격 간격 하한 0.1
+```
+
+**H. 소환 (잔향이)과 잔향**
+```
+[입력]
+IF 덱 카드 탭 → 방향 자동 (가장 위험한 방향)으로 소환
+IF 카드 길게 눌러 끌어서 전장에 놓음 → 놓은 각도로 소환. 덱 위에 놓으면 취소 (잔향 소모 없음)
+IF CanSummon = 진행 중 AND 칸 있음 AND 칸 대기 ≤ 0 AND 잔향 ≥ 비용 AND 덱 잔향이 수 < 12             SIM:1269-1277
+   → 잔향 −비용, 칸 대기 2.5초, 수선점 중심 반지름 0.2 · 목표 각도에 생성, 계보 EchoDeployCount +1
+IF 덱 잔향이 12마리 → 수동 소환 실패 ("지금은 잔향이를 부를 수 없어요."), 자동 소환은 건너뜀. 대기열 · 교체 없음
+[잔향 (`_resonance`)]
+시작 10 (던전 30) + 보너스, 상한 99
+매 진행 += 1/초 × (1 + 잔향 회복% / 100) × dt                                                      SIM:847
+적 처치 → 일반 +1, 보스 +10 (불 밝히기로 처치해도 받음. 수선점에 닿아 사라진 적은 처치 아님)        SIM:1568
+잔향이 풀림 → 비용 × 0.3 환급 (토큰은 0)                                                           SIM:1524
+스킬 ResonanceGain → +value
+[자동 소환] AutoMode일 때 0.5초마다
+IF (적이 있음 AND (지킴이 없는 방향에 적 OR 최대 위협 / 기준 ≥ 0.05)) OR 잔향 ≥ 98.5
+   AND 덱 잔향이 < 12
+   → 덱을 지난번 다음 칸부터 순환. 빈 칸 · 대기 중 칸은 건너뜀
+     살아 있는 적이 없으면 "소환 때 적을 노리는 스킬" 칸도 건너뜀
+     차례 칸의 비용이 모자라면 이번 판단을 끝내고 잔향이 모일 때까지 기다림 (다음 칸으로 넘기지 않음)   SIM:1712-1731
+   위협 기준 = max(1, 수선점 최대 내구 × 0.12). 지킴이가 있는 방향 위협 × 0.5, 보스 × 3
+AutoMode 기본 true. 새 튜토리얼 시작 때 false. 자동 전투 기능 개방(1-2 클리어) · 튜토리얼 아님 → true
+[잔향이 행동]
+IF 표적 없음 → 순찰: 수비 각도 방향 반지름 1.45 지점으로 이동
+   자동 방향 잔향이는 적이 있을 때 0.8초 놀면 수비 각도 = 가장 위험한 방향
+IF 어그로 반경 max(사거리, 0.9) 안에 보이는 적 → 가장 가까운 적을 표적으로
+   표적이 죽음 · 숨음 · 거리 > 1.5 × 어그로이면 놓아줌
+IF 표적 있음 → 교전 거리까지 접근 (근접 min(사거리, 0.3) × 0.9, 원거리 사거리 × 0.9), 사거리 안 · 대기 0이면 공격
+IF 근접 잔향이(사거리 ≤ 0.36) 0.3 안에 드러난 적 → 그 적은 멈추고 매 진행 잔향이에게 피해
+   (적 피해 × echoDamageMultiplier × 0.8 /초). 숨은(Phasing) 적은 통과
+IF 체력 ≤ 0 OR 유지 시간 ≤ 0 → 풀림: 덱 수 −1, 잔향 환급, 게이지 충전, OnDissolve 스킬 (토큰 제외)       SIM:1514-1529
+[토큰 (스킬 Summon)]
+덱 수와 따로 상한 6. 비용 0, 환급 0, 풀릴 때 게이지 × 0.4. 유지 = 스킬 duration (없으면 8초)
+능력치 = 시전자 × value (없으면 0.5). 토큰은 스킬 없음
+```
+
+**I. 불 밝히기 (`LampGauge`)**
+```
+게이지 0~1. 전투 시작 0                                                                            SIM:497
+IF 일반 적 처치 (불 밝히기 처치 제외) → +0.05 × 충전 배율. 보스 처치 → +0                             SIM:1570
+IF 잔향이 풀림 → +0.05 × 충전 배율 (토큰은 × 0.4)                                                   SIM:1526
+IF 스킬 LampGain → +value × 충전 배율
+   충전 배율 = max(0, 1 + (LampGainPercent + 보름달 30) / 100)                                       ST:107
+IF 합계 > 0.999 → 1 (상한 1)                                                                        SIM:1591
+IF LampDrain 적 → 수선점에 닿으면 −0.15, 수선점 중심 1.3 안에서 3초마다 −0.04
+IF 게이지 = 1 AND 진행 중 → 발동 가능                                                               SIM:441
+IF 수동 → 불 밝히기 버튼
+IF AutoMode AND 발동 가능 → 매 진행 판단                                                             SIM:417-429, 1733-1740
+   살아 있는 적 0 → 발동 안 함 (모든 방식)
+   Auto(0)        : 살아 있는 적 ≥ 5 OR 보스 생존 OR 내구 비율 < 0.35
+   SaveForBoss(1) : 보스 생존 OR 내구 비율 < 0.25
+   Manual(2)      : 자동 발동 안 함 (자동 소환은 그대로)
+IF 방식 선택 기능 잠김 (1-6 클리어 전) → 저장값과 상관없이 Auto
+IF 발동 → 게이지 0, 숨은 적 3초 드러남,
+   살아 있는 모든 망각체에 피해 = 최대 체력 × (보스 0.12 / 일반 1.0) × (1 + LampDamagePercent / 100)    SIM:1632-1633
+   치명타 · 표식 · 보스 피해 보정 없음, 적 보호막이 먼저 흡수. 이 처치는 게이지를 채우지 않지만 잔향은 줌
+   → 이어서 OnLampLit 스킬
+IF 튜토리얼 FillLamp → 진행 중이고 게이지 < 1이면 1로 채움
+```
+
+**J. 계보 공명 · 공격력 배율**
+```
+IF 지킴이 칸 형태의 계보 = 열린 덱 칸 형태의 계보 → 그 계보 공명 켜짐 (같은 형태는 양쪽 불가라 다른 형태끼리)   FORM:347-386
+   보너스 % = 4 + 2 × 공명 레벨 (LineageSave.resonance, 음수면 0)                                   FORM:368
+   팀 합계 = 켜진 계보별 보너스 합 (한쪽에 계보 1종이라 중복 없음)
+AttackMultiplier = (1 + 합계 / 100) × (1 + 응원 TempAttackPercent / 100) → 지킴이 · 잔향이 공격력에 곱함   BS:565
+SynergySystem은 공명을 더하지 않음. 던전은 공명 미적용. 표시 "{계보명} 계보 공명 Lv.{n}"
+캐릭터 능력치 (전투 밖)                                                                             CS:380-381
+   attack = form.attack × (1 + 8 × (레벨 − 1) / 100) × (1 + (5 × 공명 레벨 + 의상%) / 100)
+   hp     = form.hp     × (1 + 8 × (레벨 − 1) / 100) × (1 + 5 × 공명 레벨 / 100)
+```
+
+**K. 클리어 · 실패 · 다음 스테이지**
+```
+IF 클리어                                                                                          BS:639-655
+  → 단추(`CurrencyType.Gold`) = floor(StageGold × (1 + 보너스% / 100))
+     StageGold = floor(60 × 1.13^(스테이지 − 1)), 보너스 = 시너지 GoldGainPercent + 축제 스테이지 50, 하한 −90
+  → 별빛 사탕 = 3 (10의 배수 스테이지는 10) × 이벤트 배율 (배율 > 1일 때만)
+  → 재료: 잃어버린 상자 훅이 굴리지 않았으면 수선 천 35% (1~2개), 리본 조각 25% (1개)
+  → 편성된 계보(지킴이 · 덱 합집합, 보유한 것만) 호감도 +1
+  → 연속 실패 0, highestStage = max(highestStage, 스테이지 + 1)
+  → IF 막힌 스테이지(challengeTarget) > 0 AND 스테이지 ≥ 막힌 스테이지 → 막힌 스테이지 0, 파밍 수 0
+  다음 스테이지                                                                                     BS:688-705
+  IF 자동 진행(autoAdvance) 꺼짐 → 같은 스테이지
+  ELSE IF 막힌 스테이지 없음 OR 스테이지 ≥ 막힌 스테이지 OR 자동 보스 도전 미개방 → 스테이지 + 1
+  ELSE IF autoChallenge AND 파밍 클리어 수(+1) ≥ 3 → min(막힌 스테이지, highestStage)
+  ELSE → 같은 스테이지 반복 (파밍)
+IF 실패                                                                                            BS:657-675
+  → 단추 = floor(StageGold × (1 + 보너스% / 100) × 0.3 × clamp01(처치 수 / killsToBoss))
+  → 연속 실패 +1
+     IF 연속 실패 ≥ 2 → 연속 실패 0, 다음 = max(1, 스테이지 − 1)
+        IF 스테이지 > 1 → 막힌 스테이지 = 지금 스테이지 (기존 값 덮어씀), 파밍 수 0, StepBack 이벤트
+     ELSE → 같은 스테이지 재도전
+  연속 실패 수 · 파밍 클리어 수는 BattleSystem 필드라 저장되지 않음 (앱을 다시 켜면 0)
+[결과 대기 → 다음 전투]
+IF 결과가 남 → 1.5초 대기 (실제 시간, 배속 무관). 연장 시 끝난 순간부터 최대 6초, 건너뛰기 가능. 대기 중 소환 · 불 밝히기 불가
+IF 대기 끝 → 정해 둔 스테이지로 새 전투
+GoToStage(n) → stage = clamp(n, 1, highestStage), 연속 실패 · 파밍 수 0, 바로 시작 (막힌 스테이지는 유지)
+ChallengeBoss() → 막힌 스테이지 > 0 AND 스테이지 < 막힌 스테이지이면 그곳으로 이동
+```
+
+**L. 스킬 · 상태 이상 · 데미지**
+```
+[스킬 보유]
+형태마다 고유 스킬 1개 (CharacterFormDef.skill). 지킴이 · 잔향이 어느 쪽이든 같은 스킬                     SD:41-42
+  지킴이는 OnSummon · OnDissolve 스킬 칸을 만들지 않음. 잔향이의 OnBattleStart 스킬은 수선점이 대신 시전
+  토큰 · 망각체(적 · 보스)는 스킬 없음 (보스 행동은 기믹과 부하 설정)
+  시너지 단계 · 조합의 bonusSkill이 유닛에 스킬을 더함 (같은 스킬은 1번만). 팀 공용 대상이면 발동 1번에 1회
+스킬 레벨 · 강화 필드 없음. 진화 = 다른 형태 = 다른 스킬                                                 SD:45-65
+[스킬 값]
+배율형 효과(피해 · 연쇄 · 회복 · 보호막 · 지속 피해 · 지속 회복) = value × 시전자 현재 스킬 공격력
+  스킬 공격력 = attack × AttackMultiplier × max(0.1, 1 + (AttackPercent + 스테이지 특성 보너스) / 100) × AttackFactor
+  (성향 배율은 스킬에 안 들어감)
+[발동]
+IF Cooldown → 첫 시전 = (initialDelay > 0 ? initialDelay : cooldown × 0.5) × 쿨감 배율,
+   이후 간격 = max(0.5, cooldown × 쿨감 배율)                                                        SK:325-326
+   쿨감 배율 = 1 − clamp(쿨감%, 0, min(50, 90)) / 100
+IF Cooldown 시전 순간 대상이 없음 (적 0 / 받을 아군 0 / 다친 아군 0) → 취소, 0.25초 뒤 재시도
+IF Passive → 처형 · 공격력 상승은 상시, 그 밖은 0.5초마다 다시 걸림 (지속 max(duration, 0.65))
+IF OnSummon (적 대상인데 적 없음) → 1.5초 동안 0.25초 간격 재시도
+IF OnDissolve → 풀린 자리에서 1회 (토큰 제외) / OnKill → 처치한 유닛이 살아 있을 때, 최소 간격 = cooldown
+IF OnLampLit → 불 밝히기 직후 / OnShopDamaged → 보호막 흡수 뒤 내구가 실제로 깎일 때, 최소 간격 = cooldown
+IF OnShopLowHp → 내구가 처음 최대 × 0.3 미만일 때 1회 / OnBattleStart → 첫 진행 1회 (아군 없으면 10초까지 재시도)
+[대상]
+숨은(Phasing) 적 → 빛(Light) 특성 시전자만 노림. radius ≤ 0 → 0.6
+회복 · 보호막 · 지속 회복의 대상이 지킴이 → 수선점으로 1회 (지킴이는 체력이 없음)
+[상태 · 기믹 공통]
+정화 면역 중 → 녹 · 갉아먹힘이 안 걸림 / 적 기절 중 → 이동 · 공성 · 잔향이 공격 · 녹 · 갉아먹기 오라 멈춤
+분열체는 다시 나뉘지 않음 / 분열 · 부하는 동시 적 < 40일 때만, 보스로는 생성 안 함
+[데미지]
+기본 공격(지킴이 · 잔향이) = 스킬 공격력 × 성향 배율 → 적중 처리 (치명타 가능)
+  AttackFactor = max(0.1, (1 + 공격력 강화% / 100 + 상승% / 100) × (1 − 갉아먹힘% / 100))
+  SpeedFactor  = max(0.1, (1 + 공속 강화% / 100) / (1 + 녹% / 100))
+적중 처리 곱하는 순서: × 보스 피해(보스일 때) → × (1 + 처형%) (적 체력 ≤ 30%) → 치명타 × (1 + 치명 피해)
+  → × (1 + 표식%) → 적 보호막 먼저 흡수 → 체력
+  치명타 확률 = clamp01((5 + 치명%) / 100), 치명 피해 = (50 + 치명 피해%) / 100
+지속 피해 틱 · 패시브 오라 피해 → 치명타 없음 (보스 피해 · 처형 · 표식은 적용)
+방어력 · 속성 상성 없음 (적 방어 수치 필드 없음). 특성 ↔ 기믹 관계만 있음 (빛 ↔ 숨기, 천 ↔ 갉아먹기, 금속 ↔ 녹)
+```
+
+**M. 스테이지 기믹 (`StageModifierType`)**
+```
+1챕터 (1-1 ~ 1-10) 고정: 없음 · 없음 · 없음 · 비 · 바람 · 없음 · 정전 · 먼지 폭풍 · 보름달 · 축제           BC:319-323
+2챕터부터                                                                                          BC:460-471
+  번호 1 · 5 → 없음, 번호 10 → 축제
+  나머지 → 순환 [비, 바람, 정전, 먼지 폭풍, 보름달][(i + 챕터 − 2) % 5]
+     i = 번호 < 5 ? 번호 − 2 : 번호 − 3   (번호 2·3·4 → 0·1·2, 6·7·8·9 → 3·4·5·6)
+  예) 2챕터: 2 비 · 3 바람 · 4 정전 · 6 먼지 폭풍 · 7 보름달 · 8 비 · 9 바람
+효과 (특성 %는 그 특성을 가진 유닛의 공격력 · 회복 · 보호막에 더함)
+  비       : 적 속도 × 0.85, 비 특성 +25%, 빛 특성 −10%
+  정전     : 숨은 적이 드러나는 수선점 반경 0.6, 숨는 적 등장 가중치 × 2.5, 빛 특성 +30%
+  보름달   : 불빛 충전 +30%, 잔향이 유지 +25%, 밤 특성 +20%
+  바람     : 적 속도 × 1.2, 잔향이 이동 +30%
+  먼지 폭풍 : 먼지뭉치 가중치 × 3, 웨이브 크기 × 1.3, 사거리 −15%, 천 특성 +20%
+  축제     : 클리어 단추 +50%, 치장 · 소리 특성 +15%
+```
+
+**N. 배속 · 자동 · 실행 조건**
+```
+배속 = clamp(save.speed, 1, 2). 시뮬 dt = 프레임 dt × 배속 × 연출 배율(0.05~1)
+시뮬은 1/60초 고정 스텝, Tick 1번에 최대 1초
+BattleSystem이 검사하는 기능 개방: 자동 보스 도전(2-1 클리어), 불 밝히기 방식(1-6 클리어)뿐
+  자동 전투 · 2배속 잠금은 BattleSystem에서 검사하지 않음
+BattleSystem.Tick 호출처 = GameBootstrap.Update 한 곳 → 앱 실행 중에만 스테이지 전투 진행
+```
+
+**O. 던전 (`BattleMode.EchoDungeon`) 차이**
+```
+지킴이 없음 (덱만). 시작 잔향 30. AttackMultiplier = 1 (공명 미적용), AutoMode = true
+적 체력 = 0.8 × 1.18^(층 − 1), 피해 = 1.1^(층 − 1)
+보스 등장 처치 수 = clamp(12 + floor((층 − 1) × 1), 1, 40), 등장 후보 기준 = ceil(층 × 2)
+DungeonSystem이 한 번에 시뮬레이션 → 경과 120초에 멈추고, 클리어가 아니면 실패                         DUN:191-194
+```
+
+## 17.2 상태 전이
+
+```
+[스테이지]
+[스테이지 로드] ──(전투 시작, 새 시드)──→ [진행: 첫 웨이브 대기 1.5초]
+[진행] ──(지킴이 · 덱 모두 빔)──→ [진행: 생성 없음 대기] ──(편성 변경)──→ [스테이지 로드]
+[첫 웨이브 대기] ──(휴식 ≤ 0)──→ [웨이브 생성] ──(웨이브 적 모두 생성)──→ [웨이브 휴식] ──(휴식 시간 경과)──→ [웨이브 생성]
+[웨이브 생성 / 휴식] ──(처치 수 ≥ killsToBoss OR 일반 후보 없음)──→ [보스 단계: 일반 생성 × 0.5]
+[보스 단계] ──(보스 후보 없음)──→ [클리어]
+[보스 단계] ──(보스 체력 ≤ 50%)──→ [보스 분노]
+[보스 단계 / 보스 분노] ──(보스 처치)──→ [클리어]
+[진행 전체] ──(ShopHp ≤ 0, 튜토리얼 보호 아님)──→ [실패]
+[클리어] ──(보상, highestStage = 스테이지 + 1)──→ [결과 대기 1.5초 (최대 6초)]
+[실패] ──(연속 실패 < 2)──→ [결과 대기] (다음 = 같은 스테이지)
+[실패] ──(연속 실패 = 2, 스테이지 > 1)──→ [StepBack] ──→ [결과 대기] (다음 = 스테이지 − 1, 막힌 스테이지 = 스테이지)
+[결과 대기] ──(시간 끝 OR 건너뛰기)──→ [스테이지 로드 (정해 둔 스테이지)]
+[모든 상태] ──(편성 변경)──→ [스테이지 로드 (같은 스테이지)]
+[모든 상태] ──(GoToStage / ChallengeBoss)──→ [스테이지 로드 (지정 스테이지)]
+
+[지킴이 — 전투] (사망 상태 없음)
+[생성] ──→ [탐색] ──(표적 있음)──→ [공격] ──→ [대기 (간격 / SpeedFactor)] ──(0 도달)──→ [탐색]
+[탐색] ──(표적 없음)──→ [탐색]
+
+[덱 칸]
+[준비 (대기 0)] ──(소환)──→ [재소환 대기 2.5초] ──(0 도달)──→ [준비]
+
+[잔향이]
+[소환 (반지름 0.2)] ──→ [순찰] ──(어그로 안 적)──→ [교전] ──(표적 사망 · 숨음 · 거리 > 1.5 × 어그로)──→ [순찰]
+[순찰 (자동 방향)] ──(적 있음, 0.8초 놀음)──→ [수비 각도 = 위험 방향] ──→ [순찰]
+[어느 상태든] ──(체력 ≤ 0 OR 유지 ≤ 0)──→ [풀림: 환급 · 게이지 · 덱 수 −1] ──(진행 끝)──→ [제거]
+
+[불 밝히기 게이지]
+[0 (전투 시작)] ──(처치 · 풀림 · 스킬)──→ [0 < g < 1] ──(충전)──→ [1 (발동 가능)]
+[0 < g ≤ 1] ──(LampDrain)──→ [감소]
+[1] ──(버튼 OR 자동 판단 true)──→ [발동] ──→ [0]
+```
+
+## 17.3 수치
+
+위치는 파일 약칭:줄. 모두 런타임 값과 같다 (17장 머리말 참고).
+
+**스테이지 진행 · 적 성장**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `SlotCount` · `ShopRadius` · `SpawnRadius` · `RingRadius` | 5 · 0.32 · 2.5 · 1 | BT:13-17 | 방향 수 · 수선점 도달 반경 · 등장 반경 · 지킴이 링 |
+| `killsToBossBase` · `PerStage` · `Max` | 15 · 0.6 · 40 | BC:74, 76, 78 | 보스 등장 처치 수 = clamp(15 + floor((s−1) × 0.6), 1, 40) (BC:422-423) |
+| `stageHpGrowth` · `Late` · `Late2` | 1.11 · 1.07 · 1.02 | BC:80, 86, 92 | 적 체력 복리 3구간 |
+| `stageDamageGrowth` · `Late` · `Late2` | 1.08 · 1.05 · 1.015 | BC:82, 88, 94 | 적 피해 복리 3구간 |
+| `stageGrowthTaperStage` · `Stage2` | 30 · 151 | BC:84, 90 | 구간 경계. 배율 = g^min(s−1, 29) × gL^(중간) × gL2^max(0, s−1−150), 상한 1e30 (BC:438-454) |
+| `stageSpeedGrowth` · `maxSpeedMultiplier` | 0.01 · 1.35 | BC:96, 98 | 적 속도 배율 = clamp(1 + 0.01(s−1), 0.1, 1.35) (SIM:560) |
+| `firstWaveDelay` | 1.5초 | BC:102 | 첫 웨이브까지 |
+| `waveSizeBase` · `PerStage` · `Max` | 5 · 0.25 · 14 | BC:104, 106, 108 | 웨이브 크기 = clamp(5 + floor(0.25(s−1)), 1, 14) × 먼지 폭풍 1.3, 반올림 (SIM:564-565) |
+| `spawnIntervalBase` · `PerStage` · `Min` | 1.1 · 0.02 · 0.45초 | BC:110, 112, 114 | 생성 간격 = max(0.45, 1.1 − 0.02(s−1)) (SIM:566) |
+| `waveRestBase` · `Min` | 3.5 · 2초 | BC:116, 118 | 휴식 = max(2, 3.5 − 0.05(s−1)), 0.05는 코드 고정 (SIM:567) |
+| `pressureBias` · `twoPressureChance` | 0.7 · 0.4 | BC:120, 122 | 압박 레인 확률 · 압박 2곳 확률 |
+| `laneJitterDegrees` | 20° | BC:124 | 레인 각도 흔들림 (보스 × 0.5, 부하 × 0.75) |
+| `maxEnemies` | 40 | BC:126 | 동시 망각체 상한 (분열 · 부하 포함) |
+| `bossPhaseSpawnScale` | 0.5 | BC:128 | 보스 등장 뒤 일반 생성 속도 |
+| `bossSiegeInterval` · `WindupSeconds` | 2 · 0.35초 | BC:134, 136 | 붙은 보스 공격 간격 · 예비 동작 (연출) |
+| `enrageThreshold` · `SpeedScale` · `DamageScale` · `MinionIntervalScale` | 0.5 · 1.3 · 1.4 · 0.6 | BC:291-297 | 보스 분노 |
+| `StepSeconds` · `MaxTickSeconds` | 1/60 · 1초 | SIM:39, 41 | 고정 스텝 · Tick 최대 처리 |
+| `MaxSpeed` | 2 | BS:51 | 배속 상한 |
+
+**수선점 · 보상 · 실패**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `ShopBaseHp` · `ShopHpGrowth` | 300 · 1.04 | GROW:12, 14 | 최대 내구 = 300 × 1.04^(수선점 레벨 − 1) (GROW:79-80) |
+| `stageGoldBase` · `stageGoldGrowth` | 60 · 1.13 | BC:388, 390 | StageGold = floor(60 × 1.13^(s−1)) (BS:743-744) |
+| 단추 보너스 하한 | −90% | BS:616 | |
+| `festivalGoldPercent` | 50 | BC:364 | 축제 스테이지 단추 +% |
+| `stageCandy` · `Milestone` · `MilestoneInterval` | 3 · 10 · 10 | BC:392-395 | 10의 배수 스테이지 10개, 그 밖 3개 (BS:714-715) |
+| `stageClothChance` · `stageRibbonChance` | 0.35 · 0.25 | BC:397, 399 | 수선 천 1~2 · 리본 조각 1 (BS:764-765) |
+| `failGoldRatio` | 0.3 | BC:401 | 실패 단추 × 진행도 (BS:772-773) |
+| `clearAffinity` | 1 | BC:403 | 클리어 시 계보 호감도 |
+| `stageEndPause` · `MaxEndPause` | 1.5 · 6초 | BC:405, BS:243 | 결과 대기 · 연장 상한 |
+| `FailsBeforeStepBack` · `AutoChallengeEvery` | 2 · 3 | BS:53, 55 | 연속 실패 → 한 단계 아래 · 파밍 N회마다 재도전 |
+| `TutorialProtectionMaxStage` · 보호 값 | 3 · 체력 × 0.6, 바닥 1 | MS:70, BT:88 | 튜토리얼 보호 |
+
+**편성 · 지킴이**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `GuardianSlots` · `EchoSlots` | 5 · 6 | SAVE:10-11 | 지킴이 칸 · 덱 칸 (잠긴 칸 포함) |
+| `BaseEchoSlots` · `EchoSlotUnlockStage` | 5 · 20 | FORM:20, 22 | 처음 열린 덱 칸 · highestStage ≥ 20이면 6칸 |
+| `AutoGuardianOrder` | {0, 2, 3, 1, 4} | FORM:28 | 자동 편성 지킴이 칸 순서 |
+| `shopGuardRadius` | 0.7 | BC:132 | 모든 지킴이가 공격하는 수선점 반경 |
+| `defenseSlowFactor` | 0.55 | BC:142 | 방어 감속 = 1 − 0.55 = 0.45 |
+| `assaultDamageScale` · `RangeScale` | 1.6 · 0.8 | BC:144, 146 | 돌격 |
+| `captureDamageScale` · `StunSeconds` | 0.85 · 0.6초 | BC:148, 150 | 포획 |
+| `snipeDamageScale` · `RangeScale` · `IntervalScale` | 1.7 · 1.35 · 1.5 | BC:154-158 | 저격 |
+| `supportDamageScale` · `MarkPercent` · `MarkSeconds` | 0.6 · 10 · 2.5초 | BC:160, 172, 174 | 지원 |
+| `healDamageScale` | 0.5 | BC:178 | 힐 |
+| `supportInterval` · `healInterval` | 4 · 3.5초 | BC:162, 180 | 지원 · 힐 맥박 주기 |
+| `dangerReferenceRatio` | 0.12 | BC:138 | 위협 기준 = 최대 내구 × 값 |
+| `BossThreatScale` · `CoveredLaneThreatScale` | 3 · 0.5 | SIM:48-49 | 위협 배율 |
+
+**소환 · 잔향 · 잔향이**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `startResonance` · `dungeonStartResonance` | 10 · 30 | BC:189, 191 | 시작 잔향 |
+| `resonanceRegen` · `maxResonance` | 1/초 · 99 | BC:193, 194 | 잔향 회복 · 상한 |
+| `resonanceKillGain` · `BossKillGain` | 1 · 10 | BC:196, 198 | 처치 잔향 |
+| `summonCooldown` | 2.5초 | BC:202 | 덱 칸 재소환 대기 |
+| `maxEchoes` | 12 | BC:204 | 동시 덱 잔향이 상한 (토큰 제외) |
+| `echoRefundRate` | 0.3 | BC:206 | 풀림 환급 비율 |
+| `echoRangeScale` · `Min` · `Max` · `echoSnipeRangeScale` | 0.2 · 0.22 · 0.9 · 2.2 | BC:210-214 | 잔향이 사거리 = clamp(range × 0.2, 0.22, 0.9) (저격 × 2.2) |
+| `echoAggroRadius` · `echoPatrolRadius` | 0.9 · 1.45 | BC:216, 218 | 어그로 · 순찰 반지름 |
+| `echoBlockRadius` · `enemyEchoDps` | 0.3 · 0.8 | BC:220, 222 | 발 묶음 거리 · 적 → 잔향이 초당 피해 배율 |
+| `autoSummonInterval` · `autoSummonDanger` | 0.5초 · 0.05 | BC:231, 233 | 자동 소환 |
+| `EchoSpawnRadius` · `EchoRetargetIdleSeconds` | 0.2 · 0.8초 | SIM:50-51 | 소환 위치 · 자동 방향 재지정 |
+| `tokenDefaultLifetime` · `maxTokens` · `tokenLampScale` | 8초 · 6 · 0.4 | BC:257, 259, 261 | 스킬 토큰 |
+| 형태 기본 `summonCost` · `lifetime` · `moveSpeed` · `range` · `arcDegrees` | 5 · 12 · 0.8 · 1.6 · 72 | CDB:49-57 | 형태 정의 기본값 (콘텐츠 값은 `CharacterDatabase.asset`) |
+
+**불 밝히기**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `lampPerKill` · `lampPerEchoDissolve` | 0.05 · 0.05 | BC:239, 241 | 게이지 충전 |
+| `lampDamageRatio` · `lampBossDamageRatio` | 1 · 0.12 | BC:243, 245 | 피해 = 최대 체력 × 값 |
+| `autoLampMinEnemies` | 5 | BC:235 | Auto 방식 적 수 기준 |
+| `AutoShopRatio` · `SaveForBossShopRatio` | 0.35 · 0.25 | SIM:432, 434 | 자동 발동 내구 비율 기준 |
+| `lampRevealSeconds` | 3초 | BC:273 | 발동 시 숨은 적 드러냄 |
+| `lampDrainOnHit` · `Interval` · `PerTick` · `Radius` | 0.15 · 3초 · 0.04 · 1.3 | BC:299-305 | LampDrain 적 게이지 흡수 |
+
+**공명 · 능력치**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `SynergyBaseBonusPercent` · `SynergyBonusPerResonance` | 4 · 2 | FORM:24-25 | 계보 공명 % = 4 + 2 × 공명 레벨 |
+| `attackPerLevelPercent` · `hpPerLevelPercent` | 8 · 8 | GC:55, 57 | 레벨당 % (asset에 필드 없음 → 코드값) |
+| `maxResonanceLevel` · `resonanceBonusPercent` | 10 · 5 | GC:63, 67 | 공명 레벨 상한 · 레벨당 공격 · 체력 % |
+
+**스킬 · 상태 · 데미지**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `SkillRetrySeconds` · `PassivePulseSeconds` | 0.25 · 0.5초 | SK:40-41 | 재시도 · 패시브 주기 |
+| `DefaultSkillRadius` · `DefaultRampCap` | 0.6 · 50% | SK:43-44 | radius 기본 · 공격력 상승 상한 기본 |
+| `SummonSkillHoldSeconds` · `BattleStartHoldSeconds` | 1.5 · 10초 | SK:46, 51 | 대상 기다림 |
+| 쿨타임 하한 · 첫 시전 | 0.5초 · cooldown × 0.5 | SK:325-326 | |
+| `cooldownReductionCap` | 50 (코드 상한 90) | BC:269, ST:127 | 쿨감 상한 % |
+| `TickSeconds` · `ExecuteThreshold` | 0.5초 · 0.3 | ST:23, 25 | 지속 효과 틱 · 처형 체력 비율 |
+| 수선점 위기 기준 | 0.3 | ST:251 | OnShopLowHp (코드 고정) |
+| `baseCritChance` · `baseCritDamage` | 5 · 50 | BC:249, 251 | 기본 치명 확률 % · 추가 피해 % |
+| `defaultShieldSeconds` · `shopShieldCapRatio` | 8초 · 0.5 | BC:253, 255 | 보호막 기본 지속 · 수선점 보호막 상한 = 최대 내구 × 값 |
+| `bossStunScale` · `bossKnockbackScale` · `bossSlowScale` | 0.3 · 0.35 · 0.6 | BC:152, 263, 265 | 보스가 받는 기절 · 넉백 · 스킬 감속 배율 |
+| `maxSlow` · `damageReductionCap` | 0.8 · 60 | BC:267, 271 | 감속 상한 · 수선점 피해 감소 상한 % |
+
+**적 기믹**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `splitHpScale` · `SpeedScale` · `DamageScale` · `SpreadDegrees` | 0.4 · 1.2 · 0.5 · 14° | BC:277-283 | 분열체 |
+| `phasingRevealRadius` · `blackoutRevealRadius` | 0.85 · 0.6 | BC:285, 338 | 숨은 적이 저절로 드러나는 수선점 반경 |
+| `lightRevealRadius` · `lightHitRevealSeconds` | 0.55 · 1.5초 | BC:287, 289 | 빛 유닛 주변 드러냄 · 빛 타격 드러냄 |
+| `fabricEaterEchoScale` · `AttackDownPercent` · `Radius` | 1.5 · 20 · 0.4 | BC:307-311 | 갉아먹기 |
+| `debuffLingerSeconds` · `bossMendScale` | 1초 · 0.3 | BC:313, 315 | 오라 밖 잔류 · 보스 회복 배율 |
+
+**스테이지 기믹 · 던전**
+
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| 비 | 적 속도 × 0.85 · 비 특성 +25% · 빛 특성 −10% | BC:332-336 | |
+| 정전 | 드러남 반경 0.6 · 숨는 적 가중치 × 2.5 · 빛 특성 +30% | BC:338-342 | |
+| 보름달 | 불빛 충전 +30% · 잔향이 유지 +25% · 밤 특성 +20% | BC:344-348 | |
+| 바람 | 적 속도 × 1.2 · 잔향이 이동 +30% | BC:350-352 | |
+| 먼지 폭풍 | 먼지뭉치 가중치 × 3 · 웨이브 × 1.3 · 사거리 −15% · 천 특성 +20% | BC:354-362 | |
+| 축제 | 클리어 단추 +50% · 치장 · 소리 특성 +15% | BC:364-366 | |
+| `dungeonHpBase` · `HpGrowth` · `DamageGrowth` | 0.8 · 1.18 · 1.1 | BC:370-374 | 던전 배율 |
+| `dungeonKillsBase` · `PerFloor` · `StagePerFloor` | 12 · 1 · 2 | BC:376-380 | 던전 보스 처치 수 · 후보 환산 |
+| `dungeonTimeLimit` | 120초 | BC:382 | 던전 제한시간 |
+
+**기능 개방 (전투 관련)**
+
+| 기능 | 조건 | 위치 | 비고 |
+|---|---|---|---|
+| 자동 전투 | 1-2 클리어 | META:70-76 | highestStage > 목표면 충족 (GE:486-487) |
+| 편성 | FtueStep ≥ 11 또는 1-3 클리어 | META:128-138 | |
+| 2배속 · 불 밝히기 방식 | 1-6 클리어 | META:236, 248-254 | |
+| 덱 6번째 칸 | 2-9 클리어 | META:445-451 | 실제 판정은 FORM:50 (highestStage ≥ 20) |
+| 자동 보스 도전 | 2-1 클리어 | META:379 | |
+
+## 17.4 데이터
+
+| Column | Type | 설명 | 예시 |
+|---|---|---|---|
+| `BattleSave.stage` | int | 현재 스테이지 (1 미만 → 1) — SAVE:41 | 1 |
+| `BattleSave.highestStage` | int | 도달 최고 스테이지. 클리어 시 스테이지 + 1 — SAVE:43 | 1 |
+| `BattleSave.autoMode` | bool | 자동 소환 + 자동 불 밝히기 — SAVE:45 | true |
+| `BattleSave.autoAdvance` | bool | 클리어 시 다음 스테이지 자동 진행 — SAVE:47 | true |
+| `BattleSave.speed` | int | 배속, 읽을 때 1~2 — SAVE:49 | 1 |
+| `BattleSave.totalKills` | long | 누적 처치 (보스 포함) — SAVE:50 | 0 |
+| `BattleSave.challengeTarget` | int | 막힌 스테이지 (0 = 없음) — SAVE:55 | 0 |
+| `BattleSave.autoChallenge` | bool | 파밍 중 3클리어마다 자동 재도전 — SAVE:62 | true |
+| `BattleSave.lampPolicy` | int | 0 Auto · 1 SaveForBoss · 2 Manual (범위 밖 → 0) — SAVE:64 | 0 |
+| `FormationSave.guardians` | string[5] | 방위 칸별 지킴이 형태 ID, 빈칸 null | ["jjak_base", null, null, null, null] |
+| `FormationSave.echoes` | string[6] | 덱 칸별 형태 ID. 인덱스 5는 highestStage < 20이면 무시 | [null, "jjak_caravan", …] |
+| `FormationSave.placementsDone` | int | 직접 배치 성공 횟수 (자동 편성 제외) | 2 |
+| `LineageSave.resonance` | int | 계보 공명 레벨 (공명 % · 능력치 +5%/Lv) | 3 |
+| `CharacterFormDef.summonCost` · `lifetime` · `recommendedRole` | int · float · CharacterRole | 소환 비용(잔향) · 유지(초) · 자동 편성 1순위 쪽 | 5 · 14 · Guardian (`jjak_base`) |
+| `CharacterFormDef.skill` | SkillDef | 형태 고유 스킬 1개 | `skill_jjak_base` |
+| `EnemyDef.hp` · `speed` · `damage` | float | 1스테이지 기준 능력치 | 44 · 0.22 · 6.6 (`enemy_thimble`) |
+| `EnemyDef.isBoss` · `minStage` · `spawnWeight` | bool · int · float | 보스 여부 · 등장 시작 스테이지 · 일반 가중치 | false · 5 · 2 |
+| `EnemyDef.echoDamageMultiplier` | float | 잔향이에게 주는 피해 배율 | 2 (`enemy_moth`) |
+| `EnemyDef.gimmicks` | EnemyGimmick (Flags) | 기믹 조합 | Shielded |
+| `EnemyDef.shieldAmount` · `splitInto` · `splitCount` | float · string · int | 보호막 · 분열 대상 · 수 | 30 · "enemy_tangle" · 2 |
+| `EnemyDef.auraRadius` · `auraValue` · `auraHealPercent` | float | 오라 반경 · 세기 · 회복% | 0.6 · 25 · 3 (`enemy_windup`) |
+| `EnemyDef.minionId` · `minionInterval` · `minionCount` | string · float · int | 보스 부하 | "enemy_moth" · 6 · 2 |
+| `SkillDef.trigger` · `cooldown` · `initialDelay` | SkillTrigger · float · float | 발동 · 간격(OnKill · OnShopDamaged는 최소 간격) · 첫 시전 | Cooldown · 10 · 4 (`skill_jjak_medic`) |
+| `SkillDef.target` · `radius` · `effects` | SkillTargetType · float · List | 대상 · 반경 · 효과 목록 | Shop · 0.6 · [Heal 3, Shield 1.5/6초] |
+| `SkillEffectDef.type` · `value` · `duration` · `count` | SkillEffectType · float · float · int | 효과 · 값 · 지속(0이면 기본) · 소환 수/튐 수/상한 | Summon · 0.4 · 8 · 2 |
+| (실행 중) 연속 실패 · 파밍 클리어 수 | int | BattleSystem 필드, 저장 안 함 — BS:73, 75 | 0 |
+
+## 17.5 목록
+
+**망각체 9종** (BC:484-551)
+
+| id | 이름 | 체력 | 속도 | 피해 | 등장 | 가중치 | 기믹 |
+|---|---|---|---|---|---|---|---|
+| `enemy_dust` | 먼지뭉치 | 34 | 0.3 | 4.4 | 1 | 5 | — |
+| `enemy_moth` | 좀나방 | 21 | 0.48 | 3.3 | 2 | 3 | 갉아먹기 (잔향이 피해 × 2) |
+| `enemy_tangle` | 엉킨 실뭉치 | 47 | 0.3 | 5.5 | 3 | 3 | 분열 (실뭉치 × 2) |
+| `enemy_rust` | 녹얼룩 | 98 | 0.19 | 8.8 | 4 | 2 | 녹 (0.55 · 30%) |
+| `enemy_thimble` | 골무 껍데기 | 44 | 0.22 | 6.6 | 5 | 2 | 보호막 30 |
+| `enemy_wisp` | 망각의 그림자 | 39 | 0.38 | 6.6 | 6 | 2 | 숨기 |
+| `enemy_windup` | 태엽쥐 | 39 | 0.24 | 4.4 | 8 | 1.5 | 가속 25% + 회복 초당 3% (0.6) |
+| `boss_shadow` | 망각의 큰그림자 (보스) | 416 | 0.16 | 11 | 1 | — | 분노 + 불빛 흡수 |
+| `boss_mothqueen` | 좀나방 여왕 (보스) | 364 | 0.2 | 9.9 | 3 | — | 분노 + 갉아먹기 + 부하 (좀나방 × 2 / 6초) |
+
+**적 기믹 `EnemyGimmick`** (GE:263-284, GM:29-212)
+
+| 기믹 | 발동 | 효과 |
+|---|---|---|
+| Shielded (보호막) | 등장 | 보호막 = shieldAmount × 체력 배율. 모든 피해(불 밝히기 포함)를 먼저 흡수 |
+| Splitter (분열) | 처치 (분열체 제외) | splitInto를 splitCount마리. 체력 · 보호막 × 0.4, 속도 × 1.2, 수선점 피해 × 0.5 |
+| Phasing (숨기) | 등장 시 숨음 | 드러냄 타이머 > 0, 수선점 0.85 (정전 0.6) 안, 빛 유닛 0.55 안이면 보임. 숨은 동안 빛 특성만 공격, 잔향이에게 막히지 않음 |
+| FabricEater (갉아먹기) | 상시 (기절 중 멈춤) | 0.4 안 천 특성 유닛 공격력 −20%, 천 잔향이 피해 × 1.5 |
+| Rusting (녹) | 상시 (기절 중 멈춤) | auraRadius 안 금속 특성 유닛 공속 −auraValue% |
+| Mender (회복) | 0.5초마다 | auraRadius 안 다른 적 회복 = 최대 체력 × % × 0.5 (보스 × 0.3) |
+| Hastener (가속) | 매 진행 | auraRadius 안 다른 적 이동 × (1 + auraValue / 100), 겹치면 가장 큰 값 |
+| Enrage (분노) | 체력 ≤ 50% | 이동 × 1.3, 공성 × 1.3, 피해 × 1.4, 부하 간격 × 0.6. 해제 없음 |
+| LampDrain (불빛 흡수) | 수선점 접촉 · 반경 1.3 안 | 게이지 −0.15 / 3초마다 −0.04 |
+
+**스킬 발동 `SkillTrigger`** (GE:125-145) — 형태 고유 스킬 29종 분포 (`CharacterDatabase.asset` 집계)
+
+| 발동 | 수 | 발동 | 수 |
+|---|---|---|---|
+| Passive | 1 | OnLampLit | 2 |
+| Cooldown | 14 | OnShopDamaged | 2 |
+| OnSummon | 2 | OnShopLowHp | 2 |
+| OnDissolve | 2 | OnBattleStart | 1 |
+| OnKill | 3 | | |
+
+**스킬 효과 `SkillEffectType`** (GE:178-200) — 괄호 = 형태 고유 스킬의 효과 사용 수
+
+피해 (7) · 회복 (4) · 보호막 (4) · 감속 (3) · 기절 (6) · 넉백 (3) · 끌어당김 (2) · 표식 (3) · 공격력 강화 (1) · 공속 강화 (1) · 소환 (2) · 잔향 획득 (1) · 불빛 충전 (2) · 드러냄 (2) · 지속 피해 (1) · 처형 (1) · 연쇄 (2) · 공격력 상승 (0) · 정화 (2) · 지속 회복 (2)
+
+**스킬 대상 `SkillTargetType`** (GE:148-173): Self · Shop · EnemiesInRange · EnemiesNearSelf · EnemiesNearTarget · StrongestEnemy · WeakestEnemy · AllEnemies · AlliesNearSelf · AllEchoes · AdjacentGuardians · AllGuardians · AllAllies · Lane (14종)
+
+**상태 이상** (ST:312-607)
+
+| 상태 | 대상 | 중첩 · 갱신 | 기본 지속 | 상한 · 보정 |
+|---|---|---|---|---|
+| 감속 | 적 | 더 센 것만 교체, 같거나 세면 지속 max | 2초 | ≤ 0.8, 스킬 감속은 보스 × 0.6 |
+| 기절 | 적 | 지속 max | 1초 | 보스 × 0.3 |
+| 표식 | 적 | 더 낮은 %는 무시, 아니면 교체 + 지속 max | 4초 | 받는 피해 × (1 + %/100) |
+| 지속 피해 | 적 | 초당 값 ≥ 기존이면 교체, 지속 max (0.5초 틱) | 3초 | 치명타 없음 |
+| 넉백 · 끌어당김 | 적 | 즉시 | — | 보스 × 0.35 |
+| 드러냄 | 숨는 적 | 남은 시간 max | 3초 | |
+| 공격력 강화 · 공속 강화 | 지킴이 · 잔향이 | 종류마다 1개, 센 것으로 교체 | 5초 | |
+| 녹 · 갉아먹힘 | 금속 · 천 특성 유닛 | % max, 지속 max | 오라 밖 1초 | 공격 대기 × (1 + %) · 공격력 × (1 − %) |
+| 정화 | 지킴이 · 잔향이 | 녹 · 갉아먹힘 제거 + 면역 (최소 0.5초) | 2초 | |
+| 보호막 | 수선점 · 잔향이 | 양 합산, 지속 max | 8초 | 수선점 ≤ 최대 내구 × 0.5, 잔향이 ≤ 최대 체력 |
+| 지속 회복 | 수선점 · 잔향이 | 초당 값 ≥ 기존이면 교체 (0.5초 틱) | 4초 | 최대치까지 |
+
+## 17.6 추출 못 한 것
+
+- **시너지 수치:** 시너지 GoldGainPercent · ShopMaxHpPercent · 피해 감소, 보너스 스킬 27종의 내용과 켜지는 단계. `SynergyDatabase`에서 편성에 따라 계산된다 → `SYS_Growth`(I-9-2) 또는 시너지 문서 범위.
+- **형태별 콘텐츠 수치:** 비용 · 유지 · 사거리 · 성향 · 특성 전체. `CharacterDatabase.asset`에 있고 여기서는 예시 1~2개만 적었다 → I-7 대조표 · `CNT_Character_Main`과 함께 표로 뽑을 수 있다.
+- **응원(`TempAttackPercent`)의 값과 출처:** 주석(BS:292)의 "+20"만 확인했고 훅을 넣는 코드는 추적하지 않았다.
+- **이벤트 배율:** 별빛 사탕 이벤트 배율 기간(EventCalendarSystem), 잃어버린 상자(ClearDropHook)의 확률 · 보상(ChapterChestSystem) → `SYS_IdleReward`(I-9-4).
+- **수선점 레벨:** 상한과 강화 비용 → `SYS_Growth`(I-9-2).
+- **UI가 막는 개방:** 자동 전투 · 2배속 잠금, 편성 탭 개방을 UI에서 막는 위치 → `SYS_FTUE`(I-9-5).
+- **튜토리얼 보호 단계 조건**(`TutorialSystem.WantsBattleProtection`)의 세부 → `SYS_FTUE`.
+- **드래그 소환 UI 수치**(방향 판정 · 취소 영역), 결과 대기 연장(`ExtendEndPause`)에 넘기는 실제 초.
+- **스테이지 상한:** BattleSystem · BattleConfig에는 없다. 챕터 지도 · 콘텐츠 쪽 상한은 확인하지 않았다 → `CNT_Stage_Chapter1`(I-9-6).
+- **오프라인 중 스테이지 진행:** 없음까지만 확인 (전투는 앱 실행 중에만 진행, 방치 보상은 별도 경로) → `SYS_IdleReward`(I-9-4).
+- **실제 전투 결과값**(DPS · 보스 처치 시간 등): 코드를 실행하지 않고 읽기만 했다.
+
+---
+
+*개정 이력: v1.0 — 최초 통합 정리 (컨셉 가이드 v0.2 반영, 코어=움직이는 수선점 확정 기준) / v1.1 — §17 현재 구현(As-built) 추가 (기개발, I-9)*
