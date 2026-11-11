@@ -38,7 +38,7 @@
 
 | 문서 | 상태 | 우선 | 진행 | 근거 코드 (PR #2) |
 |---|---|---|---|---|
-| `SYS_InGameBattle` | 🟡 | **P0** | ① §17 · ③ 13건 (11건 확정, #4 I-7 대기 · #13 결정 대기) · §18 M1 상세(성향 · 수선등 · 웨이브) Review | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
+| `SYS_InGameBattle` | 🟡 | **P0** | ① §17 · ③ 13건 (12건 확정, #4 I-7 대기) · §18 M1 상세(성향 · 수선등 · 웨이브) Review | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
 | `SYS_Growth` | 🔵 | **P0** | ①②③ 완료 · D-29 확정 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
 | `SYS_Economy` | 🔵 | **P0** | ①②③ 완료 · D-30 확정 | CurrencySystem · InventorySystem |
 | `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
@@ -72,8 +72,8 @@
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
 | `UI_InGame` | 🟡 | P1 | Approved (v0.1) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
-| `UI_Battle` | 🔴 | **P0** | 대기 | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
-| `UI_Formation` | 🔴 | **P0** | 대기 | 8방위 링 · 잔향이 덱 |
+| `UI_Battle` | 🟡 | **P0** | Review — M1 상세 (하단 2열 · 수선등 · 성향 아이콘) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
+| `UI_Formation` | 🟡 | **P0** | Review — 8방위 링 · 빈 방위 빗금 · 파견 배지 | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔴 | **P0** | 대기 | 레벨업 와이어프레임 5화면 |
 | `UI_Home` · `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
 
