@@ -30,7 +30,7 @@
 | `KN_ConceptNarrative` | 🟡 | P1 | Approved (v0.2) | 시스템 v1.0이 예고한 v0.3 개정 항목 반영 필요 |
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
-| `KN_Overview` | 🟡 | **P0** | Review — 1부 개요 · 2부 M1 범위서, 판단 3건 대기 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
+| `KN_Overview` | 🔵 | **P0** | Approved — D-35 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
 | `KN_Roadmap` | 🟡 | P1 | 대기 | L&L PHASE4-ROADMAP(I-4 이관) + 팀 마일스톤 통합 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
 
@@ -38,7 +38,7 @@
 
 | 문서 | 상태 | 우선 | 진행 | 근거 코드 (PR #2) |
 |---|---|---|---|---|
-| `SYS_InGameBattle` | 🟡 | **P0** | ① 완료(§17) · ③ 12건 중 11건 확정(D-27 · D-28), #4 I-7 대기 | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
+| `SYS_InGameBattle` | 🟡 | **P0** | ① §17 · ③ 13건 (11건 확정, #4 I-7 대기 · #13 결정 대기) · §18 M1 상세(성향 · 수선등 · 웨이브) Review | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
 | `SYS_Growth` | 🔵 | **P0** | ①②③ 완료 · D-29 확정 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
 | `SYS_Economy` | 🔵 | **P0** | ①②③ 완료 · D-30 확정 | CurrencySystem · InventorySystem |
 | `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
@@ -81,7 +81,7 @@
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
-| `BAL_BattleKnobs` | 🔴 | **P0** | 대기 | 시스템 §13.3 노브 초기값 (잔향 수급 · 소환 상한 · 제한시간 등) |
+| `BAL_BattleKnobs` | 🟡 | **P0** | Draft — 노브 정본 · M1 초기값 [가정] | 시스템 §13.3 노브 초기값 (잔향 수급 · 소환 상한 · 제한시간 등) |
 | `BAL_ProgressionSim` | 🟡 | P1 | 대기 (I-4 이관) | 성장 곡선 |
 | `TBL_*` | 🔴 | P1 | 대기 | 시스템 §13 골격. D-20: 원본 = 코드 콘텐츠 → 스키마 문서로 |
 
