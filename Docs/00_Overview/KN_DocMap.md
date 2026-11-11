@@ -52,6 +52,7 @@
 | `SYS_Synergy` | 🔴 | P1 | 대기 | SynergySystem (계보 공명 포함) |
 | `SYS_Relationship` | 🔴 | P1 | 대기 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
+| `SYS_Skill` | 🟡 | **P0** | Review — 슬롯 구조 · 역할 2층 · 설정집 ↔ 코드 스킬 대응 · ③ 5건 (2건 D-39) | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
 | `SYS_Shop` | 🔴 | P2 | 대기 | ShopSystem |
 | `SYS_LiveOps` | 🔴 | P2 | 대기 | Mission · Achievement · Attendance · DailyGift · StarterWeek · SeasonPass · EventCalendar · Comeback · Coupon · Mail · Notice · GuideQuest |
@@ -63,7 +64,7 @@
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
-| `CNT_Enemy` | 🔴 | P1 | 대기 | 망각체 목록 · 기믹 |
+| `CNT_Enemy` | 🟡 | **P0** | Review — 9종 "요구하는 판단" · ③ 4건 | `BattleConfig.enemies` |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
 
