@@ -12,7 +12,7 @@
 | 단계 | 세팅 → M1 프로토 준비 |
 | 게임 | **LOST & LOVELY** (D-12) · Unity 6000.2.6f2 (D-13) |
 | 팀 | 대표 · 김용기 · 백승천 · 역할 = 모자 (누구나 기획 · 개발 · 아트) |
-| 진행 | 머지 순서 D-14: ① 협업 기반 → develop ② PR #1 리베이스 ③ PR #2 (D-15 · D-16 반영 후) |
+| 진행 | 머지 순서 D-14: ① 협업 기반 → develop ② PR #1 ③ PR #2 (D-15 · D-16 반영 후) |
 | 이번 마일스톤 | M0 세팅 · ~11/16 · 세팅 병합 → develop · 로컬 세팅 · LOST & LOVELY 첫 실행 확인 |
 | 구조 | 사람 3명(모자) → DD(관문) → 기개발 · 로컬 개발 · AI 아트 → CI |
 | 다음 마일스톤 | M1 플레이어블 프로토타입 (LOST & LOVELY 기반) · 12/1 ~ 12/26 목표 |
@@ -39,7 +39,7 @@
 | D-11 | 2026-11-11 | D-10 보완: 보드 "갱신"과 10~12시 자동 갱신은 대표 PC의 로컬 서버 `Tools/kn-board`(잼병 원정대 방식)로 한다. 대표 PC + Claude 데스크톱 앱에서만 동작, 그 외 시간 · 기기는 09:47 아침 정리가 보조 | claude.ai에 쓸 수 있는 GitHub 커넥터가 없어서 PC의 gh 로그인을 쓴다 | 대표 |
 | D-12 | 2026-11-11 | Project_KN 본 게임 = **LOST & LOVELY** (김용기 원본 프로젝트, PR #2). M1은 이 프로젝트를 기반으로 진행한다. 아트 채택은 별도 결재 | 자동 전투 · 방치 보상 · 메타가 이미 돌아감(EditMode 1705/0). 계명 2 · 3: 새로 만들기보다 돌아가는 것에서 첫 5분 후킹을 다듬는다 | 대표 |
 | D-13 | 2026-11-11 | Unity 버전 = **6000.2.6f2** 고정 (`ProjectSettings/ProjectVersion.txt`, PR #1) | 원본 프로젝트 버전. 버전이 섞이면 대량 재직렬화 diff | 대표 |
-| D-14 | 2026-11-11 | 머지 순서: ① 협업 기반 브랜치 → develop ② PR #1을 develop 위로 리베이스(설정 커밋 1개만) ③ PR #2 | PR #1에는 협업 기반 커밋 17개 중 7개만 들어 있어, 그대로 머지하면 decisions · README · CONTRIBUTING이 충돌 | 대표 |
+| D-14 | 2026-11-11 | 머지 순서 · 방식: ① 협업 기반(이 결정이 든 PR) → develop **Merge commit** ② PR #1 **Merge commit** (①로 기반 커밋이 develop에 들어가 설정 커밋 1개만 남음, 리베이스 불필요) ③ PR #2 Squash. ① · ②는 §5 Squash 규칙의 1회 예외 | PR #1 · #2가 기반 브랜치의 옛 커밋 위에 쌓여 있음. Squash하면 커밋 해시가 바뀌어 다음 PR에 이미 들어간 변경이 다시 보이거나 충돌 | 대표 |
 | D-15 | 2026-11-11 | `Assets/_Project/Scenes/Main.unity`(+ `.meta`)는 빌더 생성물 → Git에 올리지 않는다. 원본은 `Assets/_Project/Editor/Builders/` 코드. 빌더는 씬 GUID를 고정해 `EditorBuildSettings`가 PC마다 바뀌지 않게 한다 | 자동 세팅 기록이 PC별(`Library/`)이라 3명 모두 첫 실행 때 씬을 다시 만듦 → 12.7MB 씬이 늘 "수정됨" → CONTRIBUTING §4-1(씬 동시 수정 금지)과 충돌 | 대표 |
 | D-16 | 2026-11-11 | TMP 폰트 SDF 에셋(`Assets/_Project/Fonts/*SDF.asset`)은 Git LFS로 관리 | 19MB × 2 텍스트라 아틀라스를 다시 만들 때마다 거대 diff, 병합도 불가 | 대표 |
 
