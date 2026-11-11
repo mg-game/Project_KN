@@ -11,6 +11,9 @@
 | 04_Balance | 수치 설계 근거, 성장 곡선, 재화 흐름 | `BAL_GrowthCurve.md` |
 | 05_DataTable | 테이블 스키마 정의 (컬럼/타입/관계) | `TBL_Character.md` |
 | 06_Meeting | 회의록 | `2026-11-10_Kickoff.md` |
+| 07_Art | 아트 방향, 스타일 가이드, FX, 아트 작업 계획 | `ART_StyleGuide.md` |
+| 08_Audio | 사운드 · BGM 방향과 명세 | `AUD_Spec.md` |
+| 09_Research | 경쟁작 · 레퍼런스 분석, 리서치 | `RES_IdleGames.md` |
 | 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) | - |
 
 ## 2. 파일 네이밍
@@ -18,9 +21,12 @@
 ```
 <접두어>_<대상>[_<세부>].md
   SYS_  시스템 | CNT_ 콘텐츠 | UI_ 화면 | BAL_ 밸런스 | TBL_ 테이블
+  ART_  아트   | AUD_ 오디오 | RES_ 리서치 | KN_ 프로젝트 전체(개요 · 로드맵)
 ```
 - 영문 PascalCase, 공백 금지 (URL/CLI 호환)
 - 버전 번호를 파일명에 넣지 않는다 → 이력은 Git이 관리 (`_v2_최종_진짜최종` 금지)
+- **이미지 · 와이어프레임**: 문서와 같은 폴더의 `images/`에 `<문서명>_<내용>.png` (LFS). 문서 헤더 "첨부"에 링크
+- **변환 전 원본(docx · pptx · pdf)**: `99_Archive/Source/`에 참고용으로만 둔다. 정본은 md 하나
 
 ## 3. 문서 상태 관리
 
