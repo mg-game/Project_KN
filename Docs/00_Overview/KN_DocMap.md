@@ -31,7 +31,7 @@
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
 | `KN_Overview` | 🔵 | **P0** | Approved — D-35 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
-| `KN_Roadmap` | 🟡 | P1 | 대기 | L&L PHASE4-ROADMAP(I-4 이관) + 팀 마일스톤 통합 |
+| `KN_Roadmap` | 🟡 | **P0** | Review — 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
 
 ## 01_System
@@ -91,7 +91,7 @@
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
 | `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 12건 (P0 8) — D-38 A1 |
-| `ART_Character_Brief` | 🔴 | 대기 | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
+| `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
 ---
