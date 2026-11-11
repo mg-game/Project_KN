@@ -23,6 +23,13 @@ namespace IdleGame
     /// 시스템도 잠금을 본다 (F-03, SPEC4 §5.1): FeatureResolver(ExpeditionBatch)가 false면 ResendAll · CountResendable = 0
     /// (화면 길이 새어도 거절). 구역 하나 다시 보내기(TryResend)는 잠금과 무관하다.
     /// </para>
+    /// <para>
+    /// 시간 되돌림 방지 (H-1): Game.Setup은 DailyClock을 넣는다. 그러면 원정 시각은 기기 시각이 아니라 유효 시각
+    /// (DailyClock.EffectiveUnix = max(기기 시각, 본 적 있는 가장 늦은 시각))이고, 시계가 시작 시각보다 뒤로 가면
+    /// 시작/종료를 당기지 않고 시작 시각에 멈춘다. 되돌림(IsTampered) 중에는 받기를 막는다 (다른 메타 보상과 같은 규칙).
+    /// 당기면 "앞으로 → 받기 → 다시 보내기 → 뒤로 → 앞으로"가 실제 시간 없이 보상을 무한히 만든다.
+    /// DailyClock이 없으면(옛 연결 · 시스템 단위 테스트) 기기 시각을 그대로 쓰고, 되돌림 때 시작/종료를 당긴다.
+    /// </para>
     /// </summary>
     public class ExpeditionSystem
     {
@@ -44,9 +51,11 @@ namespace IdleGame
         readonly RewardService _rewards;
         readonly ITimeProvider _clock;
         readonly System.Random _random;
+        readonly DailyClock _dailyClock;
 
+        /// <param name="dailyClock">시간 되돌림 방지 시계 (Game.Setup이 넣는다). null이면 기기 시각을 그대로 쓴다</param>
         public ExpeditionSystem(PlayerData data, ExpeditionDatabase db, CharacterSystem characters, FormationSystem formation,
-            RewardService rewards, ITimeProvider clock, System.Random random)
+            RewardService rewards, ITimeProvider clock, System.Random random, DailyClock dailyClock = null)
         {
             _data = data;
             _db = db;
@@ -55,7 +64,11 @@ namespace IdleGame
             _rewards = rewards;
             _clock = clock;
             _random = random;
+            _dailyClock = dailyClock;
         }
+
+        /// <summary>시계 되돌림 중 (DailyClock.IsTampered). 이 동안 Claim · ClaimAll은 아무것도 주지 않는다</summary>
+        public bool IsClockTampered => _dailyClock != null && _dailyClock.IsTampered;
 
         public ExpeditionDatabase Db => _db;
         /// <summary>동시에 진행 가능한 원정 수</summary>
@@ -211,7 +224,8 @@ namespace IdleGame
             return IsTierAllowed(zone, tier) ? tier : 0;
         }
 
-        long NowUnix => TimeUtil.ToUnix(_clock.UtcNow);
+        /// <summary>원정 기준 시각 (유닉스 초). DailyClock이 있으면 유효 시각이라 시계를 되돌려도 뒤로 가지 않는다</summary>
+        long NowUnix => _dailyClock != null ? _dailyClock.EffectiveUnix : TimeUtil.ToUnix(_clock.UtcNow);
         int HighestStage => Math.Max(1, _data.battle?.highestStage ?? 1);
         List<ExpeditionSave> Expeditions => _data.expeditions ??= new List<ExpeditionSave>();
         List<ExpeditionMembersSave> LastMembers => _data.expeditionLastMembers ??= new List<ExpeditionMembersSave>();
@@ -328,15 +342,18 @@ namespace IdleGame
         public bool TryStart(string zoneId, IReadOnlyList<string> lineageIds) => TryStart(zoneId, lineageIds, 0);
 
         /// <summary>
-        /// 현재 시각(유닉스 초). 기기 시간이 시작 시각보다 뒤로 갔으면 시작/종료 시각을 지금 기준으로 당겨
-        /// 남은 시간이 원래 소요 시간보다 길어지지 않게 한다. 그러지 않으면 표시는 소요 시간에서 멈춰 있는데
-        /// 실제 완료는 시간이 뒤로 간 만큼 더 늦어진다 (표시와 완료 판정이 어긋남). 바뀐 값은 다음 저장에 함께 저장된다.
+        /// 현재 시각(유닉스 초). 시각이 시작 시각보다 뒤로 갔을 때:
+        ///   · DailyClock이 있으면 시작 시각을 돌려준다. 진행이 멈추고, 시작/종료는 그대로다 (H-1). 저장된 maxSeen이
+        ///     아직 오르기 전(Refresh 전)에 시계를 되돌려도 당겨지지 않는다. 표시(남은 시간 = 소요 시간)와 완료 판정은 같은 값을 본다.
+        ///   · 없으면 시작/종료 시각을 지금 기준으로 당겨 남은 시간이 원래 소요 시간보다 길어지지 않게 한다. 그러지 않으면 표시는
+        ///     소요 시간에서 멈춰 있는데 실제 완료는 시간이 뒤로 간 만큼 더 늦어진다. 바뀐 값은 다음 저장에 함께 저장된다.
         /// </summary>
         long Now(ExpeditionSave expedition)
         {
             long now = NowUnix;
             if (now < expedition.startUnix)
             {
+                if (_dailyClock != null) return expedition.startUnix;
                 long shift = expedition.startUnix - now;
                 expedition.startUnix = now;
                 expedition.endUnix -= shift;
@@ -375,9 +392,10 @@ namespace IdleGame
             }
         }
 
-        /// <summary>완료된 원정 보상 지급 (단계 배율 · 재료 배율 반영). 완료 전이면 null</summary>
+        /// <summary>완료된 원정 보상 지급 (단계 배율 · 재료 배율 반영). 완료 전이거나 시계 되돌림 중이면 null</summary>
         public ExpeditionResult Claim(string zoneId)
         {
+            if (IsClockTampered) return null;
             var expedition = GetActive(zoneId);
             if (expedition == null || !IsComplete(expedition)) return null;
 
@@ -403,8 +421,10 @@ namespace IdleGame
             return result;
         }
 
+        /// <summary>완료된 원정을 모두 받는다. 시계 되돌림 중이면 빈 목록</summary>
         public List<ExpeditionResult> ClaimAll()
         {
+            if (IsClockTampered) return new List<ExpeditionResult>();
             var completed = new List<string>();
             foreach (var expedition in Expeditions)
             {

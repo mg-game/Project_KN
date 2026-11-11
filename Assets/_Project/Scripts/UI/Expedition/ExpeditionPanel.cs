@@ -516,6 +516,7 @@ namespace IdleGame.UI
 
         public void Claim(ExpeditionZoneDef zone)
         {
+            if (BlockIfClockTampered()) return;
             var result = Game.Expedition.Claim(zone.id);
             if (result == null) return;
             UISfx.Play(UISfxKey.ExpeditionReturn);
@@ -538,8 +539,17 @@ namespace IdleGame.UI
                 "계속 보내기");
         }
 
+        /// <summary>시계 되돌림 중이면 안내 토스트를 띄우고 true (시스템도 받기를 막는다 — 메타 활성 여부와 무관)</summary>
+        static bool BlockIfClockTampered()
+        {
+            if (!Game.Expedition.IsClockTampered) return false;
+            UIManager.Instance.ShowToast(DailyClock.TamperedMessage);
+            return true;
+        }
+
         void ClaimAll()
         {
+            if (BlockIfClockTampered()) return;
             var results = Game.Expedition.ClaimAll();
             if (results == null || results.Count == 0)
             {
