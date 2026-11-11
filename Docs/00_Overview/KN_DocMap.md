@@ -90,7 +90,7 @@
 | 문서 | 상태 | 진행 | 메모 |
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
-| `ART_M1_Backlog` | 🔴→🟡 | Review | M1 신규 · 변경 아트 12건 (P0 8) — D-38 A1 |
+| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 12건 (P0 8) — D-38 A1 |
 | `ART_Character_Brief` | 🔴 | 대기 | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
