@@ -141,6 +141,7 @@ fix/*   ──────────────────┘   (버그 수�
 | 아트 리소스 | DD | 아트 모자: 규격 · 톤 | DD 승인 + 확인 (채택 결정은 결재함) |
 | ProjectSettings/Packages | DD | 대표 | 대표 승인 |
 
+- **기능 PR에는 기획서 갱신을 같이 넣는다** (D-25). 해당 `Docs/01_System/SYS_*` 등의 "① 현재 구현"을 고치거나, 없으면 DD가 기개발에 작성을 지시한 뒤 머지
 - 머지 방식: **Squash merge** (feature → develop), **Merge commit** (develop → main)
 - 머지 후 브랜치 삭제
 
