@@ -30,7 +30,7 @@
 | `KN_ConceptNarrative` | 🟡 | P1 | Approved (v0.2) | 시스템 v1.0이 예고한 v0.3 개정 항목 반영 필요 |
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
-| `KN_Overview` | 🔴 | **P0** | 대기 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
+| `KN_Overview` | 🟡 | **P0** | Review — 1부 개요 · 2부 M1 범위서, 판단 3건 대기 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
 | `KN_Roadmap` | 🟡 | P1 | 대기 | L&L PHASE4-ROADMAP(I-4 이관) + 팀 마일스톤 통합 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
 
@@ -62,7 +62,7 @@
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
-| `CNT_Stage_Chapter1` | 🟡 | **P0** | ①②③ 작성 · ③ 6건 결정 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔴 | P1 | 대기 | 망각체 목록 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
