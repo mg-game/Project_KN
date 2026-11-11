@@ -62,7 +62,7 @@
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
-| `CNT_Stage_Chapter1` | 🟡 | **P0** | ① 완료 · ②③ 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Stage_Chapter1` | 🟡 | **P0** | ①②③ 작성 · ③ 6건 결정 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔴 | P1 | 대기 | 망각체 목록 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
