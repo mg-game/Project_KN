@@ -1,0 +1,320 @@
+# SYS_Economy
+
+| 항목 | 값 |
+|---|---|
+| 상태 | Draft |
+| 작성자 | ① 구현: 기개발 · ②③: DD |
+| 최종 수정 | 2026-11-11 |
+| 관련 테이블 | - |
+| 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) §3 · [`SYS_InGameBattle`](./SYS_InGameBattle.md) |
+| 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) — 경로 약칭 표 참고 |
+
+> 구조(D-26): **① 현재 구현** = 지금 코드가 실제로 하는 일 / **② 기획 방향** = 기획서가 원하는 모습 / **③ 차이** = 둘이 다른 곳, 대표가 결정.
+> 결정이 나면 ②에 반영하고 ③ 행에 `D-n`을 적는다. 코드 수정은 지시함(#3)으로. 용어는 [`KN_Glossary`](../00_Overview/KN_Glossary.md)를 따른다.
+
+## 0. 개요
+- 목적 (이 시스템이 해결하는 문제 / 유저 동기):
+- 핵심 루프 내 위치:
+- 관련 필라 (SYS_InGameBattle §1 P1~P6):
+
+## 1. 현재 구현 (As-built) — 기개발
+
+> 작성: 기개발 (2026-11-11). **근거: `feature/lost-and-lovely-import` @ `4b73a5a`**.
+> 코드가 실제로 하는 일만 적었다. 해석 · 제안 · 기획과의 비교 판단은 넣지 않았다 (② · ③은 DD).
+> 범위: 재화 = `CurrencyType` 3종 — 단추(`CurrencyType.Gold`) · 별조각(`CurrencyType.Gem`) · 별빛 사탕(`CurrencyType.EventToken`). 재료 = `ItemDatabase.asset`의 아이템 9종 (모두 `ItemCategory.Material`, `Equipment` 아이템은 없음). 메타 지갑(빠른 수선권 · 두 배 수선권 · 선택 기억편 · 친구 선택권)과 계보 기억편은 범위 밖.
+> 수치 출처: 런타임 에셋(`Data/*.asset`) 값. 에셋에 필드가 없으면 코드 기본값이 쓰이며 "에셋에 없음"으로 적었다. "메타 표" = `MetaDatabase.asset` 섹션, 합계는 기개발이 그 섹션 보상 행을 더한 값.
+
+**파일 약칭** (모두 `Assets/_Project/` 아래)
+
+| 약칭 | 경로 |
+|---|---|
+| `CUR` · `INV` · `RS` | `Scripts/Systems/CurrencySystem.cs` · `InventorySystem.cs` · `RewardService.cs` |
+| `PD` · `GE` · `STORE` · `BOOT` · `GAME` | `Scripts/Core/PlayerData.cs` · `GameEnums.cs` · `SaveStorage.cs` · `GameBootstrap.cs` · `Game.cs` |
+| `GC` · `GC.asset` · `BC.asset` · `GT.asset` | `Scripts/Data/GameConfig.cs` · `Data/GameConfig.asset` · `Data/BattleConfig.asset` · `Data/GachaTable_Normal.asset` |
+| `GROW` · `OFF` · `GACHA` · `MAIL` · `RMAIL` | `Scripts/Systems/GrowthSystem.cs` · `OfflineRewardSystem.cs` · `GachaSystem.cs` · `MailSystem.cs` · `RewardMailSystem.cs` |
+| `SHOP` · `SDB.asset` | `Scripts/Systems/Characters/ShopSystem.cs` · `Data/ShopDatabase.asset` |
+| `CS` · `EVO` · `CDB.asset` | `Scripts/Systems/Characters/CharacterSystem.cs` · `EvolutionSystem.cs` · `Data/CharacterDatabase.asset` |
+| `BS` · `DUN` · `EXP` | `Scripts/Systems/Battle/BattleSystem.cs` · `DungeonSystem.cs` · `ExpeditionSystem.cs` |
+| `IDB` · `IDB.asset` · `EXPDB.asset` · `META` | `Scripts/Data/ItemDatabase.cs` · `Data/ItemDatabase.asset` · `Data/ExpeditionDatabase.asset` · `Data/MetaDatabase.asset` |
+| `MRS` · `IDLE` · `EVT` · `CC` | `Scripts/Systems/Meta/MetaRewardService.cs` · `IdleChestSystem.cs` · `EventCalendarSystem.cs` · `ChapterChestSystem.cs` |
+| `GQ` · `MIS` · `ATT` · `ACH` | `Scripts/Systems/Meta/GuideQuestSystem.cs` · `MissionSystem.cs` · `AttendanceSystem.cs` · `AchievementSystem.cs` |
+| `CODEX` · `AFF` · `GM` · `SW` | `Scripts/Systems/Meta/CodexSystem.cs` · `AffinitySystem.cs` · `GachaMilestoneSystem.cs` · `StarterWeekSystem.cs` |
+| `CB` · `STORY` · `TUT` · `FG` | `Scripts/Systems/Meta/ComebackSystem.cs` · `StorySystem.cs` · `TutorialSystem.cs` · `FeatureGateSystem.cs` |
+| `DG` · `FF` · `CPN` · `SET` | `Scripts/Systems/Meta/DailyGiftSystem.cs` · `FireflyRules.cs` · `CouponSystem.cs` · `Scripts/UI/Popups/SettingsPopup.cs` |
+
+### 1.1 규칙
+```
+[지급 — 재화] CurrencySystem.Add(type, amount)                         (CUR:21-25, 35-39)
+IF amount ≤ 0 또는 NaN → 아무것도 하지 않음 (+∞는 거르지 않음)
+ELSE → currencies[type] = 보유 + amount, Changed(type, 새 값)
+
+[지급 — 재료] InventorySystem.Add(id, count) / AddRange(ids: 각 1개)     (INV:43-54, 101-112)
+IF count ≤ 0 → 무시
+ELSE IF ItemDatabase에 없는 id → 경고 로그 "[Inventory] 존재하지 않는 아이템", 무시
+ELSE → items[id] = 보유 + count, ItemAdded(id, count) → Changed
+
+[공통 창구] RewardService.Grant(RewardData)                            (RS:40-51)
+IF type == Currency → Currency.Add  /  ELSE IF type == Item → Inventory.Add(itemId, (int)amount)
+
+[메타 창구] MetaRewardService.Grant(rewards, multiplier, excludeGem)     (MRS:56-155)
+IF multiplier ≤ 0 · NaN · ∞ → 1                                         (MRS:60)
+Currency    → ⌊amount × 배율 + 1e-9⌋ (excludeGem이면 별조각 ×1), 0 이하 건너뜀 → RS
+Item        → ⌊amount × 배율⌋, int 최대값으로 자름, 0 이하 · 빈 id 건너뜀 → RS
+GoldMinutes → ⌊받는 순간 초당 단추 × 60 × 분 × 배율⌋ → 단추               (MRS:86-92, 346-351)
+
+[소비 — 재화] CurrencySystem.TrySpend(type, amount)                      (CUR:27-33)
+IF amount < 0 또는 NaN → ArgumentOutOfRangeException
+ELSE IF 보유 < amount → false, 변화 없음
+ELSE → 보유 − amount, Changed (amount 0도 true)
+
+[소비 — 재료] InventorySystem.TryConsume(id, count)                      (INV:57-65)
+IF count ≤ 0 또는 보유 < count → false
+ELSE IF 보유 == count → 키 삭제  /  ELSE → 보유 − count
+
+[부족 시] 호출부가 처리, 아무것도 빼지 않고 끝남
+- 소환 false (GACHA:117) · 수선점 강화 / 계보 레벨업 false (GROW:92, CS:238)
+- 상점 NotEnoughCurrency "○○이 부족해요" (SHOP:132-134, 145)
+- 빠른 수선 "별조각이 부족해요" (IDLE:528-531) · 진화 제작 CanCraft false (EVO:107-109)
+
+[음수 · 0 · NaN]
+- 상점 가격 NaN · 음수 → 판매 불가(NotFound), 0은 허용 (SHOP:152)
+- 저장된 보유량의 음수 · NaN은 고치지 않음 (Sanitize는 null만, PD:71-72)
+- 단추는 소수가 될 수 있음: 방치 수익(BOOT:252) · 옛 오프라인 보상(OFF:39, 45) · 수선점 강화 비용(GROW:41)에 내림 없음
+
+[상한]
+- 재화 상한 없음 (double). 재료 상한 없음, int 덧셈에 넘침 검사 없음 (INV:109)
+- int 최대값으로 자르는 곳: 메타 보상 재료(MRS:80) · 원정 재료(EXP:464)
+- 상점: 상품별 dailyLimit · totalLimit, 코스튬 최대 1 (SHOP:97-108). 하루 = 현지 05:00 날 키 (SHOP:8-10)
+
+[저장]
+- currencies: Dictionary<CurrencyType, double>, 키 = 열거형 이름 "Gold" (PD:10-11, 29)
+- items: Dictionary<string, int>, 0개가 되면 키 삭제 (PD:31, INV:61)
+- 읽기: TolerantEnumKeyDictionaryConverter(모르는 열거형 키 건너뜀) → Sanitize (STORE:168-171, 842-848)
+- 새 게임: 단추 · 별조각 키만 넣음. 별빛 사탕은 키 없음 → Get 0 (PD:59-65, CUR:17)
+
+[그 밖]
+- 별빛 사탕을 빼는 곳은 상점 구매뿐. 이벤트 종료 때 지우는 코드 없음 (EventToken 검색: BS:721 · 상점 데이터 · 이름 표시)
+- 별조각 결제 지급 코드 없음 (UnityEngine.Purchasing 등 검색 결과 없음)
+- 재료 단추 보너스 = 보유 종류마다 goldBonusPercent 1회 합 (INV:83-99), 9종 모두 0
+```
+
+### 1.2 상태 전이
+상태 없음 — 재화 · 재료는 보유 수치만 있다. 지급 · 소비 = 수치 변경 + `Changed` 알림.
+
+### 1.3 수치 (코드 상수 · 설정값)
+| 이름 | 값 | 위치 (파일:줄) | 의미 |
+|---|---|---|---|
+| `startGold` · `startGem` | 0 · 300 | `GC.asset:15-16` | 새 게임 단추 · 별조각 (`PD:62-63`) |
+| 환영 우편 | 별조각 1,000 · 단추 500 | `BOOT:112-116` | `SendOnce("welcome")`, 보관 기한 없음 |
+| `maxLevel` · `levelUpBaseCost` · `levelUpCostGrowth` | 1000 · 10 · 1.12 | `GC.asset:17-19` | 수선점 최대 레벨 · 강화 L→L+1 = 10 × 1.12^(L−1) (`GROW:40-41`) |
+| `baseGoldPerSecond` · `goldPerSecondGrowth` · `StageGoldBonusPerStage` | 1 · 1.06 · 0.1 | `GC.asset:20-21` · `GROW:16` | 초당 단추 = 1 × 1.06^(L−1) × 재료 보너스 × (1 + 0.1 × (최고 스테이지 − 1)) (`GROW:71-74`) |
+| `IdleGoldMinInterval` · `IdleGoldMaxInterval` | 0.2초 · 1초 | `BOOT:42,44` | 방치 단추 지급 주기 (`BOOT:254`) |
+| `levelRewardInterval` · `levelRewardGem` · `accountLinkRewardGem` | 10 · 50 · 300 | `GC.asset:22-23` · `GC:42` (에셋에 없음) | 수선점 10레벨마다 별조각 50 우편 · 첫 계정 연동 별조각 우편 |
+| `offlineMaxHours` · `offlineRewardRate` · `offlineMinSeconds` | 8 · 0.5 · 60 | `GC.asset:24-26` | 옛 오프라인 보상 (`OFF`) |
+| `characterLevelUpBaseCost` · `characterLevelUpCostGrowth` · `characterMaxLevel` | 50 · 1.09 · 100 | `GC:50-53` (에셋에 없음) | 계보 레벨업 비용 · 최대 레벨 |
+| `substituteShardCostByGrade` | {0, 5, 10, 20, 40} | `GC:71` (에셋에 없음) | 진화 재료 1개를 기억편으로 대체하는 비용 (등급순, Rare 이상만, `EVO:148-153`) |
+| `costCurrency` · `singleCost` · `tenCost` | 1(Gem) · 100 · 900 | `GT.asset:17-19` | 소환 비용 (`GACHA:85-89`) |
+| `stageGoldBase` · `stageGoldGrowth` · `festivalGoldPercent` | 60 · 1.13 · 50 | `BC.asset:387-388` · `BC.asset:377` | 스테이지 클리어 단추 · 축제 기믹 스테이지 단추 +% |
+| `stageCandy` · `stageCandyMilestone` · `stageCandyMilestoneInterval` | 3 · 10 · 10 | `BC.asset:389-391` | 클리어 별빛 사탕 |
+| `stageClothChance` · `stageRibbonChance` · `failGoldRatio` | 0.35 · 0.25 · 0.3 | `BC.asset:392-394` | 클리어 재료 확률 · 실패 단추 비율 |
+| `dungeonGoldBase` · `dungeonGoldGrowth` · `dungeonThreadFloor` · `dungeonSpringFloor` · `dungeonMoonlightFloor` · `dungeonMoonlightChance` | 150 · 1.15 · 3 · 5 · 10 · 0.12 | `BC.asset:397-402` | 던전 층 단추 · 재료 시작 층 · 달빛 조각 기본 확률 |
+| `ExtraMemberGoldBonus` · `ExtraMemberDropChanceBonus` · `TierRewardScale` | 0.25 · 0.15 · {1.0, 2.8, 5.4} | `EXP:36,38,72` | 원정 인원 1명 추가당 단추 · 재료 확률 배율, 시간 단계 배율 |
+| `quickIdleHours` · `quickIdleGemCosts` | 2 · {0, 50, 100} | `META:1673-1674` | 빠른 수선 1회 = 2시간치, 하루 n번째 별조각 비용 (int 배열 hex `000000003200000064000000`) |
+| `baseCapHours`(+`capSteps`) · `stageGrowth` · `offlineGoldRate` | 8 (12 · 16) · 1.0025 · 0.5 | `META:1584-1591` · `META:1665-1666` | 바구니 쌓임 상한(시간) · 줄 스테이지 배율 · 단추 줄 비율 |
+| `maxQuickIdleTickets` · `freeDoublePerDay` · `doubleExcludesGem` | 20 · 1 · 1 | `META:1675-1678` | 빠른 수선권 보관 상한 · 하루 무료 두 배 · 두 배에서 별조각 제외 |
+| `gemPerLevel` · 도감 별조각 | 10 · 형태 20 · 30 · 50, 코스튬 30, 망각체 10, 시너지 20 + 30, 재료 5 | `META:3878` · `META:3333-3340` | 호감도 단계 별조각 = 10 × 단계 · 도감 칸 보상 (`CODEX:722-759`) |
+| `lostChest.dropChance` · `firefly.perDay` | 0 · 0 | `META:4117` · `META:5464` | 잃어버린 상자 · 반딧불 꺼짐 |
+
+### 1.4 데이터
+| Column | Type | 설명 | 예시 |
+|---|---|---|---|
+| `PlayerData.currencies` | `Dictionary<CurrencyType, double>` | 재화 보유량 (`PD:29`) | `{"Gold": 1234.5, "Gem": 300}` |
+| `PlayerData.items` | `Dictionary<string, int>` | 재료 보유 개수 (`PD:31`) | `{"mat_cloth": 12}` |
+| `ItemDef.id` · `name` | string · string | 아이템 ID · 표시명. ID 중복이면 경고 후 앞 것만 (`IDB:66-69`) | `mat_cloth` · 수선 천 |
+| `ItemDef.grade` · `category` | `ItemGrade` (Common 0 ~ Mythic 4) · `ItemCategory` (Material 0 · Equipment 1) | 등급 = 기억편 대체 비용 · 보유 목록 정렬(등급 높은 순 → ID, `INV:76-78`). 기억편 대체 · 도감 재료 칸은 Material만 | 0 · 0 |
+| `ItemDef.goldBonusPercent` | float | 보유 시 초당 단추 +% (종류당 1회) | 0 (9종 모두) |
+| `ItemDef.sources[]` | `ItemSource` (`ItemSourceType` type · targetId · label) | 획득처 표시 · "재료 수집하러 가기" 이동. 지급에는 쓰이지 않음 | `{3, shop_normal, "수선점 상점"}` |
+| `RewardData` | type(`RewardType`) · currency · itemId · amount(double) | 전투 · 원정 · 상점 · 우편 보상 한 줄 (`RS:7-19`) | `{1, 0, mat_cloth, 5}` |
+| `MetaReward` | type(`MetaRewardType` 0~8) · currency · itemId · amount | 메타 표 보상 한 줄. 2 = 단추 N분치 (`GE:531-551`) | `{2, 0, "", 30}` |
+| `ShopProductDef` | id · rewards · costumeId · currency · price · dailyLimit · totalLimit | 상점 상품 (`Scripts/Data/ShopDatabase.cs:8-23`) | `normal_cloth` |
+
+아이템 정의 (`IDB.asset`) — `sources` 열은 에셋의 표시용 label 그대로
+
+| id | 표시명 | 등급 | `sources` label | 위치 |
+|---|---|---|---|---|
+| `mat_cloth` | 수선 천 | Common | 수선점 상점 · 원정 1-4 · 원정 1-1 · 원정 2-4 · 스테이지 보상 | `IDB.asset:16-43` |
+| `mat_ribbon` | 리본 조각 | Common | 수선점 상점 · 원정 1-1 · 원정 1-4 · 원정 1-2 · 스테이지 보상 | `IDB.asset:44-70` |
+| `mat_wax` | 촛농 방울 | Common | 수선점 상점 · 원정 1-3 | `IDB.asset:71-88` |
+| `mat_thread` | 기억의 실 | Rare | 잔향이 던전 3층 · 원정 2-3 · 수선점 상점 | `IDB.asset:89-109` |
+| `mat_lace` | 레이스 조각 | Rare | 원정 1-2 · 원정 2-2 · 원정 1-3 · 수선점 상점 | `IDB.asset:110-132` |
+| `mat_rib` | 우산살 | Rare | 원정 2-1 · 수선점 상점 | `IDB.asset:133-149` |
+| `mat_suitcase` | 여행 가방 조각 | Epic | 이벤트 상점 | `IDB.asset:150-165` |
+| `mat_spring` | 오르골 태엽 | Epic | 잔향이 던전 5층 · 원정 2-2 | `IDB.asset:166-182` |
+| `mat_moonlight` | 달빛 조각 | Legendary | 잔향이 던전 10층 · 이벤트 상점 | `IDB.asset:183-200` |
+
+### 1.5 재화 · 재료 획득처 / 사용처
+위치는 지급 · 소비를 부르는 줄과 그 양이 적힌 데이터 줄이다. 지급은 모두 `RS:40-51`(메타 표는 `MRS:56-155` → `RS`)을 거친다.
+
+**단추 (`CurrencyType.Gold`)**
+
+| 재화/재료 | 구분(획득/사용) | 어디서 | 양 · 공식 | 위치 (파일:줄) |
+|---|---|---|---|---|
+| 단추 | 획득 | 새 게임 시작값 | 0 | `PD:62` · `GC.asset:15` |
+| 단추 | 획득 | 방치 수익 (앱 켜 둔 동안) | 초당 단추 × 프레임 시간 적립, 1초마다 또는 0.2초 이상 + 1 이상이면 지급. 내림 없음 | `BOOT:250-263` |
+| 단추 | 획득 | 옛 오프라인 보상 | 초당 단추 × min(비운 시간, 8시간) × 0.5, 60초 미만 없음. 부팅 계산은 `!Game.IsMetaActive`일 때만, `Game.SetupMeta`가 `IsMetaActive = true` | `OFF:30-48` · `BOOT:119` · `GAME:174` |
+| 단추 | 획득 | 수선 바구니 받기 — 단추 줄 | ⌊초당 단추 × 3600 × 0.5 × 앱을 닫아 둔 시간(h) + 소수 이월⌋. 두 배 받기 ×2 | `IDLE:718` · `IDLE:783-786` · `IDLE:436-437` |
+| 단추 | 획득 | 빠른 수선 | 바구니 2시간치 (단추 줄 포함) | `IDLE:574-579` |
+| 단추 | 획득 | 스테이지 클리어 | ⌊⌊60 × 1.13^(s−1)⌋ × (1 + 보너스%/100)⌋. 보너스% = 시너지 `GoldGainPercent` 합 + 축제 기믹 50, 하한 −90 | `BS:712` · `BS:743-744` · `BS:612-617` · `BS:644` |
+| 단추 | 획득 | 스테이지 실패 | ⌊클리어 단추식 × 0.3 × clamp01(처치 / 보스 등장 처치)⌋, 1 이상일 때만 | `BS:769-776` · `BS:659` |
+| 단추 | 획득 | 잔향이 던전 돌파 · 소탕 · 한 번에 소탕 | ⌊150 × 1.15^(층−1) × (1 + 덱 시너지 보너스%/100)⌋. 한 번에 소탕은 × 횟수 | `DUN:156-158` · `DUN:209` · `DUN:390` · `DUN:277,288` |
+| 단추 | 획득 | 원정 받기 | ⌊구역 `goldReward` × (1 + 0.25 × (인원−1)) × 단계 배율⌋. 구역 300 · 600 · 1,000 · 3,000 · 2,500 · 4,000 · 6,000 · 9,000 | `EXP:440-441` · `EXP:394` · `EXPDB.asset:25,44,63,82,101,120,139,158` |
+| 단추 | 획득 | 환영 우편 (1회) | 500 | `BOOT:115` → `MAIL:96,111` |
+| 단추 | 획득 | 메타 표 고정 단추 | 가이드 퀘스트 6행 합 5,000 · 튜토리얼 단계 250 | `GQ:173` · `TUT:384` · `META:502-952` · `META:1900` |
+| 단추 | 획득 | 메타 표 단추 N분치 (`GoldMinutes`) | 가이드 퀘스트 5분 · 미션 상자 30분 · 출석 8행 합 1,200분 · 반딧불 10분(`perDay` 0이라 나오지 않음) | `GQ:173` · `MIS:339` · `ATT:182` · `FF:115` · `META:781,1180,5467` |
+| 단추 | 획득 | 개발자 메뉴 (에디터 · 개발 빌드 전용) | 초당 단추 × 600 · 테스트 우편 초당 단추 × 60 | `SET:729` · `SET:774-777` · `SET:788-794` |
+| 단추 | 사용 | 수선점 강화 (1 · 10 · 최대) | 합계 Σ 10 × 1.12^(L−1), 내림 없음 | `GROW:40-49` · `GROW:92` |
+| 단추 | 사용 | 계보 레벨업 (+1) | ⌈50 × 1.09^(L−1) − 1e-6⌉ | `CS:199-206` · `CS:238` |
+| 단추 | 사용 | 수선점 상점 `shop_normal` | 수선 천 ×5 = 400 · 리본 조각 ×5 = 300 · 촛농 방울 ×5 = 300, 각 하루 3회 | `SHOP:117` · `SDB.asset:31,43,55` |
+
+**별조각 (`CurrencyType.Gem`)**
+
+| 재화/재료 | 구분(획득/사용) | 어디서 | 양 · 공식 | 위치 (파일:줄) |
+|---|---|---|---|---|
+| 별조각 | 획득 | 새 게임 시작값 | 300 | `PD:63` · `GC.asset:16` |
+| 별조각 | 획득 | 환영 우편 (1회) | 1,000 | `BOOT:115` → `MAIL:96,111` |
+| 별조각 | 획득 | 수선점 레벨 보상 우편 | 10레벨마다 50 (키 `level_reward_N` 1회) | `RMAIL:21-33` · `GC.asset:22-23` |
+| 별조각 | 획득 | 첫 계정 연동 우편 | 300 | `RMAIL:36-44` · `GC:42` |
+| 별조각 | 획득 | 수선 바구니 별조각 줄 | 시간당 3 × 1.0025^(최고 스테이지−1), 배율 상한 1.5. 두 배 받기 제외 | `IDLE:724-731` · `IDLE:437` · `META:1593-1600` |
+| 별조각 | 획득 | 호감도 단계 받기 | 단계마다 10 × 단계 번호 | `AFF:128-132` · `META:3878` |
+| 별조각 | 획득 | 도감 칸 받기 | 1.3 도감 별조각 값 | `CODEX:722-759` · `CODEX:812-818` |
+| 별조각 | 획득 | 업적 | 62행 합 3,400 | `ACH:451` · `META:2088-3331` |
+| 별조각 | 획득 | 가이드 퀘스트 | 14행 합 640 | `GQ:173` · `META:502-952` |
+| 별조각 | 획득 | 출석부 | 13행 합 2,100 | `ATT:182` · `META:1259-1582` |
+| 별조각 | 획득 | 미션 상자 (미션 19개 자체 `rewards`는 모두 빈 목록) | 5행 합 400 | `MIS:339` · `META:1176-1258` |
+| 별조각 | 획득 | 챕터 상자 (상자 45줄: 1~5장 · 10~200장 5장 간격 · chapter 0 = 줄 없는 장 기본) | 44행 합 4,490 | `CC:9-11` · `CC:123` · `META:4192-4998` |
+| 별조각 | 획득 | 소환 마일스톤 · 반복 | 100 · 반복 300 | `GM:266` · `META:3595,3626` |
+| 별조각 | 획득 | 이벤트 '별이 머문 밤 산책' 미션 · 도장 | 미션 100 · 도장 150 | `EVT:332,354` → `EVT:547` · `META:3753,3807` |
+| 별조각 | 획득 | 첫 주 | 3행 합 300 | `SW:311` · `META:5017-5416` |
+| 별조각 | 획득 | 복귀 도장 | 300 | `CB:112` · `META:3852` |
+| 별조각 | 획득 | 동화책 첫 읽기 | 5행 합 250 | `STORY:77` · `META:4023-4115` |
+| 별조각 | 획득 | 튜토리얼 마지막 단계 (건너뛰기 졸업 선물도 같은 행) | 300 | `TUT:384` · `TUT:291` · `META:2069` |
+| 별조각 | 획득 | 기능 개방 | 30 | `FG:419` · `META:88` |
+| 별조각 | 획득 | 작은 선물 | 20 | `DG:78` · `META:5444` |
+| 별조각 | 획득 | 쿠폰 → 우편 | 50 | `CPN:100-101` → `MAIL:96` · `META:5004` |
+| 별조각 | 획득 | 반딧불 (`perDay` 0이라 나오지 않음) | 10 | `FF:48` · `FF:115` · `META:5480-5486` |
+| 별조각 | 획득 | 개발자 메뉴 (에디터 · 개발 빌드 전용) | 1,000 · 테스트 우편 100 | `SET:781-786` · `SET:792` |
+| 별조각 | 사용 | 소환 (표 `friends`) | 1회 100 · 10회 900. 10회만 `tenCost`, 그 밖은 100 × 횟수. UI 버튼은 1회 · 10회 | `GACHA:85-89` · `GACHA:117` · `GT.asset:17-19` |
+| 별조각 | 사용 | 빠른 수선 | 하루 1번째 0 · 2번째 50 · 3번째 100, 4번째부터 불가. 빠른 수선권을 쓰면 별조각 · 하루 횟수 안 씀 | `IDLE:485-494` · `IDLE:562-571` · `META:1674` |
+| 별조각 | 사용 | 수선점 상점 `shop_normal` | 기억의 실 · 레이스 조각 · 우산살 각 ×1 = 30, 하루 3회 | `SHOP:117` · `SDB.asset:67,79,91` |
+
+**별빛 사탕 (`CurrencyType.EventToken`)**
+
+| 재화/재료 | 구분(획득/사용) | 어디서 | 양 · 공식 | 위치 (파일:줄) |
+|---|---|---|---|---|
+| 별빛 사탕 | 획득 | 스테이지 클리어 | 3, 10의 배수 스테이지는 10. 축제 이벤트 배율이 1 초과면 ⌊× 배율⌋ (`evt_starlit_walk` 배율 2) | `BS:714-721` · `BC.asset:389-391` · `EVT:177,464` · `META:3684` |
+| 별빛 사탕 | 획득 | 수선 바구니 이벤트 전용 줄 | 시간당 2, 이벤트와 겹친 시간만 | `IDLE:724-731` · `META:1657-1664` |
+| 별빛 사탕 | 획득 | 이벤트 '별이 머문 밤 산책' 미션 | 7행 합 370 (배율 없음) | `EVT:332` → `EVT:547` · `META:3686-3760` |
+| 별빛 사탕 | 획득 | 같은 이벤트 도장 | 4행 합 250 | `EVT:354` → `EVT:547` · `META:3761-3814` |
+| 별빛 사탕 | 사용 | 이벤트 상점 `shop_event` | 여행 가방 조각 20 (하루 5) · 달빛 조각 60 (전체 10) · 코스튬 `jjak_sleepcap` 150 · `jjak_festival` 300 (각 1회) | `SHOP:117` · `SDB.asset:110,122,130,138` |
+
+**재료** — 진화 레시피는 `CDB.asset` 형태 29개 중 `materials`가 있는 22개. 바구니 줄은 `minStage` 이상일 때만, 시간당 양 × 1.0025^(최고 스테이지−1) (상한 없음), 두 배 받기 ×2.
+
+| 재화/재료 | 구분(획득/사용) | 어디서 | 양 · 공식 | 위치 (파일:줄) |
+|---|---|---|---|---|
+| 수선 천 | 획득 | 스테이지 클리어 | 35% 확률 1~2개 | `BS:764` · `BC.asset:392` |
+| 수선 천 | 획득 | 원정 | 1-1 60% 1~2 · 1-4 100% 2~4 · 2-1 50% 1~2 · 2-3 100% 2~4 · 2-4 100% 6~10 | `EXP:449-465` · `EXPDB.asset:31-34,84-87,107-110,141-144,160-163` |
+| 수선 천 | 획득 | 수선점 상점 | ×5, 단추 400, 하루 3 | `SHOP:121` · `SDB.asset:22-33` |
+| 수선 천 | 획득 | 수선 바구니 | 시간당 1.5 | `IDLE:437` · `META:1609-1616` |
+| 수선 천 | 획득 | 메타 표 | 가이드 퀘스트 2행 15 · 미션 상자 5 · 출석 3행 45 · 챕터 상자 10 · 복귀 10 · 쿠폰 10 · 첫 주 15 · 작은 선물 5 | `GQ:173` · `MIS:339` · `ATT:182` · `CC:123` · `CB:112` · `CPN:100` · `SW:311` · `DG:78` |
+| 수선 천 | 사용 | 진화 제작 | 레시피 10개 합 170 | `EVO:133-136` · `CDB.asset:135-1839` |
+| 리본 조각 | 획득 | 스테이지 클리어 | 25% 확률 1개 | `BS:765` · `BC.asset:393` |
+| 리본 조각 | 획득 | 원정 | 1-1 100% 2~4 · 1-2 40% 1~2 · 1-4 100% 2~3 · 2-4 50% 2~4 | `EXP:449-465` · `EXPDB.asset:27-30,50-53,88-91,164-167` |
+| 리본 조각 | 획득 | 수선점 상점 | ×5, 단추 300, 하루 3 | `SHOP:121` · `SDB.asset:34-45` |
+| 리본 조각 | 획득 | 수선 바구니 | 시간당 2 | `IDLE:437` · `META:1601-1608` |
+| 리본 조각 | 획득 | 메타 표 | 가이드 퀘스트 5 · 출석 2행 25 · 챕터 상자 10 · 이벤트 도장 15 · 첫 주 15 · 작은 선물 5 | `GQ:173` · `ATT:182` · `CC:123` · `EVT:354` · `SW:311` · `DG:78` |
+| 리본 조각 | 사용 | 진화 제작 | 레시피 8개 합 112 | `EVO:133-136` · `CDB.asset:201-2035` |
+| 촛농 방울 | 획득 | 원정 | 1-3 100% 2~4 | `EXP:449-465` · `EXPDB.asset:65-68` |
+| 촛농 방울 | 획득 | 수선점 상점 | ×5, 단추 300, 하루 3 | `SHOP:121` · `SDB.asset:46-57` |
+| 촛농 방울 | 획득 | 수선 바구니 | 시간당 1 (`minStage` 5) | `IDLE:437` · `META:1625-1632` |
+| 촛농 방울 | 획득 | 메타 표 | 가이드 퀘스트 3 · 출석 10 · 작은 선물 3 | `GQ:173` · `ATT:182` · `DG:78` |
+| 촛농 방울 | 사용 | 진화 제작 | 레시피 6개 합 80 | `EVO:133-136` · `CDB.asset:386-1897` |
+| 기억의 실 | 획득 | 잔향이 던전 돌파 · 소탕 | 3층부터 1 + ⌊(층−3)/3⌋. 한 번에 소탕은 × 횟수 | `DUN:159-160` · `DUN:209,277,390` · `BC.asset:399` |
+| 기억의 실 | 획득 | 원정 | 2-3 25% 1~2 | `EXP:449-465` · `EXPDB.asset:145-148` |
+| 기억의 실 | 획득 | 수선점 상점 | ×1, 별조각 30, 하루 3 | `SHOP:121` · `SDB.asset:58-69` |
+| 기억의 실 | 획득 | 수선 바구니 | 시간당 0.15 (`minStage` 10) | `IDLE:437` · `META:1633-1640` |
+| 기억의 실 | 획득 | 메타 표 | 가이드 퀘스트 2행 5 · 미션 상자 1 · 출석 3행 13 · 챕터 상자 45행 260 · 첫 주 3 | `GQ:173` · `MIS:339` · `ATT:182` · `CC:123` · `SW:311` |
+| 기억의 실 | 사용 | 진화 제작 | 레시피 10개 합 113 | `EVO:133-136` · `CDB.asset:137-2096` |
+| 레이스 조각 | 획득 | 원정 | 1-2 100% 1~3 · 1-3 30% 1 · 2-2 100% 2~4 | `EXP:449-465` · `EXPDB.asset:46-49,69-72,122-125` |
+| 레이스 조각 | 획득 | 수선점 상점 | ×1, 별조각 30, 하루 3 | `SHOP:121` · `SDB.asset:70-81` |
+| 레이스 조각 | 획득 | 수선 바구니 | 시간당 1 (`minStage` 3) | `IDLE:437` · `META:1617-1624` |
+| 레이스 조각 | 획득 | 메타 표 | 가이드 퀘스트 3 · 출석 5 · 챕터 상자 2행 16 · 작은 선물 3 | `GQ:173` · `ATT:182` · `CC:123` · `DG:78` |
+| 레이스 조각 | 사용 | 진화 제작 | 레시피 9개 합 90 | `EVO:133-136` · `CDB.asset:260-2033` |
+| 우산살 | 획득 | 원정 | 2-1 100% 1~3 | `EXP:449-465` · `EXPDB.asset:103-106` |
+| 우산살 | 획득 | 수선점 상점 | ×1, 별조각 30, 하루 3 | `SHOP:121` · `SDB.asset:82-93` |
+| 우산살 | 획득 | 수선 바구니 | 시간당 0.5 (`minStage` 11) | `IDLE:437` · `META:1641-1648` |
+| 우산살 | 획득 | 메타 표 | 출석 5 · 챕터 상자 6 | `ATT:182` · `CC:123` |
+| 우산살 | 사용 | 진화 제작 | 레시피 6개 합 61 | `EVO:133-136` · `CDB.asset:569-1712` |
+| 여행 가방 조각 | 획득 | 이벤트 상점 | ×1, 별빛 사탕 20, 하루 5 | `SHOP:121` · `SDB.asset:101-112` |
+| 여행 가방 조각 | 사용 | 진화 제작 | 레시피 3개 합 21 | `EVO:133-136` · `CDB.asset:139-446` |
+| 오르골 태엽 | 획득 | 잔향이 던전 돌파 · 소탕 | 5층부터 1 + ⌊(층−5)/5⌋. 한 번에 소탕은 × 횟수 | `DUN:161-162` · `DUN:209,277,390` · `BC.asset:400` |
+| 오르골 태엽 | 획득 | 원정 | 2-2 15% 1 | `EXP:449-465` · `EXPDB.asset:126-129` |
+| 오르골 태엽 | 획득 | 수선 바구니 | 시간당 0.05 (`minStage` 25) | `IDLE:437` · `META:1649-1656` |
+| 오르골 태엽 | 획득 | 메타 표 | 출석 2 · 챕터 상자 42행 85 | `ATT:182` · `CC:123` |
+| 오르골 태엽 | 사용 | 진화 제작 | 레시피 6개 합 33 | `EVO:133-136` · `CDB.asset:511-2094` |
+| 달빛 조각 | 획득 | 잔향이 던전 돌파 · 소탕 · 한 번에 소탕 | 10층부터 확률 clamp01(0.12 + 0.01 × (층−10))로 1개. 한 번에 소탕은 횟수만큼 굴림 | `DUN:167-169` · `DUN:468-472` · `DUN:208,389` · `DUN:280-287` |
+| 달빛 조각 | 획득 | 이벤트 상점 | ×1, 별빛 사탕 60, 전체 10 | `SHOP:121` · `SDB.asset:113-124` |
+| 달빛 조각 | 획득 | 메타 표 | 미션 상자 1 · 출석 2 · 소환 마일스톤 2 · 챕터 상자 43행 43 · 첫 주 2 | `MIS:339` · `ATT:182` · `GM:266` · `CC:123` · `SW:311` |
+| 달빛 조각 | 사용 | 진화 제작 | 레시피 4개 합 11 | `EVO:133-136` · `CDB.asset:448-2098` |
+
+- 진화 제작은 (필요량 − 기억편 대체분)만 가방에서 뺀다 (`EVO:135-136`). 기억편 대체는 Rare 이상 재료만, 1개당 1.3 `substituteShardCostByGrade` (`EVO:148-153, 182-199`).
+- 원정 재료는 성공한 굴림마다 min~max, 확률 = min(1, chance × (1 + 0.15 × 추가 인원)), 굴림 수 = ⌊단계 배율⌋ + 소수 확률 1회, 개수 × `DropMultiplier`(주말 원정 축제 2, `EVT:157,458` · `META:3644`) 내림 (`EXP:444-465`).
+- 잃어버린 상자 표(`META:4118-4191`: 수선 천 · 리본 조각 · 촛농 방울 · 오르골 태엽)는 지급되지 않는다: `dropChance` 0(`META:4117`, `CC:83-84`), `BattleSystem.ClearDropHook`에 대입하는 코드는 `BS:757`의 null뿐.
+- 반딧불의 재료 칸은 잃어버린 상자 표에서 고른다(`fromLostChestTable` 1, `META:5473-5478`), `perDay` 0이라 나오지 않는다. 별빛 산책 수첩(`SeasonPassSystem`)은 `season.tiers`가 빈 목록(`META:3842`)이라 지급이 없다.
+
+### 1.6 추출 못 한 것
+- 시너지 `GoldGainPercent` 실제 값(`SynergyDatabase.asset`, 스테이지 · 던전 단추 보너스) · 이벤트 일정(언제 배율 2가 켜지는지) — 값을 뽑지 않았다.
+- 도감 칸 수(도감 별조각 총량) · 업적 · 가이드 퀘스트 · 출석 · 챕터 상자의 행별 조건 · 순서 — 합계만 적었다. 챕터 상자 기본 줄(chapter 0)이 실제로 몇 번 지급되는지(도달 가능한 챕터 수)는 확인하지 않았다.
+- 옛 오프라인 보상(`OFF`)에 값이 쌓이는 경로 — 부팅 계산 조건(`BOOT:119`) 밖의 경로(설정 화면 테스트 등)는 끝까지 추적하지 않았다.
+- `items` int 덧셈 넘침 시 동작 — 코드에 검사가 없고, 컴파일 옵션(checked)은 확인하지 않았다.
+- `Scripts/UI` 쪽 직접 지급 · 소비 — `Currency.Add` · `MetaRewards.Grant` · `TrySpend` 검색만 했다 (개발자 메뉴 외에는 Systems 호출).
+
+## 2. 기획 방향 (To-be) — DD
+
+### 2.1 규칙
+```
+IF <조건>
+  → <처리>
+```
+
+### 2.2 상태 전이
+```
+[State A] ──(트리거)──→ [State B]
+```
+
+### 2.3 UI 플로우 / 디스크립션
+1. <UI 요소> : 기능 / 인터랙션 규칙
+   - 탭 → <연결 화면>
+   - 비활성 조건 →
+
+### 2.4 데이터
+| Column | Type | 설명 | 예시 |
+|---|---|---|---|
+
+## 3. 차이 → 결정 필요 — DD 작성, 대표 결정
+
+| # | 항목 | ① 현재 구현 | ② 기획 방향 | 영향 (코드 · 데이터 · 세이브) | DD 추천 | 결정 |
+|---|---|---|---|---|---|---|
+
+## 4. 예외 처리 / 엣지 케이스
+| 케이스 | 처리 |
+|---|---|
+| 네트워크 단절 | |
+| 앱 강제 종료 | |
+| 기기 시간 조작 | |
+
+## 5. 어뷰징 검토
+| 시나리오 | 대응 |
+|---|---|
+
+## 6. 확장성 / 오픈 이슈
+- [ ]
