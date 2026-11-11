@@ -47,7 +47,7 @@ Draft ──(PR 생성)──→ Review ──(리드 승인/머지)──→ Ap
 | 자료 | 원본 위치 | 저장소에 두는 것 |
 |---|---|---|
 | 시스템/콘텐츠 기획서 | `Docs/*.md` | 원본 그대로 |
-| 데이터 테이블 (수치) | Google Sheets 또는 `Docs/05_DataTable/*.xlsx` | 스키마 문서 + 변환 결과(`Assets/_Project/Data/Tables`) |
+| 데이터 (수치 · 콘텐츠) | 당분간 코드 콘텐츠 `Assets/_Project/Editor/Content` (D-20). 밸런스 표만 추후 시트 | 코드 원본 + 빌더 생성 결과(`Assets/_Project/Data`) |
 | UI 시안 | Figma | 링크 + 확정 캡처 |
 
 > ⚠️ 원본이 두 곳에 있으면 반드시 어긋난다. 위 표 외의 위치에 사본을 만들지 않는다.

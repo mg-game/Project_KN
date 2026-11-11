@@ -125,3 +125,6 @@ desktop.ini
 *.jks
 google-services.json
 GoogleService-Info.plist
+
+# Local AI tooling settings (per machine)
+/.claude/
