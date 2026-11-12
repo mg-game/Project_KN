@@ -76,7 +76,7 @@
 | 일반 UI 아이콘 | Sprite (2D and UI), Single, sRGB On, Alpha Is Transparency On, Mip Maps Off |
 | 메시·샘플링 | Full Rect, Bilinear. 실제 표시 크기·압축 후 32px 가독성 재검수 |
 | 버튼 9-slice | `lantern_button_*`: L/B/R/T 각각 24px. 최종 적용 전 모서리 늘어짐 확인 |
-| 알림 칩 | `alert_*`: 20px border. 좌측 아이콘은 늘어나는 중앙 밖에 두고, 글자는 별도 TMP |
+| 알림 칩 | `alert_*`: L/B/R/T = 64/20/20/20px, 높이 64px 고정으로 가로만 확장. 좌측 아이콘을 L64 안에 보존하고, 글자는 별도 TMP |
 | 링/방위 | Pivot (0.5, 0.5), 0°=N, clockwise 45°씩. Unity Z 회전 부호는 UI 좌표계에서 확인 |
 | 크기 | 논리 크기와 Texture pixels를 구분. PPU/Canvas Scaler는 기존 빌더 기준 유지 |
 | 적용 | 채택 후 최종본만 LFS에 추가, Unity가 만든 `.meta`를 함께 커밋. 연결은 I-10 개발 작업에서 수행 |
