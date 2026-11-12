@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-52) |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `Stage_Battle_Config` · `BAL_BattleKnobs` |
 | 관련 문서 | [`UI_InGame`](./UI_InGame.md) §8 BT-001 · BT-002 (상위 IA) · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §12 · §18 · [`UI_Formation`](./UI_Formation.md) · [`BAL_BattleKnobs`](../04_Balance/BAL_BattleKnobs.md) |
 | 근거 | 현재 화면 = `Scripts/UI/Battle/*` (PR #2 @ `4b73a5a`), 규칙 = D-27 · D-28 · D-37 |

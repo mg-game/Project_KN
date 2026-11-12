@@ -1,4 +1,4 @@
-# 캐릭터 외형변경 기획 템플릿 — CNT_CharacterAppearance_Name_Appearance
+# 캐릭터 외형 기획 템플릿 — CNT_CharacterAppearance_Name_Appearance
 
 | 항목 | 값 |
 |---|---|
@@ -7,7 +7,7 @@
 | 최종 수정 | YYYY-MM-DD |
 | 관련 테이블 | 기존 `CharacterFormDef` 또는 `CostumeDef`, 미등록이면 명시 |
 | 관련 이슈 | 미정 |
-| 관련 문서 | [전달 마스터](./07_Art/ART_CharacterHandoff.md) |
+| 관련 문서 | [전달 마스터](../07_Art/ART_CharacterHandoff.md) |
 
 > **복사 위치:** `Docs/02_Content/CNT_CharacterAppearance_<Name>_<Appearance>.md`. 링크는 복사 위치 기준으로 조정한다. 원본 캐릭터 문서로 반드시 상대경로 링크를 추가한다. 기본 성격·탄생 배경·세계관은 여기 복사하지 않는다.
 
@@ -69,7 +69,7 @@
 
 ## 6. AI 아트 제작 지시 · 전달
 
-- 적용: [공통 마스터](./07_Art/ART_CharacterHandoff.md) (복사 후 `../07_Art/`로 조정).
+- 적용: [공통 마스터](../07_Art/ART_CharacterHandoff.md) (복사 후 `../07_Art/`로 조정).
 - 담당·필요 컷·장수·용도·시점: 미정
 - 필수 디자인 요소 / 금지 요소 / 검수 포인트: 미정
 - 최종 리소스 후보 경로·종류·ID: 미정. 컨셉 카드와 구별.

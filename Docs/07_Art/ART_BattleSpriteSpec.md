@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-41) |
 | 작성자 | ① 실측: DD (L&L 스프라이트 58장 · 코드) · ②③: DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | (아트 에셋) `Assets/_Project/Art/Characters` · `Enemies` · `Battle` |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) §8 · §15 · [`ART_Character_Brief`](./ART_Character_Brief.md) · [`ART_M1_Backlog`](./ART_M1_Backlog.md) · [`CNT_Enemy`](../02_Content/CNT_Enemy.md) · [`CNT_Boss`](../02_Content/CNT_Boss.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) |
 | 근거 | `feature/lost-and-lovely-import` 스프라이트 · `.meta` · `BattleFieldMapper.cs:68-75` · `GuardianSlotView.cs:99-132 · 497-515` · `EchoView.cs:52-53 · 93-105 · 321` · `EnemyView.cs:79-84` · `Main.unity`(Guardian0~4 · EchoTemplate RectTransform) |

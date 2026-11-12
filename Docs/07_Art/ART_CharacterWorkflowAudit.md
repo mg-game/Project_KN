@@ -50,7 +50,7 @@ Project_KN/
 │  ├─ 08_Audio/, 09_Research/, 99_Archive/
 │  ├─ LostAndLovely/        PR #2의 기존 11개 영문 문서 (I-4 이관 예정)
 │  ├─ README.md, decisions.md, _Template_System.md
-│  └─ _Template_Character.md, _Template_CharacterAppearance.md
+│  └─ _Templates/_Template_Character.md, _Template_CharacterAppearance.md (D-61로 이동)
 ├─ Packages/, ProjectSettings/  기존 보존
 └─ Tools/                   기존 변환기 자리·팀 보드
 ```
@@ -91,8 +91,8 @@ Project_KN/
 - [02_Content/CNT_CharacterAppearance_Jjakjjak_Caravan.md](../02_Content/CNT_CharacterAppearance_Jjakjjak_Caravan.md)
 - [02_Content/CNT_CharacterAppearance_Rainy_AlleyLantern.md](../02_Content/CNT_CharacterAppearance_Rainy_AlleyLantern.md)
 - [02_Content/CNT_CharacterAppearance_Mongsil_Wax.md](../02_Content/CNT_CharacterAppearance_Mongsil_Wax.md)
-- [_Template_Character.md](../_Template_Character.md)
-- [_Template_CharacterAppearance.md](../_Template_CharacterAppearance.md)
+- [_Templates/_Template_Character.md](../_Templates/_Template_Character.md)
+- [_Templates/_Template_CharacterAppearance.md](../_Templates/_Template_CharacterAppearance.md)
 - [07_Art/ART_CharacterHandoff.md](./ART_CharacterHandoff.md)
 - [07_Art/ART_CharacterWorkflowAudit.md](./ART_CharacterWorkflowAudit.md)
 
@@ -112,8 +112,8 @@ Project_KN/
 
 | 문서 | 포함 정보 | 사용법 |
 |---|---|---|
-| [원본 템플릿](../_Template_Character.md) | ID·이름·원물/탄생·매력·내러티브·성격/말투/습관·기본 외형·고정 요소·컬러/재질·지킴이/잔향이·전투·주의·원본 이미지 | `02_Content/CNT_Character_<Name>.md`로 복사하고 **복사 위치 기준으로 링크 조정**. 기존 캐릭터는 설정집 원문 링크로 채움 |
-| [외형 템플릿](../_Template_CharacterAppearance.md) | 원본 FK·외형 ID/이름·유형·상태·재활용 전→후·이유·실루엣·유지/변경·재질/색·감정·전투 표현·제작 지시·이미지·검수 | 같은 폴더 `CNT_CharacterAppearance_<Name>_<Appearance>.md`. 원본의 성격/탄생 설정을 복사하지 않음 |
+| [원본 템플릿](../_Templates/_Template_Character.md) | ID·이름·원물/탄생·매력·내러티브·성격/말투/습관·기본 외형·고정 요소·컬러/재질·지킴이/잔향이·전투·주의·원본 이미지 | `02_Content/CNT_Character_<Name>.md`로 복사하고 **복사 위치 기준으로 링크 조정**. 기존 캐릭터는 설정집 원문 링크로 채움 |
+| [외형 템플릿](../_Templates/_Template_CharacterAppearance.md) | 원본 FK·외형 ID/이름·유형·상태·재활용 전→후·이유·실루엣·유지/변경·재질/색·감정·전투 표현·제작 지시·이미지·검수 | 같은 폴더 `CNT_CharacterAppearance_<Name>_<Appearance>.md`. 원본의 성격/탄생 설정을 복사하지 않음 |
 | [ART_CharacterHandoff](./ART_CharacterHandoff.md) | 첨부 v2 기반 공통 규칙·카드 레이아웃·상세 본문·D1~D3 대응·기술 단계·검수·복사용 실행 지시 | §8 A 기본형 시트 또는 §8 B 외형 카드 모드를 명시. 두 모드를 섞지 않음 |
 
 파일명은 버전 없는 PascalCase, 문서 이력은 Git 커밋으로 추적한다. 외형 문서에 제작 지시·피드백을 같이 두며 BRIEF/ART_NOTES 사본을 늘리지 않는다.
@@ -362,8 +362,8 @@ Project_KN/
 ## 9. 신규 캐릭터 / 새 외형 추가 방법
 
 1. 설정집·코드·현재 이미지·기존 문서를 검색해 같은 대상이 이미 있는지 확인한다. 기획 이름과 코드 키를 각각 확인한다.
-2. 기존 대상은 원본 진입 문서를 재사용한다. 신규 대상만 [원본 템플릿](../_Template_Character.md)을 기존 02_Content에 복사하고· 원문 한 곳에 기본 설정을 작성한다. 미확인 값은 미정.
-3. [외형 템플릿](../_Template_CharacterAppearance.md)으로 변경분만 작성한다. 원본 링크·ID·유형·선행 조건/해당 없음·상태를 분리하고 런타임 미등록 값을 지어내지 않는다.
+2. 기존 대상은 원본 진입 문서를 재사용한다. 신규 대상만 [원본 템플릿](../_Templates/_Template_Character.md)을 기존 02_Content에 복사하고· 원문 한 곳에 기본 설정을 작성한다. 미확인 값은 미정.
+3. [외형 템플릿](../_Templates/_Template_CharacterAppearance.md)으로 변경분만 작성한다. 원본 링크·ID·유형·선행 조건/해당 없음·상태를 분리하고 런타임 미등록 값을 지어내지 않는다.
 4. [마스터](./ART_CharacterHandoff.md)의 카드 모드에 두 문서·기준 커밋·실재 레퍼런스를 넣는다. 기본형 시안이면 기존 브리프와 시트 모드를 사용한다.
 5. 이미지와 별도 본문의 D1~D3·원형·색·이야기·문구를 대조한다. 새 시안은 공유 위치 URL로 연결하고· 제작 지시·미정·피드백은 같은 외형 문서에 기록한다.
 6. 원본의 외형 목록· 설정집 §12· Docs 목차/지도에 상대링크를 추가한다. 실제 파일 존재와 링크를 검사한다.

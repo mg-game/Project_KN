@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-50) |
 | 작성자 | ① 추출: DD (`SynergyDatabase.asset` · 코드) · ②③: DD |
-| 최종 수정 | 2026-11-12 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `SynergyDef` (kind · trait · style · lineageIds · tiers) · `StatType` · `StageModifierType` |
 | 관련 문서 | [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) §10 (대표 관계와 연계 스킬) · [`CNT_Character_List`](../02_Content/CNT_Character_List.md) (D-46) · [`SYS_Rescue`](./SYS_Rescue.md) (D-49 로스터 15) · [`SYS_InGameBattle`](./SYS_InGameBattle.md) D-27 #3 · D-40 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) |
 | 근거 | 코드 `4b73a5a` — `Systems/Synergy/SynergySystem.cs` · `Data/SynergyDatabase.cs` · `Data/SynergyDatabase.asset` (25종) · `Core/GameEnums.cs` (`TraitType` · `StatType` · `StageModifierType`) · `UI/Synergy/SynergyPanelView.cs` · `UI/Battle/SynergyBannerView.cs` · `Art/Synergy/combo_*.png` (12장) |
@@ -76,7 +76,7 @@
 |---|---|---|---|
 | `LampGainPercent` | **`ResonanceRegenPercent`** (잔향 수급, 이미 있음) | 같은 값 | 불빛 게이지 → 잔향 투자(D-27)로 바뀐 자리 그대로 |
 | `LampDamagePercent` | **`LightInvestCostReductionPercent`** 🆕 (수선등 밝히기 비용 감소) | 값 × 0.5 (25 → 12, 35 → 17) [가정] | "빛"의 정체성 유지 · 판단 구조(투자 타이밍)에 붙음 |
-| 보름달 "불빛 게이지 충전 증가" | 잔향 수급 +20% | | 문구 · 효과 교체 |
+| 보름달 "불빛 게이지 충전 증가" | 잔향 수급 **+30%** (D-58 — D-34 원래 값, 20은 옮겨 적기 실수) | | 문구 · 효과 교체 |
 
 ### 2.2 설정집 관계 ↔ 조합 맞추기 (P1)
 | 설정집 관계 | 지금 | 할 일 |

@@ -4,17 +4,18 @@
 
 | 폴더 | 내용 | 예시 |
 |---|---|---|
-| 00_Overview | 게임 컨셉, 핵심 루프, 로드맵, 용어집 | `KN_Overview.md`, `Glossary.md` |
+| 00_Overview | 게임 개요 · M1 범위, 로드맵, 용어집, **문서 목록(`KN_DocMap`)** | `KN_Overview.md`, `KN_Glossary.md`, `KN_DocMap.md` |
 | 01_System | 시스템 기획서 | `SYS_IdleReward.md`, `SYS_Gacha.md` |
 | 02_Content | 스테이지, 캐릭터, 이벤트 등 콘텐츠 | `CNT_Stage_Chapter1.md` |
-| 03_UI_UX | 화면 명세, UI 플로우, 상태 전이 | `UI_Lobby.md` |
-| 04_Balance | 수치 설계 근거, 성장 곡선, 재화 흐름 | `BAL_GrowthCurve.md` |
+| 03_UI_UX | 화면 명세, UI 플로우, 상태 전이 (이미지는 `images/`) | `UI_Home.md` |
+| 04_Balance | 수치 설계 근거, 노브, 성장 곡선 | `BAL_BattleKnobs.md` |
 | 05_DataTable | 테이블 스키마 정의 (컬럼/타입/관계) | `TBL_Character.md` |
 | 06_Meeting | 회의록 | `2026-11-10_Kickoff.md` |
 | 07_Art | 아트 방향, 스타일 가이드, FX, 아트 작업 계획 | `ART_StyleGuide.md` |
 | 08_Audio | 사운드 · BGM 방향과 명세 | `AUD_Spec.md` |
 | 09_Research | 경쟁작 · 레퍼런스 분석, 리서치 | `RES_IdleGames.md` |
-| 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) | - |
+| 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) · 변환 전 원본 `Source/` | - |
+| _Templates | 문서 양식 (시스템 · 테이블 · 아트 · 회의록) | `_Template_System.md` |
 
 ## 2. 파일 네이밍
 
@@ -60,16 +61,25 @@ Draft ──(PR 생성)──→ Review ──(리드 승인/머지)──→ Ap
 
 ## 5. 템플릿
 
-- 시스템 기획서: [`_Template_System.md`](./_Template_System.md)
-- 테이블 스키마: [`05_DataTable/_Template_Table.md`](./05_DataTable/_Template_Table.md)
+- 시스템 기획서: [`_Templates/_Template_System.md`](./_Templates/_Template_System.md)
+- 테이블 스키마: [`_Templates/_Template_Table.md`](./_Templates/_Template_Table.md)
+- 아트 문서: [`_Templates/_Template_Art.md`](./_Templates/_Template_Art.md)
+- 회의록: [`_Templates/_Template_Meeting.md`](./_Templates/_Template_Meeting.md)
+- 캐릭터 원본: [`_Templates/_Template_Character.md`](./_Templates/_Template_Character.md) · 캐릭터 외형: [`_Templates/_Template_CharacterAppearance.md`](./_Templates/_Template_CharacterAppearance.md)
 
+## 6. 문서 찾기 · 상태
 
-## 6. 캐릭터 기획 · AI 아트 관리
+- **전체 문서 목록 · 진행 상태 = [`00_Overview/KN_DocMap.md`](./00_Overview/KN_DocMap.md)** (DD 관리, 목차를 여기에 따로 두지 않음 — 사본은 어긋남, §4)
+- 결정 기록 = [`decisions.md`](./decisions.md) · 용어 = [`00_Overview/KN_Glossary.md`](./00_Overview/KN_Glossary.md)
+- 검수 기록 = [`00_Overview/KN_DocReview.md`](./00_Overview/KN_DocReview.md)
+- 상태 표기: `Approved (D-n)` = 그 결정으로 확정 · `Review` = 결정 대기 · `Draft` = 쓰는 중. 문서 상단 상태와 `KN_DocMap` 상태는 같아야 한다
 
-- [원본 기획 템플릿](./_Template_Character.md) → `02_Content/CNT_Character_<Name>.md`
-- [외형변경 템플릿](./_Template_CharacterAppearance.md) → `02_Content/CNT_CharacterAppearance_<Name>_<Appearance>.md`
-- [공통 전달 마스터](./07_Art/ART_CharacterHandoff.md): 원본 → 외형 → 카드 → 상세 텍스트 → 아트 전달 → 결과 검수.
-- [기존 설정집과 우선 3종 연결](./02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형변경-문서-연결): 기존 원문은 보존하고 필드별 링크로 참조. 신규 캐릭터는 개별 문서 한 곳에만 원문 작성.
+## 7. 캐릭터 기획 · AI 아트 관리
+
+- [원본 기획 템플릿](./_Templates/_Template_Character.md) → `02_Content/CNT_Character_<Name>.md`
+- [외형 템플릿](./_Templates/_Template_CharacterAppearance.md) → `02_Content/CNT_CharacterAppearance_<Name>_<Appearance>.md`
+- [공통 전달 마스터](./07_Art/ART_CharacterHandoff.md): 원본 → 외형 → 카드 → 상세 텍스트 → 아트 전달 → 결과 검수. 결과 검수 표 = [`07_Art/ART_ReviewSheet.md`](./07_Art/ART_ReviewSheet.md) (D-46 #5)
+- [기존 설정집과 우선 3종 연결](./02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형-문서-연결): 기존 원문은 보존하고 필드별 링크로 참조. 신규 캐릭터는 개별 문서 한 곳에만 원문 작성.
 - [구조 분석·적용 기록](./07_Art/ART_CharacterWorkflowAudit.md): 보존·변경 목록, ID/경로, 첨부 문서 충돌 처리, 검사 결과, 신규 추가 방법.
 
 캐릭터 기본 설정을 외형 문서에 복사하지 않는다. 공통 실행 프롬프트는 마스터 한 곳에 두며, 스타일과 게임 리소스 규격은 기존 전문 문서로 연결한다. 문서 관리 ID와 코드 ID를 구분하고, 기획 상태(확정/검토 중/폐기)는 문서 상태와 별도로 기록한다.

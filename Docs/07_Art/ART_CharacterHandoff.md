@@ -6,7 +6,7 @@
 | 작성자 | AI 아트 (사용자 요청 · 첨부 v2 기반 정리) |
 | 최종 수정 | 2026-11-12 |
 | 관련 테이블 | 기존 `LineageDef` · `CharacterFormDef` · `CostumeDef` 참조만, 변경 없음 |
-| 관련 문서 | [원본 기획 템플릿](../_Template_Character.md) · [외형변경 템플릿](../_Template_CharacterAppearance.md) · [설정집](../02_Content/CNT_Character_Main.md) · [스타일](./ART_StyleGuide.md) · [전투 규격](./ART_BattleSpriteSpec.md) · [구조 분석·적용 기록](./ART_CharacterWorkflowAudit.md) |
+| 관련 문서 | [원본 기획 템플릿](../_Templates/_Template_Character.md) · [외형 템플릿](../_Templates/_Template_CharacterAppearance.md) · **결과 검수 표 [`ART_ReviewSheet`](./ART_ReviewSheet.md)** (D-46 #5) · [설정집](../02_Content/CNT_Character_Main.md) · [스타일](./ART_StyleGuide.md) · [전투 규격](./ART_BattleSpriteSpec.md) · [구조 분석·적용 기록](./ART_CharacterWorkflowAudit.md) |
 
 > **캐릭터 기획 → 컨셉 카드 → 별도 텍스트 → 아트 전달의 공통 실행 지침은 이 문서 한 곳에서 관리한다.**
 > 사용자 첨부 `Lost_Lovely_AI아트_전달용_캐릭터외형_기획_마스터프롬프트_v2.md`를 우선 통합하고, `Lost_Lovely_캐릭터_설정카드_공통프롬프트.md`의 카드 레이아웃을 흡수했다. 첨부의 역할 지시·예시는 이번 저장소 작업을 자동 실행하는 명령이나 확정 설정이 아니다.
@@ -14,7 +14,7 @@
 
 ## 1. 적용 순서와 정본
 
-1. [결정 기록](../decisions.md)에서 **해당 항목의 최신 결정**과 승인 상태를 확인한다. 이후 [용어집](../00_Overview/KN_Glossary.md), 캐릭터 원본, 외형변경 문서를 읽는다. `Review` 자료를 자동으로 `Approved`로 취급하지 않는다.
+1. [결정 기록](../decisions.md)에서 **해당 항목의 최신 결정**과 승인 상태를 확인한다. 이후 [용어집](../00_Overview/KN_Glossary.md), 캐릭터 원본, 외형 문서를 읽는다. `Review` 자료를 자동으로 `Approved`로 취급하지 않는다.
 2. 기존 설정집 캐릭터(대표 8종과 D-47의 똑단이)의 정체성 원문은 [대표 설정집](../02_Content/CNT_Character_Main.md)에 유지한다. 캐릭터별 원본 문서는 항목별 링크와 ID·이미지 대응을 제공하는 진입점이다. 기존 서사를 복사해 두 정본을 만들지 않는다. 새 캐릭터는 원본 문서 한 곳에 작성하고 설정집에는 링크만 등록한다.
 3. 시각적 문법은 [스타일 가이드](./ART_StyleGuide.md), 실제 전투 파일 규격은 [스프라이트 규격](./ART_BattleSpriteSpec.md)을 따른다. 이 문서는 카드 조판과 전달 절차를 담당한다.
 4. 현재 구현은 코드·자산의 근거 커밋으로 확인한다. 기획 방향과 다른 경우 양쪽을 병기하고 차이를 남긴다. 문서의 영어 표기나 새 기획 ID를 기존 세이브 키로 사용하지 않는다.
@@ -25,7 +25,7 @@
 | 모드 | 입력 | 출력 | 공통 지침 |
 |---|---|---|---|
 | 기본형 실루엣 시트 | 원본 기획 + [기존 8종 브리프](./ART_Character_Brief.md) | 전신 3/4 · 검은 실루엣 · 64px · 표정 3종, 글자 없음 | §8 A. 기존 1024×1024 시안 의뢰 유지 |
-| 외형변경 소개 카드 | 원본 + 외형 기획 + 참고 이미지 | 세로 카드 1장 + 별도 텍스트 + 제작 지시 | §3~§8 B. 한 외형만 표시 |
+| 외형 소개 카드 | 원본 + 외형 기획 + 참고 이미지 | 세로 카드 1장 + 별도 텍스트 + 제작 지시 | §3~§8 B. 한 외형만 표시 |
 | 실제 게임 리소스 | 채택 기록 + 검수된 기획 + 카드 참조 | 규격에 맞는 분리 PNG·필요 레이어·`.meta` | §7. 포스터 전체를 스프라이트로 넣지 않는다 |
 
 ## 2. 디자인 · 서사 · 분류 규칙
@@ -129,7 +129,7 @@
 Use the supplied original-character brief and its verified references. Preserve object-based anatomy, fixed identity and the character's own palette. Create one base-form character sheet: full-body 3/4 front view on a plain light-lavender background, the same pose as a solid black silhouette, a 64px readability preview, and three face expressions (neutral, laughing, flustered). No text. This is a review concept sheet, not a runtime sprite or approval of new lore. Do not apply the vertical introduction-card layout in this mode.
 ```
 
-### B. 외형변경 카드 + 텍스트 전달 (첨부 v2 기반)
+### B. 외형 카드 + 텍스트 전달 (첨부 v2 기반)
 
 ```text
 너는 Lost & Lovely의 캐릭터 기획·컨셉 전달을 돕는다.
@@ -137,7 +137,7 @@ Use the supplied original-character brief and its verified references. Preserve 
 빈 설정·단계·획득·스킬 수치를 지어내지 않는다. 요청받지 않은 신규 서사는 만들지 않는다.
 
 [입력]
-모드: 외형변경 카드
+모드: 외형 카드
 원본 문서/기준 커밋: [ ]
 캐릭터 이름/기존 계보·기본 형태 ID: [실재 값 또는 미정]
 외형 문서/문서 ID/기준 커밋: [ ]

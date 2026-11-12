@@ -1,5 +1,12 @@
 # Notion 허브 구성 명세
 
+| 항목 | 값 |
+|---|---|
+| 상태 | Approved (D-7) |
+| 작성자 | DD (팀 합의 기록) |
+| 최종 수정 | 2026-11-13 (헤더 추가 — 내용 그대로) |
+| 관련 문서 | [`KN_DocMap`](./KN_DocMap.md) · [`decisions.md`](../decisions.md) |
+
 > 대상 위치: https://app.notion.com/p/Notion-414d6b1add7d80c09efde5e9939e4d27 (이 페이지 아래에 만든다)
 > **정식 허브: https://www.notion.so/567b16697889485da7efa9f42adbf745** (2026-11-10 대표 확정)
 > ChaJuSeong 페이지 아래에 중복으로 만든 허브(414b5060…)는 2026-11-10 휴지통으로 이동.
