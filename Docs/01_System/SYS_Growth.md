@@ -380,5 +380,5 @@ IF 기억편 ≥ 공명 비용 AND 공명 < 상한 → 기억편 −비용, 공�
 - [ ] I-7 대조표로 "캐릭터 = 계보?" 확정 → `Lineage_Growth.lineage_id` FK 확정
 - [ ] 기개발 확인: `PowerSystem` 미리보기가 세이브 원본을 바꾸는지 · 예외 시 복구 보장 (§4)
 - [ ] 한계 돌파 · 공명 전용 효과 수치 → `BAL_Curve` / `BAL_BattleKnobs`
-- [ ] 수선점 3축 전환 이전 규칙 → `SYS_Atelier`
+- [x] 수선점 3축 전환 이전 규칙 → `SYS_Atelier` §2.2 (수선점 레벨 = 수선 작업대 레벨, D-55)
 - 확장성: 성장 축을 `Lineage_Growth` 한 테이블에 모으고 효과는 `Resonance_Effect` · `Breakthrough_Config` 데이터로 분리 → 새 계보 추가 시 코드 수정 없이 데이터만 추가
