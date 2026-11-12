@@ -82,12 +82,13 @@ Project_KN/
 
 ## 3. 추가·수정 문서 및 이유
 
-### 추가 10개 (기존 폴더 안)
+### 추가 11개 (기존 폴더 안)
 
 - [02_Content/CNT_Character_Jjakjjak.md](../02_Content/CNT_Character_Jjakjjak.md)
 - [02_Content/CNT_Character_Rainy.md](../02_Content/CNT_Character_Rainy.md)
 - [02_Content/CNT_Character_Mongsil.md](../02_Content/CNT_Character_Mongsil.md)
 - [02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md](../02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md)
+- [02_Content/CNT_CharacterAppearance_Jjakjjak_Caravan.md](../02_Content/CNT_CharacterAppearance_Jjakjjak_Caravan.md)
 - [02_Content/CNT_CharacterAppearance_Rainy_AlleyLantern.md](../02_Content/CNT_CharacterAppearance_Rainy_AlleyLantern.md)
 - [02_Content/CNT_CharacterAppearance_Mongsil_Wax.md](../02_Content/CNT_CharacterAppearance_Mongsil_Wax.md)
 - [_Template_Character.md](../_Template_Character.md)
@@ -224,10 +225,18 @@ Project_KN/
 - 원본 N1과 보강 후보 B2·검수 데이터·Unity 확인표를 별도 ZIP으로 이 채팅에 보존했다. 정식 채택·기존 에셋 교체는 하지 않았으며 Unity Editor 부재로 실행 검증은 미실행이다.
 - 후속 문서 상대링크·앵커 189개와 본체 blob 경로 11개 검사 오류 0, 원본 설정·기존 개별 브리프 보존 및 `git diff --check` 통과를 확인했다.
 
+### 카라반 구조 검증·최신 기획 동기화 (2026-11-12)
+
+- develop `46b1355`의 D-46·D-47·D-48 및 구조·시너지 문서를 병합해 원문을 보존했다. 문서 지도 충돌은 기존 진입 링크와 최신 Approved 로스터/잔향이 행을 모두 유지해 해소했다.
+- [양말 카라반](../02_Content/CNT_CharacterAppearance_Jjakjjak_Caravan.md) 문서를 기존 02_Content에 추가했다. 기존 형태와 코드의 구조 차이, 별도 Costume 혼동 위험을 기록하고 C2 카드·D1~D3·별도 텍스트를 제작했다. 새 구조·작화는 제안이며 기존 그림 재사용 결정·에셋은 보존한다.
+- 이미지는 채팅 산출물로만 전달하며 Git에는 새 폴더·바이너리·.meta·게임 데이터 변경이 없다. 실제 PNG 규격·Unity 검수는 이번 카드의 완료 항목이 아니다.
+- 마스터의 기억형/잔향이 항목을 D-48에 맞추고 사용자 요청의 “아트 보고” 형식을 같은 마스터 §10에 기록했다.
+- 최신 develop 대비 원본 설정(똑단이 포함)·개별 브리프 보존을 확인했다. 상대링크·앵커 209개, 본체 blob 경로 13개 및 이미지 LFS/.meta 짝 7개 검사 오류 0. 신규 11·수정 4 Markdown, 새 폴더·바이너리·삭제 0개다.
+
 ## 8. Git 변경사항 요약
 
 - 기준: develop `a24c577`에서 `docs/character-art-workflow` 분기.
-- 신규 Markdown 10개· 기존 Markdown 4개 수정· 폴더 신설 0개· 삭제/이동/바이너리 변경 0개.
+- 신규 Markdown 11개· 기존 Markdown 4개 수정· 폴더 신설 0개· 삭제/이동/바이너리 변경 0개.
 - main/develop 직접 수정 없이 문서 PR로 검토. PR 생성은 설정/아트 채택 승인과 다르며 자동 병합하지 않는다.
 - `Docs/decisions.md`·게임 코드·데이터·이미지·Unity 설정은 변경 없음.
 

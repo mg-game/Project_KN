@@ -50,8 +50,9 @@
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
 | `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
-| `SYS_Synergy` | 🔴 | P1 | 대기 | SynergySystem (계보 공명 포함) |
-| `SYS_Relationship` | 🔴 | P1 | 대기 | AffinitySystem · CheerSystem |
+| `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
+| `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
+| `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
 | `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
@@ -64,8 +65,8 @@
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | [캐릭터별 원본 진입점](../02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형변경-문서-연결) | 🔵 | P1 | Review | 짝짝이·레이니·몽실. 설정 원문 보존·ID/이미지 연결 |
-| [외형변경 기획](../02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) | 🟡 | P1 | Review / Draft | 밤지기·골목등불·촛농/밀랍. 원본 링크·분류·미정 표시 |
-| `CNT_Character_List` | 🟡 | **P0** | Review — 로스터 정본 9명 · 희귀도 · 단계 목표(7 · 9 · 15) · 만나는 순서 · ③ 7건 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
+| [외형변경 기획](../02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) | 🟡 | P1 | Review / Draft | 밤지기·카라반·골목등불·촛농/밀랍. 원본 링크·분류·미정 표시 |
+| `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
@@ -102,6 +103,7 @@
 | [ART_CharacterHandoff](../07_Art/ART_CharacterHandoff.md) | 🔵 | Review | 공통 마스터. 첨부 v2 통합, 카드·별도 텍스트·아트 전달 |
 | [ART_CharacterWorkflowAudit](../07_Art/ART_CharacterWorkflowAudit.md) | 🔵 | Review | 구조 분석·보존/변경·충돌·검수·신규 캐릭터 추가 |
 | [원본 템플릿](../_Template_Character.md) · [외형 템플릿](../_Template_CharacterAppearance.md) | 🔵 | Draft | 기존 Docs 루트 템플릿 관례 활용 |
+| `ART_EchoSpec` | 🔵 | Approved | 잔향이 외형 규격 — ③ 5건 D-48 확정 (A-04) · 전용 그림은 추후 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 

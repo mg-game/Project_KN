@@ -60,6 +60,7 @@
 | 문서 | 외형명 | 유형 | 기획 상태 |
 |---|---|---|---|
 | [CNT_CharacterAppearance_Jjakjjak_Nightkeeper](./CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) | 밤지기 짝짝이 | 외형 문서 §1 참조 | 검토 중 |
+| [CNT_CharacterAppearance_Jjakjjak_Caravan](./CNT_CharacterAppearance_Jjakjjak_Caravan.md) | 양말 카라반 | 개화 B (D-45·D-46) | 구조 검토 C2, 기존 그림 보존 |
 
 ## 6. 검수 · 변경 기록
 
@@ -374,3 +375,8 @@ B2 기하·알파 검사도 통과했다. 외곽선이 추가된 만큼 내부 �
 Git에는 문서만 반영하고 새 PNG·임의 `.meta`·폴더·코드·데이터·설정·기존 에셋을 추가/교체하지 않았다. 이 채팅 산출물로 후보를 보존하며 외부 공유 URL은 미등록이다. N1은 기존 인상 보존 비교 기준, B2는 인게임 외곽선 보강 검토 후보로 구분한다. **최종 채택은 별도**다.
 
 Unity Editor 실행 파일을 PATH·/opt·/usr/local·일반 실행 경로에서 찾지 못했다. 따라서 실행 검증은 하지 않았다. 묶음의 `Unity_Review_Checklist.md`에 Sprite/Single·PPU 100·중앙 pivot·알파·Bilinear·최대 2048, `.meta`/GUID 보존, 실제 크기·전투 트윈·잔향이·콘솔·스크린샷·확인자 기록 항목을 준비했다. 남은 실기 관문을 검사 완료로 표시하지 않는다.
+
+
+## 12. 양말 카라반 재활용 구조 검증
+
+2026-11-12 사용자 작업 요청에 따라 [카라반 외형 기획서](./CNT_CharacterAppearance_Jjakjjak_Caravan.md)를 추가했다. 기존 형태 이미지·코드와 별도 애벌레형 컨셉을 대조하고, 발목 커프→연결 통로·발꿈치→둥근 방·실→바퀴의 구조 제안 C2와 대응 텍스트를 제작했다. 개화 B 분류는 기존 결정이며 세부 구조·새 작화 채택은 검토 중이다. 카드만 제작했고 새 게임 PNG·기존 에셋 교체·Unity 실행은 진행하지 않았다.
