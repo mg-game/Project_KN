@@ -77,7 +77,7 @@
 | `facility_id` | string (FK → `Facility_Def`) | 시설 | `memory_lamp` |
 | `level` | int | 레벨 | 4 |
 | `cost_gold` | double | 단추 | 250000 |
-| `cost_items` | string (`item_id:수량;…`, FK → `ItemDatabase`) | 재료 | `cloth:20;moonlight:2` |
+| `cost_items` | string (`item_id:수량;…`, FK → `ItemDatabase`) | 재료 | `mat_cloth:20;mat_moonlight:2` |
 | `effect_stat` | enum (`StatType`) | 효과 능력치 | `SummonCap` 🆕 |
 | `effect_value` | float | 그 레벨의 합계 값 | 16 |
 
