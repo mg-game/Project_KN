@@ -25,7 +25,7 @@
 ```
 - 영문 PascalCase, 공백 금지 (URL/CLI 호환)
 - 버전 번호를 파일명에 넣지 않는다 → 이력은 Git이 관리 (`_v2_최종_진짜최종` 금지)
-- **이미지 · 와이어프레임**: 문서와 같은 폴더의 `images/`에 `<문서명>_<내용>.png` (LFS). 문서 헤더 "첨부"에 링크
+- **이미지 · 와이어프레임**: 문서와 같은 폴더의 `images/`에 `<문서명>_<내용>.png` (LFS). 문서 헤더 "첨부"에 링크. **캐릭터 아트 시안·중간본은 D-24에 따라 Notion/보드에 두고 URL만 기록**한다. 기존 Git 컨셉 파일은 보존한다.
 - **변환 전 원본(docx · pptx · pdf)**: `99_Archive/Source/`에 참고용으로만 둔다. 정본은 md 하나
 
 ## 3. 문서 상태 관리
@@ -62,3 +62,16 @@ Draft ──(PR 생성)──→ Review ──(리드 승인/머지)──→ Ap
 
 - 시스템 기획서: [`_Template_System.md`](./_Template_System.md)
 - 테이블 스키마: [`05_DataTable/_Template_Table.md`](./05_DataTable/_Template_Table.md)
+
+
+## 6. 캐릭터 기획 · AI 아트 관리
+
+- [원본 기획 템플릿](./_Template_Character.md) → `02_Content/CNT_Character_<Name>.md`
+- [외형변경 템플릿](./_Template_CharacterAppearance.md) → `02_Content/CNT_CharacterAppearance_<Name>_<Appearance>.md`
+- [공통 전달 마스터](./07_Art/ART_CharacterHandoff.md): 원본 → 외형 → 카드 → 상세 텍스트 → 아트 전달 → 결과 검수.
+- [기존 설정집과 우선 3종 연결](./02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형변경-문서-연결): 기존 원문은 보존하고 필드별 링크로 참조. 신규 캐릭터는 개별 문서 한 곳에만 원문 작성.
+- [구조 분석·적용 기록](./07_Art/ART_CharacterWorkflowAudit.md): 보존·변경 목록, ID/경로, 첨부 문서 충돌 처리, 검사 결과, 신규 추가 방법.
+
+캐릭터 기본 설정을 외형 문서에 복사하지 않는다. 공통 실행 프롬프트는 마스터 한 곳에 두며, 스타일과 게임 리소스 규격은 기존 전문 문서로 연결한다. 문서 관리 ID와 코드 ID를 구분하고, 기획 상태(확정/검토 중/폐기)는 문서 상태와 별도로 기록한다.
+
+> 2026-11-12 변경: 기존 폴더를 유지한 템플릿·전달 지침·문서 연결 추가. 기존 게임 설정·이미지·ID 변경 없음.

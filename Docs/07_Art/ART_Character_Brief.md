@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-12 (공통 실행 지침 연결, 의뢰 범위 유지) |
 | 관련 테이블 | - |
 | 관련 문서 | [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) (설정 정본) · [`ART_StyleGuide`](./ART_StyleGuide.md) (스타일 정본) · [`ART_M1_Backlog`](./ART_M1_Backlog.md) |
 
@@ -20,10 +20,11 @@
 3. **64px 축소** 미리보기 1개 — 전투 화면 가독성 확인용 (가이드 §8)
 4. 표정 3개 (기본 · 웃음 · 당황) 얼굴만
 
-### 0.2 공통 프롬프트 (가이드 §13 기반 — 앞에 붙이고, 캐릭터별 프롬프트를 뒤에)
-```
-Character sheet for a game-ready 2D collectible RPG character in a soft whimsical fairy-tale style. The character is a living being born from a forgotten object. The original object must define the body structure, material and movement — not a normal human wearing themed accessories. Strong silhouette, simple graphic shapes, expressive face, clean medium-thick outlines, soft cel shading, gentle gradients, restrained detail. Palette: pastel purple, pink, blue, cream with restrained gold. Chibi-friendly 2.3–2.8 head proportion. Sheet layout: (1) full-body 3/4 front view on plain light lavender background, (2) the same pose as a solid black silhouette, (3) the same pose scaled down to 64px, (4) three small face expressions: neutral, laughing, flustered. No text.
-```
+### 0.2 공통 프롬프트
+
+공통 실행 지침은 [ART_CharacterHandoff §8 A](./ART_CharacterHandoff.md#8-복사용-실행-프롬프트)에서 관리한다. **스타일 가이드 §13 영문 문장 + 마스터의 기본형 시트 지시 + 아래 캐릭터별 추가 프롬프트** 순서로 조합한다. 이 의뢰는 §0.1의 **기본형 시트 모드**이며, 세로 외형 소개 카드 모드를 적용하지 않는다. 전신·검은 실루엣·64px·표정 3종·글자 없음 조건을 유지한다.
+
+외형변경 기획의 카드·별도 텍스트·전달 흐름은 같은 마스터의 카드 모드를 사용한다. 기존 캐릭터별 브리프 및 M1 범위는 그대로다.
 
 ### 0.3 체형 분산 (가이드 §4 비중 35 / 45 / 20)
 | 유형 | 캐릭터 |

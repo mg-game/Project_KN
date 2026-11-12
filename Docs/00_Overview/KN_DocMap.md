@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 (PR #14~#19 반영) |
+| 최종 수정 | 2026-11-12 (캐릭터·AI 아트 문서 연결 추가) |
 | 관련 테이블 | - |
 | 관련 문서 | [`decisions.md`](../decisions.md) D-25 · D-26 · [`KN_Glossary`](./KN_Glossary.md) · [`_Template_System`](../_Template_System.md) |
 
@@ -63,6 +63,8 @@
 | 문서 | 상태 | 우선 | 진행 | 근거 |
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
+| [캐릭터별 원본 진입점](../02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형변경-문서-연결) | 🔵 | P1 | Review | 짝짝이·레이니·몽실. 설정 원문 보존·ID/이미지 연결 |
+| [외형변경 기획](../02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) | 🟡 | P1 | Review / Draft | 밤지기·골목등불·촛농/밀랍. 원본 링크·분류·미정 표시 |
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
@@ -96,6 +98,9 @@
 | `ART_StyleGuide` | 🔵 | Review | |
 | `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
+| [ART_CharacterHandoff](../07_Art/ART_CharacterHandoff.md) | 🔵 | Review | 공통 마스터. 첨부 v2 통합, 카드·별도 텍스트·아트 전달 |
+| [ART_CharacterWorkflowAudit](../07_Art/ART_CharacterWorkflowAudit.md) | 🔵 | Review | 구조 분석·보존/변경·충돌·검수·신규 캐릭터 추가 |
+| [원본 템플릿](../_Template_Character.md) · [외형 템플릿](../_Template_CharacterAppearance.md) | 🔵 | Draft | 기존 Docs 루트 템플릿 관례 활용 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
