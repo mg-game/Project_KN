@@ -30,7 +30,7 @@
 | `KN_ConceptNarrative` | 🟡 | P1 | Approved (v0.2) | 시스템 v1.0이 예고한 v0.3 개정 항목 반영 필요 |
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
-| `KN_Overview` | 🔵 | **P0** | Approved — D-35 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
+| `KN_Overview` | 🟡 | **P0** | 2부 M1 범위서 재정리(D-27 ~ D-56 · 작업 목록 한 장 🅰/🅱) · §2.10 새 판단 4건 대기 (D-35 부분은 Approved) | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
 | `KN_Roadmap` | 🟡 | **P0** | Review — 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
 | `KN_Preview` | 🔵 | **P0** | Approved — D-42 | M1 화면 미리보기(아티팩트) 링크 · 운영 규칙 6개 · 갱신 기록 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
