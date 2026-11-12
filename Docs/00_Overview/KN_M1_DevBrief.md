@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-13 (D-58) |
+| 최종 수정 | 2026-11-13 (D-58 · D-60) |
 | 관련 문서 | [`KN_Overview`](./KN_Overview.md) §2.2 (M1 작업 목록 · 🅰/🅱) · §2.7 (일정) · [`decisions.md`](../decisions.md) D-27 ~ D-57 · 지시 이슈 [#3](https://github.com/mg-game/Project_KN/issues/3) |
 | 쓰는 사람 | 기개발 — **11/24 PR #2 R3 → 머지 뒤 착수** (D-57 #1) |
 
@@ -98,6 +98,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 13. 외형 공격력: `CharacterSystem.GetCostumeAttackBonusPercent` = `min(costumeAtkCapPercent, 합)` · `costumeAtkCapPercent` = 10.
 14. 짝짝이 외형 값 재배정 (`CharacterDatabase.asset`): nightkeeper 2 · cheer 2 · mail 1 · traveler 2 · festival 3 · caterpillar 2 · plush 2 · puppet 2 · sleepcap 3 · threadweb 2.
 15. 던전 달빛: `DungeonSystem.GetMoonlightChance` = `min(dungeonMoonlightCap, 12% + 1%/층)` · `dungeonMoonlightCap` = 0.4.
+16. **기능 22 "불 밝히기 방식" 개방 카드 · 잠금 토스트 끔** (`MetaDatabase.asset` features — `LampPolicy`를 숨기므로, D-60 #2).
 
 **완료**: 레벨별 수급 · 비용 · AUTO 조건 · 옛 플래그 · 몽당이 풀릴 때 1회 · 보스 기절 0.5배 + 면역 3초 · 작은 친구 상한 6 · **시너지 상세 · 도감 · 전투력에 효과 0 능력치 없음** · 외형 상한 · 달빛 상한 테스트. 기획서 갱신: `SYS_InGameBattle` · `CNT_Skill` · `SYS_Synergy` · `SYS_Codex` · `SYS_Costume` · `SYS_Dungeon` ①.
 원문: [I-10 상세](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796448448) · [추가 범위](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796977951) · [②](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6813262305) · [③](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6819302870) · [D-55](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6821040096)
@@ -122,6 +123,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 7. **모두 다시 보내기** (`ExpeditionSystem.ResendAll`): 구역마다 가드 확인 → 걸리면 건너뜀 → "{n}곳을 다시 보냈어요 · {m}곳은 싸울 친구가 모자라 남겨 뒀어요".
 8. 진행 중 구역 카드: 멤버 초상 위 '편성 잠김' 자물쇠 16 (완료 시각에 사라짐).
 9. 1장 구역 4개 이름 · 설명 문구만: `exp_1_1`~`exp_1_4` → 양말 세탁소 뒷골목 · 오래된 문구점 창고 · 촛불 골목 끝 · 분실물 시장 좌판 (수치 그대로).
+10. 원정 준비 안내 '친구를 보내 재료를 모아요 · 원정 중에도 함께 싸워요' → **'유실자를 보내 재료를 모아요 · 의뢰 중인 유실자는 편성에서 빠져요'** (D-60 #7).
 
 **완료**: 파견 중 배치 거부 · 출발 시 해제 · 가드(준비 · 다시 · 모두 다시 셋 다) · 복귀 · 완료 시각 잠금 해제 · 자동 선택 순서 테스트.
 원문: [I-10 상세](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796448448) · [D-54](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6820811509) · [D-56](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6821319209)
@@ -130,7 +132,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 **범위**
 1. `UI_Battle` §4 8건 · `UI_Formation` §5 7건: 하단 2열 · 수선등 버튼(잔향 줄 오른쪽, D-44 #2) · 성향 아이콘 · 8방위 링 · 빈 방위 빗금 · 웨이브 예고 · HUD · **실패 원인 리포트 + CTA 3버튼** (D-28 #10) · 파견 배지 · **프리셋 3칸 화면**.
 2. 잔향이 오라 대비 (D-48 #5): `EchoView` 오라 = `EchoGlow`와 계보 대표색 섞는 비율 기본 0.25 → 그림 평균 밝기 L < 130 계보(지금 우두커니)는 **0.4** (`echo_aura_boost`) · 오라 최소 밝기 0.4.
-3. 실패 리포트 "방어 문제"일 때 그 스테이지 대표 적의 `counter_hint` 1줄 (§8).
+3. **실패 리포트 조언 5줄 고침** (`DefeatAnalyzer.Advice`, D-60 #5 — `UI_Meta` §2.5): 보스 '수선등을 미리 밝혀 잔향을 넉넉히 모아 두세요' · 먼지뭉치 '범위 공격과 잔향이로 막아요' · 좀나방 '빠르고 천 유실자를 약하게 해요. 천이 아닌 방어 지킴이를 세워요' · 녹얼룩 '금속 유실자를 느리게 해요. 금속이 아닌 유실자로 먼저 잡아요' · 그림자 '빛 특성 유실자가 드러내요'. (`counter_hint`는 도감 · 첫 등장용 — 실패 리포트엔 안 씀)
 4. 아트는 `ART_M1_Backlog` P0 — 납품 전엔 자리표시 스프라이트.
 
 **완료**: 화면 빌더로 생성 · 플레이 스크린샷(가능하면) · 미실행이면 "미검증".
@@ -157,11 +159,17 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 | 원정 탭 쪽 | 원정 · 잔향이 던전 | **의뢰 · 던전** (탭 이름 = 원정) | D-54 #5 |
 | 던전 화면 | — | 제목 · 입장 대사 **"기억의 안쪽"** | D-55 던전 #2 |
 | 가방 바로 가기 | [원정 ›][잔향이 던전 ›] | '재료는 의뢰 · 던전 · 상점에서 모을 수 있어요' · **[의뢰 ›][던전 ›][상점 ›]** · 획득처 줄도 같은 이름 | D-56 가방 #1 |
-| 상점 | 이벤트 쪽 '별이 머문 밤 산책' | **M1 숨김** (데이터로 끄기) | D-56 상점 #2 |
+| 상점 · 이벤트 | 이벤트 쪽 · 이벤트 '별이 머문 밤 산책'(별빛 산책 수첩 포함) | **M1 숨김** (데이터로 끄기) · 반복 이벤트 3종(주말 원정 축제 · 수요 던전 데이 · 밤의 수선점)은 그대로 | D-56 상점 #2 · D-60 #6 |
+| 기능 이름 (`MetaDatabase` features) | 친구들 · 친구 강화 · 의상 · 원정 한 번에 보내기 | **유실자 · 유실자 강화 · 외형 · 의뢰 한 번에 보내기** · 소환 이름 '잃어버린 친구 찾기'는 그대로 | D-60 #3 · #4 |
+| 라벨 '친구' | 성장 '친구 레벨' · '친구 레벨 올리기' · 편성 '친구 목록' · 소환 결과 · 도감 탭 · 미션 '친구 레벨업 {c}회' · '친구 {c}명 모으기' · '친구 선택권' · '새 친구' | **유실자** (설명 · 대사의 '친구'는 그대로) | D-60 #1 · `UI_Meta` §2.3 #7 |
+| 시너지 · 스킬 설명 | '불빛 게이지를 N% 채워요' (시너지 9 · 스킬 2) · 도감 · 스킬 '불빛 충전' | '잔향을 N% 더 빨리 모아요' · '수선등 밝히기 비용 −N%' · **잔향 수급** | D-60 #1 · `UI_Meta` §2.3 #3 · #4 |
+| 미보유 | 5곳 (시너지 · 외형 · 형태 스킬 · 상세) | **아직 못 찾음** | D-60 #1 |
+| 획득처 · 바로 가기 | '잔향이 던전 {n}층' | **던전 {n}층** (기능 이름 · 미션 · 알림은 '잔향이 던전' 유지) | D-60 #1 |
+| 세기 | '의상 {c}벌' | '외형 {c}개' | D-60 #1 |
 | 튜토리얼 · 시너지 · 스테이지 기믹 | "불빛 게이지" 들어간 문구 전부 | 수선등 · 잔향 수급 | D-53 #4 · D-50 |
 | 망각체 | — | `origin_text` · `counter_hint` 10줄 (`CNT_Enemy` §2.4) — `EnemyDef` 신규 칸 | D-40 망각체 #2 |
 
-**완료(7 · 8)**: 튜토리얼 단계 진행 테스트 갱신 · **화면에 "불빛 게이지" · "의상" · "기억편" 0개** (문자열 검색 결과 PR 첨부).
+**완료(7 · 8)**: 튜토리얼 단계 진행 테스트 갱신 · **화면에 "불빛 게이지" · "불 밝히기" · "불빛 충전" · "의상" · "기억편" · "미보유" 0개** (개발용 Tooltip · 로그 · 개발 탭 제외) (문자열 검색 결과 PR 첨부).
 원문: [I-10 상세](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796448448) · [D-53](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6820592711) · [D-55](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6821040096) · [D-56](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6821319209)
 
 ## 9. I-10h 1-10 보스 — 🅰 · W2

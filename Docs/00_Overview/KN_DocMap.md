@@ -87,7 +87,7 @@
 | `UI_Bag` | 🔵 | P1 | ①②③ 완료 · ③ 4건 D-56 확정 — 재료 도감 · 얻는 곳 · 바로 가기 이름 의뢰 · 던전(D-54) · P1 쓰는 곳 | `BagPopup` · `ItemInfoPopup` |
 | `UI_Shop` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-56 확정 — 수선점 · 이벤트 · 오늘의 선물 · 결제 코드 없음 → 결제 쪽 자리(P1) | `ShopPanel` · `ShopProductCardView` · `DailyGiftCardView` |
 | `UI_Expedition` | 🔵 | P1 | ①②③ 완료 · ③ 5건 D-56 확정 — D-54 · D-55를 화면으로 · 자동 선택 순서 · 모두 다시 보내기 × 출발 가드 | `ExpeditionPanel` · `ExpeditionSetupPopup` · `DungeonCardView` |
-| `UI_Meta` | 🔴 | P2 | 대기 | `Scripts/UI/Meta/*` (일지 · 출석 · 이벤트 · 우편 · 설정) |
+| `UI_Meta` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-60 확정 — 메타 화면 목록 · **문자열 전수 검사**(기억편 35 · 의상 31 · 불빛 52 · 미보유 5) · ⚠ 기능 22 개방 카드 · 실패 리포트 조언 · 용어 정본 | `Scripts/UI/Meta/*` · `SettingsPopup` · `MetaDatabase.asset` |
 
 ## 04_Balance · 05_DataTable
 
