@@ -46,7 +46,7 @@
 | `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
 | `SYS_Evolution` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-45 확정 (K-02) | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
-| `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
+| `SYS_Gacha` | 🟡 | P1 | Review — 소환 = 유실물 종 지름길 · "먼저 만남"(D-49 #3 재검토) · 천장 · 픽업 · **법 요건(확률 공개 · 3배 배상) 결제 전 P0** · ③ 7건 (K-09) | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
 | `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
