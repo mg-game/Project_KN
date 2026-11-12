@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-41) |
 | 작성자 | ① 요약: DD (코드 인용) · ②③: DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `EnemyDef` (`isBoss` · `minionId` · `gimmicks`) · `Boss_Phase` 🆕 · `Stage_Battle_Config.boss_id` 🆕 |
 | 관련 문서 | [`CNT_Enemy`](./CNT_Enemy.md) §2.0 · [`CNT_Stage_Chapter1`](./CNT_Stage_Chapter1.md) §2.3 · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §9.2 FINAL_WAVE · §18.3 · [`BAL_BattleKnobs`](../04_Balance/BAL_BattleKnobs.md) §4.5 · [`ART_M1_Backlog`](../07_Art/ART_M1_Backlog.md) ART-10 |
 | 근거 | 코드 `4b73a5a` — `BattleConfig.cs:128-136 · 290-305 · 536-550` · `BattleSimulator.cs:911 · 971-973 · 1041-1078 · 1096-1114` · `BattleSimulator.Gimmicks.cs:37-76 · 184-194` · `BattleSimulator.Status.cs:237` |
@@ -73,7 +73,7 @@
 ```
 [등장] 북(N) 진입
 [부하] minion_interval마다 보스 근처에 좀나방 minion_count마리 (현재 6초 · 2마리)
-[천 갉아먹기] 좀나방 → 천 특성 잔향이 피해 ×2 (현재 FabricEater)
+[천 갉아먹기] 좀나방 → 근처 천 특성 아군 공격력 −20% · 천 특성 잔향이 피해 ×1.5 (현재 FabricEater)
 [분노] 체력 ≤ 50% → 부하 간격 ×0.6 (현재)
 ```
 - 판단 구조: 여왕 쪽 방향에 잔향이를 잔뜩 던지면 좀나방에게 갉아먹힘 → 지킴이가 부하를 받고, 잔향이는 **앞장서기(Charge)**로 짧게 여왕만 친다.

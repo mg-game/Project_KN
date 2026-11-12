@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-52) |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `FormationSave` · `Summon_Mode.base_behavior` |
 | 관련 문서 | [`UI_InGame`](./UI_InGame.md) §7 FM-001 (상위 IA) · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §4 · §6 · §17-F · §18.1 · [`UI_Battle`](./UI_Battle.md) |
 | 근거 | 현재 화면 = `Scripts/UI/Formation/*` (PR #2), 규칙 = D-27 #1 · #5 · #6 · D-28 · §16 #4 (보류) |

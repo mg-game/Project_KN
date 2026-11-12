@@ -2,9 +2,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (D-39 · D-40) |
 | 작성자 | ① 요약: DD (§17-L 기개발 추출 인용) · ②③: DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `Skill_Master` · `CharacterFormDef.skill` |
 | 관련 문서 | [`SYS_InGameBattle`](./SYS_InGameBattle.md) §4 · §17-L(현재 구현 상세) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) · [`KN_Roadmap`](../00_Overview/KN_Roadmap.md) §2 S3 · S4 · D-39 |
 | 근거 | 코드 `4b73a5a` — `Scripts/Data/SkillDefs.cs` · `BattleSimulator.Skills.cs` · `Data/CharacterDatabase.asset` |
