@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (ART-01 후보 제작 기록, 기존 목록 보존) |
+| 최종 수정 | 2026-11-12 (ART-01·ART-02 후보 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -100,3 +100,62 @@ Game-ready 2D mobile UI icon for a whimsical fairy-tale idle defense RPG. Soft s
 | `behavior_hold_dim.png` | `7783dd0e76c352db13fdd769a698abdf19e5cca98e8bbb097b7662ac6022a2ab` |
 | `behavior_patrol.png` | `0cd54a7400e534ae3c1633456385cffd5354abbb28bad6c6976d2f791800c6b1` |
 | `behavior_patrol_dim.png` | `6f7f9543565b31dfe09067355020988fd3358607382c11a16ce1b6cf9f75b0ba` |
+
+## 6. ART-02 수선등 버튼 — 기존 리소스 재사용 검토 (2026-11-12)
+
+사용자 “아트 작업 진행”에 따라 [전투 UI §2⑭](../03_UI_UX/UI_Battle.md)·[수선등 규칙 §18.2](../01_System/SYS_InGameBattle.md#182-수선등-밝히기-잔향-수급-투자--71-상세)·[밸런스 가정값 §2](../04_Balance/BAL_BattleKnobs.md#2-수선등-밝히기--가정)를 확인했다. 스타일과 원본 이미지를 유지하기 위해 **새 원화를 생성하지 않고 기존3개 원화를 재사용**했다. 구성·기술 파생본·상태 검토 단계이며 채택·Unity 연결은 별도다.
+
+### 6.1 실물·분할·UI 색상 근거
+
+| 원본 | 실물·역할 | SHA-256 |
+|---|---|---|
+| [Icons/lamp.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Icons/lamp.png) |256 RGBA, 등불 원화, 51,578bytes|`c73a558eeaaa75ff1020fc6f07399148c0768bd4531ac8e190ed91f2f7944b63`|
+| [UI/button_gold_9s.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/button_gold_9s.png) |192 RGBA, 금색 버튼 원화, 22,883bytes|`6ace1af174be5598e903b5b25c840cf1fc17fac65feec44c5021dea1dc2c9e0f`|
+| [UI/ui_pip_button.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_pip_button.png) |128 RGBA, 단추형 점 원화, 22,200bytes|`8aff68892c636ff221b860898d7e0f3c53bb050038a58c9c18658bf2dcf7b647`|
+
+LFS OID·크기·이미지 육안을 대조했다. 기존 파일과 `.meta`·GUID는 그대로다. [기존 버튼 .meta](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/button_gold_9s.png.meta)의 **Sprite Border 좌/하/우/상48px**를 사용한다. 기존192 버튼의 전달용 복사본은 바이트까지 동일하다.
+
+[UITheme.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/UITheme.cs)의 금색 칠 위 글자 `Ink #3D2B5E`, 점 바탕 `Panel #261D4C`, 비용 배경 `CostPillBack rgba(23,18,46,.72)`, 부족 비용 `CostShortText #FFC2CC`를 참고했다. 이 검토에서 새로운 확정 컬러 토큰이나 게임 데이터를 추가하지 않는다.
+
+### 6.2 전달 구성과 동적 필드 분리
+
+| 전달 파일 | 크기·역할 | 처리 |
+|---|---|---|
+| `repair_light_button_9s.png` |192×192 RGBA, 버튼 바탕|기존 파일의 정확한 복사,48px 분할 유지|
+| `repair_light_icon.png` |128×128 RGBA, 등불|기존256 원화의 동일 비율 크기/배치 파생본|
+| `repair_light_icon_dim.png` |128×128 RGBA, 흐림 등불|같은 원화 알파0.40 제안|
+| `repair_light_pip_on.png` |32×32 RGBA, 켜진 점|기존 단추형 pip의 동일 비율 파생본|
+| `repair_light_pip_off.png` |32×32 RGBA, 빈 점|같은 pip 알파0.25 제안|
+
+파생본은 사각 클립·동일 비율 스케일·중심 배치/알파만 적용했고 새 그림·색칠·비균등 변형을 하지 않았다. **5개 구성 PNG에는 레벨·비용·수급·MAX 글자를 굽지 않았다.** 실제 Unity는 기존 원본을 그대로 참조해 표시 크기만 조절할 수도 있으며, 전달 파생본이 중복 에셋 등록을 요구하지 않는다. 최종 경로·그림/코드 알파 중 선택은 채택 후 정한다.
+
+레벨/비용/수급 문구와 켜진 점 개수는 별도 동적 레이어다. `review_state_*.png`와 HTML/비교 화면에는 설명용 문구가 보이지만 **실제 게임용 버튼 텍스처가 아니다.** 비용·수급은 BAL §2의 **가정값을 사용한 검토 예시**이며 새 수치 확정·게임 로직 연결이 아니다.
+
+### 6.3 상태 검토
+
+| 검토 상태 | 표시 | 점 개수·입력 의미 |
+|---|---|---|
+| L1 |현재L1·다음비용10·예시+0.4/초|1/5, 투자 가능 예시|
+| L2 |현재L2·다음비용20·예시+0.4/초|2/5, 투자 가능 예시|
+| L3 |현재L3·다음비용35·예시+0.5/초|3/5, 투자 가능 예시|
+| L4 |현재L4·다음비용55·예시+0.7/초|4/5, 투자 가능 예시|
+| L5 / MAX |현재L5·MAX·최대 레벨|5/5, 투자 불가|
+| 잔향 부족 |L2 예시·비용20을 어두운 배경 위 분홍색·흐림 등불|현재2/5 유지, 투자 불가|
+
+**L5와MAX는 같은 최대 레벨**이며 추가6단계로 만들지 않는다. 리셋/자동 투자 규칙은 시스템 정본을 따르고 아트 검토에서 바꾸지 않는다. 부족 상태에서 점을 줄이지 않고 현재 레벨 정보를 유지했다. 흐림 강도는 기존 엔진 계약이 아닌 제안이다.
+
+### 6.4 기술·육안 검토 결과와 남은 것
+
+- 등불2개·pip2개는 지정128/32 RGBA·중심 오차≤1px·투명 테두리·연결 성분1개를 확인했다. 최대 알파는 등불255/102, pip253/64다. 바탕은 원본 바이트/해시 동일성을 확인했다.
+- 384×152의6상태와 **256×128·384×152·512×160** 크기를 기기 배율1에서 표시했다. CSS9-slice의48px 분할과 글자 캔버스 넘침/제목-레벨 겹침 없음, 점5개·켜진 수와L 대응, MAX/부족의 입력 불가 표시를 확인했다. 이는 검토 DOM과 렌더러의 확인이며 Unity 구현 통과가 아니다.
+- 실제 등불 PNG의128/48/32px도 육안 확인했다. 장식·작은 별은 줄어들지만 등불 형태와 내부 불빛이 읽힌다. 버튼 모서리·등불은 크기 변경 때 비균등으로 늘리지 않았다.
+- PNG·기존 원화·변환/검사JSON·상태 예시PNG6개·HTML·비교 화면·스크립트·실기 확인표·해시를 채팅 묶음으로 전달한다. 외부 공유 URL은 미등록이다.
+- **남음:** 실제 Unity Sliced Image/Canvas/폰트/입력 상태·게임 데이터 연결·기기별 글자/잘림·실제 화면 크기·DD/사람 확인·최종 채택. 새PNG·임의.meta·코드·설정·데이터·기존 에셋 변경은 Git에 반영하지 않았다.
+
+| 구성 파일 | SHA-256 |
+|---|---|
+| `repair_light_button_9s.png` | `6ace1af174be5598e903b5b25c840cf1fc17fac65feec44c5021dea1dc2c9e0f` |
+| `repair_light_icon.png` | `924cd3215d728735ee4339fa2ae208f134f419e7689fcd572c538e014b8a2b12` |
+| `repair_light_icon_dim.png` | `005a774ff54d99293572bccf23954daf4cccd61e89a6b99535b5cd87028ab592` |
+| `repair_light_pip_on.png` | `4224258fdea14a90c6082b47f6278eb34986865ecc371eddbb16c6c9bd248a31` |
+| `repair_light_pip_off.png` | `2524bfbb8237fa1ce2558e28a27a8826ea0f589c3d9ba7b004ce622ac0a15a3a` |
