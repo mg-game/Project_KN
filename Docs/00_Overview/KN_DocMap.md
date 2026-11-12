@@ -46,12 +46,13 @@
 | `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
 | `SYS_Evolution` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-45 확정 (K-02) | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
-| `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
+| `SYS_Gacha` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-51 확정 (K-09) · 결제 전 P0 = 확률 표시 · 서버 뽑기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
-| `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
+| `SYS_Dispatch` | 🟡 | P1 | Review — 원정 탭 = 유실표 장부 · 의뢰 · 던전 · ⚠ 파견 중 편성 불가 가드레일(M1) · 구역 이름 = 기억등 지역 · ③ 6건 | ExpeditionSystem · ExpeditionDatabase |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
-| `SYS_Synergy` | 🔴 | P1 | 대기 | SynergySystem (계보 공명 포함) |
-| `SYS_Relationship` | 🔴 | P1 | 대기 | AffinitySystem · CheerSystem |
+| `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
+| `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
+| `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
 | `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
@@ -69,15 +70,15 @@
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
-| `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
+| `CNT_Story` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-53 확정 (프롤로그 · 1장 M1) | `StoryIntroView` · `MetaContent.Story` · `MetaContent.Ftue` |
 
 ## 03_UI_UX
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
 | `UI_InGame` | 🟡 | P1 | Approved (v0.1) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
-| `UI_Battle` | 🟡 | **P0** | Review — M1 상세 (하단 2열 · 수선등 · 성향 아이콘) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
-| `UI_Formation` | 🟡 | **P0** | Review — 8방위 링 · 빈 방위 빗금 · 파견 배지 | 8방위 링 · 잔향이 덱 |
+| `UI_Battle` | 🔵 | **P0** | Approved (D-52) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
+| `UI_Formation` | 🔵 | **P0** | Approved (D-52) | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (미리보기 레벨업 탭) | `GrowthPanel` · `GrowthLineageCardView` · `CharacterDetailPopup` |
 | `UI_Home` | 🔵 | **P0** | ①②③ 완료 · ③ 6건 D-44 확정 (미리보기 홈 탭) | `MainTabController` · `TopBarView` · `BattleHud` · `Meta/*` |
 | `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
@@ -97,7 +98,7 @@
 | `ART_StyleGuide` | 🔵 | Review | |
 | `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
-| `ART_EchoSpec` | 🟡 | Review | 잔향이 외형 규격 — 본체 그림 처리 규칙 · "한 발짝 뒤" · 또렷함 = 공명 · ⚠ 기억형 원칙 충돌 · ③ 5건 (A-04) |
+| `ART_EchoSpec` | 🔵 | Approved | 잔향이 외형 규격 — ③ 5건 D-48 확정 (A-04) · 전용 그림은 추후 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
