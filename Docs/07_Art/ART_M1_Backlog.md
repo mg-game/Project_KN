@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (ART-01·ART-02 후보 기록, 기존 목록 보존) |
+| 최종 수정 | 2026-11-12 (ART-01~03 후보 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -159,3 +159,55 @@ LFS OID·크기·이미지 육안을 대조했다. 기존 파일과 `.meta`·GUI
 | `repair_light_icon_dim.png` | `005a774ff54d99293572bccf23954daf4cccd61e89a6b99535b5cd87028ab592` |
 | `repair_light_pip_on.png` | `4224258fdea14a90c6082b47f6278eb34986865ecc371eddbb16c6c9bd248a31` |
 | `repair_light_pip_off.png` | `2524bfbb8237fa1ce2558e28a27a8826ea0f589c3d9ba7b004ce622ac0a15a3a` |
+
+## 7. ART-03 수선점 창문 불빛 — 원본 정렬 후보 (2026-11-12)
+
+[스타일 가이드](./ART_StyleGuide.md)·[전투 규격](./ART_BattleSpriteSpec.md)·기존 목록의 L1~L5 요구를 따랐다. **건물 원화를 다시 그리지 않고** 기존5개 외벽 창문의 유리만 단계별로 다룬다. 원본에는 이미5창 모두 불이 켜져 있어, 꺼진 창의 유리만 어두운 인디고로 가리는 **Normal Alpha 오버레이 방식**을 제안한다. 발광 Additive 텍스처가 아니다.
+
+### 7.1 원본·범위·점등 순서
+
+직접 확인한 기준: [shop.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/shop.png) · [shop_crack_1.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/shop_crack_1.png) · [shop_crack_2.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/shop_crack_2.png) · [shop_crack_3.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/shop_crack_3.png). 기존4개 파일은 해시까지 보존했다. [ShopView.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Battle/ShopView.cs)의 건물/손상 겹침 구조도 확인했다. 기존 전체 건물 밝기 효과를 창문 단계 연결 완료로 간주하지 않는다.
+
+| 순서 제안 | 위치 | 측정한 유리 픽셀 수 | 켜진 유리 평균 Y |
+|---|---|---|---|
+| W1 | 좌하 | 378 | 220.24 |
+| W2 | 우하 | 208 | 210.50 |
+| W3 | 좌상 | 720 | 225.05 |
+| W4 | 우상 | 165 | 214.98 |
+| W5 | 상단 | 1164 | 222.30 |
+
+외벽5창을 대상으로 **좌하→우하→좌상→우상→상단** 순서를 제안한다. 문 유리와 기존 등불은 환경광으로 유지한다. 외벽/문 구분과 순서는 검토 제안이며 기획 정본의 확정 순서가 아니다. Y는 선정 유리의 sRGB Rec.709 가중값(0~255), 선형 광도·전장 전체 밝기 측정이 아니다.
+
+### 7.2 생성·정렬·전달
+
+- 기존 shop 이미지를 직접 참조해 **어두운 유리 재질 한 장만** AI 생성했다. 건물·창틀·창살·단추·꽃·그림자·실루엣은 새로 생성하지 않았다.
+- 원본에서 수동 지정한5개 유리 내부 ROI와 따뜻한 유리색 조건을 교차하고, 각4칸 창의 큰 연결 성분4개를 남겨 픽셀 좌표를 측정했다. 일반 의미 분할이나 모든 유리 영역의 완벽한 인식으로 주장하지 않는다. 선정 좌표에만 새 재질을 SVG 클립하고 브라우저로 PNG를 내보냈다.
+- 후보 `shop_light_l1.png`~`shop_light_l5.png`는 **768×768 RGBA 전체 캔버스**다. 건물과 같은 캔버스/중앙 피벗·배치를 유지하며, 작은 유리 내용 기준으로 자르거나 재중앙화하지 않는다. 건물 발 기준 y722·중심384는 원본을 따른다.
+- L1은W1, L2는W1~2, L3는W1~3, L4는W1~4, L5는W1~5 점등이다. 각 단계는 겹쳐 누적하지 않고 **해당 레벨 레이어1장**만 선택한다.
+- **L5는 알파가 전부0인 의도된 빈 오버레이**다. 원본5창 점등을 그대로 드러내므로 누락/불량 파일이 아니다. 실제 연결에서는 L5에 오버레이를 숨기는 동등한 처리도 가능하다.
+- 검토 합성 순서는 **원본 건물 → 불빛 단계 오버레이 → 기존 금 간 레이어**다. 실제 Unity에서는 동일 부모/변환·정렬·필터·스케일을 확인해야 하며, 임의 `.meta`/GUID를 만들지 않았다.
+
+### 7.3 검사·제한·전달 묶음
+
+| 검사 | 결과 |
+|---|---|
+| 후보5개 규격·정렬·투명 테두리 | 768 RGBA, 원본 좌표 그대로 |
+| 각 단계의 비투명 픽셀 수 | L1 2257 · L2 2049 · L3 1329 · L4 1164 · L5 0 |
+| 원본과 같은 브라우저 경로로 합성 후 비교 | 해당 단계의 선정 유리 밖 RGBA 완전 동일 |
+| 인접 단계 변화 | 새로 켜지는 창의 선정 유리에만 변화 |
+| L5 합성 | 원본 브라우저 합성과 전체 픽셀 동일 |
+| 꺼진 유리 평균 Y | 53.43~56.59, 켜진 유리210.50~225.05 |
+| 실제 PNG 검토 | 205px 캔버스5단계, 손상 없음/1/2/3 ×5단계20칸, 유리 확대 육안 확인 |
+| Unity·투자 연동·애니메이션·최종 채택 | 미실시 |
+
+205px는 전장 크기를 참고한 **브라우저 정적 합성**이며 실제 게임 캡처가 아니다. 작은 상부 우측 창은 단계 차이가 작아 실제 기기·전장/손상/흔들림 위에서 추가 검토한다. 창 영역 밖의 기존 따뜻한 반사광은 보존했으며 완전한 소등 재조명 작업은 하지 않았다. 실제 단계 전환·리셋·기존 건물 효과와의 상호작용·필터링 경계·스프라이트 피벗/패킹·색 공간은 Unity 연결 시 확인한다.
+
+5개 후보·원본4개·생성 재질/프롬프트·창 좌표 JSON·검사 JSON·전체/확대/손상 비교·내보내기 스크립트·실기 확인표·해시를 채팅 묶음으로 전달한다. 외부 공유 URL은 미등록이다. 기존 문서만 보완했고 새 PNG/폴더/코드/데이터/설정/기존 에셋을 Git에 추가·교체하지 않았다. DD/사람 확인·최종 경로/파일명·채택은 별도이며 ART-03 게임 적용 완료로 표시하지 않는다.
+
+| 후보 파일 | SHA-256 |
+|---|---|
+| `shop_light_l1.png` | `57df5fd5e541ac40cb0e7b8ad7341f691ba3102bd3fa70a5db8ee4ff126dfd0e` |
+| `shop_light_l2.png` | `fafaf5fcfa89609ef7f31d8a291c4830f94ea1327be00f275420ddfb45410ee4` |
+| `shop_light_l3.png` | `d1d30f6087ff48b0e9f5a99cef3c21fc1739cd0ce35d3ef4a04c58198c0cd5bd` |
+| `shop_light_l4.png` | `f63884464947b898549575b875ea0bcc4af22912096da568e7dc12a90d6a73d6` |
+| `shop_light_l5.png` | `60efeded078b9499b82367a9c5cc1a43b3bfec251cb3d8c5e49a429cc335277d` |
