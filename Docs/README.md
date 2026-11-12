@@ -4,17 +4,18 @@
 
 | 폴더 | 내용 | 예시 |
 |---|---|---|
-| 00_Overview | 게임 컨셉, 핵심 루프, 로드맵, 용어집 | `KN_Overview.md`, `Glossary.md` |
+| 00_Overview | 게임 개요 · M1 범위, 로드맵, 용어집, **문서 목록(`KN_DocMap`)** | `KN_Overview.md`, `KN_Glossary.md`, `KN_DocMap.md` |
 | 01_System | 시스템 기획서 | `SYS_IdleReward.md`, `SYS_Gacha.md` |
 | 02_Content | 스테이지, 캐릭터, 이벤트 등 콘텐츠 | `CNT_Stage_Chapter1.md` |
-| 03_UI_UX | 화면 명세, UI 플로우, 상태 전이 | `UI_Lobby.md` |
-| 04_Balance | 수치 설계 근거, 성장 곡선, 재화 흐름 | `BAL_GrowthCurve.md` |
+| 03_UI_UX | 화면 명세, UI 플로우, 상태 전이 (이미지는 `images/`) | `UI_Home.md` |
+| 04_Balance | 수치 설계 근거, 노브, 성장 곡선 | `BAL_BattleKnobs.md` |
 | 05_DataTable | 테이블 스키마 정의 (컬럼/타입/관계) | `TBL_Character.md` |
 | 06_Meeting | 회의록 | `2026-11-10_Kickoff.md` |
 | 07_Art | 아트 방향, 스타일 가이드, FX, 아트 작업 계획 | `ART_StyleGuide.md` |
 | 08_Audio | 사운드 · BGM 방향과 명세 | `AUD_Spec.md` |
 | 09_Research | 경쟁작 · 레퍼런스 분석, 리서치 | `RES_IdleGames.md` |
-| 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) | - |
+| 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) · 변환 전 원본 `Source/` | - |
+| _Templates | 문서 양식 (시스템 · 테이블 · 아트 · 회의록) | `_Template_System.md` |
 
 ## 2. 파일 네이밍
 
@@ -60,5 +61,14 @@ Draft ──(PR 생성)──→ Review ──(리드 승인/머지)──→ Ap
 
 ## 5. 템플릿
 
-- 시스템 기획서: [`_Template_System.md`](./_Template_System.md)
-- 테이블 스키마: [`05_DataTable/_Template_Table.md`](./05_DataTable/_Template_Table.md)
+- 시스템 기획서: [`_Templates/_Template_System.md`](./_Templates/_Template_System.md)
+- 테이블 스키마: [`_Templates/_Template_Table.md`](./_Templates/_Template_Table.md)
+- 아트 문서: [`_Templates/_Template_Art.md`](./_Templates/_Template_Art.md)
+- 회의록: [`_Templates/_Template_Meeting.md`](./_Templates/_Template_Meeting.md)
+
+## 6. 문서 찾기 · 상태
+
+- **전체 문서 목록 · 진행 상태 = [`00_Overview/KN_DocMap.md`](./00_Overview/KN_DocMap.md)** (DD 관리, 목차를 여기에 따로 두지 않음 — 사본은 어긋남, §4)
+- 결정 기록 = [`decisions.md`](./decisions.md) · 용어 = [`00_Overview/KN_Glossary.md`](./00_Overview/KN_Glossary.md)
+- 검수 기록 = [`00_Overview/KN_DocReview.md`](./00_Overview/KN_DocReview.md)
+- 상태 표기: `Approved (D-n)` = 그 결정으로 확정 · `Review` = 결정 대기 · `Draft` = 쓰는 중. 문서 상단 상태와 `KN_DocMap` 상태는 같아야 한다

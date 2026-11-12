@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-50) |
 | 작성자 | ① 추출: DD (`SynergyDatabase.asset` · 코드) · ②③: DD |
-| 최종 수정 | 2026-11-12 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `SynergyDef` (kind · trait · style · lineageIds · tiers) · `StatType` · `StageModifierType` |
 | 관련 문서 | [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) §10 (대표 관계와 연계 스킬) · [`CNT_Character_List`](../02_Content/CNT_Character_List.md) (D-46) · [`SYS_Rescue`](./SYS_Rescue.md) (D-49 로스터 15) · [`SYS_InGameBattle`](./SYS_InGameBattle.md) D-27 #3 · D-40 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) |
 | 근거 | 코드 `4b73a5a` — `Systems/Synergy/SynergySystem.cs` · `Data/SynergyDatabase.cs` · `Data/SynergyDatabase.asset` (25종) · `Core/GameEnums.cs` (`TraitType` · `StatType` · `StageModifierType`) · `UI/Synergy/SynergyPanelView.cs` · `UI/Battle/SynergyBannerView.cs` · `Art/Synergy/combo_*.png` (12장) |

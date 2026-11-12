@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (정본 — D-57 · D-58 · D-60 반영) |
 | 작성자 | DD |
 | 최종 수정 | 2026-11-13 (D-58 · D-60) |
 | 관련 문서 | [`KN_Overview`](./KN_Overview.md) §2.2 (M1 작업 목록 · 🅰/🅱) · §2.7 (일정) · [`decisions.md`](../decisions.md) D-27 ~ D-57 · 지시 이슈 [#3](https://github.com/mg-game/Project_KN/issues/3) |

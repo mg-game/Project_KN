@@ -4,9 +4,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Draft |
+| 상태 | Approved (v0.2) · v0.3 개정 대기 |
 | 작성자 | 대표 |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) · [`ART_StyleGuide`](../07_Art/ART_StyleGuide.md) · [`UI_InGame`](../03_UI_UX/UI_InGame.md) |
 
