@@ -7,6 +7,7 @@
 | 최종 수정 | 2026-11-13 |
 | 관련 문서 | [`ART_Character_Brief`](./ART_Character_Brief.md) §0.4 · §2 (진행 D-46 #5) · [`ART_StyleGuide`](./ART_StyleGuide.md) §15 · [`ART_BattleSpriteSpec`](./ART_BattleSpriteSpec.md) §2.1 · §2.2 · [`ART_EchoSpec`](./ART_EchoSpec.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) 짝짝이 · [`SYS_Evolution`](../01_System/SYS_Evolution.md) (D-45 개화 B = 양말 카라반) · [`SYS_Costume`](../01_System/SYS_Costume.md) (D-55) |
 | 쓰는 때 | 대표가 AI 아트 시안을 이 채팅에 올리면 DD가 채움 → 판정 + **고칠 점 프롬프트(복사용)** 를 돌려줌 |
+| 짝 문서 | **만드는 법 = [`ART_CharacterHandoff`](./ART_CharacterHandoff.md)**(카드 · 상세 텍스트 · 제작 지시) · **검수하는 법 = 이 문서**. 캐릭터별 카드 기록 = `02_Content/CNT_CharacterAppearance_*` |
 | 마감 | 11/23 기획 · 아트 1차 마감 (D-57 #1) |
 
 > 대표 진행안(D-46 #5) 4단계를 그대로 표로 만들었다. 시안 이미지만 올려 주시면 **기술 검사(캔버스 · 키 · 기준선 · 밝기 · 64 px)는 DD가 이미지를 직접 재서** 채우고, 나머지는 설정 · 컨셉과 맞춰 본다.
