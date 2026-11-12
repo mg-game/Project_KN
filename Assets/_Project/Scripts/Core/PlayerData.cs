@@ -27,6 +27,13 @@ namespace IdleGame
         /// <summary>수선점 레벨 (성장 탭 "수선점 강화")</summary>
         public int level = 1;
         public Dictionary<CurrencyType, double> currencies = new();
+        /// <summary>
+        /// 별조각 2풀 (I-14 · D-30 #3): 결제로 받은 몫. currencies[Gem] = gemPaid + gemFree (호환용 합 — 화면 · 비교는 합을 쓴다).
+        /// 옛 세이브에는 이 칸이 없어 0으로 읽히고, 로드 때 ReconcileGemPools가 합 전부를 gemFree로 옮긴다
+        /// </summary>
+        public double gemPaid;
+        /// <summary>별조각 2풀: 결제가 아닌 지급(보상 · 시작 지급 · 우편)으로 받은 몫. 소비는 이 풀부터</summary>
+        public double gemFree;
         /// <summary>아이템(재료) ID → 보유 개수</summary>
         public Dictionary<string, int> items = new();
         /// <summary>뽑기 테이블 ID → 천장 카운트</summary>
@@ -61,6 +68,7 @@ namespace IdleGame
             var data = new PlayerData();
             data.currencies[CurrencyType.Gold] = config.startGold;
             data.currencies[CurrencyType.Gem] = config.startGem;
+            data.gemFree = config.startGem;
             return data;
         }
 
@@ -70,6 +78,8 @@ namespace IdleGame
             linkedAccounts ??= new Dictionary<AuthProviderType, LinkedAccount>();
             currencies ??= new Dictionary<CurrencyType, double>();
             items ??= new Dictionary<string, int>();
+            SanitizeAmounts();
+            ReconcileGemPools();
             gachaPity ??= new Dictionary<string, int>();
             mails ??= new List<MailData>();
             sentOnceMailKeys ??= new HashSet<string>();
@@ -113,6 +123,71 @@ namespace IdleGame
             if (v4Migration) meta.MigrateToV4();
 
             version = CurrentVersion;
+        }
+
+        /// <summary>
+        /// 로드 무결성 (I-14 · SYS_Economy §2.1): 재화 저장값 · 별조각 풀이 음수 · NaN · ∞면 0으로, 재료 개수가 음수면 지운다.
+        /// 고친 것마다 경고 로그 ([Save] 무결성). 재료 상한은 아이템 데이터를 아는 InventorySystem이 만들어질 때 맞춘다
+        /// </summary>
+        void SanitizeAmounts()
+        {
+            List<CurrencyType> badCurrencies = null;
+            foreach (var pair in currencies)
+            {
+                if (!IsValidAmount(pair.Value)) (badCurrencies ??= new List<CurrencyType>()).Add(pair.Key);
+            }
+            if (badCurrencies != null)
+            {
+                foreach (var key in badCurrencies)
+                {
+                    UnityEngine.Debug.LogWarning($"[Save] 무결성: 재화 {key} 저장값 {currencies[key]} → 0");
+                    currencies[key] = 0;
+                }
+            }
+
+            List<string> badItems = null;
+            foreach (var pair in items)
+            {
+                if (pair.Value < 0) (badItems ??= new List<string>()).Add(pair.Key);
+            }
+            if (badItems != null)
+            {
+                foreach (var key in badItems)
+                {
+                    UnityEngine.Debug.LogWarning($"[Save] 무결성: 재료 {key} 개수 {items[key]} → 0");
+                    items.Remove(key);
+                }
+            }
+
+            if (!IsValidAmount(gemPaid))
+            {
+                UnityEngine.Debug.LogWarning($"[Save] 무결성: 별조각 유료 풀 {gemPaid} → 0");
+                gemPaid = 0;
+            }
+            if (!IsValidAmount(gemFree))
+            {
+                UnityEngine.Debug.LogWarning($"[Save] 무결성: 별조각 무료 풀 {gemFree} → 0");
+                gemFree = 0;
+            }
+        }
+
+        /// <summary>저장할 수 있는 재화 값: 0 이상 · 유한 (NaN은 비교가 모두 false라 여기서 걸린다)</summary>
+        static bool IsValidAmount(double value) => value >= 0 && !double.IsInfinity(value);
+
+        /// <summary>
+        /// 별조각 2풀을 합(currencies[Gem])에 맞춘다 (멱등): 유료 = min(유료, 합), 무료 = 합 − 유료.
+        /// 옛 세이브(풀 칸 없음 = 0 · 0)는 합 전부가 무료가 되고, 다른 경로가 합만 바꿨으면 차이를 무료 풀에서 맞춘다.
+        /// 로드(Sanitize)와 CurrencySystem이 별조각을 다루기 전에 부른다
+        /// </summary>
+        public void ReconcileGemPools()
+        {
+            currencies ??= new Dictionary<CurrencyType, double>();
+            double total = currencies.TryGetValue(CurrencyType.Gem, out var value) && IsValidAmount(value) ? value : 0;
+            if (!IsValidAmount(gemPaid)) gemPaid = 0;
+            if (!IsValidAmount(gemFree)) gemFree = 0;
+            if (gemPaid + gemFree == total) return;
+            gemPaid = Math.Min(gemPaid, total);
+            gemFree = total - gemPaid;
         }
 
         /// <summary>
