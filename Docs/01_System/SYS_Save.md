@@ -4,10 +4,10 @@
 |---|---|
 | 상태 | Approved (D-59) |
 | 작성자 | ① 추출: DD (코드) · ②③: DD |
-| 최종 수정 | 2026-11-13 (D-59) |
+| 최종 수정 | 2026-11-13 (D-59) · ① I-14 · D-58 #1 반영 — 기개발 |
 | 관련 테이블 | `PlayerData` (`player.json`, `CurrentVersion` 4) · `MetaSave.clock` · `GameConfig.autoSaveInterval` |
 | 관련 문서 | [`SYS_Economy`](./SYS_Economy.md) (D-30 #3 · #5 → I-14) · [`SYS_IdleReward`](./SYS_IdleReward.md) (D-31 #2 서버 시각 · #5 즉시 저장) · [`SYS_Dispatch`](./SYS_Dispatch.md) §5 (I-5 원정 시계) · [`SYS_Gacha`](./SYS_Gacha.md) (D-51 #5 · #6 결제 전 P0) · [`UI_Shop`](../03_UI_UX/UI_Shop.md) §2.3 (결제 자리) · [`KN_M1_DevBrief`](../00_Overview/KN_M1_DevBrief.md) §11 · §13 |
-| 근거 | 코드 `4b73a5a` — `Core/SaveStorage.cs` · `Core/PlayerData.cs` · `Core/GameBootstrap.cs` (:90 경로 · :212 자동 저장 · :276 멈춤 저장 · :312 종료) · `Systems/Meta/DailyClock.cs` · `UI/Meta/SaveCode.cs` · `UI/Popups/SaveImportPopup.cs` · `Account/AccountSystem.cs` · `AccountService.cs` · `AuthProvider.cs` · `Systems/Battle/ExpeditionSystem.cs:214` |
+| 근거 | 코드 `4b73a5a` — `Core/SaveStorage.cs` · `Core/PlayerData.cs` · `Core/GameBootstrap.cs` (:90 경로 · :212 자동 저장 · :276 멈춤 저장 · :312 종료) · `Systems/Meta/DailyClock.cs` · `UI/Meta/SaveCode.cs` · `UI/Popups/SaveImportPopup.cs` · `Account/AccountSystem.cs` · `AccountService.cs` · `AuthProvider.cs` · `Systems/Battle/ExpeditionSystem.cs:214` + I-14 경제 안전 (`feat/economy-safety`) — `Core/PlayerData.cs` (`SanitizeAmounts` · `ReconcileGemPools`) · `Systems/InventorySystem.cs` (`ClampToCap`) · `UI/Popups/SettingsPopup.cs` (플레이 기록 보내기) |
 | 로드맵 | D-58 다음 순서 (I-14 · I-5의 기준 문서) |
 
 > 결론 먼저: 세이브는 **로컬 JSON 한 파일**이고, 깨짐 · 복구 쪽은 잘 짜여 있다(임시 파일 교체 · 직전 백업 · 날마다 백업 3 · 손상 격리 · 세이브 코드로 기기 이동). 약한 곳은 **"고친 세이브"** 쪽이다 — 파일 · 세이브 코드에 서명이 없어(코드는 CRC32뿐) 누구나 고칠 수 있고, **백업 복구 · 코드 가져오기로 소환을 되돌릴 수 있다.**
@@ -28,6 +28,7 @@
 
 ### 1.1 저장 형식 · 위치
 - `Application.persistentDataPath/player.json` — `PlayerData` 전체를 JSON 한 파일로. `CurrentVersion` = **4** (2 = L&L 캐릭터 · 전투 · 원정, 3 = 메타, 4 = 4차 메타 — `MetaSave.MigrateToV4`).
+- **별조각 2풀** (I-14 · D-30 #3): `gemPaid`(결제로 받은 몫) · `gemFree`(그 밖) 칸. `currencies[Gem]`은 둘의 합으로 유지 (화면 · 비교 · 옛 코드 호환). **버전은 4 그대로** — 옛 세이브는 두 칸이 0으로 읽히고 로드 때 `ReconcileGemPools`가 합 전부를 무료로 옮긴다 (몇 번 돌려도 같은 결과). 버전 5는 I-10g 튜토리얼 단계 id (D-63 #1).
 - 열거형 키 딕셔너리(`currencies` · `linkedAccounts` · `LineageSave.progress`)는 **멤버 이름**으로 저장 → 이름을 바꾸면 그 키가 사라짐. 모르는 키는 로드 때 건너뜀 (`TolerantEnumKeyDictionaryConverter`).
 
 ### 1.2 저장 · 복구 (`SaveStorage`)
@@ -37,10 +38,15 @@
       바꾸기 전(가져오기 · 복구) = player.json.{이유}-{유닉스}.bak (이유마다 새것 3개)
 로드: 본 파일 → 실패 시 .bak → 둘 다 실패 = 읽지 못한 파일을 .corrupt-{유닉스}로 격리 · null (새 게임)
       결과 = 아직 안 읽음 / 첫 실행 / 백업에서 불러옴 / 실패 (복구 안내용)
-      → Sanitize: null 칸 채우기 · 깨진 계보 · 원정 줄 버리기 · 버전 마이그레이션
-      ⚠ 값 검사 없음: 재화 음수 · NaN · ∞, 재료 int 넘침 그대로 (→ I-14)
+      → Sanitize: null 칸 채우기 · 값 검사 · 별조각 풀 맞추기 (I-14) · 깨진 계보 · 원정 줄 버리기 · 버전 마이그레이션
+         값 검사: 재화 · 별조각 풀이 음수 · NaN · ∞ → 0 · 재료 개수 음수 → 삭제 (고칠 때마다 경고 "[Save] 무결성")
+         풀 맞추기: 유료 = min(유료, 합) · 무료 = 합 − 유료 (다른 경로가 합만 바꿔도 풀이 따라감)
+      → 재료 상한: InventorySystem이 만들어질 때 상한(ItemDatabase.countCap, 임시 999,999)보다 많으면 상한으로 + 경고
+      지급 · 소비 검사(로드 밖)는 SYS_Economy §2.1 (CurrencySystem · InventorySystem)
 설정 [계정 · 데이터]: 백업 목록('오늘' · '어제' · '그저께' · 'M월 d일' · '가져오기 전' · '마지막 저장 직전') → 복구
                       데이터 초기화 = 세이브 + 백업 모두 삭제 (격리 파일만 남김)
+                      플레이 기록 보내기 (D-58 #1 · 출시 빌드에도): 최근 24시간 요약 PlayLog.Summary(24)
+                        → [내보내기] 최근 500줄 Tail(500) 공유 시트 · 못 하면 복사 (개발 탭 치트는 개발 빌드 전용 그대로)
 새 기능(Replace · SnapshotDaily · ListBackups · RestoreBackup)은 예외를 내지 않고 경고 한 줄 (킬 스위치)
 ```
 
