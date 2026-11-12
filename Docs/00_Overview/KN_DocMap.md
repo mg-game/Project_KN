@@ -81,7 +81,11 @@
 | `UI_Formation` | 🔵 | **P0** | Approved (D-52) | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (미리보기 레벨업 탭) | `GrowthPanel` · `GrowthLineageCardView` · `CharacterDetailPopup` |
 | `UI_Home` | 🔵 | **P0** | ①②③ 완료 · ③ 6건 D-44 확정 (미리보기 홈 탭) | `MainTabController` · `TopBarView` · `BattleHud` · `Meta/*` |
-| `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
+| `UI_Characters` | 🟡 | P1 | Review — 유실자 탭 · 상세 4탭 · 외형 탭(D-55 상한 표시) · 미보유 '찾으러 가기' · ③ 6건 | `CharacterPanel` · `CharacterDetailPopup` · `CostumeListView` |
+| `UI_Bag` | 🟡 | P1 | Review — 재료 도감 · 얻는 곳 · 바로 가기 이름 의뢰 · 던전(D-54) · P1 쓰는 곳 · ③ 4건 | `BagPopup` · `ItemInfoPopup` |
+| `UI_Shop` | 🟡 | P1 | Review — 수선점 · 이벤트 · 오늘의 선물 · 결제 코드 없음 → 결제 쪽 자리(P1) · ③ 6건 | `ShopPanel` · `ShopProductCardView` · `DailyGiftCardView` |
+| `UI_Expedition` | 🟡 | P1 | Review — D-54 · D-55를 화면으로 · 자동 선택 순서 · 모두 다시 보내기 × 출발 가드 · ③ 5건 | `ExpeditionPanel` · `ExpeditionSetupPopup` · `DungeonCardView` |
+| `UI_Meta` | 🔴 | P2 | 대기 | `Scripts/UI/Meta/*` (일지 · 출석 · 이벤트 · 우편 · 설정) |
 
 ## 04_Balance · 05_DataTable
 
