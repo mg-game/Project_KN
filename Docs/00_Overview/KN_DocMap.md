@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-13 (검수 1회차 — 상태 맞춤 · `_Templates` · ART 행 형식) |
+| 최종 수정 | 2026-11-13 (검수 1회차 · #43 캐릭터 · AI 아트 문서 연결 병합) |
 | 관련 테이블 | - |
 | 관련 문서 | [`decisions.md`](../decisions.md) D-25 · D-26 · [`KN_Glossary`](./KN_Glossary.md) · [`_Template_System`](../_Templates/_Template_System.md) |
 
@@ -67,6 +67,8 @@
 | 문서 | 상태 | 우선 | 진행 | 근거 |
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
+| `CNT_Character_Jjakjjak` · `CNT_Character_Mongsil` · `CNT_Character_Rainy` | 🔵 | P1 | Review (#43) | 캐릭터별 원본 진입점 — 설정 원문은 `CNT_Character_Main` §12, 여기는 ID · 이미지 연결 |
+| `CNT_CharacterAppearance_Jjakjjak_Nightkeeper` (외형) · `CNT_CharacterAppearance_Jjakjjak_Caravan` (개화 B) · `CNT_CharacterAppearance_Rainy_AlleyLantern` · `CNT_CharacterAppearance_Mongsil_Wax` | 🟡 | P1 | Review / Draft (#43) | 카드 · 구조 검토 기록 — 검수 = `ART_ReviewSheet` |
 | `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
@@ -103,13 +105,16 @@
 | 문서 | 상태 | 진행 | 메모 |
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
-| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
+| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41. ART-01 PNG6개 (§5)·ART-02 수선등 구성 (§6)·ART-03 창문5단계 (§7)·ART-04 링/마커 (§8)·ART-06 예고/압박 (§9)·ART-07 HUD (§10) 검토, 채택/게임 연결 미실시 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
+| `ART_CharacterHandoff` | 🔵 | Review | 공통 마스터. 첨부 v2 통합, 카드·별도 텍스트·아트 전달 · 검수 짝 = `ART_ReviewSheet` |
+| `ART_CharacterWorkflowAudit` | 🔵 | Review | 구조 분석·보존/변경·충돌·검수·신규 캐릭터 추가 |
+| [원본 템플릿](../_Templates/_Template_Character.md) · [외형 템플릿](../_Templates/_Template_CharacterAppearance.md) | 🔵 | Draft | `_Templates/`로 이동 (D-61) |
 | `ART_EchoSpec` | 🔵 | Approved | 잔향이 외형 규격 — ③ 5건 D-48 확정 (A-04) · 전용 그림은 추후 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 | `ART_UIHandoff` | 🟡 | Review | 홈 · 전투 UI 아트 후보 48종 기록 (그림은 채팅 전달 — D-24) · 채택 · Unity 적용 전 (PR #59) |
-| `ART_ReviewSheet` | 🔵 | Approved (양식) · 시안 대기 | 캐릭터 시안 검수 대조표 — 짝짝이 기준 · 양말 카라반 "부분 → 구조 → 쓰임" · 기술 검사 11 · 가이드 §15 (D-46 #5) |
+| `ART_ReviewSheet` | 🔵 | Approved (양식) · #43 카드 검수 시작 | 캐릭터 시안 검수 대조표 — 짝짝이 기준 · 양말 카라반 "부분 → 구조 → 쓰임" · 기술 검사 11 · 가이드 §15 (D-46 #5) |
 
 ---
 
