@@ -18,8 +18,9 @@ namespace IdleGame.EditorTools
     /// 줄을 누르면 스위치를 바꾸거나 다음 칸을 고른다 (SettingsPopup). 칸 고르기 칸은 위아래 64까지 누르는 자리를 넓히고, 왼쪽 끝은 설명 칸(404) 밖(≥412).
     /// SPEC4 §4.1 (P4-4): [일반] '캐릭터 목소리'(VoiceRow, 소리 다음 — 목소리 클립이 없으면 흐리게 + '준비 중') · '처음 이야기 다시 보기'(IntroRow, 튜토리얼 다음),
     /// [알림] 상태 줄 NotifyStatus(+ '허용하기' / '설정 열기 ›') · 맨 아래 QuietNote, [계정·데이터] SaveButtons에 '공유'(Android만 보인다) ·
-    /// BackupRow(712) · CouponRow(832) · 초기화는 1068로. 세이브 가져오기 · 백업 복구 · 쿠폰 입력 팝업도 여기서 만든다 (ctx.Popups에 넣는다).
-    /// [개발] '플레이 기록'(PlayLogButton, CR-09 §4.4). 탭은 켜짐 · 꺼짐 전용 그림이 둘 다 있으면 TabSkin을 붙인다 (ART-UPGRADE §4.3 #9 — MenuSceneBuilder.PageTabSkin).
+    /// BackupRow(712) · CouponRow(832) · PlayLogRow(952, D-58 #1 '플레이 기록 보내기' — 출시 빌드에도) · 초기화는 1188로.
+    /// 세이브 가져오기 · 백업 복구 · 쿠폰 입력 팝업도 여기서 만든다 (ctx.Popups에 넣는다).
+    /// [개발] 치트 버튼 8개 (에디터 / Development Build 전용). 탭은 켜짐 · 꺼짐 전용 그림이 둘 다 있으면 TabSkin을 붙인다 (ART-UPGRADE §4.3 #9 — MenuSceneBuilder.PageTabSkin).
     /// </summary>
     internal static class SettingsSceneBuilder
     {
@@ -38,14 +39,19 @@ namespace IdleGame.EditorTools
         /// <summary>'준비 중' 알약 (소리가 없는 빌드 — 슬라이더 오른쪽 끝)</summary>
         static readonly Vector2 ReadyPillSize = new(120, 40);
         /// <summary>
-        /// 설정 창 940x1516 (본문 1344 − 탭 96 = 쪽 1248): 가장 긴 [일반] 쪽(줄 11개 → 1176 + '버전' 줄 40)이 32 띄우고 꼭 맞는다 (SPEC4 §4.1 —
-        /// '캐릭터 목소리' · '처음 이야기 다시 보기' 두 줄이 늘어 예전 1300에서 216 키웠다). 다른 쪽(계정·데이터 1158 · 개발 664 · 전투 연출 604 · 알림 560)도 들어간다
+        /// 설정 창 940x1576 (본문 1404 − 탭 96 = 쪽 1308): 가장 긴 쪽은 [계정 · 데이터] 1278 (D-58 #1 '플레이 기록 보내기' 줄 +120 → 30 남음).
+        /// [일반] 쪽(줄 11개 → 1176 + '버전' 줄 40)은 92 남는다 (예전 1516: SPEC4 §4.1 '캐릭터 목소리' · '처음 이야기 다시 보기'로 1300에서 216 키움,
+        /// D-58로 60 더 키움). 다른 쪽(개발 544 · 전투 연출 604 · 알림 560)도 들어간다
         /// </summary>
-        static readonly Vector2 SettingsWindowSize = new(940, 1516);
-        /// <summary>계정·데이터 쪽 SPEC4 줄 (백업 복구 712 · 쿠폰 입력 832) · 그 아래 구분선 / 초기화 머리 / 설명 / 버튼 (예전 자리 + 240)</summary>
+        static readonly Vector2 SettingsWindowSize = new(940, 1576);
+        /// <summary>
+        /// 계정·데이터 쪽 SPEC4 줄 (백업 복구 712 · 쿠폰 입력 832) · D-58 '플레이 기록 보내기' 952 ·
+        /// 그 아래 구분선 / 초기화 머리 / 설명 / 버튼 (예전 자리 + 360)
+        /// </summary>
         const float BackupRowTop = 712f;
         const float CouponRowTop = 832f;
-        const float ResetShift = 240f;
+        const float PlayLogRowTop = 952f;
+        const float ResetShift = 360f;
         /// <summary>알림 쪽 상태 줄 버튼 ('허용하기' / '설정 열기 ›') 220x72 — 누르는 자리는 위아래 88까지</summary>
         static readonly Vector2 NotifyButtonSize = new(220, 72);
         /// <summary>줄 오른쪽 스위치 그림 (MetaSceneBuilder.Switch) — 누르는 자리는 위아래 18씩 88 (M22, 줄 96 안)</summary>
@@ -192,6 +198,9 @@ namespace IdleGame.EditorTools
             // 쿠폰 입력 (EVT-02 — 확장 항목: 줄은 보이지만 콘텐츠에 쿠폰이 없으면 '다시 확인해 주세요')
             var couponRow = Row(account, "CouponRow", "쿠폰 입력", CouponRowTop, "받은 쿠폰 번호를 넣으면 우편으로 선물이 와요");
             var coupon = RowButton(couponRow, "CouponButton", "입력", ButtonStyle.Primary, UiArt.ButtonPrimary9s);
+            // 플레이 기록 보내기 (D-58 #1 — 개발 탭에서 옮김, 출시 빌드에도 보임): 최근 24시간 요약 → [내보내기] 공유 시트 · 복사 (SettingsPopup.ShowPlayLog)
+            var playLogRow = Row(account, "PlayLogRow", "플레이 기록 보내기", PlayLogRowTop, "최근 기록을 공유하거나 복사해요");
+            var playLog = RowButton(playLogRow, "PlayLogButton", "보내기", ButtonStyle.Secondary, UiArt.ButtonSecondary9s);
             Img(account, "Divider2", UITheme.Divider).rectTransform.Top(704 + ResetShift, 2);
             Txt(account, "ResetHeader", "데이터 초기화", 30, UITheme.Text, TextAlignmentOptions.MidlineLeft, true).rectTransform.Top(724 + ResetShift, 50);
             Txt(account, "ResetDesc", "모든 진행이 지워지고 처음부터 시작해요. 되돌릴 수 없어요.", 22, UITheme.SubText, TextAlignmentOptions.TopLeft, false, true)
@@ -213,9 +222,8 @@ namespace IdleGame.EditorTools
             var fillChest = Btn(grid, "FillChestButton", "바구니 가득 채우기", UITheme.Secondary, 28);
             var unlockAll = Btn(grid, "UnlockAllButton", "기능 모두 열기", UITheme.Secondary, 28);
             var tickets = Btn(grid, "TicketsButton", "수선권 받기", UITheme.Secondary, 28);
-            // CR-09 (SPEC4 §4.4): 최근 24시간 플레이 기록 요약 + [내보내기] (공유 시트 또는 복사) — 다섯째 줄 왼쪽 (격자 600 안: 5줄 = 592)
-            var playLog = Btn(grid, "PlayLogButton", "플레이 기록", UITheme.Secondary, 28);
-            foreach (var devButton in new[] { addGold, addGem, testMail, offline, nextDay, fillChest, unlockAll, tickets, playLog })
+            // CR-09 '플레이 기록'은 D-58 #1로 [계정 · 데이터] 쪽 '플레이 기록 보내기'로 옮겼다 (격자 4줄 = 470)
+            foreach (var devButton in new[] { addGold, addGem, testMail, offline, nextDay, fillChest, unlockAll, tickets })
                 UiArt.SetButtonArt(devButton, UiArt.ButtonSecondary9s, UiArt.ButtonPpu(104));
 
             new Binder(popup)
