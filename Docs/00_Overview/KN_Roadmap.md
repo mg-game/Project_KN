@@ -65,7 +65,7 @@
 | K-05 망각체 기획서 ✅ [`CNT_Enemy`](../02_Content/CNT_Enemy.md) | `CNT_Enemy` — 9종 · 기믹 11종 ① 현재 구현 + ② 역할(왜 이 적이 있나 · 어떤 판단을 요구하나) + 2장 이후 추가 원칙 | P0 | — |
 | K-06 보스 패턴 ✅ [`CNT_Boss`](../02_Content/CNT_Boss.md) | 1장 보스 2종 + 1-10 변형의 패턴 · 페이즈(70% · 30%) · 360° 패턴 | P0 | K-05 |
 | K-07 시너지 | `SYS_Synergy` ①②③ | P1 | K-03 |
-| K-08 구조 · 합류 🟡 [`SYS_Rescue`](../01_System/SYS_Rescue.md) | `SYS_Rescue` · `SYS_Relationship` — 유실표 · 구조 전투 · 피난자 → 손님 → … · 잔향이 해금 | P1 | K-01 |
+| K-08 구조 · 합류 ✅ [`SYS_Rescue`](../01_System/SYS_Rescue.md) | `SYS_Rescue` · `SYS_Relationship` — 유실표 · 구조 전투 · 피난자 → 손님 → … · 잔향이 해금 | P1 | K-01 |
 | K-09 소환 · 가챠 | `SYS_Gacha` — 첫 만남 · 구조와의 관계 · 확률 · 천장 · 중복 = 기억 조각 | P1 | K-01 · K-08 |
 | K-10 기억 카드 × 런 중 개화 | 시스템 §11 재설계 | P1 | K-02 · K-03 |
 | K-11 연계 스킬 | 설정집 관계 연계 4종을 시너지 · 스킬 어디에 둘지 | P1 | K-03 · K-07 |
