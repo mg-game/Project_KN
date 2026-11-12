@@ -42,7 +42,7 @@
 
 | 역할 | 실제 경로·링크 | 확인 상태 |
 |---|---|---|
-| 현재 게임 기본형 | [Assets/_Project/Art/Characters/udu_base.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Characters/udu_base.png) | Git 트리·LFS 포인터 존재 확인, 픽셀·Unity 임포트 미검증 |
+| 현재 게임 기본형 | [Assets/_Project/Art/Characters/udu_base.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Characters/udu_base.png) | LFS 실물 SHA/크기·치수·육안 확인 (§7). Unity 미검증 |
 | 기본형 `.meta` | [.meta](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Characters/udu_base.png.meta) | 기존 참조 보존 |
 | 콘텐츠 원본 | [Assets/_Project/Editor/Content/CharacterContent.Lineages.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Editor/Content/CharacterContent.Lineages.cs) | ID·기본형 이름 대조 |
 | 구운 데이터 | [CharacterDatabase.asset](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Data/CharacterDatabase.asset) | 현재 구현 참조 |
@@ -64,4 +64,13 @@
 ## 6. 검수 · 변경 기록
 
 - 2026-11-12: 기존 원문을 보존한 항목별 진입점 및 외형·자산 링크 추가. 공식 설정의 승인·게임 반영 없음.
-- 원본 이미지의 픽셀·최종 납품 기술 검수: 미실행.
+- 초기 조사에서는 원본 픽셀 미확인. 후속 §7에서 LFS 실물·육안·치수 확인. 최종 납품·Unity 기술 검수는 미실행.
+
+
+## 7. 골목등불 구조 검토 RA1
+
+2026-11-12 사용자 작업 요청에 따라 기존 `udu_base.png` 실물과 코드·설정집을 대조했다. 기존 이미지는 우산 망토와 인간형 다리가 있고, 설정집의 물빛 얼굴·해파리 촉수와 차이가 있다. 원본을 보존하고 [골목등불 기획서 §7 이후](./CNT_CharacterAppearance_Rainy_AlleyLantern.md#7-재활용-구조-검토-ra1--기준과-범위)에 이 차이와 구조 제안 카드 RA1·카드 원문·D1~D3를 기록했다.
+
+- 실물 SHA-256 `34e481a6e01eae276ef573cb3a5c97debcb42829da64b7dc25d699d2255eca99`, 547,562 bytes, 1024×1024 RGBA. LFS와 대조했다.
+- 재활용 제안: 우산살→등불 받침, 남은 우산 천→덮개, 손목끈→짧은 고정고리. 설정집의 우산 몸·빗물 얼굴·손잡이 꼬리·촉수를 적용한다. 세부 구조·새 작화·유형은 검토 중이다.
+- 기존 게임 에셋·GUID·데이터는 변경하지 않았다. 실제 투명 PNG·축소·Unity 검수는 RA1 카드로 완료 처리하지 않는다.

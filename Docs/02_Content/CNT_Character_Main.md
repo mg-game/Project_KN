@@ -661,7 +661,7 @@ LOST & LOVELY의 캐릭터는 현실에서 잊히거나 버려진 물건, 감정
 | 캐릭터 | 원본 기획 진입점 | 외형변경 기획 | 확인 상태 |
 |---|---|---|---|
 | 짝짝이 | [짝짝이 원본](./CNT_Character_Jjakjjak.md) | [밤지기](./CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) · [카라반](./CNT_CharacterAppearance_Jjakjjak_Caravan.md) | 기존 자료 보존, 카라반 구조 검토 |
-| 레이니 | [레이니 원본](./CNT_Character_Rainy.md) | [골목등불](./CNT_CharacterAppearance_Rainy_AlleyLantern.md) | 제공 카드 제안, ID·유형 미정 |
+| 레이니 | [레이니 원본](./CNT_Character_Rainy.md) | [골목등불](./CNT_CharacterAppearance_Rainy_AlleyLantern.md) | 골목등불 구조 검토 RA1, ID·유형 미정 |
 | 몽실 | [몽실 원본](./CNT_Character_Mongsil.md) | [촛농·밀랍 입력 양식](./CNT_CharacterAppearance_Mongsil_Wax.md) | 상세 기획·이미지 미제공 |
 
 - [외형변경 템플릿](../_Template_CharacterAppearance.md): 원본을 참조하고 변경 부분만 작성. 진화 단계·선택형·특별 외형을 구분한다.
