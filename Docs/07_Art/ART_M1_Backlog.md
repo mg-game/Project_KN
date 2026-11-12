@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (ART-01~03 후보 기록, 기존 목록 보존) |
+| 최종 수정 | 2026-11-12 (ART-01~04 후보 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -211,3 +211,67 @@ LFS OID·크기·이미지 육안을 대조했다. 기존 파일과 `.meta`·GUI
 | `shop_light_l3.png` | `d1d30f6087ff48b0e9f5a99cef3c21fc1739cd0ce35d3ef4a04c58198c0cd5bd` |
 | `shop_light_l4.png` | `f63884464947b898549575b875ea0bcc4af22912096da568e7dc12a90d6a73d6` |
 | `shop_light_l5.png` | `60efeded078b9499b82367a9c5cc1a43b3bfec251cb3d8c5e49a429cc335277d` |
+
+## 8. ART-04 8방위 링 세트 — 재사용·마커 후보 (2026-11-12)
+
+[편성 화면](../03_UI_UX/UI_Formation.md) §2④~⑥·[스타일 가이드](./ART_StyleGuide.md) §9·기존 목록을 확인했다. 링/빈 방위/위험/압박 **4개 계열**이며 빈 방위의 보통/빨강2상태를 포함해 전달 PNG는5개다. 기존 링에 이미8개 별 눈금이 있어 **링과 받침은 재사용**하고 정보 마커4개만 생성했다. 게임 적용/최종 채택은 별도다.
+
+### 8.1 실물·재사용 근거
+
+| 기존 리소스 | 확인·용도 | SHA-256 |
+|---|---|---|
+| [Battle/field_tall.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/field_tall.png) | 기존 바닥 정본·해시 보존, 새로 그리지 않음 | `9b00bf54464a05f46bc1e3d1d4431ea987725613d51d70c3f6fee92baf214f28` |
+| [UI/ui_ring_stitch.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_ring_stitch.png) | 512 RGBA, 봉제 원형 링·별8개. 링 후보의 직접 재사용 원본 | `8f7c1ca77550a1d7c6af7be2feff6922daedaf283c844ceb6e8f1f33cb3cd8f9` |
+| [FX/ring_glow.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/FX/ring_glow.png) | 512 RGBA, 기존 흰 발광/알파 리소스. 검토하고 새로 만들거나 대체하지 않음 | `88e6dd58dc5c17427a2a620811b4b3d04a20c2a9f34a4b8716c2a32b7fe4febf` |
+| [Battle/guardian_pad.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/guardian_pad.png) | 256 RGBA, 찬 슬롯 예시용 원본 그대로 | `38f8c16967a53f3fad74bfb5fd125eb1a09d34d257f653ee5b10ce44e811d59b` |
+| [Battle/guardian_pad_empty.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/guardian_pad_empty.png) | 256 RGBA, 빈 슬롯 예시용 원본 그대로 | `72fe665faf7e3ddaaa9a24de5572b91a59a638d8ee976cc3b3739cc82bb4c73a` |
+
+LFS 실물/해시·알파·육안을 대조했다. 기존 파일/`.meta`/GUID는 보존한다. [DirectionRingView.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Battle/DirectionRingView.cs)·[FormationSlotView.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Formation/FormationSlotView.cs)의 현재5방향/72°·위협 표시·부채꼴/원근 레이어와, 승인된 UI의8방위 요구를 구분했다. 이 아트는 기존 코드를8방향으로 바꾸지 않는다.
+
+### 8.2 PNG와 생성 범위
+
+| 전달 파일 | 규격 | 의미·처리 |
+|---|---|---|
+| `formation_ring_8.png` |1024×1024 RGBA|기존512 봉제 링의 동일 비율2배 파생. 별/봉제/색/재질 그대로|
+| `formation_uncovered.png` |128×128 RGBA|미커버 방위: 크림/라벤더 사선3개|
+| `formation_uncovered_danger.png` |128×128 RGBA|미커버이면서 위험: 로즈 레드 사선3개|
+| `formation_danger.png` |128×128 RGBA|위험 방위: 위를 향한 삼각형▲1개|
+| `formation_pressure.png` |128×128 RGBA|지속 압박: 수평 줄무늬3개|
+
+신규 마커는 기존 봉제 링·빈 받침을 직접 이미지 참조로 사용했다. 둥근 형태·딥 플럼 외곽·크림/라벤더·절제된 금색 하이라이트·부드러운 셀 채색을 유지한다. 보통/빨강 사선은 같은3줄 구조의 생성 상태 쌍이며 **픽셀까지 동일한 모양의 단순 색 변경은 아니다.** 2172×724 RGBA 마스터를 사각 클립·동일 비율 축소·중앙 배치만 하여 분리했다. 새 문양·배지 테·문자·부채꼴 원화를 더하지 않았다.
+
+링은 원본512를 그대로 참조해 표시해도 된다. 1024 파생은 세부를 새로 추가한 고해상도 원화가 아니며 중복 에셋 등록을 요구하지 않는다. 원본8별은 장식이고 일부 간격이 수학적45°와 다르다. **정확한8방위 스냅/위험 좌표는 별 위치에서 추출하지 않고 N부터 시계방향0/45/90/135/180/225/270/315° 앵커를 사용**한다. 앵커/방위 글자/슬롯은 텍스처에 굽지 않는다.
+
+### 8.3 표시 의미·조합 제안
+
+| 입력 | 표시 |
+|---|---|
+| 미커버이고 위험 아님 | 보통 사선 |
+| 미커버이면서 위험 | 빨간 사선 + 별도▲ |
+| 커버되어 있지만 위험 | ▲ 유지, 사선 없음 |
+| 지속 압박 방위 | 수평3줄을 별도 유지 |
+| 슬롯이 비었지만 다른 지킴이 요격으로 커버 | 빈 받침 유지, 사선 없음 |
+
+**빈 슬롯과 미커버 방위를 동일시하지 않는다.** 링 슬롯은8개/배치 최대5명이고, 빗금은 요격 커버 계산 결과를 입력받는다. 위험▲와 압박은 커버 여부와 독립이다. 보통/빨강 사선만 서로 교체하며▲/압박은 같은 방위에서도 유지한다. 빨강만으로 정보를 알리지 않고 삼각형/사선/수평줄 형태를 함께 사용한다.
+
+이 후보의 사선은 **방위별 기호형 빗금**이다. 미커버 영역 전체를 덮는 가변 부채꼴 텍스처가 아니다. ART-05 요격 범위/가변 커버 영역은 기존 지침대로 코드/메시/셰이더로 만들며, 실제 영역을 채우는 패턴이 필요하면 그 커버 마스크에 별도 클립/타일 처리를 연결한다. 이 기호 후보만으로 가변 범위 구현 완료를 주장하지 않는다.
+
+검토 화면은 링/받침 뒤, 사선은 반지름123, ▲210, 압박88, 방위 글자234에 두는 **512px 캔버스의 배치 제안**이다. 마커를 방향마다 돌리지 않아 ▲는 위를 향하고 사선/압박은 각각 대각/수평으로 읽힌다. 실제 위치·크기·회전/알파·가림 순서·동시 표시는 구현 검토 후 정한다. 원형 기획과 기존 원근 투영 중 선택은 아트 후보에서 확정하지 않았다.
+
+### 8.4 검토·제한·전달
+
+- PNG5개 지정 크기/RGBA·투명 테두리·가로 중심을 확인했다. 마커4개 중심64/64, 주요 연결 성분은3/3/1/3개다. 최대 알파253/253/254/254이며255로 표시하지 않는다. 링의 알파>16 내용 중심은512/510, 중앙은 투명하다.
+- 실제 마커 PNG를 **128/48/32px**로 딥 퍼플/크림 위에 표시해 사선·삼각형·수평3줄의 육안 구분을 확인했다. 모든 실제 배경/기기에서의 보장을 뜻하지 않는다.
+- **0명/미커버8방위, 5명/빈3칸/미커버2방위, 5명/빈3칸/미커버0방위, NW 미커버+위험+압박 동시**4상태를512px 브라우저에서 검토했다.8슬롯·배치≤5·각 방위/마커 입력 대응과 미커버/빈칸 독립을 검사했다. 배치/커버/스테이지 값은 읽힘용 가상 예시이며 실제 스킬 계산 결과가 아니다.
+- 384px 축소 예시에서는32px 마커가24px로 줄어든다. 실제 UI는 마커 크기를 별도 유지하거나 목표 기기에서 다시 검토해야 한다. 이 예시를32px 게임 검증 통과로 주장하지 않는다.
+- **남음:** 실제 Unity8방향 전환·스냅/드래그/입력·게임 커버/위험/압박 데이터 연결·실제 미커버 영역 표시·크기/색 공간/투영·레이캐스트/마스크/가림·동시표시/애니메이션·DD/사람 확인·최종 채택.
+
+PNG·기존 원본/해시·마스터/프롬프트·분리/검사JSON·4상태/축소/배경 비교·스크립트·실기 확인표를 채팅 전달 묶음으로 보존한다. 외부 공유 URL은 미등록이다. Git에는 기존 문서 기록만 보완하고 PNG/새 폴더/임의.meta/코드/데이터/설정/기존 에셋 변경은 반영하지 않았다. 채택 후 기존 폴더/명명 규칙으로 최종본만 LFS 등록한다.
+
+| 전달 파일 | SHA-256 |
+|---|---|
+| `formation_uncovered.png` | `93e15b80e5158706c7dfafb3cdb22e63dc82e72e02f5b125cd25b4d0363ce512` |
+| `formation_uncovered_danger.png` | `f10f69d81dfe66919d61c44149bb2203407b2ceeaf9fbb4adb3321ff249c23e0` |
+| `formation_danger.png` | `15f61d014fc70f79a07e9140681f6ebd716b2b3db27a1be4d1abacf5e9a3c841` |
+| `formation_pressure.png` | `0ce9b89e233d408ff6c9bb16401c9840d91ed3fcf3daff4f73b8f6b6c52fee9b` |
+| `formation_ring_8.png` | `dddf31161d95fab7a25af9fade26cf66fcab750607457a87ff2b6483f756271f` |
