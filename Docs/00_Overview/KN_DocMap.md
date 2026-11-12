@@ -97,6 +97,7 @@
 | `ART_StyleGuide` | 🔵 | Review | |
 | `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
+| `ART_EchoSpec` | 🟡 | Review | 잔향이 외형 규격 — 본체 그림 처리 규칙 · "한 발짝 뒤" · 또렷함 = 공명 · ⚠ 기억형 원칙 충돌 · ③ 5건 (A-04) |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
