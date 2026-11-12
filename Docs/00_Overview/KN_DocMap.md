@@ -107,6 +107,7 @@
 | `ART_EchoSpec` | 🔵 | Approved | 잔향이 외형 규격 — ③ 5건 D-48 확정 (A-04) · 전용 그림은 추후 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
+| `ART_ReviewSheet` | 🟡 | **P0** | Ready — 시안 대기 · 짝짝이 기준(유지 / 바꿔도 됨) · 양말 카라반 "부분 → 구조 → 쓰임" · 컨셉 대조 · 기술 검사 11 · 가이드 §15 · 판정 | 캐릭터 시안 검수 대조표 (D-46 #5 대표 진행안) |
 
 ---
 
