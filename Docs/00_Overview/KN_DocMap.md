@@ -45,15 +45,15 @@
 | `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
 | `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
 | `SYS_Evolution` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-45 확정 (K-02) | EvolutionSystem |
-| `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
+| `SYS_Costume` | 🟡 | P1 | Review — 짝짝이만 10종 · ⚠ 능력치 합계 +49% vs D-29 #6 상한 +10% · D-45 직업 형태 → 외형 이전 규칙 · ③ 7건 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-51 확정 (K-09) · 결제 전 P0 = 확률 표시 · 서버 뽑기 | GachaSystem · GachaMilestoneSystem |
-| `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
+| `SYS_Atelier` | 🟡 | P1 | Draft — **코드 없음, 신규 설계** · 수선점 레벨 = 수선 작업대로 이전 + 기억 베틀(잔향 친화) · 기억등(소환 상한 12→20) · ③ 8건 | (없음 — 지금은 GrowthSystem 레벨 1축) |
 | `SYS_Dispatch` | 🟡 | P1 | Review — 원정 탭 = 유실표 장부 · 의뢰 · 던전 · ⚠ 파견 중 편성 불가 가드레일(M1) · 구역 이름 = 기억등 지역 · ③ 6건 | ExpeditionSystem · ExpeditionDatabase |
-| `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
+| `SYS_Dungeon` | 🟡 | P1 | Review — 코드 완성 · 축복 풀 비어 꺼짐 · 입장권 모아 두기 꺼짐 · 컨셉 "기억의 안쪽" · 달빛 확률 상한 · ③ 6건 | DungeonSystem |
 | `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
 | `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
 | `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
-| `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
+| `SYS_Codex` | 🟡 | P1 | Review — 6분류 · 첫 발견 별조각 ≈ 2,585 · ⚠ 시너지 보너스 = 죽은 능력치(불빛 충전 %) → 잔향 수급 % · ③ 6건 | CodexSystem |
 | `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
 | `SYS_Shop` | 🔴 | P2 | 대기 | ShopSystem |
