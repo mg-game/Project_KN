@@ -48,7 +48,7 @@
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-51 확정 (K-09) · 결제 전 P0 = 확률 표시 · 서버 뽑기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
-| `SYS_Dispatch` | 🟡 | P1 | Review — 원정 탭 = 유실표 장부 · 의뢰 · 던전 · ⚠ 파견 중 편성 불가 가드레일(M1) · 구역 이름 = 기억등 지역 · ③ 6건 | ExpeditionSystem · ExpeditionDatabase |
+| `SYS_Dispatch` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-54 확정 (안전장치 M1) | ExpeditionSystem · ExpeditionDatabase |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
 | `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
 | `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
