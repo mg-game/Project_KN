@@ -51,7 +51,8 @@
 | `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
 | `SYS_Synergy` | 🔴 | P1 | 대기 | SynergySystem (계보 공명 포함) |
-| `SYS_Relationship` | 🔴 | P1 | 대기 | AffinitySystem · CheerSystem |
+| `SYS_Rescue` | 🟡 | P1 | Review — 유실표 → 구조 전투 → 합류 6단계(기존 진행에 묶기) · 장당 구조 2명 · 소환 풀 · ③ 7건 (K-08) | GachaSystem · AffinitySystem · StorySystem |
+| `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
 | `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
