@@ -78,6 +78,7 @@
 UI: "보유 효과 공격력 +7% / 최대 +10%"  (CostumeListView 문구에 상한 추가)
 ```
 - 짝짝이 지금 10종 → 값을 1~3%로 다시 매김 (합 ≈ 20 → 상한 10에서 멈춤). 즉 **외형 4~5개면 효과 최대**, 나머지는 수집.
+- 재배정 값 (D-55, I-10c): nightkeeper 2 · cheer 2 · mail 1 · traveler 2 · festival 3 · caterpillar 2 · plush 2 · puppet 2 · sleepcap 3 · threadweb 2 = 합 21.
 
 ### 2.3 D-45 직업 형태 9종 → 외형 (P1)
 | 항목 | 방향 |
