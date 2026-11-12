@@ -98,7 +98,7 @@
 | 문서 | 상태 | 진행 | 메모 |
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
-| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41. ART-01 PNG6개 (§5)·ART-02 수선등 구성 (§6)·ART-03 창문5단계 (§7)·ART-04 링/마커 (§8)·ART-06 예고/압박 (§9) 검토, 채택/게임 연결 미실시 |
+| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41. ART-01 PNG6개 (§5)·ART-02 수선등 구성 (§6)·ART-03 창문5단계 (§7)·ART-04 링/마커 (§8)·ART-06 예고/압박 (§9)·ART-07 HUD (§10) 검토, 채택/게임 연결 미실시 |
 | `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
 | [ART_CharacterHandoff](../07_Art/ART_CharacterHandoff.md) | 🔵 | Review | 공통 마스터. 첨부 v2 통합, 카드·별도 텍스트·아트 전달 |
 | [ART_CharacterWorkflowAudit](../07_Art/ART_CharacterWorkflowAudit.md) | 🔵 | Review | 구조 분석·보존/변경·충돌·검수·신규 캐릭터 추가 |

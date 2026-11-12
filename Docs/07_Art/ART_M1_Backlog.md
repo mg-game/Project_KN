@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (ART-01~04·06 후보 기록, 기존 목록 보존) |
+| 최종 수정 | 2026-11-12 (ART-01~04·06~07 후보 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -331,3 +331,69 @@ PNG·기존 원본/해시·마스터/프롬프트·분리/검사JSON·4상태/�
 |---|---|
 | `wave_preview_arrow.png` | `e20602a259719ccdb707b26a2aa12ff07e1e580a801412ead86037a9ea65cba4` |
 | `wave_pressure_marker.png` | `0ce9b89e233d408ff6c9bb16401c9840d91ed3fcf3daff4f73b8f6b6c52fee9b` |
+
+## 10. ART-07 상단 HUD 소품 — 시계·웨이브·남은 적 후보 (2026-11-12)
+
+[전투 UI](../03_UI_UX/UI_Battle.md) §2②③④·[전투 시스템](../01_System/SYS_InGameBattle.md) §18.3·[스타일 가이드](./ART_StyleGuide.md) §9를 확인했다. **시계와 보스 해골2개만 생성**하고 일반 웨이브 단추·HUD 패널·남은 적 배지 바탕은 기존 원화를 재사용한다. 시간/웨이브/HP/적 수는 별도 동적 텍스트/표시이며 기획 수치·게임 데이터를 확정하지 않는다.
+
+### 10.1 기존 실물과 생성 참조
+
+| 기존 리소스 | 확인·용도 | SHA-256 |
+|---|---|---|
+| [UI/ui_pip_button.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_pip_button.png) | 128 RGBA, 일반 웨이브 칸에 그대로 재사용 | `8aff68892c636ff221b860898d7e0f3c53bb050038a58c9c18658bf2dcf7b647` |
+| [Icons/guardian.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Icons/guardian.png) | 256 RGBA, 생성 시 보라/골드·외곽·셀 채색 직접 참조 | `ec15d7ca2ff862c47c76e83132d851795eca365d79c5af86229a8994993a5311` |
+| [Icons/echo.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Icons/echo.png) | 256 RGBA, 생성 시 동화풍 재질/크림 하이라이트 직접 참조 | `c4ae714ffa2cae08d3d96277f75980f1fee2af567a4f9f24772563c35ae72444` |
+| [UI/panel_night_9s.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/panel_night_9s.png) | 192×192 RGBA, HUD 바탕 원본 그대로 | `bb873455d9e47b6530301ad1439cdeae7378ce1250839ddc88083dd6d603d6a1` |
+| [UI/map_node_boss.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/map_node_boss.png) | 512 RGBA, 해골 없는 테두리임을 육안 확인. 이번 보스 칸에는 미사용 | `7db22ed39d75456cc5a1eaf09b03c0f49f1f86c50782fb16263e2dbb4434805d` |
+| [UI/ui_pill_night_9s.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_pill_night_9s.png) | 192×96 RGBA, 남은 적 숫자 배지 바탕 원본 그대로 | `5d8cc0ddcc9191849f939394a534f64a6730cfcf97a0382df6f3d1728eb49919` |
+
+원본6개 실물/해시를 보존했다. 이름이 clock/skull인 기존 이미지 검색도 확인했다. [BattleHud.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Battle/BattleHud.cs)의 현재 처치/보스 진행과 신규 UI의 제한시간/Wave/최후의 쇄도 표시를 구분하며 기존 HUD 코드를 바꾸지 않았다. [UITheme.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/UITheme.cs)의 어두운 바탕 글자 `Text #FBF6EE`, 경고 글자 `Negative #FF8A9E`, 현재칸 선 `GoldAccent #E8BE6A`를 검토에 사용했다.
+
+### 10.2 전달 PNG와 동적 정보 분리
+
+| 후보 파일 | 크기·처리 |
+|---|---|
+| `hud_clock.png` |128×128 RGBA, 보라 케이스/크림 시계판/굵은 바늘2개의 정적 시간 기호|
+| `hud_wave_boss.png` |128×128 RGBA, 크림색 둥근 해골·보라 눈구멍. 일반 단추와 형태로 구별|
+| `hud_wave_normal.png` |128×128 RGBA, 기존 단추 원본의 바이트 동일 복사|
+| `hud_panel_9s.png` |192×192 RGBA, 기존 패널 원본의 바이트 동일 복사|
+| `hud_remaining_badge.png` |192×96 RGBA, 기존 pill 원본의 바이트 동일 복사.2:1 전체 그림 표시|
+
+시계/해골은 guardian/echo 실물을 직접 참조해 같은2172×724 RGBA 마스터에 생성했다. 사각 클립·동일 비율 축소·중앙 배치만 적용했다. 작은 금속 장식/입체 렌더를 늘리지 않고 큰 시계 바늘·눈구멍·두개골 실루엣을 우선한다. 새 글자/숫자/카운트다운/적 수를 PNG에 굽지 않았다. 시계 바늘은 정적 상징이며 실시간 잔여 시간이나 진행률을 가리키지 않는다.
+
+웨이브 `n/N`·N개 칸·마지막 칸의 해골·현재칸 밑줄·미도달 알파·보스 HP바/수치·남은 적 숫자는 별도 UI 레이어다. HP바는 검토용 코드 도형이며 새 바 텍스처를 납품하지 않았다. 일반/보스 칸은 같은32px로 표시하되 PNG 실루엣으로 구분한다. 미도달 알파0.32·현재칸 밑줄·시간을 초 단위 올림 표시하는 방식은 검토 제안이다.
+
+### 10.3 기존 배지 분할 문제와 보존 방식
+
+[패널 .meta](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/panel_night_9s.png.meta)·[배지 .meta](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_pill_night_9s.png.meta)의 Sprite Border는 모두 좌/하/우/상48px다. 패널192×192은 중앙96×96을 유지해 검토에서도48px 소스 분할을 썼다(CSS 표시 테두리24px, Unity 최종 크기 계약 아님).
+
+배지는 **높이96 = 위48+아래48**로 중앙 높이가0이다. 브라우저에서 이 값으로 높이를 늘렸을 때 중앙이 비어 보이는 문제를 확인했다. 기존 그림/.meta를 수정하지 않고, 이번 후보에서는 **Simple 전체 그림을112×56, 원래2:1 비율로 표시하고 숫자만 겹친다.** ‘남은 적’ 문구는 그 옆 별도 텍스트다. 임의9-slice 재설정/늘어난 배지 PNG/.meta를 만들지 않았다. 기존 `_9s` 원본의 최종 엔진 사용 방식을 이 문서에서 바꾸지 않으며, 이번 검토 표시 방법만 제안한다.
+
+### 10.4 상태·검토 결과
+
+| 상태 | 검토 표시 |
+|---|---|
+| 보통 | 시계/시간·Wave n/N·일반 단추/마지막 해골 |
+| 잔여20% 이하 | 시간 글자 빨강/밑줄,1초 주기 점멸. 시계/나머지HUD 유지 |
+| 보호 튜토리얼 | 시계/시간 숨김,웨이브 유지 |
+| 보스 등장 | 보스 HP 영역 표시 |
+| 보스 처치 후 잔존 적 있음 | 보스 HP 대신 ‘남은 적 N’ 배지 |
+| 깜빡임 줄이기 | 경고색/밑줄 유지,알파1 고정 제안 |
+
+**20% 이하·1초 점멸·보호 튜토리얼(1-1~1-3)·HP→쇄도 카운터 전환은 승인 UI/시스템 근거**다. 경고 최저 알파0.55·사인형 변화·밑줄·배지 위치·미도달0.32·현재칸 표시·줄바꿈은 검토 제안이다. 숫자/문구 예시는 실제 스테이지/밸런스 값이 아니다.
+
+- 생성128 PNG2개는 RGBA·투명 테두리·중심64/64·주요 연결 성분1개·최대 알파254를 확인했다. 기존 복사3개는 원본과 바이트/해시까지 같다. 배경 패널/배지의 원래 크기/알파는 보존하며 아이콘용 투명 테두리 규칙을 잘못 적용하지 않는다.
+- 실제 시계/일반단추/해골 PNG를 **128/64/48/32px,딥 퍼플/크림** 위에서 육안 구분했다. 실제 모든 기기/배경에서의 보장은 아니다.
+- 720px6상태(보통/20%/점멸저점/쇄도/튜토리얼/줄이기),320px3배치(4칸/12칸 줄바꿈/8칸+9999)를 검사했다. 텍스트·슬롯 넘침/문구 간 겹침 없음,마지막 해골1칸/현재칸1개·시간 숨김·보스HP/남은적 배타 표시를 확인했다.12칸/9999는 스트레스 예시이며 실제 상한이 아니다.
+- 20.1%→경고아님,20%/19.9%→경고,튜토리얼 낮은 시간→시간 경고숨김의4경계 입력을 검사했다. 초 단위 올림 때문에20.1%/20% 표시 숫자가 다르게 보이는 것은 검토 포맷 제안이다.
+- 위상10샘플과 실제 브라우저2초 재생2회에서 일반 경고 알파0.55~1/줄이기1 고정·시간00:48 유지 상태를 확인했다. **알파 연출만 검사하며 실제 타이머를48초에서 진행/정지시킨 게임 테스트가 아니다.**
+
+**남음:** 실제 BattleHud/타이머·Wave/HP/적 수/튜토리얼 플래그·정지/배속/실패/클리어 연결,Sprite Simple/Sliced·폰트/안전영역·화면 비율·가림/VFX·기기/색 공간·DD/사람 확인·최종 채택. Unity 실행/게임 적용은 미실시다. 생성 프롬프트/마스터·후보5개·원본6개·9배치/크기비교·재생HTML·변환/검사/해시·실기 확인표는 채팅 묶음으로 전달한다. 외부 공유 URL은 미등록이며 Git에는 기존 문서만 보완한다. 새 PNG/폴더/.meta/코드/데이터/설정/기존 원화 변경은 없다.
+
+| 후보 파일 | SHA-256 |
+|---|---|
+| `hud_clock.png` | `e667758fe447171c33c28594887c122742963804b5d9abe06c77dceed46dd9d7` |
+| `hud_wave_boss.png` | `46e79f39cfafaaad0688226465d8bf6b6bea15af04cb044506d06c2ac3c8b860` |
+| `hud_wave_normal.png` | `8aff68892c636ff221b860898d7e0f3c53bb050038a58c9c18658bf2dcf7b647` |
+| `hud_panel_9s.png` | `bb873455d9e47b6530301ad1439cdeae7378ce1250839ddc88083dd6d603d6a1` |
+| `hud_remaining_badge.png` | `5d8cc0ddcc9191849f939394a534f64a6730cfcf97a0382df6f3d1728eb49919` |
