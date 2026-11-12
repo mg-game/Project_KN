@@ -44,7 +44,7 @@
 | `SYS_Economy` | 🔵 | **P0** | ①②③ 완료 · D-30 확정 | CurrencySystem · InventorySystem |
 | `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
 | `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
-| `SYS_Evolution` | 🔴 | P1 | 대기 | EvolutionSystem |
+| `SYS_Evolution` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-45 확정 (K-02) | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
@@ -65,7 +65,7 @@
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
 | [캐릭터별 원본 진입점](../02_Content/CNT_Character_Main.md#12-캐릭터-원본--외형변경-문서-연결) | 🔵 | P1 | Review | 짝짝이·레이니·몽실. 설정 원문 보존·ID/이미지 연결 |
 | [외형변경 기획](../02_Content/CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) | 🟡 | P1 | Review / Draft | 밤지기·골목등불·촛농/밀랍. 원본 링크·분류·미정 표시 |
-| `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
+| `CNT_Character_List` | 🟡 | **P0** | Review — 로스터 정본 9명 · 희귀도 · 단계 목표(7 · 9 · 15) · 만나는 순서 · ③ 7건 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
@@ -81,7 +81,8 @@
 | `UI_Battle` | 🟡 | **P0** | Review — M1 상세 (하단 2열 · 수선등 · 성향 아이콘) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
 | `UI_Formation` | 🟡 | **P0** | Review — 8방위 링 · 빈 방위 빗금 · 파견 배지 | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (미리보기 레벨업 탭) | `GrowthPanel` · `GrowthLineageCardView` · `CharacterDetailPopup` |
-| `UI_Home` · `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
+| `UI_Home` | 🔵 | **P0** | ①②③ 완료 · ③ 6건 D-44 확정 (미리보기 홈 탭) | `MainTabController` · `TopBarView` · `BattleHud` · `Meta/*` |
+| `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
 
 ## 04_Balance · 05_DataTable
 
