@@ -77,6 +77,8 @@
 | `ring_telegraph_sec` | float | — | 1.5 | 1.0 ~ 2.0 | 예고 없는 360° = 가독성 실패 (P2) |
 | `ring_repeat_sec` (P2 4섹터 교대) | float | — | 20 | 15 ~ 30 | `CNT_Boss` §2.3 |
 | `phase_gap_sec` | float | — | 2 | — | 임계 동시 통과 시 행동 간격 |
+| `boss_stun_mult` · `boss_stun_immune_sec` 🆕 | float · float | 기절 그대로 | 0.5 · 3 | 0.3 ~ 0.7 · 2 ~ 5 | `CNT_Skill` §5 — 찰칵이 잔향이 연속 소환 보스 기절 고정 방지 |
+| `mong_resonance_gain` 🆕 | int | 불빛 +3% | 1 / 회 | 0.5 ~ 2 | `CNT_Skill` §2.1 · D-40 (`LampGain` → `ResonanceGain`) |
 | 1-10 변형 체력 | float | 931.1 (여왕 × 배율) | 여왕과 같음 | ×1.0 ~ ×1.3 | 페이즈 연출 시간만큼 길어지므로 먼저 같은 값으로 측정 |
 | `boss_fight_est_sec` (1-10) | float | — | 45 | 35 ~ 60 | §5 Time_Limit |
 
