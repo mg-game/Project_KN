@@ -32,6 +32,7 @@
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
 | `KN_Overview` | 🔵 | **P0** | Approved — D-35 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
 | `KN_Roadmap` | 🟡 | **P0** | Review — 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
+| `KN_Preview` | 🔵 | **P0** | Approved — D-42 | M1 화면 미리보기(아티팩트) 링크 · 운영 규칙 6개 · 갱신 기록 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
 
 ## 01_System
