@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-41) |
 | 작성자 | ① 요약: DD (코드 인용) · ②③: DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `EnemyDef` (`isBoss` · `minionId` · `gimmicks`) · `Boss_Phase` 🆕 · `Stage_Battle_Config.boss_id` 🆕 |
 | 관련 문서 | [`CNT_Enemy`](./CNT_Enemy.md) §2.0 · [`CNT_Stage_Chapter1`](./CNT_Stage_Chapter1.md) §2.3 · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §9.2 FINAL_WAVE · §18.3 · [`BAL_BattleKnobs`](../04_Balance/BAL_BattleKnobs.md) §4.5 · [`ART_M1_Backlog`](../07_Art/ART_M1_Backlog.md) ART-10 |
 | 근거 | 코드 `4b73a5a` — `BattleConfig.cs:128-136 · 290-305 · 536-550` · `BattleSimulator.cs:911 · 971-973 · 1041-1078 · 1096-1114` · `BattleSimulator.Gimmicks.cs:37-76 · 184-194` · `BattleSimulator.Status.cs:237` |

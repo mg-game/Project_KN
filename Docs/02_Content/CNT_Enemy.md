@@ -2,9 +2,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (D-40) |
 | 작성자 | ① 요약: DD (기개발 추출 인용) · ②③: DD |
-| 최종 수정 | 2026-11-12 (§2.0 좀나방 · 녹얼룩 대응 정정 · §2.4 M1 문구) |
+| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `EnemyDef` (`BattleConfig.enemies`) · `Wave_Config.enemy_group_id` |
 | 관련 문서 | [`CNT_Stage_Chapter1`](./CNT_Stage_Chapter1.md) §1.3 · §1.5(수치 정본) · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §3 · §12.2 · §17-D · L · [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) §3.3 망각 · [`SYS_Skill`](../01_System/SYS_Skill.md) · [`CNT_Boss`](./CNT_Boss.md) |
 | 근거 | 코드 `4b73a5a` — `Scripts/Data/BattleConfig.cs:486-551` · `BattleSimulator.Gimmicks.cs` |

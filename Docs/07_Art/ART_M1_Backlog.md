@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 

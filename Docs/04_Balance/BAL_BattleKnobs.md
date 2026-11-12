@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Draft |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | `Stage_Battle_Config` · `Wave_Config` · `Summon_Mode` · `BattleConfig.asset` |
 | 관련 문서 | [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §13.3 · §17(현재 값) · §18(M1 상세) · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) |
 

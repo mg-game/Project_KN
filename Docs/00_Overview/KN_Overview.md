@@ -2,9 +2,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (D-35 · D-57) |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (2부 M1 범위서 재정리 — D-27 ~ D-57) |
+| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_ConceptNarrative`](./KN_ConceptNarrative.md) · [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) · [`KN_DocMap`](./KN_DocMap.md) · [`decisions.md`](../decisions.md) D-12 ~ D-56 · 지시 이슈 #3 |
 

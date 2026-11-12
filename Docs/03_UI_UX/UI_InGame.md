@@ -2,9 +2,9 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (v0.1) · 화면 상세는 UI_* 문서가 정본 |
 | 작성자 | 대표 |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) · [`ART_StyleGuide`](../07_Art/ART_StyleGuide.md) |
 | 첨부 | [지킴이/잔향이 레벨업 와이어프레임](./images/UI_InGame_GrowthLevelup_Wireframe.png) · 변환 전 원본 [`UI_InGame_v0.1.docx`](../99_Archive/Source/UI_InGame_v0.1.docx) (참고용, 정본은 이 md) |

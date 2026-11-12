@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) (설정 정본) · [`ART_StyleGuide`](./ART_StyleGuide.md) (스타일 정본) · [`ART_M1_Backlog`](./ART_M1_Backlog.md) |
 

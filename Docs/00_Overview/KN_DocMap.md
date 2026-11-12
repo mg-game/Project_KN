@@ -2,11 +2,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 (PR #14~#19 반영) |
+| 최종 수정 | 2026-11-13 (검수 1회차 — 상태 맞춤 · `_Templates` · ART 행 형식) |
 | 관련 테이블 | - |
-| 관련 문서 | [`decisions.md`](../decisions.md) D-25 · D-26 · [`KN_Glossary`](./KN_Glossary.md) · [`_Template_System`](../_Template_System.md) |
+| 관련 문서 | [`decisions.md`](../decisions.md) D-25 · D-26 · [`KN_Glossary`](./KN_Glossary.md) · [`_Template_System`](../_Templates/_Template_System.md) |
 
 > Project_KN 기획서 전체 목록과 진행 상태. **DD가 관리**하며, 문서 PR이 머지될 때마다 이 표를 갱신한다.
 > 시스템 문서 하나 = 문서 하나 (D-26): ① 현재 구현(As-built) ② 기획 방향(To-be) ③ 차이 → 결정 필요.
@@ -31,11 +31,12 @@
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
 | `KN_Overview` | 🔵 | **P0** | Approved — D-35 · 2부 M1 범위서 재정리(작업 목록 한 장 🅰/🅱) D-57 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
-| `KN_Roadmap` | 🟡 | **P0** | Review — 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
+| `KN_Roadmap` | 🟡 | **P0** | Review — 일정 · 카드 상태 2026-11-13 갱신 | 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
 | `KN_Preview` | 🔵 | **P0** | Approved — D-42 | M1 화면 미리보기(아티팩트) 링크 · 운영 규칙 6개 · 갱신 기록 |
 | `KN_M1_DevBrief` | 🔵 | **P0** | 정본 — 이슈 #3 지시 · 보충을 PR 묶음별 합본 · 어긋남 5건 정리 (보름달 +30% D-58) | M1 개발 지시 합본 (기개발이 11/24부터 읽는 한 장) |
 | `KN_M1_Playtest` | 🔵 | **P0** | Approved — D-58 (기록 보내기 계정 · 데이터 탭 · 기록 줄 2개 · 내부 → 외부) | M1 플레이테스트 질문지 · 진행 방법 |
-| `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
+| `Principles` · `Notion_Hub` | 🔵 | - | Approved (헤더 추가 2026-11-13) | |
+| `KN_DocReview` | 🔵 | - | 기록 — 문서 검수 결과 · 고친 것 · 남은 것 (검수할 때마다 위에 추가) | 2026-11-13 1회차 |
 
 ## 01_System
 
@@ -107,7 +108,7 @@
 | `ART_EchoSpec` | 🔵 | Approved | 잔향이 외형 규격 — ③ 5건 D-48 확정 (A-04) · 전용 그림은 추후 |
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
-| `ART_ReviewSheet` | 🟡 | **P0** | Ready — 시안 대기 · 짝짝이 기준(유지 / 바꿔도 됨) · 양말 카라반 "부분 → 구조 → 쓰임" · 컨셉 대조 · 기술 검사 11 · 가이드 §15 · 판정 | 캐릭터 시안 검수 대조표 (D-46 #5 대표 진행안) |
+| `ART_ReviewSheet` | 🔵 | Approved (양식) · 시안 대기 | 캐릭터 시안 검수 대조표 — 짝짝이 기준 · 양말 카라반 "부분 → 구조 → 쓰임" · 기술 검사 11 · 가이드 §15 (D-46 #5) |
 
 ---
 

@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Ready (시안 대기) |
+| 상태 | Approved (양식 — D-46 #5 진행안) · 시안 대기 |
 | 작성자 | DD |
 | 최종 수정 | 2026-11-13 |
 | 관련 문서 | [`ART_Character_Brief`](./ART_Character_Brief.md) §0.4 · §2 (진행 D-46 #5) · [`ART_StyleGuide`](./ART_StyleGuide.md) §15 · [`ART_BattleSpriteSpec`](./ART_BattleSpriteSpec.md) §2.1 · §2.2 · [`ART_EchoSpec`](./ART_EchoSpec.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) 짝짝이 · [`SYS_Evolution`](../01_System/SYS_Evolution.md) (D-45 개화 B = 양말 카라반) · [`SYS_Costume`](../01_System/SYS_Costume.md) (D-55) |
