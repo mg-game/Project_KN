@@ -44,7 +44,7 @@
 | `SYS_Economy` | 🔵 | **P0** | ①②③ 완료 · D-30 확정 | CurrencySystem · InventorySystem |
 | `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
 | `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
-| `SYS_Evolution` | 🔴 | P1 | 대기 | EvolutionSystem |
+| `SYS_Evolution` | 🟡 | **P0** | Review — 3단(유실 · 기억 각성 · 개화 A/B) · 돌파 20 연동 · 짝짝이 예외 · 새 아트 8장 · ③ 7건 (K-02) | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
