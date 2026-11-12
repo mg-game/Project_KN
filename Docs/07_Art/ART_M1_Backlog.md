@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 (ART-01~04 후보 기록, 기존 목록 보존) |
+| 최종 수정 | 2026-11-12 (ART-01~04·06 후보 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -275,3 +275,59 @@ PNG·기존 원본/해시·마스터/프롬프트·분리/검사JSON·4상태/�
 | `formation_danger.png` | `15f61d014fc70f79a07e9140681f6ebd716b2b3db27a1be4d1abacf5e9a3c841` |
 | `formation_pressure.png` | `0ce9b89e233d408ff6c9bb16401c9840d91ed3fcf3daff4f73b8f6b6c52fee9b` |
 | `formation_ring_8.png` | `dddf31161d95fab7a25af9fade26cf66fcab750607457a87ff2b6483f756271f` |
+
+## 9. ART-06 웨이브 예고 마커 — 기존 원화 재사용 후보 (2026-11-12)
+
+[전투 UI](../03_UI_UX/UI_Battle.md) §2⑩의 **다음 웨이브 스폰 섹터·링 가장자리·3초 전 표시**, [기존 목록](#1-목록)의 예고 깜빡임/지속 압박 고정 상태와 [스타일 가이드](./ART_StyleGuide.md) §9를 확인했다. 기존 화살촉이 목적에 맞아 **새 AI 원화는 생성하지 않고** 봉제 화살촉·링 효과를 재사용했다. 압박은 [ART-04 후보](#8-art-04-8방위-링-세트--재사용마커-후보-2026-11-12) 수평3줄과 같은 PNG를 공유한다. 두 작업 모두 최종 채택/게임 적용은 미실시다.
+
+### 9.1 원본·선택 근거
+
+| 기존 리소스 | 확인·역할 | SHA-256 |
+|---|---|---|
+| [UI/ui_chevron.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_chevron.png) | 128×96 RGBA, 봉제 단일 화살촉. 예고 화살표에 재사용 | `bec73bd648d07d360f0ad42bc792bd8e46334d9c88b52e2ea7ea9cdd9917a1b3` |
+| [VFX/motif_downarrow.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/VFX/motif_downarrow.png) | 128 RGBA, 두꺼운 판형 아래화살표. 검토 후 사용하지 않음 | `38d75558632099e292d07308db9d46029d2c98e27965fb298078b4f4410de5b8` |
+| [FX/ring_glow.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/FX/ring_glow.png) | 512 RGBA, 흰색/알파 링. 따뜻한 Lamp 틴트 검토 기준/실제 합성 | `88e6dd58dc5c17427a2a620811b4b3d04a20c2a9f34a4b8716c2a32b7fe4febf` |
+| [UI/ui_ring_stitch.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/UI/ui_ring_stitch.png) | 512 RGBA, 기존 방위 링 실물/해시 보존. 이번 예고 화면에서는 ring_glow 사용 | `8f7c1ca77550a1d7c6af7be2feff6922daedaf283c844ceb6e8f1f33cb3cd8f9` |
+| [Battle/field_tall.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/field_tall.png) | 1080×2048 RGB, 기존 바닥. 정적 크롭 위32/48px 비교 | `9b00bf54464a05f46bc1e3d1d4431ea987725613d51d70c3f6fee92baf214f28` |
+| [Battle/shop.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Battle/shop.png) | 768 RGBA, 원본 그대로 합성해 안쪽 방향 확인 | `f6972deb9707550402ca159f32fc3ff793c837d06e247f5402e7246d44bd2078` |
+
+기존6개 실물/해시를 보존했다. [DangerArrowView.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Battle/DangerArrowView.cs)는 현재 **실시간 위협도**로 크기/행진/색/가림을 조절하는 코드이며 다음 웨이브 예고 타이머가 아니다. 이번 검토는 그 코드에 새 예고를 연결하거나 기존 위협도를 다음 웨이브 데이터로 대체하지 않았다. [DirectionRingView.cs](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Scripts/UI/Battle/DirectionRingView.cs)의 Lamp/GoldAccent 링 톤을 참고했고 새 확정 색 토큰을 추가하지 않는다.
+
+### 9.2 전달 PNG·방향·색
+
+| 전달 파일 | 규격·처리 |
+|---|---|
+| `wave_preview_arrow.png` |128×128 RGBA, ui_chevron 사각 클립·−90° 강체 회전·동일 비율 확대·중앙 배치. 기본 방향 위쪽/로컬+y|
+| `wave_pressure_marker.png` |128×128 RGBA, ART-04 `formation_pressure.png`의 **바이트 동일 복사본**. 새 원화/새 디자인 아님|
+
+화살표의 중성 흰색/봉제/회색 외곽/작은 원본 별을 유지했다. 검토 합성에서만 `UITheme.Lamp #FFD98A`를 곱하고, PNG에 틴트·점멸·문자·카운트다운을 굽지 않았다. 압박 PNG도 전체 알파 상태를 보존하고 검토에서만0.45 알파로 옅게 표시한다. 채택 시 ART-04와 같은 리소스를 참조해도 되며 전달 파일명 때문에 중복 에셋을 등록하지 않는다.
+
+방위θ는 N부터 시계방향0/45/90/135/180/225/270/315°다. 브라우저의 위쪽 기준 화살표에 `θ+180°`를 적용해 **수선점 안쪽**을 향하게 했다.8개 방향 벡터와 중심 벡터의 내적1을 확인했다. Unity 좌표/회전 부호와는 별도로 실제 연결 시 확인한다. 안쪽 방향은 기존 DangerArrowView와 일관된 **검토 제안**이고, 승인 UI는 화살표의 구체적 방향/알파/주기를 별도로 고정하지 않았다.
+
+### 9.3 시간·상태 제안
+
+| 상태 | 예고 화살표 | 지속 압박 |
+|---|---|---|
+| 다음 웨이브 예고 중 | 해당 스폰 방향에 표시, 검토 알파0.35~1.0 | 지정1방위 고정0.45 |
+| 예고 종료(3초 도달) | 숨김 | 유지 |
+| 깜빡임 줄이기 | 예고 중 알파1 고정, 종료 때 숨김 | 고정 유지 |
+| 예고/압박이 같은 방위 | 링 가장자리 화살촉 | 안쪽 반지름으로 분리해 수평3줄 유지 |
+
+**3초는 승인 UI 근거**다. **주기1초·사인형 알파0.35~1·압박0.45·Lamp 틴트·안쪽 방향·반지름 분리**는 확정 게임 계약이 아닌 검토 제안이다. 검토512px 캔버스에서 화살표48px/반지름189, 압박40px/반지름139로 두었다. 실제 전장/HUD/안내줄·다른 VFX·원근/원형 결정에 따라 조정한다. 예고는 스폰 예정 섹터, ART-04 ▲는 스테이지 위험 방위, 현재 DangerArrowView는 실시간 위협도로 의미가 다르다. 하나의 불리언으로 합치지 않는다.
+
+이 후보는 **각1장의 PNG와 코드 알파/회전으로 표시**한다. 점멸 프레임 시트를 만들지 않는다. 검토 HTML에는3초 재생·시간 슬라이더·깜빡임 줄이기 예시를 포함했다. 게임 일시정지/배속/스킵/앱 복귀/연속 웨이브에 대한 타이머 구현은 하지 않았다.
+
+### 9.4 검토 결과·제한
+
+- PNG2개 모두128 RGBA·테두리 알파0·내용 중심64/64. 화살표 alpha>16 bbox `(10,24,118,104)`, 주요 연결 성분1개·최대 알파255. 압박 bbox `(8,21,120,107)`, 주요 성분3개·최대 알파254. 원본/압박 공유 해시를 확인했다.
+- 512px **시작/점멸 저점/종료/깜빡임 줄이기/8방위/같은 방위 중첩**6상태를 육안/DOM으로 검토했다.8방위는 가상 스폰 예시이며 실제 스테이지 값을 만들지 않았다.
+- 32/48/128px를 딥 퍼플/크림 위에 표시하고, 원본 바닥의 정적 크롭 위에서32/48px Lamp 화살표와0.45 압박 줄무늬를 구분했다. 크림 등 밝은 배경에서는 화살표 대비가 약하므로 모든 배경/실제 기기 가독성 통과로 주장하지 않는다.
+- 시간18샘플과 실제 브라우저3초 재생2회(일반/줄이기)를 검사했다. 예고 중 일반 모드는 알파 저점<0.4·고점>0.95, 줄이기는1 고정이며, 둘 다3초 끝에서 화살표 숨김/압박0.45 유지. 이는 **검토 HTML의 동작 검증**이며 Unity/게임 시간/실제 스폰 연결의 검증이 아니다.
+- **남음:** 실제 다음 웨이브/지속 압박 데이터·8방위 기하·3초 예고/정지/배속/스킵/앱 복귀·기존 실시간 위협/가이드 회피와 공존·실제 밝은 영역/다중 VFX/마커 크기·접근성/기기·Unity 임포트/알파/색 공간·DD/사람 확인·최종 채택.
+
+새 PNG/.meta/폴더/코드/데이터/설정/기존 이미지를 Git에 추가·교체하지 않았다. 원본6개·후보2개·재사용 근거·변환/검사JSON·6상태/바닥 비교·재생HTML/스크립트·실기 확인표·해시를 채팅 묶음으로 전달한다. 새 이미지 생성 프롬프트는 **미사용**이며 외부 공유 URL은 미등록이다. 기존 문서 기록만 보완하고 최종 채택 시 기존 폴더/명명/LFS 규칙을 따른다.
+
+| 후보 파일 | SHA-256 |
+|---|---|
+| `wave_preview_arrow.png` | `e20602a259719ccdb707b26a2aa12ff07e1e580a801412ead86037a9ea65cba4` |
+| `wave_pressure_marker.png` | `0ce9b89e233d408ff6c9bb16401c9840d91ed3fcf3daff4f73b8f6b6c52fee9b` |
