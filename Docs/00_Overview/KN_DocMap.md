@@ -70,7 +70,7 @@
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
-| `CNT_Story` | 🟡 | P1 | Review — 장 = 기억등 지역 7 · 프롤로그 컨셉판 · 1장 스테이지별 박자 11 · 튜토리얼 "불빛 게이지" 교체 · 동화책 재배치 · ③ 7건 | `StoryIntroView` · `MetaContent.Story` · `MetaContent.Ftue` |
+| `CNT_Story` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-53 확정 (프롤로그 · 1장 M1) | `StoryIntroView` · `MetaContent.Story` · `MetaContent.Ftue` |
 
 ## 03_UI_UX
 
