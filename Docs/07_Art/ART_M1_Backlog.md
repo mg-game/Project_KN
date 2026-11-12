@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-12 (ART-01 후보 제작 기록, 기존 목록 보존) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -30,6 +30,7 @@
 | ART-12 | **보름달 기믹 아이콘** — 효과가 "잔향 수급 +30%"로 바뀜 | 기믹 안내 | — | 128 | `UI/moon.png` 재사용 → 아이콘에 잔향 표식만 추가 | W3 | P2 |
 | ART-13 | **우두커니 받침 대비 보정** — 바닥(L≈83) 대비 +27로 묻힘 (`ART_BattleSpriteSpec` §1.4) | 전장 지킴이 | 받침 색만 밝게 (몸 그림 유지) | 256 | `Battle/guardian_pad*.png` 해당 색 1장 | W3 | P1 |
 | ART-14 | **골무 껍데기 외곽 보정** — 바닥과 밝기 차이 −2 | 전장 망각체 | 밝은 외곽 1 px(전장 기준, 원본 256에서 ≈ 3 px) 추가 | 256 | `Enemies/enemy_thimble.png` | W3 | P1 |
+| ART-15 | **프롤로그 그림 2장** — ① 문 닫은 분실물 보관소 · 이름 지워진 열쇠 · 벽의 문 ② 불 켜진 수선점에서 깨어나는 몽실 · 짝짝이 (D-53 #2, `CNT_Story` §2.2) | 인트로 | 기존 인트로 그림 크기 · 톤 | 인트로 화면 | `Story/intro_*` | W3 | P1 (없으면 기존 그림 + 새 문구로 M1) |
 
 ## 2. 판단 메모 (DD)
 - **ART-05 부채꼴은 코드로**: 섹터 폭 · 사거리가 성향 · 지킴이마다 달라 스프라이트로는 변형이 너무 많다.
@@ -50,3 +51,52 @@ Game-ready 2D mobile UI icon for a whimsical fairy-tale idle defense RPG. Soft s
 2. DD 검수: 스타일 가이드 §15 체크 · 32px 축소 가독성 · 상태 변형 개수
 3. 대표 채택 결재 → 최종본만 PR (LFS), 파일명 · 경로는 §1 표 기준
 4. 기개발이 화면에 연결 (I-10 해당 PR)
+
+## 5. ART-01 행동 성향 아이콘 — 제작 후보 (2026-11-12)
+
+사용자 “아트 작업 진행해”에 따라 우선 3종 캐릭터의 선정 핵심 형태/부속을 후속 점검하고, P0 ART-01 시안을 제작했다. [전투 UI](../03_UI_UX/UI_Battle.md)·[편성 UI](../03_UI_UX/UI_Formation.md)의 성향 표시와 [스타일](./ART_StyleGuide.md) §9를 기준으로 한다. 기존 목록의 범위·우선순위·필요 상태는 보존한다.
+
+**상태: 시안·128 PNG·축소 검토 후보 준비. DD/사람 확인·최종 채택·Unity 연결은 미실시.** ART-01을 게임 적용 완료로 승격하지 않는다. 나머지 ART 항목의 제작 상태도 변경하지 않는다.
+
+### 5.1 기존 리소스 재사용 검토·참조
+
+- 기존 [guardian.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Icons/guardian.png)와 [echo.png](https://github.com/mg-game/Project_KN/blob/4b73a5a33c22d1b6246794c86fdbf7b27db281b0/Assets/_Project/Art/Icons/echo.png)를 LFS 실물·해시와 대조하고 육안 확인했다. 두 파일과 `.meta`는 보존했다.
+- guardian은 별·바늘이 있는 역할 방패이고 echo는 유령 원형 배지여서 성향의 화살/원 화살표/방패 3기호를 그대로 대체하지 않는다. 두 파일은 보라/골드·형태·재질·렌더링의 직접 이미지 참조로 사용했다.
+- 공통 보라 원형 배지·절제된 골드 테두리를 두고 큰 단일 기호로 구분했다. 곁 지키기는 원형 배지 안의 단순 방패로, 기존 별/바늘 역할 방패와 세부를 구분한다. 신규 게임 규칙·성향 이름·효과를 만들지 않는다.
+- guardian SHA-256 `ec15d7ca2ff862c47c76e83132d851795eca365d79c5af86229a8994993a5311`, 71,409 bytes. echo `c4ae714ffa2cae08d3d96277f75980f1fee2af567a4f9f24772563c35ae72444`, 89,363 bytes. 기준은 PR #2 `4b73a5a`다.
+
+### 5.2 생성·상태·PNG
+
+| 성향 | 기호 | 켜짐 후보 | 흐림 후보 |
+|---|---|---|---|
+| 앞장서기 | 북동쪽 단일 화살 | `behavior_charge.png` | `behavior_charge_dim.png` |
+| 함께 걷기 | 단일 시계방향 원 화살표 | `behavior_patrol.png` | `behavior_patrol_dim.png` |
+| 곁 지키기 | 단순 방패 | `behavior_hold.png` | `behavior_hold_dim.png` |
+
+한 장의 2172×724 RGBA 마스터에 서로 분리된 3기호를 생성했다. 알파>16의 열 구간으로 3개를 식별하고 **사각 클립·동일 비율 스케일·중심 배치**만 적용해 개별 128×128로 내보냈다. 흐림은 같은 그림에 **알파0.40을 적용한 기술 제안**이며, 확정된 엔진/UI 비활성 상태 계약이 아니다. 새로 다른 모양을 그리거나 임의 회색 재질로 바꾸지 않았다.
+
+6개 모두 128×128 RGBA, alpha>16 bbox `(9,8,119,120)`, 가로/세로 중심64, 테두리 알파0, 연결 성분1개를 확인했다. 켜짐의 최대 알파는254(거의 불투명), 흐림은102다. UI 가이드는 켜짐 최대 알파255를 별도로 요구하지 않으므로 값254를 오류/불투명255로 바꿔 표시하지 않는다.
+
+### 5.3 검수·전달·미정
+
+실제 저장된 6개 PNG를 기기 배율1에서 128/48/32px로 검토용 딥 퍼플 `#241B38` 위에 표시했다. **화살/원 화살표/방패를 육안 구분**했고, 흐림에서도 원기호는 유지된다. 검토 배경색은 실제 Unity UI 화면이나 신규 확정 컬러 토큰이 아니다.
+
+| 검사 | 결과 |
+|---|---|
+| 128 RGBA·테두리 알파0·중심·여백·연결 성분·상태 알파 | 6개 정의한 검사 충족 |
+| 32/48px 읽힘 | 이 검토 배경에서 육안 확인 |
+| 기존 데이터·리소스·GUID·UI 코드 | 변경 없음 |
+| 모든 UI 배경·실제 화면/입력 상태·Unity | 미실시 |
+| 흐림 강도·상태 처리·실제 파일명/경로 채택 | 제안·미정 |
+| DD·사람 확인·최종 채택 | 미실시 |
+
+이미지·실제 프롬프트·변환값·검사 JSON·32/48px 비교·해시를 채팅 전달 묶음으로 보존한다. Git에는 PNG·임의 `.meta`·새 폴더를 추가하지 않았으며 외부 공유 URL은 미등록이다. 채택 시 기존 `Assets/_Project/Art/Icons/`의 파일명/경로 규칙을 확인하고 최종본만 LFS에 등록한다.
+
+| 후보 파일 | SHA-256 |
+|---|---|
+| `behavior_charge.png` | `17fc000dbe3b6ac6aafb45674077eca1ee42af5092c3ac2a986ed844322ce8ca` |
+| `behavior_charge_dim.png` | `0ef0089bf97d5aacfc09c624fd92534853c398942ee299d76275ebeb012e2cde` |
+| `behavior_hold.png` | `8cfbced734e371200c07f324cfd0b1de44215170d82f9d8fefa93ef58df3a0d6` |
+| `behavior_hold_dim.png` | `7783dd0e76c352db13fdd769a698abdf19e5cca98e8bbb097b7662ac6022a2ab` |
+| `behavior_patrol.png` | `0cd54a7400e534ae3c1633456385cffd5354abbb28bad6c6976d2f791800c6b1` |
+| `behavior_patrol_dim.png` | `6f7f9543565b31dfe09067355020988fd3358607382c11a16ce1b6cf9f75b0ba` |
