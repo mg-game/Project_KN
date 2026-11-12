@@ -65,6 +65,7 @@
 | `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
+| `CNT_Skill` | 🟡 | **P0** | Review — 1장 5계보 스킬 표 · 슬롯 배치 · 잔향이 약한 판 · ③ 7건 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
