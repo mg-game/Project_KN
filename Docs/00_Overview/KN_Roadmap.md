@@ -58,7 +58,7 @@
 ### 3.1 기획
 | 카드 | 내용 | 우선 | 선행 |
 |---|---|---|---|
-| K-01 캐릭터 대조 · 로스터 🟡 [`CNT_Character_List`](../02_Content/CNT_Character_List.md) | I-7 결과로 S1 확정 → `CNT_Character_List` (계보 · 형태 · 원물 · 희귀도 · 역할 · 이름 정본) + 출시 로스터 계획(수 · 분포) | **P0** | I-7 |
+| K-01 캐릭터 대조 · 로스터 ✅ [`CNT_Character_List`](../02_Content/CNT_Character_List.md) | I-7 결과로 S1 확정 → `CNT_Character_List` (계보 · 형태 · 원물 · 희귀도 · 역할 · 이름 정본) + 출시 로스터 계획(수 · 분포) | **P0** | I-7 |
 | K-02 진화 구조 결정 ✅ [`SYS_Evolution`](../01_System/SYS_Evolution.md) | S2 → `SYS_Evolution` ② 방향 (3단 직선 / 갈래 / 섞기) | **P0** | K-01 |
 | K-03 스킬 시스템 ✅ [`SYS_Skill`](../01_System/SYS_Skill.md) | S3 · S4 → `SYS_Skill` (스킬 슬롯 구조 · 트리거 · 지킴이/잔향이 차이 · 역할 체계) | **P0** | — |
 | K-04 1장 캐릭터 스킬 표 ✅ [`CNT_Skill`](../02_Content/CNT_Skill.md) | `CNT_Skill` — 시작 계보 4 + 첫 만남 1의 스킬: 효과 · 수치 · 쿨다운 · 대상 · 성향 연결 (`Column / Type / 설명 / 예시`) | **P0** | K-03 |

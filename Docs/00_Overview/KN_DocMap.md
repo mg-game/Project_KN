@@ -63,7 +63,7 @@
 | 문서 | 상태 | 우선 | 진행 | 근거 |
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
-| `CNT_Character_List` | 🟡 | **P0** | Review — 로스터 정본 9명 · 희귀도 · 단계 목표(7 · 9 · 15) · 만나는 순서 · ③ 7건 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
+| `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
