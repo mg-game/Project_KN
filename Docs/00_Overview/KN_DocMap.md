@@ -48,7 +48,7 @@
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-51 확정 (K-09) · 결제 전 P0 = 확률 표시 · 서버 뽑기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
-| `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
+| `SYS_Dispatch` | 🟡 | P1 | Review — 원정 탭 = 유실표 장부 · 의뢰 · 던전 · ⚠ 파견 중 편성 불가 가드레일(M1) · 구역 이름 = 기억등 지역 · ③ 6건 | ExpeditionSystem · ExpeditionDatabase |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
 | `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
 | `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
@@ -70,15 +70,15 @@
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
-| `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
+| `CNT_Story` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-53 확정 (프롤로그 · 1장 M1) | `StoryIntroView` · `MetaContent.Story` · `MetaContent.Ftue` |
 
 ## 03_UI_UX
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
 | `UI_InGame` | 🟡 | P1 | Approved (v0.1) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
-| `UI_Battle` | 🟡 | **P0** | Review — M1 상세 (하단 2열 · 수선등 · 성향 아이콘) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
-| `UI_Formation` | 🟡 | **P0** | Review — 8방위 링 · 빈 방위 빗금 · 파견 배지 | 8방위 링 · 잔향이 덱 |
+| `UI_Battle` | 🔵 | **P0** | Approved (D-52) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
+| `UI_Formation` | 🔵 | **P0** | Approved (D-52) | 8방위 링 · 잔향이 덱 |
 | `UI_Growth` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (미리보기 레벨업 탭) | `GrowthPanel` · `GrowthLineageCardView` · `CharacterDetailPopup` |
 | `UI_Home` | 🔵 | **P0** | ①②③ 완료 · ③ 6건 D-44 확정 (미리보기 홈 탭) | `MainTabController` · `TopBarView` · `BattleHud` · `Meta/*` |
 | `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |

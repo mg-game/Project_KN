@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Review |
+| 상태 | Approved (D-52) |
 | 작성자 | DD |
 | 최종 수정 | 2026-11-12 |
 | 관련 테이블 | `Stage_Battle_Config` · `BAL_BattleKnobs` |
