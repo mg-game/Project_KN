@@ -41,7 +41,7 @@
 ## 3. 소환 · 성향
 | 노브 | 타입 | 현재 | M1 초기값 | 테스트 범위 | 근거 |
 |---|---|---|---|---|---|
-| `summon_cap` | int | 12 (`maxEchoes`) | 12 | 12 · 16 · 20 | D-28 #8 |
+| `summon_cap` | int | 12 (`maxEchoes`) | 12 | 12 · 16 · 20 | D-28 #8 · P1 기억등 레벨로 12 → 20 성장 (D-55, `SYS_Atelier` §2.4) |
 | `token_cap` | int | 6 | 6 | — | 현재 |
 | `enemy_cap` | int | 40 | 40 | — | 현재 |
 | `hold_threshold_sec` | float | 0.2 | 0.2 | 0.15 ~ 0.3 | §5.2 |
