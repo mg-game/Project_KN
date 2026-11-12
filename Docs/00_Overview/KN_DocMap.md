@@ -30,20 +30,21 @@
 | `KN_ConceptNarrative` | 🟡 | P1 | Approved (v0.2) | 시스템 v1.0이 예고한 v0.3 개정 항목 반영 필요 |
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
-| `KN_Overview` | 🔴 | **P0** | 대기 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
-| `KN_Roadmap` | 🟡 | P1 | 대기 | L&L PHASE4-ROADMAP(I-4 이관) + 팀 마일스톤 통합 |
+| `KN_Overview` | 🔵 | **P0** | Approved — D-35 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
+| `KN_Roadmap` | 🟡 | **P0** | Review — 기획 · 아트 작업 계획 (부족한 것 · 구조 문제 4건 · 카드 21장 · 일정) |
+| `KN_Preview` | 🔵 | **P0** | Approved — D-42 | M1 화면 미리보기(아티팩트) 링크 · 운영 규칙 6개 · 갱신 기록 |
 | `Principles` · `Notion_Hub` | 🔵 | - | Approved | |
 
 ## 01_System
 
 | 문서 | 상태 | 우선 | 진행 | 근거 코드 (PR #2) |
 |---|---|---|---|---|
-| `SYS_InGameBattle` | 🟡 | **P0** | ① 완료(§17) · ③ 12건 중 11건 확정(D-27 · D-28), #4 I-7 대기 | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
+| `SYS_InGameBattle` | 🟡 | **P0** | ① §17 · ③ 13건 (12건 확정, #4 I-7 대기) · §18 M1 상세(성향 · 수선등 · 웨이브) Review | `Systems/Battle/*` (BattleSimulator · FormationSystem) |
 | `SYS_Growth` | 🔵 | **P0** | ①②③ 완료 · D-29 확정 | GrowthSystem · PowerSystem · StrengthenAdvisor — 레벨업 와이어프레임(PR #8) |
 | `SYS_Economy` | 🔵 | **P0** | ①②③ 완료 · D-30 확정 | CurrencySystem · InventorySystem |
-| `SYS_IdleReward` | 🟡 | **P0** | ①②③ 작성 · ③ 6건 결정 대기 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
-| `SYS_FTUE` | 🟡 | **P0** | ① 완료 · ②③ 대기 | TutorialSystem · FeatureGateSystem |
-| `SYS_Evolution` | 🔴 | P1 | 대기 | EvolutionSystem |
+| `SYS_IdleReward` | 🔵 | **P0** | ①②③ 완료 · D-31 확정 | OfflineRewardSystem · IdleChestSystem · ChapterChestSystem (+ 시간 조작 방어) |
+| `SYS_FTUE` | 🔵 | **P0** | ①②③ 완료 · D-32 확정 | TutorialSystem · FeatureGateSystem |
+| `SYS_Evolution` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-45 확정 (K-02) | EvolutionSystem |
 | `SYS_Costume` | 🔴 | P1 | 대기 | CostumeSystem (기획 "외형변경") |
 | `SYS_Gacha` | 🔴 | P1 | 대기 | GachaSystem · GachaMilestoneSystem |
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
@@ -52,6 +53,7 @@
 | `SYS_Synergy` | 🔴 | P1 | 대기 | SynergySystem (계보 공명 포함) |
 | `SYS_Relationship` | 🔴 | P1 | 대기 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
+| `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
 | `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
 | `SYS_Shop` | 🔴 | P2 | 대기 | ShopSystem |
 | `SYS_LiveOps` | 🔴 | P2 | 대기 | Mission · Achievement · Attendance · DailyGift · StarterWeek · SeasonPass · EventCalendar · Comeback · Coupon · Mail · Notice · GuideQuest |
@@ -61,9 +63,11 @@
 | 문서 | 상태 | 우선 | 진행 | 근거 |
 |---|---|---|---|---|
 | `CNT_Character_Main` | 🟡 | P1 | Review | 대표 8종. I-7 대조표 반영 필요 |
-| `CNT_Character_List` | 🔴 | P1 | 대기 | `Editor/Content/CharacterContent*` (계보 · 형태 전체) |
-| `CNT_Stage_Chapter1` | 🟡 | **P0** | ① 완료 · ②③ 대기 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
-| `CNT_Enemy` | 🔴 | P1 | 대기 | 망각체 목록 · 기믹 |
+| `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
+| `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
+| `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
+| `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
 | `CNT_Item` | 🔴 | P2 | 대기 | ItemDatabase |
 | `CNT_Story` | 🔴 | P1 | 대기 | StorySystem · 프롤로그 · 1부 |
 
@@ -72,16 +76,17 @@
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
 | `UI_InGame` | 🟡 | P1 | Approved (v0.1) | 전체 IA로 유지, 화면 상세는 아래로 분리 |
-| `UI_Battle` | 🔴 | **P0** | 대기 | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
-| `UI_Formation` | 🔴 | **P0** | 대기 | 8방위 링 · 잔향이 덱 |
-| `UI_Growth` | 🔴 | **P0** | 대기 | 레벨업 와이어프레임 5화면 |
-| `UI_Home` · `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
+| `UI_Battle` | 🟡 | **P0** | Review — M1 상세 (하단 2열 · 수선등 · 성향 아이콘) | HUD 터치 규격, 하단 포화(시스템 §12.1 ⬜) |
+| `UI_Formation` | 🟡 | **P0** | Review — 8방위 링 · 빈 방위 빗금 · 파견 배지 | 8방위 링 · 잔향이 덱 |
+| `UI_Growth` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (미리보기 레벨업 탭) | `GrowthPanel` · `GrowthLineageCardView` · `CharacterDetailPopup` |
+| `UI_Home` | 🔵 | **P0** | ①②③ 완료 · ③ 6건 D-44 확정 (미리보기 홈 탭) | `MainTabController` · `TopBarView` · `BattleHud` · `Meta/*` |
+| `UI_Characters` · `UI_Bag` · `UI_Shop` · `UI_Expedition` · `UI_Meta` | 🔴 | P1~P2 | 대기 | `Scripts/UI/*` 화면별 |
 
 ## 04_Balance · 05_DataTable
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
-| `BAL_BattleKnobs` | 🔴 | **P0** | 대기 | 시스템 §13.3 노브 초기값 (잔향 수급 · 소환 상한 · 제한시간 등) |
+| `BAL_BattleKnobs` | 🟡 | **P0** | Draft — 노브 정본 · M1 초기값 [가정] | 시스템 §13.3 노브 초기값 (잔향 수급 · 소환 상한 · 제한시간 등) |
 | `BAL_ProgressionSim` | 🟡 | P1 | 대기 (I-4 이관) | 성장 곡선 |
 | `TBL_*` | 🔴 | P1 | 대기 | 시스템 §13 골격. D-20: 원본 = 코드 콘텐츠 → 스키마 문서로 |
 
@@ -90,6 +95,10 @@
 | 문서 | 상태 | 진행 | 메모 |
 |---|---|---|---|
 | `ART_StyleGuide` | 🔵 | Review | |
+| `ART_M1_Backlog` | 🟡 | Review | M1 신규 · 변경 아트 14건 (P0 8) — D-38 A1 · D-41 |
+| `ART_Character_Brief` | 🟡 | Review | 대표 캐릭터 8종 유실형 시안 브리프 — D-38 A2 |
+| `ART_EchoSpec` | 🟡 | Review | 잔향이 외형 규격 — 본체 그림 처리 규칙 · "한 발짝 뒤" · 또렷함 = 공명 · ⚠ 기억형 원칙 충돌 · ③ 5건 (A-04) |
+| `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 
 ---
