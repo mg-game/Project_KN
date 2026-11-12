@@ -27,7 +27,7 @@
 
 | 문서 | 상태 | 우선 | 진행 | 메모 |
 |---|---|---|---|---|
-| `KN_ConceptNarrative` | 🟡 | P1 | Review — **v0.3 DD 개정안** (D-27 ~ D-61 메모 15곳 · §12 확인 3건) · v0.2 Approved | 대표 원문 보존, 결정 반영은 "> v0.3" 메모 |
+| `KN_ConceptNarrative` | 🔵 | P1 | Approved (v0.3 — D-62) · 결정 메모 15곳, v1.0 때 본문 통합 | 대표 원문 보존, 결정 반영은 "> v0.3" 메모 |
 | `KN_Glossary` | 🔵 | **P0** | Approved | 용어 정본. 콘셉트 부록 A · 시스템 §15 통합 |
 | `KN_DocMap` | 🔵 | **P0** | Approved | 이 문서 |
 | `KN_Overview` | 🔵 | **P0** | Approved — D-35 · 2부 M1 범위서 재정리(작업 목록 한 장 🅰/🅱) D-57 | 1페이지 개요: 핵심 루프 · 타겟 · BM 방향 · 차별점. Notion 게임 개요 원본 |
