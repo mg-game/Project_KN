@@ -5,7 +5,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | 대표 |
-| 최종 수정 | 2026-11-11 |
+| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) · [`ART_StyleGuide`](../07_Art/ART_StyleGuide.md) |
 

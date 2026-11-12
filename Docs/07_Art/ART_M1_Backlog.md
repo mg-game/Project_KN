@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-12 |
+| 최종 수정 | 2026-11-13 (#59 UI 후보 기록 병합 · D-58 보름달 +30%) |
 | 관련 테이블 | - |
 | 관련 문서 | [`ART_StyleGuide`](./ART_StyleGuide.md) · [`UI_Battle`](../03_UI_UX/UI_Battle.md) §4 · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) · [`KN_Overview`](../00_Overview/KN_Overview.md) §2.2 |
 
@@ -27,7 +27,7 @@
 | ART-09 | **파견 중 배지** | 편성 목록 카드 (UI_Formation ⑪) | — | 64 | 원정 아이콘 톤 | W2 | P1 |
 | ART-10 | **1-10 보스 변형 "기억등을 삼킨 좀나방 여왕"** — 몸 안 기억등 빛 + 8방향 부하 소환 연출 | 1-10 (D-34 #5) | 기본 · 소환 순간 | `Enemies/boss_mothqueen.png`와 같은 캔버스 | `Enemies/boss_mothqueen.png` 변형 | W3 | **P0** |
 | ART-11 | **장소 6곳 배경** | 스테이지 배경 (D-34 #3) | — | `Battle/field_tall.png`와 같은 캔버스 | **M1은 기존 `field_tall.png` + 장소별 색 틴트만** (§2 판단) | W3 | P1 |
-| ART-12 | **보름달 기믹 아이콘** — 효과는 D-50 #2의 "잔향 수급 +20%" | 기믹 안내 | — | 128 | `UI/moon.png` 재사용 → 아이콘에 잔향 표식만 추가 | W3 | P2 |
+| ART-12 | **보름달 기믹 아이콘** — 효과는 "잔향 수급 +30%" (D-34 · D-58 — D-50 메모의 +20%는 정정됨) | 기믹 안내 | — | 128 | `UI/moon.png` 재사용 → 아이콘에 잔향 표식만 추가 | W3 | P2 |
 | ART-13 | **우두커니 받침 대비 보정** — 바닥(L≈83) 대비 +27로 묻힘 (`ART_BattleSpriteSpec` §1.4) | 전장 지킴이 | 받침 색만 밝게 (몸 그림 유지) | 256 | `Battle/guardian_pad*.png` 해당 색 1장 | W3 | P1 |
 | ART-14 | **골무 껍데기 외곽 보정** — 바닥과 밝기 차이 −2 | 전장 망각체 | 밝은 외곽 1 px(전장 기준, 원본 256에서 ≈ 3 px) 추가 | 256 | `Enemies/enemy_thimble.png` | W3 | P1 |
 | ART-15 | **프롤로그 그림 2장** — ① 문 닫은 분실물 보관소 · 이름 지워진 열쇠 · 벽의 문 ② 불 켜진 수선점에서 깨어나는 몽실 · 짝짝이 (D-53 #2, `CNT_Story` §2.2) | 인트로 | 기존 인트로 그림 크기 · 톤 | 인트로 화면 | `Story/intro_*` | W3 | P1 (없으면 기존 그림 + 새 문구로 M1) |
