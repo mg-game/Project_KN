@@ -7,7 +7,7 @@
 | 최종 수정 | 2026-11-12 |
 | 관련 테이블 | `ExpeditionZoneDef` (`ExpeditionDatabase.asset`, 8구역) · `ExpeditionDrop` · `Rescue_Def` (D-49) |
 | 관련 문서 | D-27 #5 (파견 중 편성 불가) · D-23 · I-5 (원정 시계) · [`SYS_Rescue`](./SYS_Rescue.md) (유실표 · 흔적) · [`CNT_Story`](../02_Content/CNT_Story.md) (D-53 지역) · [`SYS_Evolution`](./SYS_Evolution.md) ("원정 N회" 조건) · [`SYS_IdleReward`](./SYS_IdleReward.md) · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 #4 · [`UI_Home`](../03_UI_UX/UI_Home.md) (원정 탭) |
-| 근거 | 코드 `4b73a5a` — `Systems/Battle/ExpeditionSystem.cs` (특히 :32-69 · :137) · `Data/ExpeditionDatabase.cs` · `Data/ExpeditionDatabase.asset` · `UI/Expedition/ExpeditionPanel.cs` · `GameConfig.accelerateExpeditionCost` |
+| 근거 | 코드 `4b73a5a` + I-5 수정(`fix/expedition-clock`) — `Systems/Battle/ExpeditionSystem.cs` (특히 :32-69 · :137) · `Data/ExpeditionDatabase.cs` · `Data/ExpeditionDatabase.asset` · `UI/Expedition/ExpeditionPanel.cs` · `GameConfig.accelerateExpeditionCost` |
 | 로드맵 | (D-52 다음 순서) |
 
 > 컨셉: 플레이어는 "**구조 원정**과 **수선 의뢰(파견)**를 지휘한다" (`KN_ConceptNarrative` §4.2). 코드의 원정 = 수선 의뢰 쪽만 있다. 이 문서는 원정 탭을 **유실표 장부(구조) · 의뢰(지금 원정) · 던전**으로 정리하고, **D-27 #5 "파견 중 편성 불가"를 실제로 넣을 때 생기는 문제**를 막는다.
@@ -31,6 +31,12 @@
 다시 보내기 · 모두 다시 보내기 (마지막 친구 · 단계 기억)
 가속: 별조각 (accelerateExpeditionCost = 4, 단위 [코드 확인])
 편성: 원정 중에도 지킴이 · 잔향이로 그대로 싸움 (M05)
+시간 처리 (I-5 · H-1 수정 — `ExpeditionSystem.cs` · `Core/Game.cs`)
+  원정 시각 = DailyClock 유효 시각 = max(기기 시각, 본 적 있는 가장 늦은 시각) → 시계를 되돌려도 뒤로 가지 않음
+  IF 원정 시각 < 시작 시각 → 시작 시각에 멈춤 (시작 · 종료를 당기지 않음 — maxSeen 갱신 전 되돌림도 같음)
+  IF 시계 되돌림 (DailyClock.IsTampered, 300초 초과) → 받기 · 모두 받기 막음 + 토스트 "기기 시간이 이전으로 바뀌었어요…"
+  시계를 앞으로 돌리는 것은 감지 안 함 (되돌리면 위 잠금) — 서버 시각 검증은 D-31 P1
+  DailyClock 없이 만든 원정(옛 연결 · 시스템 단위 테스트)은 기기 시각을 그대로 쓰고 되돌림 때 시작/종료를 당긴다
 ```
 
 ### 1.2 구역 8개
