@@ -50,7 +50,7 @@
 | `SYS_Atelier` | 🔴 | P1 | 대기 | (코어 성장 — 구현 확인 필요) |
 | `SYS_Dispatch` | 🔴 | P1 | 대기 | ExpeditionSystem |
 | `SYS_Dungeon` | 🔴 | P1 | 대기 | DungeonSystem |
-| `SYS_Synergy` | 🟡 | P1 | Review — 특성 7 · 성향 6 · 조합 12 (코드 완성) · 죽은 능력치 2 교체 · 설정집 관계 2쌍 신설 · ③ 6건 (K-07) | SynergySystem · SynergyDatabase (계보 공명 포함) |
+| `SYS_Synergy` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-50 확정 (K-07 · K-11 흡수) | SynergySystem · SynergyDatabase (계보 공명 포함) |
 | `SYS_Rescue` | 🔵 | P1 | ①②③ 완료 · ③ 7건 D-49 확정 (K-08) | GachaSystem · AffinitySystem · StorySystem |
 | `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔴 | P1 | 대기 | CodexSystem |
