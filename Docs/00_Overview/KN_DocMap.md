@@ -57,7 +57,7 @@
 | `SYS_Relationship` | 🔴 | P1 | 대기 — 합류 단계는 `SYS_Rescue` §2.3에 흡수, 관계 · 연계 스킬은 K-07과 | AffinitySystem · CheerSystem |
 | `SYS_Codex` | 🔵 | P1 | ①②③ 완료 · ③ 6건 D-55 확정 (시너지 보너스 → 잔향 수급 % M1) | CodexSystem |
 | `SYS_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-39 · D-40 확정 | `SkillDefs` · `BattleSimulator.Skills` |
-| `SYS_Save` | 🔴 | P1 | 대기 | SaveData · Account · BackupReminder (시계 · 세이브 위험, I-2 H-1 · M-1 · M-2) |
+| `SYS_Save` | 🟡 | P1 | Review — 로컬 JSON · 백업 · 세이브 코드(CRC만) · DailyClock 되돌림 감지(원정만 빠짐 → I-5) · 결제 때 "서버 묶음"(계정 · 시각 · 지갑 · 뽑기 · 클라우드) · iOS 4.8 · 계정 삭제 · ③ 7건 | SaveStorage · PlayerData · DailyClock · SaveCode · Account |
 | `SYS_Shop` | 🔴 | P2 | 대기 | ShopSystem |
 | `SYS_LiveOps` | 🔴 | P2 | 대기 | Mission · Achievement · Attendance · DailyGift · StarterWeek · SeasonPass · EventCalendar · Comeback · Coupon · Mail · Notice · GuideQuest |
 
