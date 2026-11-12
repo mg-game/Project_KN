@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (정본 — D-57 · D-58 · D-60 반영) |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-13 (D-58 · D-60 · 착수 전 점검 §15) |
+| 최종 수정 | 2026-11-13 (D-58 · D-60 · 착수 전 점검 §15 · D-63) |
 | 관련 문서 | [`KN_Overview`](./KN_Overview.md) §2.2 (M1 작업 목록 · 🅰/🅱) · §2.7 (일정) · [`decisions.md`](../decisions.md) D-27 ~ D-57 · 지시 이슈 [#3](https://github.com/mg-game/Project_KN/issues/3) |
 | 쓰는 사람 | 기개발 — 코드는 **PR #2 위 브랜치로 미리 작성 가능**, PR(머지 요청)은 11/24 PR #2 R3 → 머지 뒤 (D-57 #1) · Unity 테스트는 Unity PC에서 먼저 잡는 사람 (#46 T-2 · T-4) |
 
@@ -68,7 +68,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 | `dungeonMoonlightCap` | 0.4 | `BattleConfig` (던전 칸 옆) | I-10c §3 #15 · D-55 |
 | `minFormableAfterDispatch` | 3 | `GameConfig` | I-10e §5 #2 · D-54 |
 | `echo_aura_boost` | 0.25 (우두커니 0.4) | 계보 데이터 (`CharacterDatabase` 계보 칸) | I-10f §6 #2 · D-48 #5 |
-> `BattleConfig` 노브 이름은 [`BAL_BattleKnobs`](../04_Balance/BAL_BattleKnobs.md)가 정본 — 위 6개는 DD가 BAL에 행 추가 예정 (D-63).
+> 노브 이름 정본 = [`BAL_BattleKnobs`](../04_Balance/BAL_BattleKnobs.md) §4.6 (D-63 #3).
 
 ---
 
@@ -119,7 +119,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 14. 짝짝이 외형 값 재배정 (`CharacterDatabase.asset`): nightkeeper 2 · cheer 2 · mail 1 · traveler 2 · festival 3 · caterpillar 2 · plush 2 · puppet 2 · sleepcap 3 · threadweb 2.
 15. 던전 달빛: `DungeonSystem.GetMoonlightChance` = `min(dungeonMoonlightCap, 12% + 1%/층)` · `dungeonMoonlightCap` = 0.4.
 16. **기능 22 "불 밝히기 방식" 개방 카드 · 잠금 토스트 끔** (`MetaDatabase.asset` features — `LampPolicy`를 숨기므로, D-60 #2).
-17. ⚠ **"불 밝히기 N번" 목표 4개가 영영 못 깨는 목표가 됨** — 카운터 `CounterKey.LampLit`(`BattleEventType.LampLit`)을 쓰는 주간 미션 `mw_lamp`(50번) · 업적 줄 `ach_lamp` · 첫 주 3일차 `fw_d3_lamp`(30번) · 숨은 업적 `ach.hidden.three_lamps`(한 판 3번). 옛 불 밝히기를 끄면 이벤트가 안 나옴 → **처리 = D-63 결정 대기** (§15 #2).
+17. **"불 밝히기 N번" 목표 4개 → 수선등 밝히기 횟수로** (D-63 #2): 수선등 투자마다 나는 전투 이벤트를 `CounterKey.LampLit` · 숨은 업적 카운트에 연결 (`ProgressTracker` · `AchievementSystem`) — 대상: 주간 미션 `mw_lamp`(50번) · 업적 줄 `ach_lamp` · 첫 주 3일차 `fw_d3_lamp`(30번) · 숨은 업적 `ach.hidden.three_lamps`(한 판 3번 = 한 스테이지에 수선등 3번). **목표 수 그대로**, 문구 '불 밝히기 {c}번' → **'수선등 밝히기 {c}번'** (`MetaText` · 미션 · 업적 제목). 플레이테스트 `light_invest` 기록으로 목표 수 확인. 테스트: 투자 1회 = 카운트 +1 · 옛 플래그 켜면 옛 이벤트도 셈
 
 **완료**: 레벨별 수급 · 비용 · AUTO 조건 · 옛 플래그 · 몽당이 풀릴 때 1회 · 보스 기절 0.5배 + 면역 3초 · 작은 친구 상한 6 · **시너지 상세 · 도감 · 전투력에 효과 0 능력치 없음** · 외형 상한 · 달빛 상한 테스트. 기획서 갱신: `SYS_InGameBattle` · `CNT_Skill` · `SYS_Synergy` · `SYS_Codex` · `SYS_Costume` · `SYS_Dungeon` ①.
 원문: [I-10 상세](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796448448) · [추가 범위](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6796977951) · [②](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6813262305) · [③](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6819302870) · [D-55](https://github.com/mg-game/Project_KN/issues/3#issuecomment-6821040096)
@@ -162,7 +162,7 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 ## 7. I-10g 튜토리얼 · 스토리 — `feat/ftue-m1` · 🅰 · W3
 **범위**
 1. 튜토리얼 단계 (번호 대신 id — `ftueSteps`는 0부터 셈): `ftue_first_lamp` **내용 교체**(id 유지, §0.3 #6) · `ftue_first_battle` 뒤에 `ftue_empty_direction` **추가** · `ftue_formation` 뒤에 `ftue_behavior_hint` **추가** · `ftue_first_summon`만 `blockInput` = 1 · `summon_cap` 노브(기본 12).
-   ⚠ 진행은 **인덱스로 저장**(`FtueSave` "지금 단계 인덱스") → 2단계를 끼워 넣으면 옛 세이브가 밀림 → **이전 규칙 = D-63 결정 대기** (§15 #1).
+   **진행 저장을 단계 이름으로** (D-63 #1): `FtueSave`에 `stepId`(지금 단계 id) 추가 · 세이브 버전 4 → **5** · 옛 세이브는 한 번 변환 = 옛 순서표(지금 17단계)로 `stepIndex` → id. 끝낸 세이브(`done`)는 그대로. 진행 판단은 id로 (앞으로 단계를 끼워 넣어도 밀리지 않음). 테스트: 옛 인덱스 0 · 2 · 4 · 11 · 16 · done 변환
 2. `ftue_first_lamp` 문구: "잔향이 모이면 수선등을 밝혀요 · 불이 커질수록 잔향이 더 빨리 모여요!" · 완료 조건 `LampLit` → 수선등 투자 (I-10c).
 3. **인트로 4장 교체** (D-53 #2, `CNT_Story` §2.2) — ART-15 전엔 기존 3장 재사용 (4번째 = 2번 그림) · 건너뛰기 · 시간 규칙 그대로.
 4. **1장 이야기 박자 11개** (`Story_Beat` 데이터): 스테이지 시작 · 보스 등장 · 클리어 말풍선 1~2줄, once · 건너뛰기 · AUTO면 3초 뒤 닫힘 · 잠자기 모드면 생략. 컷신 없음.
@@ -239,11 +239,11 @@ W3     I-10f 전투 · 편성 UI (a~e 뒤) → I-10g 튜토리얼 · 문구 (I-1
 
 | # | 찾은 것 | 등급 | 처리 |
 |---|---|---|---|
-| 1 | 튜토리얼 진행 = 인덱스 저장 → 단계 2개 추가 시 옛 세이브 밀림 | 🔴 | **D-63 결정** |
-| 2 | "불 밝히기 N번" 목표 4개가 못 깨는 목표로 (첫 주 3일차 포함) | 🔴 | **D-63 결정** |
+| 1 | 튜토리얼 진행 = 인덱스 저장 → 단계 2개 추가 시 옛 세이브 밀림 | 🔴 | **D-63 #1** — 단계 이름 저장 + 한 번 변환 (§7 #1) |
+| 2 | "불 밝히기 N번" 목표 4개가 못 깨는 목표로 (첫 주 3일차 포함) | 🔴 | **D-63 #2** — 수선등 밝히기 횟수로 (§3 #17) |
 | 3 | `ftue_first_lamp` 교체 · 문구 교체가 두 이름으로 | 🔴 | 고침 (§0.3 #6) |
 | 4 | 튜토리얼 단계를 0부터 센 번호로 씀 | 🟡 | 고침 (§7 #1 id로) |
-| 5 | 새 설정값 6개의 넣을 곳 없음 · BAL에 없음 | 🟡 | 고침 (§0.6) · BAL 행 추가는 D-63 |
+| 5 | 새 설정값 6개의 넣을 곳 없음 · BAL에 없음 | 🟡 | 고침 (§0.6) · BAL §4.6 추가 (D-63 #3) |
 | 6 | `SynergyText` 없는 이름 | 🟡 | 고침 (§3 #12) |
 | 7 | 자동 복귀 저장 위치 `expedition.prevSlots` — 세이브 구조에 없음 | 🟡 | 고침 (`ExpeditionSave.prevSlots`) |
 | 8 | 프리셋 "덱 6" — 6번째 칸은 2-9 개방 | 🟡 | 고침 (§1 #4) |
