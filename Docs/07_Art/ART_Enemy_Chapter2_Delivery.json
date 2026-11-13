@@ -7,7 +7,8 @@
     "pr": 79,
     "url": "https://github.com/mg-game/Project_KN/blob/9f53f75cab840707b367e6b0a32fcc7081901cf4/Docs/07_Art/ART_Enemy_Chapter2.md",
     "sha256": "5248db5747699463ad8e6da95efd67caca25b3a607373e1e75d1a1683bf51d56",
-    "status_at_delivery": "PR #79 is open; document absent from develop. Used exact pending D-68 source; neither PR merged."
+    "status_at_delivery": "Initially read from open PR #79; a maintainer merged it into develop c4916280193b19c96c4bf9eea5b420f2db83b61b during publication. Merged document SHA256 matches exact source. This art PR remains unmerged.",
+    "verified_develop_commit": "c4916280193b19c96c4bf9eea5b420f2db83b61b"
   },
   "references": {
     "Assets/_Project/Art/Enemies/enemy_moth.png": {
