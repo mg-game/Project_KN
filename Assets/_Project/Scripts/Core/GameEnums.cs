@@ -10,6 +10,18 @@ namespace IdleGame
         EventToken = 2,
     }
 
+    /// <summary>
+    /// 재화 지급 출처 (I-14 · SYS_Economy §2.1). 별조각만 쓴다: Purchase면 유료 풀(PlayerData.gemPaid), 그 밖은 무료 풀(gemFree).
+    /// 결제 코드는 아직 없다 — Purchase는 자리만 (SYS_Shop에서 연결).
+    /// </summary>
+    public enum CurrencySource
+    {
+        /// <summary>게임 안 보상 · 시작 지급 · 우편 등 결제가 아닌 모든 지급</summary>
+        Game = 0,
+        /// <summary>결제 (아직 쓰는 곳 없음)</summary>
+        Purchase = 1,
+    }
+
     /// <summary>등급. 캐릭터는 별 개수로 표시한다 (Common=1성 ~ Mythic=5성).</summary>
     public enum ItemGrade
     {
