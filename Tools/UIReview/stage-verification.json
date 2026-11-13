@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13T02:35:25.379Z",
+  "scope": "Browser stage-label/context continuity; combat, balance, saves and chapter progression remain review fixtures.",
+  "checks": [
+    {
+      "name": "Clear 4→5 persists through AUTO/speed/ratio redraw and pause/resume",
+      "result": "pass"
+    },
+    {
+      "name": "Formation header, growth return and failure/retry share the current stage; two-ratio headings fit",
+      "result": "pass"
+    },
+    {
+      "name": "Current-stage clear alert settles stage 5 once and continues 5→6 without resetting to the canned fixture",
+      "result": "pass"
+    },
+    {
+      "name": "Current-stage failure alert uses stage 5 base reward and retries stage 5",
+      "result": "pass"
+    },
+    {
+      "name": "Step-back/repeat/boss destinations survive subsequent interactions; undefined chapter locations keep generic labels",
+      "result": "pass"
+    },
+    {
+      "name": "External fixture selection deliberately resets to 1-4/1-10 and restart preserves the selected result stage",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

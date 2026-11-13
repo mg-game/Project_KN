@@ -1,9 +1,11 @@
 {
   "name": "project-kn-ui-review",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "private": true,
   "description": "Project_KN UI development reference and browser review, outside Unity Assets",
-  "engines": { "node": ">=20.19" },
+  "engines": {
+    "node": ">=20.19"
+  },
   "scripts": {
     "start": "node server.cjs",
     "check:assets": "node check-assets.cjs",
