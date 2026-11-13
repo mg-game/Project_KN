@@ -13,6 +13,7 @@
     "version": "0.8.1",
     "date": "2026-11-13",
     "change": "Shared stage labels and stage-aware combat-alert results; combat/save fixtures unchanged.",
-    "checksPassed": 68
+    "checksPassed": 68,
+    "baseCommit": "8f281cf"
   }
 }

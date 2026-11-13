@@ -7,15 +7,15 @@
 Git LFS와 Node.js 20.19 이상이 필요합니다. 기존 저장소에서:
 
 ```sh
-git fetch origin feature/ui-art-review-08
-git switch --track origin/feature/ui-art-review-08
+git fetch origin fix/72-ui-stage-context
+git switch --track origin/fix/72-ui-stage-context
 git lfs install --local
 git lfs pull --include="Tools/UIReview/**"
 cd Tools/UIReview
 npm start
 ```
 
-이미 로컬 브랜치가 있으면 `git switch feature/ui-art-review-08`을 사용합니다. 미리보기 실행 자체는 Node 내장 서버만 사용하므로 `npm ci`가 필요 없습니다.
+이미 로컬 브랜치가 있으면 `git switch fix/72-ui-stage-context`을 사용합니다. 미리보기 실행 자체는 Node 내장 서버만 사용하므로 `npm ci`가 필요 없습니다.
 
 - 화면 조작: <http://127.0.0.1:8772/>
 - 화면 규격·상태·리소스 대응표: <http://127.0.0.1:8772/handoff.html>
@@ -26,7 +26,7 @@ npm start
 
 ## 개발 정본과 검토본의 차이
 
-개발 정본은 [KN_M1_DevBrief](../../Docs/00_Overview/KN_M1_DevBrief.md)입니다. 이 전달 브랜치는 최신 기획 `develop@0e78665`와 문서 전달 PR #59를 통합했습니다. 08의 화면·수치 예시는 `755a13a`, 기존 그림은 PR #2 `4b73a5a`를 기준으로 제작한 것이므로 최신 결정이 우선합니다.
+개발 정본은 [KN_M1_DevBrief](../../Docs/00_Overview/KN_M1_DevBrief.md)입니다. 초기 전달 PR #72는 develop에 병합되었습니다. 이번 구역 연결 보완은 `develop@8f281cf` 위의 후속 수정 브랜치입니다. 문서 전달 PR #59도 통합된 상태입니다. 08의 화면·수치 예시는 `755a13a`, 기존 그림은 PR #2 `4b73a5a`를 기준으로 제작한 것이므로 최신 결정이 우선합니다.
 
 - **보름달은 잔향 수급 +30% (D-58)**입니다. D-50의 +20% 메모와 과거 검토 기록은 개발 수치로 사용하지 않습니다. 현재 `asset-manifest.json`, `manifest.js`, 출력 스크립트와 ART 목록도 +30%로 맞췄습니다. 아이콘 자체에는 수치 글자가 없습니다.
 - 강화 비용·능력치·편성 배지·전투 결과는 고정 예시입니다. JS의 지갑/레벨을 실제 게임 경제·세이브로 옮기지 말고 실제 시스템 데이터를 바인딩합니다.
