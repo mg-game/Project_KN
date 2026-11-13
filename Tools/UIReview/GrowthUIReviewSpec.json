@@ -95,5 +95,13 @@
     "release": "Stop and clear both timeout and interval, release pointer capture, keep completed purchases.",
     "freshInput": "A new touch or keyboard activation works normally after release/cancel.",
     "test": "verify-pointer.cjs: Chromium CDP multi-touch + native mouse/keyboard; physical devices and Unity are unverified."
+  },
+  "sheetFocus": {
+    "scope": "Browser nonmodal growth region; bottom navigation and battle alert remain available.",
+    "entry": "Explicit growth navigation, review toolbar and failure-strengthen entry focus the sheet close button.",
+    "return": "Close click/keyboard/Escape returns to the review toolbar trigger or growth navigation. Removed failure triggers fall back to growth navigation.",
+    "redraw": "Ratio/fixture redraw does not take focus from outer review controls.",
+    "nested": "Detail back and resonance cancellation keep their existing local focus return.",
+    "test": "verify-sheet-focus.cjs; native Chromium keyboard, two reference ratios; not Unity/device certification."
   }
 }

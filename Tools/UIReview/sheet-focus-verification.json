@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13T11:30:49.791Z",
+  "scope": "Native Chromium focus and keyboard navigation in the browser review, two reference ratios. Not Unity or physical-device certification.",
+  "checks": [
+    {
+      "name": "Both ratios: keyboard growth entry focuses the sheet, Tab reaches upgrades and close returns to growth navigation",
+      "result": "pass"
+    },
+    {
+      "name": "Toolbar entry returns focus to its live trigger after either click or Escape closure",
+      "result": "pass"
+    },
+    {
+      "name": "Failure strengthen starts in the sheet and closes to usable growth navigation after its old trigger is removed",
+      "result": "pass"
+    },
+    {
+      "name": "Direct growth/detail return preserves focus; held Enter cannot reopen the sheet while a fresh press can",
+      "result": "pass"
+    },
+    {
+      "name": "Resonance cancellation returns to its own trigger before sheet closure, with no fragment spending",
+      "result": "pass"
+    },
+    {
+      "name": "Review-control redraw does not steal focus and the nonmodal sheet keeps bottom navigation available",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

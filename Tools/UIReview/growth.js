@@ -6,6 +6,7 @@
   let wallet=12450,fragments=36,levels=[12,10,11,9,8],resonances=[2,1,1,0,0],shopLevel=12;
   let view='list',character=0,locked=false,showAlert=false,pending=null,feedbackTimer=null,feedbackTotal=0,lastToast=-Infinity;
   const activeHolds=new Set();
+  let sheetReturn='[data-nav="0"]';
   const fmt=n=>Math.floor(n).toLocaleString('ko-KR');
   const cost=level=>Math.max(1,Math.floor(50*1.09**(level-1)));
   const shopCost=level=>Math.floor(240*1.1**(level-12));
@@ -127,7 +128,7 @@
     originalSheet();const panel=screen.querySelector('.sheet');panel.classList.add('growth-panel');panel.classList.toggle('with-alert',showAlert);
     panel.setAttribute('aria-label',view==='list'?'강화 시트':'캐릭터 성장 상세');panel.innerHTML=heading()+(view==='list'?list():detail());
     const alert=screen.querySelector('.sheet-alert');if(!showAlert)alert?.remove();else{alert.classList.add('growth-alert');alert.onclick=()=>{const text=alert.innerText;showAlert=false;sheet=false;home();toast(text)}}
-    panel.querySelector('.gr-close').onclick=()=>{stopHolds();sheet=false;showAlert=false;view='list';if(page==='growth')setPage('home');else home()};
+    panel.querySelector('.gr-close').onclick=()=>{stopHolds();sheet=false;showAlert=false;view='list';if(page==='growth')setPage('home');else home();document.querySelector(sheetReturn)?.focus({preventScroll:true})};
     panel.querySelector('.gr-scroll').addEventListener('scroll',stopHolds,{passive:true});
     if(view==='list'){
       bindHold($('#gr-shop-one'),()=>buyShop(1));$('#gr-shop-ten').onclick=singleAction(()=>buyShop(10));$('#gr-shop-max').onclick=singleAction(()=>buyShop('max'));
@@ -148,13 +149,18 @@
     if(name==='resonance-floor')resonances[0]=8;
     showGrowth();
   }
-  showSheet=()=>showGrowth();
+  showSheet=(focus=false)=>{
+    if(focus)sheetReturn=document.activeElement.id==='open-sheet'?'#open-sheet':'[data-nav="0"]';
+    const panel=showGrowth();
+    if(focus)panel.querySelector('.gr-close').focus({preventScroll:true});
+    return panel;
+  };
   home=function(){originalHome();updateMeta()};
   render=function(){if(page==='growth'){originalHome();updateMeta();fit()}else originalRender()};
   setPage=function(next){
     stopHolds();closeConfirm(false);
     if(next==='growth'){
-      showAlert=false;view='list';originalPage('home');page='growth';sheet=true;showGrowth('list');
+      showAlert=false;view='list';sheetReturn='[data-nav="0"]';originalPage('home');page='growth';sheet=true;showGrowth('list');
       document.querySelectorAll('[data-screen]').forEach(b=>b.classList.toggle('active',b.dataset.screen==='growth'));
       $('#home-controls').hidden=true;$('#failure-controls').hidden=true;$('#growth-controls').hidden=false;$('#screen-caption').textContent='05 / GROWTH & RESONANCE';
       screen.querySelector('.gr-close')?.focus({preventScroll:true});
@@ -162,10 +168,10 @@
   };
   document.querySelector('[data-screen="growth"]').onclick=()=>setPage('growth');
   $('#growth-state').onchange=e=>fixture(e.target.value);
-  $('#open-sheet').onclick=()=>{showAlert=true;sheet=true;view='list';showGrowth()};
+  $('#open-sheet').onclick=()=>{showAlert=true;sheet=true;view='list';showSheet(true)};
   document.addEventListener('keydown',e=>{
     const overlay=screen.querySelector('.growth-confirm-overlay');if(!overlay){
-      if(e.key==='Escape'&&screen.querySelector('.growth-panel')){e.preventDefault();screen.querySelector('.gr-close').click();screen.querySelector('[data-nav="0"]')?.focus({preventScroll:true})}
+      if(e.key==='Escape'&&screen.querySelector('.growth-panel')){e.preventDefault();screen.querySelector('.gr-close').click()}
       return;
     }
     if(e.key==='Escape'){e.preventDefault();closeConfirm();}
