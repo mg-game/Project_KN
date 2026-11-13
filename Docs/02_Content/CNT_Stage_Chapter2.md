@@ -101,7 +101,7 @@
 | 2-5 | 한 짝 장화 | **돌격** | 물웅덩이를 첨벙 밟고 뛰어드는 장화 — "기다리지 않고 먼저 찾으러 간다" (장 질문의 다른 답) |
 | 2-10 | 유리병 편지 | **포획** | 떠내려온 편지병 — 망각체를 병에 잠깐 가둔다 "전하지 못한 말을 붙잡아 둔다" |
 
-- 이름 · 희귀도 · 스킬 · 외형은 캐릭터 문서 2개로 (`_Template_Character`) — ③ 결정 뒤.
+- 캐릭터 문서: [웰리 — 장화](./CNT_Character_Boots.md) · [보틀리 — 유리병 편지](./CNT_Character_BottleLetter.md) (이름 · 희귀도 결정 대기). 기본형 시트 프롬프트 = [`ART_Character_Brief`](../07_Art/ART_Character_Brief.md) §1.
 - 그림 흐름: [`ART_CharacterHandoff`](../07_Art/ART_CharacterHandoff.md) 카드 → 본체 → [`ART_ReviewSheet`](../07_Art/ART_ReviewSheet.md) 검수, **1명씩** (D-67 #3).
 
 ### 2.6 보스 (③ #5)

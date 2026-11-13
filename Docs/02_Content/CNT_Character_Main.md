@@ -663,6 +663,8 @@ LOST & LOVELY의 캐릭터는 현실에서 잊히거나 버려진 물건, 감정
 | 짝짝이 | [짝짝이 원본](./CNT_Character_Jjakjjak.md) | [밤지기](./CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) (외형) · [카라반](./CNT_CharacterAppearance_Jjakjjak_Caravan.md) (**개화 B** — 진화 단계, D-45 #6) | 기존 자료 보존, 카라반 구조 검토 |
 | 레이니 | [레이니 원본](./CNT_Character_Rainy.md) | [골목등불](./CNT_CharacterAppearance_Rainy_AlleyLantern.md) | 골목등불 구조 검토 RA1, ID·유형 미정 |
 | 몽실 | [몽실 원본](./CNT_Character_Mongsil.md) | [촛농·밀랍 구조 검토](./CNT_CharacterAppearance_Mongsil_Wax.md) | MW2 재질 보완, 유형·채택 미정 |
+| 웰리 [가정] | [장화 원본](./CNT_Character_Boots.md) — **신규, 원문 = 이 문서** | 미등록 | 2장 구조 A (2-5, 돌격) · D-68 #4 · 이름 · 희귀도 대기 |
+| 보틀리 [가정] | [유리병 편지 원본](./CNT_Character_BottleLetter.md) — **신규, 원문 = 이 문서** | 미등록 | 2장 구조 B (2-10, 포획) · D-68 #4 · 이름 · 희귀도 대기 |
 
 - [외형 템플릿](../_Templates/_Template_CharacterAppearance.md): 원본을 참조하고 변경 부분만 작성. 진화 단계·선택형·특별 외형을 구분한다.
 - [AI 아트 전달 마스터](../07_Art/ART_CharacterHandoff.md): 카드·상세 텍스트·제작 지시·검수의 공통 지침.

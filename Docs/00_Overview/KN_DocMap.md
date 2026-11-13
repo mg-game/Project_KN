@@ -73,6 +73,8 @@
 | `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
 | `CNT_Stage_Chapter2` | 🔵 | P1 | Approved — D-68 (첫 양산 묶음 D-67, 코드 M1 뒤) | 2장 비 골목 — 날씨 · 기믹 "기다림" · 망각체 3 · 구조 2 · 장 묶음 체크리스트(→ `_Templates/_Template_Chapter`) |
+| `CNT_Character_Boots` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 | 2장 구조 A 웰리(장화, 돌격) |
+| `CNT_Character_BottleLetter` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 | 2장 구조 B 보틀리(유리병 편지, 포획) |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
