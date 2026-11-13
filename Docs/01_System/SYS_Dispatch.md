@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-54) |
 | 작성자 | ① 추출: DD (코드 · 데이터) · ②③: DD |
-| 최종 수정 | 2026-11-12 |
+| 최종 수정 | 2026-11-13 (① I-5 원정 시간 처리 반영 — 기개발) |
 | 관련 테이블 | `ExpeditionZoneDef` (`ExpeditionDatabase.asset`, 8구역) · `ExpeditionDrop` · `Rescue_Def` (D-49) |
 | 관련 문서 | D-27 #5 (파견 중 편성 불가) · D-23 · I-5 (원정 시계) · [`SYS_Rescue`](./SYS_Rescue.md) (유실표 · 흔적) · [`CNT_Story`](../02_Content/CNT_Story.md) (D-53 지역) · [`SYS_Evolution`](./SYS_Evolution.md) ("원정 N회" 조건) · [`SYS_IdleReward`](./SYS_IdleReward.md) · [`UI_Formation`](../03_UI_UX/UI_Formation.md) §5 #4 · [`UI_Home`](../03_UI_UX/UI_Home.md) (원정 탭) |
 | 근거 | 코드 `4b73a5a` + I-5 수정(`fix/expedition-clock`) — `Systems/Battle/ExpeditionSystem.cs` (특히 :32-69 · :137) · `Data/ExpeditionDatabase.cs` · `Data/ExpeditionDatabase.asset` · `UI/Expedition/ExpeditionPanel.cs` · `GameConfig.accelerateExpeditionCost` |
