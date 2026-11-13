@@ -1,0 +1,44 @@
+{
+  "scope": "Battle result browser art review fixtures; not Unity/game economy, save, RNG, or live combat.",
+  "sources": {
+    "develop": "755a13a27e2c7b4c55c7dbafb88c8a0197b6ef92",
+    "authoritative": [
+      "SYS_InGameBattle §17 K",
+      "UI_Battle §3 / D-28 #9,#10"
+    ],
+    "genericIA": "UI_InGame RS-001 layout reference only; generic rescue/stars/chapter flows omitted where unsupported by current M1 rules"
+  },
+  "reward": {
+    "gold": "floor(60 * 1.13^(stage-1)); synergy=0, festival=false",
+    "candy": "stage divisible by 10 ? 10 : 3; event multiplier=1",
+    "failureGold": "floor(StageGold * 0.3 * clamp01(kills/killsToBoss)); fixture ratio=0.6",
+    "affection": "owned, deployed lineage union +1; five portrait groups are an illustrative fixture",
+    "materials": "clear fixture no drop; boss fixture cloth=1, ribbon=1; deterministic outcome, not a probability simulation",
+    "receipt": "one display receipt per local result event; never updates growth wallet/meta gold or any save",
+    "retreat": "partial reward undecided; do not show 0 or promise a grant"
+  },
+  "timing": {
+    "default": 1500,
+    "extendedMaximumFromResultEnd": 6000,
+    "clock": "performance.now real time; speed independent",
+    "preview": "external checkbox off initially for inspection; enabled replays the rule",
+    "extension": "detail reveal may set deadline to original start+6000, repeated reveal does not reset it",
+    "skip": "advance once; duplicate click ignored; leaving page cancels clock",
+    "details": "reward tap reveals details; detail content scrolls, primary CTA stays fixed"
+  },
+  "routes": {
+    "clear": "4→5",
+    "repeat": "4→4 with autoAdvance=false",
+    "boss": "10→11",
+    "fail": "4→4",
+    "stepback": "4→3 after two failures",
+    "retreat": "failure report; reward/auto retreat route not established here"
+  },
+  "input": "inert background; independent result dialog tab cycle; no summoning or light investment while result is visible; min44 logical px buttons",
+  "pending": [
+    "Unity animation shortening by tap",
+    "actual combat reward settlement and stage state",
+    "real inventory/material icons/receipt data",
+    "safe areas, TMP, physical devices, performance"
+  ]
+}

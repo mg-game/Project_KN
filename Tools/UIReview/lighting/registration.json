@@ -1,0 +1,86 @@
+{
+  "canvas": [
+    768,
+    768
+  ],
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alphaBlend": "normal",
+  "levels": "0 = base only; 1..5 = base + exactly one cumulative overlay",
+  "sourceMaster": "concepts/shop_dark_refined_master.png",
+  "sourceDimensions": 1254,
+  "panes": [
+    {
+      "id": 1,
+      "name": "정문 창",
+      "x": 416,
+      "y": 570,
+      "rx": 17,
+      "ry": 18,
+      "mask": "lighting/masks/window_1.png",
+      "corePixels": 355,
+      "centroid": [
+        416.15,
+        568.81
+      ]
+    },
+    {
+      "id": 2,
+      "name": "왼쪽 아래",
+      "x": 272,
+      "y": 544,
+      "rx": 18,
+      "ry": 24,
+      "mask": "lighting/masks/window_2.png",
+      "corePixels": 439,
+      "centroid": [
+        271.85,
+        543.62
+      ]
+    },
+    {
+      "id": 3,
+      "name": "오른쪽 아래",
+      "x": 540,
+      "y": 573,
+      "rx": 15,
+      "ry": 23,
+      "mask": "lighting/masks/window_3.png",
+      "corePixels": 257,
+      "centroid": [
+        539.64,
+        573.1
+      ]
+    },
+    {
+      "id": 4,
+      "name": "왼쪽 위",
+      "x": 249,
+      "y": 416,
+      "rx": 21,
+      "ry": 26,
+      "mask": "lighting/masks/window_4.png",
+      "corePixels": 728,
+      "centroid": [
+        250.33,
+        414.14
+      ]
+    },
+    {
+      "id": 5,
+      "name": "중앙 큰 창",
+      "x": 420,
+      "y": 338,
+      "rx": 27,
+      "ry": 31,
+      "mask": "lighting/masks/window_5.png",
+      "corePixels": 1326,
+      "centroid": [
+        419.12,
+        336.17
+      ]
+    }
+  ]
+}

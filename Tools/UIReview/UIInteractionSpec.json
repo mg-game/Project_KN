@@ -1,0 +1,52 @@
+{
+  "revision": "03",
+  "status": "review_only_not_unity_implementation",
+  "source": "UI_Battle 2.13 and 3 / SYS_InGameBattle 5.2 / UI_Formation 2.5",
+  "holdThresholdMs": 200,
+  "reviewSlotRemoveHoldMs": 600,
+  "slotHoldTimingStatus": "review tuning value; not an approved balance change",
+  "referenceCanvas": [
+    390,
+    845
+  ],
+  "shortCanvas": [
+    390,
+    693
+  ],
+  "logicalCoreHitMinimum": [
+    44,
+    44
+  ],
+  "coreHitLimit": "Reference logical pixels only; physical-device accessibility certification not performed.",
+  "summon": {
+    "tap": "visual immediate summon, auto sector not simulated",
+    "hold": "8-sector preview around repair shop center",
+    "release": "spend on valid arena release only",
+    "cancel": [
+      "return to deck",
+      "outside arena",
+      "pointercancel",
+      "lost pointer capture",
+      "Escape"
+    ],
+    "spawnFeedback": "starts at repair shop; short movement illustration suppressed when reduced motion is on"
+  },
+  "pause": {
+    "background": "inert",
+    "settings": [
+      "speed",
+      "auto summon",
+      "auto lamp invest"
+    ],
+    "masterAuto": "both on/off; mixed state is a UI review proposal",
+    "help": "tap/hold/return-to-deck plus three behavior icons",
+    "retreat": "confirm dialog; dim click ignored; cancel remains paused; confirm shows retreat failure reason",
+    "keyboard": "Tab stays in dialog, Escape returns or resumes, focus returns to pause"
+  },
+  "formation": {
+    "touch": "drag occupied slot to move/swap; hold to remove; tap roster then empty slot to add",
+    "roster": "native horizontal scrolling and tap selection; existing mouse HTML drag retained"
+  },
+  "artAssets": "48 runtime PNG candidates from delivery 02 unchanged",
+  "remaining": "Unity integration, real timer/income freeze, threat-based auto direction, physics/AI, balance and real-device testing not performed"
+}

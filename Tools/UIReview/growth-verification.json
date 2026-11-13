@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-12",
+  "scope": "Growth art UI review fixtures and browser interactions, not balance or Unity tests.",
+  "checks": [
+    {
+      "name": "Shared lineage level, single cost deduction, stable card order and focus return",
+      "result": "pass"
+    },
+    {
+      "name": "x10 shrinks to seven affordable levels and consumes displayed total",
+      "result": "pass"
+    },
+    {
+      "name": "Insufficient funds, lock and maximum block level purchases",
+      "result": "pass"
+    },
+    {
+      "name": "Unassigned character can grow and keeps unassigned label",
+      "result": "pass"
+    },
+    {
+      "name": "Resonance: confirm-only single spending, cancel preservation, modal focus and updated effect",
+      "result": "pass"
+    },
+    {
+      "name": "Fragment shortage and resonance maximum are blocked; summon cost preview respects floor three",
+      "result": "pass"
+    },
+    {
+      "name": "0.45s hold repeats; scroll stops further purchases without moving card order",
+      "result": "pass"
+    },
+    {
+      "name": "Shop batch purchase and next-ten-level milestone preview update together",
+      "result": "pass"
+    },
+    {
+      "name": "Two aspect ratios: scrolling list/detail and confirmation controls fit within screen",
+      "result": "pass"
+    },
+    {
+      "name": "390px browser touch: level tap spends once and page has no horizontal overflow",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

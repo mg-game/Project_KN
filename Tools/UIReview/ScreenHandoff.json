@@ -1,0 +1,944 @@
+{
+  "version": "08",
+  "status": "review_not_adopted_not_unity_applied",
+  "sourceCommit": "755a13a27e2c7b4c55c7dbafb88c8a0197b6ef92",
+  "artCommit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+  "measurement": "Browser logical coordinates from rendered DOM, top-left origin; not RectTransform or physical safe-area values.",
+  "tokens": {
+    "surface": "#211737",
+    "panel": "#2b2142",
+    "cream": "#fff0ca",
+    "gold": "#e7bc73",
+    "mint": "#aadcce",
+    "lavender": "#c6afe8",
+    "warning": "#ef9b9f",
+    "coreTarget": 44
+  },
+  "screens": [
+    {
+      "id": "home",
+      "name": "홈 · 전투",
+      "source": "UI_Home §2.2 · UI_Battle §1–3 / D-44",
+      "page": "home",
+      "input": "덱 탭/0.2초 홀드 조준 · 전장 놓기 확정 · 취소 시 비용 보존",
+      "states": [
+        "일반",
+        "웨이브 예고",
+        "보스",
+        "최후의 쇄도",
+        "위기",
+        "쿨다운",
+        "부족",
+        "상한",
+        "잠금"
+      ]
+    },
+    {
+      "id": "formation",
+      "name": "편성",
+      "source": "UI_Formation §2 / D-27 · D-52",
+      "page": "formation",
+      "input": "슬롯 이동/맞바꿈 · 0.6초 홀드 해제 · 프리셋 탭/홀드 저장",
+      "states": [
+        "빈 방향",
+        "위험 방향",
+        "파견 중",
+        "선택",
+        "프리셋 3칸"
+      ]
+    },
+    {
+      "id": "failure",
+      "name": "실패 리포트",
+      "source": "UI_Battle §3 / D-28 #10",
+      "page": "failure",
+      "input": "배경 inert · 3개 CTA 안에서 Tab 순환 · 재도전/편성/강화",
+      "states": [
+        "방어 문제",
+        "화력 부족",
+        "퇴각"
+      ]
+    },
+    {
+      "id": "growth",
+      "name": "강화 목록",
+      "source": "UI_Growth GR-1 / D-43",
+      "page": "growth",
+      "input": "가려진 전투 조작 inert · 하단 탭/전투 알림 유지 · 0.45초 홀드 구매",
+      "states": [
+        "기본",
+        "부족",
+        "부분 구매",
+        "최대",
+        "해금 전"
+      ]
+    },
+    {
+      "id": "growth-detail",
+      "name": "성장 상세",
+      "source": "UI_Growth GR-2 / D-43",
+      "page": "growth",
+      "input": "공유 레벨 · 전후 비교 · ×1/×10 · 공명 확인",
+      "states": [
+        "기본",
+        "기억 조각 부족",
+        "공명 최대",
+        "소환 비용 하한"
+      ]
+    },
+    {
+      "id": "resonance",
+      "name": "공명 확인",
+      "source": "UI_Growth GR-2 / D-43",
+      "page": "growth",
+      "input": "전체 배경 inert · Tab 순환 · 취소 시 보존 · 확인은 1회 차감",
+      "states": [
+        "확인",
+        "취소",
+        "Escape"
+      ]
+    },
+    {
+      "id": "pause",
+      "name": "일시정지",
+      "source": "SYS_InGameBattle §9 · UI_InGame BT-002",
+      "page": "home",
+      "input": "전체 배경 inert · 자동 소환/투자 분리 · 복귀 시 포커스 복원",
+      "states": [
+        "설정",
+        "도움말",
+        "퇴각 확인"
+      ]
+    },
+    {
+      "id": "results",
+      "name": "전투 결과",
+      "source": "UI_Battle §3 · SYS_InGameBattle §17 K / D-28",
+      "page": "results",
+      "input": "배경 inert · 자동 정산 표시 · 1.5초/최대 6초 · 즉시 이동 1회",
+      "states": [
+        "승리",
+        "반복",
+        "보스",
+        "실패",
+        "한 구역 후퇴",
+        "퇴각 보상 미정"
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "id": "home",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "meta": {
+          "selector": ".meta",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 51,
+          "scrollable": false
+        },
+        "hud": {
+          "selector": ".hud",
+          "x": 0,
+          "y": 51,
+          "width": 390,
+          "height": 59,
+          "scrollable": false
+        },
+        "arena": {
+          "selector": ".arena",
+          "x": 0,
+          "y": 110,
+          "width": 390,
+          "height": 426,
+          "scrollable": false
+        },
+        "quest": {
+          "selector": ".quest",
+          "x": 12,
+          "y": 536,
+          "width": 366,
+          "height": 24,
+          "scrollable": false
+        },
+        "resources": {
+          "selector": ".resource-row",
+          "x": 12,
+          "y": 564,
+          "width": 366,
+          "height": 44,
+          "scrollable": false
+        },
+        "deck": {
+          "selector": ".deck",
+          "x": 10,
+          "y": 612,
+          "width": 370,
+          "height": 64,
+          "scrollable": false
+        },
+        "navigation": {
+          "selector": ".navbar",
+          "x": 0,
+          "y": 676,
+          "width": 390,
+          "height": 169,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-home-tall-08.png"
+    },
+    {
+      "id": "formation",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "heading": {
+          "selector": ".formation-title",
+          "x": 18,
+          "y": 25,
+          "width": 354,
+          "height": 35.2,
+          "scrollable": false
+        },
+        "ring": {
+          "selector": ".formation-board",
+          "x": 20,
+          "y": 110,
+          "width": 350,
+          "height": 350,
+          "scrollable": false
+        },
+        "summary": {
+          "selector": ".formation-summary",
+          "x": 18,
+          "y": 473,
+          "width": 354,
+          "height": 29,
+          "scrollable": false
+        },
+        "deck": {
+          "selector": ".formation-deck",
+          "x": 18,
+          "y": 510,
+          "width": 354,
+          "height": 64,
+          "scrollable": false
+        },
+        "tools": {
+          "selector": ".formation-tools",
+          "x": 18,
+          "y": 582,
+          "width": 354,
+          "height": 44,
+          "scrollable": false
+        },
+        "roster": {
+          "selector": ".formation-list",
+          "x": 18,
+          "y": 634,
+          "width": 354,
+          "height": 113,
+          "scrollable": true
+        },
+        "instruction": {
+          "selector": ".formation-instruction",
+          "x": 18,
+          "y": 752,
+          "width": 354,
+          "height": 15,
+          "scrollable": false
+        },
+        "back": {
+          "selector": ".back-home",
+          "x": 18,
+          "y": 775,
+          "width": 354,
+          "height": 44,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-formation-tall-08.png"
+    },
+    {
+      "id": "failure",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "report": {
+          "selector": ".failure-modal",
+          "x": 24,
+          "y": 176,
+          "width": 342,
+          "height": 493.8,
+          "scrollable": false
+        },
+        "primary": {
+          "selector": ".report-cta.primary",
+          "x": 48,
+          "y": 544.8,
+          "width": 294,
+          "height": 46,
+          "scrollable": false
+        },
+        "recovery": {
+          "selector": ".report-cta:not(.primary)",
+          "x": 48,
+          "y": 599.8,
+          "width": 294,
+          "height": 46,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-failure-tall-08.png"
+    },
+    {
+      "id": "growth",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "panel": {
+          "selector": ".growth-panel",
+          "x": 0,
+          "y": 126,
+          "width": 390,
+          "height": 550,
+          "scrollable": false
+        },
+        "heading": {
+          "selector": ".gr-header",
+          "x": 1,
+          "y": 127,
+          "width": 388,
+          "height": 103,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".gr-scroll",
+          "x": 1,
+          "y": 230,
+          "width": 388,
+          "height": 445,
+          "scrollable": true
+        },
+        "navigation": {
+          "selector": ".navbar",
+          "x": 0,
+          "y": 676,
+          "width": 390,
+          "height": 169,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-growth-tall-08.png"
+    },
+    {
+      "id": "growth-detail",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "panel": {
+          "selector": ".growth-panel",
+          "x": 0,
+          "y": 126,
+          "width": 390,
+          "height": 550,
+          "scrollable": false
+        },
+        "heading": {
+          "selector": ".gr-header",
+          "x": 1,
+          "y": 127,
+          "width": 388,
+          "height": 103,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".gr-scroll",
+          "x": 1,
+          "y": 230,
+          "width": 388,
+          "height": 445,
+          "scrollable": true
+        }
+      },
+      "screenshot": "handoff-growth-detail-tall-08.png"
+    },
+    {
+      "id": "resonance",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "overlay": {
+          "selector": ".growth-confirm-overlay",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 845,
+          "scrollable": false
+        },
+        "dialog": {
+          "selector": ".growth-confirm",
+          "x": 22,
+          "y": 179,
+          "width": 346,
+          "height": 487,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-resonance-tall-08.png"
+    },
+    {
+      "id": "pause",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "overlay": {
+          "selector": ".modal-overlay",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 845,
+          "scrollable": false
+        },
+        "dialog": {
+          "selector": ".pause-dialog",
+          "x": 20,
+          "y": 174.5,
+          "width": 350,
+          "height": 496,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-pause-tall-08.png"
+    },
+    {
+      "id": "results",
+      "ratio": "tall",
+      "size": [
+        390,
+        845
+      ],
+      "blocks": {
+        "heading": {
+          "selector": ".rs-top",
+          "x": 20,
+          "y": 0,
+          "width": 350,
+          "height": 57,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".rs-scroll",
+          "x": 0,
+          "y": 57,
+          "width": 390,
+          "height": 622.2,
+          "scrollable": false
+        },
+        "actions": {
+          "selector": ".rs-actions",
+          "x": 0,
+          "y": 679.2,
+          "width": 390,
+          "height": 165.8,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-results-tall-08.png"
+    },
+    {
+      "id": "home",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "meta": {
+          "selector": ".meta",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 51,
+          "scrollable": false
+        },
+        "hud": {
+          "selector": ".hud",
+          "x": 0,
+          "y": 51,
+          "width": 390,
+          "height": 59,
+          "scrollable": false
+        },
+        "arena": {
+          "selector": ".arena",
+          "x": 0,
+          "y": 110,
+          "width": 390,
+          "height": 308,
+          "scrollable": false
+        },
+        "quest": {
+          "selector": ".quest",
+          "x": 12,
+          "y": 418,
+          "width": 366,
+          "height": 24,
+          "scrollable": false
+        },
+        "resources": {
+          "selector": ".resource-row",
+          "x": 12,
+          "y": 446,
+          "width": 366,
+          "height": 44,
+          "scrollable": false
+        },
+        "deck": {
+          "selector": ".deck",
+          "x": 10,
+          "y": 494,
+          "width": 370,
+          "height": 57,
+          "scrollable": false
+        },
+        "navigation": {
+          "selector": ".navbar",
+          "x": 0,
+          "y": 555,
+          "width": 390,
+          "height": 138,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-home-short-08.png"
+    },
+    {
+      "id": "formation",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "heading": {
+          "selector": ".formation-title",
+          "x": 18,
+          "y": 25,
+          "width": 354,
+          "height": 35.2,
+          "scrollable": false
+        },
+        "ring": {
+          "selector": ".formation-board",
+          "x": 66.4,
+          "y": 80,
+          "width": 257.3,
+          "height": 257.3,
+          "scrollable": false
+        },
+        "summary": {
+          "selector": ".formation-summary",
+          "x": 18,
+          "y": 349,
+          "width": 354,
+          "height": 29,
+          "scrollable": false
+        },
+        "deck": {
+          "selector": ".formation-deck",
+          "x": 18,
+          "y": 383,
+          "width": 354,
+          "height": 64,
+          "scrollable": false
+        },
+        "tools": {
+          "selector": ".formation-tools",
+          "x": 18,
+          "y": 453,
+          "width": 354,
+          "height": 44,
+          "scrollable": false
+        },
+        "roster": {
+          "selector": ".formation-list",
+          "x": 18,
+          "y": 501,
+          "width": 354,
+          "height": 109,
+          "scrollable": true
+        },
+        "instruction": {
+          "selector": ".formation-instruction",
+          "x": 18,
+          "y": 612,
+          "width": 354,
+          "height": 13.5,
+          "scrollable": false
+        },
+        "back": {
+          "selector": ".back-home",
+          "x": 18,
+          "y": 637,
+          "width": 354,
+          "height": 44,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-formation-short-08.png"
+    },
+    {
+      "id": "failure",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "report": {
+          "selector": ".failure-modal",
+          "x": 24,
+          "y": 110,
+          "width": 342,
+          "height": 493.8,
+          "scrollable": false
+        },
+        "primary": {
+          "selector": ".report-cta.primary",
+          "x": 48,
+          "y": 478.8,
+          "width": 294,
+          "height": 46,
+          "scrollable": false
+        },
+        "recovery": {
+          "selector": ".report-cta:not(.primary)",
+          "x": 48,
+          "y": 533.8,
+          "width": 294,
+          "height": 46,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-failure-short-08.png"
+    },
+    {
+      "id": "growth",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "panel": {
+          "selector": ".growth-panel",
+          "x": 0,
+          "y": 107,
+          "width": 390,
+          "height": 448,
+          "scrollable": false
+        },
+        "heading": {
+          "selector": ".gr-header",
+          "x": 1,
+          "y": 108,
+          "width": 388,
+          "height": 102,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".gr-scroll",
+          "x": 1,
+          "y": 210,
+          "width": 388,
+          "height": 344,
+          "scrollable": true
+        },
+        "navigation": {
+          "selector": ".navbar",
+          "x": 0,
+          "y": 555,
+          "width": 390,
+          "height": 138,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-growth-short-08.png"
+    },
+    {
+      "id": "growth-detail",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "panel": {
+          "selector": ".growth-panel",
+          "x": 0,
+          "y": 107,
+          "width": 390,
+          "height": 448,
+          "scrollable": false
+        },
+        "heading": {
+          "selector": ".gr-header",
+          "x": 1,
+          "y": 108,
+          "width": 388,
+          "height": 102,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".gr-scroll",
+          "x": 1,
+          "y": 210,
+          "width": 388,
+          "height": 344,
+          "scrollable": true
+        }
+      },
+      "screenshot": "handoff-growth-detail-short-08.png"
+    },
+    {
+      "id": "resonance",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "overlay": {
+          "selector": ".growth-confirm-overlay",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 693,
+          "scrollable": false
+        },
+        "dialog": {
+          "selector": ".growth-confirm",
+          "x": 22,
+          "y": 106,
+          "width": 346,
+          "height": 481,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-resonance-short-08.png"
+    },
+    {
+      "id": "pause",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "overlay": {
+          "selector": ".modal-overlay",
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 693,
+          "scrollable": false
+        },
+        "dialog": {
+          "selector": ".pause-dialog",
+          "x": 20,
+          "y": 107.5,
+          "width": 350,
+          "height": 478,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-pause-short-08.png"
+    },
+    {
+      "id": "results",
+      "ratio": "short",
+      "size": [
+        390,
+        693
+      ],
+      "blocks": {
+        "heading": {
+          "selector": ".rs-top",
+          "x": 20,
+          "y": 0,
+          "width": 350,
+          "height": 46,
+          "scrollable": false
+        },
+        "content": {
+          "selector": ".rs-scroll",
+          "x": 0,
+          "y": 46,
+          "width": 390,
+          "height": 487.2,
+          "scrollable": true
+        },
+        "actions": {
+          "selector": ".rs-actions",
+          "x": 0,
+          "y": 533.2,
+          "width": 390,
+          "height": 159.8,
+          "scrollable": false
+        }
+      },
+      "screenshot": "handoff-results-short-08.png"
+    }
+  ],
+  "coverage": [
+    {
+      "id": "ART-01",
+      "name": "행동 성향",
+      "status": "candidate",
+      "count": 6,
+      "files": "candidates/behavior_*"
+    },
+    {
+      "id": "ART-02",
+      "name": "수선등 버튼/아이콘/점",
+      "status": "candidate",
+      "count": 9,
+      "files": "candidates/lantern_*"
+    },
+    {
+      "id": "ART-03",
+      "name": "점등 + 소등 기본",
+      "status": "candidate",
+      "count": 6,
+      "files": "candidates/shop_light_* + lighting/shop_dark_base.png"
+    },
+    {
+      "id": "ART-04",
+      "name": "링/방위",
+      "status": "candidate",
+      "count": 5,
+      "files": "candidates/formation_ring,sector_*,direction_*"
+    },
+    {
+      "id": "ART-05",
+      "name": "요격 부채꼴",
+      "status": "code-preview",
+      "count": 0,
+      "files": "interactions.js SVG 프리뷰; Unity 메시/셰이더 미적용"
+    },
+    {
+      "id": "ART-06",
+      "name": "웨이브 마커",
+      "status": "candidate",
+      "count": 2,
+      "files": "candidates/wave_*"
+    },
+    {
+      "id": "ART-07",
+      "name": "HUD 소품",
+      "status": "candidate",
+      "count": 9,
+      "files": "candidates/hud_*"
+    },
+    {
+      "id": "ART-08",
+      "name": "실패 아이콘",
+      "status": "candidate",
+      "count": 5,
+      "files": "candidates/report_*"
+    },
+    {
+      "id": "ART-09",
+      "name": "파견 배지",
+      "status": "candidate",
+      "count": 1,
+      "files": "candidates/badge_dispatch"
+    },
+    {
+      "id": "ART-10",
+      "name": "보스 변형",
+      "status": "outside-ui",
+      "count": 0,
+      "files": "보스 원화/소환 연출 별도"
+    },
+    {
+      "id": "ART-11",
+      "name": "장소 배경",
+      "status": "outside-ui",
+      "count": 0,
+      "files": "M1 기존 배경+틴트; 신규 배경 제외"
+    },
+    {
+      "id": "ART-12",
+      "name": "보름달 잔향",
+      "status": "candidate",
+      "count": 1,
+      "files": "candidates/moon_echo"
+    },
+    {
+      "id": "ART-13",
+      "name": "받침 대비",
+      "status": "outside-ui",
+      "count": 0,
+      "files": "스프라이트 보정 별도"
+    },
+    {
+      "id": "ART-14",
+      "name": "골무 외곽",
+      "status": "outside-ui",
+      "count": 0,
+      "files": "적 스프라이트 보정 별도"
+    },
+    {
+      "id": "ART-15",
+      "name": "프롤로그",
+      "status": "outside-ui",
+      "count": 0,
+      "files": "스토리 원화 별도"
+    },
+    {
+      "id": "D-44",
+      "name": "시트 위 전투 알림",
+      "status": "candidate",
+      "count": 4,
+      "files": "candidates/alert_*"
+    }
+  ],
+  "runtimeCandidateCount": 48,
+  "reusedReferenceCount": 44,
+  "importPlan": "UnityImportPlan.json",
+  "pending": [
+    "DD 최종 채택",
+    "기존 수선점 교체 작화 판단",
+    "11px 이상으로 보완한 보조 문구의 실제 TMP 가독성",
+    "노치/홈 인디케이터 안전 영역",
+    "Unity 6000.2.6f2 임포트/압축/실기기",
+    "실제 전투/정산/자동 보스 분기 연결"
+  ]
+}

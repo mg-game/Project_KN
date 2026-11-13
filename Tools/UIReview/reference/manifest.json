@@ -1,0 +1,266 @@
+[
+  {
+    "file": "field_tall.png",
+    "source_path": "Assets/_Project/Art/Battle/field_tall.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "9b00bf54464a05f46bc1e3d1d4431ea987725613d51d70c3f6fee92baf214f28"
+  },
+  {
+    "file": "guardian_pad.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "38f8c16967a53f3fad74bfb5fd125eb1a09d34d257f653ee5b10ce44e811d59b"
+  },
+  {
+    "file": "guardian_pad_empty.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_empty.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "72fe665faf7e3ddaaa9a24de5572b91a59a638d8ee976cc3b3739cc82bb4c73a"
+  },
+  {
+    "file": "guardian_pad_gold.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_gold.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "9f7bb22cb9639e5970593c1bc1f490be1e2bccfb335c5b1625bd50c5c910e920"
+  },
+  {
+    "file": "guardian_pad_lavender.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_lavender.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "8b12dc68e4caefcadfe17e0b934e303a0a17e26753942d2ae9c46de0b7bc8a87"
+  },
+  {
+    "file": "guardian_pad_mint.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_mint.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "84b279ca366cfce6fd99c2d44c1ff339681495fe3ffa8c1fc3d215f20f83a8e2"
+  },
+  {
+    "file": "guardian_pad_pink.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_pink.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "7eb6933557a98a15fe76ec9876ebae96d99f6d662a2f4e6739062f911e2ad777"
+  },
+  {
+    "file": "guardian_pad_sky.png",
+    "source_path": "Assets/_Project/Art/Battle/guardian_pad_sky.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "74c8a80f7940170b0662eb25af335daebbc0f1a2a52abef69902249c32d778d8"
+  },
+  {
+    "file": "shop.png",
+    "source_path": "Assets/_Project/Art/Battle/shop.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "f6972deb9707550402ca159f32fc3ff793c837d06e247f5402e7246d44bd2078"
+  },
+  {
+    "file": "jjak_base.png",
+    "source_path": "Assets/_Project/Art/Characters/jjak_base.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "60d8eb0ca8c3fe3d62717c5254db0f15af77c801a275a2d4a7a03a5bd9675fb3"
+  },
+  {
+    "file": "lala_base.png",
+    "source_path": "Assets/_Project/Art/Characters/lala_base.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "64f23242cdd96ef4783178dc0c5baf2e3f6bee30d76cc780c0c3d4bdbdaaa057"
+  },
+  {
+    "file": "mong_base.png",
+    "source_path": "Assets/_Project/Art/Characters/mong_base.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "1b35214088ef6232754a3b39381e969a1a48fde76e2c44dfb75c29217901943b"
+  },
+  {
+    "file": "rouge_base.png",
+    "source_path": "Assets/_Project/Art/Characters/rouge_base.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "58b397c8fb511ca7937eadad337802f8448950a90b00a6370717178f12e406f9"
+  },
+  {
+    "file": "udu_base.png",
+    "source_path": "Assets/_Project/Art/Characters/udu_base.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "34e481a6e01eae276ef573cb3a5c97debcb42829da64b7dc25d699d2255eca99"
+  },
+  {
+    "file": "enemy_moth.png",
+    "source_path": "Assets/_Project/Art/Enemies/enemy_moth.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "a34eecb020a332fcbc3e904c4cec07c6b14d9bb9df493e5b1086e4fac28d021a"
+  },
+  {
+    "file": "echo.png",
+    "source_path": "Assets/_Project/Art/Icons/echo.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "c4ae714ffa2cae08d3d96277f75980f1fee2af567a4f9f24772563c35ae72444"
+  },
+  {
+    "file": "guardian.png",
+    "source_path": "Assets/_Project/Art/Icons/guardian.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "ec15d7ca2ff862c47c76e83132d851795eca365d79c5af86229a8994993a5311"
+  },
+  {
+    "file": "lamp.png",
+    "source_path": "Assets/_Project/Art/Icons/lamp.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "c73a558eeaaa75ff1020fc6f07399148c0768bd4531ac8e190ed91f2f7944b63"
+  },
+  {
+    "file": "power.png",
+    "source_path": "Assets/_Project/Art/Icons/power.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "ca20cb2d8c2bc3fac73abf6a724fcfe5df0bfc74e75e424886dc125e1d7630d5"
+  },
+  {
+    "file": "button_gold_9s.png",
+    "source_path": "Assets/_Project/Art/UI/button_gold_9s.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "6ace1af174be5598e903b5b25c840cf1fc17fac65feec44c5021dea1dc2c9e0f"
+  },
+  {
+    "file": "card_frame_9s.png",
+    "source_path": "Assets/_Project/Art/UI/card_frame_9s.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "34bb338eb225f685ad42d004f3ab60474773fb531ece0f760e5d1308889baca2"
+  },
+  {
+    "file": "idle_basket_0.png",
+    "source_path": "Assets/_Project/Art/UI/idle_basket_0.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "49ac3b0af75e1ed8bddddc8ef0987e34b8c86165637d2af0fb4901f0d759bec5"
+  },
+  {
+    "file": "idle_basket_1.png",
+    "source_path": "Assets/_Project/Art/UI/idle_basket_1.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "601e5c5554bc03ab4c88210020588774cb6fcc5b59f29f150c4366572d4eeeec"
+  },
+  {
+    "file": "idle_basket_2.png",
+    "source_path": "Assets/_Project/Art/UI/idle_basket_2.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "0f0295d4265c7570a85bb423aa1578761467b1caee471f0cdf7783b8c1e3ae04"
+  },
+  {
+    "file": "idle_basket_3.png",
+    "source_path": "Assets/_Project/Art/UI/idle_basket_3.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "2ee53633cbd76df93a68b8d7af92770fb5201f718a3075eb53946f4920567cf6"
+  },
+  {
+    "file": "navbar_9s.png",
+    "source_path": "Assets/_Project/Art/UI/navbar_9s.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "dcd775b33f56596c61d881d23a0067f89181a6a2a7e00330c34cd5daa2ac969d"
+  },
+  {
+    "file": "panel_night_9s.png",
+    "source_path": "Assets/_Project/Art/UI/panel_night_9s.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "bb873455d9e47b6530301ad1439cdeae7378ce1250839ddc88083dd6d603d6a1"
+  },
+  {
+    "file": "tab_characters.png",
+    "source_path": "Assets/_Project/Art/UI/tab_characters.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "fdd024025a04f5f89a8015791456e8cb539d00b5b5d93d17087aef48f4ba3db5"
+  },
+  {
+    "file": "tab_expedition.png",
+    "source_path": "Assets/_Project/Art/UI/tab_expedition.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "769ea1775779607962265fb5fea514e1a935b5c997b027748a7eca372d8b099f"
+  },
+  {
+    "file": "tab_formation.png",
+    "source_path": "Assets/_Project/Art/UI/tab_formation.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "3958bb47987c96eb9e0fc4181a88ce158c105ae6388cdf62df2369c6c4548387"
+  },
+  {
+    "file": "tab_gacha.png",
+    "source_path": "Assets/_Project/Art/UI/tab_gacha.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "9ff680ff256607100890c6afd83ecacf43eef0a06ecc255e557224a00a3ad2f9"
+  },
+  {
+    "file": "tab_growth.png",
+    "source_path": "Assets/_Project/Art/UI/tab_growth.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "d09033e088585b44f1d331da8e0cc20e883a138150bb5882c366e433f8206b03"
+  },
+  {
+    "file": "tab_shop.png",
+    "source_path": "Assets/_Project/Art/UI/tab_shop.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "fe8edced4651c1f526b0d5791aeb0ace8f5d651c0194cc206ad68e6be4f4a6e9"
+  },
+  {
+    "file": "topbar_9s.png",
+    "source_path": "Assets/_Project/Art/UI/topbar_9s.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "7de8a52a1e75a3237179de3da5feda0be2a80c1385673412bfc33c93af2b5af7"
+  },
+  {
+    "file": "currency_gold.png",
+    "source_path": "Assets/_Project/Art/Icons/currency_gold.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "c25952adb7f4e0b07258634013dedc465f502541af54529f852e9b2e56852199"
+  },
+  {
+    "file": "shards.png",
+    "source_path": "Assets/_Project/Art/Icons/shards.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "ebb037b28750cbd673bc29ebe8715bc71cd1ca46de124c27e5266f89a9838972"
+  },
+  {
+    "file": "resonance.png",
+    "source_path": "Assets/_Project/Art/Icons/resonance.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "2a6824a1bb0b60fb344a760654ea0667e439563342ff0db2666f1c6dc6ef0831"
+  },
+  {
+    "file": "style_assault.png",
+    "source_path": "Assets/_Project/Art/Icons/style_assault.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "558937aad1de2df7e2fda0aea4d36aeab754a8200cfedbdbcbf6b3068c789171"
+  },
+  {
+    "file": "style_capture.png",
+    "source_path": "Assets/_Project/Art/Icons/style_capture.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "a67add2d190dc90a16a7dcdad598e9b36fe2074772736c9690dd0226a7c014e6"
+  },
+  {
+    "file": "style_defense.png",
+    "source_path": "Assets/_Project/Art/Icons/style_defense.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "26d08d4111eea3735bc600cbe9bd881e28a3a4d43953a9bab83bce92a053e69f"
+  },
+  {
+    "file": "style_heal.png",
+    "source_path": "Assets/_Project/Art/Icons/style_heal.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "d1faf0226e9b8f1c21220e3e7b72a3173ac4c75bf2144a4764370214f5f79456"
+  },
+  {
+    "file": "style_snipe.png",
+    "source_path": "Assets/_Project/Art/Icons/style_snipe.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "f54dde1078ee611f9016a0ca09a11dd35d2b05c5d950188e5039ba21c16444e1"
+  },
+  {
+    "file": "style_support.png",
+    "source_path": "Assets/_Project/Art/Icons/style_support.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "fd7c0101b47b6db280140729deb0ff8cce522ce36e43f975c4415e79cdc222dd"
+  },
+  {
+    "file": "currency_gem.png",
+    "source_path": "Assets/_Project/Art/Icons/currency_gem.png",
+    "source_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+    "sha256": "d344eb6dd1a36003121c11e217bcebd8a405cc707fdf0c9b1c9b8e90ce97cd36"
+  }
+]

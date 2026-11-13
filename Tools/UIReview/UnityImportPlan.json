@@ -1,0 +1,1282 @@
+{
+  "status": "proposal_not_applied",
+  "engine": "Unity 6000.2.6f2",
+  "defaults": {
+    "textureType": "Sprite",
+    "spriteMode": "Single",
+    "spriteMeshType": "FullRect",
+    "spritePixelsPerUnit": 100,
+    "sRGB": true,
+    "alphaIsTransparency": true,
+    "mipmapEnabled": false,
+    "wrapMode": "Clamp",
+    "filterMode": "Bilinear",
+    "compression": "Uncompressed for first visual QA; platform compression requires in-Editor validation"
+  },
+  "borderOrder": "Unity XYZW = left,bottom,right,top; borderLTRB is a reading aid",
+  "assets": [
+    {
+      "id": "ART-01",
+      "name": "behavior_advance_on",
+      "file": "candidates/behavior_advance_on.png",
+      "target": "Assets/_Project/Art/Icons/behavior_advance_on.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "463ebff33cbb1c8f0ce81cd8a9e7f9ea5b869f14125b4cbd5a6d56dbd43d278c"
+    },
+    {
+      "id": "ART-01",
+      "name": "behavior_advance_dim",
+      "file": "candidates/behavior_advance_dim.png",
+      "target": "Assets/_Project/Art/Icons/behavior_advance_dim.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "7f105f118fa2c4660c3c2fb58974b7ccf518b11e790374df3b819ec0c2e59a46"
+    },
+    {
+      "id": "ART-01",
+      "name": "behavior_walk_on",
+      "file": "candidates/behavior_walk_on.png",
+      "target": "Assets/_Project/Art/Icons/behavior_walk_on.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "3939854753c191b61a8e5c9695f586f8bc17bcb6e3e77cbf5f3f31cc727e9ee2"
+    },
+    {
+      "id": "ART-01",
+      "name": "behavior_walk_dim",
+      "file": "candidates/behavior_walk_dim.png",
+      "target": "Assets/_Project/Art/Icons/behavior_walk_dim.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "bd45ba09a3fa8b832df67a76a295fc461b3dda4926621df19c4bcf231301b355"
+    },
+    {
+      "id": "ART-01",
+      "name": "behavior_guard_on",
+      "file": "candidates/behavior_guard_on.png",
+      "target": "Assets/_Project/Art/Icons/behavior_guard_on.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "51ed3a3873ead7b3b7a80ebc8d2c4eb5097bfc8cbb7b031efc5f485dd6defcbf"
+    },
+    {
+      "id": "ART-01",
+      "name": "behavior_guard_dim",
+      "file": "candidates/behavior_guard_dim.png",
+      "target": "Assets/_Project/Art/Icons/behavior_guard_dim.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "7d1fe2eb4e87f7c3d5e5f9b760af0921dbf6ce85d9175a816f5d79ecfd796280"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_timer_normal",
+      "file": "candidates/hud_timer_normal.png",
+      "target": "Assets/_Project/Art/Icons/hud_timer_normal.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "275c94d4e111ef76028b4a30bd2f2f1d8a023ec152b8a7eac24747ed89c72855"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_timer_warning",
+      "file": "candidates/hud_timer_warning.png",
+      "target": "Assets/_Project/Art/Icons/hud_timer_warning.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "2386f7629c44bad8b11c6541bd7568ce0cbfcd5e320a57cdf233068a34f1d059"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_boss_normal",
+      "file": "candidates/hud_boss_normal.png",
+      "target": "Assets/_Project/Art/Icons/hud_boss_normal.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "6d616d8d2ab051d5a0b918f968031e391522f563ab5de4434f068f96befe7bf1"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_boss_warning",
+      "file": "candidates/hud_boss_warning.png",
+      "target": "Assets/_Project/Art/Icons/hud_boss_warning.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "3aa054d102621b29fc3c69b406c71490bbd601a975869cacb3f9da57a9d54c64"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_remaining_normal",
+      "file": "candidates/hud_remaining_normal.png",
+      "target": "Assets/_Project/Art/Icons/hud_remaining_normal.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "86c7f4df8550e1ed208e1eacda611cde0336be99519cefe8d7967d701b020b34"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_remaining_warning",
+      "file": "candidates/hud_remaining_warning.png",
+      "target": "Assets/_Project/Art/Icons/hud_remaining_warning.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "4f3a1a16c6350075748eec75a73fc7528f3cdfe641bc94a924f50c75fd6fc02e"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_wave_complete",
+      "file": "candidates/hud_wave_complete.png",
+      "target": "Assets/_Project/Art/Icons/hud_wave_complete.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "8bb2ffd30387acb8e5ad01867c3073b346335c6229183f8ac8124c79588c4e22"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_wave_current",
+      "file": "candidates/hud_wave_current.png",
+      "target": "Assets/_Project/Art/Icons/hud_wave_current.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "51e2a3a458358d4785e06c87984c1c46b084ee2ef458d8521fa8d0102a7db425"
+    },
+    {
+      "id": "ART-07",
+      "name": "hud_wave_pending",
+      "file": "candidates/hud_wave_pending.png",
+      "target": "Assets/_Project/Art/Icons/hud_wave_pending.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "9368fd28502b5b2b9dbd1629de932432f8ad02dd5bcba00109fcc4c54ffe7b2c"
+    },
+    {
+      "id": "ART-04",
+      "name": "formation_ring",
+      "file": "candidates/formation_ring.png",
+      "target": "Assets/_Project/Art/Battle/formation_ring.png",
+      "width": 1024,
+      "height": 1024,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "f0bb33284368d57e6ad92989030965cf50aa1f7817f4e38072ec95c1f2a1aa89"
+    },
+    {
+      "id": "ART-04",
+      "name": "sector_empty",
+      "file": "candidates/sector_empty.png",
+      "target": "Assets/_Project/Art/Battle/sector_empty.png",
+      "width": 1024,
+      "height": 1024,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "274b96c513e6454ebdb07f170ee0009f61040b8bfb96fe8ac0bd38e54a5f5b69"
+    },
+    {
+      "id": "ART-04",
+      "name": "sector_danger",
+      "file": "candidates/sector_danger.png",
+      "target": "Assets/_Project/Art/Battle/sector_danger.png",
+      "width": 1024,
+      "height": 1024,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "02defd794d8ae784fa6adc510c27175dc4e3959e9798636976b85d746e43a55a"
+    },
+    {
+      "id": "ART-04",
+      "name": "direction_danger",
+      "file": "candidates/direction_danger.png",
+      "target": "Assets/_Project/Art/Battle/direction_danger.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "4600f3ec03e70afa55358f61f28cf1cb6d23cf7c0777b698eb81d7df7da67154"
+    },
+    {
+      "id": "ART-04",
+      "name": "direction_pressure",
+      "file": "candidates/direction_pressure.png",
+      "target": "Assets/_Project/Art/Battle/direction_pressure.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "62f13826f1c0a7bfdc09a59613f6feed53dc5bf91e76edf96afc0ee667e3aabf"
+    },
+    {
+      "id": "ART-06",
+      "name": "wave_preview",
+      "file": "candidates/wave_preview.png",
+      "target": "Assets/_Project/Art/FX/wave_preview.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "28da569bc9576f961d0c1183f649d270b613c4ad4696dc86a427ab8ed8d4eea8"
+    },
+    {
+      "id": "ART-06",
+      "name": "wave_fixed",
+      "file": "candidates/wave_fixed.png",
+      "target": "Assets/_Project/Art/FX/wave_fixed.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "62f13826f1c0a7bfdc09a59613f6feed53dc5bf91e76edf96afc0ee667e3aabf"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern",
+      "file": "candidates/lantern.png",
+      "target": "Assets/_Project/Art/Icons/lantern.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "e5d0c244f4735d455b78012faa558e1e01c8994e780d8b271021ae7e4dbab846"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_button_enabled",
+      "file": "candidates/lantern_button_enabled.png",
+      "target": "Assets/_Project/Art/UI/lantern_button_enabled.png",
+      "width": 256,
+      "height": 96,
+      "borderLTRB": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "borderUnityXY_ZW": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "73424ef3cb7b1db01a754d106e76914760f3bc38e5cca7b9723d43ef20925e5b"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_button_disabled",
+      "file": "candidates/lantern_button_disabled.png",
+      "target": "Assets/_Project/Art/UI/lantern_button_disabled.png",
+      "width": 256,
+      "height": 96,
+      "borderLTRB": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "borderUnityXY_ZW": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "235f90a498d069e37d1a9594be8cddc435424a1de6bac03bf1fe5684a456d4b0"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_button_max",
+      "file": "candidates/lantern_button_max.png",
+      "target": "Assets/_Project/Art/UI/lantern_button_max.png",
+      "width": 256,
+      "height": 96,
+      "borderLTRB": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "borderUnityXY_ZW": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "31dc3668b02ab6301a4b3cc8ea09050aed1e436332e648ac16c897d9c8f4a94d"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_level_1",
+      "file": "candidates/lantern_level_1.png",
+      "target": "Assets/_Project/Art/UI/lantern_level_1.png",
+      "width": 256,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "12f486b7fd080927a7e17d2b25c32fda8ea85413126c58f1af85a00872babfdb"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_level_2",
+      "file": "candidates/lantern_level_2.png",
+      "target": "Assets/_Project/Art/UI/lantern_level_2.png",
+      "width": 256,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "f5491a51d63dd18cccfe698445adc1f3967d3168647f97a917bd25566c763b88"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_level_3",
+      "file": "candidates/lantern_level_3.png",
+      "target": "Assets/_Project/Art/UI/lantern_level_3.png",
+      "width": 256,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "44b7c429be33eb5286fd4efbe2eb9b84a9fef432e46fb47c862edf4c153e3906"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_level_4",
+      "file": "candidates/lantern_level_4.png",
+      "target": "Assets/_Project/Art/UI/lantern_level_4.png",
+      "width": 256,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "5a8b2e82d369faf2d13c09827194f6329cb144fc8fd7c181fe5ed67af9e137d3"
+    },
+    {
+      "id": "ART-02",
+      "name": "lantern_level_5",
+      "file": "candidates/lantern_level_5.png",
+      "target": "Assets/_Project/Art/UI/lantern_level_5.png",
+      "width": 256,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "ff1cf78feeef8d07e25ada7214ae45545aa78b529de311ae49e9f77d676fccd3"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_light_1",
+      "file": "candidates/shop_light_1.png",
+      "target": "Assets/_Project/Art/Battle/shop_light_1.png",
+      "width": 768,
+      "height": 768,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "bb78d18e921effe2cc061c5515c8bda22f8af85e994323c49904d080ccf04efe"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_light_2",
+      "file": "candidates/shop_light_2.png",
+      "target": "Assets/_Project/Art/Battle/shop_light_2.png",
+      "width": 768,
+      "height": 768,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "97f7bb2c79eafac1c135a343aa05754d4476ffd468efd20ef78a4a283f6dd54c"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_light_3",
+      "file": "candidates/shop_light_3.png",
+      "target": "Assets/_Project/Art/Battle/shop_light_3.png",
+      "width": 768,
+      "height": 768,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "9e7875af9ba1a2bdd52a067563042683c1aefdf8795b0f8c020d71396c9afc45"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_light_4",
+      "file": "candidates/shop_light_4.png",
+      "target": "Assets/_Project/Art/Battle/shop_light_4.png",
+      "width": 768,
+      "height": 768,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "a785d85fe653e0c21cbc1aaa9bdaaac14cbfa04986691ca12d7a9b86bd95582b"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_light_5",
+      "file": "candidates/shop_light_5.png",
+      "target": "Assets/_Project/Art/Battle/shop_light_5.png",
+      "width": 768,
+      "height": 768,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "2f2d9d2ec7e4bd90d6e9aad0482d7e2ce6e5b85a6ae1eeaf7c99c6330e19cce2"
+    },
+    {
+      "id": "ART-08",
+      "name": "report_defense_fail",
+      "file": "candidates/report_defense_fail.png",
+      "target": "Assets/_Project/Art/Icons/report_defense_fail.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "cc74e84ecc5d31bd1f56d3bec245ba6520b92b5862a1f3eb551d4a7ee5d140b7"
+    },
+    {
+      "id": "ART-08",
+      "name": "report_damage_fail",
+      "file": "candidates/report_damage_fail.png",
+      "target": "Assets/_Project/Art/Icons/report_damage_fail.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "d49ab9d70e5a0bbe08d684c05e257c7cdbe63d37f59e1b93887c031e4740ac39"
+    },
+    {
+      "id": "ART-08",
+      "name": "report_retry",
+      "file": "candidates/report_retry.png",
+      "target": "Assets/_Project/Art/Icons/report_retry.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "92b6ed6d3e27169a493057db21e9e4a3ac8ec50dee33de294f127003ccf69eba"
+    },
+    {
+      "id": "ART-08",
+      "name": "report_formation",
+      "file": "candidates/report_formation.png",
+      "target": "Assets/_Project/Art/Icons/report_formation.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "62abffa16a58d40cf20d9628d390c0fdc27af057f4cabe87dcbd82cbfe3ec09e"
+    },
+    {
+      "id": "ART-08",
+      "name": "report_growth",
+      "file": "candidates/report_growth.png",
+      "target": "Assets/_Project/Art/Icons/report_growth.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "f1d06314ccff2928b1516ed94d4ddcc2cff7fbdbc98e15c303cc8195d86ea394"
+    },
+    {
+      "id": "ART-09",
+      "name": "badge_dispatch",
+      "file": "candidates/badge_dispatch.png",
+      "target": "Assets/_Project/Art/Icons/badge_dispatch.png",
+      "width": 64,
+      "height": 64,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "a5de7fdb5a2c070d31e0ae17d7bdaf72dae45e8112b7a1d7cba8819843e96d80"
+    },
+    {
+      "id": "D-44",
+      "name": "alert_boss",
+      "file": "candidates/alert_boss.png",
+      "target": "Assets/_Project/Art/UI/alert_boss.png",
+      "width": 320,
+      "height": 64,
+      "borderLTRB": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "borderUnityXY_ZW": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": 64,
+      "sha256": "29ae3d35ef3e560fcb06ca969ed2b887a17ee61e405a4d8962688d04bf056408"
+    },
+    {
+      "id": "D-44",
+      "name": "alert_critical",
+      "file": "candidates/alert_critical.png",
+      "target": "Assets/_Project/Art/UI/alert_critical.png",
+      "width": 320,
+      "height": 64,
+      "borderLTRB": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "borderUnityXY_ZW": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": 64,
+      "sha256": "a22f9d52793141fd697381dbf968cddc4ae59077291c30b8d1fdc231c2737d52"
+    },
+    {
+      "id": "D-44",
+      "name": "alert_clear",
+      "file": "candidates/alert_clear.png",
+      "target": "Assets/_Project/Art/UI/alert_clear.png",
+      "width": 320,
+      "height": 64,
+      "borderLTRB": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "borderUnityXY_ZW": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": 64,
+      "sha256": "1d155fee3740c8a85956c0fb9cafe4da3f506d039ef0aab931b9c06f44708cb3"
+    },
+    {
+      "id": "D-44",
+      "name": "alert_fail",
+      "file": "candidates/alert_fail.png",
+      "target": "Assets/_Project/Art/UI/alert_fail.png",
+      "width": 320,
+      "height": 64,
+      "borderLTRB": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "borderUnityXY_ZW": [
+        64,
+        20,
+        20,
+        20
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": 64,
+      "sha256": "d75b8ebaa6ba650d326a55418bf9667d21dd9391e76f7885bfc018797a77fb27"
+    },
+    {
+      "id": "ART-12",
+      "name": "moon_echo",
+      "file": "candidates/moon_echo.png",
+      "target": "Assets/_Project/Art/Icons/moon_echo.png",
+      "width": 128,
+      "height": 128,
+      "borderLTRB": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "fixedHeight": null,
+      "sha256": "fd6343a430b930e7c473d4ddf8a358e251576448ce6c370b2da59b8c68c215db"
+    },
+    {
+      "id": "ART-03",
+      "name": "shop_dark_base",
+      "file": "lighting/shop_dark_base.png",
+      "target": "Assets/_Project/Art/Battle/shop_dark_ui.png",
+      "width": 768,
+      "height": 768,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "borderUnityXY_ZW": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "sha256": "419cf37956f3fdb10f3269c73a691a27f927a5d10bf4112ce4bf2857cc827ca2"
+    }
+  ],
+  "shopBinding": {
+    "base": "shop_dark_base",
+    "levels": [
+      "shop_light_1",
+      "shop_light_2",
+      "shop_light_3",
+      "shop_light_4",
+      "shop_light_5"
+    ],
+    "sharedRect": [
+      768,
+      768
+    ],
+    "sharedPivot": [
+      0.5,
+      0.5
+    ],
+    "blend": "normal alpha",
+    "stacking": "one overlay at a time, not all previous levels",
+    "raycastTarget": false
+  },
+  "adoption": "Review and Unity-generated meta required before copying to game repository."
+}

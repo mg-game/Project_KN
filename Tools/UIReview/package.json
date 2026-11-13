@@ -1,0 +1,18 @@
+{
+  "name": "project-kn-ui-review",
+  "version": "0.8.0",
+  "private": true,
+  "description": "Project_KN UI development reference and browser review, outside Unity Assets",
+  "engines": { "node": ">=20.19" },
+  "scripts": {
+    "start": "node server.cjs",
+    "check:assets": "node check-assets.cjs",
+    "test": "node test.cjs",
+    "build:assets": "node build-assets.cjs && node refine-delivery.cjs",
+    "build:handoff": "node build-handoff.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "sharp": "0.35.5"
+  }
+}

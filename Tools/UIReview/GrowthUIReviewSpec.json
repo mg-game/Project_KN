@@ -1,0 +1,90 @@
+{
+  "revision": "04",
+  "scope": "art UI review fixtures; not game balance or persistence",
+  "references": [
+    "UI_Growth D-43",
+    "SYS_Growth D-29",
+    "SYS_Evolution D-45 M1/P1 boundary",
+    "UI_Home D-44",
+    "CNT_Character_List role table"
+  ],
+  "views": [
+    "GR-1 growth list",
+    "GR-2 character shared-level detail",
+    "GR-3 feedback chip",
+    "resonance confirmation"
+  ],
+  "states": [
+    "normal",
+    "poor",
+    "partial_x10",
+    "max_level",
+    "locked",
+    "poor_fragments",
+    "max_resonance",
+    "summon_cost_floor"
+  ],
+  "fixtures": {
+    "wallet": 12450,
+    "fragments": 36,
+    "levels": [
+      12,
+      10,
+      11,
+      9,
+      8
+    ],
+    "resonance": [
+      2,
+      1,
+      1,
+      0,
+      0
+    ],
+    "levelCost": "floor(50*1.09^(level-1)) for review arithmetic",
+    "shopCost": "floor(240*1.1^(shopLevel-12)), review-only fixture",
+    "resonanceCost": 20,
+    "attack": "40+17*level, review-only",
+    "hp": "100+80*level, review-only",
+    "teamPowerDeltaPerLevel": 84,
+    "placementBadges": "dedicated growth fixtures, not a live formation model"
+  },
+  "rules": {
+    "lineageLevel": "one shared level for guardian and echo",
+    "levelCap": 100,
+    "resonanceCap": 10,
+    "holdDelayMs": 450,
+    "holdRepeatMs": 140,
+    "repeatMsStatus": "review timing value",
+    "stopRepeat": [
+      "pointer up",
+      "pointer cancel",
+      "lost capture",
+      "move >8px",
+      "list scroll",
+      "view change",
+      "purchase blocked"
+    ],
+    "x10": "up to ten affordable levels",
+    "shopMax": "enabled when two or more levels affordable",
+    "resonance": "confirm before spending; guard against duplicate confirms",
+    "summonCostFloor": 3,
+    "listOrder": "stable during level up",
+    "P1": "limit break and extra concurrent echo are not shown"
+  },
+  "artReuse": {
+    "runtimeCandidates": 48,
+    "newCandidatePngCount": 0,
+    "additionalExistingReferenceIcons": 9,
+    "referenceCommit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0"
+  },
+  "notImplemented": [
+    "real economy",
+    "online save",
+    "real power formula",
+    "live income accumulation",
+    "actual mail grants",
+    "Unity integration",
+    "physical device behavior"
+  ]
+}

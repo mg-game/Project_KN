@@ -1,0 +1,35 @@
+/* Review 07: reading sizes at the 390px logical reference, pending Unity/TMP QA. */
+.shop-lv{font-size:11px}
+.hud .boss-bar{font-size:11px;height:22px}
+.recommend{font-size:11px;background:#211737ed;color:#f2dfc3;padding:5px 8px;border-color:#b69a6d99}
+.shop-health small{font-size:11px;line-height:17px;top:10px;left:-12px;width:100px;background:#211737ed;color:#fff0ca;border:1px solid #b5a2bc66;border-radius:8px;text-shadow:none}
+.critical .shop-health small{color:#ffd5cf;border-color:#e7a4a4aa}
+.portrait small{font-size:11px;line-height:16px;background:#261c38;color:#fff0ca;padding:0 4px;border:1px solid #baa3c466}
+.basket{width:74px}.basket img{display:block;margin:auto}.basket span{font-size:11px;line-height:1.5;background:#211737f2;color:#ead8bd;padding:3px 4px}
+.resource-counter small,.lamp-button small{font-size:11px;color:#d5eddf}
+.deck-card .cost{font-size:12px;line-height:18px;min-width:18px}
+.navbar .nav-item span{font-size:11px}
+.battle-state-note{position:absolute;top:40px;left:65px;right:65px;z-index:6;min-height:28px;margin:0;padding:6px 8px;background:#302139f5;border:1px solid #e5b4b5;border-radius:10px;color:#ffe2df;font-size:11px;line-height:1.5;text-align:center;pointer-events:none;box-shadow:0 2px 7px #160f2366}
+.battle-state-note[data-state=locked]{border-color:#cdb67d;color:#ffe4ad;background:#30263bf5}
+.battle-state-note[data-state=cooldown]{border-color:#a5c9d7;color:#e0eff7;background:#25243cf5}
+.gr-eyebrow,.gr-wallet small,.gr-wallet .gr-memory small{font-size:11px;color:#d4c2df}
+.gr-wallet [data-income]{color:#c1e2d1}
+.gr-shop h3{font-size:13px}.gr-shop-info p{font-size:12px;color:#eadbed}
+.gr-shop-info small{font-size:11px;line-height:1.7;color:#ecd3a3}
+.gr-shop-actions button,.gr-level-button,.gr-soft-button{font-size:12px}
+.gr-recommend,.gr-recommend small{font-size:11px}.gr-recommend>span{color:#ead9eb}.gr-recommend small{color:#c1e2d1}
+.gr-portrait{height:88px}.gr-portrait>img{width:64px;height:64px;margin-bottom:0}.gr-portrait>span{font-size:11px;line-height:1.5;color:#efdcf2;background:#2c203a;border-color:#ae92b566}
+.gr-scroll{padding-top:12px}.gr-recommend{padding-top:6px;padding-bottom:6px}.gr-card-title{margin-top:6px}.gr-power{margin-top:3px;margin-bottom:6px}
+.gr-card-title h3{font-size:12px}.gr-card-title>b{font-size:11px;color:#ecd5ad}.gr-power,.gr-hint{font-size:11px;line-height:1.7}.gr-power{color:#c1e2d1}.gr-power.unassigned,.gr-hint{color:#d4c2df}
+.gr-level-button{font-size:12px}
+.gr-character-head p,.gr-shared,.gr-shared-note{font-size:11px;line-height:1.8;color:#d4c2df}
+.gr-section-heading h3{font-size:13px}.gr-section-heading>span{font-size:11px;color:#ecd3a3}
+.gr-stat-row{min-height:37px}.gr-stat-row>span{font-size:11px;color:#d4c2df}.gr-stat-row b{font-size:12px;color:#eedff2}
+.gr-fragment-cost{font-size:11px;color:#d4c2df}.gr-primary,.gr-secondary{font-size:12px}
+.unavailable.gr-primary,.unavailable.gr-level-button,.unavailable.gr-gold-button{background:#4a3551;color:#ffe0e3!important;border-color:#c5a6b5!important}
+.gr-shop-status{font-size:11px;color:#ffe0e3;line-height:1.7;padding:7px 9px;margin:9px 0 0;background:#301e3a;border:1px solid #b38d9c77;border-radius:8px}
+.gr-confirm-copy,.confirm-effects,.confirm-effects span{font-size:12px;color:#e1cfe8;line-height:1.8}
+.rs-top span:last-child,.rs-section-heading>span,.rs-reward>span,.rs-materials,.rs-bond span,.rs-route p,.rs-progress b,.rs-progress span,.rs-guidance p,.rs-detail p,.rs-auto-note{font-size:11px}
+.rs-progress span,.rs-auto-note{color:#d0badb}.rs-bond span,.rs-route p,.rs-guidance p{color:#d0badb}
+.device.short .gr-eyebrow{font-size:11px}
+@media(prefers-reduced-motion:reduce){.battle-state-note{animation:none}}

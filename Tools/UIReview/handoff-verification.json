@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-12",
+  "scope": "Browser integration, keyboard isolation, measured handoff layout and unchanged candidate provenance; not Unity/safe-area certification.",
+  "checks": [
+    {
+      "name": "Growth sheet prevents keyboard access to hidden pause/speed/AUTO/summon/investment; bottom navigation stays available",
+      "result": "pass"
+    },
+    {
+      "name": "Cancel/confirm resonance and ratio redraw preserve sheet background blocking",
+      "result": "pass"
+    },
+    {
+      "name": "Escape closes growth, restores navigation focus and re-enables combat controls",
+      "result": "pass"
+    },
+    {
+      "name": "Sheet combat alert remains operable while hidden combat controls are blocked",
+      "result": "pass"
+    },
+    {
+      "name": "All three failure reports block background, cycle three CTA buttons and restore usable battle controls",
+      "result": "pass"
+    },
+    {
+      "name": "Formation at both ratios: summary, deck, presets, roster, hint and return button never overlap",
+      "result": "pass"
+    },
+    {
+      "name": "Sixteen measured layouts fit screens; ART coverage matches all 48 import candidates and PNGs remain byte-identical",
+      "result": "pass"
+    },
+    {
+      "name": "Handoff inspector switches eight screens/two ratios, highlights measurements and filters candidate coverage",
+      "result": "pass"
+    },
+    {
+      "name": "Handoff page has no horizontal overflow at 360/390/768px",
+      "result": "pass"
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

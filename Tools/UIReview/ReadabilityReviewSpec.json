@@ -1,0 +1,53 @@
+{
+  "version": "07",
+  "status": "review_not_adopted_not_unity_applied",
+  "reference": {
+    "tall": [
+      390,
+      845
+    ],
+    "short": [
+      390,
+      693
+    ]
+  },
+  "scope": "Selected battle/growth/result labels and state copy in browser review; not a global font minimum or full accessibility certification.",
+  "minimumFontPx": 11,
+  "purchaseFontPx": 12,
+  "targets": [
+    "battle: recommendation, health, portrait cooldown, basket age, income, lamp gain, deck cost, bottom navigation",
+    "growth: wallet labels, shop stats/milestone, recommendation, placement badge, level, power, cost, hint",
+    "growth detail: lineage sharing, stats and effect comparison, resonance explanations",
+    "results: receipt/material/affection/route helper text"
+  ],
+  "stateText": {
+    "battle": [
+      "echo shortage",
+      "summon cap",
+      "AUTO/speed unlock",
+      "card cooldown"
+    ],
+    "growth": [
+      "cost + shortage",
+      "unlock after 1-1",
+      "max level",
+      "shop missing amount"
+    ]
+  },
+  "preserved": "No changes to cost formulas, limits, balance fixtures, purchase guards, input timing or save/economy model.",
+  "contrast": "Six browser-computed text/background pairs; gradient stop minimum and translucent background composed over white as a conservative check. Threshold 4.5:1. Whole screen/image-backed labels and ancestor opacity are not certified.",
+  "layout": "Tall default growth first-row actions visible; two ratios allow scroll in list/detail; fixed controls remain usable.",
+  "files": [
+    "readability.css",
+    "verify-readability.cjs",
+    "readability-verification.json",
+    "ScreenHandoff.json"
+  ],
+  "pending": [
+    "DD final art adoption",
+    "Unity TMP font atlas/fallback and pixel density",
+    "notch/home safe areas",
+    "device touch/performance/compression",
+    "global accessibility review"
+  ]
+}
