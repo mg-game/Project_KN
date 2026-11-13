@@ -1,0 +1,904 @@
+{
+  "schema_version": 1,
+  "published_at": "2026-11-13",
+  "authorization": "사용자: 깃 올려 개발할수 있게 / 진행해. 개발 연결용 업로드이며 설정·최종 작화 채택과 구분.",
+  "base_game_commit": "4b73a5a33c22d1b6246794c86fdbf7b27db281b0",
+  "documentation_commit": "12483c46eb9c676ab94a6a8c5b8eb52857148804",
+  "documentation_PR": "https://github.com/mg-game/Project_KN/pull/43",
+  "source_game_PR": "https://github.com/mg-game/Project_KN/pull/2",
+  "runtime_registration_changed": false,
+  "existing_assets_changed": false,
+  "assets": [
+    {
+      "group": "Characters",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Characters/jjak_caravan_art_candidate.png",
+      "guid": "9d44f7aa97ed457d8e7bd9657d009b20",
+      "sha256": "2d8c309402d7a27c9290a2a1ec57006f4ded8c3621ab460723472ef36b8cb0c0",
+      "bytes": 1117810,
+      "canvas": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "notes": "개발 연결용 후보. 기존 계보/형태/외형 ID 및 이미지 교체 없음. 레이니/몽실 외형 유형 미정.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "Characters",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Characters/rainy_recycle_art_candidate.png",
+      "guid": "e2c962bb06a445e7b551589b5bdcfe58",
+      "sha256": "151218a5d815320bef630dbde3f64f2fa05a71ae53a03737383d4e77947089cc",
+      "bytes": 742525,
+      "canvas": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "notes": "개발 연결용 후보. 기존 계보/형태/외형 ID 및 이미지 교체 없음. 레이니/몽실 외형 유형 미정.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "Characters",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Characters/mongsil_wax_art_candidate.png",
+      "guid": "2db12cf3625d42369a6e2b69bc8dc9ac",
+      "sha256": "5aabd9dfc9d284cdeda30ff159f6ad602d1871157fcc30aec4a5c13783c5ffe1",
+      "bytes": 562712,
+      "canvas": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "notes": "개발 연결용 후보. 기존 계보/형태/외형 ID 및 이미지 교체 없음. 레이니/몽실 외형 유형 미정.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_charge.png",
+      "guid": "5d03cd1a00454d0b80c3bcf9dbffdccf",
+      "sha256": "17fc000dbe3b6ac6aafb45674077eca1ee42af5092c3ac2a986ed844322ce8ca",
+      "bytes": 22821,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_charge_dim.png",
+      "guid": "f706d0ed4ea240e18368c2a07d41289b",
+      "sha256": "0ef0089bf97d5aacfc09c624fd92534853c398942ee299d76275ebeb012e2cde",
+      "bytes": 21210,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_patrol.png",
+      "guid": "ba9110acc21245e0a2a878381ce9dc81",
+      "sha256": "0cd54a7400e534ae3c1633456385cffd5354abbb28bad6c6976d2f791800c6b1",
+      "bytes": 23600,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_patrol_dim.png",
+      "guid": "e65fc7ae45614a829ae4cdc141b5a7f5",
+      "sha256": "6f7f9543565b31dfe09067355020988fd3358607382c11a16ce1b6cf9f75b0ba",
+      "bytes": 22215,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_hold.png",
+      "guid": "86cedcafc1174542a37dbadacdbca1ee",
+      "sha256": "8cfbced734e371200c07f324cfd0b1de44215170d82f9d8fefa93ef58df3a0d6",
+      "bytes": 22114,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-01",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/behavior_hold_dim.png",
+      "guid": "928c5c8967ce47ff8ea7446ec0b3ef60",
+      "sha256": "7783dd0e76c352db13fdd769a698abdf19e5cca98e8bbb097b7662ac6022a2ab",
+      "bytes": 20659,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "흐림은 같은 그림의 알파0.40 제안. 코드 알파로 처리하면 켜짐 그림만 참조 가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-03",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Battle/shop_light_l1.png",
+      "guid": "99b55479ae7449fd9c062e206cee7355",
+      "sha256": "57df5fd5e541ac40cb0e7b8ad7341f691ba3102bd3fa70a5db8ee4ff126dfd0e",
+      "bytes": 9274,
+      "canvas": [
+        768,
+        768
+      ],
+      "mode": "RGBA",
+      "notes": "768 전체 캔버스. Normal Alpha, 건물→레벨1장→손상. L5 완전 투명은 의도된 상태.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-03",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Battle/shop_light_l2.png",
+      "guid": "89cac2d3642d4e3dbe913fa019fe1bf5",
+      "sha256": "fafaf5fcfa89609ef7f31d8a291c4830f94ea1327be00f275420ddfb45410ee4",
+      "bytes": 8671,
+      "canvas": [
+        768,
+        768
+      ],
+      "mode": "RGBA",
+      "notes": "768 전체 캔버스. Normal Alpha, 건물→레벨1장→손상. L5 완전 투명은 의도된 상태.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-03",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Battle/shop_light_l3.png",
+      "guid": "d3b5e8124aef43a2826eb3b399a2a783",
+      "sha256": "d1d30f6087ff48b0e9f5a99cef3c21fc1739cd0ce35d3ef4a04c58198c0cd5bd",
+      "bytes": 7068,
+      "canvas": [
+        768,
+        768
+      ],
+      "mode": "RGBA",
+      "notes": "768 전체 캔버스. Normal Alpha, 건물→레벨1장→손상. L5 완전 투명은 의도된 상태.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-03",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Battle/shop_light_l4.png",
+      "guid": "22985432929249ddb9883c341f561d06",
+      "sha256": "f63884464947b898549575b875ea0bcc4af22912096da568e7dc12a90d6a73d6",
+      "bytes": 6568,
+      "canvas": [
+        768,
+        768
+      ],
+      "mode": "RGBA",
+      "notes": "768 전체 캔버스. Normal Alpha, 건물→레벨1장→손상. L5 완전 투명은 의도된 상태.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-03",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Battle/shop_light_l5.png",
+      "guid": "264901816dcf4170a2c2f8f5d6187454",
+      "sha256": "60efeded078b9499b82367a9c5cc1a43b3bfec251cb3d8c5e49a429cc335277d",
+      "bytes": 3938,
+      "canvas": [
+        768,
+        768
+      ],
+      "mode": "RGBA",
+      "notes": "768 전체 캔버스. Normal Alpha, 건물→레벨1장→손상. L5 완전 투명은 의도된 상태.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-04",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/formation_uncovered.png",
+      "guid": "b9b43ea7b98a4e4e9dfea3ef76365ae7",
+      "sha256": "93e15b80e5158706c7dfafb3cdb22e63dc82e72e02f5b125cd25b4d0363ce512",
+      "bytes": 16340,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "미커버/위험/압박 독립 입력. 압박 그림은 ART-06에서도 공유.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-04",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/formation_uncovered_danger.png",
+      "guid": "ab57e07d794e4d788cff789ef2914b03",
+      "sha256": "f10f69d81dfe66919d61c44149bb2203407b2ceeaf9fbb4adb3321ff249c23e0",
+      "bytes": 16273,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "미커버/위험/압박 독립 입력. 압박 그림은 ART-06에서도 공유.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-04",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/formation_danger.png",
+      "guid": "a0e52ab0cd874b999434d94fd6349eab",
+      "sha256": "15f61d014fc70f79a07e9140681f6ebd716b2b3db27a1be4d1abacf5e9a3c841",
+      "bytes": 15883,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "미커버/위험/압박 독립 입력. 압박 그림은 ART-06에서도 공유.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-04",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/formation_pressure.png",
+      "guid": "609bbe4f557246a6afbea26a547609d1",
+      "sha256": "0ce9b89e233d408ff6c9bb16401c9840d91ed3fcf3daff4f73b8f6b6c52fee9b",
+      "bytes": 16965,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "미커버/위험/압박 독립 입력. 압박 그림은 ART-06에서도 공유.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-06",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/wave_preview_arrow.png",
+      "guid": "f23297d15ffb49f0aaaf6f39227ef7d7",
+      "sha256": "e20602a259719ccdb707b26a2aa12ff07e1e580a801412ead86037a9ea65cba4",
+      "bytes": 10535,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "기본 방향 위쪽. 안쪽 회전/주기/알파는 지침 참조. 다음 스폰 예고와 기존 실시간 위협도 구분.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-07",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/hud_clock.png",
+      "guid": "2dbfd3fcb9744f8b96c9744667ff6862",
+      "sha256": "e667758fe447171c33c28594887c122742963804b5d9abe06c77dceed46dd9d7",
+      "bytes": 20905,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "정적 기호. 시간/웨이브/숫자/문구는 별도 동적 UI.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "ART-07",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/hud_wave_boss.png",
+      "guid": "c6506c2cf67a4e2cb27f7d8c2822fe5c",
+      "sha256": "46e79f39cfafaaad0688226465d8bf6b6bea15af04cb044506d06c2ac3c8b860",
+      "bytes": 17909,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "정적 기호. 시간/웨이브/숫자/문구는 별도 동적 UI.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      }
+    },
+    {
+      "group": "Character reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/jjak_caravan_development_card.png",
+      "guid": "fb1226a7e5ed42b2b1b9acc6a30b1f5b",
+      "sha256": "024aefb1da8a2eb76a957f2189aaa2842015b3ede60b4888d1e4c82fc02d50a7",
+      "bytes": 2721124,
+      "canvas": [
+        1122,
+        1402
+      ],
+      "mode": "RGB",
+      "notes": "참고 카드. 전투 스프라이트/확정 설정 아님. Markdown 기획 정본은 PR #43.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "Character reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/rainy_recycle_development_card.png",
+      "guid": "4d491db03035492f90bf0f30df856a3e",
+      "sha256": "69ca7e82399123023696a11370618c72b7634d3d2c8e3ffd3f4be29c59d82256",
+      "bytes": 2506351,
+      "canvas": [
+        1122,
+        1402
+      ],
+      "mode": "RGB",
+      "notes": "참고 카드. 전투 스프라이트/확정 설정 아님. Markdown 기획 정본은 PR #43.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "Character reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/mongsil_wax_development_card.png",
+      "guid": "f4e2e24660b9469ea59de4495414033e",
+      "sha256": "1897a40b97376f7b5b8468d8c8be9260f123f150cd3696eb2de5fa3a7dfaaa8e",
+      "bytes": 2104187,
+      "canvas": [
+        1122,
+        1402
+      ],
+      "mode": "RGB",
+      "notes": "참고 카드. 전투 스프라이트/확정 설정 아님. Markdown 기획 정본은 PR #43.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art01_behavior_development_review.png",
+      "guid": "b86a8103837f4f5787f302cb71ea3c70",
+      "sha256": "b312456db27ecc326c1f0df548b720300abb66647222403de59e2816eb930f1e",
+      "bytes": 194841,
+      "canvas": [
+        1180,
+        845
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art02_lamp_development_review.png",
+      "guid": "58029f146c4345e9a4cd495af0ccd9ac",
+      "sha256": "d2bcb65fc773956044a93061cd4246b14532d98dc15730ec8e72e5efdf0e7547",
+      "bytes": 322152,
+      "canvas": [
+        1160,
+        1919
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art03_shop_development_review.png",
+      "guid": "7a2b6a31416e4ed4845656cb8d62f389",
+      "sha256": "3e5dd80a17a5852a8cc37fda85d17429b8b3462a742227782630fd8309facb3d",
+      "bytes": 733569,
+      "canvas": [
+        1220,
+        2621
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art04_formation_development_review.png",
+      "guid": "439b1d5932dd499bbd00bef87b42afdf",
+      "sha256": "c145e6d26592fa09db70589b8b028b5c445fe9cf1c8440896c576e0d7dd6e51e",
+      "bytes": 663177,
+      "canvas": [
+        1160,
+        3001
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art06_wave_development_review.png",
+      "guid": "206754835e8f44a6b3305091a4aefcb3",
+      "sha256": "d37bd6e57153e672de50bcacf35d607150f8ee97f2c7167d4034ba3414ccf570",
+      "bytes": 1124392,
+      "canvas": [
+        1160,
+        3887
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    },
+    {
+      "group": "UI reference",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art07_hud_development_review.png",
+      "guid": "54c26cd66a1e475fa07eb74b06f3fa2c",
+      "sha256": "54290d7e2f83ec2984cb512a2273edbfa1779ea2f2092285bfab362848aee3d3",
+      "bytes": 584342,
+      "canvas": [
+        1160,
+        3118
+      ],
+      "mode": "RGB",
+      "notes": "브라우저 검토 화면. 실제 Unity 캡처/게임용 합성 텍스처 아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      }
+    }
+  ],
+  "reused": [
+    {
+      "group": "ART-02",
+      "path": "Assets/_Project/Art/UI/button_gold_9s.png",
+      "use": "기존192 버튼,Border48. 별도 동적 레벨점/문구."
+    },
+    {
+      "group": "ART-02",
+      "path": "Assets/_Project/Art/Icons/lamp.png",
+      "use": "표시128px/흐림 알파0.40 제안. 원본256 재사용."
+    },
+    {
+      "group": "ART-02 / ART-07",
+      "path": "Assets/_Project/Art/UI/ui_pip_button.png",
+      "use": "수선등32px 점/꺼짐알파0.25 제안,HUD일반웨이브32px 단추. 새 PNG 복제 없음."
+    },
+    {
+      "group": "ART-04",
+      "path": "Assets/_Project/Art/UI/ui_ring_stitch.png",
+      "use": "기존512 봉제8별 링,표시크기 조절. 별은 장식이며45°앵커별도."
+    },
+    {
+      "group": "ART-04",
+      "path": "Assets/_Project/Art/Battle/guardian_pad.png",
+      "use": "기존 찬 받침 재사용."
+    },
+    {
+      "group": "ART-04",
+      "path": "Assets/_Project/Art/Battle/guardian_pad_empty.png",
+      "use": "기존 빈 받침 재사용. 빈 슬롯과 미커버 계산 구분."
+    },
+    {
+      "group": "ART-06",
+      "path": "Assets/_Project/Art/UI/formation_pressure.png",
+      "use": "이번 ART-04와 같은 압박3줄 공유. 알파0.45 제안."
+    },
+    {
+      "group": "ART-06",
+      "path": "Assets/_Project/Art/FX/ring_glow.png",
+      "use": "기존 흰색 알파 링,Lamp 틴트 참고."
+    },
+    {
+      "group": "ART-07",
+      "path": "Assets/_Project/Art/UI/panel_night_9s.png",
+      "use": "192×192 기존HUD패널,Border48."
+    },
+    {
+      "group": "ART-07",
+      "path": "Assets/_Project/Art/UI/ui_pill_night_9s.png",
+      "use": "192×96,위48+아래48로중앙높이0. 이번 검토는Simple2:1(112×56)+숫자겹침."
+    },
+    {
+      "group": "ART-03",
+      "path": "Assets/_Project/Art/Battle/shop.png",
+      "use": "기존5창점등 건물. 단계별 overlay 1장만겹침."
+    },
+    {
+      "group": "ART-03",
+      "path": "Assets/_Project/Art/Battle/shop_crack_1.png",
+      "use": "기존 손상 레이어,단계 조명 위에 겹침."
+    },
+    {
+      "group": "ART-03",
+      "path": "Assets/_Project/Art/Battle/shop_crack_2.png",
+      "use": "기존 손상 레이어,단계 조명 위에 겹침."
+    },
+    {
+      "group": "ART-03",
+      "path": "Assets/_Project/Art/Battle/shop_crack_3.png",
+      "use": "기존 손상 레이어,단계 조명 위에 겹침."
+    }
+  ],
+  "pending": [
+    "Unity Editor 실제 임포트/게임 실행 검증",
+    "8방위/웨이브/타이머/수선등/HP 데이터·씬 연결",
+    "캐릭터 외형 유형/런타임 ID 검토 및 최종 채택",
+    "DD/사람 확인과 실제 기기/가림/색공간 검수"
+  ]
+}
