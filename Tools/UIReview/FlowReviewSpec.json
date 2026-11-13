@@ -11,7 +11,8 @@
     "formation": "Cancel active slot hold/drag before rendering another screen or ratio; no delayed removal/render.",
     "preset": "Cancel uncommitted hold on screen/focus change or >8px movement; suppress accidental load after cancellation; valid600ms hold still saves.",
     "growth": "One primary pointer owns the hold. Non-owner events and keyboard batch/resonance clicks cannot add purchases during it. Release/cancel/blur/navigation clear its timers; completed purchases remain.",
-    "resonance": "Leaving pending confirmation closes it without consuming fragments."
+    "resonance": "Leaving pending confirmation closes it without consuming fragments.",
+    "modalKeys": "Enter/Escape/Space used for dialog/navigation actions require key release before acting again on the next view. Help/retreat cancellation restores its trigger focus; ordinary level-up keyboard repeat stays unchanged."
   },
   "unchanged": {
     "summonHoldMs": 200,
