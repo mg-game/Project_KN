@@ -55,14 +55,14 @@
       "kind": "sprite",
       "path": "Assets/_Project/Art/Characters/rainy_recycle_art_candidate.png",
       "guid": "e2c962bb06a445e7b551589b5bdcfe58",
-      "sha256": "151218a5d815320bef630dbde3f64f2fa05a71ae53a03737383d4e77947089cc",
-      "bytes": 742525,
+      "sha256": "efaf4a30b2aa766c93c97a2df2c059b8b7c50ba2d430e1afecdcdd7f4f828085",
+      "bytes": 728115,
       "canvas": [
         1024,
         1024
       ],
       "mode": "RGBA",
-      "notes": "개발 연결용 후보. 기존 계보/형태/외형 ID 및 이미지 교체 없음. 레이니/몽실 외형 유형 미정.",
+      "notes": "2026-11-13 사용자요청 이미지편집1회. 중앙등불제거·좌우테두리등불2개만·각1개짧은리본. 불꽃없이둥근유리/천덮개안 크림~연한앰버 갇힌빛. 우산/물빛얼굴/넓은촉수/J꼬리/우산살끝받침·천덮개·짧은손목끈고리·원래그림체/색/시점 유지. 외형유형/런타임ID/최종채택 미정.",
       "state": "development_candidate_not_final_adoption",
       "import": {
         "authored_from_existing_project_template": true,
@@ -76,6 +76,24 @@
           0.5
         ],
         "PPU": 100
+      },
+      "revision": {
+        "date": "2026-11-13",
+        "image_edit_calls": 1,
+        "previous_sha256": "151218a5d815320bef630dbde3f64f2fa05a71ae53a03737383d4e77947089cc",
+        "lantern_count": 2,
+        "lantern_positions": [
+          "left umbrella rim",
+          "right umbrella rim"
+        ],
+        "central_lantern_removed": true,
+        "flame_shapes": false,
+        "lighting": "soft cream to pale amber contained light inside rounded glass under fabric cover",
+        "short_ribbon_tails_per_lantern": 1,
+        "content_height": 922,
+        "baseline_y": 963,
+        "center_x": 512,
+        "readability_review": "64px/128px on deep-purple browser review;not actual Unity/device certification"
       }
     },
     {
@@ -913,5 +931,7 @@
     "8방위/웨이브/타이머/수선등/HP 데이터·씬 연결",
     "캐릭터 외형 유형/런타임 ID 검토 및 최종 채택",
     "DD/사람 확인과 실제 기기/가림/색공간 검수"
-  ]
+  ],
+  "latest_revision_branch": "feature/art-rainy-two-lanterns",
+  "latest_revision_base_commit": "b975ca1e002667d9e619d5efb3390f1effca677d"
 }
