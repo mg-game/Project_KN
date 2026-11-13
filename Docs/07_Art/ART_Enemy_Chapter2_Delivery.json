@@ -1,0 +1,443 @@
+{
+  "task": "D-68 chapter2 enemy art delivery",
+  "base_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719",
+  "source_document": {
+    "path": "Docs/07_Art/ART_Enemy_Chapter2.md",
+    "commit": "9f53f75cab840707b367e6b0a32fcc7081901cf4",
+    "pr": 79,
+    "url": "https://github.com/mg-game/Project_KN/blob/9f53f75cab840707b367e6b0a32fcc7081901cf4/Docs/07_Art/ART_Enemy_Chapter2.md",
+    "sha256": "5248db5747699463ad8e6da95efd67caca25b3a607373e1e75d1a1683bf51d56",
+    "status_at_delivery": "PR #79 is open; document absent from develop. Used exact pending D-68 source; neither PR merged."
+  },
+  "references": {
+    "Assets/_Project/Art/Enemies/enemy_moth.png": {
+      "file": "enemy_moth_reference.png",
+      "sha256": "a34eecb020a332fcbc3e904c4cec07c6b14d9bb9df493e5b1086e4fac28d021a",
+      "bytes": 81585
+    },
+    "Assets/_Project/Art/Enemies/enemy_wisp.png": {
+      "file": "enemy_wisp_reference.png",
+      "sha256": "49ce4fa8358565badfdcc057281ffd4b9b78b0da6c90d1c47586c3daa02e31fd",
+      "bytes": 44847
+    },
+    "Assets/_Project/Art/Enemies/enemy_rust.png": {
+      "file": "enemy_rust_reference.png",
+      "sha256": "5ef2a0d8eba32ff8e88a5b0338e9fa2b5cb7696e0a7457251170e4fbf76818f9",
+      "bytes": 97952
+    }
+  },
+  "processing": {
+    "generation": "image_gen; initial prompts exactly section3 common + species; two subsequent QC edit passes per species",
+    "master": "AI output1254x1254 normalized to1024 transparent production master with Chromium, using recorded scale_x/scale_y. Splash width fitted separately; no manual repaint or recolor. Master is not the unmodified generator output.",
+    "runtime": "Pillow Image.Resampling.LANCZOS, exact quarter of1024 master; pixel equality asserted",
+    "baseline_definition": "exclusive lower edge of alpha>16 bounding box",
+    "luma_definition": "unweighted arithmetic mean of Rec.709 luma over pixels alpha>16; includes eyes, highlights and cloth",
+    "source_outline_dark_threshold": "photo/rib Rec709<60 (darker than floor83); splash dark purple R>G+4 and B>G+4",
+    "outline_scope": "selected top/side scan rays measured; entire contour also reviewed visually; no claim of exhaustive automated contour thickness proof"
+  },
+  "assets": [
+    {
+      "runtime": {
+        "path": "Assets/_Project/Art/Enemies/enemy_splash.png",
+        "sha256": "1740c5b7c6943baa1b932e75777b59da1914913f6ae88894da3c1bc36d7d6938",
+        "bytes": 52284,
+        "canvas": [
+          256,
+          256
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          5,
+          51,
+          251,
+          241
+        ],
+        "height": 190,
+        "baseline_exclusive": 241,
+        "center_x": 128.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 69.878,
+        "guid": "25423dda583545798afb481e43f6bce1"
+      },
+      "master": {
+        "path": "Assets/_Project/Art/Enemies/enemy_splash_1024.png",
+        "sha256": "cb04e34844e5db22dd59ac90a630278146117a9436f5ac8825f3660b91e2856b",
+        "bytes": 518102,
+        "canvas": [
+          1024,
+          1024
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          20,
+          204,
+          1004,
+          964
+        ],
+        "height": 760,
+        "baseline_exclusive": 964,
+        "center_x": 512.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 70.735,
+        "guid": "8243459a69e044ab85c335ab296047bd"
+      },
+      "key": "splash",
+      "initial_prompt_verbatim_section3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 첨벙이] 골목 물웅덩이가 일어난 작은 몬스터.\n낮고 넓은 물방울 몸, 머리 위로 튄 물보라 가시 3개가 왕관처럼 솟음, 발 없이 아랫단은 물결 테두리.\n탁하고 불투명한 빗물 청록색, 몸 안쪽에 노란 가로등 불빛 점 하나가 비침.\n동그란 흰 눈 2개, 몸 표면에 동심원 물결 2~3겹.\n내용 높이 760px(작은 적), 폭은 넓게. 투명한 물 표현 금지.",
+      "generation_passes": 3,
+      "qc_prompt_pass2": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 첨벙이] 골목 물웅덩이가 일어난 작은 몬스터.\n낮고 넓은 물방울 몸, 머리 위로 튄 물보라 가시 3개가 왕관처럼 솟음, 발 없이 아랫단은 물결 테두리.\n탁하고 불투명한 빗물 청록색, 몸 안쪽에 노란 가로등 불빛 점 하나가 비침.\n동그란 흰 눈 2개, 몸 표면에 동심원 물결 2~3겹.\n내용 높이 760px(작은 적), 폭은 넓게. 투명한 물 표현 금지.\n\n[D-68 §4 검수 — 수정 1회]\n첫 번째 이미지는 이번 초안 수정 대상이며 나머지 세 이미지는 기존 적 그림체 참고입니다. 위 §3 문구와 캐릭터 정체성을 유지하되 아래 §1·§2·§4 불일치만 고칩니다. 새로 디자인하지 말고 같은 원물/같은 색 계열/같은 정면 시점을 유지합니다. 최종 보관 원본은 정사각1024×1024, 투명RGBA. 바닥964/중심512, 두 눈 각각 최소56px, 실제 어두운 외곽선은 최소24~32px로 굵게. 몸 전체를 둘러싼 광채/보라 안개/바닥 그림자를 모두 없애 투명 여백을 깨끗하게 합니다. 알파>16의 연결된 덩어리1개만: 작은 장식/물방울도 짧고 굵은 연결부로 본체와 붙어 있어야 합니다. 불투명 몸 표면은 실제 낮은 명도의 어두운 색이며 밝은 중간색/연한 파스텔 몸으로 만들지 않습니다. 밝은 부분은 두 눈과 지정된 작은 포인트만 남깁니다. 단순한 부드러운 셀채색을 유지하고 밝은 수채화 종이질감/노이즈를 더하지 않습니다.\n첨벙이 수정: 주변에 따로 떠 있는 작은 물방울2개를 지우고, 본체에 연결된 왕관형 물보라가시 정확히3개만 유지합니다. 다리/발/팔 없이 아랫단은 넓은 물결. 탁한 불투명 청록 몸의 sRGB 가중밝기 L50~65(대략RGB22~35,60~75,63~78), 하이라이트도 어둡고 절제합니다. 현재 초안보다 몸을 확실히 어둡게 하되 검은색 몸으로 바꾸지 않습니다. 눈은 둥근 흰점2개, 가로등노란점1개는 작게. 2~3겹 동심원 잔물결 유지. 낮고넓은 본체+연결된3가시 포함 전체내용높이760px, 전체폭880~944px 이내로 정사각1024에 들어가게 배치합니다. 가시를 포함한 높이760을 확보하면서 몸 덩어리는 낮고넓게 유지. 가로로긴캔버스 출력 금지.",
+      "qc_prompt_pass3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 첨벙이] 골목 물웅덩이가 일어난 작은 몬스터.\n낮고 넓은 물방울 몸, 머리 위로 튄 물보라 가시 3개가 왕관처럼 솟음, 발 없이 아랫단은 물결 테두리.\n탁하고 불투명한 빗물 청록색, 몸 안쪽에 노란 가로등 불빛 점 하나가 비침.\n동그란 흰 눈 2개, 몸 표면에 동심원 물결 2~3겹.\n내용 높이 760px(작은 적), 폭은 넓게. 투명한 물 표현 금지.\n\n[최종 외곽선 픽셀 검수]\n첫번째 초안 보정본의 그림을 그대로 유지하고 외곽선 굵기만 고칩니다. 몸 형태/청록 또는 철회색의 현재어두운색/눈2개/물결3가시 또는짧은4우산살/작은노란점 또는천조각/정면시점은바꾸지않습니다. 현재외곽선이256축소에서5px인부분이있습니다. 전체외부외곽선을현재의1.8배굵은어두운테두리로하여1024기준항상40px이상,256축소시8~10px의명확한선으로합니다. 내부디테일선은키우지않습니다. 선은불투명하고균일한짙은자주/철갈색,그림자/발광테두리/보라안개가아닙니다. 연결성분1, 투명RGBA정사각1024, 전체내용높이760/바닥964/중심512유지. 눈은밝은실제면각각최소80px. 분리된작은물방울/장식추가금지. 세부형태/몸크기/구조/팔길이/색상/질감재작화금지.\n",
+      "raw_pass3_sha256": "de1359707788f726030ec146b91764308e345f530cc0f4708f2b994cfaed8dd0",
+      "normalization": {
+        "key": "splash",
+        "source": "enemy_splash_raw_r3.png",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_sha256": "de1359707788f726030ec146b91764308e345f530cc0f4708f2b994cfaed8dd0",
+        "target_canvas": [
+          1024,
+          1024
+        ],
+        "source_bbox": [
+          47,
+          220,
+          1207,
+          1064
+        ],
+        "requested_height": 760,
+        "scale_x": 0.8482758620689655,
+        "scale_y": 0.9004739336492891,
+        "horizontal_fit_ratio": 0.9420326678765881,
+        "x": -19.86896551724135,
+        "y": 5.895734597156434,
+        "safe_source_bbox_padding": 4,
+        "operation": "canvas/content normalization;content width normalized to984/600/768 for clean quarter-resolution alignment;no repaint/recolor"
+      },
+      "eyes_256_bright_core_measurements": [
+        {
+          "bbox": [
+            95,
+            152,
+            113,
+            174
+          ],
+          "width": 18,
+          "height": 22
+        },
+        {
+          "bbox": [
+            142,
+            152,
+            161,
+            174
+          ],
+          "width": 19,
+          "height": 22
+        }
+      ],
+      "outline_256_selected_ray_measurements": [
+        {
+          "enemy": "splash",
+          "axis": "col",
+          "position": 128,
+          "start": 51,
+          "dark_run_pixels": 7
+        },
+        {
+          "enemy": "splash",
+          "axis": "row",
+          "position": 215,
+          "start": 6,
+          "dark_run_pixels": 11
+        }
+      ],
+      "outline_1024_selected_ray_measurements": [
+        {
+          "axis": "col",
+          "position": 512,
+          "start": 204,
+          "dark_run_pixels": 30
+        },
+        {
+          "axis": "row",
+          "position": 860,
+          "start": 24,
+          "dark_run_pixels": 42
+        }
+      ]
+    },
+    {
+      "runtime": {
+        "path": "Assets/_Project/Art/Enemies/enemy_photo.png",
+        "sha256": "76ed12c7bfedd5baffe2b6086546356f665abdbc4a0659512df6b78193decfe6",
+        "bytes": 44846,
+        "canvas": [
+          256,
+          256
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          53,
+          21,
+          203,
+          241
+        ],
+        "height": 220,
+        "baseline_exclusive": 241,
+        "center_x": 128.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 67.697,
+        "guid": "e150bf77309d47a1a2f05a15aeb48ac5"
+      },
+      "master": {
+        "path": "Assets/_Project/Art/Enemies/enemy_photo_1024.png",
+        "sha256": "56a0ff100e4c4f0fa338958c34b7c70dba790ca9ff64f7371aebe115afcdeeea",
+        "bytes": 432178,
+        "canvas": [
+          1024,
+          1024
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          212,
+          84,
+          812,
+          964
+        ],
+        "height": 880,
+        "baseline_exclusive": 964,
+        "center_x": 512.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 68.454,
+        "guid": "c62b4f1afe28475b92a2762c3f2c4add"
+      },
+      "key": "photo",
+      "initial_prompt_verbatim_section3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 번진 사진] 비에 젖어 번진 낡은 사진 한 장이 살아난 몬스터.\n모서리가 말리고 한쪽이 찢어진 세로 사각 사진 몸, 아래로 물방울 2~3개가 뚝뚝 떨어짐, 살짝 기울어 매달린 자세.\n바랜 세피아 회색 몸에 굵은 짙은 갈색 외곽선.\n사진 속 그림은 번져서 알아볼 수 없는 둥근 얼룩이고, 그 얼룩 위에 반짝이는 눈 2개만 또렷함. 실제 사람 얼굴이나 일그러진 사람 금지.\n내용 높이 880px.",
+      "generation_passes": 3,
+      "qc_prompt_pass2": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 번진 사진] 비에 젖어 번진 낡은 사진 한 장이 살아난 몬스터.\n모서리가 말리고 한쪽이 찢어진 세로 사각 사진 몸, 아래로 물방울 2~3개가 뚝뚝 떨어짐, 살짝 기울어 매달린 자세.\n바랜 세피아 회색 몸에 굵은 짙은 갈색 외곽선.\n사진 속 그림은 번져서 알아볼 수 없는 둥근 얼룩이고, 그 얼룩 위에 반짝이는 눈 2개만 또렷함. 실제 사람 얼굴이나 일그러진 사람 금지.\n내용 높이 880px.\n\n[D-68 §4 검수 — 수정 1회]\n첫 번째 이미지는 이번 초안 수정 대상이며 나머지 세 이미지는 기존 적 그림체 참고입니다. 위 §3 문구와 캐릭터 정체성을 유지하되 아래 §1·§2·§4 불일치만 고칩니다. 새로 디자인하지 말고 같은 원물/같은 색 계열/같은 정면 시점을 유지합니다. 최종 보관 원본은 정사각1024×1024, 투명RGBA. 바닥964/중심512, 두 눈 각각 최소56px, 실제 어두운 외곽선은 최소24~32px로 굵게. 몸 전체를 둘러싼 광채/보라 안개/바닥 그림자를 모두 없애 투명 여백을 깨끗하게 합니다. 알파>16의 연결된 덩어리1개만: 작은 장식/물방울도 짧고 굵은 연결부로 본체와 붙어 있어야 합니다. 불투명 몸 표면은 실제 낮은 명도의 어두운 색이며 밝은 중간색/연한 파스텔 몸으로 만들지 않습니다. 밝은 부분은 두 눈과 지정된 작은 포인트만 남깁니다. 단순한 부드러운 셀채색을 유지하고 밝은 수채화 종이질감/노이즈를 더하지 않습니다.\n번진사진 수정: 세로사진의 말린모서리/한쪽찢김/약간기운자세를 유지. 사람의 머리/목/어깨/몸통으로 알아볼 수 있는 실루엣을 완전히 지우고, 사진속은 방향/인체형태 없는 흐릿한 둥근 번짐얼룩 하나로 합니다. 그 위에는 큰 눈2개만. 사진프레임/종이몸도 바랜 어두운 세피아회색, 몸평균L55~70(대략RGB70~82,52~63,43~53), 밝은크림색 종이테두리 금지. 짙은갈색 굵은외곽. 아래 물방울2~3개는 떨어져분리되지않고 사진아랫단에서 짧고굵게 이어진 물방울모양의 젖은 종이/물기로 연결합니다. 가는실로매달지말고연결부도24px이상. 전체높이880px에 물방울까지 포함,1024정사각. 실제사람얼굴/흉상/인형/액자장식/고어 금지.",
+      "qc_prompt_pass3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 번진 사진] 비에 젖어 번진 낡은 사진 한 장이 살아난 몬스터.\n모서리가 말리고 한쪽이 찢어진 세로 사각 사진 몸, 아래로 물방울 2~3개가 뚝뚝 떨어짐, 살짝 기울어 매달린 자세.\n바랜 세피아 회색 몸에 굵은 짙은 갈색 외곽선.\n사진 속 그림은 번져서 알아볼 수 없는 둥근 얼룩이고, 그 얼룩 위에 반짝이는 눈 2개만 또렷함. 실제 사람 얼굴이나 일그러진 사람 금지.\n내용 높이 880px.\n\n[최종 축소 검수 보정]\n첫 번째 이미지를 최소한으로 수정합니다. 사진의 모서리말림/찢김/기울기/무정형둥근번짐/아래연결된물방울3개/짙은갈색외곽/그림체를 그대로 유지합니다. 두 눈만 현재 폭/높이의 약1.4배로 키웁니다. 1024기준 각 눈의 밝은 실제발광면이 가로80px이상,세로90px이상이어야 하며눈주변흐릿한후광을크기계산에포함하지않습니다. 눈은여전히눈2개만,동그란또는짧은타원의밝은점입니다. 사진종이/프레임/번짐몸은현재보다명도를약15%낮춰어두운세피아회색으로합니다. 눈은밝기유지. 몸전체평균sRGB가중밝기55~70. 인물머리/목/몸통형태없음. 연결성분1/짧고굵게연결된물방울/투명여백/외곽선32px이상유지. 몸높이880/1024정사각/바닥964/중심512,그외디자인변경금지.\n",
+      "raw_pass3_sha256": "8e5356e9badc8230cb2c836e07dc4b46829aee41ea69b3e9f0b40debed47e73b",
+      "normalization": {
+        "key": "photo",
+        "source": "enemy_photo_raw_r3.png",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_sha256": "8e5356e9badc8230cb2c836e07dc4b46829aee41ea69b3e9f0b40debed47e73b",
+        "target_canvas": [
+          1024,
+          1024
+        ],
+        "source_bbox": [
+          259,
+          114,
+          959,
+          1139
+        ],
+        "requested_height": 880,
+        "scale_x": 0.8571428571428571,
+        "scale_y": 0.8585365853658536,
+        "horizontal_fit_ratio": 0.9983766233766234,
+        "x": -10,
+        "y": -13.873170731707319,
+        "safe_source_bbox_padding": 4,
+        "operation": "canvas/content normalization;content width normalized to984/600/768 for clean quarter-resolution alignment;no repaint/recolor"
+      },
+      "eyes_256_bright_core_measurements": [
+        {
+          "bbox": [
+            103,
+            97,
+            122,
+            122
+          ],
+          "width": 19,
+          "height": 25
+        },
+        {
+          "bbox": [
+            137,
+            92,
+            156,
+            116
+          ],
+          "width": 19,
+          "height": 24
+        }
+      ],
+      "outline_256_selected_ray_measurements": [
+        {
+          "enemy": "photo",
+          "axis": "col",
+          "position": 160,
+          "start": 23,
+          "dark_run_pixels": 6
+        },
+        {
+          "enemy": "photo",
+          "axis": "row",
+          "position": 75,
+          "start": 53,
+          "dark_run_pixels": 6
+        }
+      ],
+      "outline_1024_selected_ray_measurements": [
+        {
+          "axis": "col",
+          "position": 640,
+          "start": 94,
+          "dark_run_pixels": 24
+        },
+        {
+          "axis": "row",
+          "position": 300,
+          "start": 215,
+          "dark_run_pixels": 25
+        }
+      ]
+    },
+    {
+      "runtime": {
+        "path": "Assets/_Project/Art/Enemies/enemy_rib.png",
+        "sha256": "5c3b9ba9de8c790891c01a5e04db7553fa6590c69be12acc10ac9593390420a0",
+        "bytes": 48524,
+        "canvas": [
+          256,
+          256
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          32,
+          41,
+          224,
+          241
+        ],
+        "height": 200,
+        "baseline_exclusive": 241,
+        "center_x": 128.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 71.142,
+        "guid": "44ea4c5142fe4ec58417f2ed2eb2ed3e"
+      },
+      "master": {
+        "path": "Assets/_Project/Art/Enemies/enemy_rib_1024.png",
+        "sha256": "41da10e8cb357138f74593100dce0448d3d9dca802b82ddf9825903486f8bf1f",
+        "bytes": 511794,
+        "canvas": [
+          1024,
+          1024
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          128,
+          164,
+          896,
+          964
+        ],
+        "height": 800,
+        "baseline_exclusive": 964,
+        "center_x": 512.0,
+        "components_8_connected": 1,
+        "mean_rec709_luma_0_255": 71.683,
+        "guid": "6ef73ce3f9c845f999161b7d113807fc"
+      },
+      "key": "rib",
+      "initial_prompt_verbatim_section3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 녹슨 우산살] 부러져 버려진 우산살 다발이 살아난 몬스터.\n둥근 우산 꼭지 축이 몸통, 짧고 굵게 꺾인 살 3~4개가 별 모양으로 뻗고 끝은 뾰족함, 찢어진 천 조각 하나가 매달림.\n살 하나는 반대로 꺾여 혼자 우산을 펴려는 몸짓.\n짙은 철회색 몸에 관절 부분에만 녹 주황 반점, 매달린 천 조각은 바랜 노랑, 꼭지 축에 날카로운 눈 2개.\n살은 몸 폭의 30%를 넘게 길게 뻗지 않게, 가는 철사 금지. 내용 높이 800px.",
+      "generation_passes": 3,
+      "qc_prompt_pass2": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 녹슨 우산살] 부러져 버려진 우산살 다발이 살아난 몬스터.\n둥근 우산 꼭지 축이 몸통, 짧고 굵게 꺾인 살 3~4개가 별 모양으로 뻗고 끝은 뾰족함, 찢어진 천 조각 하나가 매달림.\n살 하나는 반대로 꺾여 혼자 우산을 펴려는 몸짓.\n짙은 철회색 몸에 관절 부분에만 녹 주황 반점, 매달린 천 조각은 바랜 노랑, 꼭지 축에 날카로운 눈 2개.\n살은 몸 폭의 30%를 넘게 길게 뻗지 않게, 가는 철사 금지. 내용 높이 800px.\n\n[D-68 §4 검수 — 수정 1회]\n첫 번째 이미지는 이번 초안 수정 대상이며 나머지 세 이미지는 기존 적 그림체 참고입니다. 위 §3 문구와 캐릭터 정체성을 유지하되 아래 §1·§2·§4 불일치만 고칩니다. 새로 디자인하지 말고 같은 원물/같은 색 계열/같은 정면 시점을 유지합니다. 최종 보관 원본은 정사각1024×1024, 투명RGBA. 바닥964/중심512, 두 눈 각각 최소56px, 실제 어두운 외곽선은 최소24~32px로 굵게. 몸 전체를 둘러싼 광채/보라 안개/바닥 그림자를 모두 없애 투명 여백을 깨끗하게 합니다. 알파>16의 연결된 덩어리1개만: 작은 장식/물방울도 짧고 굵은 연결부로 본체와 붙어 있어야 합니다. 불투명 몸 표면은 실제 낮은 명도의 어두운 색이며 밝은 중간색/연한 파스텔 몸으로 만들지 않습니다. 밝은 부분은 두 눈과 지정된 작은 포인트만 남깁니다. 단순한 부드러운 셀채색을 유지하고 밝은 수채화 종이질감/노이즈를 더하지 않습니다.\n녹슨우산살 수정: 길게 치켜든 막대/지팡이 같은 살을 없애고, 중앙 둥근 우산꼭지 축에서 짧고굵은 꺾인살 정확히4개가 네방향 별모양으로 뻗게 재배치합니다. 살 하나만 작게 반대로 접혀 우산을 펴려는 느낌. 각 살은 중심축 몸통 바깥으로 튀어나온 길이가 축몸통가로폭의30%이하, 그 길이 안에 모든마디/끝을 포함. 긴팔/다리/철사/지팡이 금지. 전체색을 짙은중성 철회색으로 바꾸어 몸평균L40~55(대략RGB40~50,43~53,47~57) 유지. 몸통과 살표면에 넓게퍼진 주황/갈색 녹을 제거하고, 작은 주황녹반점은 관절부분에만 남깁니다(몸전체의 약5% 미만). 바랜노랑 천조각1개는 작고짧게 연결. 꼭지축에 큰 날카로운눈2개,눈의짧은방향두께도56px이상. 중앙몸통을 둥근녹덩어리로 만들지말고 짧은4살 별형의마른실루엣으로구별. 전체높이800px,정사각1024,폭은균형있게. 피/이빨/사람/군인/로봇팔 장식없음.",
+      "qc_prompt_pass3": "모바일 2D 방치형 RPG의 적 캐릭터 1마리. 첨부한 적 그림 3장(좀나방·망각의 그림자·녹얼룩)과 같은 그림체·같은 외곽선 두께·같은 탁한 색감.\n잊혀서 탁해진 물건이 살아난 귀엽지만 약간 으스스한 몬스터. 무섭거나 잔인하지 않게.\n1024×1024 투명 배경, 정면~3/4 정면, 한 마리만, 바닥 그림자 없음.\n몸 아래 끝이 위에서 964px 지점, 가로 중심 512px, 위 여백 40px 이상.\n굵고 어두운 외곽선(24px 이상), 몸은 바닥보다 어둡게. 눈은 지름 56px 이상.\n피·상처·해골·날카로운 이빨 입·실제 사람 얼굴·글자 금지.\n[적: 녹슨 우산살] 부러져 버려진 우산살 다발이 살아난 몬스터.\n둥근 우산 꼭지 축이 몸통, 짧고 굵게 꺾인 살 3~4개가 별 모양으로 뻗고 끝은 뾰족함, 찢어진 천 조각 하나가 매달림.\n살 하나는 반대로 꺾여 혼자 우산을 펴려는 몸짓.\n짙은 철회색 몸에 관절 부분에만 녹 주황 반점, 매달린 천 조각은 바랜 노랑, 꼭지 축에 날카로운 눈 2개.\n살은 몸 폭의 30%를 넘게 길게 뻗지 않게, 가는 철사 금지. 내용 높이 800px.\n\n[최종 외곽선 픽셀 검수]\n첫번째 초안 보정본의 그림을 그대로 유지하고 외곽선 굵기만 고칩니다. 몸 형태/청록 또는 철회색의 현재어두운색/눈2개/물결3가시 또는짧은4우산살/작은노란점 또는천조각/정면시점은바꾸지않습니다. 현재외곽선이256축소에서5px인부분이있습니다. 전체외부외곽선을현재의1.8배굵은어두운테두리로하여1024기준항상40px이상,256축소시8~10px의명확한선으로합니다. 내부디테일선은키우지않습니다. 선은불투명하고균일한짙은자주/철갈색,그림자/발광테두리/보라안개가아닙니다. 연결성분1, 투명RGBA정사각1024, 전체내용높이800/바닥964/중심512유지. 눈은밝은실제면각각최소80px. 분리된작은물방울/장식추가금지. 세부형태/몸크기/구조/팔길이/색상/질감재작화금지.\n",
+      "raw_pass3_sha256": "945a58e31423dd9068c6745a2ddcf50b0247b825c7eb4dc3419b925b156005c6",
+      "normalization": {
+        "key": "rib",
+        "source": "enemy_rib_raw_r3.png",
+        "source_size": [
+          1254,
+          1254
+        ],
+        "source_sha256": "945a58e31423dd9068c6745a2ddcf50b0247b825c7eb4dc3419b925b156005c6",
+        "target_canvas": [
+          1024,
+          1024
+        ],
+        "source_bbox": [
+          289,
+          241,
+          1008,
+          990
+        ],
+        "requested_height": 800,
+        "scale_x": 1.0681502086230876,
+        "scale_y": 1.0680907877169559,
+        "horizontal_fit_ratio": 1.0000556328233658,
+        "x": -180.69541029207232,
+        "y": -93.4098798397863,
+        "safe_source_bbox_padding": 4,
+        "operation": "canvas/content normalization;content width normalized to984/600/768 for clean quarter-resolution alignment;no repaint/recolor"
+      },
+      "eyes_256_bright_core_measurements": [
+        {
+          "bbox": [
+            90,
+            142,
+            112,
+            162
+          ],
+          "width": 22,
+          "height": 20
+        },
+        {
+          "bbox": [
+            130,
+            142,
+            153,
+            162
+          ],
+          "width": 23,
+          "height": 20
+        }
+      ],
+      "outline_256_selected_ray_measurements": [
+        {
+          "enemy": "rib",
+          "axis": "col",
+          "position": 122,
+          "start": 41,
+          "dark_run_pixels": 6
+        },
+        {
+          "enemy": "rib",
+          "axis": "row",
+          "position": 181,
+          "start": 32,
+          "dark_run_pixels": 7
+        }
+      ],
+      "outline_1024_selected_ray_measurements": [
+        {
+          "axis": "col",
+          "position": 488,
+          "start": 165,
+          "dark_run_pixels": 25
+        },
+        {
+          "axis": "row",
+          "position": 724,
+          "start": 128,
+          "dark_run_pixels": 29
+        }
+      ]
+    }
+  ],
+  "review": {
+    "status": "Art candidate ready for DD review; no gameplay approval inferred",
+    "64px_on_floor_L83": "Visually reviewed new3 alongside existing7. Low/wide teal, tilted vertical sepia rectangle, compact pointed iron-gray hub remain distinct.",
+    "forbidden_content": "Visually checked: no blood/wounds/skull/toothed mouth/real human face/text/logo; no floor shadow or detached components",
+    "rib_brightness": "Whole silhouette including pale eyes/cloth exceeds70; reviewed under section1/4 thick-dark-outline exception. No false all-L<=70 assertion. Dark iron body with rust localized to joints.",
+    "rib_appendages": "Visually reviewed: short thick ribs, compact hub/joint housings, protrusions within body-width30% intent; one reversed bend, one torn cloth. No automated semantic segmentation claim.",
+    "photo_crouch": "No additional art: reuse runtime sprite with code alpha0.5 and vertical scale0.6, as section2.2 specifies. Preview reviewed; code not changed.",
+    "unity": "Editor unavailable; import not run. New unique GUID .meta files authored from existing enemy_moth template. Runtime SpriteSingle, FullRect, PPU100, centered pivot, bilinear, no mipmaps, uncompressed.1024 masters DefaultTexture; not gameplay sprites.",
+    "scope": "6 new PNG +6 new .meta +this JSON. Existing assets, GUIDs, code, scenes, enemy data and source planning docs untouched. No new directories."
+  }
+}
