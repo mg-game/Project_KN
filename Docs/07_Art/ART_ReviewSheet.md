@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Approved (양식 — D-46 #5 진행안) · **1회차 검수 완료 (§8) · 결정 D-64** · 카라반 2회차 채택 (§8.7, D-65) — 레이니 수정 1회 시안 대기 |
+| 상태 | Approved (양식 — D-46 #5 진행안) · **1회차 검수 완료 (§8) · 결정 D-64** · 카라반 2회차 채택 (§8.7, D-65) · 레이니 2회차 채택 (§8.8) |
 | 작성자 | DD |
 | 최종 수정 | 2026-11-13 |
 | 관련 문서 | [`ART_Character_Brief`](./ART_Character_Brief.md) §0.4 · §2 (진행 D-46 #5) · [`ART_StyleGuide`](./ART_StyleGuide.md) §15 · [`ART_BattleSpriteSpec`](./ART_BattleSpriteSpec.md) §2.1 · §2.2 · [`ART_EchoSpec`](./ART_EchoSpec.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) 짝짝이 · [`SYS_Evolution`](../01_System/SYS_Evolution.md) (D-45 개화 B = 양말 카라반) · [`SYS_Costume`](../01_System/SYS_Costume.md) (D-55) |
@@ -219,4 +219,22 @@
 **판정: 채택 — M2 교체 후보** (M1은 현재 아트, D-35). §15 4번(이상한 점)은 창문 유령으로 ✅ → 9/10.
 
 남는 확인: ① Unity 임포트 · 트윈 · 오라 (R3 이후) ② 별도 외형 `jjak_caterpillar`(긴 이동집 · 여러 방)와 모양이 닮음 → 그 외형 그림을 만들 때 두 모양이 겹치지 않는지 대조 ③ 참고 카드(`jjak_caravan_development_card.png`)는 수정 전 컨셉 — 본체 PNG가 우선.
+
+### 8.8 2회차 — 레이니 골목등불 (2026-11-13 · DD 직접 실측)
+대상 = PR #75 `feature/art-rainy-two-lanterns`의 `Assets/_Project/Art/Characters/rainy_recycle_art_candidate.png` (SHA-256 `efaf4a30b2aa766c93c97a2df2c059b8b7c50ba2d430e1afecdcdd7f4f828085`, 1회차 `151218…`과 다른 새 파일). LFS에서 내려받아 DD가 직접 쟀다.
+
+| 항목 | 기준 | 값 | 판정 |
+|---|---|---|---|
+| 캔버스 | 1024 × 1024 RGBA | 1024 × 1024 RGBA | ✅ |
+| 내용 높이 · 바닥 · 중심 | 922 · 963 · 512 | 922 · 963 · 512.0 | ✅ |
+| 좌우 여백 · 테두리 알파 | 투명 테두리 | 153 / 153 · 0 | ✅ |
+| 연결 성분 (알파 > 16, 8방향) | 1 | 1 | ✅ |
+| 몸 평균 밝기 | L ≥ 125 | 165.0 | ✅ (어두운 계보 오라 0.4는 별도, D-48) |
+| D-64 R2 갇힌 빛 | 덮개 안 빛 · 불꽃 모양 없음 | 유리 등 안의 크림 ~ 연한 앰버 빛, 불꽃 안 보임 (육안) | ✅ |
+| D-64 R3 등불 2개 | 좌우 테두리 · 중앙 제거 | 좌우 2개, 얼굴 앞 등불 없음 (육안) | ✅ |
+| 64 px | 우산 · 얼굴 · 꼬리 먼저 | 우산 · 얼굴 · J 꼬리 · 촉수 읽힘, 등불 = 좌우 노란 점 2개 | ✅ (1회차 ⚠ 해소) |
+
+**판정: 채택 — 이벤트 외형 `udu_lantern` 후보** (D-64 R1 · 장마 시즌, P1 전투 그림 교체 대상). §15 6번(단순화)이 △ → ✅ 로 올라 **9/10**.
+
+남는 확인: ① 리본이 셋(우산 꼭대기 · 가슴 · 등불 위 2) — 64 px에서 문제 없으나 초상화에서 장식 과밀로 보이면 가슴 리본 축소 검토 ② Unity 임포트 · 트윈 · 오라 (R3 이후) ③ 참고 카드(`rainy_recycle_development_card.png`)는 수정 전 컨셉 — 본체 PNG가 우선.
 
