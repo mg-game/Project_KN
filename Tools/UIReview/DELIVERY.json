@@ -10,10 +10,10 @@
   "status": "development_reference_not_unity_applied",
   "userAuthorization": "2026-11-13 Git development handoff request; current snapshot only",
   "latestPatch": {
-    "version": "0.8.1",
+    "version": "0.8.2",
     "date": "2026-11-13",
-    "change": "Shared stage labels and stage-aware combat-alert results; combat/save fixtures unchanged.",
-    "checksPassed": 68,
-    "baseCommit": "8f281cf"
+    "baseCommit": "c16686c",
+    "change": "One owned growth hold; stop repeats after multi-touch release/cancel and reject overlapping purchase commands.",
+    "checksPassed": 74
   }
 }

@@ -86,5 +86,14 @@
     "actual mail grants",
     "Unity integration",
     "physical device behavior"
-  ]
+  ],
+  "pointerOwnership": {
+    "scope": "Browser review growth holds, not Unity touch handling.",
+    "owner": "First primary pointer owns one hold across growth purchase buttons. Additional pointer downs do not create timers.",
+    "events": "Only the owning pointer can move/cancel/release its hold. Timer callbacks check the same gesture and attached button.",
+    "otherActions": "Keyboard batch/max/resonance clicks are ignored while a pointer hold is active; navigation may cancel the hold.",
+    "release": "Stop and clear both timeout and interval, release pointer capture, keep completed purchases.",
+    "freshInput": "A new touch or keyboard activation works normally after release/cancel.",
+    "test": "verify-pointer.cjs: Chromium CDP multi-touch + native mouse/keyboard; physical devices and Unity are unverified."
+  }
 }
