@@ -6,7 +6,7 @@
 | 작성자 | AI 아트 · 사용자 요청에 따른 UI 제작 |
 | 최종 수정 | 2026-11-13 |
 | 관련 테이블 | 없음 — 예시 수치는 밸런스·데이터 변경이 아님 |
-| 관련 이슈 | 없음 — 기존 ART ID 및 D-44로 추적 |
+| 관련 이슈 | 기존 ART ID · 시트 위 전투 알림 칩 = 지시 #3 I-15 (D-44 #4 · D-57) |
 | 기획 기준 | develop `755a13a27e2c7b4c55c7dbafb88c8a0197b6ef92`, D-44 · D-50 · D-52 |
 | 기존 리소스 기준 | PR #2 `4b73a5a33c22d1b6246794c86fdbf7b27db281b0` |
 | 관련 문서 | [UI_Growth](../03_UI_UX/UI_Growth.md) · [UI_Home](../03_UI_UX/UI_Home.md) · [UI_Battle](../03_UI_UX/UI_Battle.md) · [SYS_InGameBattle](../01_System/SYS_InGameBattle.md) · [UI_Formation](../03_UI_UX/UI_Formation.md) · [ART_M1_Backlog](./ART_M1_Backlog.md) · [ART_StyleGuide](./ART_StyleGuide.md) |
@@ -57,7 +57,7 @@
 | ART-08 | 5 | `report_defense_fail/damage_fail/retry/formation/growth` | 128², 실패 원인 2종 + CTA 3종 |
 | ART-09 | 1 | `badge_dispatch` | 64², 파견 중 모래시계 |
 | D-44 #4 | 4 | `alert_boss/critical/clear/fail` | 320×64, 텍스트 없는 알림 칩 배경·좌측 그림 |
-| ART-12 | 1 | `moon_echo` | 128², 달+잔향 표식. 효과 텍스트는 D-50의 **잔향 수급 +20%**를 런타임에서 표시 |
+| ART-12 | 1 | `moon_echo` | 128², 달+잔향 표식. 효과 텍스트는 **잔향 수급 +30%**(D-34 · D-58 — D-50 메모의 +20%는 정정됨)를 런타임에서 표시 |
 | **합계** | **47** | `.svg` + `.png` 각각 | **47개 파일 쌍**, 아래의 소등 기본 PNG·톤 참고 이미지와 구분 |
 
 텍스트·레벨 숫자·비용·시간·효과 수치를 PNG에 굽지 않는다. 기준 색은 인디고 `#211737`, 보라 `#514071`, 라벤더 `#C6AFE8`, 골드 `#E7BC73`, 크림 `#FFF0CA`, 민트 `#AADCCE`, 경고 `#EF9B9F`다.
