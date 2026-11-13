@@ -12,11 +12,11 @@
 
 ## 1. 개발 시작
 
-게임 본체 [PR #2](https://github.com/mg-game/Project_KN/pull/2)의 `feature/lost-and-lovely-import` / `4b73a5a33c22d1b6246794c86fdbf7b27db281b0`를 기반으로 한 **`feature/art-dev-handoff`** 브랜치다. 본체가 아직 develop에 병합되지 않아 아트 PR도 본체 브랜치를 대상으로 한다. 브랜치를 받으면 게임 본체와 새 아트 파일을 함께 확인할 수 있다. main/develop/본체 PR을 자동 병합하지 않았다.
+현재 개발 진입 브랜치는 **`feature/art-memory-lamp-queen`**이며, 본체 PR #2와 기존 아트/레이니 수정이 병합된 `develop`의 `c16686c34f17f29454b61216dfa92d6a4ead8719`를 기준으로 한다. 이전 전달 브랜치는 기록으로 보존하며 이 브랜치를 받으면 본체·기존 후보·ART-10을 함께 볼 수 있다. main/develop에 직접 push하거나 자동 병합하지 않는다.
 
 ```bash
-git fetch origin feature/art-dev-handoff
-git switch --track origin/feature/art-dev-handoff
+git fetch origin feature/art-memory-lamp-queen
+git switch --track origin/feature/art-memory-lamp-queen
 git lfs install
 git lfs pull
 ```
@@ -25,8 +25,8 @@ git lfs pull
 
 ### 전달 범위
 
-- 신규 PNG30개: **Sprite 후보21개 + 참고 카드/비교9개**. 모든 PNG는 Git LFS.
-- 신규 `.meta`30개: 프로젝트 TextureImporter 템플릿 기반으로 새 UUID/GUID·spriteID를 작성했다. 기존 GUID/리소스는 보존했다. 실제 Unity Editor가 생성/임포트 검증한 파일이라고 주장하지 않는다.
+- 등록 PNG35개: **Sprite 후보25개 + 참고 카드/비교10개**. 모든 PNG는 Git LFS.
+- 등록 `.meta`35개: 프로젝트 TextureImporter 템플릿 기반으로 새 UUID/GUID·spriteID를 작성했다. 기존 GUID/리소스는 보존했다. 실제 Unity Editor가 생성/임포트 검증한 파일이라고 주장하지 않는다.
 - Sprite: Single / Full Rect / PPU100 / 중앙 피벗 / Bilinear / mipmap off / 비압축.768 빈 레이어도 전체 사각형으로 보존한다.
 - 참고 카드/비교: 기존 `Art/Concept/` 위치의 Default texture. 게임용 Sprite/데이터/런타임 키로 사용하지 않는다.
 - 새 폴더 없음. 같은 그림은 기존 경로를 참조하며 전달 복사본을 중복 등록하지 않는다.
@@ -34,6 +34,13 @@ git lfs pull
 Inspector에서 새 Sprite를 `Image.Source Image` 등에 연결해 개발한다. 씬/프리팹/데이터/레지스트리는 아직 자동 변경하지 않았다. 특히 캐릭터 파일명은 **새 개발용 이름**이며 기존 형태/외형 ID가 아니다.
 
 ## 2. 연결 순서와 표시 계약
+
+**ART-10 기억등 여왕 (2026-11-13):** 기존보스/좀나방/램프재질과 최신[보스 §2.3](../02_Content/CNT_Boss.md)·[전투규격](./ART_BattleSpriteSpec.md)을 읽었다. 기존보스원본을보존하고기본/소환/내부빛/날개문양4개Sprite와참고비교1개를추가했다. 현재 `EnemyDef`에 `boss_mothqueen_lamp`는등록되어있지않아,문서의기획ID를임의로런타임행/씬에추가하지않았다. 상세는[제작 기록](./ART_M1_Backlog.md#11-art-10-기억등을-삼킨-좀나방-여왕--개발-후보-2026-11-13)을참조한다.
+
+- 기본/소환/빛 레이어는모두512전체캔버스·중앙피벗.본체2장은높이434/발481/중심256으로원본과맞췄다.
+- **기본+빛레이어 Normal Alpha**로상태알파를조절하거나 **기본/소환PNG를교체**한다.두방법을동시에적용하지않는다.빛영역만잘라재중앙화하지않는다.소환PNG는같은본체의배내부빛만강해지며실루엣/빛ROI밖RGBA가동일하다.내부알파는Normal Alpha합성으로최대3증가할수있다.
+- 날개128문양을8방위예고에배치하고기존`enemy_moth`를소환그림으로사용한다.8/4방위배치/알파/크기는예시다. 예고1.5초/교대4방위/예고중보스처치취소/빛누출등페이즈규칙은정본을연결한다. 실제게임로직을이아트에서구현하지않았다.
+- 원본과같은보라/크림/골드·4날개/왕관더듬이/지팡이/깃발유지.내부빛은기억등유리/격자 아래갇힌빛이며불꽃없음.밝은몸은어두운외곽·뾰족한날개로적을구별하고실제기기대비/외곽선검토가남는다.
 
 **레이니 골목등불 본체 수정 (2026-11-13):** 후속 브랜치는 `feature/art-rainy-two-lanterns`이며,PR #71 병합 후의 본체 브랜치를 기준으로 이번 변경3개파일만 분리했다. 아래 공통시작명 대신 이 후속브랜치를 받아도 된다. 사용자 요청으로 이미지편집1회만 수행했다. 중앙등불을 지우고 우산테두리 좌우2개만 유지,불꽃없이 둥근유리/천덮개안의 크림~연한앰버 갇힌빛으로 표현했다. 각등불에 짧은리본1개. 우산/물빛얼굴/넓은촉수/J꼬리/우산살끝받침·천덮개·짧은손목끈고리·기존그림체/색/시점 유지.1024 RGBA·높이922·발963·중심512와64px/128px 딥퍼플 브라우저 읽힘을 확인했다. 같은파일/GUID를 유지했으며 참고카드의3등불 구성보다 최신본체/지시를 우선한다. 불꽃은몽실전용이라는 사용자지시를 반영했다. 외형유형/런타임ID/최종채택·Unity연결은 별도다.
 
@@ -88,6 +95,11 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 | UI reference | [art04_formation_development_review.png](../../Assets/_Project/Art/Concept/art04_formation_development_review.png) | 참고 전용 |
 | UI reference | [art06_wave_development_review.png](../../Assets/_Project/Art/Concept/art06_wave_development_review.png) | 참고 전용 |
 | UI reference | [art07_hud_development_review.png](../../Assets/_Project/Art/Concept/art07_hud_development_review.png) | 참고 전용 |
+| ART-10 | [boss_mothqueen_lamp_candidate.png](../../Assets/_Project/Art/Enemies/boss_mothqueen_lamp_candidate.png) | Sprite 개발 후보 |
+| ART-10 | [boss_mothqueen_lamp_summon_candidate.png](../../Assets/_Project/Art/Enemies/boss_mothqueen_lamp_summon_candidate.png) | Sprite 개발 후보 |
+| ART-10 | [boss_mothqueen_lamp_emission.png](../../Assets/_Project/Art/FX/boss_mothqueen_lamp_emission.png) | Sprite 개발 후보 |
+| ART-10 | [boss_moth_wing_marker.png](../../Assets/_Project/Art/UI/boss_moth_wing_marker.png) | Sprite 개발 후보 |
+| ART-10 | [art10_boss_lamp_development_review.png](../../Assets/_Project/Art/Concept/art10_boss_lamp_development_review.png) | 참고 전용 |
 
 ## 4. 재사용 경로
 
@@ -107,6 +119,8 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 | ART-03 | [shop_crack_1.png](../../Assets/_Project/Art/Battle/shop_crack_1.png) | 기존 손상 레이어,단계 조명 위에 겹침. |
 | ART-03 | [shop_crack_2.png](../../Assets/_Project/Art/Battle/shop_crack_2.png) | 기존 손상 레이어,단계 조명 위에 겹침. |
 | ART-03 | [shop_crack_3.png](../../Assets/_Project/Art/Battle/shop_crack_3.png) | 기존 손상 레이어,단계 조명 위에 겹침. |
+| ART-10 | [enemy_moth.png](../../Assets/_Project/Art/Enemies/enemy_moth.png) | 기존 좀나방을 부하그림으로 재사용.새문양은예고기호이며적그림과구분. |
+| ART-10 | [boss_mothqueen.png](../../Assets/_Project/Art/Enemies/boss_mothqueen.png) | 변형의 원본참조.일반여왕Sprite/기존GUID/데이터는유지. |
 
 ## 5. 검수 근거와 개발 체크
 
@@ -120,3 +134,5 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 - [ ] 최종캐릭터ID/외형유형·DD/사람 확인·아트 최종 채택.
 
 원격 다운로드 검사와 검수 결과는 PR 설명에 기록한다. 이 자료는 개발자가 바로 연결을 시작할 수 있는 전달이며, 게임 코드/씬 구현 완료나 머지 완료로 표시하지 않는다.
+
+ART-10 검토:기본/소환외곽동일·수동배ROI밖RGBA동일·내부Y216.61→240.37·156/117/64px/날개32·48px·6정적상태/24시간샘플/2초재생3회(일반/줄이기/취소).원본8개해시검증.브라우저예시이며실제Unity/적상한·페이즈큐/드러내기/소환/기기·최종채택검사는별도다.
