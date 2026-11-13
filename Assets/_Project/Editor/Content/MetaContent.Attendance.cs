@@ -21,7 +21,7 @@ namespace IdleGame.EditorTools
             a.Add(Day(AttendanceTrack.Starter, 4, Gem(300)));
             a.Add(Day(AttendanceTrack.Starter, 5, Mat(MaterialIds.Thread, 5)));
             a.Add(Day(AttendanceTrack.Starter, 6, Gem(400)));
-            a.Add(Big(AttendanceTrack.Starter, 7, "루즈리 확정!", MetaReward.Lineage(StarterDay7Lineage)));
+            a.Add(Big(AttendanceTrack.Starter, 7, "루루팝 확정!", MetaReward.Lineage(StarterDay7Lineage)));
 
             // ── 정규 출석 28일 (1주: 단추 1~2시간 / 2주: 2~3시간 / 3주: 2~3시간 / 4주: 3~4시간) ──
             var t = AttendanceTrack.Monthly;

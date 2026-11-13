@@ -50,7 +50,7 @@ namespace IdleGame.EditorTools
         static IEnumerable<SynergyDef> Traits() => new[]
         {
             Trait(TraitType.Fabric, "포근한 천", StageModifierType.DustStorm,
-                "짝짝이·똑단이·우두커니처럼 천과 실로 이루어진 친구들이에요. 폭신하고 질겨서, 함께 모일수록 해진 곳을 서로 기워 주며 오래 버텨요. " +
+                "짝짝이·똑단이·레이니처럼 천과 실로 이루어진 친구들이에요. 폭신하고 질겨서, 함께 모일수록 해진 곳을 서로 기워 주며 오래 버텨요. " +
                 "천을 갉아먹는 좀나방은 조심하세요!",
                 Members(2, (HpPercent, 15), (ShieldPowerPercent, 10)),
                 Members(3, (HpPercent, 25), (ShieldPowerPercent, 20), (AttackPercent, 8)),
@@ -61,7 +61,7 @@ namespace IdleGame.EditorTools
                         Slow(0.4f, 3f), Damage(1f)))),
 
             Trait(TraitType.Metal, "단단한 금속", StageModifierType.None,
-                "열쇠 찰칵이와 금빛 케이스 루즈리처럼 금속으로 된 친구들이에요. 단단하고 날카로워서, 서로를 비추며 적의 약점을 정확히 찔러요. " +
+                "열쇠 키키와 금빛 케이스 루루팝처럼 금속으로 된 친구들이에요. 단단하고 날카로워서, 서로를 비추며 적의 약점을 정확히 찔러요. " +
                 "녹얼룩 곁에서는 몸이 뻑뻑해지니, 함께 광택을 내 녹을 막아요.",
                 Members(2, (CritDamagePercent, 30), (AttackPercent, 6)),
                 Members(3, (CritDamagePercent, 45), (AttackPercent, 10), (BossDamagePercent, 12))
@@ -76,7 +76,7 @@ namespace IdleGame.EditorTools
                         Cleanse(8f)))),
 
             Trait(TraitType.Light, "꺼지지 않는 빛", StageModifierType.Blackout,
-                "몽당이의 촛불과 라라벨의 반짝이는 음판처럼 빛을 품은 친구들이에요. 빛 특성 친구는 어둠에 숨은 망각의 그림자도 찾아내 공격할 수 있어요. " +
+                "몽실의 촛불과 엘리제의 반짝이는 음판처럼 빛을 품은 친구들이에요. 빛 특성 친구는 어둠에 숨은 망각의 그림자도 찾아내 공격할 수 있어요. " +
                 "비가 오면 불빛이 조금 흐려져요.",
                 Members(2, (AttackPercent, 10), (RangePercent, 8)),
                 Members(3, (AttackPercent, 16), (RangePercent, 12), (HealPowerPercent, 15))
@@ -91,7 +91,7 @@ namespace IdleGame.EditorTools
                         Damage(2f), Reveal(10f)))),
 
             Trait(TraitType.Sound, "울려 퍼지는 소리", StageModifierType.Festival,
-                "'찰칵' 소리를 내는 찰칵이와 노래하는 오르골 라라벨처럼 소리를 가진 친구들이에요. 박자가 맞으면 모두의 손이 빨라지고, 스킬도 더 자주 울려 퍼져요.",
+                "'찰칵' 소리를 내는 키키와 노래하는 오르골 엘리제처럼 소리를 가진 친구들이에요. 박자가 맞으면 모두의 손이 빨라지고, 스킬도 더 자주 울려 퍼져요.",
                 Members(2, (AttackSpeedPercent, 12), (SkillCooldownReductionPercent, 8)),
                 Members(3, (AttackSpeedPercent, 20), (SkillCooldownReductionPercent, 12), (StunDurationPercent, 15)),
                 Members(4, (AttackSpeedPercent, 28), (SkillCooldownReductionPercent, 18), (StunDurationPercent, 25))
@@ -101,7 +101,7 @@ namespace IdleGame.EditorTools
                         Stun(0.5f), Damage(1f)))),
 
             Trait(TraitType.Night, "밤을 지키는 친구들", StageModifierType.FullMoon,
-                "긴 밤을 지새워 본 짝짝이와 어둠 속에서도 불을 켜는 몽당이예요. 밤이 익숙한 친구들은 잔향이로 더 오래 머물고, 큰 그림자 앞에서도 물러서지 않아요.",
+                "긴 밤을 지새워 본 짝짝이와 어둠 속에서도 불을 켜는 몽실이에요. 밤이 익숙한 친구들은 잔향이로 더 오래 머물고, 큰 그림자 앞에서도 물러서지 않아요.",
                 Members(2, (EchoLifetimePercent, 15), (AttackPercent, 8)),
                 Members(3, (EchoLifetimePercent, 25), (AttackPercent, 12), (BossDamagePercent, 15)),
                 Members(4, (EchoLifetimePercent, 35), (AttackPercent, 18), (BossDamagePercent, 25))
@@ -111,7 +111,7 @@ namespace IdleGame.EditorTools
                         Damage(1.8f), Mark(15f, 4f)))),
 
             Trait(TraitType.Rain, "비 오는 날의 약속", StageModifierType.Rain,
-                "비 오는 날에만 쓸모 있다고 믿는 우두커니예요. 빗소리가 들리면 누구보다 든든해져, 우산 보호막이 단단해지고 적의 발걸음이 무거워져요.",
+                "비 오는 날에만 쓸모 있다고 믿는 레이니예요. 빗소리가 들리면 누구보다 든든해져, 우산 보호막이 단단해지고 적의 발걸음이 무거워져요.",
                 Members(1, (ShieldPowerPercent, 25), (SlowPowerPercent, 15)),
                 Members(2, (ShieldPowerPercent, 45), (SlowPowerPercent, 25), (HpPercent, 20))
                     .With(Bonus("trait_rain", 2, "폭풍 전야", V.StormSwirl, "바람이 불어온다…",
@@ -120,7 +120,7 @@ namespace IdleGame.EditorTools
                         Slow(0.5f, 4f), Knockback(0.25f)))),
 
             Trait(TraitType.Charm, "반짝이는 치장", StageModifierType.Festival,
-                "외투를 꾸미던 똑단이와 화장대의 주인공 루즈리처럼, 누군가를 꾸며 주던 친구들이에요. 함께 모이면 반짝반짝 눈길을 끌어 적의 빈틈을 놓치지 않아요.",
+                "외투를 꾸미던 똑단이와 화장대의 주인공 루루팝처럼, 누군가를 꾸며 주던 친구들이에요. 함께 모이면 반짝반짝 눈길을 끌어 적의 빈틈을 놓치지 않아요.",
                 Members(2, (CritChancePercent, 10), (AttackPercent, 6)),
                 Members(3, (CritChancePercent, 15), (AttackPercent, 10), (SkillCooldownReductionPercent, 8)),
                 Members(4, (CritChancePercent, 22), (AttackPercent, 15), (SkillCooldownReductionPercent, 12))
@@ -202,15 +202,15 @@ namespace IdleGame.EditorTools
                         Heal(1f), Shield(1.5f, 6f)))),
 
             Combo("combo_rainy_lantern", "빗속의 등불", new[] { "udukeoni", "mongdang" }, StageModifierType.Rain,
-                "우두커니가 빗줄기를 막아 주면, 몽당이는 꺼질 걱정 없이 불꽃을 키워요. 비 오는 밤의 등불은 더 멀리까지 번져요.",
+                "레이니가 빗줄기를 막아 주면, 몽실은 꺼질 걱정 없이 불꽃을 키워요. 비 오는 밤의 등불은 더 멀리까지 번져요.",
                 ComboTier((AttackPercent, 5), (LampGainPercent, 20), (LampDamagePercent, 25))
                     .With(ComboBonus("combo_rainy_lantern", "꺼지지 않는 불꽃", V.CandleBurst, "우산 아래라면 안 꺼져!",
                         Always, Self,
-                        "우산 아래에서는 비바람도 불꽃을 꺼뜨리지 못해요. 몽당이는 녹을수록 불꽃이 커지고, 우두커니의 우산은 오래 펼칠수록 단단해져요. 공격력이 오르면 스킬의 회복과 보호막도 함께 커져요.",
+                        "우산 아래에서는 비바람도 불꽃을 꺼뜨리지 못해요. 몽실은 녹을수록 불꽃이 커지고, 레이니의 우산은 오래 펼칠수록 단단해져요. 공격력이 오르면 스킬의 회복과 보호막도 함께 커져요.",
                         Ramp(2f, 40)))),
 
             Combo("combo_locked_musicbox", "잠긴 오르골", new[] { "chalkak", "lalabell" }, StageModifierType.None,
-                "오래전 잠겨 버린 오르골의 열쇠가 바로 찰칵이였을지도 몰라요. 찰칵, 태엽이 풀리면 멈췄던 노래가 다시 흘러요.",
+                "오래전 잠겨 버린 오르골의 열쇠가 바로 키키였을지도 몰라요. 찰칵, 태엽이 풀리면 멈췄던 노래가 다시 흘러요.",
                 ComboTier((AttackSpeedPercent, 10), (SkillCooldownReductionPercent, 15), (StunDurationPercent, 15))
                     .With(ComboBonus("combo_locked_musicbox", "다시 흐르는 노래", V.MusicNotes, "찰칵, 딩동댕~",
                         OnKill(6f), Self,
@@ -226,7 +226,7 @@ namespace IdleGame.EditorTools
                         Damage(1.2f), Mark(20f, 4f)))),
 
             Combo("combo_night_walk", "별이 머문 밤 산책", new[] { "jjakjjak", "mongdang" }, StageModifierType.FullMoon,
-                "짝짝이가 몽당이의 불빛에 기대어 밤길을 걸어요. 별이 머문 밤이면 잔향이들도 산책하듯 더 오래 머물러요.",
+                "짝짝이가 몽실의 불빛에 기대어 밤길을 걸어요. 별이 머문 밤이면 잔향이들도 산책하듯 더 오래 머물러요.",
                 ComboTier((EchoLifetimePercent, 20), (ResonanceRegenPercent, 15), (StartResonanceFlat, 5))
                     .With(ComboBonus("combo_night_walk", "별빛 산책", V.MoonGlow, "오늘 밤 별이 참 예쁘다.",
                         Dissolved, Shop,
@@ -234,7 +234,7 @@ namespace IdleGame.EditorTools
                         Lamp(0.04f), Resonance(2f)))),
 
             Combo("combo_parade", "축제 퍼레이드", new[] { "jjakjjak", "lalabell", "rouge" }, StageModifierType.Festival,
-                "짝짝이가 지휘봉을 들고, 라라벨이 노래하고, 루즈리가 맨 앞에서 손을 흔들어요. 오늘 밤은 아무도 혼자가 아니에요!",
+                "짝짝이가 지휘봉을 들고, 엘리제가 노래하고, 루루팝이 맨 앞에서 손을 흔들어요. 오늘 밤은 아무도 혼자가 아니에요!",
                 ComboTier((AttackPercent, 15), (AttackSpeedPercent, 15), (GoldGainPercent, 25))
                     .With(ComboBonus("combo_parade", "퍼레이드 행렬", V.StarBurst, "자, 다 같이 출발!",
                         BattleStart, Self,
@@ -246,7 +246,7 @@ namespace IdleGame.EditorTools
                 ComboTier((AttackPercent, 8), (CritDamagePercent, 40), (BossDamagePercent, 20))
                     .With(ComboBonus("combo_key_and_lock", "딱 맞는 짝", V.KeyholeLock, "찰칵, 딱 맞았다!",
                         Every(18f, 6f), InRange(),
-                        "찰칵이와 루즈리가 저마다 자기 앞으로 다가온 적들을 '찰칵' 잠그고, 잠긴 자리에 붉은 표식을 꾹 찍어요.",
+                        "키키와 루루팝이 저마다 자기 앞으로 다가온 적들을 '찰칵' 잠그고, 잠긴 자리에 붉은 표식을 꾹 찍어요.",
                         Stun(1f), Mark(20f, 5f)))),
 
             Combo("combo_shop_family", "수선점 식구들", new[] { "jjakjjak", "ttokdan", "chalkak", "mongdang" }, StageModifierType.None,
@@ -258,7 +258,7 @@ namespace IdleGame.EditorTools
                         Lamp(0.05f)))),
 
             Combo("combo_clear_sky", "비 갠 하늘", new[] { "udukeoni", "lalabell" }, StageModifierType.None,
-                "기다리던 비가 그치고, 라라벨의 노래에 무지개가 떠요. 우두커니는 처음으로 맑은 하늘이 싫지 않았어요.",
+                "기다리던 비가 그치고, 엘리제의 노래에 무지개가 떠요. 레이니는 처음으로 맑은 하늘이 싫지 않았어요.",
                 ComboTier((HealPowerPercent, 25), (ShieldPowerPercent, 25), (ShopRegenPercentPerSecond, 0.3f))
                     .With(ComboBonus("combo_clear_sky", "무지개 자장가", V.CleanseSparkle, "하늘이 개었어!",
                         Every(20f, 8f), EchoesNear(0.9f),
@@ -266,7 +266,7 @@ namespace IdleGame.EditorTools
                         Heal(1.5f), Cleanse(4f)))),
 
             Combo("combo_last_song", "마지막 노래", new[] { "lalabell", "mongdang" }, StageModifierType.Blackout,
-                "다 타 가는 촛불 앞에서, 라라벨은 마지막 음을 연주할 용기를 얻어요. 끝은 또 다른 시작이니까요.",
+                "다 타 가는 촛불 앞에서, 엘리제는 마지막 음을 연주할 용기를 얻어요. 끝은 또 다른 시작이니까요.",
                 ComboTier((SkillCooldownReductionPercent, 10), (LampGainPercent, 15), (LampDamagePercent, 35))
                     .With(ComboBonus("combo_last_song", "끝나지 않는 여운", V.SoundRing, "이 노래는 끝나지 않아.",
                         Dissolved, Around(0.7f),

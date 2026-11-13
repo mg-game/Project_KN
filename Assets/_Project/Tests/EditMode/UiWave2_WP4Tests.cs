@@ -134,7 +134,7 @@ namespace IdleGame.Tests
             string body = SettingsPopup.SkipTutorialBody(true, false, "별조각 300");
             Assert.LessOrEqual(body.Split('\n').Length, 6);
             StringAssert.StartsWith("남은 안내 말풍선이 더 나오지 않아요.", body);
-            StringAssert.Contains("첫 만남 소환(전설 우두커니 확정)을 받을 수 없어요.", body);
+            StringAssert.Contains("첫 만남 소환(전설 레이니 확정)을 받을 수 없어요.", body);
             StringAssert.Contains("졸업 선물(별조각 300)은 그대로 받아요", body);
             StringAssert.EndsWith("건너뛸까요?", body);
         }

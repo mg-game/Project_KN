@@ -468,7 +468,7 @@ namespace IdleGame.UI
             {
                 body.Append(firstMeetingKept
                     ? "첫 만남 소환은 소환이 열리면 그대로 받을 수 있어요\n"
-                    : "<color=#FFB86B>첫 만남 소환(전설 우두커니 확정)을 받을 수 없어요.</color>\n");
+                    : "<color=#FFB86B>첫 만남 소환(전설 레이니 확정)을 받을 수 없어요.</color>\n");
             }
             if (!string.IsNullOrEmpty(graduationGift)) body.Append("졸업 선물(").Append(graduationGift).Append(")은 그대로 받아요\n");
             body.Append("건너뛸까요?");
