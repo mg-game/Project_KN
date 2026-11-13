@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Draft |
 | 작성자 | DD |
-| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
+| 최종 수정 | 2026-11-13 (§4.6 M1 추가 설정값 6 — D-63 #3) |
 | 관련 테이블 | `Stage_Battle_Config` · `Wave_Config` · `Summon_Mode` · `BattleConfig.asset` |
 | 관련 문서 | [`SYS_InGameBattle`](../01_System/SYS_InGameBattle.md) §13.3 · §17(현재 값) · §18(M1 상세) · [`CNT_Stage_Chapter1`](../02_Content/CNT_Stage_Chapter1.md) |
 
@@ -83,6 +83,17 @@
 | `boss_fight_est_sec` (1-10) | float | — | 45 | 35 ~ 60 | §5 Time_Limit |
 
 > 링 소환 마릿수: RING_1 8 + 반복 4 × (P2 길이 / 20초) + RING_2 8 → 1-10 보스전 좀나방 약 20 ~ 28마리. 적 상한 40 · 잔향이 상한 12와 같이 볼 것.
+
+## 4.6 M1 추가 설정값 (D-43 ~ D-55 · D-63 #3) 🆕
+| 노브 | 타입 | 넣을 곳 | M1 초기값 | 테스트 범위 | 근거 |
+|---|---|---|---|---|---|
+| `echo_skill_ratio` · `echo_skill_range_ratio` | float | `BattleConfig` | 0.5 · 0.7 | 0.4 ~ 0.7 · — | 잔향이 고유 스킬 약한 판 (D-40 #2 · D-43 #4) |
+| `LightInvestCostReductionPercent` | `StatType` 신규 | `SynergyDatabase` (빗속의 등불 12 · 마지막 노래 17) | 12 · 17 | — | 옛 불 밝히기 피해 % × 0.5 (D-50 #2) |
+| `costumeAtkCapPercent` | float | `GameConfig` | 10 | — | 계보당 외형 공격력 상한 (D-29 #6 · D-55) |
+| `dungeonMoonlightCap` | float | `BattleConfig` (던전 칸 옆) | 0.4 | 0.3 ~ 0.5 | 던전 달빛 조각 확률 상한 (D-55 던전 #5) |
+| `minFormableAfterDispatch` | int | `GameConfig` | 3 | 3 · 4 | 원정 출발 가드 (D-54 #1) |
+| `echo_aura_boost` | float | 계보 데이터 (`CharacterDatabase`) | 0.25 (우두커니 0.4) | — | 어두운 계보 잔향이 오라 (D-48 #5) |
+> `BattleConfig` 밖에 두는 값(`GameConfig` · 데이터)도 노브 이름 정본은 여기. 개발 지시 = [`KN_M1_DevBrief`](../00_Overview/KN_M1_DevBrief.md) §0.6.
 
 ## 5. 1장 예상 값 (M1 초기값 대입) [가정]
 | 스테이지 | 웨이브 N | 웨이브 크기 | 예상 클리어(초) | Time_Limit(초) |

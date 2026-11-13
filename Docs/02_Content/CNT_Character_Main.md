@@ -5,7 +5,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | 대표 |
-| 최종 수정 | 2026-11-13 (날짜 맞춤 — 검수 KN_DocReview) |
+| 최종 수정 | 2026-11-13 (#43 §12 문서 연결 · 템플릿 보완 병합, 설정 원문 유지) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_ConceptNarrative`](../00_Overview/KN_ConceptNarrative.md) · [`ART_StyleGuide`](../07_Art/ART_StyleGuide.md) |
 
@@ -654,58 +654,19 @@ LOST & LOVELY의 캐릭터는 현실에서 잊히거나 버려진 물건, 감정
 
 ---
 
-# 12. 캐릭터 추가 제작 양식
+# 12. 캐릭터 원본 · 외형 문서 연결
 
-```markdown
-# 캐릭터 이름
+기존 8종의 설정 원문은 이 문서에 유지한다. 아래 캐릭터별 문서는 **항목별 원문 진입점·ID·이미지 참조**이며 설정을 복사하지 않는다. 새로운 캐릭터는 [원본 템플릿](../_Templates/_Template_Character.md)으로 작성하고 이곳에는 링크를 등록한다. 기존 간이 제작 양식은 이 템플릿으로 보완·통합했다.
 
-| 항목 | 내용 |
-|---|---|
-| 탄생 소재 |  |
-| 유형 |  |
-| 전투 역할 |  |
-| 추천 성향 |  |
-| 대표 색상 |  |
+| 캐릭터 | 원본 기획 진입점 | 외형 · 진화 모습 기획 | 확인 상태 |
+|---|---|---|---|
+| 짝짝이 | [짝짝이 원본](./CNT_Character_Jjakjjak.md) | [밤지기](./CNT_CharacterAppearance_Jjakjjak_Nightkeeper.md) (외형) · [카라반](./CNT_CharacterAppearance_Jjakjjak_Caravan.md) (**개화 B** — 진화 단계, D-45 #6) | 기존 자료 보존, 카라반 구조 검토 |
+| 레이니 | [레이니 원본](./CNT_Character_Rainy.md) | [골목등불](./CNT_CharacterAppearance_Rainy_AlleyLantern.md) | 골목등불 구조 검토 RA1, ID·유형 미정 |
+| 몽실 | [몽실 원본](./CNT_Character_Mongsil.md) | [촛농·밀랍 구조 검토](./CNT_CharacterAppearance_Mongsil_Wax.md) | MW2 재질 보완, 유형·채택 미정 |
 
-## 한 줄 소개
-> 
-
-## 외형
-- 
-
-## 성격
-- 
-
-- 표면적 목표:
-- 실제 욕구:
-
-## 진화
-1. 유실형
-2. 기억형
-3. 개화형
-
-## 전투
-- 기본 공격:
-- 액티브:
-- 개화기:
-
-## 관계
-- 
-
-## 수선점 합류
-- 발견 상황:
-- 처음 남는 이유:
-- 성장 후 남는 이유:
-
-## 교훈
-- 
-
-## 대표 대사
-- 
-
-## IP 확장
-- 
-```
+- [외형 템플릿](../_Templates/_Template_CharacterAppearance.md): 원본을 참조하고 변경 부분만 작성. 진화 단계·선택형·특별 외형을 구분한다.
+- [AI 아트 전달 마스터](../07_Art/ART_CharacterHandoff.md): 카드·상세 텍스트·제작 지시·검수의 공통 지침.
+- 다른 기존 5종은 이 문서의 원문을 계속 사용한다. 실제로 개별 작업이 생길 때 같은 방식으로 진입점을 추가한다.
 
 ---
 
