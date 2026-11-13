@@ -12,11 +12,10 @@
 
 ## 1. 개발 시작
 
-현재 개발 진입 브랜치는 **`feature/art-memory-lamp-queen`**이며, 본체 PR #2와 기존 아트/레이니 수정이 병합된 `develop`의 `c16686c34f17f29454b61216dfa92d6a4ead8719`를 기준으로 한다. 이전 전달 브랜치는 기록으로 보존하며 이 브랜치를 받으면 본체·기존 후보·ART-10을 함께 볼 수 있다. main/develop에 직접 push하거나 자동 병합하지 않는다.
-
+현재 개발 진입 브랜치는 **`feature/art08-failure-report`**이며, 기존 아트·D-68 망각체·DD 검수가 병합된 `develop`의 `523b8de2d143dbf42f0c02115fbae831c3db5088`를 기준으로 한다. 이번 추가는 ART-08 재도전128 Sprite1개와 재사용 경로 기록이다. main/develop에 직접 push하거나 자동 병합하지 않는다.
 ```bash
-git fetch origin feature/art-memory-lamp-queen
-git switch --track origin/feature/art-memory-lamp-queen
+git fetch origin feature/art08-failure-report
+git switch --track origin/feature/art08-failure-report
 git lfs install
 git lfs pull
 ```
@@ -25,8 +24,8 @@ git lfs pull
 
 ### 전달 범위
 
-- 등록 PNG35개: **Sprite 후보25개 + 참고 카드/비교10개**. 모든 PNG는 Git LFS.
-- 등록 `.meta`35개: 프로젝트 TextureImporter 템플릿 기반으로 새 UUID/GUID·spriteID를 작성했다. 기존 GUID/리소스는 보존했다. 실제 Unity Editor가 생성/임포트 검증한 파일이라고 주장하지 않는다.
+- 이 전달 JSON 등록 PNG36개: **Sprite 후보26개 + 참고 카드/비교10개**. 모든 PNG는 Git LFS. D-68의6개PNG는 별도 [납품 JSON](./ART_Enemy_Chapter2_Delivery.json)에서 관리한다. 저장소 전체 PNG 수가 아니다.
+- 이 목록 등록 `.meta`36개: 프로젝트 TextureImporter 템플릿 기반으로 새 UUID/GUID·spriteID를 작성했다. 기존 GUID/리소스는 보존했다. 실제 Unity Editor가 생성/임포트 검증한 파일이라고 주장하지 않는다.
 - Sprite: Single / Full Rect / PPU100 / 중앙 피벗 / Bilinear / mipmap off / 비압축.768 빈 레이어도 전체 사각형으로 보존한다.
 - 참고 카드/비교: 기존 `Art/Concept/` 위치의 Default texture. 게임용 Sprite/데이터/런타임 키로 사용하지 않는다.
 - 새 폴더 없음. 같은 그림은 기존 경로를 참조하며 전달 복사본을 중복 등록하지 않는다.
@@ -34,6 +33,8 @@ git lfs pull
 Inspector에서 새 Sprite를 `Image.Source Image` 등에 연결해 개발한다. 씬/프리팹/데이터/레지스트리는 아직 자동 변경하지 않았다. 특히 캐릭터 파일명은 **새 개발용 이름**이며 기존 형태/외형 ID가 아니다.
 
 ## 2. 연결 순서와 표시 계약
+
+**ART-08 실패 리포트 (2026-11-13):** 원인 방어=`Icons/guardian`, 화력=`Icons/power`, CTA 편성=`UI/tab_formation`, 성장=`UI/tab_growth`를 그대로 재사용하고 재도전만 새 `Icons/report_retry`128 Sprite를 사용한다. 신규 등록은1개이며 원본4개를 복제하지 않는다. `Image`는 흰색·비율유지·Simple로32~48px에 표시하고 버튼 글자는 별도 UI에 둔다. 원인 판정/추천/재도전/편성/성장 연결은 정본에서 가져온다. 방어→편성, 화력→성장 예시를 검토했으며 퇴각을 둘 중 하나로 분류하지 않는다. 비교는 브라우저이며 실제Unity/터치/최종채택은 미실시다. 상세는 [ART-08 기록](./ART_M1_Backlog.md#12-art-08-실패-리포트--기존-4종-재사용--재도전-1종-후보-2026-11-13)을 따른다.
 
 **ART-10 기억등 여왕 (2026-11-13):** 기존보스/좀나방/램프재질과 최신[보스 §2.3](../02_Content/CNT_Boss.md)·[전투규격](./ART_BattleSpriteSpec.md)을 읽었다. 기존보스원본을보존하고기본/소환/내부빛/날개문양4개Sprite와참고비교1개를추가했다. 현재 `EnemyDef`에 `boss_mothqueen_lamp`는등록되어있지않아,문서의기획ID를임의로런타임행/씬에추가하지않았다. 상세는[제작 기록](./ART_M1_Backlog.md#11-art-10-기억등을-삼킨-좀나방-여왕--개발-후보-2026-11-13)을참조한다.
 
@@ -95,6 +96,7 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 | UI reference | [art04_formation_development_review.png](../../Assets/_Project/Art/Concept/art04_formation_development_review.png) | 참고 전용 |
 | UI reference | [art06_wave_development_review.png](../../Assets/_Project/Art/Concept/art06_wave_development_review.png) | 참고 전용 |
 | UI reference | [art07_hud_development_review.png](../../Assets/_Project/Art/Concept/art07_hud_development_review.png) | 참고 전용 |
+| ART-08 | [report_retry.png](../../Assets/_Project/Art/Icons/report_retry.png) | Sprite 개발 후보, 재도전 |
 | ART-10 | [boss_mothqueen_lamp_candidate.png](../../Assets/_Project/Art/Enemies/boss_mothqueen_lamp_candidate.png) | Sprite 개발 후보 |
 | ART-10 | [boss_mothqueen_lamp_summon_candidate.png](../../Assets/_Project/Art/Enemies/boss_mothqueen_lamp_summon_candidate.png) | Sprite 개발 후보 |
 | ART-10 | [boss_mothqueen_lamp_emission.png](../../Assets/_Project/Art/FX/boss_mothqueen_lamp_emission.png) | Sprite 개발 후보 |
@@ -102,6 +104,8 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 | ART-10 | [art10_boss_lamp_development_review.png](../../Assets/_Project/Art/Concept/art10_boss_lamp_development_review.png) | 참고 전용 |
 
 ## 4. 재사용 경로
+
+ART-08은 [guardian](../../Assets/_Project/Art/Icons/guardian.png)·[power](../../Assets/_Project/Art/Icons/power.png)·[tab_formation](../../Assets/_Project/Art/UI/tab_formation.png)·[tab_growth](../../Assets/_Project/Art/UI/tab_growth.png)를 기존 경로에서 그대로 참조한다. 역할별 대응은 §2와 JSON의 `reused`를 확인한다.
 
 | 그룹 | 기존/공유 파일 | 적용 |
 |---|---|---|
@@ -136,3 +140,5 @@ Sprite 이미지의 회전은 실제 Unity 좌표/부모 변환에서 확인한�
 원격 다운로드 검사와 검수 결과는 PR 설명에 기록한다. 이 자료는 개발자가 바로 연결을 시작할 수 있는 전달이며, 게임 코드/씬 구현 완료나 머지 완료로 표시하지 않는다.
 
 ART-10 검토:기본/소환외곽동일·수동배ROI밖RGBA동일·내부Y216.61→240.37·156/117/64px/날개32·48px·6정적상태/24시간샘플/2초재생3회(일반/줄이기/취소).원본8개해시검증.브라우저예시이며실제Unity/적상한·페이즈큐/드러내기/소환/기기·최종채택검사는별도다.
+
+ART-08 추가 검토:128 RGBA·투명테두리·연결성분1·중심64·새GUID중복없음. 기존4원화 재사용,128/48/32px 3배경 및320/375/430px 3상태 브라우저 검토. 실제Unity/기기·DD 최종채택은 남았다.
