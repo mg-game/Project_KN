@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-12",
+  "scope": "Browser art review and deterministic result fixtures; not Unity, economy, save, drop RNG or real combat.",
+  "checks": [
+    {
+      "name": "Five source-based reward/route fixtures; redraw and duplicate advance do not settle twice or change growth wallet",
+      "result": "pass"
+    },
+    {
+      "name": "Retreat shows undecided rewards and leads to existing retreat report",
+      "result": "pass"
+    },
+    {
+      "name": "Failure recovery routes open existing formation and growth",
+      "result": "pass"
+    },
+    {
+      "name": "Combat clear/fail alerts connect to results without leaving a growth sheet",
+      "result": "pass"
+    },
+    {
+      "name": "Result blocks underlying summon/investment controls and cycles keyboard focus",
+      "result": "pass"
+    },
+    {
+      "name": "Six states × two aspect ratios: 44px targets, scrollable details and fixed next action",
+      "result": "pass"
+    },
+    {
+      "name": "390px browser touch opens reward details without horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "Automatic clear advances after 1.5 seconds of real time",
+      "result": "pass"
+    },
+    {
+      "name": "Details extend to original end +6 seconds; repeated clicks cannot extend indefinitely",
+      "result": "pass"
+    },
+    {
+      "name": "Leaving results cancels pending automatic transition",
+      "result": "pass"
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

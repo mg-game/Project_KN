@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-12",
+  "scope": "Browser review gesture and navigation cancellation; window blur event dispatched to exercise cleanup, not an actual device/app lifecycle test.",
+  "checks": [
+    {
+      "name": "Held formation slot → home/growth/results: no delayed removal or old-screen resurrection",
+      "result": "pass"
+    },
+    {
+      "name": "Ratio redraw cancels formation removal and preserves all five placements",
+      "result": "pass"
+    },
+    {
+      "name": "Preset hold: navigation/window blur/movement cancel without save or accidental load",
+      "result": "pass"
+    },
+    {
+      "name": "Valid preset hold still saves and a later tap restores the saved formation",
+      "result": "pass"
+    },
+    {
+      "name": "Summon aim: ratio/window blur cancels for free and the next tap works normally",
+      "result": "pass"
+    },
+    {
+      "name": "Leaving growth before hold threshold cancels the pending purchase",
+      "result": "pass"
+    },
+    {
+      "name": "Growth focus loss stops repeats, keeps completed levels and allows a fresh single purchase",
+      "result": "pass"
+    },
+    {
+      "name": "Leaving resonance confirmation preserves fragments and removes the old dialog",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

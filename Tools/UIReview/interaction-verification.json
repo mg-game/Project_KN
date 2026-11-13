@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-12",
+  "scope": "Browser review interactions. Logical hit size at 390px reference; not Unity or physical-device validation.",
+  "checks": [
+    {
+      "name": "Tap and keyboard activation: spend once and retain keyboard focus",
+      "result": "pass"
+    },
+    {
+      "name": "0.2s hold, four compass sectors, release-only resource spending",
+      "result": "pass"
+    },
+    {
+      "name": "Return to deck and Escape cancel without spending",
+      "result": "pass"
+    },
+    {
+      "name": "Browser touch cancel safely releases aim with no cost",
+      "result": "pass"
+    },
+    {
+      "name": "Card cooldown blocks that card while another card remains usable",
+      "result": "pass"
+    },
+    {
+      "name": "Pause: background inert, resource blocked, focus trap and separate AUTO options",
+      "result": "pass"
+    },
+    {
+      "name": "Help and two-step retreat: dim ignored, cancel stays paused, confirm records retreat",
+      "result": "pass"
+    },
+    {
+      "name": "Touch formation: drag to slot, long press remove, tap to place back",
+      "result": "pass"
+    },
+    {
+      "name": "Two aspect ratios: lower controls do not overlap; core targets at least 44 logical px; dialogs fit",
+      "result": "pass"
+    },
+    {
+      "name": "390px touch viewport: aim and release work without page overflow",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

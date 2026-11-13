@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-12",
+  "scope": "Selected browser reference labels, layout/state copy and six specified color pairs; not a full accessibility audit or Unity/device certification.",
+  "checks": [
+    {
+      "name": "Two ratios: battle cost/health/cooldown/income/navigation labels ≥11px and four explicit state reasons do not block input",
+      "result": "pass"
+    },
+    {
+      "name": "Growth labels ≥11px; first row actions fit tall default; poor/locked/max have text reasons and preserve wallet/levels",
+      "result": "pass"
+    },
+    {
+      "name": "Two ratios: shared-level/stat/resonance explanations remain readable, and confirmations keep actions inside screen",
+      "result": "pass"
+    },
+    {
+      "name": "Six live text/background pairs exceed 4.5:1; translucent backgrounds conservatively composited on white",
+      "result": "pass",
+      "detail": [
+        {
+          "name": "placement-badge",
+          "foreground": "rgb(239, 220, 242)",
+          "background": "rgb(44, 32, 58)",
+          "ratio": 11.78
+        },
+        {
+          "name": "growth-helper",
+          "foreground": "rgb(193, 226, 209)",
+          "background": "linear-gradient(rgb(77, 56, 94), rgb(50, 35, 63))",
+          "ratio": 7.38
+        },
+        {
+          "name": "disabled-action",
+          "foreground": "rgb(255, 224, 227)",
+          "background": "rgb(74, 53, 81)",
+          "ratio": 8.87
+        },
+        {
+          "name": "shop-reason",
+          "foreground": "rgb(255, 224, 227)",
+          "background": "rgb(48, 30, 58)",
+          "ratio": 12.4
+        },
+        {
+          "name": "battle-reason",
+          "foreground": "rgb(255, 226, 223)",
+          "background": "rgba(48, 33, 57, 0.96)",
+          "ratio": 10.92
+        },
+        {
+          "name": "health-label",
+          "foreground": "rgb(255, 213, 207)",
+          "background": "rgba(33, 23, 55, 0.93)",
+          "ratio": 10.39
+        }
+      ]
+    },
+    {
+      "name": "360/390/768px review page has no horizontal overflow after typography changes",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

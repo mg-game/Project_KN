@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-12",
+  "scope": "deterministic PNG export, lighting registration, browser 9-slice. Not Unity execution.",
+  "checks": [
+    {
+      "name": "47 UI textures and base: dimensions and transparent borders",
+      "result": "pass",
+      "detail": "Base and all five light layers share 768²; full UI catalog retains declared dimensions."
+    },
+    {
+      "name": "Five glass mattes: separate windows, wood and gold excluded",
+      "result": "pass",
+      "detail": [
+        {
+          "name": "정문 창",
+          "pixels": 355,
+          "centroid": [
+            416.15,
+            568.81
+          ]
+        },
+        {
+          "name": "왼쪽 아래",
+          "pixels": 439,
+          "centroid": [
+            271.85,
+            543.62
+          ]
+        },
+        {
+          "name": "오른쪽 아래",
+          "pixels": 257,
+          "centroid": [
+            539.64,
+            573.1
+          ]
+        },
+        {
+          "name": "왼쪽 위",
+          "pixels": 728,
+          "centroid": [
+            250.33,
+            414.14
+          ]
+        },
+        {
+          "name": "중앙 큰 창",
+          "pixels": 1326,
+          "centroid": [
+            419.12,
+            336.17
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Five-stage lighting: only intended panes light, outside art stable",
+      "result": "pass",
+      "detail": [
+        {
+          "level": 1,
+          "windowLuminanceDelta": [
+            139.28,
+            0,
+            0,
+            0,
+            0
+          ],
+          "unaffectedPixelMaxDelta": 1
+        },
+        {
+          "level": 2,
+          "windowLuminanceDelta": [
+            139.28,
+            137.52,
+            0,
+            0,
+            0
+          ],
+          "unaffectedPixelMaxDelta": 1
+        },
+        {
+          "level": 3,
+          "windowLuminanceDelta": [
+            139.28,
+            137.52,
+            145.74,
+            0,
+            0
+          ],
+          "unaffectedPixelMaxDelta": 1
+        },
+        {
+          "level": 4,
+          "windowLuminanceDelta": [
+            139.28,
+            137.52,
+            145.74,
+            139.63,
+            0
+          ],
+          "unaffectedPixelMaxDelta": 1
+        },
+        {
+          "level": 5,
+          "windowLuminanceDelta": [
+            139.28,
+            137.52,
+            145.74,
+            139.63,
+            138.31
+          ],
+          "unaffectedPixelMaxDelta": 1
+        }
+      ]
+    },
+    {
+      "name": "Unity delivery map: 48 unique targets and explicit binding",
+      "result": "pass",
+      "detail": "PPU 100, center pivots, normal alpha, one cumulative overlay per level; no GUID or game asset write."
+    },
+    {
+      "name": "9-slice browser samples preserve corners and alert icons",
+      "result": "pass",
+      "detail": "Button widths 256/384/512 and alert widths 320/480/640 at fixed height; preserved regions compare pixel-identical. Unity validation remains separate."
+    },
+    {
+      "name": "48 PNG exports reproduce byte-for-byte",
+      "result": "pass",
+      "detail": "Fresh build-assets + refine-delivery output hashes match the validated files."
+    }
+  ]
+}

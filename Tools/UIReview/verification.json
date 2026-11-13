@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-12",
+  "scope": "browser review artifact and static candidate asset checks; not Unity",
+  "checks": [
+    {
+      "name": "47 PNG candidates: dimensions, alpha channel and visible content",
+      "result": "pass"
+    },
+    {
+      "name": "home: five guardians, six deck slots, seven tabs",
+      "result": "pass"
+    },
+    {
+      "name": "lamp: spends 20 and disables further purchase below cost",
+      "result": "pass"
+    },
+    {
+      "name": "eight battle states: warning, boss, surge, poor, capacity and locks",
+      "result": "pass"
+    },
+    {
+      "name": "four sheet alerts: boss/critical return to battle, clear/fail open results",
+      "result": "pass"
+    },
+    {
+      "name": "formation: move/swap, five-guardian limit, dispatch lock, danger-first layout, three presets with hold-to-save",
+      "result": "pass"
+    },
+    {
+      "name": "failure: two causes and three CTA destinations",
+      "result": "pass"
+    },
+    {
+      "name": "9:19.5 and 9:16: controls remain inside screen",
+      "result": "pass"
+    },
+    {
+      "name": "360px / 390px / 768px review page: no horizontal overflow",
+      "result": "pass"
+    },
+    {
+      "name": "asset sheet: 47 downloadable SVG/PNG pairs, no failed loads or JS errors",
+      "result": "pass"
+    },
+    {
+      "name": "Direct file:// opening",
+      "result": "blocked",
+      "reason": "Managed Chromium returned ERR_BLOCKED_BY_ADMINISTRATOR. Served HTTP review verified; no policy bypass attempted."
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,38 @@
+{
+  "version": "08",
+  "status": "review_only_not_unity_applied",
+  "scope": "Cancel pending browser review inputs at screen/ratio/focus changes while preserving completed actions.",
+  "reproducedBefore": {
+    "formation": "Hold occupied slot → home → wait 750ms: slot0 became empty and formation rendered under HOME caption.",
+    "growth": "Hold upgrade → blur at ~500ms: level13 became17 during next550ms."
+  },
+  "rules": {
+    "summon": "Cancel aim timer, preview and pointer capture on redraw/navigation/window blur/hidden; no echo cost.",
+    "formation": "Cancel active slot hold/drag before rendering another screen or ratio; no delayed removal/render.",
+    "preset": "Cancel uncommitted hold on screen/focus change or >8px movement; suppress accidental load after cancellation; valid600ms hold still saves.",
+    "growth": "Stop hold repeats on window blur/hidden/navigation; retain purchases completed before cancellation.",
+    "resonance": "Leaving pending confirmation closes it without consuming fragments."
+  },
+  "unchanged": {
+    "summonHoldMs": 200,
+    "presetHoldMs": 600,
+    "formationRemoveHoldMs": 600,
+    "growthHoldMs": 450,
+    "growthRepeatMs": 140,
+    "costs": "same fixtures/formulas",
+    "economy": "local review only, no save or live game wallet"
+  },
+  "files": [
+    "interactions.js",
+    "growth.js",
+    "verify-flow.cjs",
+    "flow-verification.json",
+    "ScreenHandoff.json"
+  ],
+  "testLimit": "Blur event is dispatched in headless browser to exercise cleanup. Actual app hide/restore, Unity pointer capture and device lifecycle still require Unity/device tests.",
+  "screenshots": [
+    "flow-home-cancelled-08.png",
+    "flow-formation-preserved-08.png",
+    "flow-growth-stopped-08.png"
+  ]
+}
