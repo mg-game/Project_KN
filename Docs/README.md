@@ -15,7 +15,7 @@
 | 08_Audio | 사운드 · BGM 방향과 명세 | `AUD_Spec.md` |
 | 09_Research | 경쟁작 · 레퍼런스 분석, 리서치 | `RES_IdleGames.md` |
 | 99_Archive | 폐기/구버전 문서 (삭제 대신 이동) · 변환 전 원본 `Source/` | - |
-| _Templates | 문서 양식 (시스템 · 테이블 · 아트 · 회의록) | `_Template_System.md` |
+| _Templates | 문서 양식 (시스템 · 테이블 · 아트 · 회의록 · 캐릭터 · 장) | `_Template_System.md` |
 
 ## 2. 파일 네이밍
 
@@ -65,6 +65,7 @@ Draft ──(PR 생성)──→ Review ──(리드 승인/머지)──→ Ap
 - 테이블 스키마: [`_Templates/_Template_Table.md`](./_Templates/_Template_Table.md)
 - 아트 문서: [`_Templates/_Template_Art.md`](./_Templates/_Template_Art.md)
 - 회의록: [`_Templates/_Template_Meeting.md`](./_Templates/_Template_Meeting.md)
+- 장(챕터) 묶음: [`_Templates/_Template_Chapter.md`](./_Templates/_Template_Chapter.md) — 첫 예시 `02_Content/CNT_Stage_Chapter2.md` (D-67)
 - 캐릭터 원본: [`_Templates/_Template_Character.md`](./_Templates/_Template_Character.md) · 캐릭터 외형: [`_Templates/_Template_CharacterAppearance.md`](./_Templates/_Template_CharacterAppearance.md)
 
 ## 6. 문서 찾기 · 상태
