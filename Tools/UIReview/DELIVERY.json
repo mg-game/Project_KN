@@ -10,10 +10,10 @@
   "status": "development_reference_not_unity_applied",
   "userAuthorization": "2026-11-13 Git development handoff request; current snapshot only",
   "latestPatch": {
-    "version": "0.8.1",
+    "version": "0.8.3",
     "date": "2026-11-13",
-    "change": "Shared stage labels and stage-aware combat-alert results; combat/save fixtures unchanged.",
-    "checksPassed": 68,
-    "baseCommit": "8f281cf"
+    "baseCommit": "c16686c",
+    "change": "Restore nested dialog trigger focus and require key release before subsequent modal/navigation activation.",
+    "checksPassed": 80
   }
 }

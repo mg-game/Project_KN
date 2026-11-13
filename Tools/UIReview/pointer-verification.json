@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-13T07:54:41.788Z",
+  "scope": "Chromium CDP multi-touch and native keyboard/mouse browser review. Not Unity or physical-device certification.",
+  "checks": [
+    {
+      "name": "Two touches on one upgrade: release stops all repeats and preserves the release-time wallet",
+      "result": "pass",
+      "detail": {
+        "releaseLevel": 14,
+        "afterWaitLevel": 14
+      }
+    },
+    {
+      "name": "Secondary finger release never commits a tap or stops the original hold, on same/different cards",
+      "result": "pass"
+    },
+    {
+      "name": "A shop hold owns the gesture: another card/batch button does not add a purchase on release",
+      "result": "pass"
+    },
+    {
+      "name": "Keyboard batch/resonance clicks are ignored during a pointer hold and work again after release",
+      "result": "pass"
+    },
+    {
+      "name": "Touch cancel clears the hold; a new touch buys exactly one level without reviving old timers",
+      "result": "pass"
+    },
+    {
+      "name": "Blur/navigation before the threshold leaves no delayed purchases after two-finger input",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}

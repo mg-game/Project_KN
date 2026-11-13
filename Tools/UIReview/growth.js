@@ -41,17 +41,34 @@
   }
   function bindHold(button,action){
     let gesture=null;
-    const stop=()=>{if(gesture){clearTimeout(gesture.timer);clearInterval(gesture.interval);}gesture=null;activeHolds.delete(stop);};
-    button.onpointerdown=e=>{
-      if(e.button!==0)return;e.preventDefault();button.focus({preventScroll:true});button.setPointerCapture(e.pointerId);
-      gesture={id:e.pointerId,x:e.clientX,y:e.clientY,held:false,cancel:false};activeHolds.add(stop);
-      gesture.timer=setTimeout(()=>{if(!gesture)return;gesture.held=true;if(!action()){stop();return}if(!gesture)return;gesture.interval=setInterval(()=>{if(!action())stop()},140)},450);
+    const stop=()=>{
+      const current=gesture;gesture=null;activeHolds.delete(stop);
+      if(!current)return;
+      clearTimeout(current.timer);clearInterval(current.interval);
+      if(button.hasPointerCapture(current.id))button.releasePointerCapture(current.id);
     };
-    button.onpointermove=e=>{if(gesture&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8){gesture.cancel=true;clearTimeout(gesture.timer);clearInterval(gesture.interval)}};
-    button.onpointerup=()=>{if(!gesture)return;const tap=!gesture.held&&!gesture.cancel;stop();if(tap)action()};
-    button.onpointercancel=button.onlostpointercapture=stop;
-    button.onclick=e=>{if(e.detail===0)action()};button.oncontextmenu=e=>e.preventDefault();
+    button.onpointerdown=e=>{
+      if(e.button!==0||e.isPrimary===false||gesture||activeHolds.size)return;
+      e.preventDefault();button.focus({preventScroll:true});button.setPointerCapture(e.pointerId);
+      const current={id:e.pointerId,x:e.clientX,y:e.clientY,held:false,cancel:false};gesture=current;activeHolds.add(stop);
+      const valid=()=>{
+        if(gesture!==current)return false;
+        if(!button.isConnected){stop();return false}
+        return true;
+      };
+      current.timer=setTimeout(()=>{
+        if(!valid())return;
+        current.held=true;if(!action()){stop();return}
+        if(!valid())return;
+        current.interval=setInterval(()=>{if(!valid())return;if(!action())stop()},140);
+      },450);
+    };
+    button.onpointermove=e=>{if(gesture&&gesture.id===e.pointerId&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8){gesture.cancel=true;clearTimeout(gesture.timer);clearInterval(gesture.interval)}};
+    button.onpointerup=e=>{if(!gesture||gesture.id!==e.pointerId)return;const tap=!gesture.held&&!gesture.cancel;stop();if(tap)action()};
+    button.onpointercancel=button.onlostpointercapture=e=>{if(gesture?.id===e.pointerId)stop()};
+    button.onclick=e=>{if(e.detail===0&&!activeHolds.size)action()};button.oncontextmenu=e=>e.preventDefault();
   }
+  const singleAction=action=>()=>{if(!activeHolds.size)action()};
   function closeConfirm(restore=true){
     const trigger=pending?.trigger;pending=null;screen.querySelector('.growth-confirm-overlay')?.remove();[...screen.children].forEach(e=>e.inert=false);
     syncSheetInput();
@@ -113,13 +130,13 @@
     panel.querySelector('.gr-close').onclick=()=>{stopHolds();sheet=false;showAlert=false;view='list';if(page==='growth')setPage('home');else home()};
     panel.querySelector('.gr-scroll').addEventListener('scroll',stopHolds,{passive:true});
     if(view==='list'){
-      bindHold($('#gr-shop-one'),()=>buyShop(1));$('#gr-shop-ten').onclick=()=>buyShop(10);$('#gr-shop-max').onclick=()=>buyShop('max');
+      bindHold($('#gr-shop-one'),()=>buyShop(1));$('#gr-shop-ten').onclick=singleAction(()=>buyShop(10));$('#gr-shop-max').onclick=singleAction(()=>buyShop('max'));
       panel.querySelectorAll('[data-level-up]').forEach(b=>bindHold(b,()=>buyLevel(Number(b.dataset.levelUp))));
       panel.querySelectorAll('[data-detail]').forEach(b=>b.onclick=()=>{character=Number(b.dataset.detail);showGrowth('detail');$('#gr-back').focus()});
       $('#gr-recommend').onclick=()=>{const target=panel.querySelector('[data-lineage="0"]');target.scrollIntoView({block:'nearest',behavior:'auto'});target.classList.add('recommended');setTimeout(()=>target.classList.remove('recommended'),1400)};
     }else{
       $('#gr-back').onclick=()=>{showGrowth('list');screen.querySelector(`[data-detail="${character}"]`)?.focus()};
-      bindHold($('#gr-detail-one'),()=>buyLevel(character));$('#gr-detail-ten').onclick=()=>buyLevel(character,10);$('#gr-resonate').onclick=confirmResonance;
+      bindHold($('#gr-detail-one'),()=>buyLevel(character));$('#gr-detail-ten').onclick=singleAction(()=>buyLevel(character,10));$('#gr-resonate').onclick=singleAction(confirmResonance);
     }
     panel.setAttribute('role','region');syncSheetInput();paint();return panel;
   }

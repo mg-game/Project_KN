@@ -4,6 +4,22 @@
   const directions=['N','NE','E','SE','S','SW','W','NW'];
   let autoInvest=true,aim=null,lastSummon=null,modalView='settings',restoreFocus='pause',suppressSlotClick=0;
   const formationStops=new Set();
+  const heldModalKeys=new Set();
+  const modalKeys=new Set(['Enter','Escape',' ','Spacebar']);
+  const modalTriggers='[data-screen],[data-nav],#pause,#back-home,.gr-close,.gr-back,#gr-resonate';
+  // A key that navigates a dialog must be released before it can activate the next screen.
+  document.addEventListener('keydown',e=>{
+    if(!modalKeys.has(e.key))return;
+    const key=e.code||e.key;
+    const scoped=!!screen.querySelector('.modal-overlay,.growth-confirm-overlay,.failure-modal,.result-view')
+      ||(e.key==='Escape'&&(!!aim||!!screen.querySelector('.growth-panel')))
+      ||(e.key!=='Escape'&&!!e.target.closest?.(modalTriggers));
+    if(heldModalKeys.has(key)||(scoped&&e.repeat)){
+      heldModalKeys.add(key);e.preventDefault();e.stopImmediatePropagation();return;
+    }
+    if(scoped)heldModalKeys.add(key);
+  },true);
+  document.addEventListener('keyup',e=>heldModalKeys.delete(e.code||e.key),true);
   function stopFormation(){[...formationStops].forEach(stop=>stop());screen.querySelector('.formation-drag-ghost')?.remove();}
   const lock=`<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="4" y="9" width="16" height="13" rx="3" fill="currentColor"/></svg>`;
   const reduced=()=>$('#motion').checked;
@@ -108,9 +124,9 @@
       layer.querySelector('#pause-invest').onclick=()=>{if(battle==='locked'){toast('1-2를 클리어하면 열려요');return}autoInvest=!autoInvest;openPause('settings','pause-invest')};
       layer.querySelector('#open-help').onclick=()=>openPause('help','back-pause');
       layer.querySelector('#open-retreat').onclick=()=>openPause('retreat','cancel-retreat');
-    }else if(view==='help')layer.querySelector('#back-pause').onclick=()=>openPause('settings');
+    }else if(view==='help')layer.querySelector('#back-pause').onclick=()=>openPause('settings','open-help');
     else{
-      layer.querySelector('#cancel-retreat').onclick=()=>openPause('settings');
+      layer.querySelector('#cancel-retreat').onclick=()=>openPause('settings','open-retreat');
       layer.querySelector('#confirm-retreat').onclick=()=>{paused=false;clearModal();cause='retreat';$('#failure-cause').value='retreat';setPage('failure')};
     }
   }
@@ -201,7 +217,7 @@
     }
   };
   setPage=function(p){clearAim();stopFormation();clearModal();paused=false;originalSetPage(p);};
-  const cancelInput=()=>{clearAim();stopFormation()};
+  const cancelInput=()=>{heldModalKeys.clear();clearAim();stopFormation()};
   window.addEventListener('blur',cancelInput);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelInput()});
   screen.addEventListener('click',e=>{if(e.detail>0&&performance.now()<suppressSlotClick&&e.target.closest('[data-slot]')){e.preventDefault();e.stopImmediatePropagation()}},true);
@@ -216,7 +232,7 @@
       return;
     }
     const dialog=screen.querySelector('.modal-overlay [role=dialog]');if(!dialog)return;
-    if(e.key==='Escape'){e.preventDefault();if(modalView==='retreat'||modalView==='help')openPause('settings');else resume();}
+    if(e.key==='Escape'){e.preventDefault();if(modalView==='retreat'||modalView==='help')openPause('settings',modalView==='help'?'open-help':'open-retreat');else resume();}
     if(e.key==='Tab'){
       const items=[...dialog.querySelectorAll('button:not([disabled]),[tabindex="0"]')],first=items[0],last=items[items.length-1];
       if(e.shiftKey&&(document.activeElement===first||!dialog.contains(document.activeElement))){e.preventDefault();last.focus()}
