@@ -2,7 +2,7 @@
 
 | 항목 | 값 |
 |---|---|
-| 상태 | Approved (양식 — D-46 #5 진행안) · **1회차 검수 완료 (§8) — 결정 대기 K · M · R · X** |
+| 상태 | Approved (양식 — D-46 #5 진행안) · **1회차 검수 완료 (§8) · 결정 D-64** — 카라반 · 레이니 수정 1회 시안 대기 |
 | 작성자 | DD |
 | 최종 수정 | 2026-11-13 |
 | 관련 문서 | [`ART_Character_Brief`](./ART_Character_Brief.md) §0.4 · §2 (진행 D-46 #5) · [`ART_StyleGuide`](./ART_StyleGuide.md) §15 · [`ART_BattleSpriteSpec`](./ART_BattleSpriteSpec.md) §2.1 · §2.2 · [`ART_EchoSpec`](./ART_EchoSpec.md) · [`CNT_Character_Main`](../02_Content/CNT_Character_Main.md) 짝짝이 · [`SYS_Evolution`](../01_System/SYS_Evolution.md) (D-45 개화 B = 양말 카라반) · [`SYS_Costume`](../01_System/SYS_Costume.md) (D-55) |
@@ -168,7 +168,7 @@
 
 → 채택 시 [`ART_StyleGuide`](./ART_StyleGuide.md) §15 보충 규칙으로 옮긴다.
 
-### 8.5 결정 대기 (DD 추천 = 첫 번째)
+### 8.5 결정 — **D-64 확정 (2026-11-13, 전부 첫 번째 = DD 추천안)**
 | # | 대상 | 묻는 것 | 선택지 |
 |---|---|---|---|
 | K1 | 카라반 | 몸 형태 | **연결형 몸 (얼굴 + 방)** / 기존처럼 집을 멘 모습 |
