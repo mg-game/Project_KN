@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92fc4b00a5b655e42b1c52cd5b30c539, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: IdleGame::IdleGame.GameConfig
+  startGold: 0
+  startGem: 300
+  maxLevel: 1000
+  levelUpBaseCost: 10
+  levelUpCostGrowth: 1.12
+  baseGoldPerSecond: 1
+  goldPerSecondGrowth: 1.06
+  levelRewardInterval: 10
+  levelRewardGem: 50
+  offlineMaxHours: 8
+  offlineRewardRate: 0.5
+  offlineMinSeconds: 60
+  mailExpireDays: 30
+  autoSaveInterval: 30
+  noticeUrl: 

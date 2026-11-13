@@ -1,0 +1,28 @@
+{
+    "name": "IdleGame.Platform",
+    "rootNamespace": "IdleGame.Platform",
+    "references": [
+        "IdleGame",
+        "Unity.Notifications.Unified",
+        "Unity.Notifications.Android",
+        "Unity.Notifications.iOS"
+    ],
+    "includePlatforms": [
+        "Android",
+        "iOS"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.mobile.notifications",
+            "expression": "2.4.0",
+            "define": "LL_NOTIFICATIONS"
+        }
+    ],
+    "noEngineReferences": false
+}

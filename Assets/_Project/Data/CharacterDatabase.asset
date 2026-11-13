@@ -1,0 +1,2106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 462d7f9aa2dbbf54cb0613fb05ae7459, type: 3}
+  m_Name: CharacterDatabase
+  m_EditorClassIdentifier: IdleGame::IdleGame.CharacterDatabase
+  lineages:
+  - id: jjakjjak
+    name: "\uC9DD\uC9DD\uC774"
+    species: "\uC591\uB9D0\uC871"
+    origin: "\uC9DD\uC744 \uC783\uC740 \uC591\uB9D0"
+    personality: "\uC9DD\uC744 \uC783\uC740 \uC591\uB9D0\uC774\uB77C, \uB2E4\uB978
+      \uC591\uB9D0\uB9CC \uBCF4\uBA74 \uBB34\uC870\uAC74 \uAC00\uC871\uC774\uB77C\uACE0
+      \uBD88\uB7EC\uC694. \uBE68\uB798 \uBC14\uAD6C\uB2C8 \uC18D \uB0AF\uC120 \uC591\uB9D0\uC5D0\uAC8C\uB3C4,
+      \uAE38\uAC00\uC5D0 \uB5A8\uC5B4\uC9C4 \uC544\uAE30 \uC591\uB9D0\uC5D0\uAC8C\uB3C4
+      \uBA3C\uC800 \uC190\uC744 \uD754\uB4E4\uBA70 \"\uC6B0\uB9AC \uC2DD\uAD6C!\"
+      \uD558\uACE0 \uBC18\uAE30\uC9C0\uC694.\n\uD55C \uC9DD\uB9CC \uB0A8\uC740 \uC678\uB85C\uC6C0\uC744
+      \uB204\uAD6C\uBCF4\uB2E4 \uC798 \uC54C\uAE30\uC5D0, \uD63C\uC790 \uB0A8\uC740
+      \uCE5C\uAD6C\uB97C \uC808\uB300 \uADF8\uB0E5 \uC9C0\uB098\uCE58\uC9C0 \uBABB\uD574\uC694.
+      \uBCF4\uB77C \uB2E8\uCD94 \uB208\uACFC \uBC14\uB298\uB540 \uB208\uC73C\uB85C
+      \uC6C3\uB294 \uC5BC\uAD74\uC740, \uADF8\uB798\uC11C \uB298 \uC870\uAE08 \uC9DD\uC9DD\uC774\uB78D\uB2C8\uB2E4."
+    grade: 2
+    bodyType: 1
+    traits: 0000000004000000
+    mainColor: {r: 0.9529412, g: 0.9019608, b: 0.8156863, a: 1}
+    subColor: {r: 0.5411765, g: 0.3882353, b: 0.7882353, a: 1}
+    accentColor: {r: 0.90588236, g: 0.60784316, b: 0.72156864, a: 1}
+    neutralColor: {r: 0.56078434, g: 0.72156864, b: 0.87058824, a: 1}
+    baseFormId: jjak_base
+    forms:
+    - id: jjak_base
+      name: "\uC9DD\uC9DD\uC774"
+      parentFormId: 
+      tier: 0
+      style: 0
+      recommendedRole: 0
+      description: "\uB2C8\uD2B8 \uC591\uB9D0\uC758 \uBC1C\uBAA9\uC774 \uBAA9\uC774
+        \uB418\uACE0, \uB465\uADFC \uB4A4\uAFC8\uCE58\uAC00 \uB4F1\uC774 \uB418\uACE0,
+        \uBCF4\uB77C\uC0C9 \uCEE4\uD504\uB294 \uBAA8\uC790\uCC98\uB7FC \uBA38\uB9AC
+        \uC704\uC5D0 \uC5B9\uD614\uC5B4\uC694. \uC9E7\uC740 \uD314\uB2E4\uB9AC\uB294
+        \uBC1C\uAC00\uB77D \uC194\uAE30\uB97C \uAFF0\uB9E4\uC5B4 \uB9CC\uB4E0 \uAC70\uC608\uC694.\n\uD3ED\uC2E0\uD55C
+        \uBAB8\uC73C\uB85C \uC218\uC120\uC810 \uC55E\uC744 \uB9C9\uC544\uC11C\uBA74,
+        \uBAB8\uC5D0 \uC77C\uC5B4\uB09C \uBCF4\uD480\uC774 \uB2E4\uAC00\uC624\uB294
+        \uC801\uC758 \uBC1C\uC744 \uBD99\uC7A1\uC544 \uB290\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 4c424f5eaecfa194fb4d835df27e8e3d, type: 3}
+      skill:
+        id: skill_jjak_base
+        name: "\uAC00\uC871 \uBD80\uB974\uAE30"
+        description: "\uC9DD\uC744 \uC783\uC740 \uC591\uB9D0\uC774\uB77C \uB2E4\uB978
+          \uC591\uB9D0\uB9CC \uBCF4\uBA74 \uBB34\uC870\uAC74 \uAC00\uC871\uC774\uB77C\uACE0
+          \uBD88\uB7EC\uC694. \"\uC6B0\uB9AC \uC2DD\uAD6C!\" \uD558\uACE0 \uC678\uCE58\uBA74
+          \uAE38 \uC783\uC740 \uC544\uAE30 \uC591\uB9D0\uB4E4\uC774 \uCABC\uB974\uB974
+          \uB2EC\uB824\uC640\uC694.\n16\uCD08\uB9C8\uB2E4 \uB2A5\uB825\uCE58 40%\uC758
+          \uC791\uC740 \uCE5C\uAD6C 2\uB9C8\uB9AC\uB97C \uBD88\uB7EC 8\uCD08 \uB3D9\uC548
+          \uD568\uAED8 \uC2F8\uC6CC\uC694."
+        castText: "\uC6B0\uB9AC \uC2DD\uAD6C, \uBAA8\uC5EC\uB77C!"
+        trigger: 1
+        cooldown: 16
+        initialDelay: 5
+        target: 0
+        radius: 0.6
+        effects:
+        - type: 10
+          value: 0.4
+          duration: 8
+          count: 2
+        vfx: vfx_summon_circle
+      attack: 12
+      hp: 201
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.7
+      summonCost: 5
+      lifetime: 14
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: jjak_caravan
+      name: "\uC591\uB9D0 \uCE74\uB77C\uBC18"
+      parentFormId: jjak_base
+      tier: 1
+      style: 0
+      recommendedRole: 0
+      description: "\uAE38\uC744 \uC783\uC740 \uC9DD \uC591\uB9D0\uB4E4\uC774 \uD558\uB098\uB458
+        \uC9DD\uC9DD\uC774\uC5D0\uAC8C \uC774\uC5B4 \uBD99\uC5B4, \uBAB8\uC774 \uB9C8\uB514\uB9C8\uB514
+        \uBC29\uC774 \uB2EC\uB9B0 \uAE34 \uC774\uB3D9\uC9D1\uC774 \uB418\uC5C8\uC5B4\uC694.
+        \uB9C8\uB514\uB9C8\uB2E4 \uB465\uADFC \uCC3D\uBB38\uC774 \uB098\uACE0, \uBC1C\uBC14\uB2E5
+        \uB300\uC2E0 \uC2E4\uBB49\uCE58 \uBC14\uD034\uAC00 \uB370\uAD74\uB370\uAD74
+        \uAD74\uB7EC\uAC00\uC694.\n\uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74 \uAE34 \uBAB8\uC73C\uB85C
+        \uBC29\uC704\uB97C \uBE59 \uB458\uB7EC \uAC10\uC2F8, \uC801\uC758 \uBC1C\uAC78\uC74C\uC744
+        \uB2A6\uCD94\uB294 \uB2E8\uB2E8\uD55C \uBC29\uBCBD\uC774 \uB3FC\uC694."
+      portrait: {fileID: 21300000, guid: 6b7abcf2e87313a449ec0e8eb1d345e2, type: 3}
+      skill:
+        id: skill_jjak_caravan
+        name: "\uC2DD\uAD6C \uC5F4\uCC28"
+        description: "\uAC00\uC871 \uBD80\uB974\uAE30\uAC00 \uC774\uB3D9\uC9D1\uC774
+          \uB418\uC5C8\uC5B4\uC694. \uC218\uC120\uC810\uC774 \uD754\uB4E4\uB9AC\uBA74
+          \uB9C8\uB514\uB9C8\uB514 \uBC29\uC5D0 \uC0B4\uB358 \uC9DD \uC591\uB9D0
+          \uC2DD\uAD6C\uB4E4\uC774 \uCC3D\uBB38\uC744 \uC5F4\uACE0 \uC6B0\uB974\uB974
+          \uB6F0\uC5B4\uB098\uC640\uC694.\n\uC218\uC120\uC810\uC774 \uACF5\uACA9\uBC1B\uC73C\uBA74(14\uCD08\uC5D0
+          \uD55C \uBC88\uAE4C\uC9C0) \uB2A5\uB825\uCE58 50%\uC758 \uC791\uC740 \uCE5C\uAD6C
+          3\uB9C8\uB9AC\uB97C \uBD88\uB7EC 9\uCD08 \uB3D9\uC548 \uD568\uAED8 \uC2F8\uC6CC\uC694."
+        castText: "\uC2DD\uAD6C\uB4E4, \uBB38 \uC5F4\uC5B4!"
+        trigger: 6
+        cooldown: 14
+        initialDelay: 0
+        target: 0
+        radius: 0.6
+        effects:
+        - type: 10
+          value: 0.5
+          duration: 9
+          count: 3
+        vfx: vfx_summon_circle
+      attack: 16.3
+      hp: 271
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.73
+      summonCost: 7
+      lifetime: 15
+      clueLevel: 5
+      materials:
+      - itemId: mat_cloth
+        count: 15
+      - itemId: mat_thread
+        count: 20
+      - itemId: mat_suitcase
+        count: 8
+      conditions:
+      - type: 0
+        target: 10
+      - type: 1
+        target: 30
+      - type: 2
+        target: 20
+    - id: jjak_marcher
+      name: "\uC591\uB9D0 \uD589\uC9C4\uBCD1"
+      parentFormId: jjak_base
+      tier: 1
+      style: 1
+      recommendedRole: 1
+      description: "\uBAA9\uC774 \uAE34 \uC591\uB9D0\uC744 \uB05D\uAE4C\uC9C0 \uB2F9\uACA8
+        \uC2E0\uACE0, \uCEE4\uD504\uB97C \uD589\uC9C4 \uBAA8\uC790\uCC98\uB7FC \uB192\uC774
+        \uC138\uC6B4 \uC9DD\uC9DD\uC774\uC608\uC694. \uB4A4\uAFC8\uCE58\uB97C \uB9DE\uBD80\uB52A\uCE58\uB294
+        \uBC1C\uC18C\uB9AC\uAC00 \uBD81\uC18C\uB9AC\uAC00 \uB418\uACE0, \uB3CC\uB3CC
+        \uB9CC \uC591\uB9D0\uBAA9\uC740 \uC9E7\uC740 \uC9C0\uD718\uBD09\uC774 \uB418\uC5C8\uC5B4\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uC704\uD5D8\uD55C \uBC29\uD5A5\uC73C\uB85C \uAC00\uC7A5
+        \uBA3C\uC800 \uB6F0\uC5B4\uB098\uAC00, \uAC00\uAE4C\uC774 \uBD99\uC740 \uC801\uC744
+        \uD798\uAECF \uB4E4\uC774\uBC1B\uC544\uC694."
+      portrait: {fileID: 21300000, guid: 5ed9e94a8aeb6c845a21c758d1342265, type: 3}
+      skill:
+        id: skill_jjak_marcher
+        name: "\uCFF5\uCFF5 \uD589\uC9C4"
+        description: "\uC801\uC744 \uD558\uB098 \uC4F0\uB7EC\uB728\uB9B4 \uB54C\uB9C8\uB2E4
+          \uB4A4\uAFC8\uCE58\uB97C \uB9DE\uBD80\uB52A\uCE58\uBA70 \uB354 \uD798\uCC28\uAC8C
+          \uBC1C\uC744 \uAD74\uB7EC\uC694. \uD589\uC9C4\uC774 \uC774\uC5B4\uC9C8\uC218\uB85D
+          \uBA3C\uC9C0\uAC00 \uD480\uC369\uD480\uC369 \uC77C\uC5B4\uB098\uC694.\n\uC801\uC744
+          \uC4F0\uB7EC\uB728\uB9AC\uBA74(2.5\uCD08\uC5D0 \uD55C \uBC88\uAE4C\uC9C0)
+          \uC8FC\uBCC0\uC758 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825 160% \uD53C\uD574\uB97C
+          \uC8FC\uACE0, \uC0B4\uC9DD \uBC00\uC5B4\uB0B4\uC694."
+        castText: "\uD558\uB098, \uB458! \uCFF5!"
+        trigger: 4
+        cooldown: 2.5
+        initialDelay: 0
+        target: 3
+        radius: 0.45
+        effects:
+        - type: 0
+          value: 1.6
+          duration: 0
+          count: 0
+        - type: 5
+          value: 0.15
+          duration: 0
+          count: 0
+        vfx: vfx_dust_poof
+      attack: 28.4
+      hp: 169
+      attackInterval: 0.8
+      range: 1.3
+      arcDegrees: 60
+      moveSpeed: 1.08
+      summonCost: 6
+      lifetime: 11
+      clueLevel: 5
+      materials:
+      - itemId: mat_cloth
+        count: 12
+      - itemId: mat_ribbon
+        count: 15
+      conditions:
+      - type: 1
+        target: 20
+      - type: 2
+        target: 15
+    - id: jjak_acrobat
+      name: "\uC591\uB9D0 \uACE1\uC608\uC0AC"
+      parentFormId: jjak_base
+      tier: 1
+      style: 2
+      recommendedRole: 1
+      description: "\uACE0\uBB34\uC904\uC774 \uB298\uC5B4\uB098 \uBC84\uB9B0 \uC591\uB9D0\uBAA9\uC744
+        \uC6A9\uC218\uCCA0\uCC98\uB7FC \uC4F0\uB294 \uACE1\uC608\uC0AC\uC608\uC694.
+        \uBC1C\uB05D\uC73C\uB85C \uACF5\uC911\uC81C\uBE44\uB97C \uB3CC\uB2E4\uAC00,
+        \uCB49 \uB298\uC5B4\uB09C \uBAB8\uC744 \uACE0\uB9AC\uCC98\uB7FC \uB358\uC838
+        \uBB34\uC5C7\uC774\uB4E0 \uD718\uAC10\uC544\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uC801 \uC0AC\uC774\uB97C \uD1B5\uD1B5 \uD280\uC5B4
+        \uB2E4\uB2C8\uBA70 \uC7A0\uAE50\uC529 \uAF41\uAF41 \uBB36\uC5B4 \uB450\uC5B4,
+        \uCE5C\uAD6C\uB4E4\uC774 \uACF5\uACA9\uD560 \uD2C8\uC744 \uB9CC\uB4E4\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 63fb40b628f6d1742bfa401649a8aac8, type: 3}
+      skill:
+        id: skill_jjak_acrobat
+        name: "\uACE0\uBB34\uC904 \uC62C\uAC00\uBBF8"
+        description: "\uB298\uC5B4\uB098 \uBC84\uB9B0 \uC591\uB9D0\uBAA9\uC744 \uACE0\uB9AC\uCC98\uB7FC
+          \uD718\uD718 \uB3CC\uB824 \uB358\uC838\uC694. \uACF5\uC911\uC81C\uBE44
+          \uD55C \uBC88\uC774\uBA74 \uD769\uC5B4\uC838 \uC788\uB358 \uC801\uB4E4\uC774
+          \uD55C\uB370 \uC5C9\uCF1C \uAF3C\uC9DD \uBABB \uD574\uC694.\n8\uCD08\uB9C8\uB2E4
+          \uACF5\uACA9 \uB300\uC0C1 \uC8FC\uBCC0\uC758 \uC801\uC744 \uD55C\uB370
+          \uB04C\uC5B4\uB2F9\uAE30\uACE0, 1\uCD08 \uB3D9\uC548 \uAE30\uC808\uC2DC\uCF1C\uC694."
+        castText: "\uD718\uB9AC\uB9AD, \uC7A1\uC558\uB2E4!"
+        trigger: 1
+        cooldown: 8
+        initialDelay: 2
+        target: 4
+        radius: 0.45
+        effects:
+        - type: 6
+          value: 0.25
+          duration: 0
+          count: 0
+        - type: 4
+          value: 0
+          duration: 1
+          count: 0
+        vfx: vfx_slow_yarn
+      attack: 18.3
+      hp: 186
+      attackInterval: 1
+      range: 1.6
+      arcDegrees: 72
+      moveSpeed: 0.93
+      summonCost: 7
+      lifetime: 13
+      clueLevel: 5
+      materials:
+      - itemId: mat_ribbon
+        count: 12
+      - itemId: mat_lace
+        count: 8
+      - itemId: mat_thread
+        count: 6
+      conditions:
+      - type: 1
+        target: 25
+      - type: 2
+        target: 15
+    - id: jjak_postman
+      name: "\uC591\uB9D0 \uC6B0\uD3B8\uBC30\uB2EC\uBD80"
+      parentFormId: jjak_base
+      tier: 1
+      style: 4
+      recommendedRole: 1
+      description: "\uC591\uB9D0 \uC18D \uAE4A\uC740 \uC8FC\uBA38\uB2C8\uAC00 \uADF8\uB300\uB85C
+        \uC6B0\uD3B8 \uAC00\uBC29\uC774 \uB418\uC5C8\uC5B4\uC694. \uC9DD\uC744 \uAE30\uB2E4\uB9AC\uB358
+        \uB0A0\uB4E4\uC5D0 \uBD80\uCE58\uC9C0 \uBABB\uD55C \uD3B8\uC9C0\uB97C \uBAA8\uC544,
+        \uC774\uC81C\uB294 \uB2E4\uB978 \uCE5C\uAD6C\uB4E4\uC758 \uB9C8\uC74C\uC744
+        \uB300\uC2E0 \uC804\uD558\uB7EC \uB2E4\uB140\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uC218\uC120\uC810\uC5D0 \uB530\uB73B\uD55C \uC18C\uC2DD\uC744
+        \uBC30\uB2EC\uD574 \uB0B4\uAD6C\uB3C4\uB97C \uCC44\uC6B0\uACE0, \uACC1\uC758
+        \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C \uD798\uC744 \uC2E4\uC5B4 \uC918\uC694."
+      portrait: {fileID: 21300000, guid: 4c00df44d34b1144a9cc9f33f303d29c, type: 3}
+      skill:
+        id: skill_jjak_postman
+        name: "\uB9C8\uC74C \uBC30\uB2EC"
+        description: "\uBE5B\uC73C\uB85C \uD480\uB824 \uB3CC\uC544\uAC00\uB294 \uAE38\uC5D0\uB3C4
+          \uBC30\uB2EC\uC740 \uC78A\uC9C0 \uC54A\uC544\uC694. \uC591\uB9D0 \uC8FC\uBA38\uB2C8
+          \uC18D \uD3B8\uC9C0\uAC00 \uC218\uC120\uC810\uC5D0 \uB2FF\uC73C\uBA74 \uBAA8\uB450\uC758
+          \uB9C8\uC74C\uC774 \uB530\uB73B\uD574\uC838\uC694.\n\uBE5B\uC73C\uB85C
+          \uD480\uB824 \uC0AC\uB77C\uC9C8 \uB54C \uC794\uD5A5\uC744 6 \uCC44\uC6B0\uACE0,
+          \uBD88\uBE5B \uAC8C\uC774\uC9C0\uB97C 8% \uCC44\uC6CC\uC694."
+        castText: "\uD3B8\uC9C0 \uC654\uC5B4\uC694!"
+        trigger: 3
+        cooldown: 0
+        initialDelay: 0
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 11
+          value: 6
+          duration: 0
+          count: 0
+        - type: 12
+          value: 0.08
+          duration: 0
+          count: 0
+        vfx: vfx_heart_heal
+      attack: 14.2
+      hp: 152
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.88
+      summonCost: 6
+      lifetime: 14
+      clueLevel: 5
+      materials:
+      - itemId: mat_cloth
+        count: 10
+      - itemId: mat_lace
+        count: 6
+      - itemId: mat_suitcase
+        count: 3
+      conditions:
+      - type: 0
+        target: 8
+      - type: 2
+        target: 15
+    - id: jjak_medic
+      name: "\uC591\uB9D0 \uC758\uBB34\uBCD1"
+      parentFormId: jjak_base
+      tier: 1
+      style: 5
+      recommendedRole: 0
+      description: "\uAD6C\uBA4D \uB09C \uCE5C\uAD6C\uB97C \uBCF4\uBA74 \uADF8\uB0E5
+        \uC9C0\uB098\uCE58\uC9C0 \uBABB\uD574\uC11C, \uCEE4\uD504\uC5D0 \uBC14\uB298\uACFC
+        \uC2E4\uC744 \uAF42\uACE0 \uB2E4\uB2C8\uAE30 \uC2DC\uC791\uD588\uC5B4\uC694.
+        \uC55E\uC136\uC758 \uD328\uCE58\uB294 \uC5B8\uC81C\uB4E0 \uB5BC\uC5B4 \uBD99\uC77C
+        \uC218 \uC788\uB294 \uBC18\uCC3D\uACE0 \uCC9C\uC774\uC5D0\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC790\uB9AC\uB97C \uC9C0\uD0A4\uBA70 \uC218\uC120\uC810\uC758 \uCC22\uC5B4\uC9C4
+        \uACF3\uC744 \uC8FC\uAE30\uC801\uC73C\uB85C \uAFF0\uB9E4\uACE0, \uD574\uC9C4
+        \uC790\uB9AC\uC5D0 \uBC18\uCC3D\uACE0 \uCC9C\uC744 \uB367\uB300 \uCC98\uC74C\uBCF4\uB2E4
+        \uD2BC\uD2BC\uD558\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: af355f937c787364fad4e27dc848a1a6, type: 3}
+      skill:
+        id: skill_jjak_medic
+        name: "\uCC9C \uB367\uB300\uAE30"
+        description: "\uCEE4\uD504\uC5D0 \uAF42\uC544 \uB454 \uBC14\uB298\uACFC \uBC18\uCC3D\uACE0
+          \uCC9C\uC73C\uB85C \uC218\uC120\uC810\uC758 \uCC22\uC5B4\uC9C4 \uACF3\uC744
+          \uB367\uB300\uC694. \uD55C \uB540 \uD55C \uB540 \uAE30\uC6B4 \uC790\uB9AC\uB294
+          \uCC98\uC74C\uBCF4\uB2E4 \uB354 \uD2BC\uD2BC\uD574\uC694.\n10\uCD08\uB9C8\uB2E4
+          \uC218\uC120\uC810 \uB0B4\uAD6C\uB3C4\uB97C \uACF5\uACA9\uB825 300%\uB9CC\uD07C
+          \uD68C\uBCF5\uD558\uACE0, \uACF5\uACA9\uB825 150%\uB9CC\uD07C \uD53C\uD574\uB97C
+          \uB9C9\uB294 \uBCF4\uD638\uB9C9\uC744 6\uCD08 \uB3D9\uC548 \uC50C\uC6CC\uC694."
+        castText: "\uAFF0\uB9E4 \uC904\uAC8C!"
+        trigger: 1
+        cooldown: 10
+        initialDelay: 4
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 1
+          value: 3
+          duration: 0
+          count: 0
+        - type: 2
+          value: 1.5
+          duration: 6
+          count: 0
+        vfx: vfx_patch_heal
+      attack: 15.2
+      hp: 169
+      attackInterval: 1.1
+      range: 1.4
+      arcDegrees: 100
+      moveSpeed: 0.83
+      summonCost: 7
+      lifetime: 15
+      clueLevel: 5
+      materials:
+      - itemId: mat_cloth
+        count: 15
+      - itemId: mat_thread
+        count: 10
+      - itemId: mat_wax
+        count: 6
+      conditions:
+      - type: 0
+        target: 6
+      - type: 1
+        target: 10
+      - type: 2
+        target: 15
+    - id: jjak_signal
+      name: "\uC591\uB9D0 \uC2E0\uD638\uC218"
+      parentFormId: jjak_caravan
+      tier: 2
+      style: 4
+      recommendedRole: 0
+      description: "\uCE74\uB77C\uBC18 \uB9E8 \uAF2D\uB300\uAE30 \uAE43\uB300\uC5D0
+        \uC62C\uB77C\uC120 \uC9DD\uC9DD\uC774\uC608\uC694. \uC591\uCABD \uBC1C\uBAA9\uC5D0
+        \uAC10\uC740 \uC0C9\uC2E4 \uAE43\uBC1C\uC744 \uD754\uB4E4\uC5B4, \uD769\uC5B4\uC9C4
+        \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C \"\uC774\uCABD\uC774\uC57C!\" \uD558\uACE0
+        \uAE38\uC744 \uC54C\uB824\uC694.\n\uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74 \uAE43\uBC1C
+        \uC2E0\uD638\uB85C \uBAA8\uB450\uC758 \uACF5\uACA9 \uBC15\uC790\uB97C \uB9DE\uCD94\uACE0,
+        \uC218\uC120\uC810\uC758 \uBD88\uBE5B\uC774 \uAEBC\uC9C0\uC9C0 \uC54A\uB3C4\uB85D
+        \uC9C0\uCF1C \uB0B4\uC694."
+      portrait: {fileID: 21300000, guid: 1b089d0fbccb0c94aa8cc1b4503a75d1, type: 3}
+      skill:
+        id: skill_jjak_signal
+        name: "\uBD88\uBE5B \uC2E0\uD638"
+        description: "\uC218\uC120\uC810\uC5D0 \uBD88\uC774 \uBC1D\uD600\uC9C0\uBA74
+          \uCE74\uB77C\uBC18 \uAF2D\uB300\uAE30\uC5D0\uC11C \uC0C9\uC2E4 \uAE43\uBC1C\uC744
+          \uD798\uAECF \uD754\uB4E4\uC5B4\uC694. \uAE43\uBC1C \uC2E0\uD638\uB97C
+          \uBCF8 \uC9C0\uD0B4\uC774\uB4E4\uC740 \uBC15\uC790\uB97C \uB9DE\uCDB0 \uB354
+          \uBE60\uB974\uAC8C \uACF5\uACA9\uD574\uC694.\n\uC218\uC120\uC810\uC5D0
+          \uBD88\uC744 \uBC1D\uD788\uBA74 \uBAA8\uB4E0 \uC9C0\uD0B4\uC774\uC758 \uACF5\uACA9
+          \uC18D\uB3C4\uB97C 10\uCD08 \uB3D9\uC548 35% \uC62C\uB824\uC694."
+        castText: "\uC774\uCABD\uC774\uC57C, \uB2E4 \uAC19\uC774!"
+        trigger: 5
+        cooldown: 0
+        initialDelay: 0
+        target: 11
+        radius: 0.6
+        effects:
+        - type: 9
+          value: 35
+          duration: 10
+          count: 0
+        vfx: vfx_buff_crown
+      attack: 19.2
+      hp: 206
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.91
+      summonCost: 8
+      lifetime: 15
+      clueLevel: 25
+      materials:
+      - itemId: mat_cloth
+        count: 30
+      - itemId: mat_ribbon
+        count: 25
+      - itemId: mat_suitcase
+        count: 10
+      - itemId: mat_moonlight
+        count: 3
+      conditions:
+      - type: 2
+        target: 40
+      - type: 3
+        target: 25
+      - type: 5
+        target: 400
+    - id: jjak_rider
+      name: "\uC591\uB9D0 \uAE30\uC218"
+      parentFormId: jjak_marcher
+      tier: 2
+      style: 1
+      recommendedRole: 1
+      description: "\uD589\uC9C4\uD558\uB358 \uBC1C\uC774 \uC9C0\uCE60 \uBB34\uB835,
+        \uC9DD\uC9DD\uC774\uB294 \uD138\uC2E4\uB85C \uC5EE\uC740 \uBAA9\uB9C8 \uC591\uB9D0\uC5D0
+        \uC62C\uB77C\uD0D4\uC5B4\uC694. \uBAA9\uB9C8\uC758 \uAC08\uAE30\uB294 \uD480\uB9B0
+        \uC62C\uC774\uACE0, \uACE0\uC090\uB294 \uB04A\uC5B4\uC9C4 \uC591\uB9D0\uBAA9\uC774\uC5D0\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uB204\uAD6C\uBCF4\uB2E4 \uBE60\uB974\uAC8C \uC804\uC7A5\uC744
+        \uAC00\uB85C\uC9C8\uB7EC, \uAC00\uC7A5 \uC704\uD5D8\uD55C \uC801\uC5D0\uAC8C
+        \uB3CC\uACA9\uD574 \uD070 \uD53C\uD574\uB97C \uC918\uC694."
+      portrait: {fileID: 21300000, guid: 6f4ecd7032d04ab418747e40f690c253, type: 3}
+      skill:
+        id: skill_jjak_rider
+        name: "\uBAA9\uB9C8 \uB3CC\uACA9"
+        description: "\uD589\uC9C4\uD558\uB358 \uBC1C\uC774 \uD138\uC2E4 \uBAA9\uB9C8\uC5D0
+          \uC62C\uB77C\uD0D4\uC5B4\uC694. \uC18C\uD658\uB418\uC790\uB9C8\uC790 \uD480\uB9B0
+          \uC62C \uAC08\uAE30\uB97C \uD718\uB0A0\uB9AC\uBA70 \uAC00\uC7A5 \uC704\uD5D8\uD55C
+          \uC801\uC5D0\uAC8C \uACE7\uC7A5 \uB3CC\uC9C4\uD574\uC694.\n\uC794\uD5A5\uC774\uB85C
+          \uC18C\uD658\uB418\uBA74 \uAC00\uC7A5 \uAC15\uD55C \uC801(\uBCF4\uC2A4
+          \uC6B0\uC120)\uC5D0\uAC8C \uACF5\uACA9\uB825 600% \uD53C\uD574\uB97C \uC8FC\uACE0,
+          1\uCD08 \uB3D9\uC548 \uAE30\uC808\uC2DC\uCF1C\uC694."
+        castText: "\uC774\uB7B4, \uB2EC\uB824\uB77C!"
+        trigger: 2
+        cooldown: 0
+        initialDelay: 0
+        target: 5
+        radius: 0.6
+        effects:
+        - type: 0
+          value: 6
+          duration: 0
+          count: 0
+        - type: 4
+          value: 0
+          duration: 1
+          count: 0
+        vfx: vfx_star_burst
+      attack: 38.4
+      hp: 229
+      attackInterval: 0.8
+      range: 1.3
+      arcDegrees: 60
+      moveSpeed: 1.1
+      summonCost: 8
+      lifetime: 12
+      clueLevel: 25
+      materials:
+      - itemId: mat_cloth
+        count: 25
+      - itemId: mat_ribbon
+        count: 20
+      - itemId: mat_spring
+        count: 6
+      conditions:
+      - type: 1
+        target: 80
+      - type: 4
+        target: 5
+      - type: 2
+        target: 40
+    - id: jjak_sniper
+      name: "\uC591\uB9D0 \uC800\uACA9\uC218"
+      parentFormId: jjak_acrobat
+      tier: 2
+      style: 3
+      recommendedRole: 0
+      description: "\uACE1\uC608\uC0AC \uC2DC\uC808\uC758 \uADE0\uD615 \uAC10\uAC01\uC73C\uB85C,
+        \uB192\uC740 \uBE68\uB7AB\uC904 \uC704\uC5D0 \uAF3C\uC9DD \uC54A\uACE0 \uC11C
+        \uC788\uB294 \uC9DD\uC9DD\uC774\uC608\uC694. \uD55C\uCABD \uB2E8\uCD94 \uB208\uC744
+        \uC190\uC73C\uB85C \uAC00\uB9AC\uACE0, \uBC14\uB298\uB540 \uB208 \uD558\uB098\uB85C
+        \uC544\uC8FC \uBA3C \uACF3\uAE4C\uC9C0 \uACA8\uB220\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uD33D\uD33D\uD558\uAC8C \uB2F9\uAE34 \uC591\uB9D0\uBAA9\uC744
+        \uC0C8\uCD1D\uCC98\uB7FC \uD295\uACA8, \uBA40\uB9AC \uC788\uB294 \uC801 \uD558\uB098\uB97C
+        \uC815\uD655\uD788 \uAFF0\uB6AB\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 3a10951159433924ab20adb40f7c5a61, type: 3}
+      skill:
+        id: skill_jjak_sniper
+        name: "\uBC14\uB298\uB540 \uAD00\uD1B5"
+        description: "\uBE68\uB7AB\uC904 \uC704\uC5D0\uC11C \uBC14\uB298\uB540 \uB208
+          \uD558\uB098\uB85C \uACA8\uB208 \uB4A4, \uD33D\uD33D\uD558\uAC8C \uB2F9\uAE34
+          \uC591\uB9D0\uBAA9 \uC0C8\uCD1D\uC73C\uB85C \uC740\uBC14\uB298\uC744 \uC3D8\uC544\uC694.
+          \uC2E4\uC744 \uB04C\uACE0 \uB0A0\uC544\uAC04 \uBC14\uB298\uC774 \uD55C
+          \uC904\uB85C \uB298\uC5B4\uC120 \uC801\uC744 \uBAA8\uB450 \uAFF0\uC5B4\uC694.\n10\uCD08\uB9C8\uB2E4
+          \uC790\uAE30 \uBC29\uD5A5(\uB808\uC778)\uC758 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C
+          \uACF5\uACA9\uB825 450% \uD53C\uD574\uB97C \uC918\uC694."
+        castText: "\uD55C \uB540\uC5D0 \uAFF0\uB6AB\uC5B4!"
+        trigger: 1
+        cooldown: 10
+        initialDelay: 4
+        target: 13
+        radius: 0.6
+        effects:
+        - type: 0
+          value: 4.5
+          duration: 0
+          count: 0
+        vfx: vfx_thread_stitch
+      attack: 43.9
+      hp: 171
+      attackInterval: 1.5
+      range: 2.3
+      arcDegrees: 40
+      moveSpeed: 0.86
+      summonCost: 9
+      lifetime: 13
+      clueLevel: 25
+      materials:
+      - itemId: mat_lace
+        count: 18
+      - itemId: mat_rib
+        count: 12
+      - itemId: mat_thread
+        count: 15
+      - itemId: mat_moonlight
+        count: 2
+      conditions:
+      - type: 5
+        target: 500
+      - type: 3
+        target: 28
+      - type: 2
+        target: 40
+    - id: jjak_artisan
+      name: "\uC591\uB9D0 \uACF5\uBC29\uAC00"
+      parentFormId: jjak_postman
+      tier: 2
+      style: 0
+      recommendedRole: 0
+      description: "\uD3B8\uC9C0 \uB300\uC2E0, \uC774\uC81C\uB294 \uB9DD\uAC00\uC9C4
+        \uBB3C\uAC74\uB4E4\uC774 \uC9DD\uC9DD\uC774\uB97C \uCC3E\uC544\uC640\uC694.
+        \uACE8\uBB34 \uD22C\uAD6C\uB97C \uC4F0\uACE0 \uC2E4\uD328\uB97C \uBC29\uD328
+        \uC0BC\uC544, \uBAB8\uD1B5\uC5D0 \uBC18\uC9C7\uACE0\uB9AC\uB97C \uB9E4\uB2E8
+        \uCC44 \uC791\uC740 \uACF5\uBC29\uC744 \uCC28\uB838\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uBB34\uC5C7\uC774\uB4E0 \uACE0\uCCD0 \uB0B4\uB294 \uC190\uC7AC\uC8FC\uB85C
+        \uBC29\uC704\uB97C \uCD18\uCD18\uD788 \uAFF0\uB9E4\uC5B4, \uC801\uC744 \uB2A6\uCD94\uACE0
+        \uB05D\uAE4C\uC9C0 \uBC84\uD168 \uB0B4\uC694."
+      portrait: {fileID: 21300000, guid: 57d0365eb9784a2458d185732a514ae7, type: 3}
+      skill:
+        id: skill_jjak_artisan
+        name: "\uCD9C\uBC1C \uC804 \uC190\uC9C8"
+        description: "\uD3B8\uC9C0 \uB300\uC2E0 \uB9DD\uAC00\uC9C4 \uBB3C\uAC74\uC744
+          \uBC1B\uC544 \uC624\uB358 \uC190\uC7AC\uC8FC\uB85C, \uC804\uD22C\uAC00
+          \uC2DC\uC791\uB418\uAE30 \uC804 \uBAA8\uB450\uC758 \uC7A5\uBE44\uB97C \uAF3C\uAF3C\uD788
+          \uC190\uBD10\uC694. \uACE8\uBB34 \uD22C\uAD6C \uC544\uB798 \uB208\uBE5B\uC774
+          \uBC18\uC9DD\uC5EC\uC694.\n\uC804\uD22C\uAC00 \uC2DC\uC791\uB418\uBA74
+          \uBAA8\uB4E0 \uC9C0\uD0B4\uC774\uC758 \uACF5\uACA9\uB825\uC744 30\uCD08
+          \uB3D9\uC548 20% \uC62C\uB9AC\uACE0, \uAC78\uB9B0 \uC57D\uD654\uB97C \uC53B\uC5B4
+          \uB0B4 30\uCD08 \uB3D9\uC548 \uB2E4\uC2DC \uAC78\uB9AC\uC9C0 \uC54A\uAC8C
+          \uD574\uC694."
+        castText: "\uB2E4 \uACE0\uCCD0 \uB1A8\uC5B4!"
+        trigger: 8
+        cooldown: 0
+        initialDelay: 0
+        target: 11
+        radius: 0.6
+        effects:
+        - type: 8
+          value: 20
+          duration: 30
+          count: 0
+        - type: 18
+          value: 0
+          duration: 30
+          count: 0
+        vfx: vfx_cleanse_sparkle
+      attack: 21.9
+      hp: 366
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.76
+      summonCost: 9
+      lifetime: 16
+      clueLevel: 25
+      materials:
+      - itemId: mat_cloth
+        count: 35
+      - itemId: mat_thread
+        count: 20
+      - itemId: mat_spring
+        count: 8
+      conditions:
+      - type: 0
+        target: 25
+      - type: 4
+        target: 6
+      - type: 2
+        target: 40
+    - id: jjak_alchemist
+      name: "\uC591\uB9D0 \uC5F0\uAE08\uC220\uC0AC"
+      parentFormId: jjak_medic
+      tier: 2
+      style: 5
+      recommendedRole: 1
+      description: "\uC758\uBB34\uBCD1\uC758 \uC57D\uC0C1\uC790\uAC00 \uC5B4\uB290\uC0C8
+        \uBC18\uC9DD\uC774\uB294 \uBCD1\uB4E4\uB85C \uAC00\uB4DD \uCC3C\uC5B4\uC694.
+        \uC591\uB9D0 \uC18D\uC5D0 \uBCC4\uBE5B \uAC00\uB8E8\uC640 \uCD1B\uB18D, \uAE30\uC5B5\uC758
+        \uC2E4\uC744 \uB123\uACE0 \uD754\uB4E4\uBA74 \uB2EC\uCF64\uD55C \uBB18\uC57D\uC774
+        \uBCF4\uAE00\uBCF4\uAE00 \uB053\uC5B4\uC62C\uB77C\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uB2E4\uCE5C \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C \uBB18\uC57D\uC744
+        \uB098\uB220 \uC8FC\uACE0, \uB179 \uAC19\uC740 \uB098\uC05C \uAE30\uC6B4\uC744
+        \uB9D0\uB054\uD788 \uC53B\uC5B4 \uB0B4\uC694."
+      portrait: {fileID: 21300000, guid: f6f778a4d71623441ac0081020bb58c9, type: 3}
+      skill:
+        id: skill_jjak_alchemist
+        name: "\uB9C8\uC9C0\uB9C9 \uBB18\uC57D"
+        description: "\uC758\uBB34\uBCD1 \uC2DC\uC808\uC758 \uC57D\uC0C1\uC790\uAC00
+          \uBC18\uC9DD\uC774\uB294 \uBB18\uC57D \uBCD1\uC774 \uB418\uC5C8\uC5B4\uC694.
+          \uBE5B\uC73C\uB85C \uD480\uB9AC\uB294 \uC21C\uAC04 \uB9C8\uC9C0\uB9C9 \uBCD1\uC774
+          \uAE68\uC9C0\uBA70 \uB2EC\uBE5B \uAC00\uB8E8\uAC00 \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C
+          \uC3DF\uC544\uC838\uC694.\n\uBE5B\uC73C\uB85C \uD480\uB824 \uC0AC\uB77C\uC9C8
+          \uB54C \uBAA8\uB4E0 \uC794\uD5A5\uC774\uC758 \uCCB4\uB825\uC744 \uACF5\uACA9\uB825
+          250%\uB9CC\uD07C \uD68C\uBCF5\uD558\uACE0, \uAC78\uB9B0 \uC57D\uD654\uB97C
+          \uC53B\uC5B4 \uB0B4 4\uCD08 \uB3D9\uC548 \uB2E4\uC2DC \uAC78\uB9AC\uC9C0
+          \uC54A\uAC8C \uD574\uC694."
+        castText: "\uD55C \uBAA8\uAE08\uC529 \uB098\uB220 \uB9C8\uC154!"
+        trigger: 3
+        cooldown: 0
+        initialDelay: 0
+        target: 9
+        radius: 0.6
+        effects:
+        - type: 1
+          value: 2.5
+          duration: 0
+          count: 0
+        - type: 18
+          value: 0
+          duration: 4
+          count: 0
+        vfx: vfx_moon_glow
+      attack: 20.6
+      hp: 229
+      attackInterval: 1.1
+      range: 1.4
+      arcDegrees: 100
+      moveSpeed: 0.86
+      summonCost: 9
+      lifetime: 16
+      clueLevel: 25
+      materials:
+      - itemId: mat_wax
+        count: 25
+      - itemId: mat_lace
+        count: 12
+      - itemId: mat_moonlight
+        count: 4
+      conditions:
+      - type: 1
+        target: 60
+      - type: 4
+        target: 8
+      - type: 2
+        target: 40
+    costumes:
+    - id: jjak_nightkeeper
+      name: "\uBC24\uC9C0\uAE30 \uC9DD\uC9DD\uC774"
+      emotion: "\uC678\uB85C\uC6C0 \u2192 \uC704\uB85C"
+      description: "\uC9DD\uC9DD\uC774\uB294 \uC218\uB9CE\uC740 \uC678\uB85C\uC6B4
+        \uBC24\uC744 \uC218\uC120\uC9D1 \uCC3D\uAC00\uC5D0\uC11C \uBCF4\uB0C8\uC5B4\uC694.
+        \uAE34 \uBC24\uC774 \uCC3E\uC544\uC640\uB3C4 \uC9DD\uC744 \uAE30\uB2E4\uB9AC\uB294
+        \uC77C\uC744 \uD3EC\uAE30\uD558\uC9C0 \uC54A\uC558\uC9C0\uC694.\n\uB9C8\uC744
+        \uC0AC\uB78C\uB4E4\uC740 \uADF8\uAC00 \uC7A0\uB4E4\uC9C0 \uC54A\uACE0 \uC9C0\uCF1C\uBCFC
+        \uC218 \uC788\uB3C4\uB85D \uB2EC\uACFC \uBCC4 \uC870\uAC01\uC744 \uAFF0\uB9E4\uC5B4
+        \uC8FC\uC5C8\uACE0, \uC9DD\uC9DD\uC774\uB294 \uB354\uC6B1 \uBC1D\uAC8C \uBE5B\uB0A0
+        \uC218 \uC788\uC5C8\uC5B4\uC694. \uB2EC \uC7A5\uC2DD\uC774 \uB2EC\uB9B0 \uBC24\uBAA8\uC790\uB294
+        \uC9DD\uC9DD\uC774\uAC00 \uBC24\uC744 \uC9C0\uCF1C\uBCF4\uB294 \uD798\uC774
+        \uB418\uC5B4 \uC918\uC694.\n\uADF8\uB807\uAC8C \uC9DD\uC9DD\uC774\uB294 \uC790\uC2E0\uC758
+        \uC678\uB85C\uC6C0\uC744, \uC0C8\uB85C \uCC3E\uC544\uC628 \uC678\uB85C\uC6B4
+        \uC544\uC774\uB4E4\uC744 \uB530\uB73B\uD558\uAC8C \uB9DE\uC774\uD558\uACE0
+        \uC9C0\uCF1C \uC8FC\uB294 \uBC24\uC9C0\uAE30\uB85C \uBC14\uAFB8\uC5C8\uB2F5\uB2C8\uB2E4."
+      acquisition: "\uC218\uC120\uC9D1 \uC57C\uAC04 \uBC29\uBB38(\uBC24 8\uC2DC ~
+        \uC0C8\uBCBD 6\uC2DC \uC811\uC18D)\uC73C\uB85C \uB9CC\uB098 \uBCF4\uC138\uC694!"
+      unlockType: 1
+      unlockTarget: 0
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 4
+      portrait: {fileID: 21300000, guid: a808c6ed434514c46a30479310b7da0d, type: 3}
+      illustration: {fileID: 21300000, guid: d46fd9510ba75dc428e51b723570032d, type: 3}
+    - id: jjak_cheer
+      name: "\uC751\uC6D0\uB300\uC7A5 \uC9DD\uC9DD\uC774"
+      emotion: "\uB450\uB824\uC6C0 \u2192 \uC6A9\uAE30"
+      description: "\uC0C8\uB85C \uC0B4\uC544\uB09C \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C
+        \uCCAB \uBC24\uC740 \uB298 \uBB34\uC11C\uC6CC\uC694. \uC9DD\uC9DD\uC774\uB3C4
+        \uCC98\uC74C\uC5D4 \uADF8\uB7AC\uC9C0\uC694.\n\uADF8\uB798\uC11C \uC9DD\uC9DD\uC774\uB294
+        \uBCF4\uB77C\uC0C9 \uCEE4\uD504\uB97C \uAE43\uBC1C \uBAA8\uC790\uCC98\uB7FC
+        \uB192\uC774 \uC138\uC6B0\uACE0, \uD480\uB9B0 \uD138\uC2E4\uC744 \uB3D9\uAE00\uB3D9\uAE00
+        \uBB49\uCCD0 \uC751\uC6D0 \uBC29\uC6B8\uC744 \uB2EC\uC558\uC5B4\uC694. \uB0AF\uC120
+        \uCE5C\uAD6C\uC5D0\uAC8C \uAC00\uC7A5 \uBA3C\uC800 \uC190\uC744 \uD754\uB4DC\uB294
+        \uCABD\uC774 \uB418\uAE30\uB85C \uD55C \uAC70\uC608\uC694.\n\"\uAD1C\uCC2E\uC544,
+        \uBB34\uC11C\uC6B0\uBA74 \uB0B4 \uC190 \uC7A1\uC544! \uD558\uB098, \uB458,
+        \uC14B, \uAC19\uC774 \uAC00\uC790!\""
+      acquisition: "\uC2A4\uD14C\uC774\uC9C0 2-4\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 3
+      unlockTarget: 15
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 3
+      portrait: {fileID: 21300000, guid: 1da29e265724bfc4292c87cdfa618bfc, type: 3}
+      illustration: {fileID: 0}
+    - id: jjak_mail
+      name: "\uC6B0\uD3B8\uBC30\uB2EC \uC9DD\uC9DD\uC774"
+      emotion: "\uB2E8\uC808 \u2192 \uC5F0\uACB0"
+      description: "\uC9DD\uC744 \uAE30\uB2E4\uB9AC\uB294 \uB3D9\uC548 \uC9DD\uC9DD\uC774\uB294
+        \uB9E4\uC77C \uD3B8\uC9C0\uB97C \uC37C\uC5B4\uC694. \uBD80\uCE60 \uACF3\uC744
+        \uBAB0\uB77C \uC591\uB9D0 \uC18D\uC5D0 \uCC28\uACE1\uCC28\uACE1 \uC313\uC544
+        \uB450\uAE30\uB9CC \uD588\uC9C0\uC694.\n\uC5B4\uB290 \uB0A0 \uC9DD\uC9DD\uC774\uB294
+        \uAE68\uB2EC\uC558\uC5B4\uC694. \uC804\uD558\uC9C0 \uBABB\uD55C \uB9C8\uC74C\uC744
+        \uD488\uC740 \uAC74 \uC790\uAE30\uB9CC\uC774 \uC544\uB2C8\uB77C\uB294 \uAC78\uC694.
+        \uC774\uC81C \uC9DD\uC9DD\uC774\uB294 \uC6B0\uD3B8\uBC30\uB2EC \uBAA8\uC790\uB97C
+        \uC4F0\uACE0, \uC591\uB9D0 \uC18D \uAE4A\uC740 \uC8FC\uBA38\uB2C8\uC5D0 \uBAA8\uB450\uC758
+        \uD3B8\uC9C0\uB97C \uB2F4\uC544 \uB04A\uC5B4\uC9C4 \uB9C8\uC74C\uC744 \uC774\uC5B4
+        \uC8FC\uB7EC \uB5A0\uB098\uC694.\n\"\uBC1B\uB294 \uC0AC\uB78C\uC774 \uC5C6\uB294
+        \uD3B8\uC9C0\uB294 \uC5C6\uC5B4\uC694. \uC544\uC9C1 \uBABB \uCC3E\uC558\uC744
+        \uBFD0\uC774\uC5D0\uC694.\""
+      acquisition: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4\uB85C \uC6D0\uC815\uC744 5\uD68C
+        \uC644\uB8CC\uD558\uBA74 \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 4
+      unlockTarget: 5
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 3
+      portrait: {fileID: 21300000, guid: 8216f0cc296687841b57d95641dadab9, type: 3}
+      illustration: {fileID: 0}
+    - id: jjak_traveler
+      name: "\uC5EC\uD589\uC790 \uC9DD\uC9DD\uC774"
+      emotion: "\uAE30\uB2E4\uB9BC \u2192 \uD0D0\uC0C9"
+      description: "\uCC3D\uAC00\uC5D0\uC11C \uAE30\uB2E4\uB9AC\uAE30\uB9CC \uD558\uB358
+        \uC9DD\uC9DD\uC774\uAC00 \uCC98\uC74C\uC73C\uB85C \uC218\uC120\uC810 \uBB38\uC744
+        \uC5F4\uACE0 \uB098\uC130\uC5B4\uC694. \uB0A1\uC740 \uC5EC\uD589 \uAC00\uBC29\uC5D0
+        \uC9C0\uB3C4\uC640 \uC2E4\uBB49\uCE58, \uC791\uC740 \uB79C\uD134\uC744 \uCC59\uACA8\uC11C\uC694.\n\uC544\uC9C1
+        \uC544\uBB34\uB3C4 \uCC3E\uC9C0 \uBABB\uD55C \uCE5C\uAD6C\uB4E4\uC774 \uC5B4\uB518\uAC00\uC5D0\uC11C
+        \uAE30\uB2E4\uB9AC\uACE0 \uC788\uC744 \uD14C\uB2C8\uAE4C\uC694. \uC9DD\uC9DD\uC774\uAC00
+        \uC9C0\uB098\uAC04 \uAE38\uC5D0\uB294, \uB3CC\uC544\uC624\uB294 \uAE38\uC744
+        \uC783\uC9C0 \uC54A\uB3C4\uB85D \uC2E4 \uD55C \uAC00\uB2E5\uC774 \uAE38\uAC8C
+        \uB0A8\uC544\uC694.\n\"\uAE30\uB2E4\uB9AC\uB294 \uAC83\uB3C4 \uC88B\uC9C0\uB9CC,
+        \uC774\uBC88\uC5D4 \uB0B4\uAC00 \uBA3C\uC800 \uCC3E\uC73C\uB7EC \uAC08\uB798!\""
+      acquisition: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4\uB85C \uC6D0\uC815\uC744 15\uD68C
+        \uC644\uB8CC\uD558\uBA74 \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 4
+      unlockTarget: 15
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 4
+      portrait: {fileID: 21300000, guid: 129fa3f8a6d10c644860382eeeb53648, type: 3}
+      illustration: {fileID: 0}
+    - id: jjak_festival
+      name: "\uCD95\uC81C \uC9C0\uD718\uC790 \uC9DD\uC9DD\uC774"
+      emotion: "\uC678\uB85C\uC6C0 \u2192 \uCD95\uC81C"
+      description: "\uD63C\uC790\uC600\uB358 \uC9DD\uC9DD\uC774 \uACC1\uC5D0 \uD558\uB098\uB458
+        \uCE5C\uAD6C\uB4E4\uC774 \uBAA8\uC774\uC790, \uC218\uC120\uC810 \uACE8\uBAA9\uC740
+        \uC5B4\uB290\uC0C8 \uC791\uC740 \uCD95\uC81C\uAC00 \uB418\uC5C8\uC5B4\uC694.\n\uC9DD\uC9DD\uC774\uB294
+        \uBCC4 \uC7A5\uC2DD \uC9C0\uD718\uBD09\uC744 \uB4E4\uACE0 \uD37C\uB808\uC774\uB4DC
+        \uB9E8 \uC55E\uC5D0 \uC130\uC5B4\uC694. \uC9DD\uC744 \uC783\uC740 \uC591\uB9D0\uB3C4,
+        \uB5A8\uC5B4\uC9C4 \uB2E8\uCD94\uB3C4, \uB2E4 \uD0C0 \uBC84\uB9B0 \uCD08\uB3C4
+        \uBAA8\uB450 \uD55C \uC904\uB85C \uC774\uC5B4 \uAC77\uB294 \uBC24\uC744 \uC704\uD574\uC11C\uC694.\n\"\uC790,
+        \uB2E4 \uAC19\uC774! \uC624\uB298 \uBC24\uC740 \uC544\uBB34\uB3C4 \uD63C\uC790\uAC00
+        \uC544\uB2C8\uC57C!\""
+      acquisition: "'\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45' \uC774\uBCA4\uD2B8
+        \uC0C1\uC810\uC5D0\uC11C \uBCC4\uBE5B \uC0AC\uD0D5 300\uAC1C\uB85C \uAD50\uD658\uD560
+        \uC218 \uC788\uC5B4\uC694."
+      unlockType: 2
+      unlockTarget: 0
+      unlockTargetId: 
+      price: 300
+      attackBonusPercent: 6
+      portrait: {fileID: 21300000, guid: 608df54c3c5c55f4b8cdacf5f05af700, type: 3}
+      illustration: {fileID: 0}
+    - id: jjak_caterpillar
+      name: "\uC560\uBC8C\uB808\uD615 \uC774\uB3D9\uC9D1 \uC9DD\uC9DD\uC774"
+      emotion: "\uC791\uC740 \uC678\uB85C\uC6C0 \u2192 \uD568\uAED8 \uAC00\uB294
+        \uC5EC\uD589"
+      description: "\uC5EC\uB7EC \uCE5C\uAD6C\uB4E4\uC744 \uC2E3\uACE0 \uAE30\uC5B4\uAC00\uB294
+        \uC774\uB3D9\uC2DD \uC9D1\uC774 \uB41C \uC9DD\uC9DD\uC774\uC608\uC694.\n\uB9CE\uC740
+        \uC9DD \uC591\uB9D0\uB4E4\uC774 \uBAA8\uC5EC \uB290\uC2A8\uD558\uAC8C \uC774\uC5B4\uC9C0\uBA74\uC11C,
+        \uBAA8\uB450\uC758 \uBCF4\uAE08\uC790\uB9AC\uAC00 \uB418\uB294 \uC5EC\uD589\uD558\uB294
+        \uC9D1\uC774 \uB418\uC5C8\uC5B4\uC694. \uB9C8\uB514\uB9C8\uB2E4 \uAC01\uC790\uC758
+        \uBC29\uC774 \uC788\uACE0, \uC544\uB291\uD55C \uCD9C\uC785\uAD6C\uC640 \uB530\uB73B\uD55C
+        \uB79C\uD134\uC774 \uCE5C\uAD6C\uB4E4\uC744 \uB9DE\uC774\uD574\uC694.\n\uC791\uC740
+        \uC678\uB85C\uC6C0\uB3C4 \uC5F0\uACB0\uB418\uBA74, \uC138\uC0C1\uC744 \uBC14\uAFB8\uB294
+        \uCD95\uC81C\uAC00 \uB41C\uB2F5\uB2C8\uB2E4!"
+      acquisition: "\uC9C4\uD654\uD615 '\uC591\uB9D0 \uCE74\uB77C\uBC18' \uD574\uAE08
+        \uC2DC \uD568\uAED8 \uC5F4\uB824\uC694."
+      unlockType: 6
+      unlockTarget: 0
+      unlockTargetId: jjak_caravan
+      price: 0
+      attackBonusPercent: 6
+      portrait: {fileID: 21300000, guid: 5b84703b6d79e5c4ba6f76dddd8a55ed, type: 3}
+      illustration: {fileID: 21300000, guid: d987606d80fd26749bdc73a90a8a5018, type: 3}
+    - id: jjak_plush
+      name: "\uBD09\uC81C\uCE5C\uAD6C \uC9DD\uC9DD\uC774"
+      emotion: "\uD145 \uBE54 \u2192 \uB098\uB214"
+      description: "\uC9DD\uC9DD\uC774\uAC00 \uC774\uC81C \uC791\uC740 \uCE5C\uAD6C\uB4E4\uC744
+        \uC548\uACE0, \uB9CC\uB4E4\uC5B4 \uC918\uC694.\n\uD145 \uBE44\uC5C8\uB358
+        \uBAB8 \uC548\uC5D0 \uC19C\uACFC \uCC9C \uC870\uAC01, \uB530\uB73B\uD55C
+        \uB9C8\uC74C\uC744 \uCC44\uC6CC \uB123\uACE0, \uBC14\uB298\uACFC \uC2E4\uB85C
+        \uC791\uC740 \uBD09\uC81C \uCE5C\uAD6C\uB4E4\uC744 \uD558\uB098\uB458 \uC9C0\uC5B4
+        \uC8FC\uC5C8\uC5B4\uC694. \uD63C\uC790\uC600\uB358 \uC9DD\uC9DD\uC774\uAC00
+        \uC774\uC81C\uB294 \uD568\uAED8\uD558\uB294 \uAE30\uC068\uC744 \uB098\uB220\uC694.\n\uC791\uC740
+        \uCC9C \uC870\uAC01\uB3C4, \uC678\uB85C\uC6B4 \uB9C8\uC74C\uB3C4 \uC0AC\uB791\uC73C\uB85C
+        \uC774\uC5B4\uC9C0\uBA74 \uCE5C\uAD6C\uAC00 \uB420 \uC218 \uC788\uC5B4\uC694."
+      acquisition: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4 \uACF5\uBA85 Lv.3 \uB2EC\uC131
+        \uC2DC \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 5
+      unlockTarget: 3
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 5
+      portrait: {fileID: 21300000, guid: 3bcedbe9ea33caf409f953155237f55c, type: 3}
+      illustration: {fileID: 21300000, guid: d5424cb3323c4664da039169d15e8cde, type: 3}
+    - id: jjak_puppet
+      name: "\uC190\uC778\uD615 \uC9DD\uC9DD\uC774"
+      emotion: "\uC678\uB85C\uC6C0 \u2192 \uC6C3\uC74C"
+      description: "\uC190\uC5D0 \uB07C\uC6B0\uAE30 \uC26C\uC6B4 \uC591\uB9D0\uC758
+        \uAD6C\uC870\uB97C \uC774\uC57C\uAE30\uB97C \uC804\uD558\uB294 \uC190\uC778\uD615\uC73C\uB85C
+        \uBC14\uAFB8\uC5B4, \uC9DD\uC9DD\uC774\uB9CC\uC758 \uC7A5\uC810\uC778 '\uD568\uAED8\uD558\uB294
+        \uC990\uAC70\uC6C0'\uC744 \uB354\uC6B1 \uD0A4\uC6E0\uC5B4\uC694.\n\uC785\uC744
+        \uD06C\uAC8C \uBC8C\uB838\uB2E4 \uB2EB\uC73C\uBA70 \uC5EC\uB7EC \uBAA9\uC18C\uB9AC\uB85C
+        \uB3D9\uD654\uC640 \uB178\uB798\uB97C \uB4E4\uB824\uC8FC\uACE0, \uB9AC\uBCF8\uACFC
+        \uCEE4\uD2BC\uC73C\uB85C \uAFB8\uBBFC \uC791\uC740 \uADF9\uC7A5\uC5D0\uC11C
+        \uC678\uB85C\uC6B4 \uC544\uC774\uB4E4\uC758 \uB9C8\uC74C\uC744 \uC6C3\uAC8C
+        \uB9CC\uB4E4\uC5B4\uC694. \uC624\uB298\uC758 \uC774\uC57C\uAE30\uB294 \uC6A9\uAE30,
+        \uC6B0\uC815, \uADF8\uB9AC\uACE0 \uAFC8\uC774\uC5D0\uC694.\n\"\uC790, \uBAA8\uB450
+        \uBAA8\uC5EC \uBD10~ \uC774\uC57C\uAE30 \uD55C \uD3B8 \uB4E4\uB824\uC904\uAC8C!\""
+      acquisition: "\uC2A4\uD14C\uC774\uC9C0 3-9\uB97C \uD074\uB9AC\uC5B4\uD558\uBA74
+        \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 3
+      unlockTarget: 30
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 5
+      portrait: {fileID: 21300000, guid: 1a7679f886c945f4fa62a7f5a00e4bfe, type: 3}
+      illustration: {fileID: 21300000, guid: cd7b272662be56243932394b9371952c, type: 3}
+    - id: jjak_sleepcap
+      name: "\uC218\uBA74\uBAA8\uC790 \uC9DD\uC9DD\uC774"
+      emotion: "\uBD88\uC548 \u2192 \uC548\uC2EC"
+      description: "\uC9DD\uC9DD\uC774\uAC00 \uC218\uBA74\uBAA8\uC790 \uBAA8\uC591\uC758
+        \uBC24\uC9C0\uAE30\uAC00 \uB418\uC5B4, \uC678\uB85C\uC6B4 \uBC24\uC744 \uC9C0\uCF1C\uBD10\uC694.\n\uC591\uB9D0\uC758
+        \uAE34 \uD615\uD0DC\uC640 \uBD80\uB4DC\uB7EC\uC6B4 \uBC34\uB4DC\uB97C \uC218\uBA74\uBAA8\uC790\uB85C
+        \uBC14\uAFB8\uC5B4, \uC7A0\uB4E0 \uC544\uC774\uB4E4\uC744 \uC9C0\uCF1C \uC8FC\uB294
+        \uBC24\uC9C0\uAE30\uB85C \uB2E4\uC2DC \uD0DC\uC5B4\uB0AC\uC5B4\uC694. \uB2EC\uBE5B
+        \uB4DC\uB9BC \uB79C\uD134\uACFC \uAFC8 \uBCA0\uAC1C\uB97C \uACC1\uC5D0 \uB450\uACE0,
+        \uBCC4\uACFC \uB2EC \uC7A5\uC2DD\uC774 \uD754\uB4E4\uB9B4 \uB54C\uB9C8\uB2E4
+        \uBD88\uC548\uD55C \uB9C8\uC74C\uC774 \uC870\uC6A9\uD788 \uAC00\uB77C\uC549\uC544\uC694.\n\"\uC27F\u2026
+        \uC798 \uC790\uC694. \uC9DD\uC9DD\uC774\uAC00 \uC788\uC796\uC544\uC694.\""
+      acquisition: "'\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45' \uC774\uBCA4\uD2B8
+        \uC0C1\uC810\uC5D0\uC11C \uBCC4\uBE5B \uC0AC\uD0D5 150\uAC1C\uB85C \uAD50\uD658\uD560
+        \uC218 \uC788\uC5B4\uC694."
+      unlockType: 2
+      unlockTarget: 0
+      unlockTargetId: 
+      price: 150
+      attackBonusPercent: 5
+      portrait: {fileID: 21300000, guid: f26164344fa078b4186be02bf60ae57a, type: 3}
+      illustration: {fileID: 21300000, guid: 51dfa7f5be15740448c5943448c4f536, type: 3}
+    - id: jjak_threadweb
+      name: "\uC2E4\uD0C0\uB798 \uC5F0\uACB0\uB9DD \uC9DD\uC9DD\uC774"
+      emotion: "\uAE38 \uC783\uC74C \u2192 \uC5F0\uACB0"
+      description: "\uAE38\uC744 \uC783\uC740 \uCE5C\uAD6C\uB4E4\uC744 \uC787\uB294
+        \uC2E4\uD0C0\uB798 \uC548\uB0B4\uC790\uC608\uC694.\n\uC9DD\uC9DD\uC774\uC758
+        \uBAB8\uC774 \uD480\uB9B0 \uC2E4\uD0C0\uB798\uB85C \uB418\uB3CC\uC544\uAC00,
+        \uB9C8\uBC95\uC73C\uB85C \uBE5B\uB098\uB294 \uC2E4\uC774 \uB418\uC5C8\uC5B4\uC694.
+        \uBE5B\uB098\uB294 \uC2E4\uC740 \uBCC4\uC790\uB9AC\uCC98\uB7FC \uC774\uC5B4\uC838
+        \uBCF4\uC774\uC9C0 \uC54A\uB294 \uAE38\uC744 \uBC1D\uD788\uACE0, \uCE5C\uAD6C\uB4E4\uC774
+        \uC548\uC804\uD558\uAC8C \uB3C4\uCC29\uD560 \uC218 \uC788\uB3C4\uB85D \uAE38\uACFC
+        \uC5F0\uACB0\uC744 \uB2E4\uC2DC \uC5EE\uC5B4 \uB0B4\uC694.\n\uC2E4\uC740
+        \uC774\uC5B4\uC838\uB3C4, \uB9C8\uC74C\uC740 \uC790\uC720\uB86D\uAC8C. \uD568\uAED8\uB77C\uC11C
+        \uAE38\uC744 \uCC3E\uC744 \uC218 \uC788\uC5B4\uC694."
+      acquisition: "\uC9DD\uC9DD\uC774 \uACC4\uBCF4 \uACF5\uBA85 Lv.5 \uB2EC\uC131
+        \uC2DC \uBC1B\uC744 \uC218 \uC788\uC5B4\uC694."
+      unlockType: 5
+      unlockTarget: 5
+      unlockTargetId: 
+      price: 0
+      attackBonusPercent: 8
+      portrait: {fileID: 21300000, guid: 635ea9e0e363ee8499a503b1b5f5b67d, type: 3}
+      illustration: {fileID: 21300000, guid: 8332ad4cb87c8104da43fb639539b159, type: 3}
+  - id: ttokdan
+    name: "\uB611\uB2E8\uC774"
+    species: "\uB2E8\uCD94\uC871"
+    origin: "\uC678\uD22C\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uB2E8\uCD94"
+    personality: "\uC678\uD22C\uC5D0\uC11C \uB5A8\uC5B4\uC838 \uB098\uC628 \uADF8\uB0A0\uC758
+      \uC790\uB9AC\uB97C \uC78A\uC9C0 \uBABB\uD574\uC11C, \uBB34\uC5C7\uC774\uB4E0
+      \uD55C\uBC88 \uBD99\uC7A1\uC73C\uBA74 \uB193\uC9C0 \uC54A\uC544\uC694. \uCE5C\uAD6C\uC758
+      \uC637\uC790\uB77D\uB3C4, \uBB38\uACE0\uB9AC\uB3C4, \uC9C0\uB098\uAC00\uB358
+      \uBC14\uB78C\uB3C4 \uB124 \uAC1C\uC758 \uAD6C\uBA4D\uC5D0 \uC2E4\uC744 \uAC78\uC5B4
+      \uAF2D \uBD99\uB4E4\uC9C0\uC694.\n\uB2E4\uC2DC\uB294 \uC544\uBB34\uAC83\uB3C4
+      \uC783\uACE0 \uC2F6\uC9C0 \uC54A\uC740 \uC791\uC740 \uB2E8\uCD94\uC758 \uACE0\uC9D1\uC740,
+      \uC218\uC120\uC810 \uC55E\uC5D0\uC11C \uB204\uAD6C\uBCF4\uB2E4 \uB4E0\uB4E0\uD55C
+      \uBC84\uD300\uC774 \uB418\uC5B4 \uC918\uC694."
+    grade: 0
+    bodyType: 0
+    traits: 0000000006000000
+    mainColor: {r: 0.5764706, g: 0.78431374, b: 0.9411765, a: 1}
+    subColor: {r: 1, g: 0.95686275, b: 0.8627451, a: 1}
+    accentColor: {r: 0.9490196, g: 0.76862746, b: 0.41960785, a: 1}
+    neutralColor: {r: 0.2901961, g: 0.23137255, b: 0.4862745, a: 1}
+    baseFormId: ttok_base
+    forms:
+    - id: ttok_base
+      name: "\uB611\uB2E8\uC774"
+      parentFormId: 
+      tier: 0
+      style: 0
+      recommendedRole: 0
+      description: "\uC678\uD22C\uC5D0\uC11C \uB5A8\uC5B4\uC9C4 \uB465\uADFC \uB2E8\uCD94\uC608\uC694.
+        \uB124 \uAC1C\uC758 \uAD6C\uBA4D\uC740 \uB3D9\uADF8\uB780 \uB450 \uB208\uACFC
+        \uCF67\uAD6C\uBA4D\uC774 \uB418\uACE0, \uAD6C\uBA4D\uC5D0 \uB0A8\uC740 \uC2E4
+        \uAC00\uB2E5\uC740 \uC9E7\uC740 \uD314\uB2E4\uB9AC\uAC00 \uB418\uC5C8\uC5B4\uC694.\n\uB370\uAD74\uB370\uAD74
+        \uAD74\uB7EC\uC640 \uBC29\uC704 \uC55E\uC5D0 \uB531 \uBC84\uD2F0\uACE0 \uC11C\uBA74,
+        \uB2E4\uAC00\uC624\uB294 \uC801\uC5D0\uAC8C \uAF2D \uB9E4\uB2EC\uB824 \uB193\uC9C0
+        \uC54A\uC544 \uBC1C\uAC78\uC74C\uC744 \uB2A6\uCDB0\uC694."
+      portrait: {fileID: 21300000, guid: f09a5b90840f6b7489af7d6bac7e6763, type: 3}
+      skill:
+        id: skill_ttok_base
+        name: "\uAF2D \uBD99\uC7A1\uAE30"
+        description: "\uB5A8\uC5B4\uC9C4 \uC790\uB9AC\uB97C \uC78A\uC9C0 \uBABB\uD574,
+          \uD55C\uBC88 \uC7A1\uC73C\uBA74 \uC808\uB300 \uB193\uC9C0 \uC54A\uC544\uC694.
+          \uB124 \uAC1C\uC758 \uAD6C\uBA4D\uC5D0 \uC2E4\uC744 \uAC78\uC5B4 \uB2E4\uAC00\uC624\uB294
+          \uC801\uB4E4\uC744 \uB2E8\uB2E8\uD788 \uBD99\uB4E4\uC5B4\uC694.\n9\uCD08\uB9C8\uB2E4
+          \uC694\uACA9 \uBC94\uC704 \uC548\uC758 \uC801\uC744 0.8\uCD08 \uB3D9\uC548
+          \uAE30\uC808\uC2DC\uCF1C\uC694."
+        castText: "\uAF2D \uC7A1\uC558\uB2E4, \uC548 \uB194!"
+        trigger: 1
+        cooldown: 9
+        initialDelay: 3
+        target: 2
+        radius: 0.6
+        effects:
+        - type: 4
+          value: 0
+          duration: 0.8
+          count: 0
+        vfx: vfx_stun_stars
+      attack: 9.6
+      hp: 160
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.7
+      summonCost: 5
+      lifetime: 14
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: ttok_shield
+      name: "\uBC29\uD328 \uB2E8\uCD94"
+      parentFormId: ttok_base
+      tier: 1
+      style: 0
+      recommendedRole: 0
+      description: "\uCF54\uD2B8\uC5D0\uC11C \uAC00\uC7A5 \uD070 \uB2E8\uCD94\uC5D0
+        \uC2E4\uC744 \uACB9\uACB9\uC774 \uAC10\uC544, \uBAB8 \uC804\uCCB4\uAC00 \uB465\uADFC
+        \uBC29\uD328\uAC00 \uB418\uC5C8\uC5B4\uC694. \uB2E8\uCD94 \uD14C\uB450\uB9AC\uC758
+        \uB3C4\uD1B0\uD55C \uD131\uC774 \uADF8\uB300\uB85C \uBC29\uD328\uC758 \uAC00\uC7A5\uC790\uB9AC\uC608\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uD55C\uCE35 \uB2E8\uB2E8\uD574\uC9C4 \uBAB8\uC73C\uB85C \uBC29\uC704\uB97C
+        \uB9C9\uC544\uC11C\uACE0, \uBD80\uB52A\uCE5C \uC801\uC744 \uAF2D \uBD99\uC7A1\uC544
+        \uB290\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 73197939fa999674cb6f92b59d7dc6b0, type: 3}
+      skill:
+        id: skill_ttok_shield
+        name: "\uB2E8\uCD94 \uBC29\uD328"
+        description: "\uAF2D \uBD99\uC7A1\uB358 \uC190\uC774 \uC774\uC81C\uB294 \uBB38\uC744
+          \uB9C9\uC544\uC694. \uC218\uC120\uC810\uC774 \uACF5\uACA9\uBC1B\uC73C\uBA74
+          \uCF54\uD2B8\uC5D0\uC11C \uAC00\uC7A5 \uD070 \uB2E8\uCD94\uAC00 \uBB38
+          \uC55E\uC744 \uB36E\uACE0 \uB2E8\uB2E8\uD788 \uC7A0\uAC00\uC694.\n\uC218\uC120\uC810\uC774
+          \uACF5\uACA9\uBC1B\uC73C\uBA74(10\uCD08\uC5D0 \uD55C \uBC88\uAE4C\uC9C0)
+          \uC218\uC120\uC810\uC5D0 \uACF5\uACA9\uB825 300%\uB9CC\uD07C \uD53C\uD574\uB97C
+          \uB9C9\uB294 \uBCF4\uD638\uB9C9\uC744 6\uCD08 \uB3D9\uC548 \uC50C\uC6CC\uC694."
+        castText: "\uB2E8\uCD94 \uC7A0\uAE08, \uCCA0\uCEE5!"
+        trigger: 6
+        cooldown: 10
+        initialDelay: 0
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 2
+          value: 3
+          duration: 6
+          count: 0
+        vfx: vfx_button_shield
+      attack: 13
+      hp: 216
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.73
+      summonCost: 7
+      lifetime: 15
+      clueLevel: 5
+      materials:
+      - itemId: mat_cloth
+        count: 10
+      - itemId: mat_thread
+        count: 6
+      conditions:
+      - type: 0
+        target: 5
+      - type: 2
+        target: 12
+    - id: ttok_spinner
+      name: "\uD33D\uC774 \uB2E8\uCD94"
+      parentFormId: ttok_base
+      tier: 1
+      style: 1
+      recommendedRole: 1
+      description: "\uAD6C\uBA4D\uC5D0 \uAFF4 \uC2E4\uC744 \uB2F9\uACBC\uB2E4 \uB193\uC73C\uBA74
+        \uC719\uC719 \uB3CC\uC544\uAC00\uB358 \uC61B\uB0A0 \uB2E8\uCD94 \uD33D\uC774\uCC98\uB7FC,
+        \uB611\uB2E8\uC774\uB294 \uBAB8\uC5D0 \uAC10\uC740 \uC2E4\uC744 \uD798\uAECF
+        \uB2F9\uACA8 \uC2A4\uC2A4\uB85C \uD33D\uC774\uAC00 \uB418\uC5C8\uC5B4\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uB9F9\uB82C\uD558\uAC8C \uD68C\uC804\uD558\uBA70
+        \uC801\uC5D0\uAC8C \uD30C\uACE0\uB4E4\uC5B4, \uAC00\uAE4C\uC6B4 \uAC70\uB9AC\uC5D0\uC11C
+        \uD070 \uD53C\uD574\uB97C \uC918\uC694."
+      portrait: {fileID: 21300000, guid: d727be18d97f4d543810f0b5a09449bc, type: 3}
+      skill:
+        id: skill_ttok_spinner
+        name: "\uD68C\uC804 \uB2E8\uCD94"
+        description: "\uAD6C\uBA4D\uC5D0 \uAFF4 \uC2E4\uC744 \uD798\uAECF \uB2F9\uACBC\uB2E4
+          \uB193\uC73C\uBA74, \uC61B\uB0A0 \uB2E8\uCD94 \uD33D\uC774\uCC98\uB7FC
+          \uB9F9\uB82C\uD558\uAC8C \uB3CC\uC544\uC694. \uAC00\uAE4C\uC774 \uB2E4\uAC00\uC628
+          \uC801\uC740 \uBAA8\uB450 \uD295\uACA8 \uB098\uAC00\uC694.\n5\uCD08\uB9C8\uB2E4
+          \uC8FC\uBCC0\uC758 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825 180% \uD53C\uD574\uB97C
+          \uC8FC\uACE0, \uBC14\uAE65\uC73C\uB85C \uBC00\uC5B4\uB0B4\uC694."
+        castText: "\uC719\uC719\uC719~!"
+        trigger: 1
+        cooldown: 5
+        initialDelay: 1.5
+        target: 3
+        radius: 0.5
+        effects:
+        - type: 0
+          value: 1.8
+          duration: 0
+          count: 0
+        - type: 5
+          value: 0.3
+          duration: 0
+          count: 0
+        vfx: vfx_spin_button
+      attack: 22.7
+      hp: 135
+      attackInterval: 0.8
+      range: 1.3
+      arcDegrees: 60
+      moveSpeed: 1.08
+      summonCost: 6
+      lifetime: 11
+      clueLevel: 5
+      materials:
+      - itemId: mat_thread
+        count: 8
+      - itemId: mat_ribbon
+        count: 10
+      conditions:
+      - type: 1
+        target: 15
+      - type: 2
+        target: 12
+    costumes: []
+  - id: chalkak
+    name: "\uCC30\uCE75\uC774"
+    species: "\uC5F4\uC1E0\uC871"
+    origin: "\uB9DE\uB294 \uBB38\uC744 \uC783\uC740 \uC5F4\uC1E0"
+    personality: "\uB9DE\uB294 \uC790\uBB3C\uC1E0\uB97C \uC783\uC5B4\uBC84\uB9B0
+      \uC5F4\uC1E0\uB77C, \uB208\uC5D0 \uB744\uB294 \uBB38\uB9C8\uB2E4 \uB611\uB611
+      \uB450\uB4DC\uB9AC\uACE0 \uC5F4\uC1E0 \uAD6C\uBA4D\uB9C8\uB2E4 \uBAB8\uC744
+      \uB9DE\uCDB0 \uBD10\uC694. \uBC31 \uBC88\uC744 \uD2C0\uB824\uB3C4 \"\uC774\uBC88\uC5D4
+      \uC5F4\uB9B4\uC9C0\uB3C4 \uBAB0\uB77C!\" \uD558\uBA70 \uD648 \uD30C\uC778 \uAF2C\uB9AC\uB97C
+      \uD754\uB4E4\uC9C0\uC694.\n\uADF8 \uB048\uC9C8\uAE34 \uD638\uAE30\uC2EC \uB355\uBD84\uC5D0,
+      \uB0A8\uB4E4\uC774 \uC9C0\uB098\uCE5C \uC791\uC740 \uD2C8\uACFC \uC228\uC740
+      \uC57D\uC810\uC744 \uB204\uAD6C\uBCF4\uB2E4 \uBA3C\uC800 \uCC3E\uC544\uB0B4\uC694."
+    grade: 1
+    bodyType: 0
+    traits: 0100000003000000
+    mainColor: {r: 0.9098039, g: 0.7607843, b: 0.47843137, a: 1}
+    subColor: {r: 0.76862746, g: 0.69803923, b: 0.9490196, a: 1}
+    accentColor: {r: 0.9137255, g: 0.6509804, b: 0.7764706, a: 1}
+    neutralColor: {r: 0.23921569, g: 0.16862746, b: 0.36862746, a: 1}
+    baseFormId: chal_base
+    forms:
+    - id: chal_base
+      name: "\uCC30\uCE75\uC774"
+      parentFormId: 
+      tier: 0
+      style: 3
+      recommendedRole: 0
+      description: "\uB465\uADFC \uC5F4\uC1E0 \uBA38\uB9AC\uAC00 \uC5BC\uAD74\uC774
+        \uB418\uACE0, \uC6B8\uD241\uBD88\uD241\uD55C \uD648\uC774 \uB4F1\uBF08\uCC98\uB7FC
+        \uAF2C\uB9AC \uB05D\uAE4C\uC9C0 \uC774\uC5B4\uC9C4 \uC791\uC740 \uC5F4\uC1E0\uC608\uC694.
+        \uC5F4\uC1E0 \uAD6C\uBA4D\uC744 \uB4E4\uC5EC\uB2E4\uBCF4\uB358 \uBC84\uB987
+        \uB54C\uBB38\uC5D0, \uD55C\uCABD \uB208\uC744 \uCC21\uADF8\uB9AC\uACE0 \uBA3C
+        \uACF3\uC744 \uACA8\uB204\uB294 \uB370 \uC775\uC219\uD574\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uBFB0\uC871\uD55C \uAF2C\uB9AC \uB05D\uC744 \uC3D8\uC544, \uBA40\uB9AC
+        \uC788\uB294 \uC801\uC758 \uC57D\uC810\uC744 \uC815\uD655\uD788 \uCC14\uB7EC\uC694."
+      portrait: {fileID: 21300000, guid: 897dca12a1c063e44a87d1240ac42de1, type: 3}
+      skill:
+        id: skill_chal_base
+        name: "\uCC30\uCE75 \uC7A0\uAE08"
+        description: "\uC5F4\uC1E0 \uAD6C\uBA4D\uB9C8\uB2E4 \uBAB8\uC744 \uB9DE\uCDB0
+          \uBCF4\uB358 \uBC84\uB987\uC73C\uB85C \uC801\uC758 \uC57D\uC810\uC744 \uCC3E\uC544\uB0B4\uC694.
+          \uD648 \uD30C\uC778 \uAF2C\uB9AC\uB97C \uAF42\uACE0 '\uCC30\uCE75' \uB3CC\uB9AC\uBA74
+          \uAC00\uC7A5 \uAC15\uD55C \uC801\uB3C4 \uAF3C\uC9DD \uBABB \uD574\uC694.\n11\uCD08\uB9C8\uB2E4
+          \uAC00\uC7A5 \uAC15\uD55C \uC801(\uBCF4\uC2A4 \uC6B0\uC120)\uC744 1.5\uCD08
+          \uB3D9\uC548 \uAE30\uC808\uC2DC\uD0A4\uACE0, \uD45C\uC2DD\uC744 \uB0A8\uACA8
+          5\uCD08 \uB3D9\uC548 \uBC1B\uB294 \uD53C\uD574\uB97C 25% \uB298\uB824\uC694."
+        castText: "\uCC30\uCE75! \uC7A0\uAC14\uB2E4."
+        trigger: 1
+        cooldown: 11
+        initialDelay: 4
+        target: 5
+        radius: 0.6
+        effects:
+        - type: 4
+          value: 0
+          duration: 1.5
+          count: 0
+        - type: 7
+          value: 25
+          duration: 5
+          count: 0
+        vfx: vfx_keyhole_lock
+      attack: 21.5
+      hp: 84
+      attackInterval: 1.5
+      range: 2.3
+      arcDegrees: 40
+      moveSpeed: 0.8
+      summonCost: 5
+      lifetime: 11
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: chal_master
+      name: "\uB9C8\uC2A4\uD130\uD0A4 \uCC30\uCE75\uC774"
+      parentFormId: chal_base
+      tier: 1
+      style: 4
+      recommendedRole: 1
+      description: "\uC218\uB9CE\uC740 \uBB38\uC744 \uB450\uB4DC\uB9B0 \uB05D\uC5D0,
+        \uCC30\uCE75\uC774\uC758 \uD648\uC740 \uC5B4\uB5A4 \uC790\uBB3C\uC1E0\uC5D0\uB3C4
+        \uC870\uAE08\uC529 \uB9DE\uB294 \uBAA8\uC591\uC73C\uB85C \uB2F3\uC558\uC5B4\uC694.
+        \uC5B4\uB5A4 \uBB38\uC774\uB4E0 \uC5F4 \uC218 \uC788\uC73C\uB2C8, \uC228\uC740
+        \uAC83\uB4E4\uB3C4 \uB354\uB294 \uC228\uC744 \uC218 \uC5C6\uC9C0\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uC228\uC5B4 \uC788\uB358 \uC801\uC758 \uBB38\uC744
+        \uD65C\uC9DD \uC5F4\uC5B4 \uB4DC\uB7EC\uB0B4\uACE0, \uC5F4\uC1E0 \uBE5B\uC744
+        \uC801\uC5D0\uAC8C\uC11C \uC801\uC73C\uB85C \uD295\uACA8 \uCE5C\uAD6C\uB4E4\uC758
+        \uAE38\uC744 \uC5F4\uC5B4 \uC918\uC694."
+      portrait: {fileID: 21300000, guid: f5d2544e6bf33cc49a499748e8b315d1, type: 3}
+      skill:
+        id: skill_chal_master
+        name: "\uBAA8\uB4E0 \uBB38 \uC5F4\uAE30"
+        description: "\uB2F3\uACE0 \uB2F3\uC544 \uC5B4\uB5A4 \uC790\uBB3C\uC1E0\uC5D0\uB3C4
+          \uB9DE\uAC8C \uB41C \uD648\uC73C\uB85C, \uC228\uC740 \uBB38\uAE4C\uC9C0
+          \uBAA8\uB450 \uC5F4\uC5B4\uC816\uD600\uC694. \uC5F4\uB9B0 \uBB38\uD2C8\uC73C\uB85C
+          \uD284 \uC5F4\uC1E0 \uBE5B\uC774 \uC801\uC5D0\uAC8C\uC11C \uC801\uC73C\uB85C
+          \uC62E\uACA8 \uB2E4\uB140\uC694.\n9\uCD08\uB9C8\uB2E4 \uC228\uC5B4 \uC788\uB294
+          \uC801\uC744 6\uCD08 \uB3D9\uC548 \uB4DC\uB7EC\uB0B4\uACE0, \uC801 \uC0AC\uC774\uB97C
+          4\uBC88 \uD280\uB294 \uACF5\uACA9\uB825 150% \uC5F0\uC1C4 \uD53C\uD574\uB97C
+          \uC918\uC694."
+        castText: "\uC5B4\uB5A4 \uBB38\uC774\uB4E0 \uC5F4\uC5B4 \uC904\uAC8C!"
+        trigger: 1
+        cooldown: 9
+        initialDelay: 2
+        target: 3
+        radius: 1
+        effects:
+        - type: 13
+          value: 0
+          duration: 6
+          count: 0
+        - type: 16
+          value: 1.5
+          duration: 0
+          count: 4
+        vfx: vfx_key_beam
+      attack: 12.7
+      hp: 136
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.88
+      summonCost: 6
+      lifetime: 14
+      clueLevel: 5
+      materials:
+      - itemId: mat_rib
+        count: 8
+      - itemId: mat_ribbon
+        count: 10
+      - itemId: mat_spring
+        count: 2
+      conditions:
+      - type: 1
+        target: 20
+      - type: 2
+        target: 15
+    - id: chal_lock
+      name: "\uC790\uBB3C\uC1E0 \uAE30\uC0AC"
+      parentFormId: chal_base
+      tier: 1
+      style: 0
+      recommendedRole: 0
+      description: "\uB9DE\uB294 \uC790\uBB3C\uC1E0\uB97C \uB05D\uB0B4 \uCC3E\uC9C0
+        \uBABB\uD55C \uCC30\uCE75\uC774\uB294, \uC2A4\uC2A4\uB85C \uC790\uBB3C\uC1E0\uAC00
+        \uB418\uAE30\uB85C \uD588\uC5B4\uC694. \uBB35\uC9C1\uD55C \uC790\uBB3C\uD1B5\uC744
+        \uAC11\uC637\uCC98\uB7FC \uB450\uB974\uACE0, \uB465\uADFC \uAC78\uC1E0\uB97C
+        \uD22C\uAD6C\uCC98\uB7FC \uC37C\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74
+        \uBC29\uC704\uB97C \uCCA0\uCEE5 \uC7A0\uADF8\uB4EF \uB9C9\uC544\uC11C\uC11C,
+        \uB4E4\uC5B4\uC624\uB294 \uC801\uC744 \uBB35\uC9C1\uD558\uAC8C \uB2A6\uCDB0\uC694."
+      portrait: {fileID: 21300000, guid: 066891bac7b4b174c8071a3550d85312, type: 3}
+      skill:
+        id: skill_chal_lock
+        name: "\uCD5C\uD6C4\uC758 \uBE57\uC7A5"
+        description: "\uB9DE\uB294 \uC790\uBB3C\uC1E0\uB97C \uB05D\uB0B4 \uCC3E\uC9C0
+          \uBABB\uD55C \uCC30\uCE75\uC774\uB294 \uC2A4\uC2A4\uB85C \uC790\uBB3C\uC1E0\uAC00
+          \uB418\uC5C8\uC5B4\uC694. \uC218\uC120\uC810\uC774 \uC704\uD5D8\uD574\uC9C0\uBA74
+          \uC628\uBAB8\uC758 \uAC78\uC1E0\uB97C \uD55C\uAEBC\uBC88\uC5D0 \uCCA0\uCEE5
+          \uC7A0\uAC00 \uBC84\uB824\uC694.\n\uC218\uC120\uC810 \uB0B4\uAD6C\uB3C4\uAC00
+          30% \uC544\uB798\uB85C \uB5A8\uC5B4\uC9C0\uBA74(\uC804\uD22C\uB9C8\uB2E4
+          \uD55C \uBC88) \uBAA8\uB4E0 \uC801\uC744 2.5\uCD08 \uB3D9\uC548 \uAE30\uC808\uC2DC\uD0A4\uACE0,
+          \uBA40\uB9AC \uBC00\uC5B4\uB0B4\uC694."
+        castText: "\uC5EC\uAE30\uC11C\uBD80\uD130\uB294 \uBABB \uC9C0\uB098\uAC00!"
+        trigger: 7
+        cooldown: 0
+        initialDelay: 0
+        target: 7
+        radius: 3
+        effects:
+        - type: 4
+          value: 0
+          duration: 2.5
+          count: 0
+        - type: 5
+          value: 0.5
+          duration: 0
+          count: 0
+        vfx: vfx_keyhole_lock
+      attack: 14.5
+      hp: 242
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.73
+      summonCost: 7
+      lifetime: 15
+      clueLevel: 5
+      materials:
+      - itemId: mat_rib
+        count: 10
+      - itemId: mat_cloth
+        count: 12
+      conditions:
+      - type: 0
+        target: 8
+      - type: 2
+        target: 15
+    costumes: []
+  - id: mongdang
+    name: "\uBABD\uB2F9\uC774"
+    species: "\uCD1B\uBD88\uC871"
+    origin: "\uB2E4 \uD0C0\uBC84\uB9B0 \uBABD\uB2F9\uCD08"
+    personality: "\uB179\uC744\uC218\uB85D \uBAB8\uC774 \uC791\uC544\uC9C0\uB294
+      \uAC78 \uC54C\uBA74\uC11C\uB3C4, \uB05D\uAE4C\uC9C0 \uC8FC\uBCC0\uC744 \uBC1D\uD788\uB294
+      \uBABD\uB2F9\uCD08\uC608\uC694. \uCD1B\uB18D\uC774 \uB69D\uB69D \uD758\uB7EC
+      \uD0A4\uAC00 \uD55C \uBF18\uC529 \uC904\uC5B4\uB3C4 \"\uAD1C\uCC2E\uC544, \uC544\uC9C1
+      \uC2EC\uC9C0\uAC00 \uB0A8\uC558\uB294\uAC78\" \uD558\uACE0 \uC6C3\uC5B4\uC694.\n\uAC81\uC774
+      \uB9CE\uC544 \uBC14\uB78C \uC18C\uB9AC\uC5D0\uB3C4 \uBD88\uAF43\uC774 \uC6C0\uCE20\uB7EC\uB4E4\uC9C0\uB9CC,
+      \uC5B4\uB450\uC6B4 \uACF3\uC5D0 \uCE5C\uAD6C\uAC00 \uC788\uC73C\uBA74 \uAC00\uC7A5
+      \uBA3C\uC800 \uBD88\uAF43\uC744 \uD0A4\uC6B0\uB294 \uC791\uACE0 \uB2E4\uC815\uD55C
+      \uC6A9\uAE30\uB97C \uAC00\uC84C\uC5B4\uC694."
+    grade: 1
+    bodyType: 0
+    traits: 0200000004000000
+    mainColor: {r: 1, g: 0.94509804, b: 0.8392157, a: 1}
+    subColor: {r: 0.9137255, g: 0.6509804, b: 0.7764706, a: 1}
+    accentColor: {r: 1, g: 0.72156864, b: 0.41960785, a: 1}
+    neutralColor: {r: 0.41960785, g: 0.3529412, b: 0.5568628, a: 1}
+    baseFormId: mong_base
+    forms:
+    - id: mong_base
+      name: "\uBABD\uB2F9\uC774"
+      parentFormId: 
+      tier: 0
+      style: 5
+      recommendedRole: 1
+      description: "\uB2E4 \uD0C0 \uBC84\uB9B0 \uBABD\uB2F9\uCD08\uC608\uC694. \uB179\uC544\uB0B4\uB9B0
+        \uCD1B\uB18D\uC774 \uB3D9\uAE00\uB3D9\uAE00\uD55C \uBAB8\uC774 \uB418\uACE0,
+        \uC2EC\uC9C0 \uB05D\uC758 \uC791\uC740 \uBD88\uAF43\uC740 \uAE30\uBD84\uC5D0
+        \uB530\uB77C \uCEE4\uC84C\uB2E4 \uC791\uC544\uC9C0\uB294 \uB354\uB4EC\uC774\uAC00
+        \uB418\uC5C8\uC5B4\uC694.\n\uC794\uD5A5\uC774\uB85C \uC18C\uD658\uB418\uBA74
+        \uB179\uC544\uB0B4\uB9B0 \uCD1B\uB18D\uC73C\uB85C \uC218\uC120\uC810\uC758
+        \uC0C1\uCC98\uB97C \uB530\uC2A4\uD558\uAC8C \uBA54\uC6CC \uC8FC\uACE0, \uB179\uC544
+        \uB098\uC628 \uBD88\uBE5B\uC744 \uBAA8\uC544 \uC218\uC120\uC810\uC758 \uB4F1\uBD88\uC744
+        \uCC44\uC6CC\uC694."
+      portrait: {fileID: 21300000, guid: 517e8e652e62c9a4b92f9e2a7827bafd, type: 3}
+      skill:
+        id: skill_mong_base
+        name: "\uB179\uC544\uB4DC\uB294 \uBE5B"
+        description: "\uB179\uC744\uC218\uB85D \uBAB8\uC740 \uC791\uC544\uC9C0\uC9C0\uB9CC,
+          \uD758\uB7EC\uB0B4\uB9B0 \uCD1B\uB18D\uC740 \uC218\uC120\uC810\uC758 \uAC08\uB77C\uC9C4
+          \uD2C8\uC744 \uB530\uB73B\uD558\uAC8C \uBA54\uC6CC\uC694. \uB179\uC544
+          \uB098\uC628 \uBD88\uBE5B\uB3C4 \uBC84\uB9AC\uC9C0 \uC54A\uACE0 \uC218\uC120\uC810
+          \uB4F1\uBD88\uC5D0 \uD55C \uBC29\uC6B8\uC529 \uBAA8\uC544 \uB46C\uC694.\n8\uCD08\uB9C8\uB2E4
+          \uC218\uC120\uC810 \uB0B4\uAD6C\uB3C4\uB97C \uACF5\uACA9\uB825 200%\uB9CC\uD07C
+          \uD68C\uBCF5\uD558\uACE0, \uBD88\uBE5B \uAC8C\uC774\uC9C0\uB97C 3% \uCC44\uC6CC\uC694."
+        castText: "\uC544\uC9C1 \uC2EC\uC9C0\uAC00 \uB0A8\uC558\uB294\uAC78!"
+        trigger: 1
+        cooldown: 8
+        initialDelay: 2
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 1
+          value: 2
+          duration: 0
+          count: 0
+        - type: 12
+          value: 0.03
+          duration: 0
+          count: 0
+        vfx: vfx_wax_drip
+      attack: 10.1
+      hp: 112
+      attackInterval: 1.1
+      range: 1.4
+      arcDegrees: 100
+      moveSpeed: 0.8
+      summonCost: 5
+      lifetime: 14
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: mong_lantern
+      name: "\uCD08\uB871 \uBABD\uB2F9\uC774"
+      parentFormId: mong_base
+      tier: 1
+      style: 4
+      recommendedRole: 0
+      description: "\uBC14\uB78C\uC5D0 \uAEBC\uC9C0\uC9C0 \uC54A\uC73C\uB824\uACE0,
+        \uBABD\uB2F9\uC774\uB294 \uC885\uC774 \uCD08\uB871 \uC18D\uC5D0 \uB4E4\uC5B4\uAC00
+        \uC0B4\uAE30\uB85C \uD588\uC5B4\uC694. \uCD08\uB871\uC758 \uAC00\uB294 \uBF08\uB300\uAC00
+        \uAC08\uBE44\uBF08\uAC00 \uB418\uACE0, \uB465\uADFC \uAC13\uC740 \uCEE4\uB2E4\uB780
+        \uBA38\uB9AC\uAC00 \uB418\uC5C8\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74
+        \uAE38 \uC783\uC740 \uCE5C\uAD6C\uB4E4\uC758 \uAE38\uC7A1\uC774\uAC00 \uB418\uC5B4,
+        \uC218\uC120\uC810\uC758 \uBD88\uBE5B\uC744 \uBC1B\uC544 \uBA3C \uC5B4\uB460
+        \uC18D\uC5D0 \uC228\uC740 \uC801\uAE4C\uC9C0 \uD658\uD788 \uBE44\uCDB0\uC694."
+      portrait: {fileID: 21300000, guid: 7d85df1b53781b345b40f57736da63d5, type: 3}
+      skill:
+        id: skill_mong_lantern
+        name: "\uB4F1\uBD88 \uBE5B\uC904\uAE30"
+        description: "\uB179\uC544\uB4DC\uB294 \uBE5B\uC744 \uCD08\uB871 \uC548\uC5D0
+          \uCC28\uACE1\uCC28\uACE1 \uBAA8\uC544 \uB450\uC5C8\uC5B4\uC694. \uC218\uC120\uC810\uC5D0
+          \uBD88\uC774 \uBC1D\uD600\uC9C0\uBA74 \uADF8 \uBE5B\uC744 \uBC1B\uC544
+          \uC790\uAE30 \uBC29\uD5A5\uC73C\uB85C \uCEE4\uB2E4\uB780 \uBE5B\uC904\uAE30\uB97C
+          \uC3D8\uC544, \uC228\uC5B4 \uC788\uB358 \uC801\uAE4C\uC9C0 \uD658\uD788
+          \uBE44\uCDB0\uC694.\n\uC218\uC120\uC810\uC5D0 \uBD88\uC744 \uBC1D\uD788\uBA74
+          \uC790\uAE30 \uBC29\uD5A5(\uB808\uC778)\uC758 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C
+          \uACF5\uACA9\uB825 400% \uD53C\uD574\uB97C \uC8FC\uACE0, \uC228\uC5B4 \uC788\uB294
+          \uC801\uC744 10\uCD08 \uB3D9\uC548 \uB4DC\uB7EC\uB0B4\uACE0, \uD45C\uC2DD\uC744
+          \uB0A8\uACA8 8\uCD08 \uB3D9\uC548 \uBC1B\uB294 \uD53C\uD574\uB97C 30% \uB298\uB824\uC694."
+        castText: "\uAE38\uC744 \uBC1D\uD600 \uC904\uAC8C!"
+        trigger: 5
+        cooldown: 0
+        initialDelay: 0
+        target: 13
+        radius: 0.6
+        effects:
+        - type: 0
+          value: 4
+          duration: 0
+          count: 0
+        - type: 13
+          value: 0
+          duration: 10
+          count: 0
+        - type: 7
+          value: 30
+          duration: 8
+          count: 0
+        vfx: vfx_lantern_beam
+      attack: 12.7
+      hp: 136
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.88
+      summonCost: 6
+      lifetime: 14
+      clueLevel: 5
+      materials:
+      - itemId: mat_wax
+        count: 15
+      - itemId: mat_lace
+        count: 6
+      - itemId: mat_rib
+        count: 4
+      conditions:
+      - type: 0
+        target: 6
+      - type: 2
+        target: 15
+    - id: mong_firefly
+      name: "\uBC18\uB527\uBD88 \uBABD\uB2F9\uC774"
+      parentFormId: mong_base
+      tier: 1
+      style: 1
+      recommendedRole: 1
+      description: "\uB179\uACE0 \uB610 \uB179\uC544 \uC190\uD1B1\uB9CC\uD07C \uC791\uC544\uC9C4
+        \uBABD\uB2F9\uC774\uB294, \uBD88\uAF43 \uD558\uB098 \uB0A8\uC740 \uBAB8\uC73C\uB85C
+        \uB0A0\uC544\uC624\uB974\uB294 \uBC95\uC744 \uBC30\uC6E0\uC5B4\uC694. \uCD1B\uB18D\uC73C\uB85C
+        \uBE5A\uC740 \uC587\uC740 \uB0A0\uAC1C\uB97C \uB2EC\uACE0, \uBC18\uB527\uBD88\uCC98\uB7FC
+        \uAE5C\uBE61\uC774\uBA70 \uC5B4\uB460 \uC18D\uC744 \uB204\uBCBC\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uC7AC\uBE60\uB974\uAC8C \uC801\uC5D0\uAC8C \uB0A0\uC544\uB4E4\uC5B4,
+        \uB728\uAC70\uC6B4 \uBD88\uAF43\uC73C\uB85C \uB4E4\uC774\uBC1B\uC544\uC694."
+      portrait: {fileID: 21300000, guid: 7510081e6dd3900498d02f420c6e330a, type: 3}
+      skill:
+        id: skill_mong_firefly
+        name: "\uBC18\uB527\uBD88 \uB5BC"
+        description: "\uC190\uD1B1\uB9CC\uD07C \uC791\uC544\uC9C4 \uBAB8\uC73C\uB85C
+          \uB0A0\uC544\uC62C\uB790\uC5B4\uC694. \uC801\uC744 \uC4F0\uB7EC\uB728\uB9AC\uBA74
+          \uB0A8\uC740 \uBD88\uC528\uAC00 \uBC18\uB527\uBD88 \uB5BC\uAC00 \uB418\uC5B4
+          \uC8FC\uBCC0 \uC801\uB4E4\uC5D0\uAC8C \uC62E\uACA8 \uBD99\uC5B4\uC694.\n\uC801\uC744
+          \uC4F0\uB7EC\uB728\uB9AC\uBA74(1.5\uCD08\uC5D0 \uD55C \uBC88\uAE4C\uC9C0)
+          \uACF5\uACA9 \uB300\uC0C1 \uC8FC\uBCC0\uC758 \uC801\uC5D0\uAC8C 4\uCD08
+          \uB3D9\uC548 \uCD08\uB2F9 \uACF5\uACA9\uB825 80% \uD654\uC0C1 \uD53C\uD574\uB97C
+          \uC918\uC694."
+        castText: "\uBC18\uC9DD, \uC62E\uACA8 \uBD99\uC5B4\uB77C!"
+        trigger: 4
+        cooldown: 1.5
+        initialDelay: 0
+        target: 4
+        radius: 0.5
+        effects:
+        - type: 14
+          value: 0.8
+          duration: 4
+          count: 0
+        vfx: vfx_firefly
+      attack: 25.4
+      hp: 151
+      attackInterval: 0.8
+      range: 1.3
+      arcDegrees: 60
+      moveSpeed: 1.08
+      summonCost: 6
+      lifetime: 11
+      clueLevel: 5
+      materials:
+      - itemId: mat_wax
+        count: 12
+      - itemId: mat_thread
+        count: 6
+      conditions:
+      - type: 1
+        target: 20
+      - type: 2
+        target: 15
+    costumes: []
+  - id: udukeoni
+    name: "\uC6B0\uB450\uCEE4\uB2C8"
+    species: "\uC6B0\uC0B0\uC871"
+    origin: "\uC8FC\uC778\uC744 \uAE30\uB2E4\uB9B0 \uC6B0\uC0B0"
+    personality: "\uC8FC\uC778\uC744 \uAE30\uB2E4\uB9AC\uBA70 \uC6B0\uC0B0\uAF42\uC774\uC5D0\uC11C
+      \uBA87 \uACC4\uC808\uC744 \uBCF4\uB0B8 \uC6B0\uC0B0\uC774\uC5D0\uC694. \uBE44\uAC00
+      \uC624\uC9C0 \uC54A\uB294 \uB0A0\uC5D4 \uC790\uC2E0\uC774 \uC4F8\uBAA8\uC5C6\uB2E4\uACE0
+      \uC0DD\uAC01\uD574, \uAD6C\uC11D\uC5D0 \uC6B0\uB450\uCEE4\uB2C8 \uC11C\uC11C
+      \uD558\uB298\uB9CC \uC62C\uB824\uB2E4\uBCF4\uC9C0\uC694.\n\uD558\uC9C0\uB9CC
+      \uD558\uB298\uC774 \uD750\uB824\uC9C0\uACE0 \uCCAB \uBE57\uBC29\uC6B8\uC774
+      \uB5A8\uC5B4\uC9C0\uBA74, \uC811\uC5B4 \uB450\uC5C8\uB358 \uC0B4\uC744 \uD65C\uC9DD
+      \uD3B4\uACE0 \uB204\uAD6C\uBCF4\uB2E4 \uBA3C\uC800 \uCE5C\uAD6C\uB4E4\uC758
+      \uBA38\uB9AC \uC704\uB97C \uB36E\uC5B4\uC694. \uAE30\uB2E4\uB9BC\uC5D0 \uC775\uC219\uD55C
+      \uB9CC\uD07C, \uD55C\uBC88 \uC9C0\uD0A4\uAE30\uB85C \uD55C \uC790\uB9AC\uB294
+      \uC808\uB300 \uB5A0\uB098\uC9C0 \uC54A\uC544\uC694."
+    grade: 3
+    bodyType: 1
+    traits: 0000000005000000
+    mainColor: {r: 0.49803922, g: 0.65882355, b: 0.8509804, a: 1}
+    subColor: {r: 0.1764706, g: 0.14117648, b: 0.34509805, a: 1}
+    accentColor: {r: 0.9490196, g: 0.76862746, b: 0.41960785, a: 1}
+    neutralColor: {r: 1, g: 0.95686275, b: 0.8627451, a: 1}
+    baseFormId: udu_base
+    forms:
+    - id: udu_base
+      name: "\uC6B0\uB450\uCEE4\uB2C8"
+      parentFormId: 
+      tier: 0
+      style: 0
+      recommendedRole: 0
+      description: "\uC6B0\uC0B0\uC0B4\uC774 \uAC08\uBE44\uBF08\uAC00 \uB418\uACE0,
+        \uD3BC\uCE5C \uC6B0\uC0B0\uCC9C\uC774 \uB113\uC740 \uC5B4\uAE68\uC640 \uB9DD\uD1A0\uAC00
+        \uB418\uC5C8\uC73C\uBA70, \uAD6C\uBD80\uB7EC\uC9C4 \uC190\uC7A1\uC774\uB294
+        \uC9C0\uD321\uC774 \uAC19\uC740 \uAF2C\uB9AC\uB85C \uB0A8\uC558\uC5B4\uC694.
+        \uBE44 \uC624\uB294 \uB0A0\uC5D0\uB9CC \uC4F8\uBAA8 \uC788\uB2E4\uACE0 \uBBFF\uC5B4\uC11C
+        \uB298 \uACE0\uAC1C\uB97C \uD479 \uC219\uC774\uACE0 \uC788\uC9C0\uC694.\n\uADF8\uB798\uB3C4
+        \uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74 \uC6B0\uC0B0\uC744 \uD65C\uC9DD \uD3B4
+        \uBC29\uC704\uB97C \uB36E\uACE0, \uBE57\uBB3C\uC5D0 \uC816\uC740 \uB4EF \uC801\uC758
+        \uBC1C\uAC78\uC74C\uC744 \uBB34\uAC81\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 96499a679b60d7948841fbc451fac8b5, type: 3}
+      skill:
+        id: skill_udu_base
+        name: "\uC6B0\uC0B0 \uD3BC\uCE58\uAE30"
+        description: "\uC811\uC5B4 \uB450\uC5C8\uB358 \uC6B0\uC0B0\uC0B4\uC744 \uD65C\uC9DD
+          \uD3B4 \uC218\uC120\uC810\uC744 \uB36E\uC5B4\uC694. \uBE44 \uC624\uB294
+          \uB0A0\uC5D0\uB9CC \uC4F8\uBAA8 \uC788\uB2E4\uACE0 \uBBFF\uC9C0\uB9CC,
+          \uC6B0\uC0B0 \uC544\uB798\uB294 \uC5B8\uC81C\uB098 \uD3EC\uADFC\uD574\uC694.
+          \uBE44 \uC624\uB294 \uBC24\uC5D0\uB294 \uBE44 \uD2B9\uC131 \uC2DC\uB108\uC9C0\uB85C
+          \uB354 \uB2E8\uB2E8\uD574\uC838\uC694.\n14\uCD08\uB9C8\uB2E4 \uC218\uC120\uC810\uC5D0
+          \uACF5\uACA9\uB825 350%\uB9CC\uD07C \uD53C\uD574\uB97C \uB9C9\uB294 \uBCF4\uD638\uB9C9\uC744
+          10\uCD08 \uB3D9\uC548 \uC50C\uC6CC\uC694."
+        castText: "\uBE44\uAC00 \uC640\uB3C4 \uAD1C\uCC2E\uC544."
+        trigger: 1
+        cooldown: 14
+        initialDelay: 3
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 2
+          value: 3.5
+          duration: 10
+          count: 0
+        vfx: vfx_umbrella_shield
+      attack: 13.5
+      hp: 225
+      attackInterval: 1
+      range: 1.5
+      arcDegrees: 80
+      moveSpeed: 0.7
+      summonCost: 6
+      lifetime: 14
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: udu_storm
+      name: "\uD3ED\uD48D\uC6B0\uC0B0"
+      parentFormId: udu_base
+      tier: 1
+      style: 2
+      recommendedRole: 1
+      description: "\uAE30\uB2E4\uB9AC\uB358 \uBE44\uAC00 \uD3ED\uD48D\uC774 \uB418\uC5B4
+        \uCC3E\uC544\uC628 \uB0A0, \uC6B0\uB450\uCEE4\uB2C8\uB294 \uB4A4\uC9D1\uD78C
+        \uC6B0\uC0B0\uCC98\uB7FC \uD558\uB298\uC744 \uD5A5\uD574 \uBAB8\uC744 \uD65C\uC9DD
+        \uC5F4\uC5C8\uC5B4\uC694. \uD718\uC5B4\uC9C4 \uC0B4 \uC0AC\uC774\uB85C \uBE44\uBC14\uB78C\uC774
+        \uC18C\uC6A9\uB3CC\uC774\uCCD0\uC694.\n\uC794\uD5A5\uC774\uB85C \uC18C\uD658\uB418\uBA74
+        \uD68C\uC624\uB9AC\uCE58\uB294 \uC6B0\uC0B0 \uC18D\uC5D0 \uC801\uC744 \uD718\uB9D0\uC544,
+        \uC7A0\uC2DC \uADF8 \uC790\uB9AC\uC5D0 \uBD99\uC7A1\uC544 \uB46C\uC694."
+      portrait: {fileID: 21300000, guid: 1c6403285342a454eb6761c7d0dc0a71, type: 3}
+      skill:
+        id: skill_udu_storm
+        name: "\uC18C\uB098\uAE30"
+        description: "\uB4A4\uC9D1\uD78C \uC6B0\uC0B0 \uC18D\uC5D0 \uBAA8\uC544 \uB454
+          \uBE44\uBC14\uB78C\uC744, \uC18C\uD658\uB418\uC790\uB9C8\uC790 \uD558\uB298
+          \uB192\uC774 \uC3D8\uC544 \uC62C\uB824\uC694. \uC628 \uAC70\uB9AC\uC5D0
+          \uC18C\uB098\uAE30\uAC00 \uC3DF\uC544\uC9C0\uBA74 \uC801\uB4E4\uC758 \uBC1C\uC774
+          \uBB34\uAC70\uC6CC\uC838\uC694.\n\uC794\uD5A5\uC774\uB85C \uC18C\uD658\uB418\uBA74
+          \uBAA8\uB4E0 \uC801\uC744 5\uCD08 \uB3D9\uC548 35% \uB290\uB9AC\uAC8C \uB9CC\uB4E4\uACE0,
+          \uACF5\uACA9\uB825 60% \uD53C\uD574\uB97C \uC918\uC694."
+        castText: "\uC3F4\uC544\uC544~!"
+        trigger: 2
+        cooldown: 0
+        initialDelay: 0
+        target: 7
+        radius: 3
+        effects:
+        - type: 3
+          value: 0.35
+          duration: 5
+          count: 0
+        - type: 0
+          value: 0.6
+          duration: 0
+          count: 0
+        vfx: vfx_raindrops
+      attack: 20.5
+      hp: 209
+      attackInterval: 1
+      range: 1.6
+      arcDegrees: 72
+      moveSpeed: 0.93
+      summonCost: 8
+      lifetime: 13
+      clueLevel: 5
+      materials:
+      - itemId: mat_rib
+        count: 15
+      - itemId: mat_thread
+        count: 10
+      - itemId: mat_spring
+        count: 3
+      conditions:
+      - type: 1
+        target: 30
+      - type: 0
+        target: 6
+      - type: 2
+        target: 20
+    - id: udu_parasol
+      name: "\uC591\uC0B0 \uC6B0\uB450\uCEE4\uB2C8"
+      parentFormId: udu_base
+      tier: 1
+      style: 5
+      recommendedRole: 0
+      description: "\uBE44\uAC00 \uC624\uC9C0 \uC54A\uB294 \uB0A0\uC5D0\uB3C4 \uB204\uAD70\uAC00\uB97C
+        \uC9C0\uD0AC \uC218 \uC788\uB2E4\uB294 \uAC78, \uC6B0\uB450\uCEE4\uB2C8\uB294
+        \uD587\uC0B4 \uC544\uB798\uC5D0\uC11C \uCC98\uC74C \uC54C\uC558\uC5B4\uC694.
+        \uB808\uC774\uC2A4\uB97C \uB367\uB304 \uC591\uC0B0\uC774 \uB41C \uBAB8\uC740
+        \uADF8\uB298\uC744 \uB4DC\uB9AC\uC6B0\uB294 \uBC95\uC744 \uC775\uD614\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uC2DC\uC6D0\uD55C \uADF8\uB298\uB85C \uC218\uC120\uC810\uC744
+        \uC26C\uAC8C \uD558\uACE0, \uC9C0\uCE5C \uC794\uD5A5\uC774 \uCE5C\uAD6C\uB4E4\uC758
+        \uC0C1\uCC98\uB97C \uBCF4\uC0B4\uD3B4\uC694."
+      portrait: {fileID: 21300000, guid: 07af89242eceaf349a596d3e5f375cea, type: 3}
+      skill:
+        id: skill_udu_parasol
+        name: "\uADF8\uB298"
+        description: "\uBE44\uAC00 \uC624\uC9C0 \uC54A\uB294 \uB0A0\uC5D0\uB3C4 \uB204\uAD70\uAC00\uB97C
+          \uC9C0\uD0AC \uC218 \uC788\uB2E4\uB294 \uAC78 \uC54C\uC558\uC5B4\uC694.
+          \uB808\uC774\uC2A4 \uC591\uC0B0\uC744 \uAE30\uC6B8\uC5EC \uC794\uD5A5\uC774
+          \uCE5C\uAD6C\uB4E4\uC5D0\uAC8C \uC2DC\uC6D0\uD55C \uADF8\uB298\uC744 \uB4DC\uB9AC\uC6CC\uC694.\n12\uCD08\uB9C8\uB2E4
+          \uBAA8\uB4E0 \uC794\uD5A5\uC774\uC5D0\uAC8C \uACF5\uACA9\uB825 150%\uB9CC\uD07C
+          \uD53C\uD574\uB97C \uB9C9\uB294 \uBCF4\uD638\uB9C9\uC744 6\uCD08 \uB3D9\uC548
+          \uC50C\uC6B0\uACE0, \uCCB4\uB825\uC744 6\uCD08 \uB3D9\uC548 \uCD08\uB2F9
+          \uACF5\uACA9\uB825 40%\uC529 \uD68C\uBCF5\uD574\uC694."
+        castText: "\uC7A0\uAE50 \uC26C\uC5B4 \uAC00."
+        trigger: 1
+        cooldown: 12
+        initialDelay: 4
+        target: 9
+        radius: 0.6
+        effects:
+        - type: 2
+          value: 1.5
+          duration: 6
+          count: 0
+        - type: 19
+          value: 0.4
+          duration: 6
+          count: 0
+        vfx: vfx_shield_bubble
+      attack: 17.1
+      hp: 190
+      attackInterval: 1.1
+      range: 1.4
+      arcDegrees: 100
+      moveSpeed: 0.83
+      summonCost: 8
+      lifetime: 15
+      clueLevel: 5
+      materials:
+      - itemId: mat_rib
+        count: 12
+      - itemId: mat_lace
+        count: 12
+      - itemId: mat_ribbon
+        count: 8
+      conditions:
+      - type: 0
+        target: 12
+      - type: 2
+        target: 20
+    costumes: []
+  - id: rouge
+    name: "\uB8E8\uC988\uB9AC"
+    species: "\uB9BD\uC2A4\uD2F1\uC871"
+    origin: "\uC11C\uB78D \uC18D\uC5D0 \uC78A\uD78C \uB9BD\uC2A4\uD2F1"
+    personality: "\uD654\uC7A5\uB300 \uC11C\uB78D \uAE4A\uC740 \uACF3\uC5D0\uC11C
+      \uC624\uB798 \uC78A\uD600 \uC788\uB358 \uB9BD\uC2A4\uD2F1\uC774\uC5D0\uC694.
+      \uB69C\uAED1\uC774 \uB2EB\uD788\uBA74 \uC218\uC90D\uC5B4\uC11C \uCF00\uC774\uC2A4
+      \uC18D\uC73C\uB85C \uC3D9 \uC228\uC5B4 \uBC84\uB9AC\uC9C0\uB9CC, \uB204\uAD70\uAC00
+      \uC0B4\uC9DD \uB3CC\uB824 \uC62C\uB824 \uC8FC\uBA74 \uB204\uAD6C\uBCF4\uB2E4
+      \uB2F9\uB2F9\uD574\uC838\uC694.\n\uD55C\uBC88 \uBB34\uB300\uC5D0 \uC624\uB974\uBA74
+      \uBC18\uC9DD\uC774\uB294 \uC785\uC220 \uC790\uAD6D\uC73C\uB85C \uC790\uAE30
+      \uC774\uB984\uC744 \uB0A8\uAE30\uACE0 \uAC00\uB294, \uC218\uC90D\uC74C\uACFC
+      \uB300\uB2F4\uD568 \uC0AC\uC774\uB97C \uC624\uAC00\uB294 \uCE5C\uAD6C\uC608\uC694."
+    grade: 2
+    bodyType: 1
+    traits: 0600000001000000
+    mainColor: {r: 0.8980392, g: 0.54509807, b: 0.68235296, a: 1}
+    subColor: {r: 0.9098039, g: 0.7607843, b: 0.47843137, a: 1}
+    accentColor: {r: 1, g: 0.95686275, b: 0.8627451, a: 1}
+    neutralColor: {r: 0.23921569, g: 0.16862746, b: 0.36862746, a: 1}
+    baseFormId: rouge_base
+    forms:
+    - id: rouge_base
+      name: "\uB8E8\uC988\uB9AC"
+      parentFormId: 
+      tier: 0
+      style: 4
+      recommendedRole: 1
+      description: "\uAE08\uBE5B \uCF00\uC774\uC2A4\uAC00 \uBAB8\uD1B5\uC774 \uB418\uACE0,
+        \uB3CC\uB824 \uC62C\uB77C\uC624\uB294 \uB9BD\uC2A4\uD2F1 \uC2EC\uC774 \uBA38\uB9AC\uC774\uC790
+        \uCC3D\uB05D\uC774 \uB418\uC5C8\uC5B4\uC694. \uB69C\uAED1\uC774 \uB2EB\uD788\uBA74
+        \uC218\uC90D\uAC8C \uC228\uACE0, \uBE44\uD2C0\uC5B4 \uC62C\uB9AC\uBA74 \uB2F9\uB2F9\uD558\uAC8C
+        \uC19F\uC544\uC62C\uB77C\uC694.\n\uC794\uD5A5\uC774\uB85C \uC18C\uD658\uB418\uBA74
+        \uC3D9 \uC19F\uC740 \uBD89\uC740 \uC2EC\uC73C\uB85C \uC801\uC5D0\uAC8C \uC785\uC220
+        \uC790\uAD6D\uC744 \uAFB9 \uCC0D\uC5B4, \uCE5C\uAD6C\uB4E4\uC758 \uACF5\uACA9\uC774
+        \uB354 \uC544\uD504\uAC8C \uB4E4\uC5B4\uAC00\uAC8C \uD574\uC694."
+      portrait: {fileID: 21300000, guid: 84f131d3366f71a4fbc8626e694c1f2e, type: 3}
+      skill:
+        id: skill_rouge_base
+        name: "\uC785\uB9DE\uCDA4 \uD45C\uC2DD"
+        description: "\uB3CC\uB824 \uC62C\uB9B0 \uBD89\uC740 \uC2EC\uC73C\uB85C \uC785\uC220
+          \uC790\uAD6D\uC744 \uAFB9 \uCC0D\uC5B4\uC694. \uC790\uAD6D\uC774 \uB0A8\uC740
+          \uC801\uC740 \uCE5C\uAD6C\uB4E4\uC758 \uACF5\uACA9\uC744 \uB354 \uC544\uD504\uAC8C
+          \uB9DE\uC544\uC694.\n7\uCD08\uB9C8\uB2E4 \uACF5\uACA9 \uB300\uC0C1 \uC8FC\uBCC0\uC758
+          \uC801\uC5D0\uAC8C \uD45C\uC2DD\uC744 \uB0A8\uACA8 5\uCD08 \uB3D9\uC548
+          \uBC1B\uB294 \uD53C\uD574\uB97C 30% \uB298\uB824\uC694."
+        castText: "\uCABD! \uC5EC\uAE30 \uCC1C\uD588\uC5B4."
+        trigger: 1
+        cooldown: 7
+        initialDelay: 2
+        target: 4
+        radius: 0.5
+        effects:
+        - type: 7
+          value: 30
+          duration: 5
+          count: 0
+        vfx: vfx_lipstick_heart
+      attack: 10.5
+      hp: 113
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.85
+      summonCost: 4
+      lifetime: 13
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: rouge_velvet
+      name: "\uBCA8\uBCB3 \uB8E8\uC988\uB9AC"
+      parentFormId: rouge_base
+      tier: 1
+      style: 3
+      recommendedRole: 0
+      description: "\uB9E4\uD2B8\uD55C \uBCA8\uBCB3\uC73C\uB85C \uB2E4\uC2DC \uD0DC\uC5B4\uB09C
+        \uB8E8\uC988\uB9AC\uB294, \uD55C\uBC88 \uADF8\uC740 \uC120\uC744 \uC808\uB300
+        \uBC88\uC9C0\uC9C0 \uC54A\uAC8C \uB0A8\uACA8\uC694. \uCF00\uC774\uC2A4\uC758
+        \uD68C\uC804 \uC7A5\uCE58\uB97C \uC870\uC900\uACBD\uCC98\uB7FC \uB3CC\uB824
+        \uAC70\uB9AC\uB97C \uC7AC\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C \uC11C\uBA74
+        \uBA40\uB9AC \uC788\uB294 \uC801\uC5D0\uAC8C \uC9D9\uC740 \uC785\uC220 \uC790\uAD6D\uC744
+        \uD55C \uC810 \uCC0D\uC5B4, \uB2E8\uC228\uC5D0 \uC9C0\uC6CC \uB0B4\uC694."
+      portrait: {fileID: 21300000, guid: 78b4e9b73747aa5448264777eadaedff, type: 3}
+      skill:
+        id: skill_rouge_velvet
+        name: "\uBCA8\uBCB3 \uB9C8\uBB34\uB9AC"
+        description: "\uBCA8\uBCB3 \uB9BD\uC2A4\uD2F1\uC740 \uD55C\uBC88 \uADF8\uC740
+          \uC120\uC774 \uC808\uB300 \uBC88\uC9C0\uC9C0 \uC54A\uC544\uC694. \uC57D\uD574\uC9C4
+          \uC801\uC77C\uC218\uB85D \uC9D9\uC740 \uC785\uC220 \uC790\uAD6D\uC73C\uB85C
+          \uB2E8\uC228\uC5D0 \uC9C0\uC6CC \uB0B4\uC694.\n\uCCB4\uB825\uC774 30% \uC774\uD558\uC778
+          \uC801\uC5D0\uAC8C \uC8FC\uB294 \uD53C\uD574\uAC00 60% \uB298\uC5B4\uB098\uC694."
+        castText: "\uBC88\uC9C0\uC9C0 \uC54A\uAC8C, \uAE54\uB054\uD558\uAC8C."
+        trigger: 0
+        cooldown: 0
+        initialDelay: 0
+        target: 0
+        radius: 0.6
+        effects:
+        - type: 15
+          value: 60
+          duration: 0
+          count: 0
+        vfx: vfx_kiss_burst
+      attack: 32.5
+      hp: 127
+      attackInterval: 1.5
+      range: 2.3
+      arcDegrees: 40
+      moveSpeed: 0.83
+      summonCost: 7
+      lifetime: 12
+      clueLevel: 5
+      materials:
+      - itemId: mat_lace
+        count: 10
+      - itemId: mat_wax
+        count: 8
+      - itemId: mat_cloth
+        count: 6
+      conditions:
+      - type: 0
+        target: 8
+      - type: 2
+        target: 15
+    - id: rouge_gloss
+      name: "\uAE00\uB85C\uC2A4 \uB8E8\uC988\uB9AC"
+      parentFormId: rouge_base
+      tier: 1
+      style: 2
+      recommendedRole: 1
+      description: "\uCD09\uCD09\uD558\uAC8C \uB179\uC544 \uAE00\uB85C\uC2A4\uAC00
+        \uB41C \uB8E8\uC988\uB9AC\uC608\uC694. \uBC18\uC9DD\uC774\uB294 \uBAB8\uC5D0\uC11C
+        \uB048\uC801\uD55C \uAD11\uD0DD\uC774 \uB69D\uB69D \uD758\uB7EC\uB0B4\uB824\uC694.\n\uC794\uD5A5\uC774\uB85C
+        \uC18C\uD658\uB418\uBA74 \uBBF8\uB044\uB7EC\uC9C0\uB4EF \uB2E4\uAC00\uAC00
+        \uB048\uC801\uD55C \uAD11\uD0DD\uC744 \uCE60\uD574, \uC801\uC758 \uBC1C\uC744
+        \uBC14\uB2E5\uC5D0 \uAF2D \uBD99\uC5EC \uB46C\uC694."
+      portrait: {fileID: 21300000, guid: 090826545422afa438b0adffc3b240e6, type: 3}
+      skill:
+        id: skill_rouge_gloss
+        name: "\uAD11\uD0DD \uBC18\uC0AC"
+        description: "\uCD09\uCD09\uD55C \uAD11\uD0DD\uC774 \uBE5B\uC744 \uD295\uACA8
+          \uB0B4\uC694. \uC801\uC744 \uC4F0\uB7EC\uB728\uB9AC\uBA74 \uBC18\uC0AC\uB41C
+          \uBE5B\uC774 \uC801 \uC0AC\uC774\uB97C \uD280\uC5B4 \uB2E4\uB2C8\uACE0,
+          \uD758\uB7EC\uB0B4\uB9B0 \uAE00\uB85C\uC2A4\uC5D0 \uBC1C\uC774 \uB048\uC801\uD558\uAC8C
+          \uBD99\uC5B4\uC694.\n\uC801\uC744 \uC4F0\uB7EC\uB728\uB9AC\uBA74(2\uCD08\uC5D0
+          \uD55C \uBC88\uAE4C\uC9C0) \uC801 \uC0AC\uC774\uB97C 4\uBC88 \uD280\uB294
+          \uACF5\uACA9\uB825 130% \uC5F0\uC1C4 \uD53C\uD574\uB97C \uC8FC\uACE0, \uACF5\uACA9
+          \uB300\uC0C1 \uC8FC\uBCC0\uC758 \uC801\uC744 3\uCD08 \uB3D9\uC548 45% \uB290\uB9AC\uAC8C
+          \uB9CC\uB4E4\uC5B4\uC694."
+        castText: "\uBC18\uC9DD, \uBBF8\uB044\uB7EC\uC838!"
+        trigger: 4
+        cooldown: 2
+        initialDelay: 0
+        target: 4
+        radius: 0.6
+        effects:
+        - type: 16
+          value: 1.3
+          duration: 0
+          count: 4
+        - type: 3
+          value: 0.45
+          duration: 3
+          count: 0
+        vfx: vfx_gloss_shine
+      attack: 18.3
+      hp: 186
+      attackInterval: 1
+      range: 1.6
+      arcDegrees: 72
+      moveSpeed: 0.93
+      summonCost: 7
+      lifetime: 13
+      clueLevel: 5
+      materials:
+      - itemId: mat_wax
+        count: 14
+      - itemId: mat_lace
+        count: 8
+      conditions:
+      - type: 1
+        target: 25
+      - type: 2
+        target: 15
+    costumes: []
+  - id: lalabell
+    name: "\uB77C\uB77C\uBCA8"
+    species: "\uC624\uB974\uACE8\uC871"
+    origin: "\uB9C8\uC9C0\uB9C9 \uC74C\uC774 \uACE0\uC7A5 \uB09C \uC624\uB974\uACE8"
+    personality: "\uB9C8\uC9C0\uB9C9 \uC74C\uC774 \uACE0\uC7A5 \uB09C \uC624\uB974\uACE8\uC774\uC5D0\uC694.
+      \uD0DC\uC5FD\uC744 \uAC10\uC73C\uBA74 \uB204\uAD6C\uBCF4\uB2E4 \uC544\uB984\uB2E4\uC6B4
+      \uC648\uCE20\uB97C \uC5F0\uC8FC\uD558\uC9C0\uB9CC, \uACE1\uC758 \uB05D\uC5D0
+      \uB2E4\uB2E4\uB974\uBA74 \uC5B8\uC81C\uB098 \uBA48\uCE6B\uD558\uBA70 \uC228\uC744
+      \uACE0\uB974\uC9C0\uC694. \uB9C8\uC9C0\uB9C9 \uC74C\uC744 \uC5F0\uC8FC\uD558\uBA74
+      \uBAA8\uB4E0 \uAC83\uC774 \uB05D\uB098 \uBC84\uB9B4\uAE4C \uBD10 \uB450\uB835\uAC70\uB4E0\uC694.\n\uADF8\uB798\uC11C
+      \uB77C\uB77C\uBCA8\uC758 \uB178\uB798\uB294 \uB298 \uB05D\uB098\uC9C0 \uC54A\uC740
+      \uCC44 \uB9F4\uB3CC\uC544\uC694. \uADF8 \uAE34 \uC5EC\uC6B4\uC774 \uCE5C\uAD6C\uB4E4\uC758
+      \uB4F1\uC744 \uC624\uB798\uB3C4\uB85D \uB2E4\uC815\uD558\uAC8C \uBC00\uC5B4
+      \uC900\uB2F5\uB2C8\uB2E4."
+    grade: 4
+    bodyType: 2
+    traits: 0300000002000000
+    mainColor: {r: 0.76862746, g: 0.69803923, b: 0.9490196, a: 1}
+    subColor: {r: 0.9490196, g: 0.72156864, b: 0.8156863, a: 1}
+    accentColor: {r: 0.9490196, g: 0.76862746, b: 0.41960785, a: 1}
+    neutralColor: {r: 1, g: 0.95686275, b: 0.8627451, a: 1}
+    baseFormId: lala_base
+    forms:
+    - id: lala_base
+      name: "\uB77C\uB77C\uBCA8"
+      parentFormId: 
+      tier: 0
+      style: 5
+      recommendedRole: 0
+      description: "\uC624\uB974\uACE8\uC758 \uD68C\uC804\uD310\uC774 \uCE58\uB9DB\uC790\uB77D\uCC98\uB7FC
+        \uBE59\uAE00 \uB3C4\uB294 \uD558\uCCB4\uAC00 \uB418\uACE0, \uB4F1\uC758 \uD0DC\uC5FD
+        \uC5F4\uC1E0\uB294 \uC2EC\uC7A5\uCC98\uB7FC \uB611\uB531\uC774\uBA70 \uAC10\uACA8\uC694.
+        \uBE57\uC0B4 \uAC19\uC740 \uC74C\uD310\uACFC \uC791\uC740 \uD540\uB4E4\uC774
+        \uB178\uB798\uD558\uB294 \uBAA9\uC18C\uB9AC\uC608\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uB05D\uB098\uC9C0 \uC54A\uB294 \uC790\uC7A5\uAC00\uB85C \uC218\uC120\uC810\uC758
+        \uC0C1\uCC98\uB97C \uC5B4\uB8E8\uB9CC\uC838, \uC2A4\uB974\uB974 \uC544\uBB3C\uAC8C
+        \uD574\uC694."
+      portrait: {fileID: 21300000, guid: 9c319423b42dc8e428e458077c89d17c, type: 3}
+      skill:
+        id: skill_lala_base
+        name: "\uC790\uC7A5\uAC00"
+        description: "\uD0DC\uC5FD\uC744 \uAC10\uC73C\uBA74 \uB05D\uB098\uC9C0 \uC54A\uB294
+          \uC790\uC7A5\uAC00\uAC00 \uD758\uB7EC\uB098\uC640\uC694. \uB178\uB798\uAC00
+          \uB2FF\uB294 \uACF3\uB9C8\uB2E4 \uC218\uC120\uC810\uC758 \uC0C1\uCC98\uAC00
+          \uC2A4\uB974\uB974 \uC544\uBB3C\uC5B4\uC694.\n15\uCD08\uB9C8\uB2E4 \uC218\uC120\uC810
+          \uB0B4\uAD6C\uB3C4\uB97C \uACF5\uACA9\uB825 300%\uB9CC\uD07C \uD68C\uBCF5\uD558\uACE0,
+          6\uCD08 \uB3D9\uC548 \uCD08\uB2F9 \uACF5\uACA9\uB825 60%\uC529 \uD68C\uBCF5\uD574\uC694."
+        castText: "\uB77C- \uB77C- \uB77C-\u2026"
+        trigger: 1
+        cooldown: 15
+        initialDelay: 5
+        target: 1
+        radius: 0.6
+        effects:
+        - type: 1
+          value: 3
+          duration: 0
+          count: 0
+        - type: 19
+          value: 0.6
+          duration: 6
+          count: 0
+        vfx: vfx_music_notes
+      attack: 14.2
+      hp: 157
+      attackInterval: 1.1
+      range: 1.4
+      arcDegrees: 100
+      moveSpeed: 0.8
+      summonCost: 6
+      lifetime: 14
+      clueLevel: 0
+      materials: []
+      conditions: []
+    - id: lala_waltz
+      name: "\uC648\uCE20 \uB77C\uB77C\uBCA8"
+      parentFormId: lala_base
+      tier: 1
+      style: 4
+      recommendedRole: 1
+      description: "\uBA48\uCD98 \uC904 \uC54C\uC558\uB358 \uD0DC\uC5FD\uC774 \uB2E4\uC2DC
+        \uAC10\uAE30\uACE0, \uB77C\uB77C\uBCA8\uC740 \uD68C\uC804\uD310 \uC704\uC5D0\uC11C
+        \uC648\uCE20\uB97C \uCD94\uAE30 \uC2DC\uC791\uD588\uC5B4\uC694. \uD55C \uBC14\uD034
+        \uB3CC \uB54C\uB9C8\uB2E4 \uC74C\uD45C\uAC00 \uB9AC\uBCF8\uCC98\uB7FC \uD480\uB824
+        \uB098\uC640\uC694.\n\uC794\uD5A5\uC774\uB85C \uC18C\uD658\uB418\uBA74 \uC801\uB4E4\uC744
+        \uC648\uCE20 \uC18D\uC73C\uB85C \uB04C\uC5B4\uBAA8\uC544, \uCE5C\uAD6C\uB4E4\uC774
+        \uD55C\uAEBC\uBC88\uC5D0 \uACF5\uACA9\uD560 \uBB34\uB300\uB97C \uB9CC\uB4E4\uC5B4
+        \uC918\uC694."
+      portrait: {fileID: 21300000, guid: bf1c5b4914af9d74aa0ef6297e34eb04, type: 3}
+      skill:
+        id: skill_lala_waltz
+        name: "\uD68C\uC804 \uC648\uCE20"
+        description: "\uBA48\uCD98 \uC904 \uC54C\uC558\uB358 \uD0DC\uC5FD\uC774 \uB2E4\uC2DC
+          \uAC10\uAE30\uACE0, \uD68C\uC804\uD310 \uC704\uC5D0\uC11C \uC648\uCE20\uAC00
+          \uC2DC\uC791\uB3FC\uC694. \uB9AC\uBCF8\uCC98\uB7FC \uD480\uB824 \uB098\uC628
+          \uC74C\uD45C\uAC00 \uC801\uB4E4\uC744 \uCDA4 \uC18D\uC73C\uB85C \uB04C\uC5B4\uB4E4\uC5EC\uC694.\n9\uCD08\uB9C8\uB2E4
+          \uC8FC\uBCC0\uC758 \uC801\uC744 \uD55C\uB370 \uB04C\uC5B4\uB2F9\uAE30\uACE0,
+          3\uCD08 \uB3D9\uC548 40% \uB290\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4\uC694."
+        castText: "\uD558\uB098, \uB458, \uC14B, \uBE59\uAE00!"
+        trigger: 1
+        cooldown: 9
+        initialDelay: 2
+        target: 3
+        radius: 0.8
+        effects:
+        - type: 6
+          value: 0.35
+          duration: 0
+          count: 0
+        - type: 3
+          value: 0.4
+          duration: 3
+          count: 0
+        vfx: vfx_waltz_ribbon
+      attack: 17.8
+      hp: 191
+      attackInterval: 1
+      range: 1.4
+      arcDegrees: 90
+      moveSpeed: 0.88
+      summonCost: 7
+      lifetime: 14
+      clueLevel: 5
+      materials:
+      - itemId: mat_spring
+        count: 6
+      - itemId: mat_lace
+        count: 10
+      - itemId: mat_ribbon
+        count: 12
+      conditions:
+      - type: 1
+        target: 30
+      - type: 2
+        target: 20
+    - id: lala_finale
+      name: "\uD53C\uB0A0\uB808 \uB77C\uB77C\uBCA8"
+      parentFormId: lala_base
+      tier: 1
+      style: 3
+      recommendedRole: 0
+      description: "\uADF8\uD1A0\uB85D \uB450\uB824\uC6CC\uD558\uB358 \uB9C8\uC9C0\uB9C9
+        \uC74C\uC744, \uB77C\uB77C\uBCA8\uC740 \uCE5C\uAD6C\uB4E4\uC744 \uC9C0\uD0A4\uAE30
+        \uC704\uD574 \uCC98\uC74C\uC73C\uB85C \uC5F0\uC8FC\uD558\uAE30\uB85C \uD588\uC5B4\uC694.
+        \uC74C\uD310\uC758 \uB9C8\uC9C0\uB9C9 \uBE57\uC0B4\uC774 \uC740\uBE5B \uD65C\uCC98\uB7FC
+        \uAE38\uAC8C \uBED7\uC5B4 \uB098\uC654\uC9C0\uC694.\n\uC9C0\uD0B4\uC774\uB85C
+        \uC11C\uBA74 \uBA40\uB9AC \uC788\uB294 \uC801\uC5D0\uAC8C \uB2E8 \uD55C \uC74C\uC758
+        \uD53C\uB0A0\uB808\uB97C \uC6B8\uB824, \uAC00\uC7A5 \uAE4A\uC740 \uACF3\uAE4C\uC9C0
+        \uAFF0\uB6AB\uC5B4\uC694."
+      portrait: {fileID: 21300000, guid: 830d3c57959649e46bc6ea0914bbe623, type: 3}
+      skill:
+        id: skill_lala_finale
+        name: "\uB9C8\uC9C0\uB9C9 \uC74C"
+        description: "\uADF8\uD1A0\uB85D \uB450\uB824\uC6CC\uD558\uB358 \uB9C8\uC9C0\uB9C9
+          \uC74C\uC744, \uCE5C\uAD6C\uB4E4\uC744 \uC9C0\uD0A4\uAE30 \uC704\uD574
+          \uCC98\uC74C\uC73C\uB85C \uC5F0\uC8FC\uD574\uC694. \uC218\uC120\uC810\uC774
+          \uBB34\uB108\uC9C0\uB824\uB294 \uC21C\uAC04 \uB2E8 \uD55C \uC74C\uC774
+          \uC628 \uAC70\uB9AC\uC5D0 \uC6B8\uB824 \uD37C\uC838\uC694.\n\uC218\uC120\uC810
+          \uB0B4\uAD6C\uB3C4\uAC00 30% \uC544\uB798\uB85C \uB5A8\uC5B4\uC9C0\uBA74(\uC804\uD22C\uB9C8\uB2E4
+          \uD55C \uBC88) \uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uACF5\uACA9\uB825 1200%
+          \uD53C\uD574\uB97C \uC8FC\uACE0, 1\uCD08 \uB3D9\uC548 \uAE30\uC808\uC2DC\uCF1C\uC694."
+        castText: "\uC774\uAC8C\u2026 \uB098\uC758 \uB9C8\uC9C0\uB9C9 \uC74C\uC774\uC57C."
+        trigger: 7
+        cooldown: 0
+        initialDelay: 0
+        target: 7
+        radius: 3
+        effects:
+        - type: 0
+          value: 12
+          duration: 0
+          count: 0
+        - type: 4
+          value: 0
+          duration: 1
+          count: 0
+        vfx: vfx_sound_ring
+      attack: 40.8
+      hp: 159
+      attackInterval: 1.5
+      range: 2.3
+      arcDegrees: 40
+      moveSpeed: 0.83
+      summonCost: 8
+      lifetime: 12
+      clueLevel: 5
+      materials:
+      - itemId: mat_spring
+        count: 8
+      - itemId: mat_thread
+        count: 12
+      - itemId: mat_moonlight
+        count: 2
+      conditions:
+      - type: 0
+        target: 12
+      - type: 3
+        target: 20
+      - type: 2
+        target: 25
+    costumes: []

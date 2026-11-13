@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dbd830081854e42823681f3131b2c8, type: 3}
+  m_Name: ShopDatabase
+  m_EditorClassIdentifier: IdleGame::IdleGame.ShopDatabase
+  shops:
+  - id: shop_normal
+    name: "\uC218\uC120\uC810 \uC0C1\uC810"
+    description: "\uC78A\uD78C \uCE5C\uAD6C\uB4E4\uC744 \uACE0\uCE60 \uC7AC\uB8CC\uB97C
+      \uD314\uC544\uC694.\n\uAD6C\uB9E4 \uD69F\uC218\uB294 \uB9E4\uC77C \uC0C8\uBCBD
+      5\uC2DC\uC5D0 \uB2E4\uC2DC \uCC44\uC6CC\uC838\uC694."
+    products:
+    - id: normal_cloth
+      name: "\uC218\uC120 \uCC9C"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_cloth
+        amount: 5
+      costumeId: 
+      currency: 0
+      price: 400
+      dailyLimit: 3
+      totalLimit: 0
+    - id: normal_ribbon
+      name: "\uB9AC\uBCF8 \uC870\uAC01"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_ribbon
+        amount: 5
+      costumeId: 
+      currency: 0
+      price: 300
+      dailyLimit: 3
+      totalLimit: 0
+    - id: normal_wax
+      name: "\uCD1B\uB18D \uBC29\uC6B8"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_wax
+        amount: 5
+      costumeId: 
+      currency: 0
+      price: 300
+      dailyLimit: 3
+      totalLimit: 0
+    - id: normal_thread
+      name: "\uAE30\uC5B5\uC758 \uC2E4"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_thread
+        amount: 1
+      costumeId: 
+      currency: 1
+      price: 30
+      dailyLimit: 3
+      totalLimit: 0
+    - id: normal_lace
+      name: "\uB808\uC774\uC2A4 \uC870\uAC01"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_lace
+        amount: 1
+      costumeId: 
+      currency: 1
+      price: 30
+      dailyLimit: 3
+      totalLimit: 0
+    - id: normal_rib
+      name: "\uC6B0\uC0B0\uC0B4"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_rib
+        amount: 1
+      costumeId: 
+      currency: 1
+      price: 30
+      dailyLimit: 3
+      totalLimit: 0
+  - id: shop_event
+    name: "\uBCC4\uC774 \uBA38\uBB38 \uBC24 \uC0B0\uCC45"
+    description: "\uC2A4\uD14C\uC774\uC9C0\uB97C \uD074\uB9AC\uC5B4\uD558\uACE0 \uBAA8\uC740
+      \uBCC4\uBE5B \uC0AC\uD0D5\uC73C\uB85C\n\uBC24 \uC0B0\uCC45\uC5D0\uC11C\uB9CC
+      \uB9CC\uB0A0 \uC218 \uC788\uB294 \uBB3C\uAC74\uACFC \uC758\uC0C1\uC744 \uBC14\uAFD4
+      \uAC00\uC138\uC694."
+    products:
+    - id: event_suitcase
+      name: "\uC5EC\uD589 \uAC00\uBC29 \uC870\uAC01"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_suitcase
+        amount: 1
+      costumeId: 
+      currency: 2
+      price: 20
+      dailyLimit: 5
+      totalLimit: 0
+    - id: event_moonlight
+      name: "\uB2EC\uBE5B \uC870\uAC01"
+      rewards:
+      - type: 1
+        currency: 0
+        itemId: mat_moonlight
+        amount: 1
+      costumeId: 
+      currency: 2
+      price: 60
+      dailyLimit: 0
+      totalLimit: 10
+    - id: event_jjak_sleepcap
+      name: "\uC218\uBA74\uBAA8\uC790 \uC9DD\uC9DD\uC774"
+      rewards: []
+      costumeId: jjak_sleepcap
+      currency: 2
+      price: 150
+      dailyLimit: 0
+      totalLimit: 1
+    - id: event_jjak_festival
+      name: "\uCD95\uC81C \uC9C0\uD718\uC790 \uC9DD\uC9DD\uC774"
+      rewards: []
+      costumeId: jjak_festival
+      currency: 2
+      price: 300
+      dailyLimit: 0
+      totalLimit: 1
