@@ -72,6 +72,7 @@
 | `CNT_CharacterAppearance_Jjakjjak_Nightkeeper` (외형) · `CNT_CharacterAppearance_Jjakjjak_Caravan` (개화 B) · `CNT_CharacterAppearance_Rainy_AlleyLantern` · `CNT_CharacterAppearance_Mongsil_Wax` | 🟡 | P1 | Review / Draft (#43) | 카드 · 구조 검토 기록 — 검수 = `ART_ReviewSheet` |
 | `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Stage_Chapter2` | 🔴 | P1 | Review — ③ 8건 대기 (첫 양산 묶음 D-67) | 2장 비 골목 — 날씨 · 기믹 "기다림" · 망각체 3 · 구조 2 · 장 묶음 체크리스트(→ `_Templates/_Template_Chapter`) |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
