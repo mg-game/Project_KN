@@ -40,5 +40,13 @@
     "actual combat reward settlement and stage state",
     "real inventory/material icons/receipt data",
     "safe areas, TMP, physical devices, performance"
-  ]
+  ],
+  "stageContext": {
+    "source": "Shared browser currentStage; Chapter 1 names from CNT_Stage_Chapter1 §2.3.",
+    "entry": "Combat sheet alerts inherit the current stage. External fixture selector starts 1-4/1-10.",
+    "restart": "Preserve the stage of the result being reviewed.",
+    "routes": "Clear/boss +1; repeat/fail same; stepback max(1,stage-1); retreat stays for report.",
+    "display": "Home, formation, pause, failure, growth return share stage labels. Unknown chapter places use generic stage N.",
+    "limits": "Display context only; combat layouts, threat data, waves, recommended power, saves and chapter unlocks remain fixtures."
+  }
 }

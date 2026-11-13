@@ -90,7 +90,7 @@
   function openPause(view='settings',focusId=null){
     focusId=focusId||(view==='help'?'back-pause':view==='retreat'?'cancel-retreat':'resume-battle');
     clearAim();sheet=false;paused=true;modalView=view;
-    const summary=`1-4 우산 보관소 · Wave ${battle==='boss'||battle==='surge'?'4':'2'}/4 · ${battle==='critical'?'0:18':'2:14'}`;
+    const summary=`${stageLabel()} · Wave ${battle==='boss'||battle==='surge'?'4':'2'}/4 · ${battle==='critical'?'0:18':'2:14'}`;
     let content='';
     if(view==='settings'){
       content=`<p class="dialog-eyebrow">잠시 쉬어 가요</p><h2>수선점은 잠시 쉬는 중</h2><p class="battle-summary">${summary}</p><div class="pause-settings"><div class="setting-row"><span>전투 속도</span><div class="speed-options"><button id="pause-speed-1" aria-pressed="${speed===1}">×1</button><button id="pause-speed-2" aria-pressed="${speed===2}" ${battle==='locked'?'aria-disabled="true"':''}>${battle==='locked'?lock:'×2'}</button></div></div><div class="setting-row"><span>자동 소환</span><button class="ui-switch" id="pause-auto" role="switch" aria-checked="${auto}" aria-label="자동 소환">${auto?'켜짐':'꺼짐'}</button></div><div class="setting-row"><span>수선등 자동 투자</span><button class="ui-switch" id="pause-invest" role="switch" aria-checked="${autoInvest}" aria-label="수선등 자동 투자">${autoInvest?'켜짐':'꺼짐'}</button></div></div><button class="dialog-link" id="open-help">탭 · 홀드 조작 도움말 <span>›</span></button><button class="dialog-primary" id="resume-battle">계속 지키기</button><button class="dialog-retreat" id="open-retreat">이번 전투에서 물러나기</button>`;
@@ -223,6 +223,6 @@
       else if(!e.shiftKey&&(document.activeElement===last||!dialog.contains(document.activeElement))){e.preventDefault();first.focus()}
     }
   },true);
-  window.KNUIReviewSnapshot=()=>({echo,paused,auto,autoInvest,lastSummon,slots:[...slots],aiming:!!aim?.active});
+  window.KNUIReviewSnapshot=()=>({stage:currentStage,echo,paused,auto,autoInvest,lastSummon,slots:[...slots],aiming:!!aim?.active});
   home();
 })();
