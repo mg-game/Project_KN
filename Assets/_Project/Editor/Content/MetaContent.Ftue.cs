@@ -140,7 +140,7 @@ namespace IdleGame.EditorTools
 
             // 11 편성 — 이 단계가 시작되면 편성·시너지가 열린다 (FtueStep 11). 우두커니 + 짝짝이 = "기다림의 끝"
             s.Add(Step(FtueFormationStepId,
-                "새 친구 우두커니를 지킴이로 세워 봐요\n편성에서 친구를 끌어 빈 방위에 놓아요",
+                "새 친구 레이니를 지킴이로 세워 봐요\n편성에서 친구를 끌어 빈 방위에 놓아요",
                 MetaCondition.Of(MetaConditionType.GuardiansPlaced, 4), target: CoachTargets.TabFormation));
 
             // 12 시너지 보기 — 편성 탭 팀 시너지 패널 → 상세 팝업 (UI가 MetaFlags.SynergyDetailViewed를 알린다)

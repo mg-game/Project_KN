@@ -17,6 +17,7 @@ namespace IdleGame.Tests
     ///     이벤트 넷 · 수첩 · 다시 만난 날 · 쿠폰(해시만) · 축복 · 첫 주 · 작은 선물 · 반딧불 · 응원 · 보스 힌트 · 백업 알림 · 입장권 모아 두기
     ///   · 확장 항목은 끈 채로 싣는다 (수첩 칸 · 축복 비움, 잃어버린 상자 0, 반딧불 0, 입장권 0) — 켠 내용(allStretch)도 예산 안
     ///   · 바구니 별조각 줄 천장 1.5 + 16시간 단계, 전투력 구간 151, 해요체 금지어, MetaDataBuilder.Validate 오류 · 경고 0
+    ///   · 캐릭터 화면 이름 (I-7 · D-39 S1): 계보 id는 그대로, 이름은 설정집 이름 · 옛 이름이 문구에 남지 않음
     /// 에디터 어셈블리(IdleGame.Editor)는 시험 어셈블리가 참조하지 않아 불러온 어셈블리에서 찾는다 (ContentSourceTests와 같은 방식).
     /// </summary>
     public class ContentMetaTests
@@ -153,7 +154,7 @@ namespace IdleGame.Tests
             // 찾은 뒤 설명 (A.1 'Done descriptions', AchievementDef.doneText) — 숨은 기록에만
             string[] done =
             {
-                "비 오는 스테이지에서 우두커니가 지킨 채 클리어했어요",
+                "비 오는 스테이지에서 레이니가 지킨 채 클리어했어요",
                 "수선점이 한 번도 다치지 않고 챕터 보스를 물리쳤어요",
                 "한 스테이지에서 불을 세 번 밝혔어요",
                 "짝짝이의 형태 11종을 모두 해금했어요",
@@ -624,6 +625,61 @@ namespace IdleGame.Tests
             Assert.LessOrEqual(rec10 * power.comfortableRatio, 1017, "시작 편성(1,017)은 1-10까지 '여유'");
         }
 
+        // ───────────────────────── 캐릭터 화면 이름 (I-7 · D-39 S1 · KN_M1_DevBrief §0.4) ─────────────────────────
+
+        /// <summary>계보 id(세이브 키 — 바꾸지 않음) → 화면 이름 (설정집 이름)</summary>
+        static readonly Dictionary<string, string> LineageDisplayNames = new()
+        {
+            { "jjakjjak", "짝짝이" },
+            { "ttokdan", "똑단이" },
+            { "chalkak", "키키" },
+            { "mongdang", "몽실" },
+            { "udukeoni", "레이니" },
+            { "rouge", "루루팝" },
+            { "lalabell", "엘리제" },
+        };
+
+        /// <summary>화면에 남으면 안 되는 옛 이름 (I-7 전 코드 이름)</summary>
+        static readonly string[] OldDisplayNames = { "찰칵이", "몽당이", "우두커니", "루즈리", "라라벨" };
+
+        /// <summary>옛 이름 '우두커니'가 일반 부사로 쓰인 자리 (레이니 성격 문구 "구석에 우두커니 서서") — 이름 검사에서 뺀다</summary>
+        const string UdukeoniAdverb = "우두커니 서";
+
+        [Test]
+        public void Lineages_UseSettingBookNames_IdsUnchanged()
+        {
+            var lineages = BuildContent().Characters.lineages;
+            CollectionAssert.AreEquivalent(LineageDisplayNames.Keys, lineages.Select(l => l.id), "계보 id = 세이브 키 — 그대로");
+            foreach (var lineage in lineages)
+            {
+                string expected = LineageDisplayNames[lineage.id];
+                Assert.AreEqual(expected, lineage.name, $"{lineage.id} 계보 이름");
+                var baseForm = lineage.forms.FirstOrDefault(f => f.id == lineage.baseFormId);
+                Assert.IsNotNull(baseForm, $"{lineage.id} 기본형");
+                Assert.AreEqual(expected, baseForm.name, $"{lineage.id} 기본형 이름 = 계보 이름");
+            }
+        }
+
+        [Test]
+        public void Copy_HasNoOldCharacterNames()
+        {
+            var content = BuildContent();
+            var found = new List<string>();
+            WalkText(content.Characters.lineages, "lineages", found, 0, FindOldNames);
+            WalkText(content.Synergies.synergies, "synergies", found, 0, FindOldNames);
+            WalkText(Build(true, content), "meta", found, 0, FindOldNames);
+            CollectionAssert.IsEmpty(found, "I-7: 계보 · 형태 · 스킬 · 조합 · 메타 문구에 옛 이름(찰칵이 · 몽당이 · 우두커니 · 루즈리 · 라라벨) 없음");
+        }
+
+        static void FindOldNames(string path, string text, List<string> found)
+        {
+            string checkedText = text.Replace(UdukeoniAdverb, string.Empty);
+            foreach (var name in OldDisplayNames)
+            {
+                if (checkedText.Contains(name)) found.Add($"{path}: '{name}' — {text}");
+            }
+        }
+
         // ───────────────────────── 도우미 ─────────────────────────
 
         const string MaterialThread = "mat_thread";
@@ -727,6 +783,27 @@ namespace IdleGame.Tests
             var type = value.GetType();
             if (type.IsPrimitive || type.IsEnum || type.Namespace != typeof(MetaDatabase).Namespace) return;
             foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance)) Walk(field.GetValue(value), $"{path}.{field.Name}", found, depth + 1);
+        }
+
+        /// <summary>콘텐츠의 문자열을 모두 훑어 check에 넘긴다 (Walk와 같은 규칙 — 에셋 참조 · 기본 형식은 건너뜀)</summary>
+        static void WalkText(object value, string path, List<string> found, int depth, Action<string, string, List<string>> check)
+        {
+            if (value == null || depth > 8) return;
+            if (value is string text)
+            {
+                check(path, text, found);
+                return;
+            }
+            if (value is Object && depth > 0) return;
+            if (value is IEnumerable list)
+            {
+                int index = 0;
+                foreach (var item in list) WalkText(item, $"{path}[{index++}]", found, depth + 1, check);
+                return;
+            }
+            var type = value.GetType();
+            if (type.IsPrimitive || type.IsEnum || type.Namespace != typeof(MetaDatabase).Namespace) return;
+            foreach (var field in type.GetFields(BindingFlags.Public | BindingFlags.Instance)) WalkText(field.GetValue(value), $"{path}.{field.Name}", found, depth + 1, check);
         }
     }
 
