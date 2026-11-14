@@ -33,7 +33,7 @@
 ## 3. PR을 올리기 전에
 
 - 기능 PR에는 해당 기획서의 "① 현재 구현" 갱신을 같이 넣는다 (D-25).
-- 코드 PR에는 로컬 EditMode 테스트 결과를 붙인다 (D-21). Unity를 돌리지 못했으면 미검증이라고 적는다 (`CONTRIBUTING.md` R7-1).
+- 코드 PR에는 로컬 EditMode 테스트 결과를 붙인다 (D-21). Unity를 돌리지 못했으면 미검증이라고 적는다 (`CONTRIBUTING.md` R7-1). 미검증 코드도 DD 검토 후 머지되고 매주 금요일 통합 확인에서 실행한다 — 깨지면 원인 PR revert (`decisions.md` D-74).
 - PR 양식은 [`.github/pull_request_template.md`](.github/pull_request_template.md)를 따른다.
 
 ## 4. 이 파일을 고치는 법
