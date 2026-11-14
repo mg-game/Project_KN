@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-70) — 살아 있는 대기열 |
 | 작성자 | DD (작업 추가 · 검수 · 완료 처리) · 아트 세션 (진행 · 제출 표시) |
-| 최종 수정 | 2026-11-14 |
+| 최종 수정 | 2026-11-14 (ART-08 · 09 완료 기록) |
 | 관련 문서 | [`ART_CharacterHandoff`](./ART_CharacterHandoff.md) · [`ART_Character_Brief`](./ART_Character_Brief.md) · [`ART_ReviewSheet`](./ART_ReviewSheet.md) · [`ART_M1_Backlog`](./ART_M1_Backlog.md) · [`ART_BattleSpriteSpec`](./ART_BattleSpriteSpec.md) |
 
 > **대표가 아트 세션에 보내는 말은 `아트 큐` 한 마디.** 무엇을 · 어떤 기준으로 · 어디에 올릴지는 전부 이 표에 있다.
@@ -38,5 +38,7 @@
 
 | # | 작업 | 결과 | 기록 |
 |---|---|---|---|
+| - | ART-09 파견 중 모래시계 배지 (64 px) | 채택 — DD 실측 · 육안 (밤 · 양피지 · 24 px) | PR #90 · `Art/Icons/badge_dispatch.png` (백로그 진행분) |
+| - | ART-08 실패 리포트 재도전 아이콘 (128 px) + 기존 4종 재사용 | 채택 — DD 실측 · 육안. 메모: 다른 아이콘보다 장식 적음 (P2) | PR #89 · `Art/Icons/report_retry.png` (백로그 진행분) |
 | - | 2장 망각체 3종 (첨벙이 · 번진 사진 · 녹슨 우산살) | 채택 | PR #84 · [`ART_Enemy_Chapter2`](./ART_Enemy_Chapter2.md) §5 (큐 도입 전) |
 | - | 카라반 · 레이니 2회차 · 몽실 MW2 | 채택 | PR #71 · #75 · [`ART_ReviewSheet`](./ART_ReviewSheet.md) §8 (큐 도입 전) |
