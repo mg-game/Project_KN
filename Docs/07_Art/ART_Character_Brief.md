@@ -31,8 +31,8 @@
 ### 0.3 체형 분산 (가이드 §4 비중 35 / 45 / 20)
 | 유형 | 캐릭터 |
 |---|---|
-| 완전 비인간 마스코트형 | 짝짝이 · 몽실 · 푸딩 경 · 웰리 |
-| 준인간 이형형 | 키키 · 레이니 · 엘리제 · 네임리스 00 · 보틀리 |
+| 완전 비인간 마스코트형 | 짝짝이 · 몽실 · 푸딩 경 · 웰리 · 피피 · 칙폭이 · 글로비 |
+| 준인간 이형형 | 키키 · 레이니 · 엘리제 · 네임리스 00 · 보틀리 · 아홉시 |
 | 미형 인간형 | 루루팝 |
 
 ### 0.4 검수 체크 (가이드 §15에서 시안 단계에 보는 것)
@@ -57,6 +57,10 @@
 | **루루팝** | 유행 지나 버려진 립스틱 | **립스틱 케이스 하체에서 회전하며 올라오는 상체** · 녹은 립스틱 머리 · 큰 입술 · 검은 백조 날개 | 공격할수록 몸이 닳아 짧아진다 | 진홍 / 블랙 / 로즈 골드 | 광역 딜 → 앞으로 기운 실루엣 | `Characters/rouge_*` (립스틱?) |
 | **웰리** [가정] · 2장 | 작아져서 버려진 노란 장화 | 장화 한 짝 = 몸 · 앞코 위 눈 · 입 · **입구에서 뒤집혀 나온 남색 안감 머리** · 옆 고리 팔 1개 · 밑창으로 통통 튐 | 웅덩이만 보면 일단 뛰어든다 | 레몬 옐로 / 남색 / 코랄 | 돌격 → 앞으로 기운 · 앞코가 진행 방향 | 없음 |
 | **보틀리** [가정] · 2장 | 도착하지 못한 유리병 편지 | 둥근 간유리 병 몸 · 코르크 마개 모자 · 병 목의 얼굴 · 안의 말린 편지 + 갇힌 빛 · 편지 끈 팔 2개 + 봉랍 도장 · 오뚝이 흔들 이동 | 자기 편지를 한 번도 열어 본 적이 없다 | 바다유리 연초록 / 크림 / 봉랍 빨강 | 포획 → 둥글고 낮은 무게중심 · 끈 팔 | 없음 |
+| **피피** [가정] · 4장 | 현관문 외시경 (문에 달린 작은 렌즈) | 둥근 황동 테두리 + 볼록 렌즈 몸 · **렌즈 = 큰 눈 하나** · 뚜껑 눈꺼풀 · 나사 꼬리 · 문짝 조각 받침 | 모든 문을 들여다봐야 잠이 온다 | 황동 / 짙은 남색 / 렌즈 하늘빛 | 저격 → 작은 몸 · 한 점(눈)이 크게 | 없음 |
+| **칙폭이** [가정] · 5장 | 태엽 장난감 기관차 | 장난감 기관차 몸 · 보일러 얼굴(헤드라이트 눈) · **등의 큰 태엽 열쇠** · 굴뚝 김 · 빈 화물칸 | 태엽이 풀릴까 봐 멈추지 못한다 | 토마토 빨강 / 크림 / 놋쇠 | 돌격 → 앞으로 낮고 긴 · 진행 방향 뚜렷 | 없음 |
+| **아홉시** [가정] · 5장 | 9시에 멈춘 회중시계 | 열린 회중시계 몸 · **시곗바늘 = 눈썹 표정 (9시)** · 시곗줄 팔 · 꼬리 고리 · 뚜껑 망토 | 누가 시각을 물으면 언제나 9시라고 답한다 | 은회색 / 바랜 금 / 자정 파랑 | 지원 → 원형 · 대칭 · 둥근 몸 | 없음 |
+| **글로비** [가정] · 6장 | 스노우볼 | 유리 돔 몸 + 나무 받침 · 돔 안 눈 마을 · 돔 앞 얼굴 · 옆 태엽 손잡이 팔 | 놀라면 몸 안이 눈보라가 된다 | 눈 흰색 / 겨울 하늘 파랑 / 나무 받침 갈색 | 방어 → 넓고 둥근 · 낮은 무게중심 | 없음 |
 
 ### 캐릭터별 추가 프롬프트 (0.2 뒤에 붙임)
 ```
@@ -70,6 +74,10 @@
 [루루팝] An out-of-fashion lipstick opera diva: the lower body is a lipstick case and the upper body rises out of it with a twist, hair of melted lipstick texture, a simple face with big vivid lips, black swan wing arms and cape. Crimson, black, rose gold. Confident, theatrical. The lipstick's twist-up structure must read before any gothic dress.
 [웰리] A small outgrown yellow rain boot creature: the single rubber boot itself is the whole body, round eyes and a grin on the upper toe cap, the navy boot lining flips out of the opening like a tuft of hair, one side pull-loop works as a little waving hand, no legs - it hops on its sole, a drop of water and mud in the tread. Lemon yellow, navy, coral. Impatient, loud, fearless, jumps into every puddle. Not a person wearing boots.
 [보틀리] A message-in-a-bottle creature: a round frosted sea-glass bottle is the body (frosted and nearly opaque, thick outline, not clear glass), a cork stopper as a little hat, a shy small face on the bottle neck, a rolled letter visible inside with a soft contained glow under it (no flame shape), the letter's string comes out as two arms ending in a red wax seal, a rounded bottom that wobbles like a roly-poly toy, dried water-line stripes. Pale sea-glass green, cream paper, wax-seal red. Shy, slow, careful, never finishes a sentence. Not a person holding a bottle.
+[피피] A door peephole lens creature: a round brass rim with a big convex lens is the whole body, and the lens itself is one huge cute eye whose pupil rolls inside it, the small brass peephole cover works as an eyelid that blinks, a short threaded screw tail behind, no legs - it floats and drags a small piece of wooden door as a shield and stand. Brass, deep navy, sky-blue lens shine. Curious, suspicious, cannot keep a secret. Not a person holding a magnifying glass, not scary.
+[칙폭이] A wind-up toy steam locomotive creature: the tin toy train itself is the whole body, a face on the round boiler front with two headlight eyes and a grin, a big wind-up key on its back, a small white puff cloud from the chimney (no fire), four wheels, pulling one tiny empty freight car behind. Tomato red, cream, brass. Eager, brave, always shouting 'departure!'. Not a person in a conductor hat, no real railway logos.
+[아홉시] A stopped pocket watch creature: an open silver pocket watch is the head and body, the watch face is the face and the two clock hands act like expressive eyebrows (stopped at nine o'clock, a gentle sad look), the watch chain becomes arms and a tail with a ring at the end, the open lid flips back like a little cape. Silver grey, faded gold, midnight blue. Calm, precise, quietly sad. Not a person wearing a watch, thick clock hands readable at small size.
+[글로비] A snow globe creature: the glass dome is the head and body, frosted and nearly opaque with a thick outline (not clear glass), inside it a tiny snowy village scene, and a cute face drawn on the dome front, a short wooden base instead of legs, a small music-box wind-up handle on the side moves like one little arm, snowflakes swirl inside when it is surprised. Snow white, winter sky blue, warm wooden brown. Gentle, nostalgic, stubborn. Not a person holding a snow globe.
 ```
 
 ## 2. 진행
