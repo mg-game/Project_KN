@@ -10,10 +10,10 @@
   "status": "development_reference_not_unity_applied",
   "userAuthorization": "2026-11-13 Git development handoff request; current snapshot only",
   "latestPatch": {
-    "version": "0.8.1",
+    "version": "0.8.4",
     "date": "2026-11-13",
-    "change": "Shared stage labels and stage-aware combat-alert results; combat/save fixtures unchanged.",
-    "checksPassed": 68,
-    "baseCommit": "8f281cf"
+    "baseCommit": "523b8de",
+    "change": "Move focus into explicit growth-sheet entry and restore its live trigger on close without stealing outer review-control focus.",
+    "checksPassed": 86
   }
 }

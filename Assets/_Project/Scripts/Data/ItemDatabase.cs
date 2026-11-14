@@ -32,7 +32,12 @@ namespace IdleGame
     [CreateAssetMenu(fileName = "ItemDatabase", menuName = "IdleGame/Item Database")]
     public class ItemDatabase : ScriptableObject
     {
+        /// <summary>재료 한 종류의 보유 상한 기본값 (I-14 — 임시, 값은 BAL에서 확정)</summary>
+        public const int DefaultCountCap = 999_999;
+
         public List<ItemDef> items = new();
+        [Tooltip("재료 한 종류의 보유 상한 (I-14 · SYS_Economy §2.1 — 임시 999,999, 값은 BAL에서 확정). 0 이하 = 기본값")]
+        public int countCap = DefaultCountCap;
 
         Dictionary<string, ItemDef> _byId;
         Dictionary<ItemGrade, List<ItemDef>> _byGrade;

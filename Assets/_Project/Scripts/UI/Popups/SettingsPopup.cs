@@ -127,7 +127,7 @@ namespace IdleGame.UI
         [SerializeField] Button _fillChestButton;
         [SerializeField] Button _unlockAllButton;
         [SerializeField] Button _ticketsButton;
-        [Tooltip("CR-09 '플레이 기록' (최근 24시간 요약 + [내보내기] — 다시 빌드한 장면에만)")]
+        [Tooltip("[계정 · 데이터] '플레이 기록 보내기' (D-58 #1 — 출시 빌드에도 있음). 최근 24시간 요약 + [내보내기]. 다시 빌드하기 전 장면에서는 개발 탭 버튼을 가리킨다")]
         [SerializeField] Button _playLogButton;
 
         static readonly string[] QualityNames = { "낮음", "보통", "높음" };
@@ -190,6 +190,8 @@ namespace IdleGame.UI
             _resetButton.onClick.AddListener(ConfirmReset);
             _versionText.text = $"버전 {Application.version}";
 
+            // 플레이 기록 보내기 (D-58 #1): 외부 테스터 빌드(Development Build 끔)에서도 쓴다 — 치트와 달리 #if 밖
+            if (_playLogButton != null) _playLogButton.onClick.AddListener(ShowPlayLog);
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
             _devTab.SetActive(true);
             _addGoldButton.onClick.AddListener(AddGold);
@@ -200,7 +202,6 @@ namespace IdleGame.UI
             _fillChestButton.onClick.AddListener(FillChest);
             _unlockAllButton.onClick.AddListener(UnlockAllFeatures);
             _ticketsButton.onClick.AddListener(AddTickets);
-            if (_playLogButton != null) _playLogButton.onClick.AddListener(ShowPlayLog);
 #else
             _devTab.SetActive(false);
 #endif
@@ -715,7 +716,7 @@ namespace IdleGame.UI
                 "초기화", () => GameBootstrap.Instance.ResetData());
         }
 
-        // ───────────── 개발자 메뉴 ─────────────
+        // ───────────── 플레이 기록 보내기 ([계정 · 데이터], D-58 #1) ─────────────
 
         /// <summary>플레이 기록 팝업 제목 · 기록이 없을 때 본문 · 내보내기 (CR-09 §4.4)</summary>
         internal const string PlayLogTitle = "플레이 기록";
@@ -726,9 +727,9 @@ namespace IdleGame.UI
         /// <summary>플레이 기록 팝업 본문 (테스트용 순수 함수): 요약이 비었으면 '아직 기록이 없어요'</summary>
         internal static string PlayLogBody(string summary) => string.IsNullOrWhiteSpace(summary) ? PlayLogEmptyText : summary;
 
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
         /// <summary>
-        /// '플레이 기록' (CR-09, SPEC4 §4.4 — 개발 탭 전용): PlayLog.Summary(24) → 확인 창 (요약 + 튜토리얼 단계 표). 기록이 있으면 [내보내기] =
+        /// '플레이 기록 보내기' (CR-09, SPEC4 §4.4 → D-58 #1: 개발 탭에서 [계정 · 데이터] 탭으로 옮김 — 출시 빌드에도 있음):
+        /// PlayLog.Summary(24) → 확인 창 (요약 + 튜토리얼 단계 표). 기록이 있으면 [내보내기] =
         /// 마지막 500줄을 공유 시트로 (공유할 수 없으면 복사 — '플레이 기록을 복사했어요'). 자동으로 올리는 일은 없다. 읽기 실패는 기록만
         /// </summary>
         static void ShowPlayLog()
@@ -771,6 +772,8 @@ namespace IdleGame.UI
             if (!ShareSheet.TryShare(PlayLogTitle, tail)) UIManager.Instance.ShowToast(PlayLogCopiedText, ToastKind.Success);
         }
 
+        // ───────────── 개발자 메뉴 (치트 — 에디터 / Development Build 전용) ─────────────
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
         static void AddGold()
         {
             double gold = Game.Growth.GoldPerSecond * 600;

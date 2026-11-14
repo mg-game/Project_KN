@@ -434,6 +434,13 @@ namespace IdleGame.UI
         /// <summary>모두 받기 버튼이 0 → 생길 때 0.85 → 1 (0.18초)</summary>
         public const float ClaimAllPop = 0.18f;
         public const float ClaimAllPopFrom = 0.85f;
+        /// <summary>탭 자동 이동 (UI_InGame §4.3 공통 규칙): [모두 받기] 뒤 기다림. 수선 일지 점수 날아감 0.55 + 숫자 튐 0.25 = 0.8초에 여유 0.1</summary>
+        public const float AutoTabDelay = 0.9f;
+        /// <summary>탭 자동 이동 기다림 (움직임 줄이기)</summary>
+        public const float AutoTabDelayReduced = 0.4f;
+        /// <summary>자동 이동으로 도착한 탭 글자 1 → 1.08 → 1 (0.3초, 움직임 줄이기면 없음)</summary>
+        public const float AutoTabPulse = 0.3f;
+        public const float AutoTabPulseScale = 1.08f;
 
         // ───────────── 막힘 흔들기 (M07 · M19 · M56) ─────────────
 

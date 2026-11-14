@@ -72,6 +72,13 @@
 | `CNT_CharacterAppearance_Jjakjjak_Nightkeeper` (외형) · `CNT_CharacterAppearance_Jjakjjak_Caravan` (개화 B) · `CNT_CharacterAppearance_Rainy_AlleyLantern` · `CNT_CharacterAppearance_Mongsil_Wax` | 🟡 | P1 | Review / Draft (#43) | 카드 · 구조 검토 기록 — 검수 = `ART_ReviewSheet` |
 | `CNT_Character_List` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-46 확정 (K-01) | `CharacterDatabase.asset` · `Art/Characters` |
 | `CNT_Stage_Chapter1` | 🔵 | **P0** | ①②③ 완료 · D-34 확정 | `Editor/Content` 스테이지 · 웨이브 · 적 구성 |
+| `CNT_Stage_Chapter2` | 🔵 | P1 | Approved — D-68 (첫 양산 묶음 D-67, 코드 M1 뒤) | 2장 비 골목 — 날씨 · 기믹 "기다림" · 망각체 3 · 구조 2 · 장 묶음 체크리스트(→ `_Templates/_Template_Chapter`) |
+| `CNT_Character_Boots` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 | 2장 구조 A 웰리(장화, 돌격) |
+| `CNT_Character_BottleLetter` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 | 2장 구조 B 보틀리(유리병 편지, 포획) |
+| `CNT_Character_Peephole` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 (D-71) | 4장 구조 B 피피(외시경, 저격) |
+| `CNT_Character_ToyTrain` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 (D-71) | 5장 구조 A 칙폭이(장난감 기관차, 돌격) |
+| `CNT_Character_PocketWatch` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 (D-71) | 5장 구조 B 아홉시(회중시계, 지원 · 제어) |
+| `CNT_Character_SnowGlobe` | 🔴 | P1 | Review — 신규 원문 · 이름 · 희귀도 대기 (D-71) | 6장 구조 A 글로비(스노우볼, 방어) |
 | `CNT_Enemy` | 🔵 | **P0** | ①②③ 완료 · ③ 4건 D-40 확정 | `BattleConfig.enemies` |
 | `CNT_Skill` | 🔵 | **P0** | ①②③ 완료 · ③ 7건 D-43 확정 (K-04) | `CharacterDatabase.asset` 형태 스킬 |
 | `CNT_Boss` | 🔵 | **P0** | ①②③ 완료 · ③ 5건 D-41 확정 (K-06) | `BattleConfig.enemies` (isBoss) · `BattleSimulator` 보스 · 기믹 |
@@ -115,6 +122,8 @@
 | `ART_BattleSpriteSpec` | 🔵 | Approved | 전투 스프라이트 규격 — L&L 58장 실측 · ③ 5건 D-41 확정 (A-03) |
 | `ART_FxJuice` · `ART_UpgradePlan` · `AUD_Spec` · `RES_IdleGames` | 🟡 | 대기 (I-4 이관) | L&L 영문 문서 이관 |
 | `ART_UIHandoff` | 🟡 | Review | 홈 · 전투 UI 후보 48종 · 개발 참조 코드/그림 = `Tools/UIReview` (사용자 Git 전달 지시) · 채택 · Unity 적용 전 (PR #72, #59 이관) |
+| `ART_Enemy_Chapter2` | 🔵 | Review — 3종 1회차 채택 (PR #84) | 2장 망각체 3종 그림 카드 · AI 프롬프트 · 검수 기준 (D-68 #8) |
+| `ART_Queue` | 🔵 | Approved (D-70) — 살아 있는 대기열 | 아트 할 일 한 곳 · "아트 큐" 한 마디 규칙 |
 | `ART_ReviewSheet` | 🔵 | Approved (양식) · #43 카드 검수 시작 | 캐릭터 시안 검수 대조표 — 짝짝이 기준 · 양말 카라반 "부분 → 구조 → 쓰임" · 기술 검사 11 · 가이드 §15 (D-46 #5) |
 
 ---
