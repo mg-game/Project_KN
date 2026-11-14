@@ -22,6 +22,11 @@ namespace IdleGame.UI
     ///     상자 5개 (30/60/90/120/150) + 날 칩 7개 ('1일'…'7일' — 잠긴 날은 자물쇠 · '{d}일째에 열려요', 받을 것이 있는 날은 점) + 과제 줄 ('+5' 알약 · 잠김 알약).
     ///     [모두 받기]가 열린 날의 과제 · 상자를 모두 받는다, 탭 점 = _tabBadges[3].
     ///   · 탭이 4개면 폭 150으로 줄여 한 줄에 놓는다 (초기화 시간 자리는 그대로). 새 부품은 장면을 다시 만들기 전(G3)에는 없어도 된다 — 그때는 예전 3탭 그대로.
+    /// 탭 자동 이동 (UI_InGame §4.3 공통 규칙):
+    ///   · [모두 받기]로 지금 탭의 받을 것이 0이 되고 다른 탭에 남아 있으면, UIMotion.AutoTabDelay(0.9초, 움직임 줄이기 0.4초) 뒤
+    ///     화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 오른쪽의 받을 탭으로 한 번 넘어간다. 맨 끝이면 처음으로 돈다. 도착 탭 글자가 한 번 톡 (줄이기면 없음).
+    ///   · 넘기지 않는 경우: 줄의 [받기] (골라 받는 중), 기다리는 동안 화면을 누름, 튜토리얼 중, 팝업이 닫힘, 다른 팝업이 위에 뜸, 잠기거나 숨은 탭.
+    ///   · 열 때도 같은 순서로 받을 것이 있는 첫 탭부터 연다 (돌아가기 칩 · OpenRecords · OpenMissions로 정한 쪽은 그대로).
     /// </summary>
     public class JournalPopup : UIPopup
     {
@@ -129,6 +134,19 @@ namespace IdleGame.UI
         /// <summary>탭 줄에 마지막으로 놓은 보이는 탭 수 (바뀔 때만 다시 놓는다)</summary>
         int _laidOutTabs = -1;
 
+        // ── 탭 자동 이동 (UI_InGame §4.3 공통 규칙) ──
+        const int TabCount = 4;
+        /// <summary>화면 탭 순서 (LayoutTabs와 같다): 첫 주 → 오늘 → 이번 주 → 기록</summary>
+        static readonly int[] TabOrder = { (int)Tab.Starter, (int)Tab.Daily, (int)Tab.Weekly, (int)Tab.Records };
+        /// <summary>탭마다 보이는지 · 받을 수 (Tab 값으로 찾는다, FillTabState가 채운다)</summary>
+        readonly bool[] _tabVisible = new bool[TabCount];
+        readonly int[] _tabClaimable = new int[TabCount];
+        Coroutine _autoTab;
+        /// <summary>자동 이동을 건 프레임 (그 프레임의 누름은 [모두 받기] 자체라 취소로 보지 않는다)</summary>
+        int _autoTabFrame = -1;
+        Coroutine _tabPulse;
+        Transform _pulsedLabel;
+
         MissionPeriod Period => _tab == Tab.Weekly ? MissionPeriod.Weekly : MissionPeriod.Daily;
 
         protected override void Awake()
@@ -176,18 +194,26 @@ namespace IdleGame.UI
             if (Game.Features.IsNew(FeatureId.Missions)) Game.Features.MarkSeen(FeatureId.Missions);
             _shownClaimable = -1;
             _laidOutTabs = -1;
-            // 돌아가기 칩으로 다시 열면 떠났던 쪽, 아니면 첫 주에 받을 것이 있으면 첫 주, 오늘 받을 것이 없고 이번 주에 있으면 이번 주 탭부터
-            var tab = _reopenTab >= 0
-                ? (Tab)_reopenTab
-                : StarterVisible() && Game.StarterWeek.HasClaimable
-                    ? Tab.Starter
-                    : (Tab)MissionsTab(Game.Missions.GetClaimableCount(MissionPeriod.Daily), Game.Missions.GetClaimableCount(MissionPeriod.Weekly));
+            // 돌아가기 칩 · OpenRecords · OpenMissions로 정한 쪽이 있으면 그 쪽, 아니면 화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 받을 것이 있는 첫 탭 (없으면 오늘)
+            Tab tab;
+            if (_reopenTab >= 0)
+            {
+                tab = (Tab)_reopenTab;
+            }
+            else
+            {
+                FillTabState();
+                tab = (Tab)FirstClaimTab(_tabVisible, _tabClaimable);
+                if (tab == Tab.Records) _recordsSegment = 0;
+            }
             _reopenTab = -1;
             SelectTab(tab);
         }
 
         protected override void OnClose()
         {
+            CancelAutoTab();
+            StopTabPulse();
             if (_float != null) StopCoroutine(_float);
             _float = null;
             _claimAllPop = null;
@@ -219,6 +245,8 @@ namespace IdleGame.UI
 
         void SelectTab(Tab tab)
         {
+            CancelAutoTab();
+            StopTabPulse();
             if (tab == Tab.Records && !Game.Features.IsUnlocked(FeatureId.Achievements)) return;
             if (tab == Tab.Starter && !StarterVisible()) tab = Tab.Daily;
             _tab = tab;
@@ -242,6 +270,8 @@ namespace IdleGame.UI
         void Update()
         {
             if (!IsOpen || !MetaUi.IsActive) return;
+            // 자동 이동을 기다리는 동안 화면을 누르면 지금 탭에 머문다 (UI_InGame §4.3)
+            if (_autoTab != null && Time.frameCount != _autoTabFrame && PointerPressedThisFrame()) CancelAutoTab();
             float dt = Time.unscaledDeltaTime;
             if (_barFill != null && !Mathf.Approximately(_barShown, _barTarget))
             {
@@ -581,7 +611,11 @@ namespace IdleGame.UI
             }
             if (_tab == Tab.Starter)
             {
-                if (_starterView != null) _starterView.ClaimAll((RectTransform)_claimAllButton.transform);
+                if (_starterView == null) return;
+                // 받을 것이 없으면 패널이 토스트만 띄운다. 그때는 넘기지 않는다
+                bool hadClaimable = Game.StarterWeek != null && Game.StarterWeek.HasClaimable;
+                _starterView.ClaimAll((RectTransform)_claimAllButton.transform);
+                if (hadClaimable) ScheduleAutoTab(Tab.Starter);
                 return;
             }
             var period = Period;
@@ -620,6 +654,7 @@ namespace IdleGame.UI
             }
             if (gainedPoints > 0) FlyPoints(_claimAllButton.transform as RectTransform, gainedPoints);
             if (rewards != null && rewards.Count > 0) MetaUi.FlyRewards(rewards, _bar);
+            ScheduleAutoTab(period == MissionPeriod.Weekly ? Tab.Weekly : Tab.Daily);
         }
 
         // ───────────── 수선점 기록 (Q-04) ─────────────
@@ -715,6 +750,7 @@ namespace IdleGame.UI
             }
             UISfx.Play(UISfxKey.AchievementClaim);
             if (rewards != null && rewards.Count > 0) MetaUi.FlyRewards(rewards, (RectTransform)_claimAllButton.transform);
+            ScheduleAutoTab(Tab.Records);
         }
 
         /// <summary>기록 단계 ID의 줄 ID (콘텐츠 lineId, 없으면 단계 ID 그대로). 누를 때만 부른다</summary>
@@ -736,6 +772,138 @@ namespace IdleGame.UI
             Close();
             if (NavOpensTab(nav)) UINav.PushReturn(ReturnLabel, () => ReopenAt(from));
             MetaNavigator.GoAndFocus(nav, focus);
+        }
+
+        // ───────────── 탭 자동 이동 (UI_InGame §4.3 공통 규칙) ─────────────
+
+        /// <summary>
+        /// 처음 열 탭 (순수): 화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 보이고 받을 것이 있는 첫 탭, 없으면 [오늘].
+        /// 배열은 Tab 값으로 찾는다 (길이 4)
+        /// </summary>
+        internal static int FirstClaimTab(bool[] visible, int[] claimable)
+        {
+            foreach (int tab in TabOrder)
+            {
+                if (visible[tab] && claimable[tab] > 0) return tab;
+            }
+            return (int)Tab.Daily;
+        }
+
+        /// <summary>
+        /// [모두 받기] 뒤 넘어갈 탭 (순수): 지금 탭에 받을 것이 남았으면 −1 (머문다).
+        /// 아니면 화면 순서로 지금 탭 오른쪽부터 한 바퀴 돌며 보이고 받을 것이 있는 첫 탭, 없으면 −1. 배열은 Tab 값으로 찾는다 (길이 4)
+        /// </summary>
+        internal static int NextClaimTab(int current, bool[] visible, int[] claimable)
+        {
+            if (claimable[current] > 0) return -1;
+            int at = Array.IndexOf(TabOrder, current);
+            if (at < 0) return -1;
+            for (int step = 1; step < TabOrder.Length; step++)
+            {
+                int tab = TabOrder[(at + step) % TabOrder.Length];
+                if (visible[tab] && claimable[tab] > 0) return tab;
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// 탭마다 보이는지 · 받을 수 (Refresh 탭 점과 같은 기준). 첫 주는 받을 것이 있으면 1.
+        /// 기록은 새 부품이 있을 때만 대상 (다시 만들기 전 장면은 기록 쪽이 준비 중 카드라 받을 수 없다)
+        /// </summary>
+        void FillTabState()
+        {
+            var missions = Game.Missions;
+            var achievements = Game.Achievements;
+            bool starterVisible = StarterVisible();
+            _tabVisible[(int)Tab.Daily] = true;
+            _tabVisible[(int)Tab.Weekly] = true;
+            _tabVisible[(int)Tab.Records] = RecordsBuilt && Game.Features.IsUnlocked(FeatureId.Achievements);
+            _tabVisible[(int)Tab.Starter] = starterVisible;
+            _tabClaimable[(int)Tab.Daily] = missions != null ? missions.GetClaimableCount(MissionPeriod.Daily) : 0;
+            _tabClaimable[(int)Tab.Weekly] = missions != null ? missions.GetClaimableCount(MissionPeriod.Weekly) : 0;
+            _tabClaimable[(int)Tab.Records] = achievements != null ? achievements.ClaimableCount : 0;
+            _tabClaimable[(int)Tab.Starter] = starterVisible && Game.StarterWeek != null && Game.StarterWeek.HasClaimable ? 1 : 0;
+        }
+
+        static bool TutorialRunning => Game.Tutorial != null && Game.Tutorial.IsActive;
+
+        /// <summary>
+        /// [모두 받기]로 받은 뒤: 튜토리얼 중이 아니면 기다렸다가 다음 받을 탭으로 (줄의 [받기]는 부르지 않는다).
+        /// from = 받은 탭 (받는 사이 Refresh가 탭을 바꾸면 넘기지 않는다, 예: 첫 주가 끝나 [오늘]로 돌아감)
+        /// </summary>
+        void ScheduleAutoTab(Tab from)
+        {
+            CancelAutoTab();
+            if (!isActiveAndEnabled || TutorialRunning) return;
+            _autoTabFrame = Time.frameCount;
+            _autoTab = StartCoroutine(AutoTab(from));
+        }
+
+        void CancelAutoTab()
+        {
+            if (_autoTab != null) StopCoroutine(_autoTab);
+            _autoTab = null;
+        }
+
+        /// <summary>받기 연출(점수 날아감 · 숫자 튐 0.8초)이 끝난 뒤 다시 확인하고 넘어간다</summary>
+        IEnumerator AutoTab(Tab from)
+        {
+            float wait = UIMotion.Reduced ? UIMotion.AutoTabDelayReduced : UIMotion.AutoTabDelay;
+            for (float t = 0f; t < wait; t += Time.unscaledDeltaTime) yield return null;
+            _autoTab = null;
+            if (!IsOpen || !MetaUi.IsActive || _tab != from || TutorialRunning) yield break;
+            // 기다리는 사이 다른 팝업(기능 개방 카드 등)이 위에 떴으면 아래에서 탭을 바꾸지 않는다
+            var ui = UIManager.Instance;
+            if (ui != null && ui.TopPopup != this) yield break;
+            FillTabState();
+            int next = NextClaimTab((int)from, _tabVisible, _tabClaimable);
+            if (next < 0) yield break;
+            // 기록 탭은 받을 줄이 [진행 중]에 있다
+            if (next == (int)Tab.Records) _recordsSegment = 0;
+            SelectTab((Tab)next);
+            PulseTab((Tab)next);
+        }
+
+        /// <summary>도착한 탭 글자가 한 번 톡 (1 → 1.08 → 1, 0.3초). 움직임 줄이기면 없음. 버튼 루트는 누름 연출과 싸우므로 글자만 키운다</summary>
+        void PulseTab(Tab tab)
+        {
+            if (UIMotion.Reduced || !isActiveAndEnabled) return;
+            var label = (int)tab < _tabLabels.Length ? _tabLabels[(int)tab] : null;
+            if (label == null) return;
+            StopTabPulse();
+            _pulsedLabel = label.transform;
+            _tabPulse = StartCoroutine(TabPulse(_pulsedLabel));
+        }
+
+        IEnumerator TabPulse(Transform target)
+        {
+            for (float t = 0f; t < UIMotion.AutoTabPulse; t += Time.unscaledDeltaTime)
+            {
+                target.localScale = Vector3.one * (1f + (UIMotion.AutoTabPulseScale - 1f) * MetaUi.Punch(t / UIMotion.AutoTabPulse));
+                yield return null;
+            }
+            target.localScale = Vector3.one;
+            _tabPulse = null;
+            _pulsedLabel = null;
+        }
+
+        void StopTabPulse()
+        {
+            if (_tabPulse != null) StopCoroutine(_tabPulse);
+            _tabPulse = null;
+            if (_pulsedLabel != null) _pulsedLabel.localScale = Vector3.one;
+            _pulsedLabel = null;
+        }
+
+        /// <summary>이번 프레임에 화면을 눌렀는지 (AttendancePopup과 같은 판정, 예전 입력 방식)</summary>
+        static bool PointerPressedThisFrame()
+        {
+            if (Input.GetMouseButtonDown(0)) return true;
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (Input.GetTouch(i).phase == TouchPhase.Began) return true;
+            }
+            return false;
         }
 
         // ───────────── 점수 날아가기 ─────────────

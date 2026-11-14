@@ -11,6 +11,7 @@ namespace IdleGame.Tests
     ///   · M32: 수선 바구니 칸 리듬 (각주는 격자 아래 14 · 빠른 수선 판은 각주 아래 44 · 한 줄이면 창 1108).
     ///   · M73: 진화 · 의상으로 열 친구 고르기 (점 켜진 친구 → 짝짝이 → 처음 가진 친구 → 없음).
     ///   · M72: 일지 [가기 ›]가 탭으로 갈 때만 돌아가기 칩.
+    ///   · 일지 탭 자동 이동 (UI_InGame §4.3 공통 규칙): [모두 받기] 뒤 다음 받을 탭 · 열 때 첫 탭.
     ///   · M13 · M12: 강해지기 머리 글 · 권장 전투력 알약 글, M30: 시간당 표기.
     ///   · RM-2 P4-6 (SPEC4): 챕터 지도 칸 상태 · 진행 수, 알림 미리 묻기 조건, 이벤트 시작 카드 제목 · 회차 키, 다시 만난 날 본문,
     ///     챕터 상자 한 줄, 4차 팝업 종류, 도감 보너스 한 줄, 이벤트 모아 보기 글 (다음 시작 · 남은 시간 · 보여 줄 이벤트), 일지 줄 모델,
@@ -240,6 +241,50 @@ namespace IdleGame.Tests
             Assert.AreEqual(0, JournalPopup.MissionsTab(1, 2), "오늘 받을 것이 있으면 [오늘]");
             Assert.AreEqual(1, JournalPopup.MissionsTab(0, 2), "오늘 없고 이번 주에 있으면 [이번 주]");
             Assert.AreEqual(0, JournalPopup.MissionsTab(0, 0), "아무것도 없으면 [오늘]");
+        }
+
+        // 일지 탭 값: 오늘 0 · 이번 주 1 · 기록 2 · 첫 주 3. 화면 순서: 첫 주 → 오늘 → 이번 주 → 기록 (UI_InGame §4.3 탭 자동 이동)
+        const int JDaily = 0, JWeekly = 1, JRecords = 2, JStarter = 3;
+        static bool[] JVisible(bool records = true, bool starter = true) => new[] { true, true, records, starter };
+        static int[] JClaimable(int daily = 0, int weekly = 0, int records = 0, int starter = 0) => new[] { daily, weekly, records, starter };
+
+        [Test]
+        public void Journal_AutoTab_StaysWhileCurrentTabHasRewards()
+        {
+            Assert.AreEqual(-1, JournalPopup.NextClaimTab(JDaily, JVisible(), JClaimable(daily: 1, weekly: 2)), "지금 탭에 남았으면 머문다 (상자 포함)");
+            Assert.AreEqual(-1, JournalPopup.NextClaimTab(JDaily, JVisible(), JClaimable()), "아무 탭에도 없으면 머문다");
+        }
+
+        [Test]
+        public void Journal_AutoTab_MovesRightInScreenOrder()
+        {
+            Assert.AreEqual(JWeekly, JournalPopup.NextClaimTab(JDaily, JVisible(), JClaimable(weekly: 1, records: 1)), "오늘 → 오른쪽 첫 받을 탭 [이번 주]");
+            Assert.AreEqual(JRecords, JournalPopup.NextClaimTab(JDaily, JVisible(), JClaimable(records: 3, starter: 1)), "오늘 → 이번 주(없음) 건너 [기록]");
+            Assert.AreEqual(JDaily, JournalPopup.NextClaimTab(JStarter, JVisible(), JClaimable(daily: 1, weekly: 1)), "첫 주 → [오늘]");
+        }
+
+        [Test]
+        public void Journal_AutoTab_WrapsAroundOnce()
+        {
+            Assert.AreEqual(JStarter, JournalPopup.NextClaimTab(JRecords, JVisible(), JClaimable(daily: 1, starter: 1)), "기록(맨 끝) → 처음 [첫 주]");
+            Assert.AreEqual(JDaily, JournalPopup.NextClaimTab(JWeekly, JVisible(), JClaimable(daily: 2)), "이번 주 → 기록(없음) → 첫 주(없음) → [오늘]");
+        }
+
+        [Test]
+        public void Journal_AutoTab_SkipsHiddenTabs()
+        {
+            Assert.AreEqual(-1, JournalPopup.NextClaimTab(JDaily, JVisible(records: false), JClaimable(records: 2)), "잠긴 기록 탭은 건너뛴다");
+            Assert.AreEqual(JDaily, JournalPopup.NextClaimTab(JRecords, JVisible(starter: false), JClaimable(daily: 1, starter: 1)), "끝난 첫 주 탭은 건너뛴다");
+        }
+
+        [Test]
+        public void Journal_FirstClaimTab_OpensFirstTabWithRewards()
+        {
+            Assert.AreEqual(JStarter, JournalPopup.FirstClaimTab(JVisible(), JClaimable(daily: 1, starter: 1)), "첫 주에 있으면 [첫 주] (예전 규칙 그대로)");
+            Assert.AreEqual(JWeekly, JournalPopup.FirstClaimTab(JVisible(), JClaimable(weekly: 1, records: 1)), "오늘 없고 이번 주에 있으면 [이번 주] (예전 규칙 그대로)");
+            Assert.AreEqual(JRecords, JournalPopup.FirstClaimTab(JVisible(), JClaimable(records: 1)), "기록에만 있으면 [기록] (새로 넣음)");
+            Assert.AreEqual(JDaily, JournalPopup.FirstClaimTab(JVisible(records: false), JClaimable(records: 1)), "기록이 잠겼으면 [오늘]");
+            Assert.AreEqual(JDaily, JournalPopup.FirstClaimTab(JVisible(), JClaimable()), "아무것도 없으면 [오늘]");
         }
 
         [Test]
