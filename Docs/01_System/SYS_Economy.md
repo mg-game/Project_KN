@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-30) |
 | 작성자 | ① 구현: 기개발 · ②③: DD |
-| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) · ① I-14 반영 — 기개발 |
+| 최종 수정 | 2026-11-14 (§3 #8 E안 · §1.4 이음매 · 지출 기록 · §6) · ① I-14 반영 — 기개발 (2026-11-13) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) §3 · [`SYS_InGameBattle`](./SYS_InGameBattle.md) |
 | 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) + I-14 경제 안전 (`feat/economy-safety`) — 경로 약칭 표 참고 |
@@ -145,6 +145,8 @@ ELSE IF 보유 == count → 키 삭제  /  ELSE → 보유 − count
 | `PlayerData.items` | `Dictionary<string, int>` | 재료 보유 개수 (`PD:31`) | `{"mat_cloth": 12}` |
 | `PlayerData.gemPaid` · `gemFree` | double · double | 별조각 2풀 (I-14) — 결제로 받은 몫 · 그 밖. 합 = `currencies[Gem]`, 소비는 무료 먼저 (`PD:34-36`) | 0 · 1300 |
 | `CurrencySource` | enum (Game 0 · Purchase 1) | 재화 지급 출처. 별조각 풀을 고른다. Purchase는 자리만 (`GE:17-`) | `Game` |
+| `GameConfig.shopUpgradeCurrency` · `lineageLevelUpCurrency` | `CurrencyType` | 수선점 강화 · 친구 레벨업에 쓰는 재화. 기본 `Gold` (§3 #8 E안 이음매). 시스템(`GrowthSystem.LevelUpCurrency` · `CharacterSystem.LevelUpCurrency`)만 이 값을 읽는다. 화면은 아직 단추를 직접 본다 (§6) | `Gold` · `Gold` |
+| 플레이 기록 `spend` 줄 | `sink` · `cur` · `amt` · (`from` · `to` 또는 `id` · `lv`) | 레벨업에 쓴 재화를 소비처별로 남긴다 (`PlayLogRecorder`). §3 #8 판정 근거 | `{"ev":"spend","sink":"shop","cur":"gold","amt":21,"from":1,"to":3}` |
 | `ItemDef.id` · `name` | string · string | 아이템 ID · 표시명. ID 중복이면 경고 후 앞 것만 (`IDB:66-69`) | `mat_cloth` · 수선 천 |
 | `ItemDef.grade` · `category` | `ItemGrade` (Common 0 ~ Mythic 4) · `ItemCategory` (Material 0 · Equipment 1) | 등급 = 기억편 대체 비용 · 보유 목록 정렬(등급 높은 순 → ID, `INV:76-78`). 기억편 대체 · 도감 재료 칸은 Material만 | 0 · 0 |
 | `ItemDef.goldBonusPercent` | float | 보유 시 초당 단추 +% (종류당 1회) | 0 (9종 모두) |
@@ -371,6 +373,7 @@ IF 유예 종료                               → 남은 별빛 사탕을 단�
 | 5 | 입력 검증 · 상한 | +∞ 통과, 저장된 음수 · NaN 그대로, 재료 int 넘침 검사 없음 | 지급 · 로드 때 검증, 재료 상한 | 코드 (`CurrencySystem` · `InventorySystem` · 로드) | **채택, P0** — 세이브 조작 · 버그 한 번에 경제가 무너지는 지점 | **D-30** DD 추천안 |
 | 6 | 개발자 메뉴 지급 | 에디터 · 개발 빌드에서 단추 · 별조각 지급 | 출시 빌드에서 코드째 빠져야 함 | 빌드 설정 | **확인만** — 기개발이 출시 빌드 제외(`#if`) 여부 확인 | **D-30** DD 추천안 |
 | 7 | 별조각 유입량 | 시작 300 + 환영 1,000 + 업적 3,400 · 출석 2,100 · 챕터 상자 4,490 · 가이드 640 · … (소환 1회 100) | 기획 없음 (BM 미정) | 밸런스 · BM | **지금은 유지, `BAL` · BM 문서에서 판단.** 프로토 단계는 넉넉한 쪽이 테스트에 유리. 출시 전 "1주차 소환 횟수" 기준으로 재조정 | **D-30** DD 추천안 |
+| 8 | **수선점 강화 · 친구 레벨업 재화 공유** | 둘 다 단추 (`GrowthSystem` · `CharacterSystem`). 친구 쪽은 D-29 ② "M1은 단추, 전환은 여기서 재검토", 수선점 쪽은 정한 기록 없음 (원본 코드 그대로) | 기획자 제기 (2026-11-14): 두 곳은 독립 재화여야 어색하지 않다. 처음 와이어프레임은 친구 레벨업 = 재료 투입형 (`SYS_Growth` §3 #2) | 코드 · 데이터 · 밸런스 (새 재화 키는 옛 세이브와 호환, `CurrencySystem` `Get` 기본 0) | **E안: M1은 단추 공유 유지 + 이음매(`GameConfig` 재화 설정 2칸, 기본 단추) + 소비처별 지출 기록(`spend`).** 친구 전용 재화(B안)는 M1 뒤 데이터로 판정. B는 최소 형태도 4일 넘게 들고, 획득처를 줄이면 그 재화만 방치 중에 안 쌓여 곡선이 어긋남. AI 3관점(경제 · 플레이어 경험 · 개발) 2라운드 토론 합의 | **백승천 결정 (2026-11-14), D 번호는 DD 기록 대기** |
 
 ## 4. 예외 처리 / 엣지 케이스
 | 케이스 | 처리 |
@@ -395,4 +398,7 @@ IF 유예 종료                               → 남은 별빛 사탕을 단�
 - [ ] 별빛 사탕 환산 비율 · 유예 기간 → `BAL`
 - [ ] 기억 조각 통합(§3 #2) 후 `KN_Glossary` · UI 문구 일괄 교체
 - [ ] 재화 로그(`Currency_Log`) 저장 여부 — 용량 vs 추적성
+- [ ] **§3 #8 B안 전환 판정 기준 · 시점 (미확정).** 후보: ① 경제 = 11/20 시뮬레이션 1차 · 출시 후 2주 2차, 10분 구간 지출 90% 이상 한쪽 쏠림이 전체의 20% 이상 ② 플레이어 경험 = M1 첫 플레이테스트 뒤, 1-1 후 10분 지출 80% 이상 쏠림 또는 테스터 10명 중 3명 이상 "헷갈린다 · 어색하다" ③ 개발 = 11/20 시뮬레이션, 첫 4시간 안에 70% 이상 쏠리는 구간이면 11/24에 B 확정
+- [ ] §3 #8 B안으로 갈 때 함께 고칠 곳: 화면의 단추 직접 참조 (`GrowthPanel` 5곳 · `CharacterDetailPopup` 3곳 · `MainTabController` 2곳), 강해지기 시간 계산(초당 단추 기준, `StrengthenAdvisor`), 새 재화 획득처 · 상단 바 · 아이콘, 빌더 재생성
+- 💡 §3 #8 "왜 가게 돈으로 친구를 키우지"라는 어색함은 강해지기 안내로는 안 풀린다 (플레이어 경험 의견). M1에서는 친구 레벨업 화면 문구 · 연출로 먼저 덜어 본다
 - 확장성: 새 재화는 `Currency_Master` 한 줄 + 표시 규칙만 추가. 재료는 `Item_Master` 데이터만 추가 (코드 수정 없음)
