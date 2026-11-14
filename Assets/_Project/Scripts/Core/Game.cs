@@ -134,7 +134,8 @@ namespace IdleGame
             Shop = new ShopSystem(data, content.Shops, Currency, Rewards, Costumes, clock, DailyClock);
             Formation = new FormationSystem(data, Characters);
             Synergy = new SynergySystem(data, content.Synergies, Characters, Formation);
-            Expedition = new ExpeditionSystem(data, content.Expeditions, Characters, Formation, Rewards, clock, random);
+            // 원정은 일일 시계의 유효 시각을 쓴다 (시계 되돌림으로 보상을 되풀이하지 못하게 — H-1)
+            Expedition = new ExpeditionSystem(data, content.Expeditions, Characters, Formation, Rewards, clock, random, DailyClock);
             Battle = new BattleSystem(data, content.Battle, Characters, Formation, Synergy, Currency, Rewards, random);
             Dungeon = new DungeonSystem(data, content.Battle, Characters, Formation, Synergy, Rewards, clock, DailyClock);
             Notice = new NoticeSystem(data, clock);

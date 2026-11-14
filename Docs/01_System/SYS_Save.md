@@ -78,7 +78,11 @@ DailyClock (F-01): 하루 = 현지 05:00 시작 · 주 = 월요일 05:00
      (출석 · 미션 · 업적 · 무료 빠른 수선 · 바구니 · 작은 선물 · 이벤트 · 수첩 · 쿠폰 · 응원 · 복귀 등 14개 시스템 + 화면 3곳이 확인)
   날 키 = max(지금, maxSeen) 기준 → 되돌려도 날이 거꾸로 가지 않음 · 시간대를 서쪽으로 바꿔도 저장된 날에 머묾
   앞당기기: 오프라인에선 못 막음 → 바구니 상한(8h · 12 · 16) · 하루 1회 제한으로 피해를 묶음
-⚠ 예외: ExpeditionSystem 남은 시간 = 기기 시계 직접 (:214) — 앞당겼다 되돌리기로 원정 완료 · '원정 N회' 진화 조건 파밍 (I-2 H-1 → I-5)
+원정 (I-5 · fix/expedition-clock — 예전 기기 시계 직접 (:214) H-1 해소):
+  기준 시각 = DailyClock.EffectiveUnix = max(기기 시각, maxSeen) (ExpeditionSystem.NowUnix :228)
+  시계가 출발 시각보다 뒤로 가면 진행 멈춤 — 출발 시각을 돌려줌, 출발 · 종료 시각은 그대로 (:351)
+  IsTampered 동안 받기 · 모두 받기는 아무것도 주지 않음 (:398 · :427) + 원정 화면 토스트 TamperedMessage (ExpeditionPanel)
+  → '앞당겨 받기 → 다시 보내기 → 되돌림 → 앞당김' 반복이 1회로 끝남 (EditMode ExpeditionSystemTests Guarded_* 4개)
 던전 · 상점 하루 = DailyClock 날 키 (안전)
 ```
 

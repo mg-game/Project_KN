@@ -291,6 +291,7 @@ namespace IdleGame.Tests
             Assert.AreEqual(1, Expedition.Active.Count);
         }
 
+        /// <summary>DailyClock 없이 만든 원정 (옛 연결): 되돌림 때 시작/종료를 당긴다. Game.Setup의 연결은 아래 Guarded_* 테스트</summary>
         [Test]
         public void ClockRollback_DisplayAndCompletionStayInSync()
         {
@@ -329,6 +330,114 @@ namespace IdleGame.Tests
             Assert.AreEqual(0, Currency.Get(CurrencyType.Gold), 1e-9);
             Assert.AreEqual(0, Characters.GetProgress("sock", ProgressType.ExpeditionCount));
             Assert.AreEqual(PlaceResult.Ok, Formation.TryPlace(CharacterRole.Guardian, 0, "sock_base"));
+        }
+
+        // ───────────── 시간 되돌림 방지 (H-1): Game.Setup과 같이 DailyClock을 넣은 원정 ─────────────
+
+        ExpeditionSystem CreateGuarded() =>
+            new ExpeditionSystem(Data, ExpeditionDb, Characters, Formation, Rewards, Clock, new System.Random(1234), DailyClock);
+
+        [Test]
+        public void Guarded_ForwardBackForward_DoesNotRepeatRewards()
+        {
+            var expedition = CreateGuarded();
+            Characters.Grant("sock");
+            DailyClock.Refresh();
+            var t0 = Clock.UtcNow;
+            Assert.IsTrue(expedition.TryStart("exp_1_1", new[] { "sock" })); // 10분
+
+            Clock.UtcNow = t0.AddMinutes(10); // 시계를 앞으로 → 복귀
+            DailyClock.Refresh();
+            Assert.IsNotNull(expedition.Claim("exp_1_1"));
+            double goldAfterFirst = Currency.Get(CurrencyType.Gold);
+            Assert.IsTrue(expedition.TryStart("exp_1_1", new[] { "sock" })); // 다시 보냄: t0+10 ~ t0+20
+            var active = expedition.GetActive("exp_1_1");
+            long start = active.startUnix, end = active.endUnix;
+
+            Clock.UtcNow = t0; // 시계를 되돌림 → 복귀
+            DailyClock.Refresh();
+            Assert.IsTrue(expedition.IsClockTampered);
+            Assert.AreEqual(0, expedition.CompletedCount);
+            Assert.AreEqual(start, active.startUnix, "되돌려도 시작 시각을 당기지 않는다");
+            Assert.AreEqual(end, active.endUnix, "되돌려도 종료 시각을 당기지 않는다");
+            Assert.AreEqual(TimeSpan.FromMinutes(10), expedition.GetRemaining(active));
+
+            Clock.UtcNow = t0.AddMinutes(10); // 다시 앞으로 (첫 원정이 끝났던 시각)
+            DailyClock.Refresh();
+            Assert.IsFalse(expedition.IsComplete(active), "실제 시간이 흐르지 않았으므로 두 번째 원정은 끝나지 않는다");
+            Assert.IsNull(expedition.Claim("exp_1_1"));
+            Assert.AreEqual(goldAfterFirst, Currency.Get(CurrencyType.Gold), 1e-9);
+
+            Clock.UtcNow = t0.AddMinutes(20);
+            DailyClock.Refresh();
+            Assert.IsTrue(expedition.IsComplete(active));
+            Assert.IsNotNull(expedition.Claim("exp_1_1"));
+            Assert.AreEqual(2, Characters.GetProgress("sock", ProgressType.ExpeditionCount));
+        }
+
+        [Test]
+        public void Guarded_RollbackBeforeRefresh_StillFreezes()
+        {
+            var expedition = CreateGuarded();
+            Characters.Grant("sock");
+            DailyClock.Refresh();
+            var t0 = Clock.UtcNow;
+
+            Clock.UtcNow = t0.AddHours(1); // 앞으로 갔지만 아직 Refresh 전 (maxSeen = t0)
+            Assert.IsTrue(expedition.TryStart("exp_1_1", new[] { "sock" })); // t0+1h ~ t0+1h10m
+            var active = expedition.GetActive("exp_1_1");
+            long start = active.startUnix;
+
+            Clock.UtcNow = t0; // 곧바로 되돌림
+            Assert.IsFalse(expedition.IsComplete(active));
+            Assert.AreEqual(start, active.startUnix, "maxSeen이 오르기 전에 되돌려도 당기지 않는다");
+            Assert.AreEqual(TimeSpan.FromMinutes(10), expedition.GetRemaining(active));
+            Assert.AreEqual(0f, expedition.GetProgress(active));
+
+            Clock.UtcNow = t0.AddHours(1).AddMinutes(10);
+            Assert.IsTrue(expedition.IsComplete(active));
+        }
+
+        [Test]
+        public void Guarded_ClaimBlockedWhileTampered()
+        {
+            var expedition = CreateGuarded();
+            Characters.Grant("sock");
+            DailyClock.Refresh();
+            Assert.IsTrue(expedition.TryStart("exp_1_1", new[] { "sock" }));
+            var active = expedition.GetActive("exp_1_1");
+
+            Clock.Advance(TimeSpan.FromMinutes(10));
+            DailyClock.Refresh();
+            Clock.Advance(TimeSpan.FromMinutes(-30)); // 허용 오차(5분)를 넘는 되돌림
+
+            Assert.IsTrue(expedition.IsClockTampered);
+            Assert.IsTrue(expedition.IsComplete(active), "유효 시각은 뒤로 가지 않아 완료 상태는 그대로");
+            Assert.IsNull(expedition.Claim("exp_1_1"), "되돌림 중에는 받을 수 없다");
+            Assert.AreEqual(0, expedition.ClaimAll().Count);
+            Assert.AreEqual(0, Currency.Get(CurrencyType.Gold), 1e-9);
+            Assert.IsNotNull(expedition.GetActive("exp_1_1"), "막힌 원정은 그대로 남는다");
+
+            Clock.Advance(TimeSpan.FromMinutes(30)); // 시간이 다시 맞음
+            Assert.IsFalse(expedition.IsClockTampered);
+            Assert.AreEqual(1, expedition.ClaimAll().Count);
+            Assert.Greater(Currency.Get(CurrencyType.Gold), 0);
+        }
+
+        [Test]
+        public void Guarded_SmallClockDrift_IsNotTampering()
+        {
+            var expedition = CreateGuarded();
+            Characters.Grant("sock");
+            DailyClock.Refresh();
+            Assert.IsTrue(expedition.TryStart("exp_1_1", new[] { "sock" }));
+
+            Clock.Advance(TimeSpan.FromMinutes(10));
+            DailyClock.Refresh();
+            Clock.Advance(TimeSpan.FromMinutes(-2)); // 시계 동기화 오차 (허용 오차 안)
+
+            Assert.IsFalse(expedition.IsClockTampered);
+            Assert.IsNotNull(expedition.Claim("exp_1_1"), "허용 오차 안의 되돌림은 받기를 막지 않는다");
         }
     }
 }
