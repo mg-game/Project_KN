@@ -45,7 +45,8 @@
   },
   "formation": {
     "touch": "drag occupied slot to move/swap; hold to remove; tap roster then empty slot to add",
-    "roster": "native horizontal scrolling and tap selection; existing mouse HTML drag retained"
+    "roster": "native horizontal scrolling and tap selection; existing mouse HTML drag retained",
+    "pointerOwnership": "First primary pointer owns one slot/preset hold across formation controls. Only its move/up/cancel/capture-loss may alter the gesture; callbacks verify gesture identity. Other fingers cannot remove or save. Existing 600ms threshold and completed actions are preserved."
   },
   "artAssets": "48 runtime PNG candidates from delivery 02 unchanged",
   "remaining": "Unity integration, real timer/income freeze, threat-based auto direction, physics/AI, balance and real-device testing not performed",

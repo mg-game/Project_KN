@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-14T05:47:41.965Z",
+  "scope": "Chromium CDP multi-touch in the browser formation review. Blur cleanup is event-dispatched; not Unity or physical-device certification.",
+  "checks": [
+    {
+      "name": "Same-slot secondary release cannot cancel the primary finger’s 600ms removal hold",
+      "result": "pass"
+    },
+    {
+      "name": "A secondary slot never starts removal after the primary finger releases",
+      "result": "pass"
+    },
+    {
+      "name": "Primary drag survives another finger’s release and moves one guardian without losing the ghost early",
+      "result": "pass"
+    },
+    {
+      "name": "Same-preset secondary release cannot cancel a valid save or turn its release into a load",
+      "result": "pass"
+    },
+    {
+      "name": "One gesture owns formation across slot/preset controls; the other finger cannot save or remove",
+      "result": "pass"
+    },
+    {
+      "name": "Cancel, blur and navigation clear both fingers’ pending work; a fresh primary hold still works",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}
