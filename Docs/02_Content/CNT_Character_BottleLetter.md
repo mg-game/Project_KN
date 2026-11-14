@@ -93,7 +93,7 @@
 | 역할 | 실제 경로 | 상태 |
 |---|---|---|
 | 현재 게임 기본형 | 없음 | - |
-| 채택 원본 컨셉 | 없음 — 기본형 시트 의뢰 전 ([`ART_Character_Brief`](../07_Art/ART_Character_Brief.md) §1) | 공유 URL 미등록 |
+| 채택 원본 컨셉 | `ArtSource/Sheets/bottleletter_sheet_v2.png` (PR #100) | **채택** (2026-11-14, v1 수정 1회 → v2) → 본체 = 큐 #10 |
 | 현재 코드 · 데이터 | 없음 (M1 뒤) | - |
 
 ## 4. 외형 목록
