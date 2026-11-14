@@ -97,7 +97,7 @@ DailyClock (F-01): 하루 = 현지 05:00 시작 · 주 = 월요일 05:00
 | 할 일 | 내용 | 지시 |
 |---|---|---|
 | 로드 · 지급 검증 | 음수 · NaN · ∞ → 0 + 경고 · 재료 상한 | I-14 |
-| 별조각 2풀 저장 | `gem_paid` · `gem_free` (결제 전에 세이브 구조만) | I-14 |
+| 별조각 2풀 저장 | `gemPaid` · `gemFree` (결제 전에 세이브 구조만) | I-14 |
 | 원정 시계 | `DailyClock` 경유 + `IsTampered` 적용 | I-5 |
 | 플레이 기록 보내기 | 계정 · 데이터 탭 | I-14 (D-58) |
 | 나머지 | 지금 구현 그대로 — 백업 복구 · 세이브 코드도 테스터에게 유용하므로 유지 | — |
@@ -133,7 +133,7 @@ DailyClock (F-01): 하루 = 현지 05:00 시작 · 주 = 월요일 05:00
 | `PlayerData.accountId` | string | 게임 계정 ID (지금 게스트, P1 서버 발급) | `a1b2c3d4-…` |
 | `MetaSave.clock.serverOffsetSec` 🆕 | long | 서버 시각 − 기기 시각 (마지막 접속) | -12 |
 | `MetaSave.clock.lastServerSyncUnix` 🆕 | long | 마지막 서버 시각 동기화 | 1794500000 |
-| `Wallet.gem_paid` · `gem_free` | double · double | I-14 (M1) — P1부터 `gem_paid`는 서버 값으로 덮어씀 | 0 · 1300 |
+| `PlayerData.gemPaid` · `gemFree` (D-69 #2) | double · double | I-14 (M1) — P1부터 `gemPaid`는 서버 값으로 덮어씀 | 0 · 1300 |
 | `SaveEnvelope.sig` 🆕 | string (HMAC-SHA256 16진) | 세이브 · 세이브 코드 서명 (`LL2.` 머리말) | `9f2c…` |
 | `SaveEnvelope.integrityWarnings` 🆕 | int | 서명 · 값 검증 경고 누적 (잠그지 않고 기록만) | 0 |
 
