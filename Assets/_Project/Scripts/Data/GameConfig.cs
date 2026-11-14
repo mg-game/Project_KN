@@ -14,6 +14,8 @@ namespace IdleGame
         public int maxLevel = 1000;
         public double levelUpBaseCost = 10;
         public double levelUpCostGrowth = 1.12;
+        [Tooltip("수선점 강화에 쓰는 재화. 기본 단추 (SYS_Economy §3 #8 E안 이음매). 바꾸면 성장 화면 표시 · 강해지기 · 획득처도 함께 맞춰야 한다")]
+        public CurrencyType shopUpgradeCurrency = CurrencyType.Gold;
 
         [Header("방치 수익 (초당 골드 = 기본값 × 증가율^(레벨-1) × 보유 효과)")]
         public double baseGoldPerSecond = 1;
@@ -51,6 +53,8 @@ namespace IdleGame
         [Tooltip("1 → 2레벨 비용 (단추)")]
         public double characterLevelUpBaseCost = 50;
         public double characterLevelUpCostGrowth = 1.09;
+        [Tooltip("친구(계보) 레벨업에 쓰는 재화. 기본 단추 (SYS_Economy §3 #8 E안 이음매). 친구 전용 재화로 나눌(B안) 때 여기를 바꾸고 화면 · 획득처를 붙인다")]
+        public CurrencyType lineageLevelUpCurrency = CurrencyType.Gold;
         [Tooltip("레벨당 공격력 증가(%). 레벨 1 기준 선형 (레벨 11 = +80%)")]
         public float attackPerLevelPercent = 8f;
         [Tooltip("레벨당 체력 증가(%). 레벨 1 기준 선형")]

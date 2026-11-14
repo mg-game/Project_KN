@@ -33,6 +33,24 @@ namespace IdleGame.Tests
         }
 
         [Test]
+        public void LevelUpCurrency_DefaultsToGold_AndFollowsConfig()
+        {
+            // SYS_Economy §3 #8 E안 이음매: 기본은 단추, 설정을 바꾸면 그 재화로 강화한다 (나중에 재화를 나눌 때 이 한 칸만 바꾼다)
+            Assert.AreEqual(CurrencyType.Gold, Growth.LevelUpCurrency);
+
+            Config.shopUpgradeCurrency = CurrencyType.EventToken;
+            Currency.Add(CurrencyType.Gold, 1000);
+            Currency.Add(CurrencyType.EventToken, 10);
+            double gold = Currency.Get(CurrencyType.Gold);
+
+            Assert.AreEqual(1, Growth.GetAffordableCount(5), "가진 강화 재화 10 = 1레벨치");
+            Assert.IsTrue(Growth.TryLevelUp());
+            Assert.AreEqual(gold, Currency.Get(CurrencyType.Gold), 1e-9, "단추는 쓰지 않는다");
+            Assert.AreEqual(0, Currency.Get(CurrencyType.EventToken), 1e-9);
+            Assert.IsFalse(Growth.TryLevelUp(), "강화 재화가 없으면 단추가 있어도 못 올린다");
+        }
+
+        [Test]
         public void TryLevelUp_Multiple_RequiresFullCost()
         {
             Currency.Add(CurrencyType.Gold, Growth.GetLevelUpCost(1, 3));
