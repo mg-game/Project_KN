@@ -93,7 +93,7 @@
 | 역할 | 실제 경로 | 상태 |
 |---|---|---|
 | 현재 게임 기본형 | 없음 | - |
-| 채택 원본 컨셉 | 없음 — 기본형 시트 의뢰 전 ([`ART_Character_Brief`](../07_Art/ART_Character_Brief.md) §1) | 공유 URL 미등록 |
+| 채택 원본 컨셉 | `ArtSource/Sheets/boots_sheet_v1.png` (PR #92) | **채택** (2026-11-14, DD 1회차 — `ART_Queue` §3) → 본체 = 큐 #9 |
 | 현재 코드 · 데이터 | 없음 (M1 뒤) | - |
 
 ## 4. 외형 목록
