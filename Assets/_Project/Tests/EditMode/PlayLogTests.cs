@@ -302,6 +302,38 @@ namespace IdleGame.Tests
         }
 
         [Test]
+        public void LevelUps_WriteSpendLinesPerSink()
+        {
+            // SYS_Economy §3 #8 E안: 레벨업에 쓴 재화를 소비처(수선점 · 친구)별로 남긴다 (나눌지 판정 근거)
+            var recorder = new PlayLogRecorder(Battle, Power, Gacha, GuideQuest, IdleChest, Features, Tutorial, MetaDb, () => _now, Growth, Characters);
+            recorder.Connect();
+            Currency.Add(CurrencyType.Gold, 1e6);
+
+            int from = Growth.Level;
+            double shopCost = Growth.GetLevelUpCost(from, 2);
+            Assert.IsTrue(Growth.TryLevelUp(2));
+            var shop = Rows().Single(r => r.Value<string>("ev") == "spend" && r.Value<string>("sink") == "shop");
+            Assert.AreEqual("gold", shop.Value<string>("cur"));
+            Assert.AreEqual(shopCost, shop.Value<double>("amt"), 0.5, "정수로 반올림해 쓴다");
+            Assert.AreEqual(from, shop.Value<int>("from"));
+            Assert.AreEqual(from + 2, shop.Value<int>("to"));
+
+            Characters.Grant("sock");
+            int level = Characters.GetLevel("sock");
+            double lineageCost = Characters.GetLevelUpCost("sock");
+            Assert.IsTrue(Characters.TryLevelUp("sock"));
+            var lineage = Rows().Single(r => r.Value<string>("ev") == "spend" && r.Value<string>("sink") == "lineage");
+            Assert.AreEqual("gold", lineage.Value<string>("cur"));
+            Assert.AreEqual(lineageCost, lineage.Value<double>("amt"), 0.5);
+            Assert.AreEqual("sock", lineage.Value<string>("id"));
+            Assert.AreEqual(level + 1, lineage.Value<int>("lv"));
+
+            recorder.Disconnect();
+            Growth.TryLevelUp();
+            Assert.AreEqual(2, Rows().Count(r => r.Value<string>("ev") == "spend"), "연결을 풀면 쓰지 않는다");
+        }
+
+        [Test]
         public void NullSystems_AreTolerated()
         {
             var recorder = new PlayLogRecorder(null, null, null, null, null, null, null, null, () => _now);

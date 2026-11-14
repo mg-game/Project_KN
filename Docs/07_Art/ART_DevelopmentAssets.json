@@ -852,6 +852,197 @@
         "pivot": null,
         "PPU": null
       }
+    },
+    {
+      "group": "ART-10",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Enemies/boss_mothqueen_lamp_candidate.png",
+      "guid": "fe9e2a8c7c7a4b8f85871ca76c9403b6",
+      "sha256": "3b03573eeb811bbe69ce0693bcdbf796c232d6750972a518dcfdbb6c006cc22e",
+      "bytes": 276784,
+      "canvas": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "notes": "기본. 내부기억등,기존4날개/왕관더듬이/지팡이/깃발유지.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-10",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Enemies/boss_mothqueen_lamp_summon_candidate.png",
+      "guid": "00c1eaf2e5454a2f81a5605af3f0f399",
+      "sha256": "554caa936364f3877472265e938a7af384c0cd17a056337af2093411182647ca",
+      "bytes": 277139,
+      "canvas": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "notes": "선택형소환상태. 같은본체/실루엣,배내부빛만밝아짐.빛레이어와중복적용금지.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-10",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/FX/boss_mothqueen_lamp_emission.png",
+      "guid": "ec26b61916a947669dfe16e5ec5cd244",
+      "sha256": "4b66099fc4fd0b4c8b482d8f7274f54492b7afbb33f9e5a9fe51e447e0183a3c",
+      "bytes": 13648,
+      "canvas": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "notes": "512전체캔버스NormalAlpha레이어.기본위겹침,자르거나재중앙화금지.알파조절로소환PNG대체가능.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-10",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/UI/boss_moth_wing_marker.png",
+      "guid": "1b460606a6304beb9f98aba33b16f37d",
+      "sha256": "fee9ca2c93de9ac8c0a391b4bdc9d15bfb7722981d90c0abc23c0c63ca82be71",
+      "bytes": 14641,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "128예고용날개문양.8방위에배치.빈방향은기존위험▲/빨강강조별도.부하그림은기존enemy_moth재사용.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-10",
+      "kind": "reference",
+      "path": "Assets/_Project/Art/Concept/art10_boss_lamp_development_review.png",
+      "guid": "d916f772225f44d7babf05459007421d",
+      "sha256": "3753cca98199e5324c309e62ca784e7fae43906cc518fd5ff89d71b6e52cfd38",
+      "bytes": 1449162,
+      "canvas": [
+        1160,
+        4089
+      ],
+      "mode": "RGB",
+      "notes": "기본/소환/축소/8방위/교대4방위/취소/빛누출 브라우저검토.실제Unity스크린샷아님.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Default/reference",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": null,
+        "PPU": null
+      },
+      "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-08",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/report_retry.png",
+      "guid": "64601f511b9b414282ed9d2500e524d7",
+      "sha256": "91dcc1fda355b185fb50f40f1510f9113f600c37c53730e7ababd8ce41581d16",
+      "bytes": 18347,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "RS-002 재도전 CTA용 단일 반시계 되돌림 화살표. 기존 자동2화살/함께걷기 원형배지와 구분. 기존4종은 재사용; 기존 PNG/GUID 보존.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "validation": {
+        "mode": "RGBA",
+        "canvas": [
+          128,
+          128
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          9,
+          7,
+          119,
+          121
+        ],
+        "components_8_connected": 1,
+        "center": [
+          64.0,
+          64.0
+        ],
+        "transparent_border": true,
+        "max_alpha": 254
+      }
     }
   ],
   "reused": [
@@ -924,6 +1115,36 @@
       "group": "ART-03",
       "path": "Assets/_Project/Art/Battle/shop_crack_3.png",
       "use": "기존 손상 레이어,단계 조명 위에 겹침."
+    },
+    {
+      "group": "ART-10",
+      "path": "Assets/_Project/Art/Enemies/enemy_moth.png",
+      "use": "기존 좀나방을 부하그림으로 재사용.새문양은예고기호이며적그림과구분."
+    },
+    {
+      "group": "ART-10",
+      "path": "Assets/_Project/Art/Enemies/boss_mothqueen.png",
+      "use": "변형의 원본참조.일반여왕Sprite/기존GUID/데이터는유지."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/Icons/guardian.png",
+      "use": "방어 문제 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/Icons/power.png",
+      "use": "화력 부족 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/UI/tab_formation.png",
+      "use": "편성 변경 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/UI/tab_growth.png",
+      "use": "성장 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
     }
   ],
   "pending": [
@@ -932,6 +1153,237 @@
     "캐릭터 외형 유형/런타임 ID 검토 및 최종 채택",
     "DD/사람 확인과 실제 기기/가림/색공간 검수"
   ],
-  "latest_revision_branch": "feature/art-rainy-two-lanterns",
-  "latest_revision_base_commit": "b975ca1e002667d9e619d5efb3390f1effca677d"
+  "latest_revision_branch": "feature/art08-failure-report",
+  "latest_revision_base_commit": "523b8de2d143dbf42f0c02115fbae831c3db5088",
+  "art10_provenance": {
+    "source_boss_sha256": "6ea670621ed0c30869573fee176b1fb6bcd9a6c315c8d20ff37b01f2e1beb5c5",
+    "content_height": 434,
+    "baseline_y": 481,
+    "center_x": 256,
+    "source_enemy_and_lamp_references": {
+      "reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719",
+      "sources": {
+        "Enemies/boss_mothqueen.png": {
+          "file": "boss_mothqueen_existing.png",
+          "sha256": "6ea670621ed0c30869573fee176b1fb6bcd9a6c315c8d20ff37b01f2e1beb5c5",
+          "bytes": 350367
+        },
+        "Enemies/enemy_moth.png": {
+          "file": "enemy_moth_existing.png",
+          "sha256": "a34eecb020a332fcbc3e904c4cec07c6b14d9bb9df493e5b1086e4fac28d021a",
+          "bytes": 81585
+        },
+        "VFX/enemy_atk_boss_mothqueen.png": {
+          "file": "enemy_atk_boss_mothqueen_existing.png",
+          "sha256": "0229cf3c5a3f545a89a0f0617758bb1dba7086cdf034543d81c14b39db1007fa",
+          "bytes": 415918
+        },
+        "Icons/lamp.png": {
+          "file": "lamp_existing.png",
+          "sha256": "c73a558eeaaa75ff1020fc6f07399148c0768bd4531ac8e190ed91f2f7944b63",
+          "bytes": 51578
+        },
+        "Battle/field_tall.png": {
+          "file": "field_tall_existing.png",
+          "sha256": "9b00bf54464a05f46bc1e3d1d4431ea987725613d51d70c3f6fee92baf214f28",
+          "bytes": 3656928
+        },
+        "FX/ring_glow.png": {
+          "file": "ring_glow_existing.png",
+          "sha256": "88e6dd58dc5c17427a2a620811b4b3d04a20c2a9f34a4b8716c2a32b7fe4febf",
+          "bytes": 60750
+        },
+        "Battle/guardian_pad.png": {
+          "file": "guardian_pad_existing.png",
+          "sha256": "38f8c16967a53f3fad74bfb5fd125eb1a09d34d257f653ee5b10ce44e811d59b",
+          "bytes": 42510
+        },
+        "UI/formation_danger.png": {
+          "file": "formation_danger_existing.png",
+          "sha256": "15f61d014fc70f79a07e9140681f6ebd716b2b3db27a1be4d1abacf5e9a3c841",
+          "bytes": 15883
+        }
+      }
+    },
+    "internal_light_geometry": {
+      "canvas": [
+        512,
+        512
+      ],
+      "manual_core_ROI": [
+        217,
+        350,
+        296,
+        438
+      ],
+      "selection": "manual abdomen ROI intersected with source warm-core R>230,G>180,B<205,Rec709_sRGBY>195,A>200;pixel-coordinate proxy,not general semantic segmentation",
+      "mask_pixels": 2164,
+      "source_mean_Y": 216.61329528650646,
+      "composition": "Normal Alpha OVER,one same-canvas emission layer;not additive;full summon PNG is optional flattened preview/state sprite",
+      "filter": {
+        "RGB_gain": 1.14,
+        "RGB_offset": 0.06,
+        "blur_sigma": 1.2
+      },
+      "alpha_note": "Normal Alpha over base with interior alpha252~255 may increase interior alpha byup to3;binary silhouette and outerROI pixels preserved",
+      "full_coordinate_map_sha256": "a58bf27411a2988a4a8289781f267d3732930f2c32365ed9c9872205e709a7cd"
+    },
+    "validation": {
+      "same_binary_silhouette": true,
+      "outside_manual_abdomen_ROI_exactRGBA_identical": true,
+      "core_mean_srgb_Rec709_Y": {
+        "base": 216.61329528650646,
+        "summon": 240.3724183918669
+      },
+      "core_alpha_gain_max": 3,
+      "overall_base_mean_Y": 133.23418934381573,
+      "browser_review": {
+        "states": 6,
+        "timing_samples": 24,
+        "two_second_runs": 3,
+        "8_spawn_4_alternate_cancel_verified": true
+      },
+      "limitations": [
+        "Browser art/contract review,not Unity/game spawn or phase implementation",
+        "manual coreROI/colorproxy,not general semantic segmentation",
+        "Normal Alpha interior alpha may rise up to3;silhouette/outsideROI unchanged",
+        "Small staff/jewelry details reduce at64px;actual-device outline/contrast/color-space/VFX/occlusion review pending"
+      ]
+    },
+    "runtime_EnemyDef_registered": false,
+    "generation_calls": {
+      "boss_variant_edit": 1,
+      "wing_marker_generation": 1
+    }
+  },
+  "art08_provenance": {
+    "source_commit": "523b8de2d143dbf42f0c02115fbae831c3db5088",
+    "source_documents": [
+      "Docs/07_Art/ART_M1_Backlog.md §1 ART-08 / §3",
+      "Docs/07_Art/ART_StyleGuide.md §2 / §6 / §9 / §14",
+      "Docs/03_UI_UX/UI_InGame.md RS-002",
+      "Docs/03_UI_UX/UI_Battle.md §4"
+    ],
+    "prompt": "Game-ready 2D mobile UI icon for a whimsical fairy-tale idle defense RPG. Soft storybook style, clean medium outline, soft cel shading, deep indigo and purple base with restrained thin gold accents and pastel highlight. Simple bold silhouette readable at 32px. Transparent background, centered, no text. Subject: a single RETRY action icon for the Lost & Lovely failure report.\n\nUse the attached three existing project icons only as rendering, gold material, purple outline and soft shading references. Match their actual polished 2D line work and restrained gold/purple palette. Do not reproduce their shield, crossed needles, bag, or the exact auto icon.\n\nDraw ONE thick warm cream-gold bent arrow in a nearly complete circular loop, turning COUNTERCLOCKWISE, ending in a large blunt triangular arrowhead in the upper-left quadrant pointing left/down. It means try again. A single arrow, one arrowhead, a broad open central hole. No second arrow, no play triangle, no bag, no character, no shield, no weapons. No circular backing disc or outer badge ring: the arrow silhouette itself is the entire icon, so it differs from the existing behavior_patrol round badge. One subtle lavender shadow on the inside edge, very limited gentle gold highlight. Rounded and toy-like, no intricate engravings, no little floating stars or sparkles.\n\n1024x1024 transparent RGBA canvas with this one symbol centered, square silhouette, visible icon fills around 84% of canvas and leaves a clear transparent margin on all sides. All visible parts connected. Front view. No backdrop, no floor shadow, no text, no letters, no numbers, no logo, no fake UI screenshot, no neon or sci-fi, no photoreal metal. Intended final128px; it must read immediately at32px.",
+    "generation_calls": 1,
+    "raw_generation": {
+      "source": "/workspace/generated_images/exec-50ee223d-e3fc-4022-bb99-91eb6e7ae3de.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "bbox_exclusive": [
+        157,
+        139,
+        1096,
+        1118
+      ],
+      "sha256": "71de4014f27b1a55a8613f7e18b017e2d0ec3e0238ecfa2d10b32ddc326140d5"
+    },
+    "transform": {
+      "renderer": "Chromium",
+      "canvas": [
+        128,
+        128
+      ],
+      "uniform_scale": 0.11440245148110317,
+      "x": -7.673135852911145,
+      "y": -7.9019407558733405,
+      "operation": "uniform scale and center only;no repaint/recolor/alpha change",
+      "source_sha256": "71de4014f27b1a55a8613f7e18b017e2d0ec3e0238ecfa2d10b32ddc326140d5"
+    },
+    "references": [
+      {
+        "path": "Assets/_Project/Art/Icons/guardian.png",
+        "sha256": "ec15d7ca2ff862c47c76e83132d851795eca365d79c5af86229a8994993a5311",
+        "bytes": 71409,
+        "local": "guardian.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/power.png",
+        "sha256": "ca20cb2d8c2bc3fac73abf6a724fcfe5df0bfc74e75e424886dc125e1d7630d5",
+        "bytes": 81058,
+        "local": "power.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/auto.png",
+        "sha256": "c866f81002e9fc6579d8eb229b22f57caa8faf6349f4a404b5e2d94fbb694036",
+        "bytes": 77551,
+        "local": "auto.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/behavior_patrol.png",
+        "sha256": "0cd54a7400e534ae3c1633456385cffd5354abbb28bad6c6976d2f791800c6b1",
+        "bytes": 23600,
+        "local": "behavior_patrol.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/tab_formation.png",
+        "sha256": "3958bb47987c96eb9e0fc4181a88ce158c105ae6388cdf62df2369c6c4548387",
+        "bytes": 85509,
+        "local": "tab_formation.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/tab_growth.png",
+        "sha256": "d09033e088585b44f1d331da8e0cc20e883a138150bb5882c366e433f8206b03",
+        "bytes": 60015,
+        "local": "tab_growth.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/return_header.png",
+        "sha256": "0e9ec4514ac6590507935b33a3dbfa763da7ab2a61ed10074c089b95ff3e5f08",
+        "bytes": 1482321,
+        "local": "return_header.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/button_gold_9s.png",
+        "sha256": "6ace1af174be5598e903b5b25c840cf1fc17fac65feec44c5021dea1dc2c9e0f",
+        "bytes": 22883,
+        "local": "button_gold_9s.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/panel_night_9s.png",
+        "sha256": "bb873455d9e47b6530301ad1439cdeae7378ce1250839ddc88083dd6d603d6a1",
+        "bytes": 18047,
+        "local": "panel_night_9s.png"
+      }
+    ],
+    "review": {
+      "icon_sizes": [
+        128,
+        48,
+        32
+      ],
+      "backgrounds_from_UITheme": [
+        "#17122E",
+        "#261D4C",
+        "#F6EDDA"
+      ],
+      "visually_distinct_roles": 5,
+      "layout": {
+        "renderer": "Chromium",
+        "deviceScaleFactor": 1,
+        "review_widths": [
+          320,
+          375,
+          430
+        ],
+        "states": [
+          "defense",
+          "firepower",
+          "retreat"
+        ],
+        "overflow_elements": [],
+        "actual_unity": false
+      },
+      "actual_unity": false,
+      "status": "Candidate prepared; DD adoption and Unity/device verification pending",
+      "notes": "No text burned in PNG. No new dim-state image. Cause/recommendation and retry behavior use game source; no new rules/numbers. Prototype HTML/screenshots kept out of game assets."
+    },
+    "remote_lfs_verification": {
+      "fresh_cache": true,
+      "sha256": "91dcc1fda355b185fb50f40f1510f9113f600c37c53730e7ababd8ce41581d16",
+      "matches": true
+    }
+  }
 }

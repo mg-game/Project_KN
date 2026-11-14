@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-13T09:29:14.852Z",
+  "scope": "Native Chromium Enter/Escape/Space repeat, focus return and browser UI transitions. Not Unity or physical-device certification.",
+  "checks": [
+    {
+      "name": "Help click/Escape returns focus to help; held Escape cannot also resume the battle",
+      "result": "pass"
+    },
+    {
+      "name": "Retreat cancellation returns focus to its trigger; a fresh press can reopen and explicit confirmation still works",
+      "result": "pass"
+    },
+    {
+      "name": "Held Enter changes a pause switch once and cannot reopen pause after resuming; fresh presses work",
+      "result": "pass"
+    },
+    {
+      "name": "Held Space activates its modal button once on release and remains usable on the next press",
+      "result": "pass"
+    },
+    {
+      "name": "Held Escape cancels only resonance confirmation; held Enter cannot reopen it or consume fragments twice",
+      "result": "pass"
+    },
+    {
+      "name": "A navigation press cannot activate the next screen, while ordinary level-up keyboard repeat stays unchanged",
+      "result": "pass"
+    }
+  ],
+  "errors": []
+}
