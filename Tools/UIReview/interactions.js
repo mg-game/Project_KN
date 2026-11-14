@@ -170,9 +170,10 @@
       let gesture=null;
       const stop=()=>{const current=gesture;gesture=null;if(current)clearTimeout(current.timer);formationStops.delete(stop);if(current&&button.hasPointerCapture(current.id))button.releasePointerCapture(current.id);screen.querySelector('.formation-drag-ghost')?.remove();};
       button.onpointerdown=e=>{
-        if(e.button!==0)return;button.setPointerCapture(e.pointerId);
+        if(e.button!==0||e.isPrimary===false||gesture||formationStops.size)return;button.setPointerCapture(e.pointerId);
         gesture={id:e.pointerId,startX:e.clientX,startY:e.clientY,character:slots[a],drag:false};formationStops.add(stop);
-        gesture.timer=setTimeout(()=>{if(!gesture)return;if(page!=='formation'||!button.isConnected){stop();return}slots[a]=null;selected=null;suppressSlotClick=performance.now()+300;stop();formation();toast('유실자가 목록으로 돌아왔어요')},600);
+        const current=gesture;
+        gesture.timer=setTimeout(()=>{if(gesture!==current)return;if(page!=='formation'||!button.isConnected){stop();return}slots[a]=null;selected=null;suppressSlotClick=performance.now()+300;stop();formation();toast('유실자가 목록으로 돌아왔어요')},600);
       };
       button.onpointermove=e=>{
         if(!gesture||gesture.id!==e.pointerId)return;
@@ -187,20 +188,21 @@
         const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('[data-slot]');stop();
         if(current.drag){suppressSlotClick=performance.now()+300;if(target){selected=current.character;moveTo(Number(target.dataset.slot))}else toast('자리 이동을 취소했어요');}
       };
-      button.onpointercancel=button.onlostpointercapture=stop;button.oncontextmenu=e=>e.preventDefault();
+      button.onpointercancel=button.onlostpointercapture=e=>{if(gesture?.id===e.pointerId)stop()};button.oncontextmenu=e=>e.preventDefault();
     });
     screen.querySelectorAll('[data-preset]').forEach(button=>{
       const i=Number(button.dataset.preset);let gesture=null,saved=false,cancelled=false;
       const stop=()=>{const current=gesture;gesture=null;if(current)clearTimeout(current.timer);formationStops.delete(cancel);if(current&&button.hasPointerCapture(current.id))button.releasePointerCapture(current.id)};
       const cancel=()=>{cancelled=true;stop()};
       button.onpointerdown=e=>{
-        if(e.button!==0)return;stop();saved=false;cancelled=false;button.setPointerCapture(e.pointerId);
+        if(e.button!==0||e.isPrimary===false||gesture||formationStops.size)return;saved=false;cancelled=false;button.setPointerCapture(e.pointerId);
         gesture={id:e.pointerId,x:e.clientX,y:e.clientY};formationStops.add(cancel);
-        gesture.timer=setTimeout(()=>{if(!gesture||page!=='formation'||!button.isConnected){cancel();return}presets[i]=[...slots];saved=true;toast('프리셋 '+(i+1)+'에 저장했어요')},600);
+        const current=gesture;
+        gesture.timer=setTimeout(()=>{if(gesture!==current)return;if(page!=='formation'||!button.isConnected){cancel();return}presets[i]=[...slots];saved=true;toast('프리셋 '+(i+1)+'에 저장했어요')},600);
       };
-      button.onpointermove=e=>{if(gesture&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8)cancel()};
-      button.onpointerup=stop;
-      button.onpointercancel=cancel;button.onlostpointercapture=()=>{if(gesture)cancel()};
+      button.onpointermove=e=>{if(gesture?.id===e.pointerId&&Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>8)cancel()};
+      button.onpointerup=e=>{if(gesture?.id===e.pointerId)stop()};
+      button.onpointercancel=button.onlostpointercapture=e=>{if(gesture?.id===e.pointerId)cancel()};
       button.onpointerleave=null;
       button.onclick=e=>{if(saved){saved=false;return}if(cancelled&&e.detail!==0)return;slots=[...presets[i]];selected=null;formation();toast('프리셋 '+(i+1)+'을 불러왔어요')};
       button.oncontextmenu=e=>e.preventDefault();
