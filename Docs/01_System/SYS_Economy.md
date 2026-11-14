@@ -355,7 +355,7 @@ IF 유예 종료                               → 남은 별빛 사탕을 단�
 | `Currency_Master.hud_pinned` | bool | 상단 고정 여부 | true |
 | `Currency_Master.cap` | double | 보유 상한 (0 = 없음) | 0 |
 | `Wallet.currencies` | Dictionary<enum, double> | 현재 `PlayerData.currencies` 그대로 | `{"Gold": 1234.5}` |
-| `Wallet.gem_paid` · `gem_free` | double · double | 별조각 2풀 — **신규**, `currencies[Gem]` = 합 (호환용) | 0 · 1300 |
+| `PlayerData.gemPaid` · `gemFree` (D-69 #2) | double · double | 별조각 2풀 — **신규**, `currencies[Gem]` = 합 (호환용) | 0 · 1300 |
 | `Item_Master.item_id` | string (PK) | 현재 `ItemDef.id` | `mat_rib` |
 | `Item_Master.grade` · `category` · `sources[]` | enum · enum · struct[] | 현재 `ItemDef` 그대로 | Rare · Material · … |
 | `Item_Master.lineage_hint` | string (FK → Character_Base, nullable) | 원물 테마 계보 (우산살 → 레이니 등) — **신규**, 획득처 안내 · 아트 | `rainy` |
