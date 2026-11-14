@@ -4,10 +4,10 @@
 |---|---|
 | 상태 | Approved (D-30) |
 | 작성자 | ① 구현: 기개발 · ②③: DD |
-| 최종 수정 | 2026-11-14 (§3 #8 수선점 강화 · 친구 레벨업 재화: E안, §1.4 이음매 설정 · 지출 기록, §6 판정 기준 미정) |
+| 최종 수정 | 2026-11-14 (§3 #8 수선점 강화 · 친구 레벨업 재화: E안, §1.4 이음매 설정 · 지출 기록, §6 판정 기준 미정) · 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) · ① I-14 반영 — 기개발 |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) §3 · [`SYS_InGameBattle`](./SYS_InGameBattle.md) |
-| 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) — 경로 약칭 표 참고 |
+| 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) + I-14 경제 안전 (`feat/economy-safety`) — 경로 약칭 표 참고 |
 
 > 구조(D-26): **① 현재 구현** = 지금 코드가 실제로 하는 일 / **② 기획 방향** = 기획서가 원하는 모습 / **③ 차이** = 둘이 다른 곳, 대표가 결정.
 > 결정이 나면 ②에 반영하고 ③ 행에 `D-n`을 적는다. 코드 수정은 지시함(#3)으로. 용어는 [`KN_Glossary`](../00_Overview/KN_Glossary.md)를 따른다.
@@ -44,14 +44,21 @@
 
 ### 1.1 규칙
 ```
-[지급 — 재화] CurrencySystem.Add(type, amount)                         (CUR:21-25, 35-39)
-IF amount ≤ 0 또는 NaN → 아무것도 하지 않음 (+∞는 거르지 않음)
+[지급 — 재화] CurrencySystem.Add(type, amount[, source])               (CUR:52-74) — I-14
+IF amount == 0 → 지급 없음, 로그 없이 무시 (보상 계산이 0인 정상 흐름)
+ELSE IF amount < 0 · NaN · ±∞ → 거부 + 오류 로그 "[Currency] 잘못된 지급"
+ELSE IF type == 별조각 → 풀 맞추기(PD:182-191) → source == Purchase면 gemPaid, 그 밖(Game, 기본값)은 gemFree에 더함
+                         → currencies[Gem] = gemPaid + gemFree, Changed
 ELSE → currencies[type] = 보유 + amount, Changed(type, 새 값)
+합이 double 범위를 넘으면 double.MaxValue에서 멈춤 — ∞를 저장하지 않음 (CUR:93)
 
-[지급 — 재료] InventorySystem.Add(id, count) / AddRange(ids: 각 1개)     (INV:43-54, 101-112)
-IF count ≤ 0 → 무시
+[지급 — 재료] InventorySystem.Add(id, count) / AddRange(ids: 각 1개)     (INV:52-63, 114-140) — I-14
+IF count == 0 → 무시
+ELSE IF count < 0 → 거부 + 오류 로그 "[Inventory] 잘못된 지급"
 ELSE IF ItemDatabase에 없는 id → 경고 로그 "[Inventory] 존재하지 않는 아이템", 무시
-ELSE → items[id] = 보유 + count, ItemAdded(id, count) → Changed
+ELSE → items[id] = min(보유 + count, 상한) (long으로 더해 int 넘침 없음)
+       상한에 걸리면 남는 몫은 버리고 경고 로그 1회(아이템마다) · ItemAdded(id, 실제로 늘어난 개수) → Changed
+       하나도 못 넣으면 ItemAdded · Changed 없음
 
 [공통 창구] RewardService.Grant(RewardData)                            (RS:40-51)
 IF type == Currency → Currency.Add  /  ELSE IF type == Item → Inventory.Add(itemId, (int)amount)
@@ -62,9 +69,10 @@ Currency    → ⌊amount × 배율 + 1e-9⌋ (excludeGem이면 별조각 ×1), 
 Item        → ⌊amount × 배율⌋, int 최대값으로 자름, 0 이하 · 빈 id 건너뜀 → RS
 GoldMinutes → ⌊받는 순간 초당 단추 × 60 × 분 × 배율⌋ → 단추               (MRS:86-92, 346-351)
 
-[소비 — 재화] CurrencySystem.TrySpend(type, amount)                      (CUR:27-33)
+[소비 — 재화] CurrencySystem.TrySpend(type, amount)                      (CUR:76-91)
 IF amount < 0 또는 NaN → ArgumentOutOfRangeException
-ELSE IF 보유 < amount → false, 변화 없음
+ELSE IF 보유(합) < amount → false, 변화 없음
+ELSE IF type == 별조각 → 풀 맞추기 → gemFree에서 먼저, 모자란 만큼 gemPaid에서 → currencies[Gem] = 합, Changed
 ELSE → 보유 − amount, Changed (amount 0도 true)
 
 [소비 — 재료] InventorySystem.TryConsume(id, count)                      (INV:57-65)
@@ -78,11 +86,12 @@ ELSE IF 보유 == count → 키 삭제  /  ELSE → 보유 − count
 
 [음수 · 0 · NaN]
 - 상점 가격 NaN · 음수 → 판매 불가(NotFound), 0은 허용 (SHOP:152)
-- 저장된 보유량의 음수 · NaN은 고치지 않음 (Sanitize는 null만, PD:71-72)
+- 로드 무결성 (I-14, PD:132-172 — Sanitize가 부름): 재화 저장값 · 별조각 풀이 음수 · NaN · ∞면 0, 재료 개수가 음수면 키 삭제. 고친 것마다 경고 로그 "[Save] 무결성"
 - 단추는 소수가 될 수 있음: 방치 수익(BOOT:252) · 옛 오프라인 보상(OFF:39, 45) · 수선점 강화 비용(GROW:41)에 내림 없음
 
 [상한]
-- 재화 상한 없음 (double). 재료 상한 없음, int 덧셈에 넘침 검사 없음 (INV:109)
+- 재화 상한 없음 (double, double.MaxValue에서 멈춤). 재료 상한 = `ItemDatabase.countCap` (기본 999,999 — 임시, BAL에서 확정, IDB:36-40)
+  · 지급 때 상한에서 멈춤 (INV:114-140) · 세이브에 상한보다 많으면 InventorySystem을 만들 때 상한으로 맞추고 경고 로그 (INV:143-)
 - int 최대값으로 자르는 곳: 메타 보상 재료(MRS:80) · 원정 재료(EXP:464)
 - 상점: 상품별 dailyLimit · totalLimit, 코스튬 최대 1 (SHOP:97-108). 하루 = 현지 05:00 날 키 (SHOP:8-10)
 
@@ -90,11 +99,14 @@ ELSE IF 보유 == count → 키 삭제  /  ELSE → 보유 − count
 - currencies: Dictionary<CurrencyType, double>, 키 = 열거형 이름 "Gold" (PD:10-11, 29)
 - items: Dictionary<string, int>, 0개가 되면 키 삭제 (PD:31, INV:61)
 - 읽기: TolerantEnumKeyDictionaryConverter(모르는 열거형 키 건너뜀) → Sanitize (STORE:168-171, 842-848)
-- 새 게임: 단추 · 별조각 키만 넣음. 별빛 사탕은 키 없음 → Get 0 (PD:59-65, CUR:17)
+- 별조각 2풀 (I-14): `gemPaid` · `gemFree` (PD:34-36). currencies[Gem] = 둘의 합 (호환 · 화면)
+  · 풀 맞추기 ReconcileGemPools (PD:182-191, 멱등): 유료 = min(유료, 합), 무료 = 합 − 유료 → 옛 세이브(칸 없음 = 0 · 0)는 전부 무료로 이전
+  · 로드(Sanitize) · 별조각 지급 · 소비 · GemPaid/GemFree 읽기 전에 부름. 세이브 버전은 4 그대로 (칸 추가 + 멱등 이전)
+- 새 게임: 단추 · 별조각 키만 넣음, 시작 별조각은 무료 풀 (PD:71). 별빛 사탕은 키 없음 → Get 0
 
 [그 밖]
 - 별빛 사탕을 빼는 곳은 상점 구매뿐. 이벤트 종료 때 지우는 코드 없음 (EventToken 검색: BS:721 · 상점 데이터 · 이름 표시)
-- 별조각 결제 지급 코드 없음 (UnityEngine.Purchasing 등 검색 결과 없음)
+- 별조각 결제 지급 코드 없음 (UnityEngine.Purchasing 등 검색 결과 없음). 출처 enum `CurrencySource.Purchase`는 자리만 (GE:17-)
 - 재료 단추 보너스 = 보유 종류마다 goldBonusPercent 1회 합 (INV:83-99), 9종 모두 0
 ```
 
@@ -124,12 +136,15 @@ ELSE IF 보유 == count → 키 삭제  /  ELSE → 보유 − count
 | `maxQuickIdleTickets` · `freeDoublePerDay` · `doubleExcludesGem` | 20 · 1 · 1 | `META:1675-1678` | 빠른 수선권 보관 상한 · 하루 무료 두 배 · 두 배에서 별조각 제외 |
 | `gemPerLevel` · 도감 별조각 | 10 · 형태 20 · 30 · 50, 코스튬 30, 망각체 10, 시너지 20 + 30, 재료 5 | `META:3878` · `META:3333-3340` | 호감도 단계 별조각 = 10 × 단계 · 도감 칸 보상 (`CODEX:722-759`) |
 | `lostChest.dropChance` · `firefly.perDay` | 0 · 0 | `META:4117` · `META:5464` | 잃어버린 상자 · 반딧불 꺼짐 |
+| `ItemDatabase.countCap` · `DefaultCountCap` | 999,999 (에셋에 없음 → 코드값) | `IDB:36-40` | 재료 한 종류 보유 상한 (I-14, 임시 — BAL에서 확정). 0 이하면 기본값 (`INV:48`) |
 
 ### 1.4 데이터
 | Column | Type | 설명 | 예시 |
 |---|---|---|---|
 | `PlayerData.currencies` | `Dictionary<CurrencyType, double>` | 재화 보유량 (`PD:29`) | `{"Gold": 1234.5, "Gem": 300}` |
 | `PlayerData.items` | `Dictionary<string, int>` | 재료 보유 개수 (`PD:31`) | `{"mat_cloth": 12}` |
+| `PlayerData.gemPaid` · `gemFree` | double · double | 별조각 2풀 (I-14) — 결제로 받은 몫 · 그 밖. 합 = `currencies[Gem]`, 소비는 무료 먼저 (`PD:34-36`) | 0 · 1300 |
+| `CurrencySource` | enum (Game 0 · Purchase 1) | 재화 지급 출처. 별조각 풀을 고른다. Purchase는 자리만 (`GE:17-`) | `Game` |
 | `GameConfig.shopUpgradeCurrency` · `lineageLevelUpCurrency` | `CurrencyType` | 수선점 강화 · 친구 레벨업에 쓰는 재화. 기본 `Gold` (§3 #8 E안 이음매). 시스템(`GrowthSystem.LevelUpCurrency` · `CharacterSystem.LevelUpCurrency`)만 이 값을 읽는다. 화면은 아직 단추를 직접 본다 (§6) | `Gold` · `Gold` |
 | 플레이 기록 `spend` 줄 | `sink` · `cur` · `amt` · (`from` · `to` 또는 `id` · `lv`) | 레벨업에 쓴 재화를 소비처별로 남긴다 (`PlayLogRecorder`). §3 #8 판정 근거 | `{"ev":"spend","sink":"shop","cur":"gold","amt":21,"from":1,"to":3}` |
 | `ItemDef.id` · `name` | string · string | 아이템 ID · 표시명. ID 중복이면 경고 후 앞 것만 (`IDB:66-69`) | `mat_cloth` · 수선 천 |
