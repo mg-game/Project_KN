@@ -31,7 +31,7 @@
 
 | # | 상태 | 작업 | 기준 문서 (프롬프트 · 규격) | 산출 | 올리는 곳 | 제출 | 요청 · 결정 |
 |---|---|---|---|---|---|---|---|
-| 1 | 진행 | **웰리** 기본형 시트 (장화 · 2장 구조 A) | [`ART_Character_Brief`](./ART_Character_Brief.md) §1 웰리 행 + 추가 프롬프트 · [`ART_CharacterHandoff`](./ART_CharacterHandoff.md) §8 A · 원본 [`CNT_Character_Boots`](../02_Content/CNT_Character_Boots.md) | 시트 1장 (전신 3/4 · 검은 실루엣 · 64 px · 표정 3, 글자 없음) | 채팅 / Notion (깃 X) | - | 2026-11-13 · D-68 #4 |
+| 1 | 검수 대기 | **웰리** 기본형 시트 (장화 · 2장 구조 A) | [`ART_Character_Brief`](./ART_Character_Brief.md) §1 웰리 행 + 추가 프롬프트 · [`ART_CharacterHandoff`](./ART_CharacterHandoff.md) §8 A · 원본 [`CNT_Character_Boots`](../02_Content/CNT_Character_Boots.md) | 시트 1장 (전신 3/4 · 검은 실루엣 · 64 px · 표정 3, 글자 없음) | 채팅 / Notion (깃 X) | [채팅 원본 PNG](/workspace/scratch/d68-rescue-basic-sheets/welly_basic_sheet.png) | 2026-11-13 · D-68 #4 |
 | 2 | 대기 | **보틀리** 기본형 시트 (유리병 편지 · 2장 구조 B) | [`ART_Character_Brief`](./ART_Character_Brief.md) §1 보틀리 행 + 추가 프롬프트 · §8 A · 원본 [`CNT_Character_BottleLetter`](../02_Content/CNT_Character_BottleLetter.md) | 시트 1장 (위와 같음) | 채팅 / Notion (깃 X) | - | 2026-11-13 · D-68 #4 |
 
 ## 3. 완료 기록 (최근 → 과거)
