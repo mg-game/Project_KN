@@ -31,8 +31,8 @@
 ### 0.3 체형 분산 (가이드 §4 비중 35 / 45 / 20)
 | 유형 | 캐릭터 |
 |---|---|
-| 완전 비인간 마스코트형 | 짝짝이 · 몽실 · 푸딩 경 |
-| 준인간 이형형 | 키키 · 레이니 · 엘리제 · 네임리스 00 |
+| 완전 비인간 마스코트형 | 짝짝이 · 몽실 · 푸딩 경 · 웰리 |
+| 준인간 이형형 | 키키 · 레이니 · 엘리제 · 네임리스 00 · 보틀리 |
 | 미형 인간형 | 루루팝 |
 
 ### 0.4 검수 체크 (가이드 §15에서 시안 단계에 보는 것)
@@ -55,6 +55,8 @@
 | **엘리제** | 태엽 망가진 발레리나 오르골 | 금 간 도자기 상체 · **회전판 하체** · 등의 태엽 · 악보 띠 치마 · 걷지 않고 미끄러짐 | 마지막 음을 연주하면 사라질까 봐 같은 곡만 반복한다 | 아이보리 / 먼지보라 / 브론즈 골드 | 광역 제어 → 큰 후방 장치 · 원형 | `Characters/lala_*` (오르골?) |
 | **네임리스 00** | 이름이 지워진 명찰 | 몸 중심의 빈 명찰 · 별자리 얼굴 · 명찰 끈 팔다리 · 등에 빈 명찰 날개 | 만나는 사람의 이름과 말투를 빌려 쓴다 | 무채색 / 별빛 블루 / 홀로그램 | 복제 · 변칙 → 반투명 · 가변 | 없음 |
 | **루루팝** | 유행 지나 버려진 립스틱 | **립스틱 케이스 하체에서 회전하며 올라오는 상체** · 녹은 립스틱 머리 · 큰 입술 · 검은 백조 날개 | 공격할수록 몸이 닳아 짧아진다 | 진홍 / 블랙 / 로즈 골드 | 광역 딜 → 앞으로 기운 실루엣 | `Characters/rouge_*` (립스틱?) |
+| **웰리** [가정] · 2장 | 작아져서 버려진 노란 장화 | 장화 한 짝 = 몸 · 앞코 위 눈 · 입 · **입구에서 뒤집혀 나온 남색 안감 머리** · 옆 고리 팔 1개 · 밑창으로 통통 튐 | 웅덩이만 보면 일단 뛰어든다 | 레몬 옐로 / 남색 / 코랄 | 돌격 → 앞으로 기운 · 앞코가 진행 방향 | 없음 |
+| **보틀리** [가정] · 2장 | 도착하지 못한 유리병 편지 | 둥근 간유리 병 몸 · 코르크 마개 모자 · 병 목의 얼굴 · 안의 말린 편지 + 갇힌 빛 · 편지 끈 팔 2개 + 봉랍 도장 · 오뚝이 흔들 이동 | 자기 편지를 한 번도 열어 본 적이 없다 | 바다유리 연초록 / 크림 / 봉랍 빨강 | 포획 → 둥글고 낮은 무게중심 · 끈 팔 | 없음 |
 
 ### 캐릭터별 추가 프롬프트 (0.2 뒤에 붙임)
 ```
@@ -66,6 +68,8 @@
 [엘리제] A broken ballerina music-box doll: cracked porcelain ballerina upper body, the lower body is a rotating music-box turntable with small organ pipes, a big wind-up key on the back, sheet-music ribbons and metal pipes spreading like a skirt, gliding instead of walking. Ivory, dusty purple, bronze gold. Quiet, elegant, melancholic.
 [네임리스 00] A faceless name-tag child: an old name tag with an erased name at the center of the body, the face is empty with a faint star constellation, arms and legs of lanyard straps and clear film, blank name tags hanging from the back like wings, slightly translucent. Achromatic grey, starlight blue, holographic accents. Shy, imitative.
 [루루팝] An out-of-fashion lipstick opera diva: the lower body is a lipstick case and the upper body rises out of it with a twist, hair of melted lipstick texture, a simple face with big vivid lips, black swan wing arms and cape. Crimson, black, rose gold. Confident, theatrical. The lipstick's twist-up structure must read before any gothic dress.
+[웰리] A small outgrown yellow rain boot creature: the single rubber boot itself is the whole body, round eyes and a grin on the upper toe cap, the navy boot lining flips out of the opening like a tuft of hair, one side pull-loop works as a little waving hand, no legs - it hops on its sole, a drop of water and mud in the tread. Lemon yellow, navy, coral. Impatient, loud, fearless, jumps into every puddle. Not a person wearing boots.
+[보틀리] A message-in-a-bottle creature: a round frosted sea-glass bottle is the body (frosted and nearly opaque, thick outline, not clear glass), a cork stopper as a little hat, a shy small face on the bottle neck, a rolled letter visible inside with a soft contained glow under it (no flame shape), the letter's string comes out as two arms ending in a red wax seal, a rounded bottom that wobbles like a roly-poly toy, dried water-line stripes. Pale sea-glass green, cream paper, wax-seal red. Shy, slow, careful, never finishes a sentence. Not a person holding a bottle.
 ```
 
 ## 2. 진행
