@@ -1664,7 +1664,7 @@ namespace IdleGame.EditorTools
             var heroPortrait = Img(hero.transform, "Portrait", Color.white, _icons.Star);
             heroPortrait.preserveAspect = true;
             heroPortrait.rectTransform.At(MiddleLeft, new Vector2(30, 0), new Vector2(250, 250));
-            var heroTitle = Fit(Txt(hero.transform, "Title", "7일째 루즈리 확정!", 40, UITheme.Gold, TextAlignmentOptions.MidlineLeft, true), 24);
+            var heroTitle = Fit(Txt(hero.transform, "Title", "7일째 루루팝 확정!", 40, UITheme.Gold, TextAlignmentOptions.MidlineLeft, true), 24);
             heroTitle.rectTransform.At(TopLeft, new Vector2(300, -78), new Vector2(600, 60));
             var heroSub = Txt(hero.transform, "Sub", "0/7일", 25, UITheme.Text, TextAlignmentOptions.TopLeft, false, true);
             heroSub.rectTransform.At(TopLeft, new Vector2(300, -150), new Vector2(600, 90));

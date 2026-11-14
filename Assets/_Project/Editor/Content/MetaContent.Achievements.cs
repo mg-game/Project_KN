@@ -34,7 +34,7 @@ namespace IdleGame.EditorTools
         /// <summary>숨은 기록을 찾은 뒤 보여 줄 한 줄 (플래그 → 설명, 부록 A.1 "Done descriptions" → AchievementDef.doneText)</summary>
         internal static readonly IReadOnlyDictionary<string, string> HiddenDoneText = new Dictionary<string, string>
         {
-            { HiddenRainUdu, "비 오는 스테이지에서 우두커니가 지킨 채 클리어했어요" },
+            { HiddenRainUdu, "비 오는 스테이지에서 레이니가 지킨 채 클리어했어요" },
             { HiddenCleanBoss, "수선점이 한 번도 다치지 않고 챕터 보스를 물리쳤어요" },
             { HiddenThreeLamps, "한 스테이지에서 불을 세 번 밝혔어요" },
             { HiddenAllSocks, "짝짝이의 형태 11종을 모두 해금했어요" },

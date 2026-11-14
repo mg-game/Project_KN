@@ -1879,9 +1879,9 @@ namespace IdleGame.UI
             }
             _entries.Add(new Entry { Kind = Kind.SupportPulse, Id = "lalabell", Label = "지원 지킴이 맥박 · 리본과 왕관", Key = "pulse_support" });
             _entries.Add(new Entry { Kind = Kind.HealPulse, Label = "힐 지킴이 맥박 · 민트 고리와 방울", Key = "pulse_heal" });
-            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "mongdang", Label = "정전 · 빛 계보 명중 (몽당이) — 어둠에 구멍", Key = "blackout_mongdang" });
-            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "lalabell", Label = "정전 · 빛 계보 명중 (라라벨) — 어둠에 구멍", Key = "blackout_lalabell" });
-            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "chalkak", Label = "정전 · 빛이 아닌 계보 (찰칵이) — 구멍 없음", Key = "blackout_chalkak" });
+            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "mongdang", Label = "정전 · 빛 계보 명중 (몽실) — 어둠에 구멍", Key = "blackout_mongdang" });
+            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "lalabell", Label = "정전 · 빛 계보 명중 (엘리제) — 어둠에 구멍", Key = "blackout_lalabell" });
+            _entries.Add(new Entry { Kind = Kind.LightHole, Id = "chalkak", Label = "정전 · 빛이 아닌 계보 (키키) — 구멍 없음", Key = "blackout_chalkak" });
             _entries.Add(new Entry { Kind = Kind.Lamp, Label = "수선점 불 밝히기 · 점화 → 빛 물결 → 여운", Key = "lamp", ScreenScale = true });
             foreach (string key in SkillVfx.All)
             {

@@ -4,10 +4,10 @@
 |---|---|
 | 상태 | Approved (D-46) |
 | 작성자 | ① 추출: DD (`CharacterDatabase.asset` · 아트 파일) · ②③: DD |
-| 최종 수정 | 2026-11-12 |
+| 최종 수정 | 2026-11-13 (① 화면 이름 — I-7 이름 통일 반영, 기개발) |
 | 관련 테이블 | `Character_Base` (현재 `LineageDef`) · `CharacterFormDef` |
 | 관련 문서 | [`CNT_Character_Main`](./CNT_Character_Main.md) (설정집 · 대표 작성) · D-39 S1 · [`CNT_Skill`](./CNT_Skill.md) · [`SYS_Evolution`](../01_System/SYS_Evolution.md) · [`SYS_FTUE`](../01_System/SYS_FTUE.md) (D-32) · [`ART_Character_Brief`](../07_Art/ART_Character_Brief.md) · [`KN_Glossary`](../00_Overview/KN_Glossary.md) |
-| 근거 | 코드 `4b73a5a` — `Data/CharacterDatabase.asset` · `Core/GameEnums.cs` (`ItemGrade`) · `Art/Characters/*.png` (36장) |
+| 근거 | 코드 `4b73a5a` — `Data/CharacterDatabase.asset` · `Core/GameEnums.cs` (`ItemGrade`) · `Art/Characters/*.png` (36장) + I-7 이름 통일 (`Editor/Content/CharacterContent.Lineages.cs`) |
 | 로드맵 | K-01 (`KN_Roadmap`) |
 
 > **이름 = 설정집 이름** (D-39 S1). 코드 id · 세이브 키는 그대로 두고, 화면 이름만 바꾸는 건 I-7(세이브 영향 확인) 뒤 — 이 문서는 I-7을 기다리지 않는다.
@@ -21,17 +21,18 @@
 - 발견: **루루팝도 역할이 다르다** — 설정집 "광역 공격" ↔ 코드 지원(입맞춤 표식) → 키키와 같은 방식으로 정리 (§3 #7).
 
 ## 1. 현재 구현 (추출)
-| 코드 id | 코드 이름 | 원물 | 희귀도 (`ItemGrade`) | 기본형 성향 | 형태 수 | 그림 | 얻는 법 (현재) |
+| 코드 id | 화면 이름 (I-7 전 이름) | 원물 | 희귀도 (`ItemGrade`) | 기본형 성향 | 형태 수 | 그림 | 얻는 법 (현재) |
 |---|---|---|---|---|---|---|---|
 | `jjakjjak` | 짝짝이 | 짝을 잃은 양말 | Epic (2) | 방어 | 11 + 외형 8 | 12 + 외형 11 | 시작 지급 |
 | `ttokdan` | 똑단이 | 외투에서 떨어진 단추 | Common (0) | 방어 | 3 | 4 | 시작 지급 |
-| `chalkak` | 찰칵이 | 맞는 문을 잃은 열쇠 | Rare (1) | 저격 | 3 | 4 | 시작 지급 |
-| `mongdang` | 몽당이 | 다 타버린 몽당초 | Rare (1) | 힐 | 3 | 4 | 시작 지급 |
-| `udukeoni` | 우두커니 | 주인을 기다린 우산 | Legendary (3) | 방어 | 3 | 4 | 1-3 첫 만남 (확정 소환) |
-| `rouge` | 루즈리 | 서랍 속에 잊힌 립스틱 | Epic (2) | 지원 | 3 | 4 | 소환 |
-| `lalabell` | 라라벨 | 마지막 음이 고장 난 오르골 | Mythic (4) | 힐 | 3 | 4 | 소환 |
+| `chalkak` | 키키 (찰칵이) | 맞는 문을 잃은 열쇠 | Rare (1) | 저격 | 3 | 4 | 시작 지급 |
+| `mongdang` | 몽실 (몽당이) | 다 타버린 몽당초 | Rare (1) | 힐 | 3 | 4 | 시작 지급 |
+| `udukeoni` | 레이니 (우두커니) | 주인을 기다린 우산 | Legendary (3) | 방어 | 3 | 4 | 1-3 첫 만남 (확정 소환) |
+| `rouge` | 루루팝 (루즈리) | 서랍 속에 잊힌 립스틱 | Epic (2) | 지원 | 3 | 4 | 소환 |
+| `lalabell` | 엘리제 (라라벨) | 마지막 음이 고장 난 오르골 | Mythic (4) | 힐 | 3 | 4 | 소환 |
 
 - 그림 36장 = 기본형 7 + 진화 형태 22 + 호감도 10 포즈 7. 외형 11장 · 스토리 19장 별도.
+- **화면 이름 = 설정집 이름 (I-7 · D-39 S1)**: 코드 id · 세이브 키 · 그림 경로는 그대로, 화면 문구만 바꿈. 계보 이름이 들어간 형태 이름 8개도 같이 — 마스터키 키키 · 초롱 몽실 · 반딧불 몽실 · 양산 레이니 · 벨벳 루루팝 · 글로스 루루팝 · 왈츠 엘리제 · 피날레 엘리제. 스킬 이름 · 조합 보너스 이름은 그대로 (D-43 #7 · D-50 #4 정본 표 대기).
 
 ## 2. 기획 방향 (To-be) — DD
 

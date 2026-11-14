@@ -42,7 +42,7 @@ namespace IdleGame.EditorTools
 
             Form("chal_lock", "최후의 빗장", V.KeyholeLock, "여기서부터는 못 지나가!",
                 ShopLow, AllFoes,
-                "맞는 자물쇠를 끝내 찾지 못한 찰칵이는 스스로 자물쇠가 되었어요. 수선점이 위험해지면 온몸의 걸쇠를 한꺼번에 철컥 잠가 버려요.",
+                "맞는 자물쇠를 끝내 찾지 못한 키키는 스스로 자물쇠가 되었어요. 수선점이 위험해지면 온몸의 걸쇠를 한꺼번에 철컥 잠가 버려요.",
                 Stun(2.5f), Knockback(0.5f)),
         };
 
