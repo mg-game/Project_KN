@@ -200,7 +200,14 @@ namespace IdleGame
         {
             int level = GetLevel(lineageId);
             if (level <= 0 || level >= MaxLevel) return 0;
-            double raw = _config.characterLevelUpBaseCost * Math.Pow(_config.characterLevelUpCostGrowth, level - 1);
+            return GetCostAtLevel(level);
+        }
+
+        /// <summary>fromLevel → fromLevel+1 비용 (정수 단추, 계보와 상관없음). 플레이 기록의 지출 줄(spend)도 이것으로 센다. 할당 없음</summary>
+        public double GetCostAtLevel(int fromLevel)
+        {
+            if (fromLevel <= 0) return 0;
+            double raw = _config.characterLevelUpBaseCost * Math.Pow(_config.characterLevelUpCostGrowth, fromLevel - 1);
             // 부동소수 오차(55.000000001 → 56)를 막고 정수 단추로 맞춘다
             return Math.Max(0, Math.Ceiling(raw - 1e-6));
         }
@@ -212,22 +219,22 @@ namespace IdleGame
             if (level <= 0 || levels <= 0) return 0;
             double total = 0;
             int last = Math.Min(MaxLevel, level + levels);
-            for (int from = level; from < last; from++)
-            {
-                double raw = _config.characterLevelUpBaseCost * Math.Pow(_config.characterLevelUpCostGrowth, from - 1);
-                total += Math.Max(0, Math.Ceiling(raw - 1e-6));
-            }
+            for (int from = level; from < last; from++) total += GetCostAtLevel(from);
             return total;
         }
 
-        /// <summary>
-        /// 지금 가진 단추 (강해지기 줄의 "모으는 데 걸리는 시간" 계산용 — StrengthenAdvisor가 재화 시스템을 받지 않으므로 여기서 읽어 준다)
-        /// </summary>
-        public double AvailableGold => _currency != null ? _currency.Get(CurrencyType.Gold) : 0;
+        /// <summary>친구 레벨업에 쓰는 재화 (GameConfig.lineageLevelUpCurrency, 기본 단추: SYS_Economy §3 #8 E안 이음매)</summary>
+        public CurrencyType LevelUpCurrency => _config.lineageLevelUpCurrency;
 
-        /// <summary>지금 단추로 레벨업할 수 있는지 (빨간 점 표시용)</summary>
+        /// <summary>
+        /// 지금 가진 레벨업 재화 (강해지기 줄의 "모으는 데 걸리는 시간" 계산용. StrengthenAdvisor가 재화 시스템을 받지 않으므로 여기서 읽어 준다).
+        /// 이름은 예전 그대로 (기본값이 단추). 레벨업 재화를 단추가 아닌 것으로 바꾸면 강해지기의 시간 계산(초당 단추 기준)도 같이 바꿔야 한다
+        /// </summary>
+        public double AvailableGold => _currency != null ? _currency.Get(LevelUpCurrency) : 0;
+
+        /// <summary>지금 가진 레벨업 재화로 레벨업할 수 있는지 (빨간 점 표시용)</summary>
         public bool CanLevelUp(string lineageId) =>
-            IsOwned(lineageId) && !IsMaxLevel(lineageId) && IsLevelUpUnlocked && _currency.Has(CurrencyType.Gold, GetLevelUpCost(lineageId));
+            IsOwned(lineageId) && !IsMaxLevel(lineageId) && IsLevelUpUnlocked && _currency.Has(LevelUpCurrency, GetLevelUpCost(lineageId));
 
         /// <summary>단추로 레벨 +1. 미보유 · 최대 레벨 · 단추 부족 · 친구 레벨업 잠김(F-03, 1-1 전)이면 false</summary>
         public bool TryLevelUp(string lineageId)
@@ -235,7 +242,7 @@ namespace IdleGame
             if (!IsLevelUpUnlocked) return false;
             var save = GetSave(lineageId);
             if (save == null || save.level >= MaxLevel) return false;
-            if (!_currency.TrySpend(CurrencyType.Gold, GetLevelUpCost(lineageId))) return false;
+            if (!_currency.TrySpend(LevelUpCurrency, GetLevelUpCost(lineageId))) return false;
             save.level++;
             NotifyChanged();
             LevelUp?.Invoke(lineageId, save.level);

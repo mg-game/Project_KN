@@ -22,6 +22,11 @@ namespace IdleGame.UI
     ///     상자 5개 (30/60/90/120/150) + 날 칩 7개 ('1일'…'7일' — 잠긴 날은 자물쇠 · '{d}일째에 열려요', 받을 것이 있는 날은 점) + 과제 줄 ('+5' 알약 · 잠김 알약).
     ///     [모두 받기]가 열린 날의 과제 · 상자를 모두 받는다, 탭 점 = _tabBadges[3].
     ///   · 탭이 4개면 폭 150으로 줄여 한 줄에 놓는다 (초기화 시간 자리는 그대로). 새 부품은 장면을 다시 만들기 전(G3)에는 없어도 된다 — 그때는 예전 3탭 그대로.
+    /// 탭 자동 이동 (UI_InGame §4.3 공통 규칙, 공용 부품 AutoTabRunner):
+    ///   · [모두 받기]로 지금 탭의 받을 것이 0이 되고 다른 탭에 남아 있으면, UIMotion.AutoTabDelay(0.9초, 움직임 줄이기 0.4초) 뒤
+    ///     화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 오른쪽의 받을 탭으로 한 번 넘어간다. 맨 끝이면 처음으로 돈다. 도착 탭 글자가 한 번 톡 (줄이기면 없음).
+    ///   · 넘기지 않는 경우: 줄의 [받기] (골라 받는 중), 기다리는 동안 화면을 누름, 튜토리얼 중, 팝업이 닫힘, 다른 팝업이 위에 뜸, 잠기거나 숨은 탭.
+    ///   · 열 때도 같은 순서로 받을 것이 있는 첫 탭부터 연다 (돌아가기 칩 · OpenRecords · OpenMissions로 정한 쪽은 그대로).
     /// </summary>
     public class JournalPopup : UIPopup
     {
@@ -129,11 +134,22 @@ namespace IdleGame.UI
         /// <summary>탭 줄에 마지막으로 놓은 보이는 탭 수 (바뀔 때만 다시 놓는다)</summary>
         int _laidOutTabs = -1;
 
+        // ── 탭 자동 이동 (UI_InGame §4.3 공통 규칙) ──
+        const int TabCount = 4;
+        /// <summary>화면 탭 순서 (LayoutTabs와 같다): 첫 주 → 오늘 → 이번 주 → 기록</summary>
+        static readonly int[] TabOrder = { (int)Tab.Starter, (int)Tab.Daily, (int)Tab.Weekly, (int)Tab.Records };
+        /// <summary>탭마다 보이는지 · 받을 수 (Tab 값으로 찾는다, FillTabState가 채운다)</summary>
+        readonly bool[] _tabVisible = new bool[TabCount];
+        readonly int[] _tabClaimable = new int[TabCount];
+        /// <summary>탭 자동 이동 공용 부품 (Awake에서 만든다)</summary>
+        AutoTabRunner _autoTab;
+
         MissionPeriod Period => _tab == Tab.Weekly ? MissionPeriod.Weekly : MissionPeriod.Daily;
 
         protected override void Awake()
         {
             base.Awake();
+            _autoTab = new AutoTabRunner(this);
             _rows = new MetaViewPool<MissionRowView>(_rowTemplate, _listContent);
             _chestViews = new MetaViewPool<MissionChestView>(_chestTemplate, _chestRoot);
             _onRow = OnRowButton;
@@ -176,18 +192,25 @@ namespace IdleGame.UI
             if (Game.Features.IsNew(FeatureId.Missions)) Game.Features.MarkSeen(FeatureId.Missions);
             _shownClaimable = -1;
             _laidOutTabs = -1;
-            // 돌아가기 칩으로 다시 열면 떠났던 쪽, 아니면 첫 주에 받을 것이 있으면 첫 주, 오늘 받을 것이 없고 이번 주에 있으면 이번 주 탭부터
-            var tab = _reopenTab >= 0
-                ? (Tab)_reopenTab
-                : StarterVisible() && Game.StarterWeek.HasClaimable
-                    ? Tab.Starter
-                    : (Tab)MissionsTab(Game.Missions.GetClaimableCount(MissionPeriod.Daily), Game.Missions.GetClaimableCount(MissionPeriod.Weekly));
+            // 돌아가기 칩 · OpenRecords · OpenMissions로 정한 쪽이 있으면 그 쪽, 아니면 화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 받을 것이 있는 첫 탭 (없으면 오늘)
+            Tab tab;
+            if (_reopenTab >= 0)
+            {
+                tab = (Tab)_reopenTab;
+            }
+            else
+            {
+                FillTabState();
+                tab = (Tab)FirstClaimTab(_tabVisible, _tabClaimable);
+                if (tab == Tab.Records) _recordsSegment = 0;
+            }
             _reopenTab = -1;
             SelectTab(tab);
         }
 
         protected override void OnClose()
         {
+            _autoTab?.Stop();
             if (_float != null) StopCoroutine(_float);
             _float = null;
             _claimAllPop = null;
@@ -219,6 +242,7 @@ namespace IdleGame.UI
 
         void SelectTab(Tab tab)
         {
+            _autoTab?.Stop();
             if (tab == Tab.Records && !Game.Features.IsUnlocked(FeatureId.Achievements)) return;
             if (tab == Tab.Starter && !StarterVisible()) tab = Tab.Daily;
             _tab = tab;
@@ -242,6 +266,8 @@ namespace IdleGame.UI
         void Update()
         {
             if (!IsOpen || !MetaUi.IsActive) return;
+            // 자동 이동을 기다리는 동안 화면을 누르면 지금 탭에 머문다 (UI_InGame §4.3)
+            _autoTab?.Tick();
             float dt = Time.unscaledDeltaTime;
             if (_barFill != null && !Mathf.Approximately(_barShown, _barTarget))
             {
@@ -581,7 +607,11 @@ namespace IdleGame.UI
             }
             if (_tab == Tab.Starter)
             {
-                if (_starterView != null) _starterView.ClaimAll((RectTransform)_claimAllButton.transform);
+                if (_starterView == null) return;
+                // 받을 것이 없으면 패널이 토스트만 띄운다. 그때는 넘기지 않는다
+                bool hadClaimable = Game.StarterWeek != null && Game.StarterWeek.HasClaimable;
+                _starterView.ClaimAll((RectTransform)_claimAllButton.transform);
+                if (hadClaimable) ScheduleAutoTab(Tab.Starter);
                 return;
             }
             var period = Period;
@@ -620,6 +650,7 @@ namespace IdleGame.UI
             }
             if (gainedPoints > 0) FlyPoints(_claimAllButton.transform as RectTransform, gainedPoints);
             if (rewards != null && rewards.Count > 0) MetaUi.FlyRewards(rewards, _bar);
+            ScheduleAutoTab(period == MissionPeriod.Weekly ? Tab.Weekly : Tab.Daily);
         }
 
         // ───────────── 수선점 기록 (Q-04) ─────────────
@@ -715,6 +746,7 @@ namespace IdleGame.UI
             }
             UISfx.Play(UISfxKey.AchievementClaim);
             if (rewards != null && rewards.Count > 0) MetaUi.FlyRewards(rewards, (RectTransform)_claimAllButton.transform);
+            ScheduleAutoTab(Tab.Records);
         }
 
         /// <summary>기록 단계 ID의 줄 ID (콘텐츠 lineId, 없으면 단계 ID 그대로). 누를 때만 부른다</summary>
@@ -736,6 +768,60 @@ namespace IdleGame.UI
             Close();
             if (NavOpensTab(nav)) UINav.PushReturn(ReturnLabel, () => ReopenAt(from));
             MetaNavigator.GoAndFocus(nav, focus);
+        }
+
+        // ───────────── 탭 자동 이동 (UI_InGame §4.3 공통 규칙) ─────────────
+
+        /// <summary>
+        /// 처음 열 탭 (순수): 화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 보이고 받을 것이 있는 첫 탭, 없으면 [오늘].
+        /// 배열은 Tab 값으로 찾는다 (길이 4)
+        /// </summary>
+        internal static int FirstClaimTab(bool[] visible, int[] claimable) =>
+            AutoTabRunner.FirstTab(TabOrder, visible, claimable, (int)Tab.Daily);
+
+        /// <summary>
+        /// [모두 받기] 뒤 넘어갈 탭 (순수): 지금 탭에 받을 것이 남았으면 −1 (머문다).
+        /// 아니면 화면 순서로 지금 탭 오른쪽부터 한 바퀴 돌며 보이고 받을 것이 있는 첫 탭, 없으면 −1. 배열은 Tab 값으로 찾는다 (길이 4)
+        /// </summary>
+        internal static int NextClaimTab(int current, bool[] visible, int[] claimable) =>
+            AutoTabRunner.NextTab(current, TabOrder, visible, claimable);
+
+        /// <summary>
+        /// 탭마다 보이는지 · 받을 수 (Refresh 탭 점과 같은 기준). 첫 주는 받을 것이 있으면 1.
+        /// 기록은 새 부품이 있을 때만 대상 (다시 만들기 전 장면은 기록 쪽이 준비 중 카드라 받을 수 없다)
+        /// </summary>
+        void FillTabState()
+        {
+            var missions = Game.Missions;
+            var achievements = Game.Achievements;
+            bool starterVisible = StarterVisible();
+            _tabVisible[(int)Tab.Daily] = true;
+            _tabVisible[(int)Tab.Weekly] = true;
+            _tabVisible[(int)Tab.Records] = RecordsBuilt && Game.Features.IsUnlocked(FeatureId.Achievements);
+            _tabVisible[(int)Tab.Starter] = starterVisible;
+            _tabClaimable[(int)Tab.Daily] = missions != null ? missions.GetClaimableCount(MissionPeriod.Daily) : 0;
+            _tabClaimable[(int)Tab.Weekly] = missions != null ? missions.GetClaimableCount(MissionPeriod.Weekly) : 0;
+            _tabClaimable[(int)Tab.Records] = achievements != null ? achievements.ClaimableCount : 0;
+            _tabClaimable[(int)Tab.Starter] = starterVisible && Game.StarterWeek != null && Game.StarterWeek.HasClaimable ? 1 : 0;
+        }
+
+        /// <summary>
+        /// [모두 받기]로 받은 뒤: 공용 부품(AutoTabRunner)이 기다렸다가 AdvanceFrom을 부른다 (줄의 [받기]는 부르지 않는다).
+        /// from = 받은 탭 (받는 사이 Refresh가 탭을 바꾸면 넘기지 않는다, 예: 첫 주가 끝나 [오늘]로 돌아감)
+        /// </summary>
+        void ScheduleAutoTab(Tab from) => _autoTab?.Schedule(() => AdvanceFrom(from));
+
+        /// <summary>기다림이 끝난 뒤 (팝업이 열려 있고 맨 위이며 튜토리얼 중이 아님은 AutoTabRunner가 확인했다)</summary>
+        void AdvanceFrom(Tab from)
+        {
+            if (_tab != from) return;
+            FillTabState();
+            int next = NextClaimTab((int)from, _tabVisible, _tabClaimable);
+            if (next < 0) return;
+            // 기록 탭은 받을 줄이 [진행 중]에 있다
+            if (next == (int)Tab.Records) _recordsSegment = 0;
+            SelectTab((Tab)next);
+            _autoTab?.Pulse(next < _tabLabels.Length ? _tabLabels[next] : null);
         }
 
         // ───────────── 점수 날아가기 ─────────────
