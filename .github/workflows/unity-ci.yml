@@ -1,0 +1,125 @@
+# Unity CI (GameCI) — PR마다 Unity 컴파일 + EditMode 테스트 자동 실행 (D-74 ⑤)
+#
+# 필요한 저장소 시크릿 (Settings → Secrets and variables → Actions):
+#   UNITY_LICENSE  — Unity Hub로 Personal 라이선스를 활성화해 생긴 Unity_lic.ulf 파일 내용 전체
+#   UNITY_EMAIL    — 그 라이선스의 Unity 계정 이메일
+#   UNITY_PASSWORD — 그 Unity 계정 비밀번호
+# 시크릿이 없으면(설정 전 · 포크 PR) 테스트를 건너뛰고 경고만 남긴다 — PR을 막지 않는다.
+#
+# 무엇을 하나: Unity가 프로젝트를 열면서 모든 어셈블리(게임 · 에디터 · 테스트)를 컴파일하고 EditMode 테스트를 돌린다.
+#   컴파일 오류가 있으면 테스트 단계가 실패한다. PlayMode · 빌드는 하지 않는다.
+# 비용 줄이기: 코드 · 에셋이 바뀐 PR만(문서 PR 제외) · 같은 PR의 이전 실행은 취소 ·
+#   LFS(Assets · Packages만)와 Library를 캐시 — LFS 대역폭은 저장소 주인 몫이라 새 파일만 받게 한다.
+
+name: Unity CI
+
+on:
+  pull_request:
+    branches: [develop]
+    paths:
+      - 'Assets/**'
+      - 'Packages/**'
+      - 'ProjectSettings/**'
+      - '.github/workflows/unity-ci.yml'
+  push:
+    # develop에서도 돌려 캐시를 develop에 만든다 (PR 실행은 대상 브랜치 캐시를 이어 쓴다)
+    branches: [develop]
+    paths:
+      - 'Assets/**'
+      - 'Packages/**'
+      - 'ProjectSettings/**'
+      - '.github/workflows/unity-ci.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: unity-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  editmode:
+    name: Unity 컴파일 + EditMode
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      checks: write # 테스트 결과 체크(EditMode 테스트)를 PR에 남긴다
+    env:
+      UNITY_VERSION: 6000.2.6f2 # ProjectSettings/ProjectVersion.txt와 같아야 한다 (아래에서 확인)
+      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    steps:
+      - name: 시크릿 확인
+        id: license
+        run: |
+          if [ -z "$UNITY_LICENSE" ] || [ -z "$UNITY_EMAIL" ] || [ -z "$UNITY_PASSWORD" ]; then
+            echo "::warning title=Unity CI 건너뜀::UNITY_LICENSE · UNITY_EMAIL · UNITY_PASSWORD 시크릿이 없어요 (설정 전이거나 포크 PR). Unity 컴파일 · EditMode를 돌리지 않았어요."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: 체크아웃 (LFS는 아래 캐시로)
+        if: steps.license.outputs.ready == 'true'
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: Unity 버전 확인
+        if: steps.license.outputs.ready == 'true'
+        run: |
+          project_version=$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt | tr -d '\r')
+          if [ "$project_version" != "$UNITY_VERSION" ]; then
+            echo "::error title=Unity 버전 불일치::ProjectVersion.txt = $project_version, CI = $UNITY_VERSION. .github/workflows/unity-ci.yml의 UNITY_VERSION을 맞추고, unityci/editor 이미지에 그 버전이 있는지 확인하세요."
+            exit 1
+          fi
+
+      - name: LFS 목록 (Assets · Packages만)
+        if: steps.license.outputs.ready == 'true'
+        run: git lfs ls-files -l --include="Assets/**,Packages/**" | cut -d' ' -f1 | sort > .lfs-assets-id # hashFiles는 작업 폴더 안 파일만 읽는다
+
+      - name: LFS 캐시
+        if: steps.license.outputs.ready == 'true'
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: lfs-${{ hashFiles('.lfs-assets-id') }}
+          restore-keys: |
+            lfs-
+
+      - name: LFS 받기 (캐시에 없는 것만 내려받음)
+        if: steps.license.outputs.ready == 'true'
+        run: git lfs pull --include="Assets/**,Packages/**"
+
+      - name: Library 캐시
+        if: steps.license.outputs.ready == 'true'
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ env.UNITY_VERSION }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ env.UNITY_VERSION }}-
+
+      - name: Unity 컴파일 + EditMode 테스트
+        if: steps.license.outputs.ready == 'true'
+        id: tests
+        uses: game-ci/unity-test-runner@v4
+        with:
+          unityVersion: ${{ env.UNITY_VERSION }}
+          testMode: editmode
+          coverageEnabled: false # 코드 커버리지 패키지 없음 — 일부 Unity 버전에서 켜면 실패 사례 (GameCI 문서)
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: EditMode 테스트
+          artifactsPath: artifacts
+
+      - name: 테스트 결과 올리기
+        if: always() && steps.license.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: editmode-results
+          path: ${{ steps.tests.outputs.artifactsPath || 'artifacts' }}
+          if-no-files-found: ignore
+          retention-days: 14

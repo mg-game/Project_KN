@@ -49,8 +49,9 @@ namespace IdleGame.Tests
         public void Ribbon_ClearOfHudBand()
         {
             // HUD 아래 끝(시너지 줄) = 로컬 218, 간격 24 이상 (§2.1.7)
+            // 설계값이 딱 24라(293 − 170 × 0.6 ÷ 2 − 218) float 곱셈 반올림으로 23.9999981이 나올 수 있다 → 0.001 허용 (다른 UI 단언과 같은 오차)
             float ribbonTopLocal = BattleBannerView.RibbonDrop - BattleBannerView.BannerSize.y * BattleBannerView.RibbonScale * 0.5f;
-            Assert.GreaterOrEqual(ribbonTopLocal - 218f, 24f);
+            Assert.GreaterOrEqual(ribbonTopLocal - 218f, 24f - 0.001f, "HUD 아래 끝과 리본 위 끝 간격 24 이상");
         }
 
         [Test]
