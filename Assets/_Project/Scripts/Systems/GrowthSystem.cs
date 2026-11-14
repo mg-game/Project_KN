@@ -48,10 +48,13 @@ namespace IdleGame
             return total;
         }
 
-        /// <summary>현재 골드로 올릴 수 있는 레벨 수 (최대 maxCount)</summary>
+        /// <summary>수선점 강화에 쓰는 재화 (GameConfig.shopUpgradeCurrency, 기본 단추: SYS_Economy §3 #8 E안 이음매)</summary>
+        public CurrencyType LevelUpCurrency => _config.shopUpgradeCurrency;
+
+        /// <summary>지금 가진 강화 재화로 올릴 수 있는 레벨 수 (최대 maxCount)</summary>
         public int GetAffordableCount(int maxCount)
         {
-            double gold = _currency.Get(CurrencyType.Gold);
+            double gold = _currency.Get(LevelUpCurrency);
             int limit = Math.Min(maxCount, RemainLevels);
             double total = 0;
             int count = 0;
@@ -89,7 +92,7 @@ namespace IdleGame
         {
             count = Math.Min(count, RemainLevels);
             if (count <= 0) return false;
-            if (!_currency.TrySpend(CurrencyType.Gold, GetLevelUpCost(Level, count))) return false;
+            if (!_currency.TrySpend(LevelUpCurrency, GetLevelUpCost(Level, count))) return false;
 
             int oldLevel = _data.level;
             _data.level += count;

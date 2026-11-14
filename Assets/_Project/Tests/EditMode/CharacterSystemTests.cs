@@ -105,6 +105,36 @@ namespace IdleGame.Tests
         // ── 레벨 ──
 
         [Test]
+        public void LevelUpCurrency_DefaultsToGold_AndFollowsConfig()
+        {
+            // SYS_Economy §3 #8 E안 이음매: 기본은 단추, 설정을 바꾸면 그 재화로 레벨업한다 (친구 전용 재화로 나눌 때 이 한 칸만 바꾼다)
+            Assert.AreEqual(CurrencyType.Gold, Characters.LevelUpCurrency);
+
+            Config.lineageLevelUpCurrency = CurrencyType.EventToken;
+            Characters.Grant("sock");
+            Currency.Add(CurrencyType.Gold, 1000);
+            double gold = Currency.Get(CurrencyType.Gold);
+            Assert.IsFalse(Characters.CanLevelUp("sock"), "단추만 있으면 못 올린다");
+
+            Currency.Add(CurrencyType.EventToken, 50);
+            Assert.AreEqual(50, Characters.AvailableGold, 1e-9, "강해지기 계산에 쓰는 보유량도 레벨업 재화 기준");
+            Assert.IsTrue(Characters.CanLevelUp("sock"));
+            Assert.IsTrue(Characters.TryLevelUp("sock"));
+            Assert.AreEqual(gold, Currency.Get(CurrencyType.Gold), 1e-9, "단추는 쓰지 않는다");
+            Assert.AreEqual(0, Currency.Get(CurrencyType.EventToken), 1e-9);
+        }
+
+        [Test]
+        public void LevelUp_CostAtLevel_MatchesLineageCost()
+        {
+            Characters.Grant("sock");
+            Assert.AreEqual(Characters.GetLevelUpCost("sock"), Characters.GetCostAtLevel(Characters.GetLevel("sock")), 1e-9);
+            Assert.AreEqual(55, Characters.GetCostAtLevel(2), 1e-9, "50 × 1.1, 정수로");
+            Assert.AreEqual(0, Characters.GetCostAtLevel(0), 1e-9);
+            Assert.AreEqual(Characters.GetCostAtLevel(1) + Characters.GetCostAtLevel(2), Characters.GetLevelUpCost("sock", 2), 1e-9);
+        }
+
+        [Test]
         public void LevelUp_SpendsGoldOnCostCurve()
         {
             Characters.Grant("sock");

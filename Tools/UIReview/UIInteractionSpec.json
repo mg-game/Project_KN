@@ -48,5 +48,21 @@
     "roster": "native horizontal scrolling and tap selection; existing mouse HTML drag retained"
   },
   "artAssets": "48 runtime PNG candidates from delivery 02 unchanged",
-  "remaining": "Unity integration, real timer/income freeze, threat-based auto direction, physics/AI, balance and real-device testing not performed"
+  "remaining": "Unity integration, real timer/income freeze, threat-based auto direction, physics/AI, balance and real-device testing not performed",
+  "modalKeyboard": {
+    "scope": "Browser dialogs, navigation triggers and Escape cancellation; ordinary growth keyboard repeat is unchanged.",
+    "keys": [
+      "Enter",
+      "Escape",
+      "Space"
+    ],
+    "rule": "A physical key that starts a modal/navigation action must be released before it can act on the replacement view. Keyup/blur/hidden clears its latch.",
+    "focusReturn": {
+      "help": "open-help",
+      "retreatCancel": "open-retreat",
+      "resume": "pause"
+    },
+    "growth": "Escape cancels confirmation without also closing the parent sheet; Enter cancellation cannot reopen confirmation while held.",
+    "test": "verify-modal-keys.cjs with native Chromium keyboard repeat; not Unity/device certification."
+  }
 }
