@@ -3,8 +3,10 @@ using System;
 namespace IdleGame
 {
     /// <summary>
-    /// 수선점 강화. 단추(골드)로 수선점 레벨을 올리면 초당 단추와 수선점 내구도(전투 최대 체력)가 오른다.
-    /// 초당 단추는 도달한 최고 스테이지에 비례해서도 늘어난다.
+    /// 수선점 강화. 단추(골드)로 수선점 레벨을 올리면 초당 수입과 수선점 내구도(전투 최대 체력)가 오른다.
+    /// 초당 수입은 도달한 최고 스테이지에 비례해서도 늘어난다.
+    /// 기준 수입(IncomePerSecond, 나누기 전)을 단추 · 실타래로 나눠 준다 (결정 2 안 D, IncomeSplit):
+    /// GoldPerSecond = 기준 × 단추 몫, LineageXpPerSecond = 기준 × 실타래 몫. N분치 · 오프라인 · 바구니 · 빠른 수선 · 수입 속도는 기준 수입으로 B를 만든 뒤 나눈다.
     /// </summary>
     public class GrowthSystem
     {
@@ -73,10 +75,38 @@ namespace IdleGame
         /// <summary>도달한 최고 스테이지에 따른 초당 단추 배율 (1스테이지 = 1)</summary>
         public double StageGoldMultiplier => 1 + StageGoldBonusPerStage * (Math.Max(1, _data.battle?.highestStage ?? 1) - 1);
 
-        public double GetGoldPerSecondAt(int level) =>
+        /// <summary>수선점 레벨별 기준 초당 수입 (나누기 전 B = 기본값 × 증가율^(레벨-1) × 재료 보너스 × 스테이지 배율)</summary>
+        public double GetIncomePerSecondAt(int level) =>
             _config.baseGoldPerSecond * Math.Pow(_config.goldPerSecondGrowth, level - 1) * GoldBonusMultiplier * StageGoldMultiplier;
 
+        /// <summary>기준 초당 수입 (나누기 전). 단추 · 실타래 N분치 · 바구니 · 오프라인의 B는 이것으로 만든다</summary>
+        public double IncomePerSecond => GetIncomePerSecondAt(Level);
+
+        /// <summary>수선점 레벨별 초당 단추 (기준 × 단추 몫)</summary>
+        public double GetGoldPerSecondAt(int level) => IncomeSplit.Gold(GetIncomePerSecondAt(level));
+
+        /// <summary>초당 단추 (기준 × 단추 몫)</summary>
         public double GoldPerSecond => GetGoldPerSecondAt(Level);
+
+        /// <summary>수선점 레벨별 초당 실타래 (기준 × 실타래 몫)</summary>
+        public double GetLineageXpPerSecondAt(int level) => IncomeSplit.LineageXp(GetIncomePerSecondAt(level));
+
+        /// <summary>초당 실타래 (기준 × 실타래 몫). 실타래 수입 속도(강해지기 · 빛 · 부족 토스트)도 이 값이다</summary>
+        public double LineageXpPerSecond => GetLineageXpPerSecondAt(Level);
+
+        /// <summary>
+        /// 재화별 켜 둔 동안의 수입 속도 (초당, 하한 없음): 단추 = GoldPerSecond, 실타래 = LineageXpPerSecond, 그 밖 0.
+        /// 강해지기 대기 초(T3) · 강화 탭 빛(T5) · 부족 토스트가 같이 쓰는 함수 하나
+        /// </summary>
+        public double IncomeRateOf(CurrencyType type) => type switch
+        {
+            CurrencyType.Gold => GoldPerSecond,
+            CurrencyType.LineageXp => LineageXpPerSecond,
+            _ => 0,
+        };
+
+        /// <summary>지금 가진 수선점 강화 재화 (단추)</summary>
+        public double AvailableCurrency => _currency != null ? _currency.Get(LevelUpCurrency) : 0;
 
         /// <summary>수선점 레벨별 내구도 (전투에서 수선점 최대 체력)</summary>
         public static float CalcShopMaxHp(int level) =>

@@ -72,8 +72,9 @@ namespace IdleGame.UI
         public static JournalRowState Pending(FeatureId nav, string focus) =>
             nav != FeatureId.Battle || !string.IsNullOrEmpty(focus) ? JournalRowState.Go : JournalRowState.InProgress;
 
+        /// <summary>첫 보상 (단추 · N분치는 실제 지급과 같게 푼 첫 줄, MetaUi.FirstPreview). 공용 목록 줄을 복사해 둔다</summary>
         static MetaReward First(System.Collections.Generic.List<MetaReward> rewards) =>
-            rewards != null && rewards.Count > 0 ? rewards[0] : null;
+            rewards != null && rewards.Count > 0 ? MetaUi.FirstPreview(rewards, out _)?.Clone() : null;
 
         /// <summary>수선점 기록 한 줄 (AchievementSystem.GetLines): 받을 수 있는 가장 낮은 단계, 다 받았으면 마지막 단계</summary>
         public static JournalRowModel FromAchievement(AchievementLineStatus line, Sprite hiddenIcon = null)

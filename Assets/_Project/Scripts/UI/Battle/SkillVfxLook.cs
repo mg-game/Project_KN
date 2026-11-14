@@ -148,7 +148,7 @@ namespace IdleGame.UI
             StageModifierType.FullMoon => "불빛이 잘 차오르고 밤 특성이 강해져요",
             StageModifierType.Wind => "적도 잔향이도 빨라져요",
             StageModifierType.DustStorm => "먼지뭉치가 몰려오고 천 특성이 강해져요",
-            StageModifierType.Festival => "단추를 더 얻고 치장·소리 특성이 강해져요",
+            StageModifierType.Festival => "단추와 실타래를 더 얻고 치장·소리 특성이 강해져요",
             _ => string.Empty,
         };
 

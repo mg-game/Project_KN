@@ -457,8 +457,9 @@ namespace IdleGame
         {
             int extra = Math.Max(0, members - 1);
             double scale = RewardScale(tier);
-            double gold = zone.goldReward * (1 + ExtraMemberGoldBonus * extra) * scale;
-            if (gold > 0) rewards.Add(RewardData.Currency(CurrencyType.Gold, Math.Floor(gold + 1e-9)));
+            // 기준 양 B = 구역 단추 × 인원 보너스 × 단계 배율, 단추 · 실타래는 B를 나눈 몫 (안 D, IncomeSplit)
+            double income = zone.goldReward * (1 + ExtraMemberGoldBonus * extra) * scale;
+            IncomeSplit.AddCurrencyLines(rewards, Math.Floor(income + 1e-9));
             if (zone.drops == null) return;
 
             int wholeRolls = (int)Math.Floor(scale + 1e-9);

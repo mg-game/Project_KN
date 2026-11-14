@@ -20,6 +20,9 @@ namespace IdleGame.UI
     ///   · 친구 카드 정렬 (M34): 튜토리얼 · 가이드 퀘스트가 가리키는 계보 → 편성 칸 순서 → 편성 밖은 등급 높은 순 → ID.
     ///     켜질 때와 보유 수가 바뀔 때만 다시 정렬한다 (레벨업으로 자리가 바뀌지 않는다 — 길게 누르는 카드가 손가락 밑에 그대로).
     ///   · 강화 탭 빛 이음새 (M35d): Cost10을 MainTabController.GrowthCost10이 읽는다 (패널이 꺼져 있어도 맞게 Game.Growth에서 바로).
+    ///   · 재화 (결정 2 안 D): 수선점 카드 · 강화 버튼은 단추(Game.Growth.LevelUpCurrency), 친구 카드 · 모두 레벨업 · 친구 머리 잔액 칩은
+    ///     실타래(Game.Characters.LevelUpCurrency). 수선점 카드에 "초당 실타래 전 → 후" 한 줄 (수선점 레벨이 실타래 수입도 올린다는 것을 보인다).
+    ///     친구 머리 줄 잔액 칩(GrowthPanel/LineageXpChip)은 LineageXpBalanceView가 스스로 갱신한다.
     /// </summary>
     public class GrowthPanel : MonoBehaviour
     {
@@ -47,6 +50,8 @@ namespace IdleGame.UI
         [SerializeField] TMP_Text _statText;
         [Tooltip("수선점 내구도 (전투 최대 체력)")]
         [SerializeField] TMP_Text _hpText;
+        [Tooltip("초당 실타래 전 → 후 (결정 2 안 D: 수선점 레벨이 실타래 수입도 올린다)")]
+        [SerializeField] TMP_Text _lineageRateText;
         [SerializeField] Button _levelUp1Button;
         [SerializeField] Button _levelUp10Button;
         [SerializeField] Button _levelUpMaxButton;
@@ -72,7 +77,7 @@ namespace IdleGame.UI
         [SerializeField] GameObject _lineageEmptyLabel;
         [Tooltip("목록이 넘칠 때 오른쪽 끝 흐림 (72px)")]
         [SerializeField] GameObject _lineageFade;
-        [Tooltip("'모두 레벨업' (가장 낮은 친구부터 돌아가며 단추가 떨어질 때까지)")]
+        [Tooltip("'모두 레벨업' (가장 낮은 친구부터 돌아가며 실타래가 떨어질 때까지)")]
         [SerializeField] Button _levelUpAllButton;
 
         // ───────────── 강화 탭 빛 이음새 (M35d · Wave 2 C-01) ─────────────
@@ -262,13 +267,22 @@ namespace IdleGame.UI
 
         void MarkLineagesDirty() => _lineagesDirty = true;
 
-        /// <summary>단추는 매 프레임 바뀐다: 최대 레벨 수가 바뀌는 경계를 넘을 때만 최대 칸을 다시 쓰고, 나머지는 상태만 바꾼다.</summary>
+        /// <summary>
+        /// 단추 · 실타래는 매 프레임 바뀐다: 수선점 재화(단추)는 최대 레벨 수가 바뀌는 경계를 넘을 때만 최대 칸을 다시 쓰고 나머지는 상태만 바꾼다.
+        /// 친구 카드는 유실자 레벨업 재화(실타래)에만 반응한다.
+        /// </summary>
         void OnCurrencyChanged(CurrencyType type, double value)
         {
-            if (type != CurrencyType.Gold || !isActiveAndEnabled) return;
-            if (value < _maxShrinkBelow || value >= _maxGrowAt) RefreshMax();
-            RefreshAffordable(value);
-            for (int i = 0; i < _lineageCards.Count; i++) _lineageCards[i].RefreshAffordable(value);
+            if (!isActiveAndEnabled) return;
+            if (type == Game.Growth.LevelUpCurrency)
+            {
+                if (value < _maxShrinkBelow || value >= _maxGrowAt) RefreshMax();
+                RefreshAffordable(value);
+            }
+            if (type == Game.Characters.LevelUpCurrency)
+            {
+                for (int i = 0; i < _lineageCards.Count; i++) _lineageCards[i].RefreshAffordable(value);
+            }
         }
 
         void OnLevelChanged(int oldLevel, int newLevel)
@@ -347,7 +361,7 @@ namespace IdleGame.UI
         static void Deny(CostButtonView view, double cost)
         {
             if (view != null) view.Deny();
-            UIManager.Instance.ShowShortfall(CurrencyType.Gold, cost);
+            UIManager.Instance.ShowShortfall(Game.Growth.LevelUpCurrency, cost);
         }
 
         void Spent(CostButtonView view)
@@ -386,6 +400,13 @@ namespace IdleGame.UI
             _statText.text = maxed
                 ? $"초당 단추 {current}"
                 : $"초당 단추 {current} → <b><color={next}>{MenuText.RateText(growth.GetGoldPerSecondAt(level + 1))}</color></b>";
+            if (_lineageRateText != null)
+            {
+                string lineageNow = MenuText.RateText(growth.LineageXpPerSecond);
+                _lineageRateText.text = maxed
+                    ? $"초당 실타래 {lineageNow}"
+                    : $"초당 실타래 {lineageNow} → <b><color={next}>{MenuText.RateText(growth.GetLineageXpPerSecondAt(level + 1))}</color></b>";
+            }
             string hp = NumberFormatter.FormatCurrency(growth.ShopMaxHp);
             _hpText.text = maxed
                 ? $"수선점 내구도 {hp}"
@@ -407,7 +428,7 @@ namespace IdleGame.UI
                 return;
             }
             RefreshMax();
-            RefreshAffordable(Game.Currency.Get(CurrencyType.Gold));
+            RefreshAffordable(Game.Currency.Get(growth.LevelUpCurrency));
         }
 
         static void SetUnavailable(CostButtonView view)
@@ -740,8 +761,8 @@ namespace IdleGame.UI
         }
 
         /// <summary>
-        /// 모두 레벨업 (P2): 단추가 떨어질 때까지 가장 낮은 레벨 친구부터 한 레벨씩 돌아가며 올린다. '친구 N명 레벨업 · 전투력 +X'.
-        /// 한 명도 못 올리면 가장 싼 친구 기준 단추 부족 토스트. 튜토리얼이 친구 레벨업을 가르치는 동안은 막혀 있다.
+        /// 모두 레벨업 (P2): 실타래(유실자 레벨업 재화)가 떨어질 때까지 가장 낮은 레벨 친구부터 한 레벨씩 돌아가며 올린다. '친구 N명 레벨업 · 전투력 +X'.
+        /// 한 명도 못 올리면 가장 싼 친구 기준 실타래 부족 토스트. 튜토리얼이 친구 레벨업을 가르치는 동안은 막혀 있다.
         /// </summary>
         void LevelUpAll()
         {
@@ -763,7 +784,7 @@ namespace IdleGame.UI
             {
                 LineageDef pick = null;
                 int pickLevel = int.MaxValue;
-                double gold = Game.Currency.Get(CurrencyType.Gold);
+                double gold = Game.Currency.Get(characters.LevelUpCurrency);
                 for (int i = 0; i < _order.Count; i++)
                 {
                     var lineage = _order[i];
@@ -782,7 +803,7 @@ namespace IdleGame.UI
             if (raised.Count == 0)
             {
                 if (double.IsPositiveInfinity(cheapest)) UIManager.Instance.ShowToast("모든 친구가 최대 레벨이에요.");
-                else UIManager.Instance.ShowShortfall(CurrencyType.Gold, cheapest);
+                else UIManager.Instance.ShowShortfall(characters.LevelUpCurrency, cheapest);
                 return;
             }
             _lastSpendTime = Time.unscaledTime;

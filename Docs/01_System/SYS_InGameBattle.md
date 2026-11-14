@@ -666,7 +666,7 @@ SynergySystem은 공명을 더하지 않음. 던전은 공명 미적용. 표시 
 **K. 클리어 · 실패 · 다음 스테이지**
 ```
 IF 클리어                                                                                          BS:639-655
-  → 단추(`CurrencyType.Gold`) = floor(StageGold × (1 + 보너스% / 100))
+  → B = floor(StageGold × (1 + 보너스% / 100)), 단추(`CurrencyType.Gold`) = floor(B × 0.5) + 실타래(`CurrencyType.LineageXp`) = floor(B × 0.5)   # 2026-11-14 결정 2 안 D
      StageGold = floor(60 × 1.13^(스테이지 − 1)), 보너스 = 시너지 GoldGainPercent + 축제 스테이지 50, 하한 −90
   → 별빛 사탕 = 3 (10의 배수 스테이지는 10) × 이벤트 배율 (배율 > 1일 때만)
   → 재료: 잃어버린 상자 훅이 굴리지 않았으면 수선 천 35% (1~2개), 리본 조각 25% (1개)

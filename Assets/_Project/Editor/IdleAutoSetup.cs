@@ -23,9 +23,10 @@ namespace IdleGame.EditorTools
     {
         /// <summary>
         /// 씬/데이터를 다시 만들어야 하는 변경이 들어오면 올린다
-        /// (2: 새 화면 프레임 WP-IA + FX juice v2 · 3: UX Wave 2+3 (메뉴·캐릭터·메타·튜토리얼·전투 HUD) + FX round 2 decals)
+        /// (2: 새 화면 프레임 WP-IA + FX juice v2 · 3: UX Wave 2+3 (메뉴·캐릭터·메타·튜토리얼·전투 HUD) + FX round 2 decals ·
+        /// 4: 실타래 분리 (결정 2 안 D: 강화 탭 꼬리표 · 잔액 칩 · 재화 그림 4칸 · 상점 가격 · 문구))
         /// </summary>
-        public const int SceneVersion = 3;
+        public const int SceneVersion = 4;
 
         /// <summary>마지막으로 자동 생성에 성공한 버전 (이 컴퓨터의 프로젝트별, 버전 관리 밖)</summary>
         const string StampPath = "Library/IdleGameAutoSetup.txt";

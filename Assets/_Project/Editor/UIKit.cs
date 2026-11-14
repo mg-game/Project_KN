@@ -671,6 +671,13 @@ namespace IdleGame.EditorTools
             return this;
         }
 
+        /// <summary>bool 필드</summary>
+        public Binder SetBool(string field, bool value)
+        {
+            Find(field).boolValue = value;
+            return this;
+        }
+
         public Binder SetArray(string field, params Object[] values)
         {
             var prop = Find(field);

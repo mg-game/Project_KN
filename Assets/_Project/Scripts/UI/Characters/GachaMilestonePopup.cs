@@ -129,7 +129,7 @@ namespace IdleGame.UI
         void SetRow(int row, GachaMilestoneStep step, int pulls)
         {
             var label = At(_rowLabels, row);
-            if (label != null) label.text = RowLabel(step.Pulls, MetaUi.Describe(step.Rewards));
+            if (label != null) label.text = RowLabel(step.Pulls, MetaUi.DescribeData(step.Rewards));
             var state = At(_rowStates, row);
             var claim = At(_rowClaims, row);
             bool canClaim = step.CanClaim;

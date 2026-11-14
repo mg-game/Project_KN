@@ -130,7 +130,7 @@ namespace IdleGame.UI
             if (_rewardChip != null)
             {
                 _rewardChip.gameObject.SetActive(hasReward);
-                if (hasReward) _rewardChip.Set(def.rewards[0]);
+                if (hasReward) _rewardChip.Set(MetaUi.FirstPreview(def.rewards, out _));
             }
 
             var sprite = def.icon != null ? def.icon : _icons != null ? _icons.Feature(def.navFeature) : null;

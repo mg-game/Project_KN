@@ -581,9 +581,13 @@ namespace IdleGame.Tests
         {
             Assert.AreEqual(0f, Battle.GetGoldBonusPercent(9));
             Assert.AreEqual(BattleCfg.festivalGoldPercent, Battle.GetGoldBonusPercent(10), 1e-4);
-            double Gold(int stage) => Battle.GetClearRewards(stage).Find(r => r.type == RewardType.Currency && r.currency == CurrencyType.Gold).amount;
+            double Amount(int stage, CurrencyType currency) =>
+                Battle.GetClearRewards(stage).Find(r => r.type == RewardType.Currency && r.currency == currency).amount;
             double base10 = System.Math.Floor(BattleCfg.stageGoldBase * System.Math.Pow(BattleCfg.stageGoldGrowth, 9));
-            Assert.AreEqual(System.Math.Floor(base10 * (1 + BattleCfg.festivalGoldPercent / 100.0)), Gold(10), 1e-6);
+            // 축제 보너스는 기준 양 B에 곱해지므로 단추 · 실타래 둘 다 오른다 (안 D)
+            double income = System.Math.Floor(base10 * (1 + BattleCfg.festivalGoldPercent / 100.0));
+            Assert.AreEqual(System.Math.Floor(income * 0.5), Amount(10, CurrencyType.Gold), 1e-6);
+            Assert.AreEqual(System.Math.Floor(income * 0.5), Amount(10, CurrencyType.LineageXp), 1e-6);
         }
     }
 }

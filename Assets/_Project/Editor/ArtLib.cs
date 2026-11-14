@@ -37,11 +37,17 @@ namespace IdleGame.EditorTools
         /// <summary>연출용 흰색 소프트 스프라이트 (색은 Image.color로 입힌다)</summary>
         public static Sprite FX(string name) => Load($"FX/{name}.png");
 
-        public static Sprite Currency(CurrencyType type) => Icon(type switch
-        {
-            CurrencyType.Gold => "currency_gold",
-            CurrencyType.Gem => "currency_gem",
-            _ => "currency_event",
-        });
+        /// <summary>
+        /// 재화 그림. 실타래는 임시로 VFX/motif_yarn (T2, 흰 모양 재료라 UITheme.CurrencyIconTint 산호를 곱해 쓴다).
+        /// 아트 큐의 Icons/currency_yarn이 들어오면 여기와 틴트 함수를 바꾼다
+        /// </summary>
+        public static Sprite Currency(CurrencyType type) => type == CurrencyType.LineageXp
+            ? Vfx("motif_yarn")
+            : Icon(type switch
+            {
+                CurrencyType.Gold => "currency_gold",
+                CurrencyType.Gem => "currency_gem",
+                _ => "currency_event",
+            });
     }
 }

@@ -266,11 +266,30 @@ namespace IdleGame
             return _forms;
         }
 
-        double Gold => _characters.AvailableGold;
+        // 줄마다 자기 재화로 대기 초를 잰다 (T3): 수선점 줄 = 단추 잔액 ÷ 초당 단추(하한 1), 유실자 줄 = 실타래 잔액 ÷ 실타래 수입 속도(하한 0.01).
+        // 두 재화는 서로 바꿀 수 없어 환산하지 않는다. 점수식은 그대로
 
-        double GoldPerSecond => _growth != null ? Math.Max(1.0, _growth.GoldPerSecond) : 1.0;
+        /// <summary>수선점 강화 재화(단추) 잔액</summary>
+        double Gold => _growth != null ? _growth.AvailableCurrency : 0;
 
+        /// <summary>초당 단추 (하한 1)</summary>
+        double GoldPerSecond => _growth != null ? Math.Max(1.0, _growth.IncomeRateOf(_growth.LevelUpCurrency)) : 1.0;
+
+        /// <summary>유실자 레벨업 재화(실타래) 잔액</summary>
+        double LineageXp => _characters.AvailableGold;
+
+        /// <summary>실타래 수입 속도 (하한 0.01: 0으로 나누기만 막는다)</summary>
+        double LineageXpPerSecond => _growth != null ? Math.Max(MinLineageIncomePerSecond, _growth.IncomeRateOf(_characters.LevelUpCurrency))
+            : MinLineageIncomePerSecond;
+
+        /// <summary>실타래 수입 속도 하한 (T3)</summary>
+        const double MinLineageIncomePerSecond = 0.01;
+
+        /// <summary>수선점 줄 대기 초 = max(0, 비용 − 단추) ÷ 초당 단추</summary>
         double CostSeconds(double cost) => Math.Max(0, cost - Gold) / GoldPerSecond;
+
+        /// <summary>유실자 줄 대기 초 = max(0, 비용 − 실타래) ÷ 실타래 수입 속도</summary>
+        double LineageCostSeconds(double cost) => Math.Max(0, cost - LineageXp) / LineageXpPerSecond;
 
         // ───────────────────────────── 후보 ─────────────────────────────
 
@@ -302,7 +321,7 @@ namespace IdleGame
                 int levels = AffordableLevels(lineage.id);
                 long gain = _power.PreviewLevelUp(lineage.id, levels);
                 if (gain <= 0) continue;
-                AddGain(new Candidate(StrengthenKind.LineageLevel, lineage.id, gain, CostSeconds(_characters.GetLevelUpCost(lineage.id, levels)),
+                AddGain(new Candidate(StrengthenKind.LineageLevel, lineage.id, gain, LineageCostSeconds(_characters.GetLevelUpCost(lineage.id, levels)),
                     FeatureId.ShopUpgrade, amount: levels));
             }
         }
@@ -310,7 +329,7 @@ namespace IdleGame
         /// <summary>+5 레벨 또는 지금 살 수 있는 만큼 (하나도 못 사면 1)</summary>
         int AffordableLevels(string lineageId)
         {
-            double gold = Gold;
+            double gold = LineageXp;
             int affordable = 0;
             for (int k = 1; k <= LineageLevels; k++)
             {

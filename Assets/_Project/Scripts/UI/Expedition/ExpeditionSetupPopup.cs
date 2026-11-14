@@ -391,7 +391,7 @@ namespace IdleGame.UI
         {
             int dropCount = _zone.drops != null ? _zone.drops.Count : 0;
             bool hasGold = _zone.goldReward > 0;
-            _drops.SetCount(dropCount + (hasGold ? 1 : 0));
+            _drops.SetCount(dropCount + (hasGold ? 2 : 0));
             int index = 0;
             for (int i = 0; i < dropCount; i++)
             {
@@ -403,9 +403,7 @@ namespace IdleGame.UI
             }
             if (hasGold)
             {
-                _drops[index].SetCurrency(CurrencyType.Gold, RewardService.FormatAmountCompact(CurrencyType.Gold, _zone.goldReward));
-                _drops[index].SetClick(null);
-                index++;
+                index = ExpeditionZoneCardView.SetIncomeDrops(_drops, index, _zone.goldReward);
             }
             _drops.SetCount(index);
         }

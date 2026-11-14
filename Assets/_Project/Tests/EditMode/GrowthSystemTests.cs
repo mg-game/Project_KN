@@ -7,14 +7,16 @@ namespace IdleGame.Tests
         [Test]
         public void LevelUpCost_FollowsGrowthCurve()
         {
-            Assert.AreEqual(10, Growth.GetLevelUpCost(1), 1e-9);
-            Assert.AreEqual(11.2, Growth.GetLevelUpCost(2), 1e-9);
-            Assert.AreEqual(21.2, Growth.GetLevelUpCost(1, 2), 1e-9);
+            // 안 D 기본 비용 12 (단추 수입이 절반, bal 04_bal_d_note.md D2)
+            Assert.AreEqual(12, Growth.GetLevelUpCost(1), 1e-9);
+            Assert.AreEqual(12 * 1.12, Growth.GetLevelUpCost(2), 1e-9);
+            Assert.AreEqual(12 + 12 * 1.12, Growth.GetLevelUpCost(1, 2), 1e-9);
         }
 
         [Test]
         public void TryLevelUp_SpendsGold()
         {
+            Config.levelUpBaseCost = 10;
             Currency.Add(CurrencyType.Gold, 10);
 
             Assert.IsTrue(Growth.TryLevelUp());
@@ -39,6 +41,7 @@ namespace IdleGame.Tests
             Assert.AreEqual(CurrencyType.Gold, Growth.LevelUpCurrency);
 
             Config.shopUpgradeCurrency = CurrencyType.EventToken;
+            Config.levelUpBaseCost = 10;
             Currency.Add(CurrencyType.Gold, 1000);
             Currency.Add(CurrencyType.EventToken, 10);
             double gold = Currency.Get(CurrencyType.Gold);

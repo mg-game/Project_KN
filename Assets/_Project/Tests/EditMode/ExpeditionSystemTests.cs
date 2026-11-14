@@ -76,7 +76,8 @@ namespace IdleGame.Tests
             Assert.IsNotNull(result);
             Assert.AreEqual("exp_1_1", result.Zone.id);
             CollectionAssert.AreEqual(new[] { "sock" }, result.LineageIds);
-            Assert.AreEqual(300, Currency.Get(CurrencyType.Gold), 1e-6, "1명 파견 = 구역 단추 그대로");
+            Assert.AreEqual(150, Currency.Get(CurrencyType.Gold), 1e-6, "1명 파견 = 구역 단추(기준 300)의 단추 몫 (안 D)");
+            Assert.AreEqual(150, Currency.Get(CurrencyType.LineageXp), 1e-6, "실타래 몫");
             foreach (var reward in result.Rewards)
             {
                 if (reward.type == RewardType.Item) Assert.IsNotNull(ExpeditionDb.Get("exp_1_1").drops.Find(d => d.itemId == reward.itemId));
@@ -267,8 +268,9 @@ namespace IdleGame.Tests
             Clock.Advance(TimeSpan.FromMinutes(10));
             var result = Expedition.Claim("exp_1_1");
 
-            double expected = Math.Floor(300 * (1 + ExpeditionSystem.ExtraMemberGoldBonus * 2));
-            Assert.AreEqual(expected, Currency.Get(CurrencyType.Gold), 1e-6);
+            double income = Math.Floor(300 * (1 + ExpeditionSystem.ExtraMemberGoldBonus * 2));
+            Assert.AreEqual(Math.Floor(income * 0.5), Currency.Get(CurrencyType.Gold), 1e-6, "기준 양의 단추 몫 (안 D)");
+            Assert.AreEqual(Math.Floor(income * 0.5), Currency.Get(CurrencyType.LineageXp), 1e-6, "기준 양의 실타래 몫");
             foreach (var id in new[] { "sock", "candle", "button" })
                 Assert.AreEqual(1, Characters.GetProgress(id, ProgressType.ExpeditionCount), id);
             Assert.AreEqual(3, result.LineageIds.Count);

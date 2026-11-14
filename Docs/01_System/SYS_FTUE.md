@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-32) |
 | 작성자 | ① 구현: 기개발 · ②③: DD |
-| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
+| 최종 수정 | 2026-11-14 (환영 우편 · 6단계 보상: 실타래 분리) · 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) · [`SYS_InGameBattle`](./SYS_InGameBattle.md) |
 | 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) — 경로 약칭 표 참고 |
@@ -144,7 +144,7 @@ J. 옛 세이브: IF 메타 기능 이전 세이브 → features.silentSyncPendi
 IF 보유 계보 0개 → GameConfig.starterLineages 4종 지급 → 자동 편성 → 전투 다시 시작 (BOOT:183-189)
   = jjakjjak "짝짝이"(Epic) · ttokdan "똑단이"(Common) · chalkak "찰칵이"(Rare) · mongdang "몽당이"(Rare)
   (GC:46 — GameConfig.asset에 이 필드가 없어 코드 기본값. 이름 · 등급 CDB:16-30 · 939-952 · 1121-1133 · 1319-1332)
-매 부팅 우편 "welcome"을 SendOnce: 별조각 1000 · 단추 500, 만료 없음 (BOOT:112-116)
+매 부팅 우편 "welcome"을 SendOnce: 별조각 1000 · 단추 250 + 실타래 250, 만료 없음 (BOOT:112-116)
 ```
 
 **L. 튜토리얼이 끝나기 전에 꺼져 있는 것**
@@ -192,12 +192,12 @@ IF ftue.done = false
 | AfterDelay 인자 | 2초 · 5초 · 1.5초 | META:1838 · 1854 · 1886 | 3번 · 4번 · 6번 단계 대기 시간 |
 | PrefillIdleChest 인자 | 2시간 | META:1952 | 9번 단계 수선 바구니 미리 채움 (바구니 상한 안) |
 | ShortFirstExpedition 인자 | 1분 | META:2018 | 13번 단계 첫 원정 길이 |
-| 6번 단계 보상 | 단추 250 | META:1899-1903 | `ftue_shop_upgrade` 끝 보상 |
+| 6번 단계 보상 | 단추 250 + 실타래 125 (지급 때 단추 125 + 실타래 250으로 나뉨) | META:1899-1903 | `ftue_shop_upgrade` 끝 보상 |
 | 졸업 선물 (16번 단계 보상) | 별조각 300 | META:2068-2072 | 졸업 · 건너뛰기 모두 지급 |
 | AutoBattle 개방 보상 | 별조각 30 | META:87-91 | 27개 기능 중 보상이 있는 유일한 행 |
 | `guideVisible` | `FtueStep` 6 | META:961-965 · MDB:784 | 가이드 퀘스트 줄이 보이는 조건 (0~5번 단계 완료) |
 | `BaseEchoSlots` · `EchoSlotUnlockStage` | 5 · 20 | FORM:20 · FORM:22 | 잔향이 덱 칸 수, 6번째 칸이 열리는 최고 스테이지 |
-| `starterLineages` · welcome 우편 | 계보 4종 · 별조각 1000 + 단추 500 | GC:46 · BOOT:115 | 첫 부팅 지급 (1.1-K) |
+| `starterLineages` · welcome 우편 | 계보 4종 · 별조각 1000 + 단추 250 + 실타래 250 | GC:46 · BOOT:115 | 첫 부팅 지급 (1.1-K) |
 
 ### 1.4 데이터
 | Column | Type | 설명 | 예시 |
@@ -217,7 +217,7 @@ IF ftue.done = false
 | `ftueSteps[].hintOnly` | bool | 손가락 없이 토스트 한 줄만 (3 · 5 · 8 · 14번) | 1 |
 | `ftueSteps[].complete` | MetaCondition | 끝 조건 | `Counter` `EnemyKill` 3 |
 | `ftueSteps[].action` · `actionArg` | `FtueAction` · string | 시작 때 할 일 · 인자 (GE:570-589) | 5 · "udukeoni" |
-| `ftueSteps[].rewards` | List\<MetaReward\> | 끝낼 때 보상 | 단추 250 |
+| `ftueSteps[].rewards` | List\<MetaReward\> | 끝낼 때 보상 | 단추 250 + 실타래 125 (6단계) |
 | 세이브 `meta.features` | unlocked · seen · cardShown (HashSet\<FeatureId\>) · silentSyncPending | 열림 · 봤음(점 꺼짐) · 카드 넣음 · 옛 세이브 동기화 (SVM:372-389) | unlocked = {0, 1, 2, 4} |
 | 세이브 `meta.ftue` | step (int) · done · skipped (bool) · flags (HashSet\<string\>) · startedUnix | 튜토리얼 진행 (SVM:393-410) | step 5, flags = {"ftue.running"} |
 
@@ -284,7 +284,7 @@ IF ftue.done = false
 | 3 | `ftue_drag_summon` — 끌어서 방향 보내기 힌트 (hintOnly) | 앞 단계 끝 + 2초 (`AfterDelay`) | 없음 (`None`, 시작과 함께 끝) | 토스트 한 줄만 | META:1836 |
 | 4 | `ftue_first_lamp` — 첫 불 밝히기 (`ForceLampFull`) | 앞 단계 끝 + 5초 | 불 밝히기 `LampLit` ≥ 1 | `Sim.Kills` ≥ 8 또는 4초 뒤 게이지 강제 가득 (1.1-H). 손가락: `Strip/LampButton` | META:1852 |
 | 5 | `ftue_first_boss` — "보스를 물리치면 다음 스테이지로 가요!" (hintOnly) | 즉시 | 1-1 클리어 (`StageCleared` 1) | 토스트 한 줄만 | META:1868 |
-| 6 | `ftue_shop_upgrade` — 강화 탭에서 수선점 강화 x1을 3번 | 앞 단계 끝 + 1.5초 | 수선점 강화 `ShopLevelUp` ≥ 3 | 손가락: `GrowthPanel/Buttons/LevelUp1Button`. 끝 보상 단추 250 | META:1884 |
+| 6 | `ftue_shop_upgrade` — 강화 탭에서 수선점 강화 x1을 3번 | 앞 단계 끝 + 1.5초 | 수선점 강화 `ShopLevelUp` ≥ 3 | 손가락: `GrowthPanel/Buttons/LevelUp1Button`. 끝 보상 단추 250 + 실타래 125 (나뉜 뒤 단추 125 + 실타래 250) | META:1884 |
 | 7 | `ftue_friend_level` — 짝짝이를 레벨 5까지 | 즉시 | 계보 `jjakjjak` 레벨 ≥ 5 (`LineageLevel`) | 손가락: `GrowthPanel/LineageList` | META:1904 |
 | 8 | `ftue_auto_battle` — "AUTO가 켜졌어요!" (hintOnly, `EnableAutoBattle`) | `AutoBattle` 열림 (1-2 클리어) | 없음 (`None`) | `Battle.AutoMode = true` | META:1921 |
 | 9 | `ftue_idle_chest` — 바구니 받기 (`PrefillIdleChest` "2") | `IdleChest` 열림 (1-2 클리어) | 바구니 받기 `ChestClaim` ≥ 1 | 바구니에 2시간치를 1번 미리 채움 (`Systems/Meta/IdleChestSystem.cs:592-605`). 손가락: `MetaHud/IdleChestWidget` | META:1937 |

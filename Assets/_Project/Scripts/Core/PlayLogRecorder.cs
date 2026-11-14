@@ -11,7 +11,7 @@ namespace IdleGame
     ///   · ftue_step {n, id, t} (t = 이번 세션 시작부터 초)
     ///   · stage_end {stage, res(clear|fail), pow, rec, sec, hp(수선점 남은 %), dir[5](DirectionDamage가 있을 때)}
     ///   · gacha {n, grades[]} · quest_claim {id} · basket_claim {h, double} · quick_idle {paid, ticket} · feature_unlock {id}
-    ///   · spend {sink(shop|lineage), cur, amt, from · to (수선점) | id · lv (친구)}: 레벨업에 쓴 재화를 소비처별로 (SYS_Economy §3 #8 E안, 나눌지 판정 근거)
+    ///   · spend {sink(shop|lineage), cur, amt, from · to (수선점) | id · lv (친구)}: 레벨업에 쓴 재화를 소비처별로 (실타래 분리 뒤 소비처별 지출 기록, SYS_Economy §3 #8)
     /// mission_box · event_claim · daily_gift는 그 시스템에 사건이 없어 그 시스템 주인이 PlayLog.Begin(…)으로 직접 쓴다 (P4-2 요청).
     /// 처리기는 예외를 내지 않는다 (시스템 사건 흐름을 끊지 않게 — 경고 한 줄). 사건 때만 돌고, 숫자 · 글자 쓰기는 할당하지 않는다
     /// (feature_unlock의 이름 · 소환 결과 목록 순회 정도).
@@ -274,6 +274,7 @@ namespace IdleGame
             CurrencyType.Gold => "gold",
             CurrencyType.Gem => "gem",
             CurrencyType.EventToken => "event",
+            CurrencyType.LineageXp => "lxp",
             _ => "other",
         };
 

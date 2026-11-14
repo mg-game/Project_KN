@@ -309,7 +309,7 @@ namespace IdleGame.UI
             }
             if (_doubleBadge != null && !_doubleBadge.activeSelf) _doubleBadge.SetActive(true);
             bool excludesGem = Game.MetaDb == null || Game.MetaDb.idleChest.doubleExcludesGem;
-            _noteText.text = excludesGem ? "두 배는 단추와 재료에만 적용돼요 (별조각 제외)" : "두 배는 모든 선물에 적용돼요";
+            _noteText.text = excludesGem ? "두 배는 단추 · 실타래 · 재료에만 적용돼요 (별조각 제외)" : "두 배는 모든 선물에 적용돼요";
         }
 
         /// <summary>

@@ -132,8 +132,14 @@ namespace IdleGame.Tests
             Data.battle.highestStage = 21;
             Offline.Calculate(NowUnix - 3600);
 
-            double expected = Config.baseGoldPerSecond * (1 + GrowthSystem.StageGoldBonusPerStage * 20) * 3600 * Config.offlineRewardRate;
-            Assert.AreEqual(expected, Offline.PendingGold, 1e-6);
+            // 안 D: B = 기준 초당 수입 × 시간 × 비율, 단추 · 실타래가 반씩
+            double income = Config.baseGoldPerSecond * (1 + GrowthSystem.StageGoldBonusPerStage * 20) * 3600 * Config.offlineRewardRate;
+            Assert.AreEqual(income * 0.5, Offline.PendingGold, 1e-6);
+            Assert.AreEqual(income * 0.5, Offline.PendingLineageXp, 1e-6);
+
+            Offline.Claim();
+            Assert.AreEqual(income * 0.5, Currency.Get(CurrencyType.Gold), 1e-6);
+            Assert.AreEqual(income * 0.5, Currency.Get(CurrencyType.LineageXp), 1e-6, "실타래도 함께 지급");
         }
 
         [Test]

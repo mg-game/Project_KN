@@ -92,8 +92,8 @@ namespace IdleGame.UI
         void BindReward(MissionChestStatus status, bool claimed)
         {
             if (_rewardRoot == null) return;
-            var rewards = status.Def.rewards;
-            var first = rewards != null && rewards.Count > 0 ? rewards[0] : null;
+            // 단추 · N분치는 실제 지급과 같게 단추 · 실타래 두 줄로 풀어 첫 줄 + 나머지 수 (MetaUi.FirstPreview)
+            var first = MetaUi.FirstPreview(status.Def.rewards, out int rewardCount);
             _rewardRoot.SetActive(first != null);
             if (first == null) return;
             Color text = claimed ? MetaUi.Alpha(UITheme.SubText, 0.6f) : status.IsReached ? UITheme.Gold : UITheme.Cream;
@@ -104,7 +104,7 @@ namespace IdleGame.UI
                 _rewardIcon.sprite = sprite;
                 _rewardIcon.enabled = sprite != null;
                 _rewardIcon.preserveAspect = true;
-                _rewardIcon.color = MetaUi.Alpha(Color.white, claimed ? 0.5f : 1f);
+                _rewardIcon.color = MetaUi.Alpha(MetaIcons.RewardTint(first), claimed ? 0.5f : 1f);
             }
             if (_rewardAmount != null)
             {
@@ -113,7 +113,7 @@ namespace IdleGame.UI
             }
             if (_rewardMore != null)
             {
-                int more = rewards.Count - 1;
+                int more = rewardCount - 1;
                 _rewardMore.gameObject.SetActive(more > 0);
                 if (more > 0) _rewardMore.text = "+" + more;
                 _rewardMore.color = claimed ? MetaUi.Alpha(UITheme.SubText, 0.6f) : UITheme.SubText;

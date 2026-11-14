@@ -117,7 +117,7 @@ namespace IdleGame.UI
             if (string.IsNullOrEmpty(body)) body = "이제 쓸 수 있어요. 한번 둘러볼까요?";
             if (def != null && def.rewards != null && def.rewards.Count > 0)
             {
-                body += $"\n<color={GiftColor}>열림 선물: {MetaUi.Describe(def.rewards)}</color>";
+                body += $"\n<color={GiftColor}>열림 선물: {MetaUi.DescribeData(def.rewards)}</color>";
             }
             _bodyText.text = body;
 
@@ -147,7 +147,7 @@ namespace IdleGame.UI
             _titleText.text = "축하해요!";
             _nameText.text = "이제 수선점 주인이에요!";
             string body = "친구들과 함께 밤거리의 수선점을 지켜 주세요.\n매일 들르면 출석부와 수선 일지가 기다려요.";
-            if (rewards != null && rewards.Count > 0) body += $"\n<color={GiftColor}>졸업 선물: {MetaUi.Describe(rewards)}</color>";
+            if (rewards != null && rewards.Count > 0) body += $"\n<color={GiftColor}>졸업 선물: {MetaUi.DescribeData(rewards)}</color>";
             _bodyText.text = body;
             ApplyArt(_icons != null ? _icons.Star : null, null);
             _goButton.gameObject.SetActive(false);

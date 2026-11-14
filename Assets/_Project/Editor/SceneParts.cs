@@ -582,7 +582,8 @@ namespace IdleGame.EditorTools
             var art = ArtLib.Currency(type);
             if (art != null)
             {
-                icon = Img(parent, $"{type}Icon", Color.white, art);
+                // 실타래 임시 그림은 흰 모양 재료라 산호를 곱한다 (T2)
+                icon = Img(parent, $"{type}Icon", UITheme.CurrencyIconTint(type), art);
                 icon.preserveAspect = true;
             }
             else if (type == CurrencyType.Gem)

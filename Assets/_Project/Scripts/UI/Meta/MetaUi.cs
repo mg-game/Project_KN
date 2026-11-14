@@ -62,6 +62,37 @@ namespace IdleGame.UI
             RewardFlyer.Fly(rewards, from);
         }
 
+        // ───────────── 보상 미리보기 (안 D) ─────────────
+
+        static readonly List<MetaReward> s_preview = new();
+
+        /// <summary>
+        /// 데이터 보상 목록을 화면에 보일 값으로 푼다 (into를 비우고 채움, MetaRewardService.PreviewAll). 고정 단추는 실제 지급과 같은 나누기로
+        /// 단추 ⌊n/2⌋ · 실타래 ⌊n/2⌋ 두 칩, N분치는 "단추 · 실타래 N분치" 글 그대로, 같은 재화는 합친다 (팀 결정: 미리보기 칩 = 실제 지급).
+        /// 메타가 꺼져 있으면 그대로 복사
+        /// </summary>
+        public static void Preview(IReadOnlyList<MetaReward> rewards, List<MetaReward> into)
+        {
+            if (into == null) return;
+            if (IsActive && Game.MetaRewards != null)
+            {
+                Game.MetaRewards.PreviewAll(rewards, into);
+                return;
+            }
+            into.Clear();
+            if (rewards == null) return;
+            for (int i = 0; i < rewards.Count; i++)
+                if (rewards[i] != null) into.Add(rewards[i].Clone());
+        }
+
+        /// <summary>미리보기의 첫 줄과 줄 수 (한 칸만 보이는 자리용: 첫 칩 + 더 있다는 표시). 다음 호출 전까지만 쓴다 (공용 목록)</summary>
+        public static MetaReward FirstPreview(IReadOnlyList<MetaReward> rewards, out int count)
+        {
+            Preview(rewards, s_preview);
+            count = s_preview.Count;
+            return count > 0 ? s_preview[0] : null;
+        }
+
         // ───────────── 시간 표기 ─────────────
 
         /// <summary>"6시간 12분" / "12분" / "40초" (0 이하 → "0분")</summary>
@@ -189,7 +220,7 @@ namespace IdleGame.UI
             {
                 MetaRewardType.Currency => RewardService.CurrencyName(reward.currency),
                 MetaRewardType.Item => Game.Items != null ? Game.Items.Get(reward.itemId)?.name ?? reward.itemId : reward.itemId,
-                MetaRewardType.GoldMinutes => RewardService.CurrencyName(CurrencyType.Gold),
+                MetaRewardType.GoldMinutes => MetaRewardService.IncomeLabel,
                 MetaRewardType.QuickIdleTicket => "빠른 수선권",
                 MetaRewardType.DoubleTicket => "두 배 수선권",
                 MetaRewardType.SelectShards => "선택 기억편",
@@ -218,7 +249,7 @@ namespace IdleGame.UI
             {
                 MetaRewardType.Lineage or MetaRewardType.Costume => NameOf(reward),
                 MetaRewardType.Currency => $"{NameOf(reward)} {ShortAmount(reward)}",
-                MetaRewardType.GoldMinutes => $"단추 {ShortAmount(reward)}",
+                MetaRewardType.GoldMinutes => $"{MetaRewardService.IncomeLabel} {ShortAmount(reward)}",
                 _ => $"{NameOf(reward)} {ShortAmount(reward)}",
             };
         }
@@ -230,6 +261,18 @@ namespace IdleGame.UI
             var parts = new string[rewards.Count];
             for (int i = 0; i < rewards.Count; i++) parts[i] = Describe(rewards[i]);
             return string.Join(separator, parts);
+        }
+
+        /// <summary>
+        /// 데이터 보상 목록(퀘스트 · 출석 · 일지 상자 · 개방 카드 등, 아직 풀지 않은 것)의 설명. 단추 · N분치는 실제 지급과 같게 단추 · 실타래 두 줄로
+        /// 푼 뒤 쓴다 (Preview). 이미 푼 목록(지급 결과 · 바구니 미리보기)은 Describe를 쓴다 (다시 풀면 단추 줄이 또 나뉜다)
+        /// </summary>
+        public static string DescribeData(IReadOnlyList<MetaReward> rewards, string separator = ", ")
+        {
+            if (rewards == null || rewards.Count == 0) return string.Empty;
+            var shown = new List<MetaReward>(rewards.Count + 1);
+            Preview(rewards, shown);
+            return Describe(shown, separator);
         }
 
         /// <summary>

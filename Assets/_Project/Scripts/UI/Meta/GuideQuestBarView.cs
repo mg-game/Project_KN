@@ -238,21 +238,23 @@ namespace IdleGame.UI
 
         /// <summary>
         /// 보상 그림 + 양 (M04): 첫 보상의 재화 · 재료 그림 (없으면 퀘스트 그림 → 이동 기능 그림 → 퀘스트 기본 그림 → 별).
-        /// 양은 '×20' (UIFormat.TimesSmall + 줄인 숫자 FormatCompact, 단추 N분치는 'N분치', 친구 · 의상은 비움). 퀘스트가 바뀔 때만 부른다
+        /// 양은 '×20' (UIFormat.TimesSmall + 줄인 숫자 FormatCompact, 친구 · 의상은 비움). 퀘스트가 바뀔 때만 부른다.
+        /// 단추 · N분치는 실제 지급과 같게 단추 · 실타래 두 줄로 풀어(MetaUi.FirstPreview) 첫 줄을 보이고, 줄이 더 있으면 양 뒤에 '+' (출석 칸과 같은 규칙)
         /// </summary>
         void ApplyReward(GuideQuestDef quest)
         {
-            var reward = quest.rewards != null && quest.rewards.Count > 0 ? quest.rewards[0] : null;
+            var reward = MetaUi.FirstPreview(quest.rewards, out int rewardCount);
             Sprite sprite = reward != null && _icons != null ? _icons.Reward(reward) : null;
             if (sprite == null) sprite = quest.icon;
             if (sprite == null && _icons != null) sprite = _icons.Feature(quest.navFeature);
             if (sprite == null && _icons != null) sprite = _icons.Quest;
             if (sprite == null && _icons != null) sprite = _icons.Star;
             _icon.sprite = sprite;
-            _icon.color = Color.white;
+            _icon.color = reward != null && _icons != null && sprite == _icons.Reward(reward) ? MetaIcons.RewardTint(reward) : Color.white;
             _icon.enabled = sprite != null;
             if (_amountText == null) return;
             string amount = RewardAmountLabel(reward);
+            if (rewardCount > 1 && !string.IsNullOrEmpty(amount)) amount += "+";
             bool hasAmount = !string.IsNullOrEmpty(amount);
             if (_amountText.gameObject.activeSelf != hasAmount) _amountText.gameObject.SetActive(hasAmount);
             if (hasAmount) _amountText.text = amount;

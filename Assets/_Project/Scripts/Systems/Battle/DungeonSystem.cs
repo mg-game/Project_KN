@@ -153,9 +153,10 @@ namespace IdleGame
         {
             floor = Math.Max(1, floor);
             var rewards = new List<RewardData>();
-            double gold = Math.Floor(Math.Max(0, _config.dungeonGoldBase) * Math.Pow(Math.Max(1, _config.dungeonGoldGrowth), floor - 1)
-                                     * (1.0 + goldBonusPercent / 100.0));
-            if (gold > 0) rewards.Add(RewardData.Currency(CurrencyType.Gold, gold));
+            // 기준 양 B = 층 식 × 덱 시너지 보너스, 단추 · 실타래는 B를 나눈 몫 (안 D, IncomeSplit). 순서 = 단추 → 실타래 → 재료
+            double income = Math.Floor(Math.Max(0, _config.dungeonGoldBase) * Math.Pow(Math.Max(1, _config.dungeonGoldGrowth), floor - 1)
+                                       * (1.0 + goldBonusPercent / 100.0));
+            IncomeSplit.AddCurrencyLines(rewards, income);
             if (floor >= _config.dungeonThreadFloor)
                 rewards.Add(RewardData.Item(ThreadItemId, 1 + (floor - _config.dungeonThreadFloor) / 3));
             if (floor >= _config.dungeonSpringFloor)

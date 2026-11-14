@@ -64,9 +64,10 @@ namespace IdleGame
                     description = "잊힌 친구들을 고칠 재료를 팔아요.\n구매 횟수는 매일 새벽 5시에 다시 채워져요.",
                     products = new List<ShopProductDef>
                     {
-                        Material("normal_cloth", "mat_cloth", "수선 천", 5, CurrencyType.Gold, 400, dailyLimit: 3),
-                        Material("normal_ribbon", "mat_ribbon", "리본 조각", 5, CurrencyType.Gold, 300, dailyLimit: 3),
-                        Material("normal_wax", "mat_wax", "촛농 방울", 5, CurrencyType.Gold, 300, dailyLimit: 3),
+                        // 단추 가격은 결정 2 안 D(단추 수입이 절반)에 맞춰 × 0.5 (400 → 200, 300 → 150)
+                        Material("normal_cloth", "mat_cloth", "수선 천", 5, CurrencyType.Gold, 200, dailyLimit: 3),
+                        Material("normal_ribbon", "mat_ribbon", "리본 조각", 5, CurrencyType.Gold, 150, dailyLimit: 3),
+                        Material("normal_wax", "mat_wax", "촛농 방울", 5, CurrencyType.Gold, 150, dailyLimit: 3),
                         Material("normal_thread", "mat_thread", "기억의 실", 1, CurrencyType.Gem, 30, dailyLimit: 3),
                         Material("normal_lace", "mat_lace", "레이스 조각", 1, CurrencyType.Gem, 30, dailyLimit: 3),
                         Material("normal_rib", "mat_rib", "우산살", 1, CurrencyType.Gem, 30, dailyLimit: 3),

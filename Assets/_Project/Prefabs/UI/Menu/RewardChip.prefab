@@ -261,6 +261,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b9794e697f7d2e447bc9e49bce4ca7df, type: 3}
   - {fileID: 21300000, guid: ad2682c1d3669df49bdbd093aabe62f5, type: 3}
   - {fileID: 21300000, guid: f167832d37b44144095d8d777660971a, type: 3}
+  - {fileID: 21300000, guid: 0c2918e8af8213a4ba1ab0405f566fb7, type: 3}
   _gradePill: {fileID: 0}
   _gradePillImage: {fileID: 0}
   _gradeName: {fileID: 0}

@@ -15,6 +15,8 @@ namespace IdleGame.UI
         [SerializeField] Sprite _gold;
         [SerializeField] Sprite _gem;
         [SerializeField] Sprite _eventToken;
+        [Tooltip("실타래 (임시 VFX/motif_yarn, 산호 틴트는 RewardTint · UITheme.CurrencyIconTint)")]
+        [SerializeField] Sprite _lineageXp;
         [SerializeField] Sprite _quickTicket;
         [SerializeField] Sprite _doubleTicket;
         [SerializeField] Sprite _selectShards;
@@ -96,8 +98,13 @@ namespace IdleGame.UI
         {
             CurrencyType.Gold => _gold,
             CurrencyType.Gem => _gem,
+            CurrencyType.LineageXp => _lineageXp,
             _ => _eventToken,
         };
+
+        /// <summary>보상 그림에 곱할 색 (재화면 UITheme.CurrencyIconTint: 실타래 임시 그림은 산호, 그 밖 흰색)</summary>
+        public static Color RewardTint(MetaReward reward) =>
+            reward != null && reward.type == MetaRewardType.Currency ? UITheme.CurrencyIconTint(reward.currency) : Color.white;
 
         /// <summary>바구니 그림 단계 0~3 (없으면 null)</summary>
         public Sprite Basket(int stage)
@@ -144,9 +151,11 @@ namespace IdleGame.UI
         /// <summary>에디터 빌더용: 칸을 채운다</summary>
         public void Fill(Sprite gold, Sprite gem, Sprite eventToken, Sprite quickTicket, Sprite doubleTicket, Sprite selectShards,
             Sprite lockIcon, Sprite star, Sprite glow, Sprite sparkle, Sprite ring, Sprite circle, Sprite round, Sprite[] basket,
-            Sprite chestClosed, Sprite chestOpen, Sprite stamp, Sprite journal, Sprite attendance, Sprite quest, Sprite[] features)
+            Sprite chestClosed, Sprite chestOpen, Sprite stamp, Sprite journal, Sprite attendance, Sprite quest, Sprite[] features,
+            Sprite lineageXp = null)
         {
             _gold = gold;
+            _lineageXp = lineageXp;
             _gem = gem;
             _eventToken = eventToken;
             _quickTicket = quickTicket;

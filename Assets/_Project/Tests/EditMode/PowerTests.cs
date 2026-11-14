@@ -278,7 +278,7 @@ namespace IdleGame.Tests
             Characters.Grant("sock");
             Characters.Grant("candle");
             Formation.TryPlace(CharacterRole.Guardian, 0, "sock_base");
-            Currency.Add(CurrencyType.Gold, 1e9);
+            Currency.Add(CurrencyType.LineageXp, 1e9);
 
             Assert.AreEqual(0, Power.PreviewLevelUp("candle"), "편성에 없는 계보는 0 (카드 '미편성')");
             long before = Power.TeamPower;

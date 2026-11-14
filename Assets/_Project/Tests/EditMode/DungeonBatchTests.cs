@@ -47,8 +47,11 @@ namespace IdleGame.Tests
             Assert.AreEqual(3 * gold, Sum(result.Rewards, RewardType.Currency), 1e-6);
             Assert.AreEqual(3 * thread, Sum(result.Rewards, RewardType.Item, DungeonSystem.ThreadItemId), 1e-6);
             Assert.AreEqual(3 * spring, Sum(result.Rewards, RewardType.Item, DungeonSystem.SpringItemId), 1e-6);
-            Assert.AreEqual(1, result.Rewards.FindAll(r => r.type == RewardType.Currency).Count, "같은 보상은 한 줄로 합친다");
+            Assert.AreEqual(2, result.Rewards.FindAll(r => r.type == RewardType.Currency).Count, "같은 보상은 한 줄로 합친다 (단추 · 실타래 한 줄씩, 안 D)");
             Assert.AreEqual(3 * gold, Currency.Get(CurrencyType.Gold), 1e-6);
+            double lineageXp = Sum(single, RewardType.Currency, currency: CurrencyType.LineageXp);
+            Assert.Greater(lineageXp, 0, "던전도 실타래를 준다");
+            Assert.AreEqual(3 * lineageXp, Currency.Get(CurrencyType.LineageXp), 1e-6);
             Assert.AreEqual(3, Data.dungeon.ticketsUsed, "진행 기록 추론용 사용 수");
         }
 

@@ -115,7 +115,7 @@ namespace IdleGame.UI
             var type = _product.currency;
             var sprite = _currencyIcons != null && (int)type < _currencyIcons.Length ? _currencyIcons[(int)type] : null;
             _priceIcon.sprite = sprite != null ? sprite : _priceFallback;
-            _priceIcon.color = sprite != null ? Color.white : UITheme.CurrencyColor(type);
+            _priceIcon.color = sprite != null ? UITheme.CurrencyIconTint(type) : UITheme.CurrencyColor(type);
             _priceText.text = RewardService.FormatAmount(type, _product.price);
         }
 

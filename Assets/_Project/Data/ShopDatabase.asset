@@ -28,7 +28,7 @@ MonoBehaviour:
         amount: 5
       costumeId: 
       currency: 0
-      price: 400
+      price: 200
       dailyLimit: 3
       totalLimit: 0
     - id: normal_ribbon
@@ -40,7 +40,7 @@ MonoBehaviour:
         amount: 5
       costumeId: 
       currency: 0
-      price: 300
+      price: 150
       dailyLimit: 3
       totalLimit: 0
     - id: normal_wax
@@ -52,7 +52,7 @@ MonoBehaviour:
         amount: 5
       costumeId: 
       currency: 0
-      price: 300
+      price: 150
       dailyLimit: 3
       totalLimit: 0
     - id: normal_thread

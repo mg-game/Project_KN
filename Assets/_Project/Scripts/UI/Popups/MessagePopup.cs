@@ -263,7 +263,11 @@ namespace IdleGame.UI
             if (_costIcon != null)
             {
                 var icon = IconOf(currency);
-                if (icon != null) _costIcon.sprite = icon;
+                if (icon != null)
+                {
+                    _costIcon.sprite = icon;
+                    _costIcon.color = UITheme.CurrencyIconTint(currency);
+                }
                 _costIcon.enabled = _costIcon.sprite != null;
             }
             if (_costText != null) _costText.text = RewardService.FormatAmount(currency, cost);

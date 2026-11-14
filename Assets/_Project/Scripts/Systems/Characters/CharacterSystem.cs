@@ -195,7 +195,24 @@ namespace IdleGame
 
         public bool IsMaxLevel(string lineageId) => GetLevel(lineageId) >= MaxLevel;
 
-        /// <summary>다음 레벨 비용(단추). 미보유이거나 최대 레벨이면 0</summary>
+        /// <summary>
+        /// 보유한 유실자(계보)가 하나 이상이고 모두 최대 레벨인지 (T6 "모두 최대"). 새 유실자가 합류하면 그 순간 false. 할당 없음
+        /// </summary>
+        public bool AllOwnedMaxLevel
+        {
+            get
+            {
+                if (_data.lineages == null || _data.lineages.Count == 0) return false;
+                int max = MaxLevel;
+                foreach (var pair in _data.lineages)
+                {
+                    if (pair.Value != null && pair.Value.level < max) return false;
+                }
+                return true;
+            }
+        }
+
+        /// <summary>다음 레벨 비용(레벨업 재화 = 실타래). 미보유이거나 최대 레벨이면 0</summary>
         public double GetLevelUpCost(string lineageId)
         {
             int level = GetLevel(lineageId);
@@ -203,7 +220,7 @@ namespace IdleGame
             return GetCostAtLevel(level);
         }
 
-        /// <summary>fromLevel → fromLevel+1 비용 (정수 단추, 계보와 상관없음). 플레이 기록의 지출 줄(spend)도 이것으로 센다. 할당 없음</summary>
+        /// <summary>fromLevel → fromLevel+1 비용 (정수 실타래, 계보와 상관없음). 플레이 기록의 지출 줄(spend)도 이것으로 센다. 할당 없음</summary>
         public double GetCostAtLevel(int fromLevel)
         {
             if (fromLevel <= 0) return 0;
@@ -212,7 +229,7 @@ namespace IdleGame
             return Math.Max(0, Math.Ceiling(raw - 1e-6));
         }
 
-        /// <summary>지금 레벨에서 levels번 올리는 총 비용 (단추, 최대 레벨에서 멈춤). 미보유 · 최대 레벨 · levels ≤ 0이면 0. 할당 없음</summary>
+        /// <summary>지금 레벨에서 levels번 올리는 총 비용 (실타래, 최대 레벨에서 멈춤). 미보유 · 최대 레벨 · levels ≤ 0이면 0. 할당 없음</summary>
         public double GetLevelUpCost(string lineageId, int levels)
         {
             int level = GetLevel(lineageId);
@@ -223,12 +240,12 @@ namespace IdleGame
             return total;
         }
 
-        /// <summary>친구 레벨업에 쓰는 재화 (GameConfig.lineageLevelUpCurrency, 기본 단추: SYS_Economy §3 #8 E안 이음매)</summary>
+        /// <summary>유실자 레벨업에 쓰는 재화 (GameConfig.lineageLevelUpCurrency, 기본 실타래: B안 · 결정 2 안 D)</summary>
         public CurrencyType LevelUpCurrency => _config.lineageLevelUpCurrency;
 
         /// <summary>
         /// 지금 가진 레벨업 재화 (강해지기 줄의 "모으는 데 걸리는 시간" 계산용. StrengthenAdvisor가 재화 시스템을 받지 않으므로 여기서 읽어 준다).
-        /// 이름은 예전 그대로 (기본값이 단추). 레벨업 재화를 단추가 아닌 것으로 바꾸면 강해지기의 시간 계산(초당 단추 기준)도 같이 바꿔야 한다
+        /// 이름은 예전 그대로 (기본값이 단추였다). 지금 기본은 실타래이고, 강해지기 유실자 줄은 이 잔액을 실타래 수입 속도로 나눈다 (T3)
         /// </summary>
         public double AvailableGold => _currency != null ? _currency.Get(LevelUpCurrency) : 0;
 
@@ -236,7 +253,7 @@ namespace IdleGame
         public bool CanLevelUp(string lineageId) =>
             IsOwned(lineageId) && !IsMaxLevel(lineageId) && IsLevelUpUnlocked && _currency.Has(LevelUpCurrency, GetLevelUpCost(lineageId));
 
-        /// <summary>단추로 레벨 +1. 미보유 · 최대 레벨 · 단추 부족 · 친구 레벨업 잠김(F-03, 1-1 전)이면 false</summary>
+        /// <summary>레벨업 재화(실타래)로 레벨 +1. 미보유 · 최대 레벨 · 재화 부족 · 친구 레벨업 잠김(F-03, 1-1 전)이면 false</summary>
         public bool TryLevelUp(string lineageId)
         {
             if (!IsLevelUpUnlocked) return false;

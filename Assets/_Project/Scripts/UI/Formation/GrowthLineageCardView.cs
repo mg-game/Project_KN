@@ -98,14 +98,14 @@ namespace IdleGame.UI
             {
                 if (_isMax) _costView.SetState(CostButtonView.State.Unavailable, "최대 레벨");
                 else if (_locked) _costView.SetState(CostButtonView.State.Unavailable, "레벨업");
-                else _costView.SetAffordable(Game.Currency.Has(CurrencyType.Gold, _cost));
+                else _costView.SetAffordable(Game.Currency.Has(Game.Characters.LevelUpCurrency, _cost));
             }
             else
             {
                 _buttonLabel.text = _isMax ? "최대 레벨" : "레벨업";
                 _costRow.SetActive(!_isMax && !_locked);
                 _levelUpButton.interactable = !_locked;
-                RefreshAffordable(Game.Currency.Get(CurrencyType.Gold));
+                RefreshAffordable(Game.Currency.Get(Game.Characters.LevelUpCurrency));
             }
             ApplyLock();
         }
@@ -214,7 +214,7 @@ namespace IdleGame.UI
         void Deny()
         {
             if (_costView != null) _costView.Deny();
-            UIManager.Instance.ShowShortfall(CurrencyType.Gold, Game.Characters.GetLevelUpCost(_lineageId));
+            UIManager.Instance.ShowShortfall(Game.Characters.LevelUpCurrency, Game.Characters.GetLevelUpCost(_lineageId));
         }
 
         /// <summary>데려왔을 때: 금빛 테를 seconds 동안 켜고 한 번 툭 튄다 (움직임 줄이기면 테만)</summary>

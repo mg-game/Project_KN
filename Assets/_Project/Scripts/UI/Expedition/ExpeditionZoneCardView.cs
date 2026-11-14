@@ -216,7 +216,7 @@ namespace IdleGame.UI
         {
             int dropCount = _zone.drops != null ? _zone.drops.Count : 0;
             bool hasGold = _zone.goldReward > 0;
-            _drops.SetCount(dropCount + (hasGold ? 1 : 0));
+            _drops.SetCount(dropCount + (hasGold ? 2 : 0));
             int index = 0;
             for (int i = 0; i < dropCount; i++)
             {
@@ -229,12 +229,30 @@ namespace IdleGame.UI
             }
             if (hasGold)
             {
-                // 작은 칩은 줄임 표기 (M30 — 3,000 → 3K)
-                _drops[index].SetCurrency(CurrencyType.Gold, RewardService.FormatAmountCompact(CurrencyType.Gold, _zone.goldReward));
-                _drops[index].SetClick(null);
-                index++;
+                // 작은 칩은 줄임 표기 (M30: 3,000 → 3K). 안 D: 구역 단추는 기준 양 B라 단추 · 실타래 두 칸으로 나눠 보인다 (1인 기준)
+                index = SetIncomeDrops(_drops, index, _zone.goldReward);
             }
             _drops.SetCount(index);
+        }
+
+        /// <summary>기준 양 B를 단추 · 실타래 두 칸으로 (몫이 1 이상인 칸만). 다음 칸 번호를 돌려준다</summary>
+        internal static int SetIncomeDrops(UIListPool<RewardSlotView> drops, int index, double income)
+        {
+            double gold = IncomeSplit.GoldWhole(income);
+            double lineageXp = IncomeSplit.LineageXpWhole(income);
+            if (gold >= 1)
+            {
+                drops[index].SetCurrency(CurrencyType.Gold, RewardService.FormatAmountCompact(CurrencyType.Gold, gold));
+                drops[index].SetClick(null);
+                index++;
+            }
+            if (lineageXp >= 1)
+            {
+                drops[index].SetCurrency(CurrencyType.LineageXp, RewardService.FormatAmountCompact(CurrencyType.LineageXp, lineageXp));
+                drops[index].SetClick(null);
+                index++;
+            }
+            return index;
         }
 
         void ShowMembers(ExpeditionSave active)

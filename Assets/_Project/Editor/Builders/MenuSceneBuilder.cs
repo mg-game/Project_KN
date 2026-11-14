@@ -79,6 +79,11 @@ namespace IdleGame.EditorTools
         const float LineageCardGap = 12f;
         /// <summary>목록이 넘칠 때 오른쪽 끝 흐림 폭 (패널 색 α0 → 0.9)</summary>
         const float LineageFadeWidth = 72f;
+        /// <summary>친구 머리 줄 실타래 잔액 칩 (T4): 머리 글 오른쪽 (x 330, 머리 가운데 높이), 240x48. 누르는 자리는 위아래 20씩 (강화 버튼 줄 · 목록에 닿지 않게)</summary>
+        static readonly Vector2 LineageChipPosition = new(330, -492);
+        static readonly Vector2 LineageChipSize = new(240, 48);
+        /// <summary>머리 글 폭 (잔액 칩 자리만큼 줄임)</summary>
+        const float LineageHeaderWidth = 300f;
 
         /// <summary>
         /// 강화 탭 (MainTab.Growth, UX-SPEC §2.4 M33 · M34 · M35): 머리 '수선점 강화' · 수선점 카드(그림 180, Lv 38, 초당 단추 30 · 내구도 26 — 다음 값 PositiveInk) ·
@@ -102,6 +107,9 @@ namespace IdleGame.EditorTools
             stat.rectTransform.At(TopLeft, new Vector2(250, -78), new Vector2(750, 42));
             var hp = Txt(card, "HpText", "수선점 내구도 300", 26, UITheme.Ink, TextAlignmentOptions.MidlineLeft).FitFloor(20);
             hp.rectTransform.At(TopLeft, new Vector2(250, -124), new Vector2(750, 38));
+            // 초당 실타래 전 → 후 (결정 2 안 D: 수선점 레벨이 실타래 수입도 올린다는 것을 보인다)
+            var lineageRate = Txt(card, "LineageRateText", "초당 실타래 0.5", 24, UITheme.Ink, TextAlignmentOptions.MidlineLeft).FitFloor(UIType.AutoSizeFloor);
+            lineageRate.rectTransform.At(TopLeft, new Vector2(250, -164), new Vector2(750, 36));
 
             // 강화 버튼 x1 (길게 누르면 연속) / x10 / 최대 — x10 · 최대는 누르기만. 금색은 최대 하나 (M26)
             var row = NewRect("Buttons", root).Top(GrowthButtonsTop, GrowthButtonsHeight, 24, 24);
@@ -118,7 +126,8 @@ namespace IdleGame.EditorTools
 
             // 친구 레벨 (계보 공유): 머리 '친구 레벨 N명' + 오른쪽 '모두 레벨업' (예전 안내 줄 자리)
             var lineageHeader = Txt(root, "LineageHeader", "친구 레벨", 30, UITheme.Cream, TextAlignmentOptions.MidlineLeft, true).FitFloor(24);
-            lineageHeader.rectTransform.At(TopLeft, new Vector2(24, -LineageHeaderTop), new Vector2(560, 44));
+            lineageHeader.rectTransform.At(TopLeft, new Vector2(24, -LineageHeaderTop), new Vector2(LineageHeaderWidth, 44));
+            LineageXpChip(root);
             var levelAll = SceneParts.Button(root, "LevelUpAllButton", "모두 레벨업", ButtonStyle.Secondary, UIType.Label, out var levelAllLabel);
             ((RectTransform)levelAll.transform).At(TopRight, new Vector2(-30, -LineageAllTop), LineageAllSize);
             levelAllLabel.FitFloor(UIType.Micro);
@@ -144,6 +153,7 @@ namespace IdleGame.EditorTools
                 .Set("_levelText", level)
                 .Set("_statText", stat)
                 .Set("_hpText", hp)
+                .Set("_lineageRateText", lineageRate)
                 .Set("_levelUp1Button", levelUp1)
                 .Set("_levelUp10Button", levelUp10)
                 .Set("_levelUpMaxButton", levelUpMax)
@@ -166,6 +176,32 @@ namespace IdleGame.EditorTools
                 .Apply();
             FitButtonBorders(root);
             return root.gameObject;
+        }
+
+        /// <summary>
+        /// 친구 머리 줄 실타래 잔액 칩 (T4 · T10, 결정 2 안 D): 어두운 바느질 알약 240x48 + 실타래 그림 34(산호 틴트) + 잔액 26 굵게.
+        /// 숫자 = 잔액 − 날아오는 양 − 보상 팝업이 붙잡은 양, 보유 전원 최대면 "모두 최대" (LineageXpBalanceView). 누르면 얻는 곳 팝업,
+        /// 길게 누르면 말풍선 (CurrencyStripView). 실타래 날아가기 1순위 도착지 (TutorialSceneBuilder가 RewardFlyer에 잇는다)
+        /// </summary>
+        static LineageXpBalanceView LineageXpChip(RectTransform root)
+        {
+            var chip = UiArt.Panel(root, "LineageXpChip", UiArt.PillNight9s, UiArt.CapsulePpu(LineageChipSize.y), null,
+                WithAlpha(UITheme.PanelLight, 0.9f), true);
+            chip.rectTransform.At(TopLeft, LineageChipPosition, LineageChipSize);
+            var icon = CurrencyIcon(chip.transform, CurrencyType.LineageXp, 34).rectTransform;
+            icon.anchorMin = icon.anchorMax = MiddleLeft;
+            icon.anchoredPosition = new Vector2(30, 0);
+            var amount = Txt(chip.transform, "Amount", "0", 26, UITheme.Cream, TextAlignmentOptions.MidlineRight, true).FitFloor(UIType.AutoSizeFloor);
+            amount.rectTransform.Stretch(56, 18, 0, 0);
+            var button = chip.gameObject.AddComponent<Button>();
+            button.targetGraphic = chip;
+            button.transition = Selectable.Transition.None;
+            chip.HitPad(LineageChipSize, UISize.MinHit, UISize.MinHit);
+            var strip = chip.gameObject.AddComponent<CurrencyStripView>();
+            new Binder(strip).SetInt("_type", (int)CurrencyType.LineageXp).Apply();
+            var view = chip.gameObject.AddComponent<LineageXpBalanceView>();
+            new Binder(view).Set("_amount", amount).Set("_button", button).Apply();
+            return view;
         }
 
         /// <summary>
@@ -244,7 +280,8 @@ namespace IdleGame.EditorTools
             buttonLabel.rectTransform.Top(4, 32, 4, 4);
             var costRow = CenteredRow(button.transform, "Cost", 6);
             costRow.Top(36, 32, 4, 4);
-            CurrencyIcon(costRow, CurrencyType.Gold, 26);
+            // 유실자 레벨업 비용 = 실타래 (결정 2 안 D)
+            CurrencyIcon(costRow, CurrencyType.LineageXp, 26);
             var cost = Txt(costRow, "CostText", "0", 22, UITheme.Text, TextAlignmentOptions.MidlineLeft, true);
             var costView = CostBtn(button, cost, CostSurface.Dark, buttonLabel);
             var hold = button.gameObject.AddComponent<HoldRepeatButton>();
@@ -3278,11 +3315,13 @@ namespace IdleGame.EditorTools
             return rt;
         }
 
+        /// <summary>재화 아이콘 (CurrencyType 순서: 단추 · 별조각 · 별빛 사탕 · 실타래, 없으면 null)</summary>
         static Object[] CurrencySprites() => new Object[]
         {
             ArtLib.Currency(CurrencyType.Gold),
             ArtLib.Currency(CurrencyType.Gem),
             ArtLib.Currency(CurrencyType.EventToken),
+            ArtLib.Currency(CurrencyType.LineageXp),
         };
     }
 }

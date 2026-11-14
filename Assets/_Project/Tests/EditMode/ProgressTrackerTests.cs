@@ -173,7 +173,7 @@ namespace IdleGame.Tests
         public void CharacterLevelUpAndResonance_AreCounted()
         {
             Characters.Grant("sock");
-            Currency.Add(CurrencyType.Gold, 1_000_000);
+            Currency.Add(CurrencyType.LineageXp, 1_000_000);
             Assert.IsTrue(Characters.TryLevelUp("sock"));
             Assert.IsTrue(Characters.TryLevelUp("sock"));
             Characters.AddShards("sock", 1000);

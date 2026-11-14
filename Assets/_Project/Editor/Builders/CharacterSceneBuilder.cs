@@ -382,7 +382,7 @@ namespace IdleGame.EditorTools
             LineageSynergyRowView synergyRowPrefab, FormSkillRowView formSkillPrefab)
         {
             var popup = BuildPopup<CharacterDetailPopup>(ctx.PopupRoot, "CharacterDetailPopup", "친구 상세", new Vector2(1000, 1720), out var body, out var title);
-            PopupBalanceChip((RectTransform)body.parent, CurrencyType.Gold);
+            PopupBalanceChip((RectTransform)body.parent, CurrencyType.LineageXp); // 유실자 레벨업 재화 = 실타래 (결정 2 안 D)
             AutoSize(title, UIType.H2, UIType.H1);
 
             // 머리: 초상화 + 이름 / 종족 / 별 / 역할·성향·특성 칩
@@ -426,7 +426,7 @@ namespace IdleGame.EditorTools
             var levelUp = ToneButton(levelBox, "LevelUpButton", "레벨업", Tone.Primary, 28, out var levelUpLabel);
             ((RectTransform)levelUp.transform).At(MiddleRight, new Vector2(-12, 0), new Vector2(220, 112));
             levelUpLabel.rectTransform.Top(10, 44, 8, 8);
-            var levelCost = CostLine(levelUp.transform, CurrencyType.Gold, 30, 26, 58);
+            var levelCost = CostLine(levelUp.transform, CurrencyType.LineageXp, 30, 26, 58);
             var levelUpView = CostBtn(levelUp, levelCost, CostSurface.Dark, levelUpLabel);
             var levelUpHold = levelUp.gameObject.AddComponent<HoldRepeatButton>();
 

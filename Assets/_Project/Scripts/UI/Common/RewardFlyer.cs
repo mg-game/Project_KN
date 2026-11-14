@@ -12,6 +12,8 @@ namespace IdleGame.UI
     /// 0.55~0.8초 동안 시차를 두고 날아가고, 도착하면 칩이 1.15배로 튀며 별빛이 터지고, 칩 아래 받침 위에 "+1,234"가 카운트업된다.
     ///   · 도착지: 단추 → GoldChip, 별조각 → GemChip, 별빛 사탕 → 전투 화면 빠른 아이콘 이벤트(시트가 열려 흐려지면 상점 탭), 재료 → ≡ 메뉴 버튼,
     ///     빠른/두 배 수선권 → 수선 바구니 위젯(없으면 가방 자리), 친구·의상·선택 기억편 → 친구들 탭.
+    ///     실타래 (T10, 결정 2 안 D): 날리기 시작할 때 한 번 정한다. 강화 탭이 열려 있고 잔액 칩이 보이면 그 칩, 아니면 강화 탭 꼬리표가 보이면 꼬리표,
+    ///     둘 다 안 보이면 날리지 않고 출발 자리에 "+N" 받침만 (떠 있는 양 0). 보임 = 켜져 있고 가리지 않고 열린 팝업이 없음. 단추 칩으로 대신 가지 않는다.
     ///     날릴 때마다 정한다: 원래 도착지가 꺼져 있거나 가려졌으면(UIFrame.IsFeedbackHidden — 시트 밑, SheetFade로 흐려짐 ·
     ///     시트가 열리는 중이면 다 열렸을 때 사라지는 HUD도, CR-03)
     ///     그때만 대신 도착지(별빛 사탕은 상점 탭, 그다음 GoldChip · 친구들은 가방 자리)로 — 다시 보이면 다음 날림부터 원래 자리로.
@@ -48,14 +50,15 @@ namespace IdleGame.UI
             Gold = 0,
             Gem = 1,
             Event = 2,
-            Bag = 3,
-            Ticket = 4,
-            Friends = 5,
+            LineageXp = 3,
+            Bag = 4,
+            Ticket = 5,
+            Friends = 6,
         }
 
-        const int DestCount = 6;
-        /// <summary>재화 도착지 수 (Gold · Gem · Event — CurrencyType과 같은 순서)</summary>
-        const int CurrencyDests = 3;
+        const int DestCount = 7;
+        /// <summary>재화 도착지 수 (Gold · Gem · Event · LineageXp, CurrencyType과 같은 순서)</summary>
+        const int CurrencyDests = 4;
         /// <summary>한 번에 모으는 (도착지, 그림) 묶음 최대 — 넘치면 같은 도착지 마지막 묶음에 더한다</summary>
         const int MaxRequests = 12;
         /// <summary>떠 있는 양이 남았는데 이만큼 아무것도 닿지 않으면 0으로 (초)</summary>
@@ -101,6 +104,8 @@ namespace IdleGame.UI
         static RewardFlyer s_instance;
         /// <summary>재화별 떠 있는 양 (날리는 중이라 상단 바에 아직 안 더한 양)</summary>
         static readonly double[] Pending = new double[CurrencyDests];
+        /// <summary>재화별 미리 잡아 둔 양 (곧 날릴 것: StageClearRewardFlyer가 1-1 개방 뒤로 미룬 실타래, Reserve)</summary>
+        static readonly double[] Reserved = new double[CurrencyDests];
 
         [Header("층 (이 오브젝트의 RectTransform이 비행 좌표계)")]
         [SerializeField] RectTransform _canvasRoot;
@@ -120,6 +125,10 @@ namespace IdleGame.UI
         [SerializeField] RectTransform _eventFallbackTarget;
         [SerializeField] RectTransform _bagTarget;
         [SerializeField] RectTransform _friendsTarget;
+        [Tooltip("실타래 도착지 1순위: 강화 탭 친구 머리 줄 잔액 칩 (T10)")]
+        [SerializeField] RectTransform _lineageXpChipTarget;
+        [Tooltip("실타래 도착지 2순위: 강화 탭 버튼 꼬리표 (T10). 둘 다 안 보이면 받침만")]
+        [SerializeField] RectTransform _lineageXpTagTarget;
         [Tooltip("수선권이 날아갈 곳 (Canvas 기준 경로, 메타 HUD가 만든다). 없거나 꺼져 있으면 가방")]
         [SerializeField] string _ticketTargetPath = CoachTargets.IdleChestWidget;
 
@@ -127,6 +136,8 @@ namespace IdleGame.UI
         [SerializeField] Sprite _goldIcon;
         [SerializeField] Sprite _gemIcon;
         [SerializeField] Sprite _eventIcon;
+        [Tooltip("실타래 (임시 그림, 산호 틴트 UITheme.CurrencyIconTint)")]
+        [SerializeField] Sprite _lineageXpIcon;
         [SerializeField] Sprite _quickTicketIcon;
         [SerializeField] Sprite _doubleTicketIcon;
         [SerializeField] Sprite _selectShardsIcon;
@@ -249,8 +260,29 @@ namespace IdleGame.UI
         /// </summary>
         public static double PendingOf(CurrencyType currency)
         {
-            double pending = Pending[CurrencyIndex(currency)];
+            int index = CurrencyIndex(currency);
+            double pending = Pending[index] + Reserved[index];
             return pending > 0 ? pending : 0;
+        }
+
+        /// <summary>
+        /// 곧 날릴 양을 떠 있는 양에 미리 잡는다 (이미 보유량에 들어왔지만 날리기를 미룬 양. 그동안 잔액 표시가 오르내리지 않게, T10).
+        /// 날릴 때 ReleaseReserved로 풀고 같은 프레임에 Fly한다. 층이 꺼지면 함께 비운다
+        /// </summary>
+        public static void Reserve(CurrencyType currency, double amount)
+        {
+            if (!(amount > 0)) return;
+            Reserved[CurrencyIndex(currency)] += amount;
+            PendingChanged?.Invoke(currency);
+        }
+
+        /// <summary>미리 잡은 양을 푼다 (0 아래로 내려가지 않는다)</summary>
+        public static void ReleaseReserved(CurrencyType currency, double amount)
+        {
+            int index = CurrencyIndex(currency);
+            if (!(amount > 0) || Reserved[index] <= 0) return;
+            Reserved[index] = Math.Max(0, Reserved[index] - amount);
+            PendingChanged?.Invoke(currency);
         }
 
         /// <summary>메타 보상 목록을 from 위치에서 날린다 (from이 null이면 화면 가운데). 수선권·친구 등도 받는 곳으로 날아간다</summary>
@@ -331,9 +363,9 @@ namespace IdleGame.UI
                 _sparks[i] = new Spark { Image = image, Rect = image.rectTransform };
             }
 
-            var targets = new[] { _goldTarget, _gemTarget, _eventTarget, _bagTarget, null, _friendsTarget };
+            var targets = new[] { _goldTarget, _gemTarget, _eventTarget, _lineageXpChipTarget, _bagTarget, null, _friendsTarget };
             for (int i = 0; i < DestCount; i++) _configured[i] = targets[i];
-            var tints = new[] { UITheme.Gold, UITheme.Gem, UITheme.EventToken, UITheme.Lavender, UITheme.Lamp, UITheme.DustyPink };
+            var tints = new[] { UITheme.Gold, UITheme.Gem, UITheme.EventToken, UITheme.LineageXp, UITheme.Lavender, UITheme.Lamp, UITheme.DustyPink };
             var labelSprite = LabelSprite();
             for (int i = 0; i < DestCount; i++)
             {
@@ -398,8 +430,9 @@ namespace IdleGame.UI
         {
             for (int i = 0; i < CurrencyDests; i++)
             {
-                if (Pending[i] == 0) continue;
+                if (Pending[i] == 0 && Reserved[i] == 0) continue;
                 Pending[i] = 0;
+                Reserved[i] = 0;
                 if (notify) PendingChanged?.Invoke(CurrencyOf(i));
             }
         }
@@ -408,6 +441,7 @@ namespace IdleGame.UI
         {
             CurrencyType.Gold => (int)Dest.Gold,
             CurrencyType.Gem => (int)Dest.Gem,
+            CurrencyType.LineageXp => (int)Dest.LineageXp,
             _ => (int)Dest.Event,
         };
 
@@ -415,6 +449,7 @@ namespace IdleGame.UI
         {
             (int)Dest.Gold => CurrencyType.Gold,
             (int)Dest.Gem => CurrencyType.Gem,
+            (int)Dest.LineageXp => CurrencyType.LineageXp,
             _ => CurrencyType.EventToken,
         };
 
@@ -584,15 +619,12 @@ namespace IdleGame.UI
                     AddItem(reward.itemId, reward.amount);
                     break;
                 case MetaRewardType.GoldMinutes:
-                    // 지급 결과에는 없지만 미리보기 목록이 넘어오면 지금 초당 단추로 푼다
-                    if (Game.IsReady && Game.IsMetaActive && Game.MetaRewards != null)
+                    // 지급 결과에는 없지만 미리보기 목록이 넘어오면 지금 기준 초당 수입으로 풀어 단추 · 실타래로 나눈다 (안 D)
+                    if (Game.IsReady && Game.Growth != null)
                     {
-                        var resolved = Game.MetaRewards.Resolve(reward);
-                        if (resolved != null && resolved.type != MetaRewardType.GoldMinutes) AddRequest(resolved);
-                    }
-                    else if (Game.IsReady)
-                    {
-                        AddCurrency(CurrencyType.Gold, Game.Growth.GoldPerSecond * 60.0 * reward.amount);
+                        double income = Game.Growth.IncomePerSecond * 60.0 * reward.amount;
+                        AddCurrency(CurrencyType.Gold, IncomeSplit.GoldWhole(income));
+                        AddCurrency(CurrencyType.LineageXp, IncomeSplit.LineageXpWhole(income));
                     }
                     break;
                 case MetaRewardType.QuickIdleTicket:
@@ -629,6 +661,9 @@ namespace IdleGame.UI
                     break;
                 case CurrencyType.Gem:
                     Add((int)Dest.Gem, _gemIcon, UITheme.Gem, amount);
+                    break;
+                case CurrencyType.LineageXp:
+                    Add((int)Dest.LineageXp, _lineageXpIcon, UITheme.LineageXp, amount);
                     break;
                 default:
                     Add((int)Dest.Event, _eventIcon, UITheme.EventToken, amount);
@@ -743,6 +778,12 @@ namespace IdleGame.UI
                 var request = _requests[r];
                 var dest = _dests[request.Dest];
                 var target = ResolveTarget(request.Dest);
+                if (target == null && request.Dest == (int)Dest.LineageXp)
+                {
+                    // 실타래 도착지가 하나도 안 보임 (T10): 날리지 않고 출발 자리에 "+N" 받침만, 떠 있는 양은 0
+                    LabelOnly(request.Dest, request.Amount, start);
+                    continue;
+                }
                 var end = target != null ? UIFind.CenterIn(target, _layer) : TopRightFallback();
                 int count = _counts[r];
                 double each = request.Amount / count;
@@ -782,12 +823,19 @@ namespace IdleGame.UI
                     _ticketTarget = UIFind.Path(_canvasRoot, _ticketTargetPath);
                 target = UIFind.IsShown(_ticketTarget) && CanLand(_ticketTarget) ? _ticketTarget : _bagTarget;
             }
+            else if (dest == (int)Dest.LineageXp)
+            {
+                // T10: 잔액 칩(강화 탭이 열려 있을 때만 켜져 있다) → 꼬리표 → 없음(받침만). 열린 팝업이 있으면 둘 다 안 보임. 단추 칩으로 대신 가지 않는다
+                var ui = UIManager.Instance;
+                bool popup = ui != null && ui.HasOpenPopup;
+                target = popup ? null : CanLand(_configured[dest]) ? _configured[dest] : CanLand(_lineageXpTagTarget) ? _lineageXpTagTarget : null;
+            }
             else
             {
                 target = _configured[dest];
                 if (dest == (int)Dest.Event && !CanLand(target)) target = _eventFallbackTarget;
             }
-            if (!CanLand(target)) target = dest == (int)Dest.Friends ? _bagTarget : _goldTarget;
+            if (dest != (int)Dest.LineageXp && !CanLand(target)) target = dest == (int)Dest.Friends ? _bagTarget : _goldTarget;
             if (target != state.Target)
             {
                 if (state.Target != null && state.HasBaseScale && state.Punch >= 0f) state.Target.localScale = state.BaseScale;
@@ -869,8 +917,10 @@ namespace IdleGame.UI
 
             bool hasSprite = request.Sprite != null;
             icon.Image.sprite = hasSprite ? request.Sprite : _fallbackIcon;
-            // 대신 쓰는 아이콘(별 아트)은 색을 살짝만 입힌다 (아트를 진한 색으로 덮지 않게)
-            icon.Image.color = hasSprite ? Color.white : Color.Lerp(Color.white, request.Tint, 0.35f);
+            // 대신 쓰는 아이콘(별 아트)은 색을 살짝만 입힌다 (아트를 진한 색으로 덮지 않게). 실타래 임시 그림은 산호를 곱한다 (T2)
+            icon.Image.color = hasSprite
+                ? request.Dest < CurrencyDests ? UITheme.CurrencyIconTint(CurrencyOf(request.Dest)) : Color.white
+                : Color.Lerp(Color.white, request.Tint, 0.35f);
             icon.Image.preserveAspect = true;
             icon.Rect.sizeDelta = new Vector2(_iconSize, _iconSize);
             icon.Rect.anchoredPosition = start;
@@ -1013,6 +1063,37 @@ namespace IdleGame.UI
         {
             var target = _dests[dest].Target;
             return target != null && target.gameObject.activeInHierarchy ? UIFind.CenterIn(target, _layer) : TopRightFallback();
+        }
+
+        /// <summary>
+        /// 받침만 (T10 실타래 도착지가 안 보임): 아이콘을 날리지 않고 at 자리 위에 "+N" 받침을 띄운다. 떠 있는 양에 더했던 몫은 바로 뺀다
+        /// </summary>
+        void LabelOnly(int destIndex, double value, Vector2 at)
+        {
+            var dest = _dests[destIndex];
+            if (destIndex < CurrencyDests)
+            {
+                Pending[destIndex] = dest.InFlight == 0 ? 0 : Math.Max(0, Pending[destIndex] - value);
+                dest.PendingDirty = true;
+            }
+            dest.Arrived += value;
+            if (!dest.LabelActive)
+            {
+                dest.LabelActive = true;
+                dest.Shown = 0;
+                dest.LastWritten = -1;
+                dest.LabelAge = 0f;
+                dest.LabelWidth = 0f;
+                dest.LabelSide = 0f;
+                dest.LabelAnchor = at + new Vector2(0f, LabelGapAbove + LabelHeight);
+                SetPlateAlpha(dest.LabelPlate, LabelAlpha);
+                dest.Label.color = dest.Tint;
+                dest.LabelGroup.alpha = 0f;
+                dest.LabelRoot.gameObject.SetActive(true);
+                dest.LabelRoot.SetAsLastSibling();
+            }
+            dest.LabelHold = LabelHoldTime;
+            for (int i = 0; i < 3; i++) SpawnSpark(at, dest.Tint);
         }
 
         void Arrive(int destIndex, double value, Vector2 at)

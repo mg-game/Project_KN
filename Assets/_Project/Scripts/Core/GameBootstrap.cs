@@ -38,10 +38,6 @@ namespace IdleGame
         [SerializeField] MetaDatabase _metaDatabase;
         [SerializeField] UIManager _ui;
 
-        /// <summary>방치 단추는 프레임마다 모아 두었다가 이 간격 이상 지나고 1개 이상 모였을 때 한 번에 지급한다 (Currency.Changed가 매 프레임 울리지 않게)</summary>
-        const float IdleGoldMinInterval = 0.2f;
-        /// <summary>1개가 다 모이지 않아도 이 간격이 지나면 지급한다</summary>
-        const float IdleGoldMaxInterval = 1f;
         /// <summary>켜 둔 채로 밤 8시를 넘겨도 야간 방문(밤지기 의상 조건)이 인정되도록 다시 확인하는 간격(초)</summary>
         const float NightVisitCheckInterval = 30f;
 
@@ -61,11 +57,13 @@ namespace IdleGame
         /// <summary>세이브 저장소 (가져오기 · 백업 복구 화면이 쓴다, SAVE-01). Awake 전에는 null</summary>
         public ISaveStorage Storage => _storage;
         float _autoSaveTimer;
-        double _idleGold;
-        float _idleGoldTimer;
+        /// <summary>켜 둔 동안 초당 단추 · 실타래 적립 (프레임마다 모았다가 한 번에 지급, IdleIncomeAccrual)</summary>
+        readonly IdleIncomeAccrual _idleIncome = new();
         float _nightVisitTimer;
         /// <summary>백그라운드 진입 때 미리 지급한 오프라인 보상 (복귀 시 알림용)</summary>
         double _offlineClaimedOnPause;
+        /// <summary>같은 때 함께 지급한 실타래 (안 D)</summary>
+        double _offlineLineageClaimedOnPause;
         bool _wasPaused;
         bool _resetting;
         /// <summary>날마다 백업을 마지막으로 확인한 날 키 (그 날 첫 저장 뒤에 Storage.SnapshotDaily, SAVE-01)</summary>
@@ -108,11 +106,16 @@ namespace IdleGame
             Game.Setup(data, content, clock, new System.Random());
 
             GrantStarterCharacters();
+            // 첫 로드 1회 실타래 지급 (T7): 세이브에 실타래 키가 없을 때만, 첫 화면을 그리기 전에
+            LineageXpStartGrant.TryGrant(Game.Data, Game.Config, Game.Currency, Game.Tutorial, Game.MetaDb, out _);
             Game.Mail.RemoveExpired();
+            // 환영 우편 단추 500은 안 D 규칙대로 단추 · 실타래로 나눠 담는다 (IncomeSplit)
+            var welcome = new List<RewardData> { RewardData.Currency(CurrencyType.Gem, 1000) };
+            welcome.AddRange(IncomeSplit.CurrencyLines(500));
             Game.Mail.SendOnce("welcome",
                 "수선점에 오신 것을 환영해요!",
                 "잊힌 물건들이 살아 움직이는 밤거리의 작은 수선점.\n지킴이로 방향을 지키고, 잔향이로 위기를 막아 수선점을 밝혀 주세요!\n시작을 돕는 선물을 보내드려요.",
-                new[] { RewardData.Currency(CurrencyType.Gem, 1000), RewardData.Currency(CurrencyType.Gold, 500) },
+                welcome.ToArray(),
                 expireDays: 0);
             Game.Costumes.CheckNightVisit();
             RunMeta(MetaStep.Start);
@@ -247,21 +250,10 @@ namespace IdleGame
             }
         }
 
-        void AccrueIdleGold(float dt)
-        {
-            _idleGold += Game.Growth.GoldPerSecond * dt;
-            _idleGoldTimer += dt;
-            if (_idleGoldTimer >= IdleGoldMaxInterval || (_idleGoldTimer >= IdleGoldMinInterval && _idleGold >= 1d)) CommitIdleGold();
-        }
+        void AccrueIdleGold(float dt) => _idleIncome.Accrue(Game.Growth, Game.Currency, dt);
 
-        /// <summary>모아 둔 방치 단추를 지급한다. 저장 직전에도 불러 저장에서 빠지지 않게 한다.</summary>
-        void CommitIdleGold()
-        {
-            _idleGoldTimer = 0f;
-            double gold = _idleGold;
-            _idleGold = 0;
-            Game.Currency.Add(CurrencyType.Gold, gold); // 0 이하/NaN은 Add가 무시한다
-        }
+        /// <summary>모아 둔 방치 단추 · 실타래를 지급한다. 저장 직전에도 불러 저장에서 빠지지 않게 한다.</summary>
+        void CommitIdleGold() => _idleIncome.Commit(Game.Currency);
 
         void OnApplicationPause(bool paused)
         {
@@ -272,7 +264,11 @@ namespace IdleGame
                 _wasPaused = true;
                 RunMeta(MetaStep.Pause);
                 // 백그라운드에서 강제 종료될 수 있으므로 받지 않은 오프라인 보상은 지급 후 저장 (복귀 시 알린다)
-                if (Game.OfflineReward.HasPending) _offlineClaimedOnPause += Game.OfflineReward.Claim();
+                if (Game.OfflineReward.HasPending)
+                {
+                    _offlineClaimedOnPause += Game.OfflineReward.Claim();
+                    _offlineLineageClaimedOnPause += Game.OfflineReward.LastClaimedLineageXp;
+                }
                 Save();
                 // 전투 중 한 번짜리 표시(팁 · 자동 품질)는 PlayerPrefs.Save 없이 바꾸므로 여기서 디스크에 (perf PF-6 H5)
                 PlayerPrefs.Save();
@@ -295,10 +291,11 @@ namespace IdleGame
                 Game.OfflineReward.Calculate(Game.Data.lastSaveUnix);
 
                 var offline = _ui.Get<OfflineRewardPopup>();
-                if (_offlineClaimedOnPause > 0)
+                if (_offlineClaimedOnPause > 0 || _offlineLineageClaimedOnPause > 0)
                 {
-                    offline.NotifyClaimedInBackground(_offlineClaimedOnPause);
+                    offline.NotifyClaimedInBackground(_offlineClaimedOnPause, _offlineLineageClaimedOnPause);
                     _offlineClaimedOnPause = 0;
+                    _offlineLineageClaimedOnPause = 0;
                 }
                 if (Game.OfflineReward.HasPending) offline.Open();
             }

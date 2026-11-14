@@ -210,16 +210,17 @@ namespace IdleGame.Verify
                 }
                 float done = Time.realtimeSinceStartup + 2f;
                 while (tutorial.IsActive && tutorial.StepIndex == stepIndex && Time.realtimeSinceStartup < done) yield return null;
-                double gold = Game.Currency.Get(CurrencyType.Gold);
-                bool pending = RewardFlyer.PendingOf(CurrencyType.Gold) > 0d;
+                // 7단계 비용은 유실자 레벨업 재화(실타래)로 낸다 (결정 2 안 D: 6단계 선물 = 단추 125 · 실타래 250)
+                double gold = Game.Currency.Get(Game.Characters.LevelUpCurrency);
+                bool pending = RewardFlyer.PendingOf(CurrencyType.Gold) > 0d || RewardFlyer.PendingOf(CurrencyType.LineageXp) > 0d;
                 double friendCost = FriendCost(1, 5);
                 yield return new WaitForSecondsRealtime(0.2f);
                 yield return Shot("ftue_step6_reward", () =>
                 {
                     var p = new Probe();
                     p.Expect(!tutorial.IsActive || tutorial.StepIndex > stepIndex, $"강화 x1 세 번으로 6단계가 끝났다 ({StepLabel()})");
-                    p.Expect(gold >= friendCost, $"6단계 직후 단추 {gold:0} (기대 ≥ 짝짝이 Lv.1→5 {friendCost:0}, M06)");
-                    p.Expect(flew || pending, "보상이 RewardFlyer로 날아갔다 (단추 떠 있는 양 > 0)");
+                    p.Expect(gold >= friendCost, $"6단계 직후 실타래 {gold:0} (기대 ≥ 짝짝이 Lv.1→5 {friendCost:0}, M06)");
+                    p.Expect(flew || pending, "보상이 RewardFlyer로 날아갔다 (단추 · 실타래 떠 있는 양 > 0)");
                     p.Expect(coachTarget.EndsWith("LevelUp1Button", StringComparison.Ordinal), $"손가락 · 날아가기 출발 = 강화 x1 (코치 대상 {coachTarget})");
                     Report("S-04b", "ftue_step6_reward", p);
                 });
@@ -946,6 +947,67 @@ namespace IdleGame.Verify
             {
                 Game.Currency.Add(CurrencyType.Gold, gold);
             }
+        }
+
+        const string LineageXpChipPath = CoachTargets.GrowthPanel + "/LineageXpChip";
+        const string LineageRatePath = CoachTargets.GrowthPanel + "/ShopCard/LineageRateText";
+        const string LineageTagPath = CoachTargets.TabGrowth + "/LineageXpTag/Pill";
+
+        /// <summary>
+        /// 실타래 화면 (결정 2 안 D, T4 · T10): 강화 탭을 열고 잔액 칩(숫자) · 수선점 카드 "초당 실타래" 줄 · 탭 꼬리표가 켜졌는지,
+        /// 친구 카드 비용 그림이 실타래인지 본다 (growth_lineage_xp). 그다음 실타래를 날려 칩이 도착지인지(떠 있는 양 &gt; 0, 칩 숫자 = 잔액 − 떠 있는 양)
+        /// 찍고 (growth_lineage_xp_fly), 시트를 닫은 MAIN에서 꼬리표가 보이는지 찍는다 (main_lineage_tag)
+        /// </summary>
+        IEnumerator GrowthLineageXp()
+        {
+            CloseAll();
+            Game.Currency.Add(CurrencyType.LineageXp, 12345);
+            _tabs.Select(MainTab.Growth);
+            yield return WaitSettled();
+            yield return new WaitForSecondsRealtime(0.4f);
+            yield return Shot("growth_lineage_xp", () =>
+            {
+                var p = new Probe();
+                var chip = Find(LineageXpChipPath);
+                var chipAmount = chip != null ? chip.Find("Amount")?.GetComponent<TMP_Text>() : null;
+                p.Expect(chip != null && chip.gameObject.activeInHierarchy, "잔액 칩 켜짐");
+                p.Expect(chipAmount != null && !string.IsNullOrEmpty(chipAmount.text), $"잔액 칩 숫자 '{chipAmount?.text}'");
+                var rate = Comp<TMP_Text>(LineageRatePath);
+                p.Expect(rate != null && rate.gameObject.activeInHierarchy && rate.text.Contains("초당 실타래"), $"수선점 카드 줄 '{rate?.text}'");
+                var tag = Find(LineageTagPath);
+                p.Expect(tag != null && tag.gameObject.activeInHierarchy, "강화 탭 꼬리표 켜짐 (유실자 레벨업 열림)");
+                var card = Find(CoachTargets.GrowthPanel + "/LineageList");
+                var costIcon = card != null ? card.GetComponentInChildren<GrowthLineageCardView>(true)?.transform.Find("LevelUpButton/Cost/LineageXpIcon") : null;
+                p.Expect(costIcon != null, "친구 카드 비용 그림 = 실타래");
+                Report("S-LXP-growth", "growth_lineage_xp", p);
+            });
+
+            double before = RewardFlyer.PendingOf(CurrencyType.LineageXp);
+            RewardFlyer.FlyCurrency(CurrencyType.LineageXp, 500, null);
+            double pending = RewardFlyer.PendingOf(CurrencyType.LineageXp);
+            yield return new WaitForSecondsRealtime(0.35f);
+            yield return Shot("growth_lineage_xp_fly", () =>
+            {
+                var p = new Probe();
+                p.Expect(pending > before, $"날아가는 실타래 {pending:0} (잔액 칩이 보이면 칩으로 간다)");
+                p.Info($"보이는 숫자 {LineageXpBalanceView.Text(CurrencyType.LineageXp, false)} · 잔액 {Game.Currency.Get(CurrencyType.LineageXp):0}");
+                Report("S-LXP-fly", "growth_lineage_xp_fly", p);
+            });
+            yield return new WaitForSecondsRealtime(1.2f);
+
+            CloseAll();
+            UINav.GoToMain(true);
+            yield return WaitSettled();
+            yield return new WaitForSecondsRealtime(0.4f);
+            yield return Shot("main_lineage_tag", () =>
+            {
+                var p = new Probe();
+                var tag = Find(LineageTagPath);
+                var amount = tag != null ? tag.Find("Amount")?.GetComponent<TMP_Text>() : null;
+                p.Expect(tag != null && tag.gameObject.activeInHierarchy, "MAIN에서 강화 탭 꼬리표 보임");
+                p.Expect(amount != null && !string.IsNullOrEmpty(amount.text), $"꼬리표 숫자 '{amount?.text}'");
+                Report("S-LXP-main", "main_lineage_tag", p);
+            });
         }
 
         /// <summary>16b tab_Gacha_short (M07 · M08): 별조각 0 → 별조각 얻는 곳 링크가 켜지고 10회 소환 비용 명암 ≥ 4.5. 끝나면 되돌린다</summary>

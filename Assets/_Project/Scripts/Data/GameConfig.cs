@@ -9,10 +9,21 @@ namespace IdleGame
         [Header("시작 재화")]
         public double startGold = 0;
         public double startGem = 300;
+        [Tooltip("첫 로드 1회 지급 (T7): 실타래 키가 없는 세이브가 튜토리얼 7단계를 마쳤거나 졸업 · 건너뜀이면 이만큼 (실타래)")]
+        public double startLineageXp = 2000;
+        [Tooltip("첫 로드 1회 지급 (T7): 실타래 키가 없는 세이브의 튜토리얼 지금 단계가 6단계(수선점 강화) 또는 7단계(유실자 레벨업)이면 이만큼 (실타래)")]
+        public double legacyFtueLineageXp = 250;
+
+        [Header("단추 · 실타래 나누기 (결정 2 안 D: 단추가 나오는 모든 곳에서 기준 양 B를 나눠 준다, IncomeSplit)")]
+        [Tooltip("기준 양 B 중 단추 몫")]
+        public double goldIncomeShare = 0.5;
+        [Tooltip("기준 양 B 중 실타래 몫")]
+        public double lineageXpIncomeShare = 0.5;
 
         [Header("레벨업 (비용 = 기본 비용 × 증가율^(레벨-1))")]
         public int maxLevel = 1000;
-        public double levelUpBaseCost = 10;
+        [Tooltip("수선점 1 → 2레벨 비용 (단추). 안 D 기준 12 (bal 04_bal_d_note.md D2). Data/GameConfig.asset은 인스펙터 값을 유지하므로 함께 바꾼다")]
+        public double levelUpBaseCost = 12;
         public double levelUpCostGrowth = 1.12;
         [Tooltip("수선점 강화에 쓰는 재화. 기본 단추 (SYS_Economy §3 #8 E안 이음매). 바꾸면 성장 화면 표시 · 강해지기 · 획득처도 함께 맞춰야 한다")]
         public CurrencyType shopUpgradeCurrency = CurrencyType.Gold;
@@ -47,14 +58,14 @@ namespace IdleGame
         [Tooltip("새 게임 시작 시 지급하는 계보 ID")]
         public string[] starterLineages = { "jjakjjak", "ttokdan", "chalkak", "mongdang" };
 
-        [Header("캐릭터 성장 (계보 공유 레벨, 비용 = 기본 비용 × 증가율^(레벨-1) 단추)")]
+        [Header("캐릭터 성장 (계보 공유 레벨, 비용 = 기본 비용 × 증가율^(레벨-1) 실타래)")]
         [Tooltip("계보 레벨 최대치")]
         public int characterMaxLevel = 100;
-        [Tooltip("1 → 2레벨 비용 (단추)")]
+        [Tooltip("1 → 2레벨 비용 (실타래)")]
         public double characterLevelUpBaseCost = 50;
         public double characterLevelUpCostGrowth = 1.09;
-        [Tooltip("친구(계보) 레벨업에 쓰는 재화. 기본 단추 (SYS_Economy §3 #8 E안 이음매). 친구 전용 재화로 나눌(B안) 때 여기를 바꾸고 화면 · 획득처를 붙인다")]
-        public CurrencyType lineageLevelUpCurrency = CurrencyType.Gold;
+        [Tooltip("유실자(계보) 레벨업에 쓰는 재화. 실타래 (B안 · 결정 2 안 D). 단추로 되돌리면 분리 전 비교 갈래가 된다")]
+        public CurrencyType lineageLevelUpCurrency = CurrencyType.LineageXp;
         [Tooltip("레벨당 공격력 증가(%). 레벨 1 기준 선형 (레벨 11 = +80%)")]
         public float attackPerLevelPercent = 8f;
         [Tooltip("레벨당 체력 증가(%). 레벨 1 기준 선형")]

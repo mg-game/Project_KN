@@ -145,6 +145,8 @@ namespace IdleGame.Verify
         {
             var dir = Arg("-autoshot");
             if (dir == null) return;
+            // 검증 실행은 소리를 끈다 (사용자 요청). 게임 설정은 건드리지 않고 듣는 쪽 볼륨만 0, LateUpdate가 계속 0으로 둔다
+            AudioListener.volume = 0f;
             Directory.CreateDirectory(dir);
             var path = Path.Combine(dir, "autoshot_player.json");
             foreach (var file in new[] { path, path + ".bak", path + ".tmp" })
@@ -178,6 +180,8 @@ namespace IdleGame.Verify
             if (dir == null) return;
             var go = new GameObject("[AutoShot]");
             DontDestroyOnLoad(go);
+            // 부팅 때 GameSettings.Apply가 볼륨을 설정값(1)으로 되돌리므로 여기서 다시 0 (그 뒤는 LateUpdate)
+            AudioListener.volume = 0f;
             var shot = go.AddComponent<AutoShot>();
             shot._dir = dir;
             shot._tall = HasFlag("-autoshot-tall");
@@ -187,6 +191,15 @@ namespace IdleGame.Verify
 
         /// <summary>이번 실행 이름 (checks.txt 요약 · 예외 줄): migrate · spec4-&lt;시나리오&gt; · tall · full</summary>
         string RunName => _migrate ? "migrate" : _spec4 != null ? "spec4-" + _spec4 : _tall ? "tall" : "full";
+
+        /// <summary>
+        /// 검증 실행 동안 소리를 끈 채로 둔다: 게임이 GameSettings.Apply(부팅 · 잠자기 드나듦 · 설정 변경)로 AudioListener.volume을 다시 올려도
+        /// 매 프레임 끝에 0으로 돌린다. 게임 코드 · 저장된 소리 설정(PlayerPrefs)은 바꾸지 않는다
+        /// </summary>
+        void LateUpdate()
+        {
+            if (AudioListener.volume != 0f) AudioListener.volume = 0f;
+        }
 
         IEnumerator Start()
         {
@@ -292,11 +305,15 @@ namespace IdleGame.Verify
             // Wave 3: 길게 누르기 + 포커스 잃음 (11e) · 모자람 (12b · 16b) · 10회 소환 확인 (16c)
             yield return Safe("focus_hold", FocusHold());
             yield return Safe("tab_Growth_short", GrowthShort());
+            // 실타래 (결정 2 안 D): 강화 탭 잔액 칩 · 꼬리표 · 수선점 카드 초당 실타래 줄 · 날아가기 도착지 · MAIN 꼬리표
+            yield return Safe("growth_lineage_xp", GrowthLineageXp());
             yield return Safe("tab_Gacha_short", GachaShort());
             yield return Safe("gacha_confirm", GachaConfirm());
 
             // 짝짝이 레벨 5 → 1차 진화 단서 발견 상태로 진화 기억도/레시피 확인
             Game.Currency.Add(CurrencyType.Gold, 1e6);
+            // 유실자 레벨업 재화는 실타래 (결정 2 안 D)
+            Game.Currency.Add(Game.Characters.LevelUpCurrency, 1e6);
             for (int i = 0; i < 4; i++) Game.Characters.TryLevelUp("jjakjjak");
             UINav.OpenCharacter("jjakjjak");
             yield return new WaitForSecondsRealtime(1.5f);

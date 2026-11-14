@@ -14,8 +14,8 @@ namespace IdleGame.EditorTools
     /// | 3 | 방향 소환 힌트 (선택) | 2초 뒤 | 없음 | 토스트 힌트 |
     /// | 4 | 불 밝히기 | 5초 뒤 | 불 밝히기 1 | ForceLampFull |
     /// | 5 | 첫 보스 | 바로 | 1-1 클리어 | 토스트 힌트 → 가이드 퀘스트 줄 등장 |
-    /// | 6 | 수선점 강화 (강화 x1 손가락) | 1.5초 뒤 | 강화 3 | 보상 단추 250 (7단계 비용 보장, M06) |
-    /// | 7 | 짝짝이 레벨 5 (선물 받은 단추로) | 바로 | 짝짝이 Lv.5 | — |
+    /// | 6 | 수선점 강화 (강화 x1 손가락) | 1.5초 뒤 | 강화 3 | 보상 단추 250 (나뉘어 단추 125 + 실타래 125) + 실타래 125 = 실타래 250 (7단계 비용 230 보장, M06) |
+    /// | 7 | 짝짝이 레벨 5 (선물 받은 실타래로) | 바로 | 짝짝이 Lv.5 | 없음 |
     /// | 8 | 자동 전투 | 자동 전투 개방(1-2) | 없음 | EnableAutoBattle + 토스트 |
     /// | 9 | 수선 바구니 | 바구니 개방(1-2) | 받기 1 | PrefillIdleChest 2시간 |
     /// | 10 | 첫 만남 소환 | 소환 개방(1-3) | 첫 만남 카드를 엶 (플래그 FirstMeetingSummoned) | FirstMeetingSummon 우두커니(전설) 확정 |
@@ -101,18 +101,21 @@ namespace IdleGame.EditorTools
             s.Add(boss);
 
             // 6 수선점 강화 — 클리어 배너·보상이 지나간 뒤 강화 x1 버튼에 손가락.
-            //    끝나면 단추 250 (M06): 7단계 짝짝이 Lv.1→5(50+55+60+65 = 230)를 가진 단추가 0이어도 바로 낼 수 있게 —
-            //    FtueDirector가 강화 x1 버튼에서 상단 단추 칩으로 날려 보내 어디서 왔는지 보인다. 단계 수·번호는 그대로다
+            //    끝나면 단추 250 + 실타래 125 (M06). 결정 2 안 D: 단추 250은 지급 때 단추 125 + 실타래 125로 나뉘고(IncomeSplit),
+            //    실타래로 직접 적은 125는 나누지 않는다 → 단추 125 · 실타래 250. 실타래 250이 7단계 짝짝이 Lv.1→5(50+55+60+65 = 230)를
+            //    실타래 0에서도 바로 덮는다. FtueDirector가 강화 x1 버튼에서 날려 보내 어디서 왔는지 보인다
+            //    (단추 → 상단 칩, 실타래 → 강화 탭 잔액 칩). 단계 수·번호는 그대로다
             var shop = Step(FtueAfterFirstBossStepId,
                 "강화 탭에서 단추로 수선점을 강화해요\n강화 x1을 3번 눌러 보세요",
                 MetaCondition.Count(CounterKey.ShopLevelUp, 3), target: Targets.GrowthLevelUp1,
                 trigger: FtueTrigger.AfterDelay, triggerArg: "1.5");
             shop.rewards.Add(Gold(250));
+            shop.rewards.Add(MetaReward.Currency(CurrencyType.LineageXp, 125));
             s.Add(shop);
 
-            // 7 친구 강화 — 같은 강화 탭 아래쪽 친구 목록 (6단계에서 받은 선물 단추로)
+            // 7 친구 강화: 같은 강화 탭 아래쪽 친구 목록 (6단계에서 받은 선물 실타래로)
             s.Add(Step("ftue_friend_level",
-                "선물 받은 단추로 짝짝이를 레벨 5까지 올려 보세요\n레벨은 짝짝이의 모든 형태가 함께 나눠요",
+                "선물 받은 실타래로 짝짝이를 레벨 5까지 올려 보세요\n레벨은 짝짝이의 모든 형태가 함께 나눠요",
                 MetaCondition.Of(MetaConditionType.LineageLevel, 5, "jjakjjak"), target: Targets.GrowthLineageList));
 
             // 8 자동 전투 — 1-2 클리어로 열리면 AUTO를 켜 준다 (개방 카드가 함께 뜬다, IDLE-05)

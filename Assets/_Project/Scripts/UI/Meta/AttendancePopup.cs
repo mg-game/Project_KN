@@ -74,6 +74,8 @@ namespace IdleGame.UI
         MetaViewPool<AttendanceCellView> _starterCells;
         MetaViewPool<AttendanceCellView> _monthlyCells;
         MetaViewPool<MetaRewardChip> _dayChips;
+        /// <summary>그날 보상을 푼 목록 (단추 · N분치는 단추 · 실타래 두 칩)</summary>
+        readonly System.Collections.Generic.List<MetaReward> _dayPreview = new();
         Action<AttendanceCellView> _onCell;
         AttendanceTrack _track;
         bool _subscribed;
@@ -247,7 +249,7 @@ namespace IdleGame.UI
             var attendance = Game.Attendance;
             int length = attendance.GetLength(AttendanceTrack.Starter);
             var def = attendance.GetDay(AttendanceTrack.Starter, length);
-            var reward = def != null && def.rewards.Count > 0 ? def.rewards[0] : null;
+            var reward = MetaUi.FirstPreview(def != null ? def.rewards : null, out _);
             var sprite = reward != null && _icons != null ? _icons.Reward(reward) : null;
             _heroPortrait.sprite = sprite != null ? sprite : _icons != null ? _icons.Star : null;
             _heroPortrait.color = Color.white;
@@ -334,12 +336,14 @@ namespace IdleGame.UI
             {
                 // 카드가 없는 예전 장면: 예전 토스트
                 string old = Game.Attendance.IsStamped(_track, cell.Day) ? "받았어요" : "도장을 찍으면 받아요";
-                MetaUi.Toast($"{cell.Day}일째: {MetaUi.Describe(def.rewards)} — {old}");
+                MetaUi.Toast($"{cell.Day}일째: {MetaUi.DescribeData(def.rewards)} — {old}");
                 return;
             }
             _dayCardTitle.text = $"{cell.Day}일차 보상";
-            int count = Mathf.Min(def.rewards.Count, 4);
-            for (int i = 0; i < count; i++) _dayChips.Get(i).Set(def.rewards[i]);
+            // 단추 · N분치는 실제 지급과 같게 단추 · 실타래 두 칩 (MetaUi.Preview)
+            MetaUi.Preview(def.rewards, _dayPreview);
+            int count = Mathf.Min(_dayPreview.Count, 4);
+            for (int i = 0; i < count; i++) _dayChips.Get(i).Set(_dayPreview[i]);
             _dayChips.Trim(count);
             bool stamped = Game.Attendance.IsStamped(_track, cell.Day);
             _dayCardState.text = stamped ? "받았어요" : def.highlight ? "이날 도장을 찍으면 꼭 받아요" : "이날 도장을 찍으면 받아요";

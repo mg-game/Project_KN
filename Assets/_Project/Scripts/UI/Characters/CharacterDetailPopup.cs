@@ -258,14 +258,14 @@ namespace IdleGame.UI
 
         void OnFormUnlocked(CharacterFormDef form) => OnDataChanged();
 
-        /// <summary>방치 수익으로 단추가 자주 바뀌므로 비용 색(살 수 있는지)이 바뀔 때만 다시 그린다.</summary>
+        /// <summary>방치 수익으로 실타래(유실자 레벨업 재화)가 자주 바뀌므로 비용 색(살 수 있는지)이 바뀔 때만 다시 그린다.</summary>
         void OnCurrencyChanged(CurrencyType type, double value)
         {
-            if (type != CurrencyType.Gold || !IsOpen || _lineage == null || !CharacterUI.IsOwned(_lineage)) return;
+            if (type != Game.Characters.LevelUpCurrency || !IsOpen || _lineage == null || !CharacterUI.IsOwned(_lineage)) return;
             if (CanAffordLevelUp() != _levelAffordable) _levelDirty = true;
         }
 
-        bool CanAffordLevelUp() => Game.Currency.Has(CurrencyType.Gold, Game.Characters.GetLevelUpCost(_lineage.id));
+        bool CanAffordLevelUp() => Game.Currency.Has(Game.Characters.LevelUpCurrency, Game.Characters.GetLevelUpCost(_lineage.id));
 
         /// <summary>탭 바꾸기 (쪽 탭 모양 M53: 고른 탭 = 양피지 + Ink 굵게, 나머지 = TabNormal + SubText)</summary>
         void SelectTab(int index)
@@ -477,7 +477,7 @@ namespace IdleGame.UI
         {
             if (_levelUpView != null) _levelUpView.Deny();
             var ui = UIManager.Instance;
-            if (ui != null) ui.ShowShortfall(CurrencyType.Gold, cost);
+            if (ui != null) ui.ShowShortfall(Game.Characters.LevelUpCurrency, cost);
         }
 
         void OnLeveledUp()

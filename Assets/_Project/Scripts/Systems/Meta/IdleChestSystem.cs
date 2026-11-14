@@ -11,7 +11,7 @@ namespace IdleGame
         public CurrencyType Currency;
         public string ItemId;
         public double PerHour;
-        /// <summary>단추 줄: 앱을 닫아 둔 동안만 쌓임</summary>
+        /// <summary>단추 · 실타래 줄: 앱을 닫아 둔 동안만 쌓임</summary>
         public bool OfflineOnly;
     }
 
@@ -38,6 +38,9 @@ namespace IdleGame
     ///   · 재료·별조각 줄(IdleChestConfig.lines)은 항상 쌓인다: 마지막 받기(meta.idleChest.lastClaimUnix)부터 상한(Cap)까지.
     ///     첫 개방 때 lastClaimUnix가 0이면 그때부터 시작한다.
     ///   · 단추 줄은 앱을 닫아 둔 동안만 쌓인다 (AddOfflineTime, 상한까지): 초당 단추 × 초 × offlineGoldRate. 켜 둔 동안은 이미 초당 단추를 받는다.
+    ///     실타래 줄(결정 2 안 D)은 코드가 단추 줄과 같은 방식으로 따로 만든다: 기준 B = 기준 초당 수입 × 초 × offlineGoldRate,
+    ///     단추 줄 = B × 단추 몫, 실타래 줄 = B × 실타래 몫 (IncomeSplit). 줄마다 carry, 단추 줄 다음 순서, 두 배 받기 · 빠른 수선에 포함.
+    ///     이미 나뉜 줄이므로 지급은 MetaRewardService.Grant(splitIncome: false)로 한다.
     ///   · 시간당 양 = 줄 amount × stageGrowth^(최고 스테이지 − 1), 받는 순간의 최고 스테이지 기준. minStage 미만 줄은 0, eventOnly 줄은 이벤트 전까지 0.
     ///     줄에 maxStageMultiplier(0 = 없음)가 있으면 스테이지 배율을 그 값에서 자른다 — 별조각 줄 1.5 (SPEC4 §13.4 C-01). 빠른 수선 · 복귀 두 배 ·
     ///     다시 만난 날 24시간 상한도 모두 이 시간당 양을 읽으므로 같은 천장을 따른다.
@@ -73,6 +76,8 @@ namespace IdleGame
         public const string QuickIdleMessage = "친구들이 밤새 할 일을 지금 바로 끝냈어요!";
         /// <summary>단추 줄 carry 키</summary>
         const string GoldCarryKey = "offline:Gold";
+        /// <summary>실타래 줄 carry 키</summary>
+        const string LineageXpCarryKey = "offline:LineageXp";
         /// <summary>한 번짜리 상한(GrantBonusCap)의 최대 (시간) — 콘텐츠는 24</summary>
         const double MaxBonusCapHours = 72;
 
@@ -238,6 +243,12 @@ namespace IdleGame
             }
         }
 
+        /// <summary>
+        /// 지금 받으면 들어올 실타래 (실타래 줄, 내림 정수, 할당 없음). 되돌림 중이거나 잠겼으면 0.
+        /// 실타래 부족 안내(MetaText.LineageXpShortfall)가 읽는다.
+        /// </summary>
+        public double PendingLineageXp => !IsUnlocked || Tampered ? 0 : OfflineLineageXpAmount();
+
         /// <summary>다음 스테이지를 클리어하면 시간당 양이 늘어나는 비율(%) — "다음 스테이지 클리어 시 +2%"</summary>
         public float NextStageBonusPercent => (float)Math.Max(0, (Cfg.stageGrowth - 1.0) * 100.0);
 
@@ -371,6 +382,17 @@ namespace IdleGame
                     OfflineOnly = true,
                 });
             }
+            double lineageXpPerHour = LineageXpPerHour;
+            if (lineageXpPerHour > 0)
+            {
+                into.Add(new IdleChestRate
+                {
+                    Type = MetaRewardType.Currency,
+                    Currency = CurrencyType.LineageXp,
+                    PerHour = lineageXpPerHour,
+                    OfflineOnly = true,
+                });
+            }
         }
 
         /// <summary>지금 받으면 받을 것 (지급하지 않음, into를 비우고 채움, 정수 내림 미리보기)</summary>
@@ -389,7 +411,7 @@ namespace IdleGame
             get
             {
                 if (!IsUnlocked || Tampered) return false;
-                if (OfflineGoldAmount() >= 1) return true;
+                if (OfflineGoldAmount() >= 1 || OfflineLineageXpAmount() >= 1) return true;
                 long elapsed = ElapsedSeconds;
                 return elapsed > 0 && elapsed >= Cfg.minClaimSeconds
                        && HasAnyLine(elapsed / 3600.0, WindowNightHours(elapsed), WindowEventHours(elapsed));
@@ -434,7 +456,7 @@ namespace IdleGame
             _lastCapSeconds = CapSeconds;
 
             double multiplier = result.Doubled ? 2 : 1;
-            result.Rewards = _rewards != null ? _rewards.Grant(_scratch, multiplier, cfg.doubleExcludesGem) : MetaRewardService.Merge(_scratch);
+            result.Rewards = _rewards != null ? _rewards.Grant(_scratch, multiplier, cfg.doubleExcludesGem, splitIncome: false) : MetaRewardService.Merge(_scratch);
             _scratch.Clear();
 
             _progress?.Increment(CounterKey.ChestClaim);
@@ -576,7 +598,7 @@ namespace IdleGame
             result.OfflineDuration = TimeSpan.FromHours(hours);
             _scratch.Clear();
             Collect(hours, 0, 0, hours * 3600.0, _scratch, commitCarry: true);
-            result.Rewards = _rewards != null ? _rewards.Grant(_scratch) : MetaRewardService.Merge(_scratch);
+            result.Rewards = _rewards != null ? _rewards.Grant(_scratch, splitIncome: false) : MetaRewardService.Merge(_scratch);
             _scratch.Clear();
 
             _progress?.Increment(CounterKey.QuickIdle);
@@ -715,7 +737,12 @@ namespace IdleGame
 
         double StageMultiplier => Math.Pow(Math.Max(1.0, Cfg.stageGrowth), HighestStage - 1);
 
-        double GoldPerHour => _growth != null ? Math.Max(0, _growth.GoldPerSecond) * 3600.0 * Math.Max(0f, Cfg.offlineGoldRate) : 0;
+        /// <summary>단추 · 실타래 줄의 기준 시간당 양 B (나누기 전) = 기준 초당 수입 × 3600 × offlineGoldRate</summary>
+        double IncomePerHour => _growth != null ? Math.Max(0, _growth.IncomePerSecond) * 3600.0 * Math.Max(0f, Cfg.offlineGoldRate) : 0;
+
+        double GoldPerHour => IncomeSplit.Gold(IncomePerHour);
+
+        double LineageXpPerHour => IncomeSplit.LineageXp(IncomePerHour);
 
         /// <summary>
         /// 줄 하나의 지금 시간당 양 (조건이 안 되면 0). 스테이지 배율은 줄의 maxStageMultiplier(0 = 없음)에서 자른다 (C-01).
@@ -732,6 +759,8 @@ namespace IdleGame
         }
 
         double OfflineGoldAmount() => Math.Floor(GoldPerHour * OfflineSeconds / 3600.0 + Carry(GoldCarryKey) + 1e-9);
+
+        double OfflineLineageXpAmount() => Math.Floor(LineageXpPerHour * OfflineSeconds / 3600.0 + Carry(LineageXpCarryKey) + 1e-9);
 
         double Carry(string key) => Save.carry.TryGetValue(key, out double value) && value > 0 && value < 1 ? value : 0;
 
@@ -784,6 +813,12 @@ namespace IdleGame
             double gold = Math.Floor(goldTotal + 1e-9);
             if (commitCarry && offlineSeconds > 0) save.carry[GoldCarryKey] = Math.Max(0, goldTotal - gold);
             if (gold >= 1) into.Add(MetaReward.Gold(gold));
+
+            // 실타래 줄 (안 D): 단추 줄과 같은 시간 · 같은 방식, 자기 carry
+            double lineageXpTotal = LineageXpPerHour * Math.Max(0, offlineSeconds) / 3600.0 + Carry(LineageXpCarryKey);
+            double lineageXp = Math.Floor(lineageXpTotal + 1e-9);
+            if (commitCarry && offlineSeconds > 0) save.carry[LineageXpCarryKey] = Math.Max(0, lineageXpTotal - lineageXp);
+            if (lineageXp >= 1) into.Add(MetaReward.Currency(CurrencyType.LineageXp, lineageXp));
         }
 
         void OnFeatureUnlocked(FeatureId feature)

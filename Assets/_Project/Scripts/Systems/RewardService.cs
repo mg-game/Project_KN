@@ -70,6 +70,7 @@ namespace IdleGame
             CurrencyType.Gold => "단추",
             CurrencyType.Gem => "별조각",
             CurrencyType.EventToken => "별빛 사탕",
+            CurrencyType.LineageXp => "실타래",
             _ => type.ToString(),
         };
 

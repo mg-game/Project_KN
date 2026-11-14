@@ -88,6 +88,8 @@ namespace IdleGame.UI
         BattleSystem _battle;
         ExpeditionSystem _expedition;
         readonly FtueBattleGuard _guard = new();
+        /// <summary>단계 보상을 풀어 날릴 때 다시 쓰는 목록 (단추 → 단추 · 실타래, 안 D)</summary>
+        readonly System.Collections.Generic.List<MetaReward> _stepRewards = new();
         CoachTargetResolver _resolver;
         bool _started;
 
@@ -332,9 +334,18 @@ namespace IdleGame.UI
         void OnStepCompleted(FtueStepDef step)
         {
             if (step == null) return;
-            // 단계 보상(이미 지급됨)은 대상 버튼에서 상단 칩으로 날아간다 — 6단계 단추 250은 강화 x1 버튼에서 (M06)
+            // 단계 보상(이미 지급됨)은 대상 버튼에서 날아간다. 6단계 단추 250은 강화 x1 버튼에서 (M06).
+            // 안 D: 데이터 단추는 지급 때 단추 · 실타래로 나뉘었으므로 같은 규칙으로 풀어서 날린다 (단추 → 상단 칩, 실타래 → 강화 탭 잔액 칩)
             if (step.rewards != null && step.rewards.Count > 0 && step.action != FtueAction.Graduation)
-                RewardFlyer.Fly(step.rewards, UIFind.IsShown(_target) ? _target : null);
+            {
+                if (Game.IsReady && Game.MetaRewards != null)
+                {
+                    Game.MetaRewards.ResolveAll(step.rewards, _stepRewards);
+                    RewardFlyer.Fly(_stepRewards, UIFind.IsShown(_target) ? _target : null);
+                    _stepRewards.Clear();
+                }
+                else RewardFlyer.Fly(step.rewards, UIFind.IsShown(_target) ? _target : null);
+            }
             // 한 단계 마침 소리 (AUDIO-SPEC 61 'FTUE step done') — 시작과 함께 끝나는 단계 · 인트로 · 졸업은 뺀다 (PlaysStepDoneSound)
             if (PlaysStepDoneSound(step)) UISfx.Play(UISfxKey.TutorialStep);
             // 첫 만남 단계가 확정 소환 없이 끝났으면(단계 전에 유료 소환 등) 카드는 남겨 둔다 — 받을 때까지 소환 탭을 덮는다
