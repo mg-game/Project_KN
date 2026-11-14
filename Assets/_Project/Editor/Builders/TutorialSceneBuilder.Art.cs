@@ -45,6 +45,8 @@ namespace IdleGame.EditorTools
             public Sprite Gold;
             public Sprite Gem;
             public Sprite EventToken;
+            /// <summary>실타래 (임시 VFX/motif_yarn, 쓰는 쪽이 산호 틴트)</summary>
+            public Sprite LineageXp;
             public Sprite QuickTicket;
             public Sprite DoubleTicket;
             public Sprite Shards;
@@ -74,6 +76,7 @@ namespace IdleGame.EditorTools
                     Gold = ArtLib.Currency(CurrencyType.Gold),
                     Gem = ArtLib.Currency(CurrencyType.Gem),
                     EventToken = ArtLib.Currency(CurrencyType.EventToken),
+                    LineageXp = ArtLib.Currency(CurrencyType.LineageXp),
                     QuickTicket = UiArt.Get("Icons/ticket_quick.png", ArtLib.Icon("lamp")),
                     DoubleTicket = UiArt.Get("Icons/ticket_double.png", ArtLib.Icon("star")),
                     Shards = ArtLib.Icon("shards"),

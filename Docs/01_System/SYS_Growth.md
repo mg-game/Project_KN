@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-29) |
 | 작성자 | ① 구현: 기개발 · ②③: DD |
-| 최종 수정 | 2026-11-14 (§3 #2 재검토: `SYS_Economy` §3 #8 E안) |
+| 최종 수정 | 2026-11-14 (§3 #2 재검토: B 적용, 유실자 레벨업 재화 "실타래", 수선점 기본 비용 12) · 2026-11-14 (§3 #2 재검토: `SYS_Economy` §3 #8 E안) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) · [`SYS_InGameBattle`](./SYS_InGameBattle.md) (전투 쪽 수선점 내구 · 계보 공명 배율) |
 | 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) — 경로 약칭 표 참고 |
@@ -13,8 +13,8 @@
 > 결정이 나면 ②에 반영하고 ③ 행에 `D-n`을 적는다. 코드 수정은 지시함(#3)으로. 용어는 [`KN_Glossary`](../00_Overview/KN_Glossary.md)를 따른다.
 
 ## 0. 개요
-- 목적: 모은 재화(단추 · 기억편 · 재료)를 **캐릭터(계보)와 수선점의 힘**으로 바꿔, 막힌 스테이지를 넘게 한다. 유저 동기 = "조금만 더 키우면 다음 스테이지".
-- 핵심 루프 내 위치: 전투(자동 진행 · 파밍) → 단추 · 기억편 획득 → **성장** → 전투력 ↑ → 다음 스테이지 → (막힘) → 강해지기 안내 → 성장
+- 목적: 모은 재화(단추 · 실타래 · 기억편 · 재료)를 **캐릭터(계보)와 수선점의 힘**으로 바꿔, 막힌 스테이지를 넘게 한다. 유저 동기 = "조금만 더 키우면 다음 스테이지".
+- 핵심 루프 내 위치: 전투(자동 진행 · 파밍) → 단추 · 실타래 · 기억편 획득 → **성장** → 전투력 ↑ → 다음 스테이지 → (막힘) → 강해지기 안내 → 성장
 - 관련 필라: P3 희귀도 ≠ 서열(저희귀도 최애도 끝까지) · P5 최애 축(개별 성장) · P6 혼자 자기 속도로
 
 ## 1. 현재 구현 (As-built) — 기개발
@@ -68,6 +68,7 @@ LevelChanged(이전, 새)                                            # GROW:19 �
 ```
 
 **C. 초당 단추 · 방치 지급**
+> 2026-11-14 안 D: 아래 식은 **기준 수입 `IncomePerSecond`**(나누기 전)다. `GoldPerSecond` = 기준 × `goldIncomeShare`(0.5), `LineageXpPerSecond` = 기준 × `lineageXpIncomeShare`(0.5). 오프라인 · N분치 · 바구니 · 빠른 수선은 기준 수입으로 B를 만든 뒤 한 번만 나눈다.
 ```
 GoldPerSecond(L) = baseGoldPerSecond × goldPerSecondGrowth^(L−1)   # GROW:73-76
                  × (1 + 보유 재료 goldBonusPercent 합 / 100)        # GROW:68 · INV:83-99 (개수 > 0인 종류마다 1번)
@@ -88,8 +89,8 @@ CalcShopMaxHp(L) = min(float.MaxValue / 4, 300 × 1.04^(max(1, L) − 1))   # GR
 
 **E. 계보 성장 → 능력치** (전투력이 읽는 값)
 ```
-계보 레벨 비용(L → L+1) = ceil(50 × 1.09^(L−1) − 1e-6) 단추, 미보유 OR 최대 레벨이면 0   # CS:199-206 · 209-221
-계보 TryLevelUp: 계보 레벨업 기능(FeatureId.CharacterLevelUp) 잠김 OR 미보유 OR Lv.100 OR 단추 부족 → false, 성공 시 +1   # CS:34 · 233-243
+계보 레벨 비용(L → L+1) = ceil(50 × 1.09^(L−1) − 1e-6) 실타래(`LineageXp`), 미보유 OR 최대 레벨이면 0   # CS:199-206 · 209-221
+계보 TryLevelUp: 계보 레벨업 기능(FeatureId.CharacterLevelUp) 잠김 OR 미보유 OR Lv.100 OR 실타래 부족 → false, 성공 시 +1   # CS:34 · 233-243
 새 계보 시작 레벨 = max(1, floor(0.8 × 보유 계보 레벨 상위 3개 평균)), 중복 획득 = 기억편(shards) 지급   # CS:106-135 · 144-179
 계보 공명 비용(r → r+1) = max(1, 20 × (r + 1)) 기억편, r < 10일 때만   # CS:274-297
 GetStats(형태)                                                     # CS:368-389
@@ -160,7 +161,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
   정렬 = 점수 큰 순, 점수 = 증가 ÷ (1 + 비용 초 / 60), 같으면 StrengthenKind 번호 작은 순   # SA:178-184
 안내 줄(증가 0): 진화 가능 → 약한 방향 → 모자란 재료, 같은 종류는 TargetId 순    # SA:186-198
 결과 = 전투력 줄 먼저, 그다음 안내 줄, 최대 max줄. 예외 → 경고 로그 + 빈 목록     # SA:154-163
-비용 초 = max(0, 비용 − 보유 단추) ÷ max(1, GoldPerSecond)                      # SA:269-273
+비용 초 = max(0, 비용 − 보유 재화) ÷ max(수입 속도, 하한)   # 수선점 = 단추 ÷ 초당 단추(하한 1), 유실자 = 실타래 ÷ 초당 실타래(= 기준 수입 × 0.5, 하한 0.01)   # SA
 ```
 
 **K. 강해지기 후보 9종** (`StrengthenKind`, GE:752-763)
@@ -168,7 +169,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 | 종류 (번호) | 조건 · 고르는 법 | 증가 · 비용 초 | [가기] `FeatureId` · 위치 |
 |---|---|---|---|
 | `ShopUpgrade` (0) | 수선점 최대 레벨 아님. n = 1에서 시작, 보유 단추 + 120초 × GPS 예산 안의 최대 칸 수 (최대 10, 남은 레벨까지). n = 1은 예산과 무관 | `PreviewShopLevels(n)` · 비용(L, n)의 비용 초 | `ShopUpgrade`, x1 버튼 손가락 · SA:277-293 |
-| `LineageLevel` (1) | 계보 레벨업 기능 열림, 편성에 놓인 보유 계보, 최대 레벨 아님. 레벨 수 = 지금 단추로 살 수 있는 만큼 (최대 5, 못 사면 1) | `PreviewLevelUp(계보, n)` · 계보 비용(n)의 비용 초 | `ShopUpgrade` · SA:295-322 |
+| `LineageLevel` (1) | 계보 레벨업 기능 열림, 편성에 놓인 보유 계보, 최대 레벨 아님. 레벨 수 = 지금 실타래로 살 수 있는 만큼 (최대 5, 못 사면 1) | `PreviewLevelUp(계보, n)` · 계보 비용(n)의 비용 초 | `ShopUpgrade` · SA:295-322 |
 | `FillSlot` (2) | 첫 빈 지킴이 칸 · 첫 열린 빈 덱 칸 각각. 안 쓴 해금 형태 중 그 칸에 놓을 수 있고 `GetFormPower` 최대 (추천 역할 일치 +1) | `PreviewPlace` − 팀 · 0 | `Formation` · SA:324-360 |
 | `SynergyOneShort` (3) | 다음 단계까지 1명 남은 시너지. 들어갈 안 쓴 형태를 추천 역할 쪽 빈 칸 (없으면 구성원 아닌 가장 약한 칸, 그래도 없으면 반대쪽) | 모든 조합 중 증가 최대 1줄 · 0 | `Formation` · SA:363-428 |
 | `ResonanceReady` (5) | 편성에 놓인 계보, 기억편 ≥ 공명 비용 | `PreviewResonance` · 0 | `Characters` · SA:430-441 |
@@ -183,7 +184,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 [Lv.1] ──(TryLevelUp(n) 성공, 단추 −비용)──→ [Lv.1+n] ──…──→ [Lv.1000 = maxLevel]   (내리는 경로 없음, 로드 시 < 1 → 1, PD:79)
 
 계보 레벨 · 계보 공명 (LineageSave)
-[시작 Lv. = CatchUpLevel] ──(TryLevelUp, 단추)──→ … ──→ [Lv.100]   ·   [공명 0] ──(TryResonance, 기억편)──→ … ──→ [공명 10]
+[시작 Lv. = CatchUpLevel] ──(TryLevelUp, 실타래)──→ … ──→ [Lv.100]   ·   [공명 0] ──(TryResonance, 기억편)──→ … ──→ [공명 10]
 
 전투력 캐시 (PowerSystem)
 [더러움] ──(TeamPower 읽기 OR Refresh)──→ [계산됨] ──(Changed 5종 중 하나)──→ [더러움]
@@ -197,7 +198,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 | `ShopBaseHp` · `ShopHpGrowth` | 300 · 1.04 | GROW:12 · 14 | 수선점 Lv.1 내구 최대치 · 레벨마다 배율 (복리) |
 | `StageGoldBonusPerStage` | 0.1 | GROW:16 | 최고 스테이지 1단계마다 초당 단추 +10% (단리) |
 | `maxLevel` | 1000 (자산 같음) | GC:14 · GCA:17 | 수선점 최대 레벨 |
-| `levelUpBaseCost` · `levelUpCostGrowth` | 10 · 1.12 (자산 같음) | GC:15-16 · GCA:18-19 | 수선점 Lv.1→2 비용 (단추) · 레벨마다 배율 |
+| `levelUpBaseCost` · `levelUpCostGrowth` | 12 · 1.12 (자산 같음, 기본 비용 10 → 12는 결정 2a) | GC:15-16 · GCA:18-19 | 수선점 Lv.1→2 비용 (단추) · 레벨마다 배율 |
 | `baseGoldPerSecond` · `goldPerSecondGrowth` | 1 · 1.06 (자산 같음) | GC:19 · 22 · GCA:20-21 | 수선점 Lv.1 초당 단추 · 레벨마다 배율 (복리) |
 | `levelRewardInterval` · `levelRewardGem` | 10 · 50 (자산 같음) | GC:26-27 · GCA:22-23 | 10레벨마다 별조각 50 우편 |
 | `characterMaxLevel` · `characterLevelUpBaseCost` · `characterLevelUpCostGrowth` | 100 · 50 · 1.09 (자산에 없음 → 코드) | GC:50 · 52-53 | 계보 최대 레벨 · Lv.1→2 비용 · 배율 |
@@ -224,7 +225,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 
 | 이름 | 값 | 위치 (파일:줄) | 의미 |
 |---|---|---|---|
-| 수선점 비용 Lv.1 · 10 · 100 | 10 · 27.73 · 745,734.5 | GROW:40-41 | 다음 1레벨 비용 (단추, 소수 유지) |
+| 수선점 비용 Lv.1 · 10 · 100 | 12 · 33.28 · 894,881.4 | GROW:40-41 | 다음 1레벨 비용 (단추, 소수 유지) |
 | 수선점 내구 Lv.1 · 10 · 100 · 1000 | 300 · 427.0 · 14,568.7 · 약 3.11e19 | GROW:79-80 | float.MaxValue/4 상한 안 닿음 |
 | 초당 단추 Lv.1 · 10 · 100 (최고 1스테이지) | 1 · 1.69 · 320.1 | GROW:73-74 | 최고 11스테이지면 × 2 |
 | 계보 비용 Lv.1 · 10 · 99 | 50 · 109 · 232,685 | CS:199-206 | 다음 1레벨 비용 (올림 정수) |
@@ -242,7 +243,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 | `LineageSave.shards` · `resonance` | int · int | 기억편 (SAVEC:12, 공명 비용) · 계보 공명 레벨 0~10 (SAVEC:14) | 40 · 2 |
 | `LineageSave.equippedCostume` | string | 장착 외형 (SAVEC:23) — 능력치 계산에는 쓰이지 않음 | null |
 | `PlayerData.unlockedCostumes` | HashSet string | 보유 외형 ID (PD:45) — 외형변경 % 합산 대상 | `["jjak_nightkeeper"]` |
-| `GameConfig` 수선점 필드 | int · double | `maxLevel` · `levelRewardInterval`(int), `levelUpBaseCost` · `levelUpCostGrowth` · `baseGoldPerSecond` · `goldPerSecondGrowth` · `levelRewardGem`(double) | 1000 · 10 · 10 · 1.12 · 1 · 1.06 · 50 |
+| `GameConfig` 수선점 필드 | int · double | `maxLevel` · `levelRewardInterval`(int), `levelUpBaseCost` · `levelUpCostGrowth` · `baseGoldPerSecond` · `goldPerSecondGrowth` · `levelRewardGem`(double) | 1000 · 10 · 12 · 1.12 · 1 · 1.06 · 50 |
 | `GameConfig` 계보 성장 · 공명 | int · double · float · int[] | `characterMaxLevel` · `maxResonanceLevel` · `resonanceCostPerLevel`(int), `characterLevelUpBaseCost` · `characterLevelUpCostGrowth`(double), `attackPerLevelPercent` · `hpPerLevelPercent` · `resonanceBonusPercent`(float), `duplicateShardsByGrade`(int[]) | 100 · 10 · 20 · 50 · 1.09 · 8 · 8 · 5 · [5,10,20,40,80] |
 | `PowerConfig` 가중치 · 경계 | float | `guardianWeight` · `echoWeight` · `shopHpWeight` · `comfortableRatio` · `challengeRatio` · `shopShareCap` | 1 · 0.6 · 0.3 · 1 · 0.8 · 1 |
 | `PowerConfig` 권장 | double · int | `recommendedBase` · `recommendedGrowth` · `recommendedGrowthLate` · `recommendedGrowthLate2` · `dungeonRecommendedBase` · `dungeonRecommendedGrowth`(double) · `recommendedTaperStage` · `recommendedTaperStage2`(int) | 277.184 · 1.1043 · 1.0553 · 1.0228 · 83.7 · 1.177 · 30 · 151 |
@@ -268,7 +269,7 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 
 | 축 | 단위 | 올리는 재화 | 효과 | 상한 · 게이트 | 단계 |
 |---|---|---|---|---|---|
-| **계보 레벨** (공유) | 계보 | 단추 | 공격력 · 체력 (지킴이 · 잔향이 양쪽) | Lv.100, **한계 돌파** 20 · 40 · 60 · 80에서 막힘 | M1 (돌파 P1) |
+| **계보 레벨** (공유) | 계보 | 실타래 | 공격력 · 체력 (지킴이 · 잔향이 양쪽) | Lv.100, **한계 돌파** 20 · 40 · 60 · 80에서 막힘 | M1 (돌파 P1) |
 | **계보 공명** | 계보 | 기억편(중복) | 잔향이 전용 효과 + 약한 공용 능력치 | 공명 10, 공명 돌파는 P1 | M1 (현재 구현 유지) |
 | **수선점 레벨** | 계정 | 단추 | 수선점 내구 · 초당 단추 | Lv.1000 | M1 (현재 구현) |
 | **수선점 시설 3축** | 계정 | 단추 + 수선 재료 | 등불 내구 / 잔향 친화 / 빛의 반경 (§8) | 시설별 | **P1** — `SYS_Atelier`로 분리 |
@@ -279,8 +280,8 @@ Refresh()는 MetaSession.Tick이 매 프레임 부른다                        
 [계보 레벨업]
 IF 계보 미보유 OR 계보 레벨업 기능 잠김                       → 버튼 비활성 (사유 표시)
 ELSE IF 레벨 = 현재 상한 (한계 돌파 필요)                     → [한계 돌파] 버튼으로 교체
-ELSE IF 단추 < 비용(n)                                          → x1 은 부족분 빨간 표시, xN 은 살 수 있는 만큼으로 자동 축소 (0이면 비활성)
-ELSE                                                            → 단추 −비용, 레벨 +n, 전투력 변화 연출 (§2.3 ⑤)
+ELSE IF 실타래 < 비용(n)                                        → x1 은 부족분 빨간 표시, xN 은 살 수 있는 만큼으로 자동 축소 (0이면 비활성)
+ELSE                                                            → 실타래 −비용, 레벨 +n, 전투력 변화 연출 (§2.3 ⑤)
   효과: 그 계보의 모든 형태 · 양쪽 모드(지킴이 · 잔향이)에 같은 레벨 적용   ← §4.1 "육성 이원화 금지"
   전투 중 레벨업: 지킴이 수치 즉시 반영, 이미 나온 잔향이는 소환 당시 수치 유지 (현재 구현과 같음)
 
@@ -350,14 +351,14 @@ IF 기억편 ≥ 공명 비용 AND 공명 < 상한 → 기억편 −비용, 공�
 | # | 항목 | ① 현재 구현 | ② 기획 방향 | 영향 (코드 · 데이터 · 세이브) | DD 추천 | 결정 |
 |---|---|---|---|---|---|---|
 | 1 | **성장 축 구조** ⚠ 기획서끼리 모순 | 계보 레벨 **하나**(양쪽 공유) + 계보 공명(기억편) | 시스템 §4.1 = "레벨 · 진화 **단일 축**, 육성 이원화 금지" ↔ 와이어프레임 = "지킴이 · 잔향이 **성장 규칙 분리**"(지킴이 레벨 / 잔향이 공명 레벨 따로) | 데이터 · 세이브 · UI 전체 | **A안: 레벨은 공유 1축 유지(§4.1 · 현재 구현) + 공명을 "잔향이 전용 효과" 축으로 재정의(와이어프레임).** 두 문서를 모두 살리고, 현재 세이브 구조(`LineageSave.level` · `resonance`)를 그대로 쓸 수 있음. B안(지킴이 · 잔향이 레벨 분리)은 육성 부담 2배 · 세이브 이전 필요 | **D-29** DD 추천안 |
-| 2 | 계보 레벨업 재화 | **단추만** (Lv.1→2 = 50, ×1.09) | 수선 재료(경험치칩 · 기억 실타래 · 수선 키트) 투입형 (와이어프레임 ② · UI GR-001) | 경제 · UI · 세이브 | **M1은 단추 유지.** 방치형은 "모은 재화로 바로 올리기"가 기본 손맛이고 재료형은 획득처 · 재고 · 자동 투입 UI까지 필요. 재료는 한계 돌파(#3) · 진화에만 쓰고, 전환 여부는 `SYS_Economy`에서 재검토 | **D-29** DD 추천안 |
+| 2 | 계보 레벨업 재화 | **실타래만** (Lv.1→2 = 50, ×1.09. 2026-11-14 전까지 단추) | 수선 재료(경험치칩 · 기억 실타래 · 수선 키트) 투입형 (와이어프레임 ② · UI GR-001) | 경제 · UI · 세이브 | **M1은 단추 유지.** 방치형은 "모은 재화로 바로 올리기"가 기본 손맛이고 재료형은 획득처 · 재고 · 자동 투입 UI까지 필요. 재료는 한계 돌파(#3) · 진화에만 쓰고, 전환 여부는 `SYS_Economy`에서 재검토 | **D-29** DD 추천안 |
 | 3 | 한계 돌파 | 없음 (Lv.1~100 연속) | 레벨 상한 → 돌파 조건(레벨 · 재료 · 기억 조각 · 단추) → 상한 + 스킬 해금 (와이어프레임 ④) | 코드 · 데이터(신규 테이블) · 세이브(`level_cap`) | **채택, P1.** 장기 목표 · 재료 싱크 · 스킬 해금 지점으로 필요. 상한 20 · 40 · 60 · 80 | **D-29** DD 추천안 |
 | 4 | 공명 효과 | 공격력 · 체력 +5%/레벨 (공용) + 편성 계보 공명 시너지 | 잔향이 전용: 소환 비용 · 지속 시간 · 동시 출현 수 (와이어프레임 ③) | 코드(전투 소환) · 데이터 | **둘 다**: 공용 +5%는 유지(현재 밸런스 보존), 잔향이 전용 효과를 공명 단계 보상으로 **추가**. 동시 출현 +1은 전투 소환 상한(D-28 #8) 검증 후 | **D-29** DD 추천안 |
 | 5 | 수선점 성장 | 수선점 **레벨 1축**(단추) → 내구 · 초당 단추 | 시설 강화 **3축**: 등불 내구 / 잔향 친화(수급) / 빛의 반경(결계 · 소환 상한) (§8, UI HM-002) | 코드 · 세이브 이전 · 경제 | **M1은 레벨 1축 유지, 3축은 P1 `SYS_Atelier`.** 3축 전환 때 기존 레벨을 "등불 내구" 레벨로 환산하는 이전 규칙 필요 | **D-29** DD 추천안 |
 | 6 | 외형변경 능력치 | 보유한 외형마다 계보 공격력 +3~8% (장착 여부 무관, 누적) | 외형은 서사형 · 기본 밸런스 동일 권장, 효과 여부 미확정 (UI §12 · §18) | 밸런스 · BM | **유지하되 계보당 합계 상한 +10%.** 외형이 유료 상품이 되면 무제한 누적은 과금 압박(P3 "희귀도 ≠ 서열" 위반) | **D-29** DD 추천안 |
 | 7 | 전투력 · 권장 · 강해지기 | 있음 (팀 전투력 가중 · 권장 3구간 곡선 · 강해지기 9종) | 기획서에 없음 (와이어프레임 ⑤에 전투력 전→후만) | 문서 | **현재 구현을 기획서로 채택** — 이 문서 ①을 정본으로. 막힘 해소 동선(강해지기)은 방치형 이탈 방지 핵심 | **D-29** DD 추천안 |
 
-> **§3 #2 재검토 (2026-11-14)**: D-29 ②가 남긴 "전환 여부는 `SYS_Economy`에서 재검토"의 결과는 `SYS_Economy` §3 #8 **E안**이다. M1은 단추 유지 + 이음매(`GameConfig.lineageLevelUpCurrency`, 기본 단추) + 소비처별 지출 기록. 재료 · 전용 재화로 바꿀지는 M1 뒤 데이터로 판정한다 (기준은 `SYS_Economy` §6, 미확정).
+> **§3 #2 재검토 (2026-11-14)**: D-29 ②가 남긴 "전환 여부는 `SYS_Economy`에서 재검토"의 결과는 `SYS_Economy` §3 #8 **B 적용**이다. 디렉터 지시(결정 1 · 2 · 2a)로 M1 안에서 유실자 레벨업 재화를 단추에서 새 재화 "실타래"(`CurrencyType.LineageXp`)로 분리했다 (D-73 · D-29 ② · D-30 ① 변경, 대표 결재 필요, 결정 기록은 DD 대기). 비용 50 × 1.09 · Lv.100은 그대로, 단위만 실타래. 수선점 강화 재화는 단추 그대로이고 기본 비용 10 → 12. 이음매 `GameConfig.lineageLevelUpCurrency`는 `LineageXp`.
 
 ## 4. 예외 처리 / 엣지 케이스
 | 케이스 | 처리 |

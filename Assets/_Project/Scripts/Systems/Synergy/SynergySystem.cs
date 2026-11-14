@@ -565,7 +565,7 @@ namespace IdleGame
             StatType.BossDamagePercent => "보스에게 주는 피해",
             StatType.CritChancePercent => "치명타 확률",
             StatType.CritDamagePercent => "치명타 피해",
-            StatType.GoldGainPercent => "단추 획득량",
+            StatType.GoldGainPercent => "단추 · 실타래 획득량",
             _ => stat.ToString(),
         };
 

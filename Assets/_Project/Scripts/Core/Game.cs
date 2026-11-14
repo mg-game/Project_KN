@@ -119,6 +119,8 @@ namespace IdleGame
             Config = config;
             Items = content.Items;
             Clock = clock;
+            // 단추 · 실타래 나누기 몫 (결정 2 안 D). 보상을 만드는 시스템보다 먼저
+            IncomeSplit.Configure(config);
 
             Currency = new CurrencySystem(data);
             Inventory = new InventorySystem(data, content.Items);

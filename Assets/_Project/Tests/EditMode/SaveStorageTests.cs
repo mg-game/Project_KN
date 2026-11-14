@@ -36,6 +36,7 @@ namespace IdleGame.Tests
             var data = new PlayerData { level = 42, noticeHiddenDate = "2026-10-28", lastSaveUnix = 123456789 };
             data.currencies[CurrencyType.Gold] = 1.2345e30;
             data.currencies[CurrencyType.Gem] = 777;
+            data.currencies[CurrencyType.LineageXp] = 0;
             data.items["r1"] = 3;
             data.gachaPity["normal"] = 17;
             data.readNoticeIds.Add("notice_0001");
@@ -57,6 +58,7 @@ namespace IdleGame.Tests
             Assert.AreEqual(42, loaded.level);
             Assert.AreEqual(1.2345e30, loaded.currencies[CurrencyType.Gold]);
             Assert.AreEqual(777, loaded.currencies[CurrencyType.Gem]);
+            Assert.IsTrue(loaded.currencies.ContainsKey(CurrencyType.LineageXp), "실타래 키는 값이 0이어도 저장된다 (T7 첫 로드 1회 지급이 다시 돌지 않게)");
             Assert.AreEqual(3, loaded.items["r1"]);
             Assert.AreEqual(17, loaded.gachaPity["normal"]);
             Assert.IsTrue(loaded.readNoticeIds.Contains("notice_0001"));

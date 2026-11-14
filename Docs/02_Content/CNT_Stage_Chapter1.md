@@ -84,7 +84,7 @@
 | 보스 체력 | def.hp × 체력 배율 × 보호 배율 | SIM:980 | 보스 피해 = def.damage × 피해 배율 (SIM:988) |
 | 튜토리얼 보호 | 적 체력 ×0.6 · 수선점 최소 1 · s ≤ 3 | BT:88 · MS:70·474-478 · SIM:405-411 | 튜토리얼 진행 중(FTUE 0단계, 또는 `BattleProtection` 단계 `ftue_first_battle` 이후 졸업 전)일 때만 (TUT:110-136 · META:1804·1817). 보스 · 분열체 · 부하 포함 |
 | `stageGoldBase` · `stageGoldGrowth` | 60 · 1.13 | BC:388·390 · BS:743-744 | 기본 단추 = floor(60 × 1.13^(s−1)) |
-| 클리어 단추 | floor(기본 단추 × (1 + 보너스% / 100)) | BS:712 · BS:612-617 | 보너스% = 편성 시너지 `GoldGainPercent` + 축제의 밤 50 (`festivalGoldPercent`, BC:364), 하한 −90 |
+| 클리어 단추 | floor(기본 단추 × (1 + 보너스% / 100)) (이 값이 B, 지급은 단추 ⌊B × 0.5⌋ + 실타래 ⌊B × 0.5⌋, 2026-11-14 결정 2 안 D) | BS:712 · BS:612-617 | 보너스% = 편성 시너지 `GoldGainPercent` + 축제의 밤 50 (`festivalGoldPercent`, BC:364), 하한 −90 |
 | `stageCandy` · `stageCandyMilestone` · `stageCandyMilestoneInterval` | 3 · 10 · 10 | BC:392·394·395 · BS:714-715 | 별빛 사탕: s % 10 = 0이면 10, 아니면 3 |
 | 사탕 이벤트 배율 | ×2 (배율 > 1일 때만) | BS:719-720 · EVT:177·690 · META:3671-3684 | floor(사탕 × 배율). '별이 머문 밤 산책'(데이터 문구 "매달 1일부터 14일까지") 기간이고 `Events` 기능(3-1 클리어 또는 설치 3일째, META:462)이 열렸을 때만 |
 | `stageClothChance` · `stageRibbonChance` | 0.35 · 0.25 | BC:397·399 · BS:762-766 | 클리어마다 수선 천 35% (1~2개), 리본 조각 25% (1개), 따로 굴림 (ITEM:16·44) |

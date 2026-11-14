@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-31) |
 | 작성자 | ① 구현: 기개발 · ②③: DD |
-| 최종 수정 | 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
+| 최종 수정 | 2026-11-14 (단추 · 실타래 반반 지급 주석) · 2026-11-13 (상태 헤더 맞춤 — 검수 KN_DocReview) |
 | 관련 테이블 | - |
 | 관련 문서 | [`KN_Glossary`](../00_Overview/KN_Glossary.md) · [`SYS_InGameBattle`](./SYS_InGameBattle.md) |
 | 근거 | 코드 커밋 `4b73a5a` (`feature/lost-and-lovely-import`) — 경로 약칭 표 참고 |
@@ -22,7 +22,8 @@
 > 작성: 기개발 (2026-11-11). **근거: `feature/lost-and-lovely-import` @ `4b73a5a`.** 코드가 실제로 하는 일만 적었다. 해석 · 제안 · 기획과의 비교는 넣지 않았다 (② · ③은 DD).
 > 범위: 옛 오프라인 보상 `OfflineRewardSystem` · 수선 바구니(= 방치 바구니, `IdleChestSystem` — 빠른 수선 · 두 배 받기 포함) · 챕터 상자 / 잃어버린 상자 `ChapterChestSystem` · 시간 기준 `DailyClock` · 비운 시간 계산 `MetaSession`.
 > 수치 출처: 빌드 장면은 `Scenes/Main.unity` 하나이고, 그 `GameBootstrap`이 `GameConfig.asset` · `MetaDatabase.asset`을 참조한다 (`SCN:361299` · `SCN:361308`). 그래서 에셋 값이 쓰인다. 에셋과 코드 기본값이 다른 칸은 1.3에 둘 다 적었다.
-> 재화: 단추 = `CurrencyType.Gold`, 별조각 = `CurrencyType.Gem`, 별빛 사탕 = `CurrencyType.EventToken`. 재료 표시명은 `IDB`의 `name` (예: `mat_cloth` = 수선 천).
+> **2026-11-14 실타래 분리(결정 2 안 D)**: 이 문서의 단추 양(오프라인 보상 · 바구니 단추 줄 · 빠른 수선 · 켜 둔 동안 초당 · 단추 N분치)은 지금 식으로 계산한 양 B이고, 지급은 반반이다. 단추 = ⌊B × 0.5⌋, 실타래 = ⌊B × 0.5⌋ (초당 적립은 실수 그대로). 바구니 실타래 줄은 코드가 따로 만들며 단추 줄 다음 순서, 이월 · 상한 · 두 배 받기 · 빠른 수선 포함이 단추 줄과 같다. 아래 "단추" 식의 초당 단추 · 0.5는 나누기 전 기준 수입으로 읽는다. 정본은 `SYS_Economy` §1.5.
+> 재화: 단추 = `CurrencyType.Gold`, 실타래 = `CurrencyType.LineageXp`, 별조각 = `CurrencyType.Gem`, 별빛 사탕 = `CurrencyType.EventToken`. 재료 표시명은 `IDB`의 `name` (예: `mat_cloth` = 수선 천).
 > 시각: `Scripts/` 안의 시간 공급자는 `LocalTimeProvider`(`DateTime.UtcNow` = 기기 시계, `TU:15`) 하나다. `GameBootstrap.ClockOverride`(`GB:89`)는 검증 도구(`Verify/Runtime/AutoShot.Spec4.cs:150`)만 넣는다. 서버 시각을 읽는 코드는 찾지 못했다.
 
 **파일 약칭** (모두 `Assets/_Project/` 아래)

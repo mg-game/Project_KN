@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,8 +32,9 @@ namespace IdleGame.UI
     /// 사냥을 누르면 MainButton (메달 PressScale의 Tap은 Awake에서 끈다 — 소리가 겹치지 않게, 옆 탭 · 받기 버튼과 같은 규칙).
     /// </para>
     /// <para>
-    /// 강화 탭 빛 (M35d): 강화 시트가 열려 있지 않은 동안(MAIN 또는 다른 탭, CR-08) x10 강화를 살 수 있으면(단추 ≥ GrowthCost10)
-    /// 강화 탭 아이콘 밑에 금빛이 숨쉰다 (α 0.30 ↔ 0.55, 1.6초). 빨간 점과 상관없다. 단추가 바뀔 때(Currency.Changed) · 탭이 바뀔 때만 값 하나를 비교한다.
+    /// 강화 탭 빛 (M35d · T5): 강화 시트가 열려 있지 않은 동안(MAIN 또는 다른 탭, CR-08) x10 강화를 살 수 있거나(단추 ≥ GrowthCost10)
+    /// 실타래 조건(LineageGlowCondition)이 맞으면 강화 탭 아이콘 밑에 금빛이 숨쉰다 (α 0.30 ↔ 0.55, 1.6초). 빨간 점과 상관없다.
+    /// 다시 판정하는 때: 단추 · 실타래 변경, 편성 변경, 유실자 합류 · 레벨 변경, 전투 스테이지 변경, 기능 개방(CharacterLevelUp), 탭 바뀜.
     /// </para>
     /// 시트(SheetController)가 없는 예전 장면이면 예전 6칸 탭 바처럼 늘 한 탭이 열려 있다 (_defaultIndex, MAIN 없음).
     /// </summary>
@@ -137,6 +139,10 @@ namespace IdleGame.UI
         bool _applied;
         bool _glowOn;
         bool _currencySubscribed;
+        bool _lineageSubscribed;
+        FeatureGateSystem _features;
+        /// <summary>실타래 빛 조건 판정에 쓰는 보유 유실자 목록 (할당 없이 다시 씀)</summary>
+        readonly List<LineageDef> _glowLineages = new();
         Func<bool> _sheetBack;
 
         // ───────────── 수명 ─────────────
@@ -172,6 +178,18 @@ namespace IdleGame.UI
                 Game.Currency.Changed += OnCurrencyChanged;
                 _currencySubscribed = true;
             }
+            if (Game.IsReady && Game.Characters != null && Game.Formation != null && Game.Battle != null)
+            {
+                Game.Characters.Changed += RefreshGrowthGlow;
+                Game.Formation.Changed += RefreshGrowthGlow;
+                Game.Battle.StageChanged += RefreshGrowthGlow;
+                _lineageSubscribed = true;
+                if (Game.IsMetaActive && Game.Features != null)
+                {
+                    _features = Game.Features;
+                    _features.Unlocked += OnFeatureUnlocked;
+                }
+            }
             var ui = UIManager.Instance;
             if (ui != null && _sheet != null) ui.SheetBackHandler = _sheetBack;
             if (_growthGlow != null && !_glowOn) _growthGlow.gameObject.SetActive(false);
@@ -201,6 +219,15 @@ namespace IdleGame.UI
             var ui = UIManager.Instance;
             if (ui != null && ui.SheetBackHandler == _sheetBack) ui.SheetBackHandler = null;
             if (_currencySubscribed && Game.Currency != null) Game.Currency.Changed -= OnCurrencyChanged;
+            if (_lineageSubscribed)
+            {
+                if (Game.Characters != null) Game.Characters.Changed -= RefreshGrowthGlow;
+                if (Game.Formation != null) Game.Formation.Changed -= RefreshGrowthGlow;
+                if (Game.Battle != null) Game.Battle.StageChanged -= RefreshGrowthGlow;
+                _lineageSubscribed = false;
+            }
+            if (_features != null) _features.Unlocked -= OnFeatureUnlocked;
+            _features = null;
             // 시트가 열린 채 사라짐 (테스트 · 장면 정리): 전장 집중 요청만 지운다 — 소리는 내지 않는다
             AudioService.ClearBattleFocus(GetInstanceID());
         }
@@ -629,14 +656,19 @@ namespace IdleGame.UI
 
         void OnCurrencyChanged(CurrencyType type, double value)
         {
-            if (type == CurrencyType.Gold) RefreshGrowthGlow();
+            if (type == CurrencyType.Gold || type == CurrencyType.LineageXp) RefreshGrowthGlow();
+        }
+
+        void OnFeatureUnlocked(FeatureId feature)
+        {
+            if (feature == FeatureId.CharacterLevelUp) RefreshGrowthGlow();
         }
 
         /// <summary>강화 탭 빛을 지금 값으로 다시 정한다 (강화 화면이 x10 비용을 바꾼 뒤 불러도 된다). 강화 시트가 열려 있지 않은 동안만 (CR-08)</summary>
         public void RefreshGrowthGlow()
         {
             if (_growthGlow == null) return;
-            bool show = SelectedIndex != (int)MainTab.Growth && CanAffordGrowthBatch();
+            bool show = SelectedIndex != (int)MainTab.Growth && (CanAffordGrowthBatch() || CanLevelUpLineageSoon());
             if (show == _glowOn) return;
             _glowOn = show;
             if (_glowAnim != null)
@@ -656,7 +688,40 @@ namespace IdleGame.UI
             if (cost10 == null || !Game.IsReady || Game.Currency == null) return false;
             double cost = cost10();
             if (!(cost > 0d) || double.IsInfinity(cost)) return false;
-            return Game.Currency.Get(CurrencyType.Gold) >= cost;
+            return Game.IsReady && Game.Growth != null && Game.Currency.Get(Game.Growth.LevelUpCurrency) >= cost;
+        }
+
+        bool CanLevelUpLineageSoon() =>
+            Game.IsReady && LineageGlowCondition(Game.Characters, Game.Formation, Game.Growth, Game.Currency, _glowLineages);
+
+        /// <summary>실타래 빛 조건에서 "다 쓴 뒤 다시 켜지기까지" 기준 시간 (초, T5 = 5분)</summary>
+        public const double LineageGlowIncomeSeconds = 300;
+
+        /// <summary>
+        /// 강화 탭 빛의 실타래 조건 (T5): 실타래 잔액 ≥ 편성 유실자 중 가장 싼 다음 1레벨 비용 그리고 잔액 ≥ 실타래 수입 속도 × 300초.
+        /// 빈칸: 유실자 레벨업이 잠겼으면(1-1 전) 거짓, 편성 유실자 중 다음 레벨이 있는 유실자가 없으면(전원 최대 · 편성 비어 있음, T6 포함) 거짓.
+        /// 편성 밖 보유 유실자는 보지 않는다. scratch는 보유 유실자 목록을 담을 다시 쓰는 목록 (null이면 새로 만든다)
+        /// </summary>
+        public static bool LineageGlowCondition(CharacterSystem characters, FormationSystem formation, GrowthSystem growth, CurrencySystem currency,
+            List<LineageDef> scratch = null)
+        {
+            if (characters == null || formation == null || currency == null || !characters.IsLevelUpUnlocked) return false;
+            scratch ??= new List<LineageDef>();
+            characters.GetOwnedLineages(scratch);
+            double cheapest = double.PositiveInfinity;
+            for (int i = 0; i < scratch.Count; i++)
+            {
+                var lineage = scratch[i];
+                if (lineage == null || !formation.IsLineagePlaced(lineage.id) || characters.IsMaxLevel(lineage.id)) continue;
+                double cost = characters.GetLevelUpCost(lineage.id);
+                if (cost > 0 && cost < cheapest) cheapest = cost;
+            }
+            scratch.Clear();
+            if (double.IsPositiveInfinity(cheapest)) return false;
+            var type = characters.LevelUpCurrency;
+            double balance = currency.Get(type);
+            double rate = growth != null ? Math.Max(0, growth.IncomeRateOf(type)) : 0;
+            return balance >= cheapest && balance >= rate * LineageGlowIncomeSeconds;
         }
 
         IEnumerator BreatheGlow()

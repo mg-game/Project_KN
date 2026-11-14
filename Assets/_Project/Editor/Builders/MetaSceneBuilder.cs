@@ -133,7 +133,8 @@ namespace IdleGame.EditorTools
                 First(ArtLib.Icon("journal"), ArtLib.Load("Meta/icon_journal.png")),
                 First(ArtLib.Icon("attendance"), ArtLib.Load("Meta/icon_attendance.png")),
                 First(ArtLib.Icon("quest"), ArtLib.Load("Meta/icon_quest.png")),
-                features);
+                features,
+                ArtLib.Currency(CurrencyType.LineageXp));
             // 공용 아트 조각은 Fill 서명을 그대로 두고 따로 묶는다 (없으면 null → 뷰가 다른 그림으로 대신)
             new Binder(icons)
                 .Set("_rewardGeneric", ArtIcon("reward_generic"))
@@ -1949,7 +1950,7 @@ namespace IdleGame.EditorTools
             var empty = Txt(body, "EmptyText", "아직 담긴 선물이 없어요", 26, UITheme.SubText);
             empty.rectTransform.Top(500, 60);
             empty.gameObject.SetActive(false);
-            var footnote = Fit(Txt(body, "Footnote", "<size=70%>*</size> 단추는 앱을 꺼 둔 동안만 쌓여요 (켜 둔 동안은 바로 들어와요)", UIType.Hint, UITheme.SubText,
+            var footnote = Fit(Txt(body, "Footnote", "<size=70%>*</size> 단추 · 실타래는 앱을 꺼 둔 동안만 쌓여요 (켜 둔 동안은 바로 들어와요)", UIType.Hint, UITheme.SubText,
                 TextAlignmentOptions.MidlineLeft), UIType.AutoSizeFloor);
             footnote.rectTransform.Top(726, 34);
 
@@ -2140,7 +2141,7 @@ namespace IdleGame.EditorTools
                 .FitFloor(UIType.AutoSizeFloor);
             if (BadgeOutlineMaterial != null) doubleBadgeText.fontSharedMaterial = BadgeOutlineMaterial;
             doubleBadgeText.rectTransform.Stretch(6, 6, 0, 0);
-            var note = Txt(window, "NoteText", "두 배는 단추와 재료에만 적용돼요 (별조각 제외)", UIType.Hint, UITheme.SubText, TextAlignmentOptions.Center)
+            var note = Txt(window, "NoteText", "두 배는 단추 · 실타래 · 재료에만 적용돼요 (별조각 제외)", UIType.Hint, UITheme.SubText, TextAlignmentOptions.Center)
                 .FitFloor(UIType.AutoSizeFloor);
             note.rectTransform.At(BottomCenter, new Vector2(0, 24), new Vector2(840, 32));
             var claimGold = UiArt.ButtonGold9s;

@@ -277,7 +277,7 @@ namespace IdleGame.UI
                 if (granted.Count > 0) MetaUi.FlyRewards(granted, view.Visual);
                 return;
             }
-            MetaUi.Toast(status.IsClaimed ? "이미 연 상자예요" : $"{status.Def.points}점이 되면 열 수 있어요: {MetaUi.Describe(status.Def.rewards)}");
+            MetaUi.Toast(status.IsClaimed ? "이미 연 상자예요" : $"{status.Def.points}점이 되면 열 수 있어요: {MetaUi.DescribeData(status.Def.rewards)}");
         }
 
         /// <summary>[모두 받기]: 열린 날의 과제 · 상자를 모두 받는다 (줄마다 도장)</summary>

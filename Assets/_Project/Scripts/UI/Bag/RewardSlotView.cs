@@ -94,6 +94,8 @@ namespace IdleGame.UI
             var color = UITheme.CurrencyColor(type);
             var sprite = _currencyIcons != null && (int)type < _currencyIcons.Length ? _currencyIcons[(int)type] : null;
             Apply(RewardService.CurrencyName(type), color, sprite, amount, null);
+            // 실타래 임시 그림은 흰 모양 재료라 산호를 곱한다 (T2, UITheme.CurrencyIconTint)
+            if (sprite != null) _icon.color = UITheme.CurrencyIconTint(type);
             Item = null;
         }
 

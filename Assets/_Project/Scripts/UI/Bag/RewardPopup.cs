@@ -29,15 +29,19 @@ namespace IdleGame.UI
 
         static double s_heldGold;
         static double s_heldGem;
+        static double s_heldLineageXp;
 
         /// <summary>붙잡아 둔 재화가 바뀌었다 (열 때 · 확인 · 날리지 않고 닫힘) — 상단 바가 숫자를 다시 맞춘다</summary>
         public static event System.Action HeldChanged;
 
-        /// <summary>열린 보상 팝업이 확인 때 상단 바로 날릴 그 재화의 양 (단추 · 별조각만, 아니면 0)</summary>
+        /// <summary>
+        /// 열린 보상 팝업이 확인 때 날릴 그 재화의 양 (단추 · 별조각 · 실타래, 아니면 0). 실타래는 강화 탭 꼬리표 · 잔액 칩 숫자가 뺀다 (T10)
+        /// </summary>
         public static double HeldOf(CurrencyType currency) => currency switch
         {
             CurrencyType.Gold => s_heldGold,
             CurrencyType.Gem => s_heldGem,
+            CurrencyType.LineageXp => s_heldLineageXp,
             _ => 0d,
         };
 
@@ -46,6 +50,7 @@ namespace IdleGame.UI
         {
             s_heldGold = 0d;
             s_heldGem = 0d;
+            s_heldLineageXp = 0d;
             HeldChanged = null;
         }
 
@@ -175,10 +180,10 @@ namespace IdleGame.UI
             if (held) HeldChanged?.Invoke();
         }
 
-        /// <summary>확인 때 날릴 단추 · 별조각을 붙잡는다 (날리지 않는 실패 결과는 붙잡지 않는다)</summary>
+        /// <summary>확인 때 날릴 단추 · 별조각 · 실타래를 붙잡는다 (날리지 않는 실패 결과는 붙잡지 않는다)</summary>
         void HoldCurrencies()
         {
-            double gold = 0d, gem = 0d;
+            double gold = 0d, gem = 0d, lineageXp = 0d;
             if (_fly)
             {
                 for (int i = 0; i < _rewards.Count; i++)
@@ -187,20 +192,23 @@ namespace IdleGame.UI
                     if (reward == null || reward.type != RewardType.Currency || !(reward.amount > 0)) continue;
                     if (reward.currency == CurrencyType.Gold) gold += reward.amount;
                     else if (reward.currency == CurrencyType.Gem) gem += reward.amount;
+                    else if (reward.currency == CurrencyType.LineageXp) lineageXp += reward.amount;
                 }
             }
-            if (gold == s_heldGold && gem == s_heldGem) return;
+            if (gold == s_heldGold && gem == s_heldGem && lineageXp == s_heldLineageXp) return;
             s_heldGold = gold;
             s_heldGem = gem;
+            s_heldLineageXp = lineageXp;
             HeldChanged?.Invoke();
         }
 
         /// <summary>붙잡은 양을 비운다 (알리지 않는다). 무엇이든 붙잡고 있었으면 true</summary>
         static bool ReleaseHeld()
         {
-            bool any = s_heldGold != 0d || s_heldGem != 0d;
+            bool any = s_heldGold != 0d || s_heldGem != 0d || s_heldLineageXp != 0d;
             s_heldGold = 0d;
             s_heldGem = 0d;
+            s_heldLineageXp = 0d;
             return any;
         }
 

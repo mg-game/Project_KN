@@ -198,3 +198,4 @@ MonoBehaviour:
     - type: 3
       targetId: shop_event
       label: "\uC774\uBCA4\uD2B8 \uC0C1\uC810"
+  countCap: 999999

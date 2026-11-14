@@ -15,7 +15,7 @@ MonoBehaviour:
   startGold: 0
   startGem: 300
   maxLevel: 1000
-  levelUpBaseCost: 10
+  levelUpBaseCost: 12
   levelUpCostGrowth: 1.12
   baseGoldPerSecond: 1
   goldPerSecondGrowth: 1.06

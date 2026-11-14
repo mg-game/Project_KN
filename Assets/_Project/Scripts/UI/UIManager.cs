@@ -290,9 +290,9 @@ namespace IdleGame.UI
             double have = Game.IsReady && Game.Currency != null ? Game.Currency.Get(type) : 0d;
             // 이미 모자라지 않으면 알릴 것이 없다
             if (need > 0d && !(have < need)) return;
-            if (type == CurrencyType.Gold && need > 0d)
+            if ((type == CurrencyType.Gold || type == CurrencyType.LineageXp) && need > 0d)
             {
-                ShowGoldShortfall(need, have);
+                ShowIncomeShortfall(type, need, have);
                 return;
             }
             if (TryGet<ShortfallPopup>(out var popup))
@@ -312,15 +312,19 @@ namespace IdleGame.UI
         static bool CanAfford(CurrencyType currency, double cost) =>
             !(cost > 0d) || !Game.IsReady || Game.Currency == null || Game.Currency.Has(currency, cost);
 
-        void ShowGoldShortfall(double need, double have)
+        /// <summary>단추 · 실타래 부족 토스트 (결정 6 #6: 모자란 양 &gt; 0이면 토스트, 1.5초에 한 번)</summary>
+        void ShowIncomeShortfall(CurrencyType type, double need, double have)
         {
             float now = Time.unscaledTime;
             if (now < _nextGoldShortfallToast) return;
             _nextGoldShortfallToast = now + UIMotion.ShortfallToastThrottle;
-            ShowToast(MetaText.GoldShortfall(need, have), ToastKind.Error);
+            bool lineage = type == CurrencyType.LineageXp;
+            ShowToast(lineage ? MetaText.LineageXpShortfall(need, have) : MetaText.GoldShortfall(need, have), ToastKind.Error);
 
             double gap = Math.Max(0d, Math.Ceiling(need - have - 1e-9));
-            if (gap > 0d && Game.IsMetaActive && Game.IdleChest != null && Game.IdleChest.PendingGold >= gap) PunchBasketWidget();
+            double basket = !Game.IsMetaActive || Game.IdleChest == null ? 0d
+                : lineage ? Game.IdleChest.PendingLineageXp : Game.IdleChest.PendingGold;
+            if (gap > 0d && basket >= gap) PunchBasketWidget();
         }
 
         /// <summary>바구니 위젯을 한 번 툭 튀긴다 (0.08 / 0.22초, 원래 크기 기준)</summary>

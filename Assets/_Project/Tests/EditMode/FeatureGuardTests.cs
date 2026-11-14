@@ -17,15 +17,15 @@ namespace IdleGame.Tests
         public void CharacterLevelUp_RefusedWhileLocked_WorksWhenOpen()
         {
             Characters.Grant("sock");
-            Currency.Add(CurrencyType.Gold, 1e9);
-            double gold = Gold;
+            Currency.Add(Characters.LevelUpCurrency, 1e9);
+            double gold = Currency.Get(Characters.LevelUpCurrency);
             Characters.FeatureResolver = LockOnly(FeatureId.CharacterLevelUp);
 
             Assert.IsFalse(Characters.IsLevelUpUnlocked);
             Assert.IsFalse(Characters.CanLevelUp("sock"), "빨간 점 없음");
             Assert.IsFalse(Characters.TryLevelUp("sock"));
             Assert.AreEqual(1, Characters.GetLevel("sock"));
-            Assert.AreEqual(gold, Gold, "단추를 쓰지 않는다");
+            Assert.AreEqual(gold, Currency.Get(Characters.LevelUpCurrency), "레벨업 재화(실타래)를 쓰지 않는다");
 
             Characters.FeatureResolver = LockOnly(FeatureId.Evolution);
             Assert.IsTrue(Characters.TryLevelUp("sock"), "다른 기능이 잠긴 것과는 무관");
@@ -101,7 +101,7 @@ namespace IdleGame.Tests
         public void ThrowingResolver_IsTreatedAsOpen()
         {
             Characters.Grant("sock");
-            Currency.Add(CurrencyType.Gold, 1e9);
+            Currency.Add(Characters.LevelUpCurrency, 1e9);
             Func<FeatureId, bool> boom = _ => throw new InvalidOperationException("시험");
             Characters.FeatureResolver = boom;
             Evolution.FeatureResolver = boom;
@@ -122,7 +122,7 @@ namespace IdleGame.Tests
             Rebuild();
             MetaSession.Start();
             Characters.Grant("sock");
-            Currency.Add(CurrencyType.Gold, 1e9);
+            Currency.Add(Characters.LevelUpCurrency, 1e9);
 
             Assert.IsFalse(Characters.TryLevelUp("sock"), "1-1 전에는 레벨업 거절");
             Assert.IsFalse(Evolution.IsCraftUnlocked);

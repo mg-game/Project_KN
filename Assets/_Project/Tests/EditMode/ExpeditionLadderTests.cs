@@ -124,7 +124,8 @@ namespace IdleGame.Tests
             var result = Expedition.Claim("exp_1_1");
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(840, Currency.Get(CurrencyType.Gold), 1e-6, "단추 300 × 2.8");
+            Assert.AreEqual(420, Currency.Get(CurrencyType.Gold), 1e-6, "기준 300 × 2.8 = 840 → 단추 몫 절반 (안 D)");
+            Assert.AreEqual(420, Currency.Get(CurrencyType.LineageXp), 1e-6, "실타래 몫 절반");
             Assert.AreEqual(4, Characters.GetAffinity("sock"), "길게 = 호감도 4");
             Assert.AreEqual(1, Characters.GetProgress("sock", ProgressType.ExpeditionCount), "진화 기록은 단계와 무관하게 +1");
         }
@@ -176,7 +177,8 @@ namespace IdleGame.Tests
             Clock.Advance(TimeSpan.FromMinutes(10));
             var result = system.Claim("exp_test");
             Assert.AreEqual(2, ItemsOf(result, "m_cloth"));
-            Assert.AreEqual(100, Currency.Get(CurrencyType.Gold), 1e-6);
+            Assert.AreEqual(50, Currency.Get(CurrencyType.Gold), 1e-6, "기준 100의 단추 몫 (안 D)");
+            Assert.AreEqual(50, Currency.Get(CurrencyType.LineageXp), 1e-6, "기준 100의 실타래 몫");
         }
 
         [Test]
@@ -189,7 +191,7 @@ namespace IdleGame.Tests
             Clock.Advance(TimeSpan.FromMinutes(10));
             var result = system.Claim("exp_test");
             Assert.AreEqual(4, ItemsOf(result, "m_cloth"), "주말 원정 축제 = 재료 ×2 (받을 때)");
-            Assert.AreEqual(100, Currency.Get(CurrencyType.Gold), 1e-6, "단추는 그대로");
+            Assert.AreEqual(50, Currency.Get(CurrencyType.Gold), 1e-6, "단추는 그대로 (기준 100의 단추 몫)");
 
             system.DropMultiplier = () => 0.5;
             Assert.IsTrue(system.TryStart("exp_test", new[] { "sock" }));

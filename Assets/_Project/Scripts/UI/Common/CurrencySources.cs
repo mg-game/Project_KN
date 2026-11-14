@@ -55,6 +55,7 @@ namespace IdleGame.UI
     ///   · 별조각: 우편(받지 않은 별조각 우편이 있을 때만, 맨 위 강조 '우편함에 별조각 N개가 있어요 · 받기') → 수선 일지 → 출석부 → 수선 바구니
     ///     (지금 콘텐츠에서 별조각을 주는 곳만 — 잔향이 던전은 단추를, 상점은 별조각을 받고 재료를 판다)
     ///   · 별빛 사탕: 이벤트 → 수선 바구니(이벤트 기간) → 이벤트 상점(쓰는 곳)
+    ///   · 실타래 (결정 2 안 D): 단추가 나오는 모든 곳에서 함께 나온다. 줄은 단추와 같은 넷 (수선 바구니 → 스테이지 진행 → 원정 → 잔향이 던전)
     /// 이동은 Go가 UINav로 보낸다 (부르는 쪽 팝업은 먼저 닫는다). 표는 누를 때만 만든다 (매 프레임 부르지 않는다).
     /// </summary>
     public static class CurrencySources
@@ -90,6 +91,12 @@ namespace IdleGame.UI
                     results.Add(new CurrencySource(CurrencySourceKind.Attendance, "출석부", "매일 도장을 찍으면 받아요", FeatureId.Attendance, true));
                     results.Add(new CurrencySource(CurrencySourceKind.IdleChest, "수선 바구니", "자리를 비운 동안 조금씩 모여요", FeatureId.IdleChest, true));
                     break;
+                case CurrencyType.LineageXp:
+                    results.Add(new CurrencySource(CurrencySourceKind.IdleChest, "수선 바구니", "자리를 비운 동안 단추와 함께 모여요", FeatureId.IdleChest, true));
+                    results.Add(new CurrencySource(CurrencySourceKind.Stage, "스테이지 진행", "전투에서 이길 때마다 단추와 함께 받아요", FeatureId.Battle, false));
+                    results.Add(new CurrencySource(CurrencySourceKind.Expedition, "원정", "친구를 보내면 단추와 함께 가져와요", FeatureId.Expedition, true));
+                    results.Add(new CurrencySource(CurrencySourceKind.Dungeon, "잔향이 던전", "층을 깨면 단추와 함께 받아요", FeatureId.Dungeon, true));
+                    break;
                 case CurrencyType.EventToken:
                     results.Add(new CurrencySource(CurrencySourceKind.Events, "이벤트", "이벤트 기간에 모을 수 있어요", FeatureId.Events, true));
                     results.Add(new CurrencySource(CurrencySourceKind.IdleChest, "수선 바구니", "이벤트 기간에 바구니에 모여요", FeatureId.IdleChest, true));
@@ -120,15 +127,16 @@ namespace IdleGame.UI
 
         // ───────────── 안내 말풍선 글자 (InfoTooltipView) ─────────────
 
-        /// <summary>재화 이름 (단추 / 별조각 / 별빛 사탕)</summary>
+        /// <summary>재화 이름 (단추 / 별조각 / 별빛 사탕 / 실타래)</summary>
         public static string Title(CurrencyType type) => RewardService.CurrencyName(type);
 
         /// <summary>어디에 쓰는지 한 줄</summary>
         public static string Body(CurrencyType type) => type switch
         {
-            CurrencyType.Gold => "수선점 강화와 친구 레벨업에 써요",
+            CurrencyType.Gold => "수선점 강화와 상점 재료에 써요",
             CurrencyType.Gem => "친구 소환과 빠른 수선, 상점에서 써요",
             CurrencyType.EventToken => "이벤트 상점에서 선물로 바꿔요",
+            CurrencyType.LineageXp => "유실자 레벨업에 써요",
             _ => string.Empty,
         };
 
@@ -138,6 +146,7 @@ namespace IdleGame.UI
             CurrencyType.Gold => "얻는 곳 · 수선 바구니 · 스테이지 · 원정 · 던전",
             CurrencyType.Gem => "얻는 곳 · 우편 · 수선 일지 · 출석부 · 수선 바구니",
             CurrencyType.EventToken => "얻는 곳 · 이벤트 · 수선 바구니(이벤트 기간)",
+            CurrencyType.LineageXp => "얻는 곳 · 단추가 나오는 모든 곳 (바구니 · 스테이지 · 원정 · 던전 · 일지 · 출석)",
             _ => string.Empty,
         };
 

@@ -403,9 +403,9 @@ namespace IdleGame.UI
             // 보스는 깼는데 아직 안 연 상자 → 상자 창을 지도 위에 연다 (받으면 상자 표시를 다시 그린다)
             if (beaten && OpenChestPopup()) return;
             string body = opened ? "이미 받은 상자예요" : beaten ? $"{_chapter}장 보스를 물리치고 찾은 상자예요" : $"{_chapter}장 보스를 처음 물리치면 받아요";
-            if (!InfoTooltipView.Show((RectTransform)_chestButton.transform, $"챕터 상자: {MetaUi.Describe(contents, " · ")}", body))
+            if (!InfoTooltipView.Show((RectTransform)_chestButton.transform, $"챕터 상자: {MetaUi.DescribeData(contents, " · ")}", body))
             {
-                MetaUi.Toast($"챕터 상자: {MetaUi.Describe(contents, " · ")}");
+                MetaUi.Toast($"챕터 상자: {MetaUi.DescribeData(contents, " · ")}");
             }
         }
 

@@ -594,7 +594,7 @@ namespace IdleGame.UI
                 MetaUi.Toast("이미 연 상자예요");
                 return;
             }
-            MetaUi.Toast($"{status.Def.points}점이 되면 열 수 있어요: {MetaUi.Describe(status.Def.rewards)}");
+            MetaUi.Toast($"{status.Def.points}점이 되면 열 수 있어요: {MetaUi.DescribeData(status.Def.rewards)}");
         }
 
         void OnClaimAll()

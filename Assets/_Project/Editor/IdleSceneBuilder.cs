@@ -447,6 +447,8 @@ namespace IdleGame.EditorTools
                 var icon = Img(button.transform, "Icon", iconArt != null ? Color.white : UITheme.SubText, iconArt != null ? iconArt : UiArt.Star);
                 icon.preserveAspect = true;
                 icon.rectTransform.At(TopCenter, TabIconPosition, new Vector2(TabIconSize, TabIconSize));
+                // 강화 탭: 실타래 꼬리표 (T4, 아이콘 위. 유실자 레벨업이 열린 뒤에만 보인다)
+                if (i == (int)MainTab.Growth) BuildLineageXpTag(button.transform);
                 buttons[i] = button;
                 ctx.TabButtons[i] = button;
                 panels[i] = tabs[i].panel;
@@ -619,6 +621,40 @@ namespace IdleGame.EditorTools
                 .Set("_drag", drag)
                 .Set("_stage", ctx.StageArea)
                 .Set("_returnChipGroup", returnChip != null ? returnChip.GetComponent<CanvasGroup>() : null)
+                .Apply();
+        }
+
+        /// <summary>실타래 꼬리표 알약 크기 · 자리 (탭 버튼 위 끝에 걸쳐 가운데, 위로 8 나온다)</summary>
+        static readonly Vector2 LineageTagSize = new(108, 34);
+        const float LineageTagTop = 8f;
+
+        /// <summary>
+        /// 강화 탭 실타래 꼬리표 (T4 · 결정 6 #2, 결정 2 안 D): 탭 버튼 위 끝에 걸친 어두운 알약 108x34 (실타래 그림 22 산호 틴트 + 잔액 20 굵게, K/M 축약).
+        /// 늘 켜진 묶음 "LineageXpTag"(LineageXpBalanceView)가 유실자 레벨업 개방(1-1 클리어) 뒤에 "Pill"을 켠다. 보유 전원 최대면 "모두 최대".
+        /// 누름을 받지 않는다 (탭 버튼 누르기를 막지 않게). 실타래 날아가기 2순위 도착지 (TutorialSceneBuilder가 RewardFlyer에 잇는다). 새 그림 없음
+        /// </summary>
+        static void BuildLineageXpTag(Transform button)
+        {
+            var holder = NewRect("LineageXpTag", button).Stretch();
+            var pill = UiArt.Panel(holder, "Pill", UiArt.PillNight9s, UiArt.CapsulePpu(LineageTagSize.y), null,
+                UITheme.WithAlpha(UITheme.PanelLight, 0.92f), true);
+            pill.raycastTarget = false;
+            pill.rectTransform.At(TopCenter, new Vector2(0, LineageTagTop), LineageTagSize);
+            var icon = CurrencyIcon(pill.transform, CurrencyType.LineageXp, 22);
+            icon.raycastTarget = false;
+            var iconRect = icon.rectTransform;
+            iconRect.anchorMin = iconRect.anchorMax = MiddleLeft;
+            iconRect.anchoredPosition = new Vector2(19, 0);
+            var amount = Txt(pill.transform, "Amount", "0", 20, UITheme.Cream, TextAlignmentOptions.MidlineRight, true).FitFloor(UIType.AutoSizeFloor);
+            amount.raycastTarget = false;
+            amount.rectTransform.Stretch(34, 12, 0, 0);
+            pill.gameObject.SetActive(false);
+            var view = holder.gameObject.AddComponent<LineageXpBalanceView>();
+            new Binder(view)
+                .Set("_amount", amount)
+                .Set("_root", pill.gameObject)
+                .SetBool("_requireUnlock", true)
+                .SetBool("_compact", true)
                 .Apply();
         }
 
@@ -945,7 +981,7 @@ namespace IdleGame.EditorTools
         {
             var popup = BuildPopup<OfflineRewardPopup>(root, "OfflineRewardPopup", "오프라인 보상", new Vector2(860, 760), out var body, out _);
 
-            Txt(body, "DescText", "자리를 비운 동안 친구들이 단추를 모아왔어요!", 30, UITheme.Text, TextAlignmentOptions.Center, false, true)
+            Txt(body, "DescText", "자리를 비운 동안 친구들이 단추와 실타래를 모아왔어요!", 30, UITheme.Text, TextAlignmentOptions.Center, false, true)
                 .rectTransform.Top(10, 90);
             var duration = Txt(body, "DurationText", "0분 동안 모은 단추", 28, UITheme.SubText);
             duration.rectTransform.Top(110, 46);
@@ -960,9 +996,20 @@ namespace IdleGame.EditorTools
             amountRow.childForceExpandHeight = false;
             CurrencyIcon(amount, CurrencyType.Gold, 70);
             var gold = Txt(amount, "GoldText", "0", 64, UITheme.Gold, TextAlignmentOptions.MidlineLeft, true);
+            // 실타래 줄 (결정 2 안 D: 단추와 함께 모인 실타래, 0이면 줄을 끈다)
+            var lineageRow = NewRect("LineageXpAmount", body).Top(282, 64);
+            var lineageLayout = lineageRow.gameObject.AddComponent<HorizontalLayoutGroup>();
+            lineageLayout.childAlignment = TextAnchor.MiddleCenter;
+            lineageLayout.spacing = 12;
+            lineageLayout.childControlWidth = true;
+            lineageLayout.childControlHeight = true;
+            lineageLayout.childForceExpandWidth = false;
+            lineageLayout.childForceExpandHeight = false;
+            CurrencyIcon(lineageRow, CurrencyType.LineageXp, 48);
+            var lineageXp = Txt(lineageRow, "LineageXpText", "0", 44, UITheme.LineageXp, TextAlignmentOptions.MidlineLeft, true);
 
             var info = Txt(body, "InfoText", "보상은 최대 8시간까지 쌓여요.", UIType.Caption, UITheme.SubText);
-            info.rectTransform.Top(296, 40);
+            info.rectTransform.Top(356, 40);
             var claim = SceneParts.Button(body, "ClaimButton", "받기", ButtonStyle.Gold, 40, out _);
             var claimSize = new Vector2(420, 120);
             ((RectTransform)claim.transform).At(BottomCenter, new Vector2(0, 10), claimSize);
@@ -972,6 +1019,7 @@ namespace IdleGame.EditorTools
             new Binder(popup)
                 .Set("_durationText", duration)
                 .Set("_goldText", gold)
+                .Set("_lineageXpText", lineageXp)
                 .Set("_infoText", info)
                 .Set("_claimButton", claim)
                 .Apply();
@@ -1147,12 +1195,13 @@ namespace IdleGame.EditorTools
             return view;
         }
 
-        /// <summary>재화 아이콘 (CurrencyType 순서: 단추 · 별조각 · 별빛 사탕, 없으면 null)</summary>
+        /// <summary>재화 아이콘 (CurrencyType 순서: 단추 · 별조각 · 별빛 사탕 · 실타래, 없으면 null)</summary>
         static Object[] CurrencySprites() => new Object[]
         {
             ArtLib.Currency(CurrencyType.Gold),
             ArtLib.Currency(CurrencyType.Gem),
             ArtLib.Currency(CurrencyType.EventToken),
+            ArtLib.Currency(CurrencyType.LineageXp),
         };
 
         /// <summary>9-slice 아트 버튼의 배율을 높이에 맞춘다 (버튼 공장 기본 2는 90~110px용)</summary>

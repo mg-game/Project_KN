@@ -83,8 +83,8 @@ namespace IdleGame.UI
             Def = def;
             _onClick = onClick;
             bool highlight = def != null && def.highlight;
-            int rewardCount = def != null && def.rewards != null ? def.rewards.Count : 0;
-            var reward = rewardCount > 0 ? def.rewards[0] : null;
+            // 단추 · N분치는 실제 지급과 같게 단추 · 실타래 두 줄로 풀어 첫 줄 + '+' (MetaUi.FirstPreview)
+            var reward = MetaUi.FirstPreview(def != null ? def.rewards : null, out int rewardCount);
             if (reward != null)
             {
                 _reward.Set(reward);

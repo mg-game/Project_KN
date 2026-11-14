@@ -93,7 +93,11 @@ namespace IdleGame.UI
             {
                 int index = (int)Currency;
                 var sprite = _currencyIcons != null && index >= 0 && index < _currencyIcons.Length ? _currencyIcons[index] : null;
-                if (sprite != null) _icon.sprite = sprite;
+                if (sprite != null)
+                {
+                    _icon.sprite = sprite;
+                    _icon.color = UITheme.CurrencyIconTint(Currency);
+                }
                 _icon.enabled = _icon.sprite != null;
             }
             if (_needText != null)

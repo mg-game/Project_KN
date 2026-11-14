@@ -239,13 +239,14 @@ namespace IdleGame.Tests
             Characters.Grant("sock");
             Formation.TryPlace(CharacterRole.Guardian, 0, "sock_base");
             Strengthen.GetRows(_rows, 10);
-            Assert.AreEqual(1, Find(StrengthenKind.LineageLevel).Amount, "단추가 없으면 +1 레벨");
+            Assert.AreEqual(1, Find(StrengthenKind.LineageLevel).Amount, "실타래가 없으면 +1 레벨");
             var shop = Find(StrengthenKind.ShopUpgrade);
             Assert.AreEqual(Power.PreviewShopLevels(shop.Amount), shop.Gain, "수선점 {n}번 강화의 n = 미리보기한 레벨 수");
             Assert.That(shop.Amount, Is.InRange(1, StrengthenAdvisor.MaxShopLevels));
             Assert.AreEqual(-1, shop.Slot, "방향 칸은 약한 방향 줄만");
 
             Currency.Add(CurrencyType.Gold, 1e9);
+            Currency.Add(CurrencyType.LineageXp, 1e9);
             Strengthen.GetRows(_rows, 10);
             var level = Find(StrengthenKind.LineageLevel);
             Assert.AreEqual(StrengthenAdvisor.LineageLevels, level.Amount, "살 수 있으면 +5");

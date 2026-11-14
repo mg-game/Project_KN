@@ -517,6 +517,7 @@ namespace IdleGame.EditorTools
                 .Set("_goldIcon", art.Gold)
                 .Set("_gemIcon", art.Gem)
                 .Set("_eventIcon", art.EventToken)
+                .Set("_lineageXpIcon", art.LineageXp)
                 .Set("_ticketIcon", art.QuickTicket)
                 .Set("_shardsIcon", art.Shards)
                 .Apply();
@@ -571,6 +572,13 @@ namespace IdleGame.EditorTools
             var eventTarget = ctx.Canvas.Find(CoachTargets.EventButton);
             // 재료: ≡ 메뉴 버튼 (가방 · 공지 · 설정이 메뉴 안으로 갔다)
             var bagTarget = top != null ? top.Find("MenuButton") : null;
+            // 실타래 (T10): 강화 탭 친구 머리 줄 잔액 칩 → 강화 탭 버튼 꼬리표 (둘 다 안 보이면 RewardFlyer가 받침만 띄운다)
+            var growthPanel = ctx.Canvas.GetComponentInChildren<GrowthPanel>(true);
+            var lineageChip = growthPanel != null ? growthPanel.transform.Find("LineageXpChip") as RectTransform : null;
+            var growthTab = TabButtonRect(ctx, MainTab.Growth);
+            var lineageTag = growthTab != null ? growthTab.Find("LineageXpTag/Pill") as RectTransform : null;
+            if (lineageChip == null || lineageTag == null)
+                Debug.LogWarning("[TutorialSceneBuilder] 실타래 날아가기 도착지(GrowthPanel/LineageXpChip · Tab_GrowthPanel/LineageXpTag/Pill)를 찾지 못했어요");
             new Binder(flyer)
                 .Set("_canvasRoot", ctx.Canvas)
                 .Set("_iconTemplate", icon)
@@ -582,9 +590,12 @@ namespace IdleGame.EditorTools
                 .Set("_eventFallbackTarget", TabButtonRect(ctx, MainTab.Shop))
                 .Set("_bagTarget", bagTarget)
                 .Set("_friendsTarget", TabButtonRect(ctx, MainTab.Characters))
+                .Set("_lineageXpChipTarget", lineageChip)
+                .Set("_lineageXpTagTarget", lineageTag)
                 .Set("_goldIcon", art.Gold)
                 .Set("_gemIcon", art.Gem)
                 .Set("_eventIcon", art.EventToken)
+                .Set("_lineageXpIcon", art.LineageXp)
                 .Set("_quickTicketIcon", art.QuickTicket)
                 .Set("_doubleTicketIcon", art.DoubleTicket)
                 .Set("_selectShardsIcon", art.Shards)

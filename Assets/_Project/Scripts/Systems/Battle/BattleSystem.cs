@@ -606,7 +606,7 @@ namespace IdleGame
         public StageModifierType CurrentStageModifier => GetStageModifier(Stage);
 
         /// <summary>
-        /// 이 스테이지 단추 보상 증가(%) = 편성 시너지 GoldGainPercent + 축제의 밤 보너스.
+        /// 이 스테이지 단추 · 실타래 보상 증가(%) = 편성 시너지 GoldGainPercent + 축제의 밤 보너스. 기준 양 B에 곱하므로 둘 다 오른다 (안 D).
         /// 시너지 값은 마지막으로 전투를 만들 때의 편성 기준이다.
         /// </summary>
         public float GetGoldBonusPercent(int stage)
@@ -703,14 +703,15 @@ namespace IdleGame
             return stage;
         }
 
-        /// <summary>클리어 확정 보상 (단추 + 별빛 사탕). 단추는 시너지/축제 보너스 반영. 재료는 클리어할 때 확률로 추가된다</summary>
+        /// <summary>
+        /// 클리어 확정 보상 (단추 → 실타래 → 별빛 사탕). 기준 양 B = 스테이지 단추 식 × 시너지/축제 보너스, 단추 · 실타래는 B를 나눈 몫 (안 D, IncomeSplit).
+        /// 재료는 클리어할 때 확률로 추가된다
+        /// </summary>
         public List<RewardData> GetClearRewards(int stage)
         {
             stage = Math.Max(1, stage);
-            var rewards = new List<RewardData>
-            {
-                RewardData.Currency(CurrencyType.Gold, Math.Floor(StageGold(stage) * (1.0 + GetGoldBonusPercent(stage) / 100.0))),
-            };
+            var rewards = new List<RewardData>();
+            IncomeSplit.AddCurrencyLines(rewards, Math.Floor(StageGold(stage) * (1.0 + GetGoldBonusPercent(stage) / 100.0)));
             int interval = _config.stageCandyMilestoneInterval;
             int candy = interval > 0 && stage % interval == 0 ? _config.stageCandyMilestone : _config.stageCandy;
             if (candy > 0)
@@ -765,13 +766,17 @@ namespace IdleGame
             if (_random.NextDouble() < _config.stageRibbonChance) rewards.Add(RewardData.Item("mat_ribbon", 1));
         }
 
-        /// <summary>실패해도 처치한 만큼 단추 일부를 받는다</summary>
-        List<RewardData> GetFailRewards(int stage)
+        /// <summary>실패해도 처치한 만큼 단추 · 실타래 일부를 받는다 (B = 클리어 식 × 실패 비율 × 처치 진행률, 몫이 1 이상인 줄만)</summary>
+        List<RewardData> GetFailRewards(int stage) =>
+            GetFailRewards(stage, _sim.KillsToBoss > 0 ? Mathf.Clamp01((float)_sim.Kills / _sim.KillsToBoss) : 0f);
+
+        /// <summary>실패 보상 (처치 진행률 progress 0 ~ 1). 시험이 진행률을 직접 넣는다</summary>
+        internal List<RewardData> GetFailRewards(int stage, float progress)
         {
             var rewards = new List<RewardData>();
-            float progress = _sim.KillsToBoss > 0 ? Mathf.Clamp01((float)_sim.Kills / _sim.KillsToBoss) : 0f;
-            double gold = Math.Floor(StageGold(stage) * (1.0 + GetGoldBonusPercent(stage) / 100.0) * _config.failGoldRatio * progress);
-            if (gold >= 1) rewards.Add(RewardData.Currency(CurrencyType.Gold, gold));
+            progress = Mathf.Clamp01(progress);
+            double income = Math.Floor(StageGold(stage) * (1.0 + GetGoldBonusPercent(stage) / 100.0) * _config.failGoldRatio * progress);
+            IncomeSplit.AddCurrencyLines(rewards, income);
             return rewards;
         }
 

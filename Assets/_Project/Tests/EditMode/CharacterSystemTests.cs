@@ -89,7 +89,7 @@ namespace IdleGame.Tests
         {
             int changed = 0;
             Characters.Changed += () => changed++;
-            Currency.Add(CurrencyType.Gold, 1e6);
+            Currency.Add(CurrencyType.LineageXp, 1e6);
 
             Characters.Grant("sock");
             Characters.Grant("sock");
@@ -105,10 +105,10 @@ namespace IdleGame.Tests
         // ── 레벨 ──
 
         [Test]
-        public void LevelUpCurrency_DefaultsToGold_AndFollowsConfig()
+        public void LevelUpCurrency_DefaultsToLineageXp_AndFollowsConfig()
         {
-            // SYS_Economy §3 #8 E안 이음매: 기본은 단추, 설정을 바꾸면 그 재화로 레벨업한다 (친구 전용 재화로 나눌 때 이 한 칸만 바꾼다)
-            Assert.AreEqual(CurrencyType.Gold, Characters.LevelUpCurrency);
+            // B안 · 결정 2 안 D: 기본은 실타래, 설정을 바꾸면 그 재화로 레벨업한다 (단추로 되돌리면 분리 전 비교 갈래)
+            Assert.AreEqual(CurrencyType.LineageXp, Characters.LevelUpCurrency);
 
             Config.lineageLevelUpCurrency = CurrencyType.EventToken;
             Characters.Grant("sock");
@@ -135,18 +135,21 @@ namespace IdleGame.Tests
         }
 
         [Test]
-        public void LevelUp_SpendsGoldOnCostCurve()
+        public void LevelUp_SpendsLineageXpOnCostCurve()
         {
             Characters.Grant("sock");
             Assert.AreEqual(50, Characters.GetLevelUpCost("sock"), 1e-9);
-            Currency.Add(CurrencyType.Gold, 105);
+            Currency.Add(CurrencyType.Gold, 1e6);
+            Assert.IsFalse(Characters.CanLevelUp("sock"), "단추로는 유실자 레벨을 올리지 않는다");
+            Currency.Add(CurrencyType.LineageXp, 105);
 
             Assert.IsTrue(Characters.TryLevelUp("sock"));
             Assert.AreEqual(55, Characters.GetLevelUpCost("sock"), 1e-9, "50 × 1.1, 부동소수 오차 없이 정수");
             Assert.IsTrue(Characters.TryLevelUp("sock"));
 
             Assert.AreEqual(3, Characters.GetLevel("sock"));
-            Assert.AreEqual(0, Currency.Get(CurrencyType.Gold), 1e-9);
+            Assert.AreEqual(0, Currency.Get(CurrencyType.LineageXp), 1e-9);
+            Assert.AreEqual(1e6, Currency.Get(CurrencyType.Gold), 1e-9, "단추는 그대로");
             Assert.IsFalse(Characters.CanLevelUp("sock"));
             Assert.IsFalse(Characters.TryLevelUp("sock"));
             Assert.AreEqual(3, Characters.GetLevel("sock"));
@@ -157,16 +160,16 @@ namespace IdleGame.Tests
         {
             Config.characterMaxLevel = 2;
             Characters.Grant("sock");
-            Currency.Add(CurrencyType.Gold, 1e6);
+            Currency.Add(CurrencyType.LineageXp, 1e6);
 
             Assert.IsTrue(Characters.TryLevelUp("sock"));
             Assert.IsTrue(Characters.IsMaxLevel("sock"));
             Assert.AreEqual(0, Characters.GetLevelUpCost("sock"), 1e-9);
-            double gold = Currency.Get(CurrencyType.Gold);
+            double lineageXp = Currency.Get(CurrencyType.LineageXp);
 
             Assert.IsFalse(Characters.TryLevelUp("sock"));
             Assert.AreEqual(2, Characters.GetLevel("sock"));
-            Assert.AreEqual(gold, Currency.Get(CurrencyType.Gold), 1e-9);
+            Assert.AreEqual(lineageXp, Currency.Get(CurrencyType.LineageXp), 1e-9);
         }
 
         [Test]
@@ -176,12 +179,12 @@ namespace IdleGame.Tests
             Assert.AreEqual(50 + 55 + 61, Characters.GetLevelUpCost("sock", 3), 1e-9, "50 + 55 + ⌈60.5⌉ (강해지기 줄의 비용, PRG-03)");
             Assert.AreEqual(Characters.GetLevelUpCost("sock"), Characters.GetLevelUpCost("sock", 1), 1e-9);
 
-            Currency.Add(CurrencyType.Gold, 1e6);
-            Assert.AreEqual(Currency.Get(CurrencyType.Gold), Characters.AvailableGold, 1e-9, "가진 단추를 그대로 읽는다");
+            Currency.Add(CurrencyType.LineageXp, 1e6);
+            Assert.AreEqual(Currency.Get(CurrencyType.LineageXp), Characters.AvailableGold, 1e-9, "가진 실타래(레벨업 재화)를 그대로 읽는다");
             double before = Characters.AvailableGold;
             double cost = Characters.GetLevelUpCost("sock", 5);
             for (int i = 0; i < 5; i++) Assert.IsTrue(Characters.TryLevelUp("sock"));
-            Assert.AreEqual(before - cost, Characters.AvailableGold, 1e-6, "합 = 다섯 번 올리며 쓴 단추");
+            Assert.AreEqual(before - cost, Characters.AvailableGold, 1e-6, "합 = 다섯 번 올리며 쓴 실타래");
             Assert.AreEqual(6, Characters.GetLevel("sock"));
         }
 

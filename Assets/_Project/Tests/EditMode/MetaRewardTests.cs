@@ -8,18 +8,23 @@ namespace IdleGame.Tests
     public class MetaRewardTests : MetaSystemsTestBase
     {
         [Test]
-        public void GoldMinutes_UseGoldPerSecondAtGrantTime()
+        public void GoldMinutes_UseIncomeAtGrantTime_SplitOnce()
         {
-            SetCleared(4); // 초당 단추가 최고 스테이지로도 오른다
-            double gps = Growth.GoldPerSecond;
+            SetCleared(4); // 초당 수입이 최고 스테이지로도 오른다
+            double income = Growth.IncomePerSecond;
 
             var granted = MetaRewards.Grant(new[] { MetaReward.GoldMinutes(5) });
 
-            Assert.AreEqual(Math.Floor(gps * 60 * 5), Gold);
-            Assert.AreEqual(1, granted.Count);
-            Assert.AreEqual(MetaRewardType.Currency, granted[0].type, "결과에는 GoldMinutes가 없다 (단추로 풀림)");
-            Assert.AreEqual(CurrencyType.Gold, granted[0].currency);
-            Assert.AreEqual(Math.Floor(gps * 300), MetaRewards.Resolve(MetaReward.GoldMinutes(5)).amount);
+            // 안 D: B = 기준 초당 수입(나누기 전) × 60 × 분, 단추 = ⌊B × 0.5⌋ · 실타래 = ⌊B × 0.5⌋ (이미 나뉜 초당 단추로 B를 만들어 다시 나누지 않는다)
+            Assert.AreEqual(Math.Floor(income * 60 * 5 * 0.5), Gold);
+            Assert.AreEqual(Math.Floor(income * 60 * 5 * 0.5), Currency.Get(CurrencyType.LineageXp));
+            Assert.AreEqual(2, granted.Count);
+            Assert.AreEqual(MetaRewardType.Currency, granted[0].type, "결과에는 GoldMinutes가 없다 (단추 · 실타래로 풀림)");
+            Assert.AreEqual(CurrencyType.Gold, granted[0].currency, "순서 = 단추 → 실타래");
+            Assert.AreEqual(CurrencyType.LineageXp, granted[1].currency);
+            var resolved = new List<MetaReward>();
+            MetaRewards.ResolveAll(new[] { MetaReward.GoldMinutes(5) }, resolved);
+            Assert.AreEqual(Math.Floor(income * 300 * 0.5), resolved[0].amount, "ResolveAll 단추 줄 = 지급과 같은 값");
         }
 
         [Test]
@@ -127,7 +132,7 @@ namespace IdleGame.Tests
         [Test]
         public void Multiplier_AppliesToCurrencyItemsGoldMinutes_NotTicketsOrExcludedGem()
         {
-            double gps = Growth.GoldPerSecond;
+            double income = Growth.IncomePerSecond;
             var rewards = new List<MetaReward>
             {
                 MetaReward.Gold(100), MetaReward.Gem(30), MetaReward.Item("m_cloth", 3), MetaReward.GoldMinutes(1),
@@ -136,7 +141,10 @@ namespace IdleGame.Tests
 
             var granted = MetaRewards.Grant(rewards, multiplier: 2, excludeGemFromMultiplier: true);
 
-            Assert.AreEqual(200 + Math.Floor(gps * 60 * 2), AmountOf(granted, MetaRewardType.Currency, CurrencyType.Gold));
+            // 고정 단추 100 × 2 = B 200 → 단추 100 · 실타래 100, N분치도 B에 배수를 곱한 뒤 나눈다 (안 D)
+            double minutesShare = Math.Floor(income * 60 * 2 * 0.5);
+            Assert.AreEqual(100 + minutesShare, AmountOf(granted, MetaRewardType.Currency, CurrencyType.Gold));
+            Assert.AreEqual(100 + minutesShare, AmountOf(granted, MetaRewardType.Currency, CurrencyType.LineageXp));
             Assert.AreEqual(30, AmountOf(granted, MetaRewardType.Currency, CurrencyType.Gem), "별조각 제외");
             Assert.AreEqual(6, AmountOf(granted, MetaRewardType.Item, itemId: "m_cloth"));
             Assert.AreEqual(1, MetaRewards.QuickIdleTickets, "수선권은 항상 1배");
@@ -169,8 +177,9 @@ namespace IdleGame.Tests
             Assert.AreEqual("단추 1,200", MetaRewards.Describe(MetaReward.Gold(1200)), "재화는 100만 미만 콤마 (M30 FormatCurrency)");
             Assert.AreEqual("단추 1.50B", MetaRewards.Describe(MetaReward.Gold(1.5e6)));
             Assert.AreEqual("수선 천 ×5", MetaRewards.Describe(MetaReward.Item("m_cloth", 5)), "개수는 곱하기 기호 U+00D7");
-            Assert.AreEqual("단추 5분치", MetaRewards.Describe(MetaReward.GoldMinutes(5)));
-            Assert.AreEqual("단추 2시간치", MetaRewards.Describe(MetaReward.GoldMinutes(120)));
+            Assert.AreEqual("단추 · 실타래 5분치", MetaRewards.Describe(MetaReward.GoldMinutes(5)), "N분치는 둘로 나뉘어 들어온다 (안 D)");
+            Assert.AreEqual("단추 · 실타래 2시간치", MetaRewards.Describe(MetaReward.GoldMinutes(120)));
+            Assert.AreEqual("실타래 300", MetaRewards.Describe(MetaReward.Currency(CurrencyType.LineageXp, 300)));
             Assert.AreEqual("빠른 수선권 ×1", MetaRewards.Describe(MetaReward.QuickIdleTicket()));
             Assert.AreEqual("두 배 수선권 ×2", MetaRewards.Describe(MetaReward.DoubleTicket(2)));
             Assert.AreEqual("선택 기억편 ×20", MetaRewards.Describe(MetaReward.SelectShards(20)));
@@ -181,7 +190,7 @@ namespace IdleGame.Tests
             Assert.AreEqual("수선 천 ×5", Rewards.Describe(RewardData.Item("m_cloth", 5)), "RewardService도 같은 표기");
             Assert.AreEqual("단추 1,200", Rewards.Describe(RewardData.Currency(CurrencyType.Gold, 1200)));
             Assert.AreEqual("기억의 실", MetaRewards.NameOf(MetaReward.Item("m_thread", 1)));
-            Assert.AreEqual("단추", MetaRewards.NameOf(MetaReward.GoldMinutes(5)));
+            Assert.AreEqual("단추 · 실타래", MetaRewards.NameOf(MetaReward.GoldMinutes(5)), "N분치는 둘로 나뉘어 들어온다 (안 D)");
         }
 
         [Test]
@@ -209,9 +218,12 @@ namespace IdleGame.Tests
             var into = new List<MetaReward> { MetaReward.Gem(999) };
             MetaRewards.ResolveAll(new[] { MetaReward.GoldMinutes(10), MetaReward.Gem(5) }, into);
 
-            Assert.AreEqual(2, into.Count);
+            Assert.AreEqual(3, into.Count, "N분치는 단추 · 실타래 두 줄로 풀린다");
             Assert.AreEqual(MetaRewardType.Currency, into[0].type);
+            Assert.AreEqual(CurrencyType.Gold, into[0].currency);
+            Assert.AreEqual(CurrencyType.LineageXp, into[1].currency);
             Assert.AreEqual(0, Gold, "지급하지 않음");
+            Assert.AreEqual(0, Currency.Get(CurrencyType.LineageXp));
             Assert.AreEqual(0, Gem);
         }
     }

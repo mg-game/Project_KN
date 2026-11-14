@@ -774,11 +774,16 @@ namespace IdleGame.UI
 
         // ───────────── 개발자 메뉴 (치트 — 에디터 / Development Build 전용) ─────────────
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        /// <summary>10분치 기준 수입을 단추 · 실타래로 나눠 지급 (안 D 규칙 그대로, 실타래도 시험할 수 있게)</summary>
         static void AddGold()
         {
-            double gold = Game.Growth.GoldPerSecond * 600;
+            double income = Game.Growth.IncomePerSecond * 600;
+            double gold = IncomeSplit.Gold(income);
+            double lineageXp = IncomeSplit.LineageXp(income);
             Game.Currency.Add(CurrencyType.Gold, gold);
-            UIManager.Instance.ShowToast($"{RewardService.CurrencyName(CurrencyType.Gold)} {RewardService.FormatAmount(CurrencyType.Gold, gold)} 지급");
+            Game.Currency.Add(CurrencyType.LineageXp, lineageXp);
+            UIManager.Instance.ShowToast($"{RewardService.CurrencyName(CurrencyType.Gold)} {RewardService.FormatAmount(CurrencyType.Gold, gold)} · "
+                                         + $"{RewardService.CurrencyName(CurrencyType.LineageXp)} {RewardService.FormatAmount(CurrencyType.LineageXp, lineageXp)} 지급");
         }
 
         static void AddGem()
@@ -790,11 +795,10 @@ namespace IdleGame.UI
 
         static void SendTestMail()
         {
-            Game.Mail.Send("테스트 우편", "개발자 메뉴에서 보낸 우편입니다.", new[]
-            {
-                RewardData.Currency(CurrencyType.Gem, 100),
-                RewardData.Currency(CurrencyType.Gold, Game.Growth.GoldPerSecond * 60),
-            });
+            // 단추 1분치는 안 D 규칙대로 단추 · 실타래로 나눈다 (IncomeSplit)
+            var rewards = new System.Collections.Generic.List<RewardData> { RewardData.Currency(CurrencyType.Gem, 100) };
+            IncomeSplit.AddCurrencyLines(rewards, Game.Growth.IncomePerSecond * 60);
+            Game.Mail.Send("테스트 우편", "개발자 메뉴에서 보낸 우편입니다.", rewards);
             UIManager.Instance.ShowToast("테스트 우편을 보냈어요.");
         }
 

@@ -78,6 +78,8 @@ namespace IdleGame.UI
         public static readonly Color Gem = Hex("9FD3FF");
         /// <summary>별빛 사탕 (이벤트)</summary>
         public static readonly Color EventToken = Hex("FFB3D6");
+        /// <summary>실타래 (유실자 레벨업 전용, T2 산호). 임시 그림(VFX/motif_yarn, 연보라)에 곱해 재료 "기억의 실"(보라)과 가른다</summary>
+        public static readonly Color LineageXp = Hex("FFA27A");
 
         // ── 버튼 ──
         /// <summary>토글 · 막대 · 채움 보라 (글자가 있는 단색 버튼은 PrimaryButton)</summary>
@@ -300,8 +302,15 @@ namespace IdleGame.UI
             CurrencyType.Gold => Gold,
             CurrencyType.Gem => Gem,
             CurrencyType.EventToken => EventToken,
+            CurrencyType.LineageXp => LineageXp,
             _ => Color.white,
         };
+
+        /// <summary>
+        /// 재화 그림에 곱할 색 (T2). 실타래는 임시 그림(VFX/motif_yarn)이 흰 모양 재료라 산호를 곱하고, 나머지 재화는 채색 그림이라 흰색.
+        /// 아트 큐의 실타래 아이콘(Icons/currency_yarn)이 들어오면 흰색으로 바꾼다
+        /// </summary>
+        public static Color CurrencyIconTint(CurrencyType type) => type == CurrencyType.LineageXp ? LineageXp : Color.white;
 
         public static string ColorTag(Color color) => "#" + ColorUtility.ToHtmlStringRGB(color);
 

@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Approved (D-56) |
 | 작성자 | ① 요약: DD (코드 주석 · 데이터) · ②③: DD |
-| 최종 수정 | 2026-11-12 (D-56) |
+| 최종 수정 | 2026-11-14 (재료 단추 가격 × 0.5, 결정 2a) · 2026-11-12 (D-56) |
 | 관련 문서 | [`UI_Home`](./UI_Home.md) (상점 탭 · 1-8 개방) · [`UI_Bag`](./UI_Bag.md) (얻는 곳 → 상점) · [`SYS_Economy`](../01_System/SYS_Economy.md) (D-30 재화 · 유료 / 무료 별조각 2풀 · 이벤트 재화 7일 유예) · [`SYS_Gacha`](../01_System/SYS_Gacha.md) (D-51 결제 전 P0) · [`SYS_Costume`](../01_System/SYS_Costume.md) (D-55 이벤트 외형 값) · `SYS_Shop` (P2 — 아직 없음) · `SYS_LiveOps` (P2) |
 | 근거 | 코드 `4b73a5a` — `UI/Shop/ShopPanel.cs` · `ShopProductCardView.cs` · `DailyGiftCardView.cs` · `SourceNavigator.cs` · `Systems/Characters/ShopSystem.cs` · `Data/ShopDatabase.asset` · 결제(IAP) 코드 **없음** |
 | 로드맵 | D-55 다음 순서 (UI 화면 문서) |
@@ -25,8 +25,8 @@
 ### 1.1 상품 (`ShopDatabase.asset`)
 | 쪽 | 상품 | 내용 | 가격 | 제한 |
 |---|---|---|---|---|
-| 수선점 상점 | 수선 천 | ×5 | 단추 400 | 하루 3 |
-| | 리본 조각 · 촛농 방울 | ×5 | 단추 300 | 하루 3 |
+| 수선점 상점 | 수선 천 | ×5 | 단추 200 | 하루 3 |
+| | 리본 조각 · 촛농 방울 | ×5 | 단추 150 | 하루 3 |
 | | 기억의 실 · 레이스 조각 · 우산살 | ×1 | 별조각 30 | 하루 3 |
 | 별이 머문 밤 산책 | 여행 가방 조각 | ×1 | 별빛 사탕 20 | 하루 5 |
 | | 달빛 조각 | ×1 | 별빛 사탕 60 | 전체 10 |

@@ -28,6 +28,8 @@ namespace IdleGame.UI
         [SerializeField] Sprite _goldIcon;
         [SerializeField] Sprite _gemIcon;
         [SerializeField] Sprite _eventIcon;
+        [Tooltip("실타래 (임시 그림, 산호 틴트)")]
+        [SerializeField] Sprite _lineageXpIcon;
         [SerializeField] Sprite _ticketIcon;
         [SerializeField] Sprite _shardsIcon;
 
@@ -88,6 +90,7 @@ namespace IdleGame.UI
                 var reward = _rewards[i];
                 var icon = IconOf(reward);
                 _rewardIcons[i].sprite = icon;
+                _rewardIcons[i].color = MetaIcons.RewardTint(reward);
                 _rewardIcons[i].enabled = icon != null;
                 _rewardTexts[i].text = Game.MetaRewards.Describe(reward);
             }
@@ -102,6 +105,7 @@ namespace IdleGame.UI
                     {
                         CurrencyType.Gold => _goldIcon,
                         CurrencyType.Gem => _gemIcon,
+                        CurrencyType.LineageXp => _lineageXpIcon,
                         _ => _eventIcon,
                     };
                 case MetaRewardType.Item:

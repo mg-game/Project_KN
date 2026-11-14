@@ -214,6 +214,8 @@ namespace IdleGame.Tests
 
         protected void CreateSystems(System.Random random)
         {
+            // 단추 · 실타래 나누기 몫 (Game.Setup과 같이, 결정 2 안 D)
+            IncomeSplit.Configure(Config);
             Data = PlayerData.CreateNew(Config);
             Currency = new CurrencySystem(Data);
             Inventory = new InventorySystem(Data, Items);

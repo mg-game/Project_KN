@@ -107,6 +107,8 @@ namespace IdleGame.UI
             public readonly List<string> Lines = new();
             public readonly List<Color> LineColors = new();
             public readonly List<Sprite> LineIcons = new();
+            /// <summary>줄 아이콘에 곱할 색 (실타래 임시 그림 = 산호, 그 밖 흰색, UITheme.CurrencyIconTint)</summary>
+            public readonly List<Color> LineIconTints = new();
         }
 
         [SerializeField] RectTransform _banner;
@@ -259,6 +261,7 @@ namespace IdleGame.UI
                     request.Lines.Add("+ " + Game.Rewards.Describe(reward));
                     request.LineColors.Add(reward.type == RewardType.Currency ? UITheme.CurrencyColor(reward.currency) : UITheme.Cream);
                     request.LineIcons.Add(RewardIcon(reward));
+                    request.LineIconTints.Add(reward.type == RewardType.Currency ? UITheme.CurrencyIconTint(reward.currency) : Color.white);
                 }
                 if (inline != null && inline.Length > 0) request.Subtitle = inline.ToString();
             }
@@ -373,6 +376,7 @@ namespace IdleGame.UI
                 {
                     var icon = i < request.LineIcons.Count ? request.LineIcons[i] : null;
                     _lineIcons[i].sprite = icon;
+                    _lineIcons[i].color = i < request.LineIconTints.Count ? request.LineIconTints[i] : Color.white;
                     _lineIcons[i].enabled = icon != null;
                 }
                 SetLine(i, 0f, 0.6f);

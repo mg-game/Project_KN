@@ -7,11 +7,12 @@ namespace IdleGame
     /// <summary>
     /// 메타 보상 지급 창구. MetaReward를 풀어서 지급하고, 실제로 받은 목록(풀린 값, 같은 종류 합침)을 돌려준다.
     ///   · Currency / Item → RewardService.Grant
-    ///   · GoldMinutes → 받는 순간의 Growth.GoldPerSecond × 60 × 분 (내림 정수) → 단추
+    ///   · Currency 단추(고정 양) · GoldMinutes는 기준 양 B로 보고 단추 · 실타래로 나눠 준다 (결정 2 안 D, IncomeSplit, 몫마다 내림 정수).
+    ///     GoldMinutes의 B = 받는 순간의 Growth.IncomePerSecond(나누기 전) × 60 × 분. 이미 나뉜 줄(바구니)은 splitIncome = false로 넘긴다
     ///   · QuickIdleTicket / DoubleTicket / SelectShards → meta.wallet (빠른 수선권은 상한까지만, 넘친 양은 별조각으로 바꾸지 않고 버린다)
     ///   · Lineage → Characters.Grant (이미 있으면 기억편으로 변환됨, 결과는 Lineage 그대로 + 변환 기억편은 SelectShards가 아니라 계보 기억편)
     ///   · Costume → Costumes.Unlock
-    /// 돌려주는 목록에는 GoldMinutes가 없다 (Currency Gold로 풀림). RewardFlyer / 보상 팝업은 이 목록을 그대로 쓴다.
+    /// 돌려주는 목록에는 GoldMinutes가 없다 (Currency 단추 · 실타래로 풀림). RewardFlyer / 보상 팝업은 이 목록을 그대로 쓴다.
     /// <para>
     /// 재화·재료 양은 정수로 내린다 (배수를 곱한 뒤). 0이 된 보상과 상한 때문에 하나도 못 받은 수선권은 결과에서 빠진다.
     /// 빠른 수선권이 상한에 걸려 일부만 들어가면 결과에는 실제로 들어간 장수만 적힌다.
@@ -52,8 +53,10 @@ namespace IdleGame
         /// <summary>
         /// 보상을 지급하고 받은 목록을 돌려준다. multiplier는 재화/재료/단추 N분치에만 곱한다
         /// (excludeGemFromMultiplier면 별조각은 1배, 수선권·친구·의상은 항상 1배). 빈/null 목록이면 빈 목록.
+        /// splitIncome이면 Currency 단추 줄을 기준 양 B로 보고 단추 · 실타래로 나눈다 (안 D). 이미 나뉜 단추 · 실타래 줄을 넘기는 쪽(바구니)만 false
         /// </summary>
-        public List<MetaReward> Grant(IReadOnlyList<MetaReward> rewards, double multiplier = 1, bool excludeGemFromMultiplier = false)
+        public List<MetaReward> Grant(IReadOnlyList<MetaReward> rewards, double multiplier = 1, bool excludeGemFromMultiplier = false,
+            bool splitIncome = true)
         {
             var granted = new List<MetaReward>();
             if (rewards == null || rewards.Count == 0) return granted;
@@ -69,6 +72,11 @@ namespace IdleGame
                     case MetaRewardType.Currency:
                     {
                         double scale = excludeGemFromMultiplier && reward.currency == CurrencyType.Gem ? 1 : multiplier;
+                        if (splitIncome && reward.currency == CurrencyType.Gold)
+                        {
+                            GrantIncome(IncomeOf(reward) * scale, granted);
+                            break;
+                        }
                         double amount = Whole(reward.amount * scale);
                         if (amount <= 0) break;
                         _rewards?.Grant(RewardData.Currency(reward.currency, amount));
@@ -85,10 +93,7 @@ namespace IdleGame
                     }
                     case MetaRewardType.GoldMinutes:
                     {
-                        double gold = Whole(GoldForMinutes(reward.amount) * multiplier);
-                        if (gold <= 0) break;
-                        _rewards?.Grant(RewardData.Currency(CurrencyType.Gold, gold));
-                        granted.Add(MetaReward.Gold(gold));
+                        GrantIncome(IncomeOf(reward) * multiplier, granted);
                         break;
                     }
                     case MetaRewardType.QuickIdleTicket:
@@ -178,28 +183,54 @@ namespace IdleGame
             WalletChanged?.Invoke();
         }
 
-        /// <summary>보상 하나를 풀어 지급할 값으로 바꾼다 (지급하지 않음). GoldMinutes → Currency Gold</summary>
-        public MetaReward Resolve(MetaReward reward)
+        /// <summary>
+        /// 보상 하나를 풀어 into 끝에 더한다 (지급하지 않음). GoldMinutes · 고정 단추는 단추 → 실타래 두 줄 (몫이 1 이상인 줄만, 안 D).
+        /// 지급(Grant)과 같은 함수(IncomeOf → AddIncome)로 나누므로 미리보기와 실제 지급이 어긋나지 않는다
+        /// </summary>
+        public void ResolveInto(MetaReward reward, List<MetaReward> into)
         {
-            if (reward == null) return null;
-            if (reward.type == MetaRewardType.GoldMinutes) return MetaReward.Gold(Whole(GoldForMinutes(reward.amount)));
-            return reward.Clone();
+            if (reward == null || into == null) return;
+            if (IsIncome(reward)) AddIncome(IncomeOf(reward), into);
+            else into.Add(reward.Clone());
         }
 
-        /// <summary>미리보기용으로 목록 전체를 푼다 (지급하지 않음, into는 비우고 채움)</summary>
+        /// <summary>
+        /// 목록 전체를 지급할 값으로 푼다 (지급하지 않음, into는 비우고 채움). 단추 · N분치는 지급과 같게 단추 · 실타래 두 줄로, N분치는 지금 수입으로 숫자가 된다
+        /// (튜토리얼 선물 날리기 · 졸업 카드). 화면 미리보기 칩은 N분치를 글로 두는 PreviewAll을 쓴다
+        /// </summary>
         public void ResolveAll(IReadOnlyList<MetaReward> rewards, List<MetaReward> into)
         {
             if (into == null) return;
             into.Clear();
             if (rewards == null) return;
-            for (int i = 0; i < rewards.Count; i++)
-            {
-                var resolved = Resolve(rewards[i]);
-                if (resolved != null) into.Add(resolved);
-            }
+            for (int i = 0; i < rewards.Count; i++) ResolveInto(rewards[i], into);
         }
 
-        /// <summary>표시 문구 (예: "단추 1,200", "별조각 300", "수선 천 ×5", "빠른 수선권 ×1", "루즈리"). GoldMinutes는 "단추 5분치". 개수는 곱하기 기호(U+00D7)</summary>
+        /// <summary>
+        /// 화면 미리보기용 목록 (지급하지 않음, into는 비우고 채움, 팀 결정: 미리보기 칩 = 실제 지급). 고정 단추는 지급과 같은 나누기(AddIncome)로
+        /// 단추 ⌊n × 몫⌋ · 실타래 ⌊n × 몫⌋ 두 줄, N분치는 그대로 두어 "단추 · 실타래 N분치" 글로 보인다 (받는 순간 수입이 정하므로 숫자로 바꾸지 않는다).
+        /// 같은 재화 줄은 합친다 (Merge: 나뉜 실타래 + 직접 적은 실타래 = 한 줄)
+        /// </summary>
+        public void PreviewAll(IReadOnlyList<MetaReward> rewards, List<MetaReward> into)
+        {
+            if (into == null) return;
+            into.Clear();
+            if (rewards == null) return;
+            _previewScratch.Clear();
+            for (int i = 0; i < rewards.Count; i++)
+            {
+                var reward = rewards[i];
+                if (reward == null) continue;
+                if (reward.type == MetaRewardType.Currency && reward.currency == CurrencyType.Gold) AddIncome(IncomeOf(reward), _previewScratch);
+                else _previewScratch.Add(reward.Clone());
+            }
+            into.AddRange(Merge(_previewScratch));
+            _previewScratch.Clear();
+        }
+
+        readonly List<MetaReward> _previewScratch = new();
+
+        /// <summary>표시 문구 (예: "단추 1,200", "별조각 300", "수선 천 ×5", "빠른 수선권 ×1", "루즈리"). GoldMinutes는 "단추 · 실타래 5분치" (안 D: 둘로 나뉘어 들어온다). 개수는 곱하기 기호(U+00D7)</summary>
         public string Describe(MetaReward reward)
         {
             if (reward == null) return string.Empty;
@@ -210,7 +241,7 @@ namespace IdleGame
                 case MetaRewardType.Item:
                     return $"{NameOf(reward)} ×{Count(reward.amount)}";
                 case MetaRewardType.GoldMinutes:
-                    return "단추 " + MinutesText(reward.amount);
+                    return IncomeLabel + " " + MinutesText(reward.amount);
                 case MetaRewardType.QuickIdleTicket:
                 case MetaRewardType.DoubleTicket:
                 case MetaRewardType.SelectShards:
@@ -248,7 +279,7 @@ namespace IdleGame
                 case MetaRewardType.Currency:
                     return RewardService.CurrencyName(reward.currency);
                 case MetaRewardType.GoldMinutes:
-                    return RewardService.CurrencyName(CurrencyType.Gold);
+                    return IncomeLabel;
                 case MetaRewardType.Item:
                 {
                     var def = _items != null ? _items.Get(reward.itemId) : null;
@@ -342,13 +373,48 @@ namespace IdleGame
 
         // ───────────────────────────── 내부 ─────────────────────────────
 
-        /// <summary>단추 N분치 (내림 전)</summary>
-        double GoldForMinutes(double minutes)
+        /// <summary>N분치 기준 양 B (나누기 전, 내림 전) = 받는 순간의 기준 초당 수입 × 60 × 분</summary>
+        double IncomeForMinutes(double minutes)
         {
             if (!(minutes > 0) || _growth == null) return 0;
-            double perSecond = _growth.GoldPerSecond;
+            double perSecond = _growth.IncomePerSecond;
             return perSecond > 0 ? perSecond * 60.0 * minutes : 0;
         }
+
+        /// <summary>나눌 보상인지 (Currency 단추 · GoldMinutes). 실타래로 직접 적은 보상은 나누지 않는다</summary>
+        static bool IsIncome(MetaReward reward) =>
+            reward.type == MetaRewardType.GoldMinutes || (reward.type == MetaRewardType.Currency && reward.currency == CurrencyType.Gold);
+
+        /// <summary>나눌 보상의 기준 양 B (배수 전): 고정 단추 = 양, N분치 = 받는 순간 기준 초당 수입 × 60 × 분</summary>
+        double IncomeOf(MetaReward reward) => reward.type == MetaRewardType.GoldMinutes ? IncomeForMinutes(reward.amount) : Math.Max(0, reward.amount);
+
+        readonly List<MetaReward> _income = new(2);
+
+        /// <summary>기준 양 B를 단추 → 실타래로 나눠(AddIncome, 미리보기와 같은 함수) 지급하고 granted에 적는다 (몫마다 내림, 0인 줄은 빠짐)</summary>
+        void GrantIncome(double income, List<MetaReward> granted)
+        {
+            _income.Clear();
+            AddIncome(income, _income);
+            for (int i = 0; i < _income.Count; i++)
+            {
+                var line = _income[i];
+                _rewards?.Grant(RewardData.Currency(line.currency, line.amount));
+                granted.Add(line);
+            }
+            _income.Clear();
+        }
+
+        /// <summary>기준 양 B의 단추 → 실타래 줄을 into에 더한다 (지급하지 않음)</summary>
+        static void AddIncome(double income, List<MetaReward> into)
+        {
+            double gold = IncomeSplit.GoldWhole(income);
+            double lineageXp = IncomeSplit.LineageXpWhole(income);
+            if (gold > 0) into.Add(MetaReward.Gold(gold));
+            if (lineageXp > 0) into.Add(MetaReward.Currency(CurrencyType.LineageXp, lineageXp));
+        }
+
+        /// <summary>N분치 보상이 들어오는 재화 이름 ("단추 · 실타래", 안 D)</summary>
+        public static string IncomeLabel => $"{RewardService.CurrencyName(CurrencyType.Gold)} · {RewardService.CurrencyName(CurrencyType.LineageXp)}";
 
         /// <summary>"5분치" / "2시간치" / "1시간 30분치"</summary>
         static string MinutesText(double minutes)

@@ -149,10 +149,25 @@ namespace IdleGame
         }
 
         /// <summary>GoldShortfall의 계산 본체 (테스트용으로 초당 단추·바구니 단추를 직접 받는다)</summary>
-        public static string GoldShortfall(double need, double have, double goldPerSecond, double basketGold)
+        public static string GoldShortfall(double need, double have, double goldPerSecond, double basketGold) =>
+            IncomeShortfall(CurrencyType.Gold, need, have, goldPerSecond, basketGold);
+
+        /// <summary>
+        /// 실타래 부족 토스트 "실타래 1,234개가 더 필요해요 · 약 2분" (단추와 같은 꼴, 결정 6 #6). 수입 속도 = 실타래 수입 속도
+        /// (GrowthSystem.IncomeRateOf, 초당 수입 × 실타래 몫), 바구니 = 지금 받으면 들어올 실타래
+        /// </summary>
+        public static string LineageXpShortfall(double need, double have)
+        {
+            double perSecond = Game.IsReady && Game.Growth != null ? Game.Growth.IncomeRateOf(CurrencyType.LineageXp) : 0;
+            double basket = Game.IsMetaActive && Game.IdleChest != null ? Game.IdleChest.PendingLineageXp : 0;
+            return IncomeShortfall(CurrencyType.LineageXp, need, have, perSecond, basket);
+        }
+
+        /// <summary>단추 · 실타래 부족 토스트 본체 (재화 이름 · 수입 속도 · 바구니 양을 받는다)</summary>
+        public static string IncomeShortfall(CurrencyType type, double need, double have, double goldPerSecond, double basketGold)
         {
             double gap = Gap(need, have);
-            string gold = RewardService.CurrencyName(CurrencyType.Gold);
+            string gold = RewardService.CurrencyName(type);
             string amount = NumberFormatter.FormatCurrency(gap);
             string text = gap < NumberFormatter.CurrencyCommaLimit
                 ? $"{gold} {amount}개가 더 필요해요"

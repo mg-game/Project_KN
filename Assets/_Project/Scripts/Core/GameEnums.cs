@@ -8,6 +8,11 @@ namespace IdleGame
         Gem = 1,
         /// <summary>표시명 "별빛 사탕" ('별이 머문 밤 산책' 이벤트 재화)</summary>
         EventToken = 2,
+        /// <summary>
+        /// 표시명 "실타래" (유실자 레벨업 전용 재화, 결정 2 안 D). 단추가 나오는 모든 곳에서 같은 기준 양을 나눠 함께 나온다 (IncomeSplit).
+        /// 맨 끝에 둔다: ShopDatabase.asset 등이 재화를 정수로 저장하므로 중간에 넣으면 값이 밀린다
+        /// </summary>
+        LineageXp = 3,
     }
 
     /// <summary>

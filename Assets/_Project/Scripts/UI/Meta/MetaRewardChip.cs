@@ -114,7 +114,7 @@ namespace IdleGame.UI
             {
                 _icon.enabled = sprite != null;
                 _icon.sprite = sprite;
-                _icon.color = Color.white;
+                _icon.color = MetaIcons.RewardTint(reward);
                 _icon.preserveAspect = true;
             }
             // 테두리 아트는 등급 색을 살짝만 섞는다 (진한 색으로 덮으면 금테가 탁해진다)

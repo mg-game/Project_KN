@@ -529,9 +529,15 @@ namespace IdleGame.UI
             if (awaySeconds >= popupMin) return;
             if (!Game.IdleChest.IsUnlocked) return;
             float rate = db != null ? db.idleChest.offlineGoldRate : 0.5f;
-            double gold = Game.Growth.GoldPerSecond * awaySeconds * rate;
+            // 안 D: 기준 수입으로 B를 만든 뒤 단추 · 실타래로 나눈다 (IncomeSplit)
+            double income = Game.Growth.IncomePerSecond * awaySeconds * rate;
+            double gold = IncomeSplit.Gold(income);
+            double lineageXp = IncomeSplit.LineageXp(income);
+            string lineageText = lineageXp >= 1
+                ? $" · {RewardService.CurrencyName(CurrencyType.LineageXp)} {RewardService.FormatAmount(CurrencyType.LineageXp, lineageXp)}"
+                : string.Empty;
             MetaUi.Toast(gold >= 1
-                ? $"자리를 비운 {MetaUi.Duration(awaySeconds)} 동안 바구니에 단추 {RewardService.FormatAmount(CurrencyType.Gold, gold)}만큼 쌓였어요"
+                ? $"자리를 비운 {MetaUi.Duration(awaySeconds)} 동안 바구니에 단추 {RewardService.FormatAmount(CurrencyType.Gold, gold)}{lineageText}만큼 쌓였어요"
                 : $"자리를 비운 {MetaUi.Duration(awaySeconds)} 동안 바구니에 선물이 쌓였어요");
         }
     }

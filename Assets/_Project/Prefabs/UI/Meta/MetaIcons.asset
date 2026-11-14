@@ -15,6 +15,7 @@ MonoBehaviour:
   _gold: {fileID: 21300000, guid: b9794e697f7d2e447bc9e49bce4ca7df, type: 3}
   _gem: {fileID: 21300000, guid: ad2682c1d3669df49bdbd093aabe62f5, type: 3}
   _eventToken: {fileID: 21300000, guid: f167832d37b44144095d8d777660971a, type: 3}
+  _lineageXp: {fileID: 21300000, guid: 0c2918e8af8213a4ba1ab0405f566fb7, type: 3}
   _quickTicket: {fileID: 21300000, guid: 74a1143c2efc81344823bc784d585526, type: 3}
   _doubleTicket: {fileID: 21300000, guid: 6120fb57ee96f7645959a26242d1d071, type: 3}
   _selectShards: {fileID: 21300000, guid: 47f3b47b931347b4cba7fc8dde4ba4c9, type: 3}

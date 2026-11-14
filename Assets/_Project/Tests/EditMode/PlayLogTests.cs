@@ -308,6 +308,7 @@ namespace IdleGame.Tests
             var recorder = new PlayLogRecorder(Battle, Power, Gacha, GuideQuest, IdleChest, Features, Tutorial, MetaDb, () => _now, Growth, Characters);
             recorder.Connect();
             Currency.Add(CurrencyType.Gold, 1e6);
+            Currency.Add(CurrencyType.LineageXp, 1e6);
 
             int from = Growth.Level;
             double shopCost = Growth.GetLevelUpCost(from, 2);
@@ -323,7 +324,7 @@ namespace IdleGame.Tests
             double lineageCost = Characters.GetLevelUpCost("sock");
             Assert.IsTrue(Characters.TryLevelUp("sock"));
             var lineage = Rows().Single(r => r.Value<string>("ev") == "spend" && r.Value<string>("sink") == "lineage");
-            Assert.AreEqual("gold", lineage.Value<string>("cur"));
+            Assert.AreEqual("lxp", lineage.Value<string>("cur"), "유실자 레벨업은 실타래 (안 D)");
             Assert.AreEqual(lineageCost, lineage.Value<double>("amt"), 0.5);
             Assert.AreEqual("sock", lineage.Value<string>("id"));
             Assert.AreEqual(level + 1, lineage.Value<int>("lv"));
