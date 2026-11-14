@@ -11,6 +11,7 @@ namespace IdleGame
     ///   · ftue_step {n, id, t} (t = 이번 세션 시작부터 초)
     ///   · stage_end {stage, res(clear|fail), pow, rec, sec, hp(수선점 남은 %), dir[5](DirectionDamage가 있을 때)}
     ///   · gacha {n, grades[]} · quest_claim {id} · basket_claim {h, double} · quick_idle {paid, ticket} · feature_unlock {id}
+    ///   · spend {sink(shop|lineage), cur, amt, from · to (수선점) | id · lv (친구)}: 레벨업에 쓴 재화를 소비처별로 (SYS_Economy §3 #8 E안, 나눌지 판정 근거)
     /// mission_box · event_claim · daily_gift는 그 시스템에 사건이 없어 그 시스템 주인이 PlayLog.Begin(…)으로 직접 쓴다 (P4-2 요청).
     /// 처리기는 예외를 내지 않는다 (시스템 사건 흐름을 끊지 않게 — 경고 한 줄). 사건 때만 돌고, 숫자 · 글자 쓰기는 할당하지 않는다
     /// (feature_unlock의 이름 · 소환 결과 목록 순회 정도).
@@ -34,6 +35,8 @@ namespace IdleGame
         readonly TutorialSystem _tutorial;
         readonly MetaDatabase _metaDb;
         readonly Func<float> _realtime;
+        readonly GrowthSystem _growth;
+        readonly CharacterSystem _characters;
 
         readonly int[] _directions = new int[DirectionSlots];
         readonly List<int> _grades = new(10);
@@ -47,8 +50,11 @@ namespace IdleGame
 
         /// <param name="realtime">초 단위 실제 시각 (null = Time.realtimeSinceStartup) — 시험용</param>
         public PlayLogRecorder(BattleSystem battle, PowerSystem power, GachaSystem gacha, GuideQuestSystem quests, IdleChestSystem idleChest,
-            FeatureGateSystem features, TutorialSystem tutorial, MetaDatabase metaDb, Func<float> realtime = null)
+            FeatureGateSystem features, TutorialSystem tutorial, MetaDatabase metaDb, Func<float> realtime = null,
+            GrowthSystem growth = null, CharacterSystem characters = null)
         {
+            _growth = growth;
+            _characters = characters;
             _battle = battle;
             _power = power;
             _gacha = gacha;
@@ -62,7 +68,7 @@ namespace IdleGame
 
         /// <summary>지금 Game의 시스템으로 만든다 (Game.Setup 뒤)</summary>
         public static PlayLogRecorder FromGame() => new(Game.Battle, Game.Power, Game.Gacha, Game.GuideQuest, Game.IdleChest, Game.Features,
-            Game.Tutorial, Game.MetaDb);
+            Game.Tutorial, Game.MetaDb, growth: Game.Growth, characters: Game.Characters);
 
         public bool IsConnected => _connected;
 
@@ -83,6 +89,8 @@ namespace IdleGame
                 if (_idleChest != null) _idleChest.Claimed += OnBasketClaimed;
                 if (_features != null) _features.Unlocked += OnFeatureUnlocked;
                 if (_tutorial != null) _tutorial.StepCompleted += OnStepCompleted;
+                if (_growth != null) _growth.LevelChanged += OnShopLevelChanged;
+                if (_characters != null) _characters.LevelUp += OnLineageLevelUp;
             }
             catch (Exception e)
             {
@@ -110,6 +118,8 @@ namespace IdleGame
                 if (_idleChest != null) _idleChest.Claimed -= OnBasketClaimed;
                 if (_features != null) _features.Unlocked -= OnFeatureUnlocked;
                 if (_tutorial != null) _tutorial.StepCompleted -= OnStepCompleted;
+                if (_growth != null) _growth.LevelChanged -= OnShopLevelChanged;
+                if (_characters != null) _characters.LevelUp -= OnLineageLevelUp;
             }
             catch (Exception e)
             {
@@ -227,6 +237,45 @@ namespace IdleGame
                 Warn(e);
             }
         }
+
+        /// <summary>수선점 강화 지출 (LevelChanged는 TryLevelUp에서만 난다): 올린 레벨 구간의 비용 합</summary>
+        void OnShopLevelChanged(int from, int to)
+        {
+            if (_growth == null || to <= from) return;
+            try
+            {
+                PlayLog.Begin("spend").Str("sink", "shop").Str("cur", CurrencyKey(_growth.LevelUpCurrency))
+                    .Num("amt", _growth.GetLevelUpCost(from, to - from), 0).Int("from", from).Int("to", to).End();
+            }
+            catch (Exception e)
+            {
+                Warn(e);
+            }
+        }
+
+        /// <summary>친구 레벨업 지출 (LevelUp은 TryLevelUp에서만 난다): level − 1 → level 비용</summary>
+        void OnLineageLevelUp(string lineageId, int level)
+        {
+            if (_characters == null || level <= 1) return;
+            try
+            {
+                PlayLog.Begin("spend").Str("sink", "lineage").Str("cur", CurrencyKey(_characters.LevelUpCurrency))
+                    .Num("amt", _characters.GetCostAtLevel(level - 1), 0).Str("id", lineageId).Int("lv", level).End();
+            }
+            catch (Exception e)
+            {
+                Warn(e);
+            }
+        }
+
+        /// <summary>기록용 재화 이름 (할당 없음)</summary>
+        internal static string CurrencyKey(CurrencyType type) => type switch
+        {
+            CurrencyType.Gold => "gold",
+            CurrencyType.Gem => "gem",
+            CurrencyType.EventToken => "event",
+            _ => "other",
+        };
 
         void OnQuestClaimed(GuideQuestDef quest, List<MetaReward> rewards)
         {
