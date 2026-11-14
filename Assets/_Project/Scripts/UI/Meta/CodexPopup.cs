@@ -14,6 +14,9 @@ namespace IdleGame.UI
     ///   · 탭 Top(160, 64): [친구][의상][적][시너지][재료][이야기] (쪽 탭, 6×144, 받을 수 있는 수 배지).
     ///   · 격자 (스크롤, 5열 164×212 — CodexCellView): 받기 · 못 찾은 칸은 힌트 말풍선 · 찾은 적은 도감 문구 · 이야기 칸은 동화책 다시 읽기 (보상 없음).
     ///   · 아래 오른쪽 [모두 받기] 380×96 (고른 탭만, 받을 것이 있을 때만).
+    ///   · 탭 자동 이동 (UI_InGame §4.3 공통 규칙, AutoTabRunner): [모두 받기]로 고른 탭이 비고 다른 탭에 받을 것이 남으면
+    ///     0.9초(움직임 줄이기 0.4초) 뒤 탭 순서([친구] → … → [이야기])로 오른쪽의 받을 탭으로 한 번 넘어간다. 맨 끝이면 처음으로 돈다.
+    ///     칸 하나 받기는 넘기지 않는다. 열 때도 받을 것이 있는 첫 탭부터 (PickTab).
     /// 받기 소리 CodexDiscover. 도감(Game.Codex)이 바뀌면 다시 그린다 (열려 있을 때만 구독). 도감이 아직 잠겨 있으면 받기 대신 잠금 토스트.
     /// </summary>
     public class CodexPopup : UIPopup
@@ -51,6 +54,11 @@ namespace IdleGame.UI
         [SerializeField] Badge _claimAllBadge;
 
         readonly List<CodexEntryStatus> _entries = new();
+        /// <summary>화면 탭 순서 = CodexCategory 값 순서 (탭 자동 이동)</summary>
+        static readonly int[] TabOrder = { 0, 1, 2, 3, 4, 5 };
+        readonly int[] _tabClaimable = new int[TabCount];
+        /// <summary>탭 자동 이동 공용 부품 (Awake에서 만든다)</summary>
+        AutoTabRunner _autoTab;
         MetaViewPool<CodexCellView> _cells;
         Action<CodexCellView> _onCell;
         CodexCategory _tab;
@@ -62,6 +70,7 @@ namespace IdleGame.UI
         protected override void Awake()
         {
             base.Awake();
+            _autoTab = new AutoTabRunner(this);
             if (_cellTemplate != null && _gridContent != null) _cells = new MetaViewPool<CodexCellView>(_cellTemplate, _gridContent);
             _onCell = OnCell;
             for (int i = 0; i < _tabButtons.Length; i++)
@@ -108,6 +117,7 @@ namespace IdleGame.UI
 
         protected override void OnClose()
         {
+            _autoTab?.Stop();
             if (!_subscribed) return;
             _subscribed = false;
             if (Game.IsReady && Game.Codex != null) Game.Codex.Changed -= OnCodexChanged;
@@ -117,6 +127,7 @@ namespace IdleGame.UI
 
         void SelectTab(CodexCategory tab)
         {
+            _autoTab?.Stop();
             _tab = tab;
             for (int i = 0; i < _tabButtons.Length; i++)
             {
@@ -382,6 +393,31 @@ namespace IdleGame.UI
             }
             UISfx.Play(UISfxKey.CodexDiscover);
             MetaUi.FlyRewards(granted, _claimAllButton != null ? (RectTransform)_claimAllButton.transform : Window);
+            var from = _tab;
+            _autoTab?.Schedule(() => AdvanceFrom(from));
+        }
+
+        // ───────────── 탭 자동 이동 (UI_InGame §4.3 공통 규칙) ─────────────
+
+        void Update()
+        {
+            // 자동 이동을 기다리는 동안 화면을 누르면 지금 탭에 머문다
+            if (IsOpen) _autoTab?.Tick();
+        }
+
+        /// <summary>[모두 받기] 뒤 넘어갈 탭 (순수): 탭 값으로 찾는 받을 수 (길이 6). 지금 탭에 남았거나 다른 탭에도 없으면 −1</summary>
+        internal static int NextClaimTab(int current, int[] claimable) => AutoTabRunner.NextTab(current, TabOrder, null, claimable);
+
+        /// <summary>기다림이 끝난 뒤 (팝업이 열려 있고 맨 위이며 튜토리얼 중이 아님은 AutoTabRunner가 확인했다)</summary>
+        void AdvanceFrom(CodexCategory from)
+        {
+            var codex = Game.Codex;
+            if (_tab != from || codex == null || !codex.IsUnlocked) return;
+            for (int i = 0; i < TabCount; i++) _tabClaimable[i] = codex.ClaimableCount((CodexCategory)i);
+            int next = NextClaimTab((int)from, _tabClaimable);
+            if (next < 0) return;
+            SelectTab((CodexCategory)next);
+            _autoTab?.Pulse(next < _tabLabels.Length ? _tabLabels[next] : null);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace IdleGame.UI
     ///     상자 5개 (30/60/90/120/150) + 날 칩 7개 ('1일'…'7일' — 잠긴 날은 자물쇠 · '{d}일째에 열려요', 받을 것이 있는 날은 점) + 과제 줄 ('+5' 알약 · 잠김 알약).
     ///     [모두 받기]가 열린 날의 과제 · 상자를 모두 받는다, 탭 점 = _tabBadges[3].
     ///   · 탭이 4개면 폭 150으로 줄여 한 줄에 놓는다 (초기화 시간 자리는 그대로). 새 부품은 장면을 다시 만들기 전(G3)에는 없어도 된다 — 그때는 예전 3탭 그대로.
-    /// 탭 자동 이동 (UI_InGame §4.3 공통 규칙):
+    /// 탭 자동 이동 (UI_InGame §4.3 공통 규칙, 공용 부품 AutoTabRunner):
     ///   · [모두 받기]로 지금 탭의 받을 것이 0이 되고 다른 탭에 남아 있으면, UIMotion.AutoTabDelay(0.9초, 움직임 줄이기 0.4초) 뒤
     ///     화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 오른쪽의 받을 탭으로 한 번 넘어간다. 맨 끝이면 처음으로 돈다. 도착 탭 글자가 한 번 톡 (줄이기면 없음).
     ///   · 넘기지 않는 경우: 줄의 [받기] (골라 받는 중), 기다리는 동안 화면을 누름, 튜토리얼 중, 팝업이 닫힘, 다른 팝업이 위에 뜸, 잠기거나 숨은 탭.
@@ -141,17 +141,15 @@ namespace IdleGame.UI
         /// <summary>탭마다 보이는지 · 받을 수 (Tab 값으로 찾는다, FillTabState가 채운다)</summary>
         readonly bool[] _tabVisible = new bool[TabCount];
         readonly int[] _tabClaimable = new int[TabCount];
-        Coroutine _autoTab;
-        /// <summary>자동 이동을 건 프레임 (그 프레임의 누름은 [모두 받기] 자체라 취소로 보지 않는다)</summary>
-        int _autoTabFrame = -1;
-        Coroutine _tabPulse;
-        Transform _pulsedLabel;
+        /// <summary>탭 자동 이동 공용 부품 (Awake에서 만든다)</summary>
+        AutoTabRunner _autoTab;
 
         MissionPeriod Period => _tab == Tab.Weekly ? MissionPeriod.Weekly : MissionPeriod.Daily;
 
         protected override void Awake()
         {
             base.Awake();
+            _autoTab = new AutoTabRunner(this);
             _rows = new MetaViewPool<MissionRowView>(_rowTemplate, _listContent);
             _chestViews = new MetaViewPool<MissionChestView>(_chestTemplate, _chestRoot);
             _onRow = OnRowButton;
@@ -212,8 +210,7 @@ namespace IdleGame.UI
 
         protected override void OnClose()
         {
-            CancelAutoTab();
-            StopTabPulse();
+            _autoTab?.Stop();
             if (_float != null) StopCoroutine(_float);
             _float = null;
             _claimAllPop = null;
@@ -245,8 +242,7 @@ namespace IdleGame.UI
 
         void SelectTab(Tab tab)
         {
-            CancelAutoTab();
-            StopTabPulse();
+            _autoTab?.Stop();
             if (tab == Tab.Records && !Game.Features.IsUnlocked(FeatureId.Achievements)) return;
             if (tab == Tab.Starter && !StarterVisible()) tab = Tab.Daily;
             _tab = tab;
@@ -271,7 +267,7 @@ namespace IdleGame.UI
         {
             if (!IsOpen || !MetaUi.IsActive) return;
             // 자동 이동을 기다리는 동안 화면을 누르면 지금 탭에 머문다 (UI_InGame §4.3)
-            if (_autoTab != null && Time.frameCount != _autoTabFrame && PointerPressedThisFrame()) CancelAutoTab();
+            _autoTab?.Tick();
             float dt = Time.unscaledDeltaTime;
             if (_barFill != null && !Mathf.Approximately(_barShown, _barTarget))
             {
@@ -780,31 +776,15 @@ namespace IdleGame.UI
         /// 처음 열 탭 (순수): 화면 순서(첫 주 → 오늘 → 이번 주 → 기록)로 보이고 받을 것이 있는 첫 탭, 없으면 [오늘].
         /// 배열은 Tab 값으로 찾는다 (길이 4)
         /// </summary>
-        internal static int FirstClaimTab(bool[] visible, int[] claimable)
-        {
-            foreach (int tab in TabOrder)
-            {
-                if (visible[tab] && claimable[tab] > 0) return tab;
-            }
-            return (int)Tab.Daily;
-        }
+        internal static int FirstClaimTab(bool[] visible, int[] claimable) =>
+            AutoTabRunner.FirstTab(TabOrder, visible, claimable, (int)Tab.Daily);
 
         /// <summary>
         /// [모두 받기] 뒤 넘어갈 탭 (순수): 지금 탭에 받을 것이 남았으면 −1 (머문다).
         /// 아니면 화면 순서로 지금 탭 오른쪽부터 한 바퀴 돌며 보이고 받을 것이 있는 첫 탭, 없으면 −1. 배열은 Tab 값으로 찾는다 (길이 4)
         /// </summary>
-        internal static int NextClaimTab(int current, bool[] visible, int[] claimable)
-        {
-            if (claimable[current] > 0) return -1;
-            int at = Array.IndexOf(TabOrder, current);
-            if (at < 0) return -1;
-            for (int step = 1; step < TabOrder.Length; step++)
-            {
-                int tab = TabOrder[(at + step) % TabOrder.Length];
-                if (visible[tab] && claimable[tab] > 0) return tab;
-            }
-            return -1;
-        }
+        internal static int NextClaimTab(int current, bool[] visible, int[] claimable) =>
+            AutoTabRunner.NextTab(current, TabOrder, visible, claimable);
 
         /// <summary>
         /// 탭마다 보이는지 · 받을 수 (Refresh 탭 점과 같은 기준). 첫 주는 받을 것이 있으면 1.
@@ -825,85 +805,23 @@ namespace IdleGame.UI
             _tabClaimable[(int)Tab.Starter] = starterVisible && Game.StarterWeek != null && Game.StarterWeek.HasClaimable ? 1 : 0;
         }
 
-        static bool TutorialRunning => Game.Tutorial != null && Game.Tutorial.IsActive;
-
         /// <summary>
-        /// [모두 받기]로 받은 뒤: 튜토리얼 중이 아니면 기다렸다가 다음 받을 탭으로 (줄의 [받기]는 부르지 않는다).
+        /// [모두 받기]로 받은 뒤: 공용 부품(AutoTabRunner)이 기다렸다가 AdvanceFrom을 부른다 (줄의 [받기]는 부르지 않는다).
         /// from = 받은 탭 (받는 사이 Refresh가 탭을 바꾸면 넘기지 않는다, 예: 첫 주가 끝나 [오늘]로 돌아감)
         /// </summary>
-        void ScheduleAutoTab(Tab from)
-        {
-            CancelAutoTab();
-            if (!isActiveAndEnabled || TutorialRunning) return;
-            _autoTabFrame = Time.frameCount;
-            _autoTab = StartCoroutine(AutoTab(from));
-        }
+        void ScheduleAutoTab(Tab from) => _autoTab?.Schedule(() => AdvanceFrom(from));
 
-        void CancelAutoTab()
+        /// <summary>기다림이 끝난 뒤 (팝업이 열려 있고 맨 위이며 튜토리얼 중이 아님은 AutoTabRunner가 확인했다)</summary>
+        void AdvanceFrom(Tab from)
         {
-            if (_autoTab != null) StopCoroutine(_autoTab);
-            _autoTab = null;
-        }
-
-        /// <summary>받기 연출(점수 날아감 · 숫자 튐 0.8초)이 끝난 뒤 다시 확인하고 넘어간다</summary>
-        IEnumerator AutoTab(Tab from)
-        {
-            float wait = UIMotion.Reduced ? UIMotion.AutoTabDelayReduced : UIMotion.AutoTabDelay;
-            for (float t = 0f; t < wait; t += Time.unscaledDeltaTime) yield return null;
-            _autoTab = null;
-            if (!IsOpen || !MetaUi.IsActive || _tab != from || TutorialRunning) yield break;
-            // 기다리는 사이 다른 팝업(기능 개방 카드 등)이 위에 떴으면 아래에서 탭을 바꾸지 않는다
-            var ui = UIManager.Instance;
-            if (ui != null && ui.TopPopup != this) yield break;
+            if (_tab != from) return;
             FillTabState();
             int next = NextClaimTab((int)from, _tabVisible, _tabClaimable);
-            if (next < 0) yield break;
+            if (next < 0) return;
             // 기록 탭은 받을 줄이 [진행 중]에 있다
             if (next == (int)Tab.Records) _recordsSegment = 0;
             SelectTab((Tab)next);
-            PulseTab((Tab)next);
-        }
-
-        /// <summary>도착한 탭 글자가 한 번 톡 (1 → 1.08 → 1, 0.3초). 움직임 줄이기면 없음. 버튼 루트는 누름 연출과 싸우므로 글자만 키운다</summary>
-        void PulseTab(Tab tab)
-        {
-            if (UIMotion.Reduced || !isActiveAndEnabled) return;
-            var label = (int)tab < _tabLabels.Length ? _tabLabels[(int)tab] : null;
-            if (label == null) return;
-            StopTabPulse();
-            _pulsedLabel = label.transform;
-            _tabPulse = StartCoroutine(TabPulse(_pulsedLabel));
-        }
-
-        IEnumerator TabPulse(Transform target)
-        {
-            for (float t = 0f; t < UIMotion.AutoTabPulse; t += Time.unscaledDeltaTime)
-            {
-                target.localScale = Vector3.one * (1f + (UIMotion.AutoTabPulseScale - 1f) * MetaUi.Punch(t / UIMotion.AutoTabPulse));
-                yield return null;
-            }
-            target.localScale = Vector3.one;
-            _tabPulse = null;
-            _pulsedLabel = null;
-        }
-
-        void StopTabPulse()
-        {
-            if (_tabPulse != null) StopCoroutine(_tabPulse);
-            _tabPulse = null;
-            if (_pulsedLabel != null) _pulsedLabel.localScale = Vector3.one;
-            _pulsedLabel = null;
-        }
-
-        /// <summary>이번 프레임에 화면을 눌렀는지 (AttendancePopup과 같은 판정, 예전 입력 방식)</summary>
-        static bool PointerPressedThisFrame()
-        {
-            if (Input.GetMouseButtonDown(0)) return true;
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (Input.GetTouch(i).phase == TouchPhase.Began) return true;
-            }
-            return false;
+            _autoTab?.Pulse(next < _tabLabels.Length ? _tabLabels[next] : null);
         }
 
         // ───────────── 점수 날아가기 ─────────────

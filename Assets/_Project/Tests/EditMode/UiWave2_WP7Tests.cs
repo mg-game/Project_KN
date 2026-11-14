@@ -11,7 +11,7 @@ namespace IdleGame.Tests
     ///   · M32: 수선 바구니 칸 리듬 (각주는 격자 아래 14 · 빠른 수선 판은 각주 아래 44 · 한 줄이면 창 1108).
     ///   · M73: 진화 · 의상으로 열 친구 고르기 (점 켜진 친구 → 짝짝이 → 처음 가진 친구 → 없음).
     ///   · M72: 일지 [가기 ›]가 탭으로 갈 때만 돌아가기 칩.
-    ///   · 일지 탭 자동 이동 (UI_InGame §4.3 공통 규칙): [모두 받기] 뒤 다음 받을 탭 · 열 때 첫 탭.
+    ///   · 탭 자동 이동 (UI_InGame §4.3 공통 규칙, AutoTabRunner): 일지 · 도감 [모두 받기] 뒤 다음 받을 탭 · 열 때 첫 탭.
     ///   · M13 · M12: 강해지기 머리 글 · 권장 전투력 알약 글, M30: 시간당 표기.
     ///   · RM-2 P4-6 (SPEC4): 챕터 지도 칸 상태 · 진행 수, 알림 미리 묻기 조건, 이벤트 시작 카드 제목 · 회차 키, 다시 만난 날 본문,
     ///     챕터 상자 한 줄, 4차 팝업 종류, 도감 보너스 한 줄, 이벤트 모아 보기 글 (다음 시작 · 남은 시간 · 보여 줄 이벤트), 일지 줄 모델,
@@ -285,6 +285,29 @@ namespace IdleGame.Tests
             Assert.AreEqual(JRecords, JournalPopup.FirstClaimTab(JVisible(), JClaimable(records: 1)), "기록에만 있으면 [기록] (새로 넣음)");
             Assert.AreEqual(JDaily, JournalPopup.FirstClaimTab(JVisible(records: false), JClaimable(records: 1)), "기록이 잠겼으면 [오늘]");
             Assert.AreEqual(JDaily, JournalPopup.FirstClaimTab(JVisible(), JClaimable()), "아무것도 없으면 [오늘]");
+        }
+
+        [Test]
+        public void Codex_AutoTab_MovesToNextTabWithRewards()
+        {
+            // 도감 탭 값 = 화면 순서: 친구 0 · 의상 1 · 적 2 · 시너지 3 · 재료 4 · 이야기 5 (스크린샷 사례: 시너지 6 · 재료 2)
+            Assert.AreEqual(4, CodexPopup.NextClaimTab(3, new[] { 0, 0, 0, 0, 2, 0 }), "[시너지]를 다 받으면 [재료]로");
+            Assert.AreEqual(-1, CodexPopup.NextClaimTab(3, new[] { 0, 0, 0, 1, 2, 0 }), "[시너지]에 남았으면 머문다");
+            Assert.AreEqual(0, CodexPopup.NextClaimTab(4, new[] { 1, 0, 0, 0, 0, 0 }), "[재료] → [이야기](없음) → 처음 [친구]");
+            Assert.AreEqual(-1, CodexPopup.NextClaimTab(4, new[] { 0, 0, 0, 0, 0, 0 }), "아무 탭에도 없으면 머문다");
+        }
+
+        [Test]
+        public void AutoTabRunner_GuardsBadInput()
+        {
+            int[] order = { 2, 0, 1 };
+            Assert.AreEqual(1, AutoTabRunner.NextTab(0, order, null, new[] { 0, 1, 1 }), "화면 순서 2 → 0 → 1: [0] 오른쪽은 [1]");
+            Assert.AreEqual(2, AutoTabRunner.NextTab(1, order, null, new[] { 0, 0, 1 }), "[1](맨 끝) → 처음 [2]");
+            Assert.AreEqual(-1, AutoTabRunner.NextTab(5, order, null, new[] { 0, 1, 1 }), "없는 탭 값이면 머문다");
+            Assert.AreEqual(-1, AutoTabRunner.NextTab(0, null, null, new[] { 0, 1, 1 }), "순서가 없으면 머문다");
+            Assert.AreEqual(2, AutoTabRunner.FirstTab(order, null, new[] { 1, 0, 1 }, 0), "열 때: 화면 순서로 첫 받을 탭 [2]");
+            Assert.AreEqual(0, AutoTabRunner.FirstTab(order, new[] { true, true, false }, new[] { 1, 0, 1 }, 7), "숨은 [2]는 건너 [0]");
+            Assert.AreEqual(7, AutoTabRunner.FirstTab(order, null, new[] { 0, 0, 0 }, 7), "없으면 fallback");
         }
 
         [Test]
