@@ -994,6 +994,55 @@
         "PPU": null
       },
       "source_reference_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719"
+    },
+    {
+      "group": "ART-08",
+      "kind": "sprite",
+      "path": "Assets/_Project/Art/Icons/report_retry.png",
+      "guid": "64601f511b9b414282ed9d2500e524d7",
+      "sha256": "91dcc1fda355b185fb50f40f1510f9113f600c37c53730e7ababd8ce41581d16",
+      "bytes": 18347,
+      "canvas": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "notes": "RS-002 재도전 CTA용 단일 반시계 되돌림 화살표. 기존 자동2화살/함께걷기 원형배지와 구분. 기존4종은 재사용; 기존 PNG/GUID 보존.",
+      "state": "development_candidate_not_final_adoption",
+      "import": {
+        "authored_from_existing_project_template": true,
+        "unity_import_executed": false,
+        "texture_type": "Sprite Single FullRect",
+        "mipmaps": false,
+        "filter": "Bilinear",
+        "compression": "Uncompressed",
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "PPU": 100
+      },
+      "validation": {
+        "mode": "RGBA",
+        "canvas": [
+          128,
+          128
+        ],
+        "alpha_threshold": 16,
+        "bbox_exclusive": [
+          9,
+          7,
+          119,
+          121
+        ],
+        "components_8_connected": 1,
+        "center": [
+          64.0,
+          64.0
+        ],
+        "transparent_border": true,
+        "max_alpha": 254
+      }
     }
   ],
   "reused": [
@@ -1076,6 +1125,26 @@
       "group": "ART-10",
       "path": "Assets/_Project/Art/Enemies/boss_mothqueen.png",
       "use": "변형의 원본참조.일반여왕Sprite/기존GUID/데이터는유지."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/Icons/guardian.png",
+      "use": "방어 문제 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/Icons/power.png",
+      "use": "화력 부족 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/UI/tab_formation.png",
+      "use": "편성 변경 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
+    },
+    {
+      "group": "ART-08",
+      "path": "Assets/_Project/Art/UI/tab_growth.png",
+      "use": "성장 아이콘. 기존 원본 그대로, 재사용 참조, 중복 PNG 없음."
     }
   ],
   "pending": [
@@ -1084,8 +1153,8 @@
     "캐릭터 외형 유형/런타임 ID 검토 및 최종 채택",
     "DD/사람 확인과 실제 기기/가림/색공간 검수"
   ],
-  "latest_revision_branch": "feature/art-memory-lamp-queen",
-  "latest_revision_base_commit": "c16686c34f17f29454b61216dfa92d6a4ead8719",
+  "latest_revision_branch": "feature/art08-failure-report",
+  "latest_revision_base_commit": "523b8de2d143dbf42f0c02115fbae831c3db5088",
   "art10_provenance": {
     "source_boss_sha256": "6ea670621ed0c30869573fee176b1fb6bcd9a6c315c8d20ff37b01f2e1beb5c5",
     "content_height": 434,
@@ -1185,6 +1254,136 @@
     "generation_calls": {
       "boss_variant_edit": 1,
       "wing_marker_generation": 1
+    }
+  },
+  "art08_provenance": {
+    "source_commit": "523b8de2d143dbf42f0c02115fbae831c3db5088",
+    "source_documents": [
+      "Docs/07_Art/ART_M1_Backlog.md §1 ART-08 / §3",
+      "Docs/07_Art/ART_StyleGuide.md §2 / §6 / §9 / §14",
+      "Docs/03_UI_UX/UI_InGame.md RS-002",
+      "Docs/03_UI_UX/UI_Battle.md §4"
+    ],
+    "prompt": "Game-ready 2D mobile UI icon for a whimsical fairy-tale idle defense RPG. Soft storybook style, clean medium outline, soft cel shading, deep indigo and purple base with restrained thin gold accents and pastel highlight. Simple bold silhouette readable at 32px. Transparent background, centered, no text. Subject: a single RETRY action icon for the Lost & Lovely failure report.\n\nUse the attached three existing project icons only as rendering, gold material, purple outline and soft shading references. Match their actual polished 2D line work and restrained gold/purple palette. Do not reproduce their shield, crossed needles, bag, or the exact auto icon.\n\nDraw ONE thick warm cream-gold bent arrow in a nearly complete circular loop, turning COUNTERCLOCKWISE, ending in a large blunt triangular arrowhead in the upper-left quadrant pointing left/down. It means try again. A single arrow, one arrowhead, a broad open central hole. No second arrow, no play triangle, no bag, no character, no shield, no weapons. No circular backing disc or outer badge ring: the arrow silhouette itself is the entire icon, so it differs from the existing behavior_patrol round badge. One subtle lavender shadow on the inside edge, very limited gentle gold highlight. Rounded and toy-like, no intricate engravings, no little floating stars or sparkles.\n\n1024x1024 transparent RGBA canvas with this one symbol centered, square silhouette, visible icon fills around 84% of canvas and leaves a clear transparent margin on all sides. All visible parts connected. Front view. No backdrop, no floor shadow, no text, no letters, no numbers, no logo, no fake UI screenshot, no neon or sci-fi, no photoreal metal. Intended final128px; it must read immediately at32px.",
+    "generation_calls": 1,
+    "raw_generation": {
+      "source": "/workspace/generated_images/exec-50ee223d-e3fc-4022-bb99-91eb6e7ae3de.png",
+      "canvas": [
+        1254,
+        1254
+      ],
+      "bbox_exclusive": [
+        157,
+        139,
+        1096,
+        1118
+      ],
+      "sha256": "71de4014f27b1a55a8613f7e18b017e2d0ec3e0238ecfa2d10b32ddc326140d5"
+    },
+    "transform": {
+      "renderer": "Chromium",
+      "canvas": [
+        128,
+        128
+      ],
+      "uniform_scale": 0.11440245148110317,
+      "x": -7.673135852911145,
+      "y": -7.9019407558733405,
+      "operation": "uniform scale and center only;no repaint/recolor/alpha change",
+      "source_sha256": "71de4014f27b1a55a8613f7e18b017e2d0ec3e0238ecfa2d10b32ddc326140d5"
+    },
+    "references": [
+      {
+        "path": "Assets/_Project/Art/Icons/guardian.png",
+        "sha256": "ec15d7ca2ff862c47c76e83132d851795eca365d79c5af86229a8994993a5311",
+        "bytes": 71409,
+        "local": "guardian.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/power.png",
+        "sha256": "ca20cb2d8c2bc3fac73abf6a724fcfe5df0bfc74e75e424886dc125e1d7630d5",
+        "bytes": 81058,
+        "local": "power.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/auto.png",
+        "sha256": "c866f81002e9fc6579d8eb229b22f57caa8faf6349f4a404b5e2d94fbb694036",
+        "bytes": 77551,
+        "local": "auto.png"
+      },
+      {
+        "path": "Assets/_Project/Art/Icons/behavior_patrol.png",
+        "sha256": "0cd54a7400e534ae3c1633456385cffd5354abbb28bad6c6976d2f791800c6b1",
+        "bytes": 23600,
+        "local": "behavior_patrol.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/tab_formation.png",
+        "sha256": "3958bb47987c96eb9e0fc4181a88ce158c105ae6388cdf62df2369c6c4548387",
+        "bytes": 85509,
+        "local": "tab_formation.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/tab_growth.png",
+        "sha256": "d09033e088585b44f1d331da8e0cc20e883a138150bb5882c366e433f8206b03",
+        "bytes": 60015,
+        "local": "tab_growth.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/return_header.png",
+        "sha256": "0e9ec4514ac6590507935b33a3dbfa763da7ab2a61ed10074c089b95ff3e5f08",
+        "bytes": 1482321,
+        "local": "return_header.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/button_gold_9s.png",
+        "sha256": "6ace1af174be5598e903b5b25c840cf1fc17fac65feec44c5021dea1dc2c9e0f",
+        "bytes": 22883,
+        "local": "button_gold_9s.png"
+      },
+      {
+        "path": "Assets/_Project/Art/UI/panel_night_9s.png",
+        "sha256": "bb873455d9e47b6530301ad1439cdeae7378ce1250839ddc88083dd6d603d6a1",
+        "bytes": 18047,
+        "local": "panel_night_9s.png"
+      }
+    ],
+    "review": {
+      "icon_sizes": [
+        128,
+        48,
+        32
+      ],
+      "backgrounds_from_UITheme": [
+        "#17122E",
+        "#261D4C",
+        "#F6EDDA"
+      ],
+      "visually_distinct_roles": 5,
+      "layout": {
+        "renderer": "Chromium",
+        "deviceScaleFactor": 1,
+        "review_widths": [
+          320,
+          375,
+          430
+        ],
+        "states": [
+          "defense",
+          "firepower",
+          "retreat"
+        ],
+        "overflow_elements": [],
+        "actual_unity": false
+      },
+      "actual_unity": false,
+      "status": "Candidate prepared; DD adoption and Unity/device verification pending",
+      "notes": "No text burned in PNG. No new dim-state image. Cause/recommendation and retry behavior use game source; no new rules/numbers. Prototype HTML/screenshots kept out of game assets."
+    },
+    "remote_lfs_verification": {
+      "fresh_cache": true,
+      "sha256": "91dcc1fda355b185fb50f40f1510f9113f600c37c53730e7ababd8ce41581d16",
+      "matches": true
     }
   }
 }

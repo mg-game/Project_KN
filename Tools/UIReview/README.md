@@ -1,4 +1,4 @@
-# Project_KN UI 개발 전달본 — Review 08 / 0.8.3
+# Project_KN UI 개발 전달본 — Review 08 / 0.8.4
 
 홈·전투·편성·성장·결과의 브라우저 코드, 입력 흐름, 화면 규격과 필수 이미지를 함께 보관합니다. **채팅 ZIP 없이 이 브랜치만 받아 실행할 수 있습니다.** Unity 게임 코드와 분리된 개발 참조이며, 최종 아트 채택이나 실제 전투·저장 구현은 아닙니다.
 
@@ -7,15 +7,15 @@
 Git LFS와 Node.js 20.19 이상이 필요합니다. 기존 저장소에서:
 
 ```sh
-git fetch origin fix/72-ui-pointer-ownership
-git switch --track origin/fix/72-ui-pointer-ownership
+git fetch origin fix/ui-growth-dialog-focus
+git switch --track origin/fix/ui-growth-dialog-focus
 git lfs install --local
 git lfs pull --include="Tools/UIReview/**"
 cd Tools/UIReview
 npm start
 ```
 
-이미 로컬 브랜치가 있으면 `git switch fix/72-ui-pointer-ownership`을 사용합니다. 미리보기 실행 자체는 Node 내장 서버만 사용하므로 `npm ci`가 필요 없습니다.
+이미 로컬 브랜치가 있으면 `git switch fix/ui-growth-dialog-focus`을 사용합니다. 미리보기 실행 자체는 Node 내장 서버만 사용하므로 `npm ci`가 필요 없습니다.
 
 - 화면 조작: <http://127.0.0.1:8772/>
 - 화면 규격·상태·리소스 대응표: <http://127.0.0.1:8772/handoff.html>
@@ -49,6 +49,14 @@ npm start
 | [ART_UIHandoff](../../Docs/07_Art/ART_UIHandoff.md) | 제작·검수 이력과 남은 검수 |
 
 화면 좌표는 왼쪽 위 원점의 390×845 / 390×693 논리 참조입니다. Unity의 Safe Area·RectTransform 확정값이 아닙니다. 전장 방위는 N=0°, 시계 방향 45°씩입니다.
+
+## 성장 시트 진입·복귀 보완 (0.8.4)
+
+홈 하단 강화·검토 도구의 시트 열기·실패 리포트의 강해지기로 진입하면 시트 닫기 버튼으로 포커스를 옮깁니다. 닫기 클릭/키보드/Escape는 진입한 검토 도구 버튼 또는 하단 강화 버튼으로 포커스를 돌려줍니다. 실패 리포트처럼 원래 버튼이 사라지는 경로는 하단 강화 버튼으로 돌아옵니다.
+
+성장 시트는 하단 탭과 전투 알림을 사용할 수 있는 기존 비모달 영역입니다. 상세 뒤로가기·공명 취소의 포커스 복원과 새 입력/홀드 차단은 유지합니다. 비율 등 바깥 검토 제어에서 화면을 다시 그릴 때 포커스를 시트로 빼앗지 않습니다.
+
+`verify-sheet-focus.cjs`가 두 비율의 실제 Chromium 키보드 진입·Tab 이동·닫기·재진입·공명 취소·외부 제어를 검사합니다. 전달 시점 [검사 기록](sheet-focus-verification.json)을 보관하며, 최신 결과는 `.review-output/sheet-focus-verification.json`에 기록합니다.
 
 ## 대화창 복귀·키보드 보완 (0.8.3)
 
@@ -99,7 +107,7 @@ npm test
 
 Linux에서 브라우저 시스템 라이브러리가 없다면 Playwright의 플랫폼별 설치 안내를 따릅니다. 기존 Chromium을 쓰려면 `KN_UI_BROWSER_PATH`에 실행 파일 경로를 지정합니다. 테스트는 임시 포트의 서버를 자동으로 열고 종료합니다. 검사 화면·보고서는 무시되는 `.review-output/`에 기록하므로 추적된 그림을 덮어쓰지 않습니다.
 
-10개 브라우저 검사 묶음은 80개 통과 항목(입력 취소 8항목·구역 연결 6항목·복수 입력 6항목·대화창 키보드 6항목 포함)을 재현합니다. 관리형 브라우저의 `file://` 정책 차단 기록 1건은 별도로 구분합니다. 선택 색상 6쌍의 대비 검수는 전체 접근성 인증이 아니며, `blur` 이벤트 검사는 실제 단말 앱 전환 검사가 아닙니다.
+11개 브라우저 검사 묶음은 86개 통과 항목(입력 취소 8항목·구역 연결 6항목·복수 입력 6항목·대화창 키보드 6항목·성장 포커스 6항목 포함)을 재현합니다. 관리형 브라우저의 `file://` 정책 차단 기록 1건은 별도로 구분합니다. 선택 색상 6쌍의 대비 검수는 전체 접근성 인증이 아니며, `blur` 이벤트 검사는 실제 단말 앱 전환 검사가 아닙니다.
 
 출력 재생성은 의도적으로 추적 파일을 바꾸는 저작 작업입니다:
 

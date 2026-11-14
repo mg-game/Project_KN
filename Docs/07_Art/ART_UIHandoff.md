@@ -4,7 +4,7 @@
 |---|---|
 | 상태 | Review |
 | 작성자 | AI 아트 · 사용자 요청에 따른 UI 제작 |
-| 최종 수정 | 2026-11-13 |
+| 최종 수정 | 2026-11-13 (ART-09 모래시계 작화 후보 추가) |
 | 관련 테이블 | 없음 — 예시 수치는 밸런스·데이터 변경이 아님 |
 | 관련 이슈 | 기존 ART ID · 시트 위 전투 알림 칩 = 지시 #3 I-15 (D-44 #4 · D-57) |
 | 기획 기준 | develop `755a13a27e2c7b4c55c7dbafb88c8a0197b6ef92`, D-44 · D-50 · D-52 |
@@ -238,8 +238,105 @@ Unity TMP 폰트 아틀라스·대체 글꼴·픽셀 밀도·안전 영역·플�
 
 변경은 브라우저 UI 입력 처리·명세·검수 기록이다. Unity C#·씬·프리팹·GUID·아트 후보는 변경하지 않았다. **Unity 실행 미검증**이며 iOS/Android 실기기 검수는 남아 있다.
 
+### 4.11 성장 시트 진입·복귀 포커스 (0.8.4)
+
+홈 하단 강화·검토 도구의 시트 열기에서 성장 시트를 열면 포커스가 바깥 진입 버튼에 남고, 닫으면 문서 본문으로 빠지는 문제를 재현했다. 실패 리포트의 강해지기로 진입해도 포커스가 본문에 남았다.
+
+명시적으로 시트를 열 때 닫기 버튼에 포커스를 옮기고, 닫기 클릭/키보드/Escape에서는 진입한 검토 도구 버튼 또는 홈 하단 강화 버튼으로 복원한다. 실패 리포트처럼 사라진 진입 버튼은 하단 강화 버튼으로 대체한다. 상세 뒤로가기·공명 취소는 기존의 해당 초상/공명 버튼 복원을 유지한다. 시트는 하단 탭과 전투 알림을 쓸 수 있는 비모달 영역이며, 바깥 검토 도구에서 비율 등을 바꿔 다시 그릴 때 포커스를 시트로 빼앗지 않는다.
+
+`verify-sheet-focus.cjs`의 6개 항목은 두 비율의 실제 Chromium 키보드 진입·Tab 이동·닫기/재진입·실패 경유·상세/공명 취소·외부 제어를 검사한다. [전달 검사 기록](../../Tools/UIReview/sheet-focus-verification.json)을 보관했다. 기존 검수를 포함한 **11개 묶음·86개 통과 항목**을 확인했다. 직접 `file://` 정책 차단 기록 1건은 별도로 구분한다.
+
+PR #82 병합 뒤 `develop@523b8de`에서 작업했다. 브라우저 입력 처리·명세·검수 기록만 수정하고 PNG 후보·비용·홀드 간격·Unity C#·씬·프리팹·GUID는 바꾸지 않았다. **Unity 미실행 — 미검증**이며 실기기 입력 검수는 별도다.
+
 ## 5. 다음 관문
 
 1. 작화·화면 배치·32px 심볼의 최종 채택 판단 및 피드백 반영.
 2. 채택 결과를 DD가 결정 기록에 남긴 뒤 최종 리소스만 납품.
 3. I-10에서 `UnityImportPlan.json`을 참고해 빌더 연결·Unity 임포트·플랫폼 압축·TMP·실기기 검수. **본 기록은 새 결정·개발 보류 해제·게임 적용 완료의 근거가 아니다.**
+
+## 6. ART-09 파견 중 배지 — 기존 형태 유지·작화 보완 (2026-11-13)
+
+**상태: 개발 연결 후보. DD 최종 채택·Unity 임포트·실기기 검수는 미실시.** 기준은 develop `523b8de2d143dbf42f0c02115fbae831c3db5088`의 [ART-09](./ART_M1_Backlog.md)·[편성 §2⑪/§4](../03_UI_UX/UI_Formation.md)·[원정 잠금 §2.2/§4](../01_System/SYS_Dispatch.md)·[스타일](./ART_StyleGuide.md) §2·6·9·14다.
+
+### 6.1 기존 자료 대조와 유지
+
+기존 `Tools/UIReview/candidates/badge_dispatch.png`64 모래시계가 있어 같은 역할의 다른 기호를 새로 기획하지 않았다. 이 후보의 단순한 모래시계 구조를 유지하면서 원정 지도/시계 원화의 부드러운 셀 채색·크림 골드·보라 외곽으로 작화만 보완했다. 기존 모래시계와 SVG·원정 탭·시계·자물쇠·캐릭터 PNG/GUID는 보존했다. 기존 시안은 얇은 평면 선 기호라 현재 게임 아이콘과 렌더링이 달랐고, 새 그림은 큰 위아래 캡·굵은 허리 프레임·라벤더 모래만 남겼다. 배경 배지·글자·숫자·얼굴·자물쇠·부유 장식은 넣지 않았다.
+
+새 경로는 기존 [UnityImportPlan](../../Tools/UIReview/UnityImportPlan.json)의 ART-09 대상 `Assets/_Project/Art/Icons/badge_dispatch.png`를 그대로 따른다. 기존 `Tools/UIReview` 검토 시안이나 그 검토 화면이 새 게임용 파일로 교체된 것은 아니다. import plan의 과거 해시는 기존 시안에 대한 값이며, 이번 후보는 아래 해시로 구분한다.
+
+| 구분 | 경로 | SHA-256 |
+|---|---|---|
+| 기존 모래시계 형태 | [badge_dispatch.png](../../Tools/UIReview/candidates/badge_dispatch.png) | `a5de7fdb5a2c070d31e0ae17d7bdaf72dae45e8112b7a1d7cba8819843e96d80` |
+| 기존 작화 참조 | [tab_expedition.png](../../Assets/_Project/Art/UI/tab_expedition.png) | `769ea1775779607962265fb5fea514e1a935b5c997b027748a7eca372d8b099f` |
+| 기존 작화 참조 | [hud_clock.png](../../Assets/_Project/Art/Icons/hud_clock.png) | `e667758fe447171c33c28594887c122742963804b5d9abe06c77dceed46dd9d7` |
+
+### 6.2 개발 파일과 측정
+
+| 항목 | 값 |
+|---|---|
+| 새 Sprite | [badge_dispatch.png](../../Assets/_Project/Art/Icons/badge_dispatch.png) |
+| 크기 / 모드 | 64×64 RGBA 투명 |
+| GUID | `a0f768b374394e2bb18180c1d8ac2217` |
+| PNG SHA-256 | `ebf8a57528d28fa5d14e8e6f31ff65fd88e9d2bf82cd77e2e6e6be3a48c572be` |
+| PNG bytes | 4902 |
+| bbox (알파>16, 오른쪽/아래 제외) | `[14, 4, 50, 59]` |
+| 내용 중심 | `[32.0, 31.5]` (캔버스 중심32/32, 오차≤0.5) |
+| 연결 성분 / 테두리 | 8방향1개 / 테두리 알파0 |
+| 최대 알파 | 253 — 255라고 간주하지 않음 |
+| 임포트 제안 | SpriteSingle / FullRect / PPU100 / 중앙피벗 / Bilinear / 밉맵없음 / 무압축 |
+| .meta | 기존 hud_clock 템플릿 기반, 새 GUID/spriteID 작성·중복 검사. Unity 생성/임포트 실행 결과 아님 |
+
+이미지 편집 도구에 기존 모래시계·원정 지도·시계를 함께 넣어1회 제작했다. 원출력1254×1254에서 **동일 비율 스케일·중심 배치만** 적용해64를 내보냈다. 재채색·비균등 변형·텍스트 굽기 없이 투명 여백을 유지했다. 원출력·검토 이미지/HTML은 로컬 자료이며 추가 게임 에셋으로 중복 등록하지 않는다.
+
+변환 기록:
+```json
+{
+  "raw_canvas": [
+    1254,
+    1254
+  ],
+  "raw_sha256": "8dc444df59abe059195f5540f277644a05cb68e3ede5ee53626811096964b659",
+  "raw_bbox_exclusive": [
+    302,
+    140,
+    938,
+    1124
+  ],
+  "export": {
+    "renderer": "Chromium",
+    "canvas": [
+      64,
+      64
+    ],
+    "uniform_scale": 0.054878048780487805,
+    "x": -2.024390243902438,
+    "y": -2.6829268292682897,
+    "operation": "uniform scale and center only;no repaint/recolor/alpha change",
+    "source_sha256": "8dc444df59abe059195f5540f277644a05cb68e3ede5ee53626811096964b659"
+  }
+}
+```
+
+### 6.3 표시 계약과 검토 범위
+
+- PNG는 흰색 틴트·비율유지·Simple로64/32/24px에서 표시한다. UITheme 밤바탕 `#17122E`·패널 `#261D4C`·양피지 `#F6EDDA`에서 모래시계 허리/모래가 읽히고 원형 시계·자물쇠와 구분되는지 육안 검토했다.24px에서는 **"파견 중" 글자를 반드시 함께 표시**한다.
+- 상태 글자·남은 시간은 별도 UI다.152×196 카드의 이름·배지24·`1:30:00`/`0:01` 시간줄이 겹치거나 넘치지 않는 브라우저 예시를 확인했다. 원정 전/진행 중/만료 직전/완료시각 뒤(보상 수령 전)4상태를 비교했다.
+- 기획 정본(D-54)은 진행 중 회색·편성 불가, **종료 시각에 잠금 해제**(보상 받기 전이어도 가능)다. 예시에서는 진행 중 배지와 시간을 보이고 종료 시 배지를 숨긴다. 남은 시간0에서 보상을 아직 받지 않았다는 이유로 배지를 계속 표시하지 않는다. 해당 판정/타이머는 실제 시스템 입력을 연결하며 이미지가 결정하지 않는다.
+- **현재 구현은 다르다:** `FormationCardView`/`FormationPanel`의 M05는 원정 중에도 편성을 허용하고 있다. 이번 작업은 새 그림과 표시 계약만 전달하며 C#·씬·프리팹·잠금/복귀/시간 로직을 수정하지 않았다. 브라우저 회색/배지 예시를 게임 적용 완료로 간주하지 않는다.
+- 새 폴더 없음, PNG1개+.meta1개만 추가. 사용자 기존 개발용 Git 업로드 요청에 따라 PR로 전달하며 자동 병합/최종 채택하지 않는다. 기존 원화 삭제/덮어쓰기·확정 설정/ID 변경 없음. ART-08 PR #89의 파일과 작업 범위는 그대로 둔다.
+
+**남음:** DD 작화 채택, Unity6000.2.6f2 임포트·색공간·플랫폼압축, 실제 카드에서 잠금/남은시간/완료 갱신, 드래그/탭 가드, iOS/Android24px 가독성. 이 기록은 D-54 규칙을 새로 승인하거나 구현 완료로 바꾸지 않는다.
+
+원격 전달 확인: 신규 PNG를 LFS 업로드한 뒤 별도의 빈 캐시로 다시 내려받아 위 SHA-256과 일치함을 확인했다.
+
+### 6.4 사용 프롬프트 (기존3이미지 첨부)
+
+```text
+Game-ready 2D mobile UI icon for a whimsical fairy-tale idle defense RPG. Soft storybook style, clean medium outline, soft cel shading, deep indigo and purple base with restrained thin gold accents and pastel highlight. Simple bold silhouette readable at 32px. Transparent background, centered, no text. Subject: ART-09 "currently dispatched" hourglass badge.
+
+Refine the FIRST attached existing hourglass concept into the same polished 2D line work and soft cel shading as the SECOND existing expedition map icon and THIRD existing clock icon. Keep the original simple front-facing hourglass silhouette: two short horizontal rounded caps, two thick pinched curved sides, big readable upper and lower glass chambers meeting at a narrow waist, lavender sand in two simple triangular mounds. This is one compact hourglass, NOT a clock, not a padlock and not an expedition-complete reward icon. Keep the first concept's big clear hourglass design and uncluttered negative spaces.
+
+Use subdued cream-gold for the caps/frame, muted lavender for the large sand shapes, a small indigo/purple outer line, and soft restrained highlights. Match the actual reference palette/material and soft fairy-tale game rendering. No face, no eyes, no mouth, no map, no compass, no locks, no badge backing disc, no ribbon, no sparkles or floating parts. No complicated ornate patterns, no extra miniature timer. Sand shapes should remain opaque and legible; background is completely transparent.
+
+One icon, straight upright symmetrical front view centered in1024x1024 transparent RGBA, visible height about84% with transparent margins all around. All visible components joined into the one hourglass structure. Broad top/bottom caps and side frame, a clearly pinched waist. Final use is64x64 badge and24/32px display on a character card, so retain only broad shapes. No writing, letters, numbers, timers or text baked into image. No ground shadow, no scenery, no UI mockup, no photoreal glass, no neon, no sci-fi.
+```
